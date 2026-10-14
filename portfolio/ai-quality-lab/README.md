@@ -44,7 +44,11 @@ Alternativ `evaluator.py` und `fixtures.json` von der Website in denselben Ordne
 
 ## Projektarbeit
 
-Natalie definierte das Projektziel, die vier Sprachen, die abweichende farbige Gestaltung und die gewünschten Animationen und Zeitangaben. Die Implementierung und technische Prüfung entstanden mit KI-Unterstützung. Sichtbare Design- und Nutzungsprüfungen durch Natalie werden erst nach tatsächlicher Durchführung als solche dokumentiert. Es wird keine frühere kommerzielle Entwicklungserfahrung behauptet.
+Ich habe das Projektziel, die vier Sprachen, die Gestaltung sowie die gewünschten Animationen und Zeitangaben festgelegt. Ich habe die erste Oberfläche auf dem Smartphone geprüft und konkrete Änderungen an Typografie und Aufbau veranlasst. Der KI-Assistent hat Code, automatische Tests, technische Korrekturen und Veröffentlichung im Rahmen unserer gemeinsamen Entwicklung umgesetzt.
+
+## Meine Fähigkeiten und bisherige Erfahrung
+
+Ich habe bereits praktische Erfahrung darin, Code zu lesen, zu verstehen, zu ändern und zu prüfen, Fehler zu analysieren und Webanwendungen sowie APIs zu testen. In eigenen Projekten arbeite ich mit Python, JavaScript/TypeScript, HTML/CSS, API-Integrationen, Git/GitHub, Docker sowie automatisierten Tests und CI. Diese Erfahrung besteht bereits unabhängig von den beiden Portfolio-Demos.
 
 ## Nächster möglicher Schritt
 

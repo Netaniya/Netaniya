@@ -33,7 +33,11 @@ This is a learning project, not commercial client experience. React/TypeScript, 
 
 ## My contribution and AI assistance
 
-I defined the portfolio goal, reviewed and approved eight workflow rules, required four languages and a learning-project label, and reviewed the UI on a phone. I tested the core flow, including editing, approval and persistence, and requested specific layout corrections. The AI assistant implemented the code, automated tests and documentation. An independent code review by me is not claimed.
+I defined the portfolio goal, reviewed and approved eight workflow rules, required four languages and a learning-project label, and reviewed the UI on a phone. I tested the core flow, including editing, approval and persistence, and requested specific layout corrections. The AI assistant implemented the code, automated tests and documentation as part of our collaborative development.
+
+## My skills and prior experience
+
+I have prior hands-on experience reading, understanding, modifying and reviewing code, debugging issues, and testing web applications and APIs. My own projects include Python, JavaScript/TypeScript, HTML/CSS, API integrations, Git/GitHub, Docker and automated checks with CI. I have used these skills before these two portfolio demos.
 
 ## Run and test
 

@@ -6,11 +6,17 @@
 
 Munich, Germany
 
-My practical experience comes from self-directed learning and portfolio projects.
+My practical experience comes from self-directed learning and hands-on work on my own software projects.
 
 I build practical software with AI-assisted development workflows, combining human engineering judgment with coding agents, testing, CI, debugging, and iterative validation.
 
 My current work focuses on full-stack applications and AI/model workflows. I use AI agents as implementation tools while retaining responsibility for requirements, architecture, review, verification, and the final result.
+
+## Praktische Entwicklungserfahrung / Hands-on experience
+
+**Deutsch:** Ich habe bereits praktische Erfahrung darin, Code zu lesen, zu verstehen, zu ändern und zu prüfen, Fehler zu analysieren und Webanwendungen sowie APIs zu testen. In eigenen Projekten arbeite ich mit Python, JavaScript/TypeScript, HTML/CSS, API-Integrationen, Git/GitHub, Docker sowie automatisierten Tests und CI. Diese Erfahrung besteht bereits unabhängig von den beiden Portfolio-Demos.
+
+**English:** I have prior hands-on experience reading, understanding, modifying and reviewing code, debugging issues, and testing web applications and APIs. My own projects include Python, JavaScript/TypeScript, HTML/CSS, API integrations, Git/GitHub, Docker and automated checks with CI. I have used these skills before these two portfolio demos.
 
 ## Current focus
 

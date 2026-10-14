@@ -22,7 +22,15 @@ python3 python/evaluator.py --input exported-report.json --output replay.json
 
 Requires Node.js 22+ and Python 3.10+. No npm dependencies are required. You may also download `evaluator.py` and `fixtures.json` into the same folder and run `python3 evaluator.py`. Replay recalculates results from exported answers and case selections.
 
-Inputs are stored on the device when browser storage is available and sent to the Worker for evaluation; the app does not persist them server-side or load analytics. Do not use confidential data. Natalie specified the project direction, languages, visual requirements, animation and time features. Implementation and technical verification were AI-assisted; owner review is recorded only after it actually occurs.
+Inputs are stored on the device when browser storage is available and sent to the Worker for evaluation; the app does not persist them server-side or load analytics. Do not use confidential data.
+
+## My contribution and AI assistance
+
+I defined the project direction, languages, visual requirements, animation and time features. I reviewed the initial UI on a phone and requested specific changes to typography and layout. The AI assistant implemented the code, automated tests, technical fixes and publication as part of our collaborative development.
+
+## My skills and prior experience
+
+I have prior hands-on experience reading, understanding, modifying and reviewing code, debugging issues, and testing web applications and APIs. My own projects include Python, JavaScript/TypeScript, HTML/CSS, API integrations, Git/GitHub, Docker and automated checks with CI. I have used these skills before these two portfolio demos.
 
 
 ## Interface
