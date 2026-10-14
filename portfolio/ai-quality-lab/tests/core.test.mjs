@@ -44,3 +44,9 @@ test('worker size limit, downloads and HTML CSP are valid',async()=>{
  assert.equal(await (await worker.fetch(new Request('https://example.test/download/evaluator.py'))).text(),fs.readFileSync('python/evaluator.py','utf8'));
  assert.equal((await worker.fetch(new Request('https://example.test/unknown'))).status,404);
 });
+test('both self-hosted font files are served intact with the correct MIME type',async()=>{
+ for(const weight of ['regular','bold']){const response=await worker.fetch(new Request('https://example.test/assets/quality-sans-'+weight+'.woff'));assert.equal(response.status,200);assert.equal(response.headers.get('Content-Type'),'font/woff');const bytes=Buffer.from(await response.arrayBuffer());const source=Buffer.from(fs.readFileSync('assets/fonts/quality-sans-'+weight+'.woff.b64','utf8').trim(),'base64');assert.deepEqual(bytes,source);assert.equal(bytes.subarray(0,4).toString(),'wOFF')}
+});
+test('restored report metadata remains truthful and negative durations are rejected',()=>{
+ const p=base();const report={...evaluate(p,dataset),...p,validation_ms:1,created_at:'2026-10-14T15:00:00Z',model_calls:999,source:'live_api',elapsed_ms:-1};const saved={version:1,lang:'de',...p,report};const loaded=restoreState(JSON.stringify(saved),dataset);assert.equal(loaded.report.model_calls,0);assert.equal(loaded.report.source,'saved_outputs');assert.equal(loaded.report.elapsed_ms,null);saved.report.validation_ms=-1;assert.equal(restoreState(JSON.stringify(saved),dataset).report,null);
+});

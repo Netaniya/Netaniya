@@ -49,3 +49,8 @@ Natalie definierte das Projektziel, die vier Sprachen, die abweichende farbige G
 ## Nächster möglicher Schritt
 
 Eine echte Modellanbindung kann später ergänzt werden: Schlüssel ausschließlich serverseitig, begrenzte Aufrufe, nachvollziehbare Herkunft der Antworten und tatsächliche Verbrauchsdaten. Diese Funktionen sind in der aktuellen Version nicht implementiert.
+
+
+## Oberfläche
+
+Die überarbeitete Oberfläche verwendet eine kompakte Arbeitsansicht, lesbare Beschriftungen und Testkarten auf Mobilgeräten. Animationen beschränken sich auf laufende Prüfungen und Ergebnisbalken. Der lokal ausgelieferte Font Quality Sans ist eine umbenannte, reduzierte Fassung von Noto Sans für lateinische und kyrillische Zeichen. Quelle und SIL Open Font License sind in `assets/fonts/OFL.txt` dokumentiert. Die Fontdateien liegen für den eigenständigen Worker als Base64-Text vor.

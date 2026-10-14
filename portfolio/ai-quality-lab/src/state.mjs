@@ -11,7 +11,7 @@ export function restoreState(raw,dataset){
     let report=null;
     if(saved.report && saved.case_ids.length){
       const fresh=evaluate(saved,dataset);
-      if(JSON.stringify(fresh.results)===JSON.stringify(saved.report.results) && saved.report.dataset_id===dataset.id && saved.report.engine_version===fresh.engine_version && JSON.stringify(saved.report.outputs)===JSON.stringify(saved.outputs) && JSON.stringify(saved.report.case_ids)===JSON.stringify(saved.case_ids) && Number.isFinite(saved.report.validation_ms) && typeof saved.report.created_at==='string' && Number.isFinite(Date.parse(saved.report.created_at))) report=saved.report;
+      if(JSON.stringify(fresh.results)===JSON.stringify(saved.report.results) && saved.report.dataset_id===dataset.id && saved.report.engine_version===fresh.engine_version && JSON.stringify(saved.report.outputs)===JSON.stringify(saved.outputs) && JSON.stringify(saved.report.case_ids)===JSON.stringify(saved.case_ids) && Number.isFinite(saved.report.validation_ms) && saved.report.validation_ms>=0 && typeof saved.report.created_at==='string' && Number.isFinite(Date.parse(saved.report.created_at))) report={...fresh,outputs:saved.outputs,case_ids:saved.case_ids,validation_ms:saved.report.validation_ms,elapsed_ms:Number.isFinite(saved.report.elapsed_ms)&&saved.report.elapsed_ms>=0?saved.report.elapsed_ms:null,created_at:saved.report.created_at,runtime:'javascript_worker',dataset_provenance:dataset.provenance};
     }
     return {case_ids:saved.case_ids,outputs:saved.outputs,lang:saved.lang,report};
   }catch{return fallback;}
