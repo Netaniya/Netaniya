@@ -72,3 +72,12 @@ When a system is technically green but the actual behavior is wrong, I trace the
 ---
 
 *Building carefully, testing aggressively, and keeping human judgment in the loop.*
+
+
+### AI Quality Lab / Antwortqualität prüfen
+
+Ein vier­sprachiges Lernprojekt: gespeicherte Antwortvarianten bearbeiten, acht Testfälle mit offenen Regeln auswerten und Ergebnisse mit einem Python-Evaluator reproduzieren. Entwickelt mit KI-Unterstützung. Aktuell ohne verbundene Modell-API.
+
+A four-language learning project for saved-answer evaluation, transparent checks, editable samples and reproducible Python reports. Built with AI assistance; no model API is connected in this version.
+
+[Live demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Deutsch / source](portfolio/ai-quality-lab/README.md) · [English](portfolio/ai-quality-lab/README.en.md)

@@ -1,0 +1,27 @@
+name: AI Quality Lab checks
+on:
+  push:
+    paths:
+      - 'portfolio/ai-quality-lab/**'
+      - '.github/workflows/ai-quality-lab.yml'
+  pull_request:
+    paths:
+      - 'portfolio/ai-quality-lab/**'
+      - '.github/workflows/ai-quality-lab.yml'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portfolio/ai-quality-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm run build
+      - run: npm test
+      - run: npm run validate
