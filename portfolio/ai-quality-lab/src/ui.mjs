@@ -3,12 +3,12 @@ import {dictionaries, translate} from './i18n.mjs';
 import {defaults, restoreState} from './state.mjs';
 const $=id=>document.getElementById(id);
 const STORE='ai-quality-lab-v1';
-let raw=null;try{raw=localStorage.getItem(STORE)}catch{}
+let raw=null,storageAvailable=true;try{raw=localStorage.getItem(STORE)}catch{storageAvailable=false}
 let state=restoreState(raw,DATASET),busy=false,activeCase=null,started=0,ticker=null,notice=null,externalUpdate=false;
 const t=(key,vars)=>translate(state.lang,key,vars);
 const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const pct=n=>new Intl.NumberFormat(state.lang,{maximumFractionDigits:1}).format(n*100);
-function persist(){try{localStorage.setItem(STORE,JSON.stringify({version:1,...state}))}catch{notice='storage'}}
+function persist(){try{localStorage.setItem(STORE,JSON.stringify({version:1,...state}))}catch{storageAvailable=false}}
 function message(key,error=false){notice=key;$('message').textContent=key?t(key):'';$('message').classList.toggle('error',error)}
 function invalidate(key){state.report=null;$('progress').value=0;$('elapsed').textContent=durationText(0);persist();render();message(key)}
 function ruleText(rule){return t('rule_'+rule.op,{field:rule.field??'',value:rule.value===undefined?'':JSON.stringify(rule.value)})}
@@ -36,6 +36,7 @@ function renderScores(){
 }
 function render(){
   document.documentElement.lang=state.lang;
+  $('storageNotice').hidden=storageAvailable;
   document.querySelectorAll('[data-t]').forEach(el=>{if(el.dataset.t==='hero'){el.replaceChildren(...t('hero').split('\n').flatMap((s,i)=>i?[document.createElement('br'),document.createTextNode(s)]:[document.createTextNode(s)]))}else el.textContent=t(el.dataset.t)});
   $('language').value=state.lang;$('language').disabled=busy;$('closeDetail').setAttribute('aria-label',t('close'));
   $('progress').setAttribute('aria-label',t('working'));

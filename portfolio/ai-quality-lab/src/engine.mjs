@@ -1,4 +1,4 @@
-export const ENGINE_VERSION = '1.0.0';
+export const ENGINE_VERSION = '1.0.1';
 const plain = x => x !== null && typeof x === 'object' && !Array.isArray(x);
 const same = (a,b) => typeof a === typeof b && JSON.stringify(a) === JSON.stringify(b);
 export function grade(item, output) {

@@ -22,9 +22,12 @@ python3 python/evaluator.py --input exported-report.json --output replay.json
 
 Requires Node.js 22+ and Python 3.10+. No npm dependencies are required. You may also download `evaluator.py` and `fixtures.json` into the same folder and run `python3 evaluator.py`. Replay recalculates results from exported answers and case selections.
 
-Inputs are stored on the device and sent to the Worker for evaluation; the app does not persist them server-side or load analytics. Do not use confidential data. Natalie specified the project direction, languages, visual requirements, animation and time features. Implementation and technical verification were AI-assisted; owner review is recorded only after it actually occurs.
+Inputs are stored on the device when browser storage is available and sent to the Worker for evaluation; the app does not persist them server-side or load analytics. Do not use confidential data. Natalie specified the project direction, languages, visual requirements, animation and time features. Implementation and technical verification were AI-assisted; owner review is recorded only after it actually occurs.
 
 
 ## Interface
 
 The revised interface uses a compact workspace, readable labels and mobile test cards. Animation is limited to running checks and result bars. Self-hosted Quality Sans is a renamed Noto Sans subset covering Latin and Cyrillic. The font is stored as Base64 text for the standalone Worker; source copyright and the SIL Open Font License are included in `assets/fonts/OFL.txt`.
+
+
+Python uses the same Unicode trimming and UTF-16 response length limits as the web evaluator. Tests cover the actual report download payload, standalone replay using downloaded files, and continued comparison/export when local storage is blocked.

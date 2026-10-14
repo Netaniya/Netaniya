@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {spawnSync} from 'node:child_process';
+import os from 'node:os';
+import path from 'node:path';
 import {grade,evaluate} from '../src/engine.mjs';
 import {defaults,restoreState} from '../src/state.mjs';
 import {dictionaries,translate} from '../src/i18n.mjs';
@@ -49,4 +51,23 @@ test('both self-hosted font files are served intact with the correct MIME type',
 });
 test('restored report metadata remains truthful and negative durations are rejected',()=>{
  const p=base();const report={...evaluate(p,dataset),...p,validation_ms:1,created_at:'2026-10-14T15:00:00Z',model_calls:999,source:'live_api',elapsed_ms:-1};const saved={version:1,lang:'de',...p,report};const loaded=restoreState(JSON.stringify(saved),dataset);assert.equal(loaded.report.model_calls,0);assert.equal(loaded.report.source,'saved_outputs');assert.equal(loaded.report.elapsed_ms,null);saved.report.validation_ms=-1;assert.equal(restoreState(JSON.stringify(saved),dataset).report,null);
+});
+test('Python and JavaScript use the same Unicode whitespace and UTF-16 length rules',()=>{
+ for(const point of [0xfeff,0x85,0x2007,0x200b]){
+  const p=base();p.case_ids=['T02'];p.outputs.a.T02=String.fromCodePoint(point)+'billing'+String.fromCodePoint(point);
+  const code='import json,sys; from python.evaluator import evaluate; p=json.loads(sys.stdin.read()); d=json.load(open("src/fixtures.json")); print(json.dumps(evaluate(p,d)))';
+  const py=spawnSync('python3',['-c',code],{input:JSON.stringify(p),encoding:'utf8'});assert.equal(py.status,0,py.stderr);assert.deepEqual(JSON.parse(py.stdout),evaluate(p,dataset));
+ }
+ for(const [n,valid] of [[10000,true],[10001,false]]){
+  const p=base();p.outputs.a.T02='😀'.repeat(n);if(valid)assert.doesNotThrow(()=>evaluate(p,dataset));else assert.throws(()=>evaluate(p,dataset));
+  const py=spawnSync('python3',['-c','import json,sys; from python.evaluator import output_valid; print(output_valid(json.loads(sys.stdin.read())))'],{input:JSON.stringify(p.outputs.a.T02),encoding:'utf8'});assert.equal(py.status,0,py.stderr);assert.equal(py.stdout.trim(),valid?'True':'False');
+ }
+});
+test('downloaded evaluator and dataset replay a saved report in a standalone folder',async()=>{
+ const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'quality-replay-'));
+ try{
+  for(const name of ['evaluator.py','fixtures.json'])fs.writeFileSync(path.join(tmp,name),await (await worker.fetch(new Request('https://example.test/download/'+name))).text());
+  const p=base();p.outputs.b.T08='P-208';const report={...evaluate(p,dataset),...p};fs.writeFileSync(path.join(tmp,'report.json'),JSON.stringify(report));
+  const py=spawnSync('python3',['evaluator.py','--input','report.json','--output','replay.json'],{cwd:tmp,encoding:'utf8'});assert.equal(py.status,0,py.stderr);const replay=JSON.parse(fs.readFileSync(path.join(tmp,'replay.json'),'utf8'));assert.equal(replay.results.b.score,1);assert.ok(Math.abs(replay.results.a.score-report.results.a.score)<1e-12);assert.equal(replay.model_calls,0);assert.equal(replay.runtime,'python');assert.deepEqual(replay.outputs,p.outputs);
+ }finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });

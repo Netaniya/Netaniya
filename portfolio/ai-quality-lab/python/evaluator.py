@@ -5,7 +5,11 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-ENGINE_VERSION = "1.0.0"
+ENGINE_VERSION = "1.0.1"
+JS_WHITESPACE = "\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff"
+
+def output_valid(output):
+    return isinstance(output, str) and len(output.encode("utf-16-le", errors="surrogatepass")) // 2 <= 20000
 
 def reject_constant(value):
     raise ValueError("invalid_json_constant")
@@ -19,7 +23,7 @@ def same(a, b):
     return type(a) is type(b) and a == b
 
 def grade(item, output):
-    if not isinstance(output, str) or len(output) > 20000:
+    if not output_valid(output):
         raise ValueError("invalid_output")
     try:
         parsed = json.loads(output, parse_constant=reject_constant)
@@ -36,7 +40,7 @@ def grade(item, output):
         elif op == "json_field":
             passed = valid and rule["field"] in parsed and same(parsed[rule["field"]], rule["value"])
         elif op == "exact_text":
-            passed = output.strip() == rule["value"]
+            passed = output.strip(JS_WHITESPACE) == rule["value"]
         elif op == "excludes":
             passed = rule["value"] not in output
         else:
@@ -52,7 +56,7 @@ def evaluate(payload, dataset):
     if not ids or any(not isinstance(i, str) for i in ids) or len(ids) != len(set(ids)) or any(i not in [c["id"] for c in dataset["cases"]] for i in ids):
         raise ValueError("invalid_cases")
     for candidate in ("a", "b"):
-        if not isinstance(payload["outputs"].get(candidate), dict) or any(not isinstance(payload["outputs"][candidate].get(i), str) or len(payload["outputs"][candidate][i]) > 20000 for i in ids):
+        if not isinstance(payload["outputs"].get(candidate), dict) or any(not output_valid(payload["outputs"][candidate].get(i)) for i in ids):
             raise ValueError("invalid_output")
     results = {}
     for candidate in ("a", "b"):

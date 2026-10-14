@@ -18,7 +18,7 @@ Ein interaktives Lernprojekt von **Natalie Ragulina (Netaniya)** zur reproduzier
 
 Dies ist ein **Lern- und Portfolioprojekt**, kein kommerziell eingesetztes System. Die Beispielantworten stammen nicht aus API-Aufrufen bestimmter Modelle. Es gibt keine verbundene KI, keine API-Kosten und keine behaupteten Modell-Latenzen. Die angezeigte Prüfdauer misst nur die Regelprüfung; der Laufzeit-Timer umfasst auch die Netzwerkanfragen. Die Regeln bewerten einen engen Katalog, nicht allgemeine Intelligenz, semantische Richtigkeit oder umfassende Sicherheit. Ein hoher Score ersetzt keine fachliche Prüfung.
 
-Die Web-Demo verwendet einen **JavaScript Worker**. **Python ist der separat ausführbare Referenz-Evaluator**, nicht die Hosting-Laufzeit der Website. Eingaben werden im Browser lokal gespeichert und zum Prüfen an den Worker gesendet. Die App speichert sie auf dem Server nicht und verwendet keine Analyse- oder Tracking-Skripte. Keine vertraulichen Daten eingeben.
+Die Web-Demo verwendet einen **JavaScript Worker**. **Python ist der separat ausführbare Referenz-Evaluator**, nicht die Hosting-Laufzeit der Website. Eingaben werden im Browser lokal gespeichert, sofern der Browser dies erlaubt, und zum Prüfen an den Worker gesendet. Ohne lokalen Speicher bleibt die Sitzung nutzbar; die Oberfläche weist auf fehlende Speicherung hin. Die App speichert sie auf dem Server nicht und verwendet keine Analyse- oder Tracking-Skripte. Keine vertraulichen Daten eingeben.
 
 ## Bewertung
 
@@ -54,3 +54,6 @@ Eine echte Modellanbindung kann später ergänzt werden: Schlüssel ausschließl
 ## Oberfläche
 
 Die überarbeitete Oberfläche verwendet eine kompakte Arbeitsansicht, lesbare Beschriftungen und Testkarten auf Mobilgeräten. Animationen beschränken sich auf laufende Prüfungen und Ergebnisbalken. Der lokal ausgelieferte Font Quality Sans ist eine umbenannte, reduzierte Fassung von Noto Sans für lateinische und kyrillische Zeichen. Quelle und SIL Open Font License sind in `assets/fonts/OFL.txt` dokumentiert. Die Fontdateien liegen für den eigenständigen Worker als Base64-Text vor.
+
+
+Der Python-Evaluator verwendet dieselben Regeln für äußere Unicode-Leerzeichen und die Antwortlänge in UTF-16-Einheiten wie die Web-Version. Exportierte Berichte sowie die herunterladbaren Python-Dateien werden durch einen eigenständigen Replay-Test geprüft.
