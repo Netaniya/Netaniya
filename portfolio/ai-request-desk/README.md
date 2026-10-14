@@ -2,7 +2,7 @@
 
 **Lern- und Portfolio-Projekt von Natalie Ragulina (Netaniya), gemeinsam mit KI-Unterstützung entwickelt.**
 
-[Live-Demo öffnen — ohne Anmeldung](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [English](README.en.md)
+[Live-Demo öffnen — ohne Anmeldung](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [English](README.en.md) · [Русский](README.ru.md)
 
 ## In einer Minute ausprobieren
 

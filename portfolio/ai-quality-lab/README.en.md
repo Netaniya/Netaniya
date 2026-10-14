@@ -2,7 +2,7 @@
 
 An interactive **learning and portfolio project by Natalie Ragulina (Netaniya)** for reproducible evaluation of saved answer variants.
 
-[Live demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md)
+[Live demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md) · [Русский](README.ru.md)
 
 Select eight German business test cases, edit two sample answer variants, run server-side checks, inspect each rule and export a reproducible JSON report. The UI supports German (first visit), English, Russian and Ukrainian. It includes responsive layouts, a Berlin clock, a real elapsed timer, request-completion progress and reduced-motion support.
 
@@ -31,3 +31,5 @@ The revised interface uses a compact workspace, readable labels and mobile test 
 
 
 Python uses the same Unicode trimming and UTF-16 response length limits as the web evaluator. Tests cover the actual report download payload, standalone replay using downloaded files, and continued comparison/export when local storage is blocked.
+
+23 automated checks passed. Natalie reviewed the initial appearance on a phone and requested clearer typography and a compact workspace without decorative dots; the changes were implemented with AI assistance.

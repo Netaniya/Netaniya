@@ -2,7 +2,7 @@
 
 Ein interaktives Lernprojekt von **Natalie Ragulina (Netaniya)** zur reproduzierbaren Prüfung gespeicherter Antwortvarianten.
 
-**[Live-Demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)** · [English](README.en.md)
+**[Live-Demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)** · [English](README.en.md) · [Русский](README.ru.md)
 
 ## Was funktioniert?
 
@@ -57,3 +57,5 @@ Die überarbeitete Oberfläche verwendet eine kompakte Arbeitsansicht, lesbare B
 
 
 Der Python-Evaluator verwendet dieselben Regeln für äußere Unicode-Leerzeichen und die Antwortlänge in UTF-16-Einheiten wie die Web-Version. Exportierte Berichte sowie die herunterladbaren Python-Dateien werden durch einen eigenständigen Replay-Test geprüft.
+
+23 automatische Prüfungen bestanden. Natalie prüfte die erste Gestaltung auf dem Smartphone und verlangte eine klarere Typografie sowie eine kompakte Arbeitsansicht ohne dekorative Punkte; die Änderungen wurden mit KI-Unterstützung umgesetzt.

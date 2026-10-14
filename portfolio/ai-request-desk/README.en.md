@@ -2,7 +2,7 @@
 
 **Independent learning and portfolio project by Natalie Ragulina (Netaniya), jointly developed with AI assistance.**
 
-[Open live demo — no sign-in](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md)
+[Open live demo — no sign-in](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md) · [Русский](README.ru.md)
 
 ## Try it in a minute
 
