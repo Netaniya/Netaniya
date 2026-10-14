@@ -1,0 +1,24 @@
+// DOM interaction checks without a browser renderer. Visual browser QA is separate.
+const test=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const vm=require('node:vm');const E=require('./dist/engine.js');
+function setup(){
+ const ids=new Map();
+ class Element{
+  constructor(tag){this.tagName=tag;this.children=[];this.value='';this.hidden=false;this.disabled=false;this.checked=false;this.attributes={};this._text='';this._id='';}
+  set id(id){this._id=id;ids.set(id,this)}get id(){return this._id}
+  set textContent(x){this._text=x;this.children=[]}get textContent(){return this._text+this.children.map(x=>x.textContent).join(' ')}
+  append(...els){this.children.push(...els)}replaceChildren(...els){this.children=els}
+  setAttribute(k,v){this.attributes[k]=v}focus(){}scrollIntoView(){}click(){if(!this.disabled&&this.onclick)this.onclick()}
+ }
+ const html=fs.readFileSync('dist/index.html','utf8');
+ for(const m of html.matchAll(/<(\w+)[^>]*\bid="([^"]+)"[^>]*>/g)){const e=new Element(m[1]);e.id=m[2]}
+ ids.get('filter').value='all';ids.get('create-lang').value='de';
+ const data=new Map(),storage={getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)};
+ const context={DeskEngine:E,document:{getElementById:id=>ids.get(id)||null,createElement:tag=>new Element(tag),documentElement:{}},localStorage:storage,console,Intl,Date,JSON,Blob,URL,confirm:()=>true,innerWidth:390,setTimeout:()=>1,clearTimeout:()=>{},window:{addEventListener(){}},crypto:globalThis.crypto};
+ vm.createContext(context);vm.runInContext(fs.readFileSync('dist/ui.js','utf8'),context);
+ return {ids,data,context,run:s=>vm.runInContext(s,context)};
+}
+test('four-language UI has identical key coverage and no undefined labels',()=>{const x=setup();const keys=x.run('Object.keys(dictionaries.en)');for(const lang of E.LANGS){assert.deepEqual(x.run(`Object.keys(dictionaries.${lang})`),keys);x.ids.get('ui-lang').value=lang;x.ids.get('ui-lang').onchange();assert.equal(x.context.document.documentElement.lang,lang);assert.ok(x.ids.get('learning-title').textContent.length>10);assert.ok(!x.ids.get('detail').textContent.includes('undefined'))}});
+test('UI approval requires checked evidence and persists edited answer',()=>{const x=setup();x.run("mutate(selected,r=>E.process(r))");let b=x.ids.get('approve-button');assert.equal(b.disabled,true);const draft=x.ids.get('draft');draft.value='Reviewed fixture answer';draft.oninput();assert.equal(b.disabled,true);const check=x.ids.get('review-check');check.checked=true;check.onchange();assert.equal(b.disabled,false);b.click();const rows=E.restore(x.data.get('ai-request-desk-v2'));assert.equal(rows[0].status,'approved');assert.equal(rows[0].draft,'Reviewed fixture answer');assert.equal(x.ids.get('draft').readOnly,true)});
+test('failure UI retains request, removes approval and supports retry',()=>{const x=setup();x.run('mutate(selected,r=>E.process(r,{fail:true}))');assert.ok(x.ids.get('detail').textContent.includes(x.run("t('errorNote')")));assert.equal(E.restore(x.data.get('ai-request-desk-v2'))[0].status,'error');x.run('mutate(selected,r=>E.process(r))');assert.equal(x.ids.get('approve-button').disabled,true)});
+test('creating a request and switching UI language leaves response language independent',()=>{const x=setup();x.ids.get('subject').value='New example';x.ids.get('body').value='DEMO-104 179 EUR';x.ids.get('create-lang').value='en';x.ids.get('request-form').onsubmit({preventDefault(){},target:{reset(){}}});assert.equal(E.restore(x.data.get('ai-request-desk-v2'))[0].replyLang,'en');x.ids.get('ui-lang').value='uk';x.ids.get('ui-lang').onchange();assert.equal(E.restore(x.data.get('ai-request-desk-v2'))[0].replyLang,'en')});
+test('a stale page cannot overwrite a newer saved request',()=>{const x=setup();let newer=E.restore(x.data.get('ai-request-desk-v2'));newer.push(E.create('Other tab','Saved elsewhere'));const saved=E.serialize(newer);x.data.set('ai-request-desk-v2',saved);x.run('mutate(selected,r=>E.process(r))');assert.equal(x.data.get('ai-request-desk-v2'),saved);assert.ok(x.ids.get('toast').textContent.includes(x.run("t('storageError')")))});

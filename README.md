@@ -4,6 +4,8 @@
 
 Munich, Germany
 
+My practical experience comes from self-directed learning and portfolio projects.
+
 I build practical software with AI-assisted development workflows, combining human engineering judgment with coding agents, testing, CI, debugging, and iterative validation.
 
 My current work focuses on full-stack applications and AI/model workflows. I use AI agents as implementation tools while retaining responsibility for requirements, architecture, review, verification, and the final result.
@@ -32,7 +34,17 @@ Git · GitHub · Docker · CI · automated testing · debugging · API integrati
 Codex · AI coding agents · n8n · Flowise  
 Working knowledge of MCP, RAG, ReAct, LangGraph/LangChain, and multi-agent patterns
 
-## Selected public work
+## Öffentliches Portfolio / Selected public work
+
+### [AI Request Desk — Live-Demo](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
+
+**Deutsch:** Eigenständiges Lernprojekt zur Bearbeitung von Anfragen mit Rechnungsabgleich, bearbeitbaren Antwortentwürfen, menschlicher Freigabe und Fehlerbehandlung. Gemeinsam mit KI-Unterstützung entwickelt. Ich habe die Anforderungen und acht Ablaufregeln geprüft und bestätigt, den Kernablauf auf dem Smartphone getestet und konkrete UI-Korrekturen veranlasst.
+
+**English:** An independent learning project for request handling, invoice comparison, editable response drafts, human approval and failure recovery. Jointly developed with AI assistance. I reviewed and approved the requirements and eight workflow rules, tested the core flow on a phone, and requested specific UI corrections.
+
+**Published implementation:** JavaScript / HTML / CSS, browser-local persistence, four languages and 17 passing local automated checks. Analysis currently uses clearly labeled demo rules; live LLM integration is not part of this release. The demo opens without sign-in and defaults to German.
+
+[Projektbeschreibung & Quellcode](https://github.com/Netaniya/Netaniya/tree/main/portfolio/ai-request-desk) · [English documentation](https://github.com/Netaniya/Netaniya/blob/main/portfolio/ai-request-desk/README.en.md)
 
 ### [Neta25X](https://github.com/Netaniya/Neta25X)
 An early public AI-interface prototype exploring responsive UI, visual identity, and lightweight client-side interaction.

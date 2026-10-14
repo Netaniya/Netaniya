@@ -1,0 +1,19 @@
+name: AI Request Desk checks
+on:
+  push:
+    paths: ['portfolio/ai-request-desk/**', '.github/workflows/ai-request-desk.yml']
+  pull_request:
+    paths: ['portfolio/ai-request-desk/**', '.github/workflows/ai-request-desk.yml']
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portfolio/ai-request-desk
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test test-engine.cjs test-ui.cjs
+      - run: node --check dist/ui.js
