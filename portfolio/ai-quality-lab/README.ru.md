@@ -1,10 +1,12 @@
 # AI Quality Lab
 
+**Текущее демо на GitHub Pages:** проверка по правилам выполняется в браузере; ответы не отправляются в API. Экспорт отчётов и тестовые данные на выбранном языке работают без сервера. Техническое описание ниже также относится к сохранённой Worker-версии. Подробнее: [публикация и различия](../../PAGES.md).
+
 Учебный проект для портфолио **Natalie Ragulina (Netaniya)**: проверка качества сохранённых ответов по открытым правилам.
 
 ![ai-quality-lab · Deutsch](../../assets/screenshots/quality-lab.png)
 
-[Открыть демо без входа](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) | [Deutsch](README.md) | [English](README.en.md)
+[Открыть демо без входа](https://netaniya.github.io/Netaniya/ai-quality-lab) | [Deutsch](README.md) | [English](README.en.md)
 
 ## Для чего нужен проект
 

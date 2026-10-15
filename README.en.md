@@ -12,30 +12,30 @@ I develop web applications using Python, JavaScript/TypeScript, APIs and automat
 ### AI Request Desk
 Process requests, compare invoice data and review editable drafts before approval.
 
-[![AI Request Desk – German interface](assets/screenshots/request-desk.png)](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
+[![AI Request Desk – German interface](assets/screenshots/request-desk.png)](https://netaniya.github.io/Netaniya/ai-request-desk)
 
 - Invoice checks, editable drafts, state history, failure recovery and browser-local persistence.
 - **JavaScript · HTML · CSS** · four UI languages · **25 automated checks**.
 - Learning project with fictional data and transparent rules; the public demo has no live LLM.
 
-**[Live demo without sign-in](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Code & documentation](portfolio/ai-request-desk/README.en.md)**
+**[Live demo without sign-in](https://netaniya.github.io/Netaniya/ai-request-desk) · [Code & documentation](portfolio/ai-request-desk/README.en.md)**
 
 ### AI Quality Lab
 Compare saved answers against transparent criteria and export reproducible reports.
 
-[![AI Quality Lab – German interface](assets/screenshots/quality-lab.png)](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)
+[![AI Quality Lab – German interface](assets/screenshots/quality-lab.png)](https://netaniya.github.io/Netaniya/ai-quality-lab)
 
 - Eight cases, editable variants, weighted scores and inspectable checks.
-- **JavaScript Worker · HTML · CSS · Python evaluator** · four UI languages · **32 automated checks**.
+- **Browser JavaScript · HTML · CSS · Python evaluator** · four UI languages · **32 automated checks**.
 - Also available: a **[React/TypeScript client with a FastAPI backend](portfolio/ai-quality-lab/fullstack/README.en.md)**, runnable locally, including an optional server-side Responses API adapter. **17 backend and 8 client tests** passed; a real model call has not yet been verified.
-- The public Worker demo evaluates saved samples and needs no API key.
+- The public GitHub Pages demo evaluates saved samples locally in the browser and needs no API key. The Worker variant is preserved in the source.
 
-**[Live demo without sign-in](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Code & documentation](portfolio/ai-quality-lab/README.en.md)**
+**[Live demo without sign-in](https://netaniya.github.io/Netaniya/ai-quality-lab) · [Code & documentation](portfolio/ai-quality-lab/README.en.md)**
 
 ### Motion Atelier
 A multi-page automotive learning application with real Tesla Model S, Model Y and Cybertruck photographs and illustrative configuration data.
 
-[![Motion Atelier – Tesla Cybertruck](portfolio/motion-atelier/dist/assets/real-cybertruck.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
+[![Motion Atelier – Tesla Cybertruck](portfolio/motion-atelier/dist/assets/real-cybertruck.webp)](https://netaniya.github.io/Netaniya/motion-atelier)
 
 Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/motion-atelier/dist/assets/photo-credits.json).
 
@@ -46,7 +46,7 @@ Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/mot
 - Interactive Leaflet/OpenStreetMap mapping with user-requested OSRM road routes and Open-Meteo weather; estimates and fictional specifications are labelled.
 - **JavaScript ES modules · HTML · CSS**. Final published desktop and mobile visual QA is still outstanding.
 
-**[Live demo without sign-in](https://motion-atelier-neta26.wellolm4.chatgpt.site) · [Code & documentation](portfolio/motion-atelier/README.en.md)**
+**[Live demo without sign-in](https://netaniya.github.io/Netaniya/motion-atelier) · [Code & documentation](portfolio/motion-atelier/README.en.md)**
 
 ### Neta25X · early interface prototype
 [A responsive interface with custom visual identity](https://github.com/Netaniya/Neta25X), built with HTML, TailwindCSS and JavaScript. Newer full-stack and AI work is under private development.
@@ -59,7 +59,7 @@ Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/mot
 - **AI & automation:** Codex, coding agents, n8n, Flowise; working knowledge of MCP, RAG and agent workflows.
 - **Quality:** model-output evaluation, integration debugging and GPU inference troubleshooting.
 
-This toolkit spans my projects; each project documents its actual implementation. Both current portfolio demos were developed collaboratively with AI assistance. Specific contributions are described in their documentation.
+This toolkit spans my projects; each project documents its actual implementation. The three current portfolio demos were developed collaboratively with AI assistance. Specific contributions are described in their documentation.
 
 ## Engineering approach
 

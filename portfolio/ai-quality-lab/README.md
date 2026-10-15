@@ -1,10 +1,12 @@
 # AI Quality Lab
 
+**Aktuelle Live-Demo auf GitHub Pages:** Die Regelprüfung läuft lokal im Browser; Antworten werden nicht an eine API gesendet. Berichtsexport und sprachabhängige Testdaten funktionieren ohne Backend. Die folgende technische Dokumentation beschreibt zusätzlich die unveränderte Worker-Variante. Siehe [Veröffentlichung und Unterschiede](../../PAGES.md).
+
 Ein interaktives Lernprojekt von **Natalie Ragulina (Netaniya)** zur reproduzierbaren Prüfung gespeicherter Antwortvarianten.
 
 ![ai-quality-lab · Deutsch](../../assets/screenshots/quality-lab.png)
 
-**[Live-Demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)** · [English](README.en.md) · [Русский](README.ru.md)
+**[Live-Demo](https://netaniya.github.io/Netaniya/ai-quality-lab)** · [English](README.en.md) · [Русский](README.ru.md)
 
 ## Was funktioniert?
 

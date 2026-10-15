@@ -12,30 +12,30 @@ Ich entwickle Webanwendungen und arbeite mit Python, JavaScript/TypeScript, APIs
 ### AI Request Desk
 Anfragen bearbeiten, Rechnungsdaten vergleichen und Antwortentwürfe vor der Freigabe prüfen.
 
-[![AI Request Desk – deutsche Oberfläche](assets/screenshots/request-desk.png)](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
+[![AI Request Desk – deutsche Oberfläche](assets/screenshots/request-desk.png)](https://netaniya.github.io/Netaniya/ai-request-desk)
 
 - Rechnungsabgleich, bearbeitbare Entwürfe, Statusverlauf, Fehlerbehandlung und browserlokale Speicherung.
 - **JavaScript · HTML · CSS** · vier UI-Sprachen · **25 automatische Prüfungen**.
 - Lernprojekt mit fiktiven Daten und transparenten Regeln; die veröffentlichte Demo verwendet kein Live-LLM.
 
-**[Live-Demo ohne Anmeldung](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Code & Dokumentation](portfolio/ai-request-desk/README.md)**
+**[Live-Demo ohne Anmeldung](https://netaniya.github.io/Netaniya/ai-request-desk) · [Code & Dokumentation](portfolio/ai-request-desk/README.md)**
 
 ### AI Quality Lab
 Gespeicherte Antworten anhand offener Kriterien vergleichen und Ergebnisse reproduzierbar exportieren.
 
-[![AI Quality Lab – deutsche Oberfläche](assets/screenshots/quality-lab.png)](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)
+[![AI Quality Lab – deutsche Oberfläche](assets/screenshots/quality-lab.png)](https://netaniya.github.io/Netaniya/ai-quality-lab)
 
 - Acht Testfälle, bearbeitbare Varianten, gewichtete Scores und nachvollziehbare Einzelprüfungen.
-- **JavaScript Worker · HTML · CSS · Python-Evaluator** · vier UI-Sprachen · **32 automatische Prüfungen**.
+- **JavaScript im Browser · HTML · CSS · Python-Evaluator** · vier UI-Sprachen · **32 automatische Prüfungen**.
 - Zusätzlich: **[React-/TypeScript-Client mit FastAPI-Backend](portfolio/ai-quality-lab/fullstack/README.md)**, lokal ausführbar, mit optionalem serverseitigem Responses-API-Adapter. **17 Backend- und 8 Client-Tests** bestanden; ein echter Modellaufruf ist noch nicht verifiziert.
-- Die öffentliche Worker-Demo prüft gespeicherte Beispiele und benötigt keinen API-Schlüssel.
+- Die öffentliche GitHub-Pages-Demo prüft gespeicherte Beispiele lokal im Browser und benötigt keinen API-Schlüssel. Die Worker-Variante bleibt im Quellcode erhalten.
 
-**[Live-Demo ohne Anmeldung](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Code & Dokumentation](portfolio/ai-quality-lab/README.md)**
+**[Live-Demo ohne Anmeldung](https://netaniya.github.io/Netaniya/ai-quality-lab) · [Code & Dokumentation](portfolio/ai-quality-lab/README.md)**
 
 ### Motion Atelier
 Mehrseitige Automotive-Lernanwendung mit echten Fotografien von Tesla Model S, Model Y und Cybertruck sowie illustrativen Konfigurationsdaten.
 
-[![Motion Atelier – Tesla Cybertruck](portfolio/motion-atelier/dist/assets/real-cybertruck.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
+[![Motion Atelier – Tesla Cybertruck](portfolio/motion-atelier/dist/assets/real-cybertruck.webp)](https://netaniya.github.io/Netaniya/motion-atelier)
 
 Foto: Mr.choppers · CC BY-SA 3.0 · [Original und Bildnachweise](portfolio/motion-atelier/dist/assets/photo-credits.json).
 
@@ -46,7 +46,7 @@ Foto: Mr.choppers · CC BY-SA 3.0 · [Original und Bildnachweise](portfolio/moti
 - Interaktive Leaflet-/OpenStreetMap-Karte mit OSRM-Straßenrouten und Open-Meteo-Wetter auf Anfrage; Schätzungen und fiktive Fahrzeugdaten sind gekennzeichnet.
 - **JavaScript-ES-Module · HTML · CSS**. Noch keine abschließende mobile oder Desktop-Sichtprüfung der veröffentlichten Version.
 
-**[Live-Demo ohne Anmeldung](https://motion-atelier-neta26.wellolm4.chatgpt.site) · [Code & Dokumentation](portfolio/motion-atelier/README.md)**
+**[Live-Demo ohne Anmeldung](https://netaniya.github.io/Netaniya/motion-atelier) · [Code & Dokumentation](portfolio/motion-atelier/README.md)**
 
 ### Neta25X · früher Interface-Prototyp
 [Responsive Benutzeroberfläche mit eigener visueller Identität](https://github.com/Netaniya/Neta25X), HTML, TailwindCSS und JavaScript. Meine neueren Full-stack- und KI-Projekte befinden sich in privater Entwicklung.

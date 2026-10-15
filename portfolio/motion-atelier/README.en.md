@@ -2,7 +2,7 @@
 
 An original multi-page automotive learning project by **Natalie Ragulina (Netaniya)**, developed with AI assistance.
 
-[Live demo](https://motion-atelier-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md)
+[Live demo](https://netaniya.github.io/Netaniya/motion-atelier) · [Deutsch](README.md)
 
 Ten separate HTML pages: home, collection, rule-based vehicle finder, configurator, journey planner, local garage, project information and three model pages. German is the first-visit language, with full English, Russian and Ukrainian interfaces. A short, skippable film of a real Tesla Model S driving opens the site and respects reduced-motion preferences.
 
@@ -50,7 +50,7 @@ Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framewor
 - [OSRM](https://project-osrm.org/) / [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL. The built-in graphic is a schematic route trace; a link opens a full external map.
 - [Open-Meteo](https://open-meteo.com/), CC BY 4.0, free non-commercial API. Both services can fail and have no guaranteed uptime.
 - Services are called only on user action. Selected city coordinates are sent; no device-location permission, accounts, tracking or API keys.
-- Vehicle photographs: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), via Wikimedia Commons, CC BY-SA 4.0 or 3.0. Road photograph: Mirko Fabian, Unsplash License. Authors, original pages and licenses are shown on the [about page](https://motion-atelier-neta26.wellolm4.chatgpt.site/about/) and in [photo-credits.json](dist/assets/photo-credits.json). Resizing and format conversion only; no AI image editing.
+- Vehicle photographs: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), via Wikimedia Commons, CC BY-SA 4.0 or 3.0. Road photograph: Mirko Fabian, Unsplash License. Authors, original pages and licenses are shown on the [about page](https://netaniya.github.io/Netaniya/motion-atelier/about/) and in [photo-credits.json](dist/assets/photo-credits.json). Resizing and format conversion only; no AI image editing.
 - Film: [Tesla Loveday: “Energy”](https://commons.wikimedia.org/wiki/File:Tesla_Loveday-_%22Energy%22.webm), Atellani LLC, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Excerpt 40.6–43.3 s, slowed to 50% with frame interpolation, audio removed, resized and re-encoded. No manufacturer commission or sponsorship.
 - Music: [“Dream Culture”](https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046), Kevin MacLeod (incompetech.com), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Excerpt 12.0–17.3 s, reduced level with fade-in/out; [full credits](dist/assets/intro-music-credits.json). Requested when the intro starts; the browser controls audible autoplay permission. A mute/enable control remains available.
 - [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope) by Mikhail Sharanda and Mirko Velimirovic, [SIL Open Font License 1.1](dist/assets/fonts/OFL.txt).

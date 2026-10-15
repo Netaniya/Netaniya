@@ -1,10 +1,12 @@
 # AI Quality Lab
 
+**Current live demo on GitHub Pages:** Rule checks run locally in the browser; answers are not sent to an API. Report exports and language-specific datasets work without a backend. The technical documentation below also describes the preserved Worker variant. See [deployment and differences](../../PAGES.md).
+
 An interactive **learning and portfolio project by Natalie Ragulina (Netaniya)** for reproducible evaluation of saved answer variants.
 
 ![ai-quality-lab · Deutsch](../../assets/screenshots/quality-lab.png)
 
-[Live demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md) · [Русский](README.ru.md)
+[Live demo](https://netaniya.github.io/Netaniya/ai-quality-lab) · [Deutsch](README.md) · [Русский](README.ru.md)
 
 Select eight business test cases in the chosen language, edit two sample answer variants, run server-side checks, inspect each rule and export a reproducible JSON report. The UI supports German (first visit), English, Russian and Ukrainian. It includes responsive layouts, a Berlin clock, a real elapsed timer, request-completion progress and reduced-motion support.
 

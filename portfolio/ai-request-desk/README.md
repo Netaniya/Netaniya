@@ -4,7 +4,7 @@
 
 ![ai-request-desk · Deutsch](../../assets/screenshots/request-desk.png)
 
-[Live-Demo öffnen — ohne Anmeldung](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [English](README.en.md) · [Русский](README.ru.md)
+[Live-Demo öffnen — ohne Anmeldung](https://netaniya.github.io/Netaniya/ai-request-desk) · [English](README.en.md) · [Русский](README.ru.md)
 
 ## In einer Minute ausprobieren
 

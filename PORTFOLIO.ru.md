@@ -12,27 +12,27 @@
 ### AI Request Desk
 Приложение для обработки обращений: сравнение данных счёта, редактирование ответа, проверка и одобрение человеком.
 
-[![AI Request Desk — немецкий интерфейс](assets/screenshots/request-desk.png)](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
+[![AI Request Desk — немецкий интерфейс](assets/screenshots/request-desk.png)](https://netaniya.github.io/Netaniya/ai-request-desk)
 
 JavaScript, HTML, CSS; четыре языка интерфейса; 25 автоматических проверок. Данные учебные, анализ выполняется по открытым правилам.
 
-**[Открыть без входа](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Описание и код](portfolio/ai-request-desk/README.ru.md)**
+**[Открыть без входа](https://netaniya.github.io/Netaniya/ai-request-desk) · [Описание и код](portfolio/ai-request-desk/README.ru.md)**
 
 ### AI Quality Lab
 Проверка ответов по открытым критериям: восемь случаев, сравнение вариантов, оценки и воспроизводимый отчёт.
 
-[![AI Quality Lab — немецкий интерфейс](assets/screenshots/quality-lab.png)](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)
+[![AI Quality Lab — немецкий интерфейс](assets/screenshots/quality-lab.png)](https://netaniya.github.io/Netaniya/ai-quality-lab)
 
-Публичная версия: JavaScript Worker, HTML, CSS и отдельный Python-модуль; четыре языка; 32 автоматических проверок.
+Публичная версия на GitHub Pages: JavaScript в браузере, HTML, CSS и отдельный Python-модуль. Проверка сохранённых ответов выполняется локально. Серверная Worker-версия и её 32 проверки сохранены в коде; перенос дополнительно проверен тестами публикации.
 
 Добавлен **[открытый пример React/TypeScript + FastAPI](portfolio/ai-quality-lab/fullstack/README.ru.md)**. Он запускается локально, проверяет ответы через Python API и содержит серверный адаптер для настоящей модели. Прошли 17 проверок API и 8 проверок клиента. Реальный вызов модели ещё не проверен: нужен настроенный API-доступ. Публичная демонстрация продолжает работать с сохранёнными примерами.
 
-**[Открыть без входа](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Описание и код](portfolio/ai-quality-lab/README.ru.md)**
+**[Открыть без входа](https://netaniya.github.io/Netaniya/ai-quality-lab) · [Описание и код](portfolio/ai-quality-lab/README.ru.md)**
 
 ### Motion Atelier
 Многостраничное учебное автомобильное приложение с настоящими фотографиями Tesla Model S, Model Y и Cybertruck и учебными данными для конфигураций.
 
-[![Motion Atelier — Tesla Cybertruck](portfolio/motion-atelier/dist/assets/real-cybertruck.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
+[![Motion Atelier — Tesla Cybertruck](portfolio/motion-atelier/dist/assets/real-cybertruck.webp)](https://netaniya.github.io/Netaniya/motion-atelier)
 
 Фото: Mr.choppers · CC BY-SA 3.0 · [Оригинал и авторы фотографий](portfolio/motion-atelier/dist/assets/photo-credits.json).
 
@@ -43,7 +43,7 @@ JavaScript, HTML, CSS; четыре языка интерфейса; 25 авто
 - Интерактивная карта Leaflet/OpenStreetMap, маршруты OSRM и погода Open-Meteo запрашиваются по действию пользователя. Вымышленные характеристики и приблизительные оценки явно обозначены.
 - **JavaScript ES modules · HTML · CSS**. Итоговая визуальная проверка опубликованной версии на компьютере и телефоне ещё не выполнена.
 
-**[Открыть без входа](https://motion-atelier-neta26.wellolm4.chatgpt.site) · [Код и описание](portfolio/motion-atelier/README.md)**
+**[Открыть без входа](https://netaniya.github.io/Netaniya/motion-atelier) · [Код и описание](portfolio/motion-atelier/README.md)**
 
 ### Neta25X
 [Ранний прототип интерфейса](https://github.com/Netaniya/Neta25X): адаптивная страница, персонажи и визуальная идентичность на HTML, TailwindCSS и JavaScript. Более новые полноценные приложения развиваются в закрытых репозиториях.

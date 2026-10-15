@@ -2,7 +2,7 @@
 
 **Mehrseitiges Automotive-Lernprojekt von Natalie Ragulina (Netaniya).**
 
-[Live-Demo](https://motion-atelier-neta26.wellolm4.chatgpt.site) · [English](README.en.md)
+[Live-Demo](https://netaniya.github.io/Netaniya/motion-atelier) · [English](README.en.md)
 
 Eine interaktive Fahrzeugkollektion mit echten Fotografien von Tesla Model S, Model Y und Cybertruck, selbst gehosteter Manrope-Schrift und sattem Blau. Ein kurzer, überspringbarer Realfilm eines fahrenden Tesla Model S eröffnet die Anwendung. **Zehn echte HTML-Seiten**, deutsche Erstansicht sowie vollständige englische, russische und ukrainische Oberflächen.
 
@@ -66,7 +66,7 @@ Statisch `dist/` bereitstellen. Alle Unterseiten besitzen eigene HTML-Dokumente.
 - Routen: [OSRM](https://project-osrm.org/), [API-Dokumentation](https://github.com/Project-OSRM/osrm-backend/blob/master/docs/http.md), [Nutzungsregeln](https://github.com/Project-OSRM/osrm-backend/wiki/Api-usage-policy).
 - Kartendaten: [© OpenStreetMap contributors, ODbL](https://www.openstreetmap.org/copyright). Die lokale Grafik zeigt eine schematische Koordinatenspur; der Link öffnet eine echte Karte beim Anbieter.
 - Wetter: [Open-Meteo](https://open-meteo.com/), CC BY 4.0; [API](https://open-meteo.com/en/docs), [kostenlose nichtkommerzielle Nutzung](https://open-meteo.com/en/pricing).
-- Fahrzeugfotos: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), über Wikimedia Commons; CC BY-SA 4.0 bzw. 3.0. Straßenfoto: Mirko Fabian, Unsplash-Lizenz. Autoren, Originalseiten und Lizenzen stehen sichtbar auf der [Projektseite](https://motion-atelier-neta26.wellolm4.chatgpt.site/about/) sowie in [photo-credits.json](dist/assets/photo-credits.json). Nur Größen- und Formatkonvertierung; keine KI-Bildbearbeitung.
+- Fahrzeugfotos: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), über Wikimedia Commons; CC BY-SA 4.0 bzw. 3.0. Straßenfoto: Mirko Fabian, Unsplash-Lizenz. Autoren, Originalseiten und Lizenzen stehen sichtbar auf der [Projektseite](https://netaniya.github.io/Netaniya/motion-atelier/about/) sowie in [photo-credits.json](dist/assets/photo-credits.json). Nur Größen- und Formatkonvertierung; keine KI-Bildbearbeitung.
 - Film: [Tesla Loveday: „Energy“](https://commons.wikimedia.org/wiki/File:Tesla_Loveday-_%22Energy%22.webm), Atellani LLC, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Ausschnitt 40,6–43,3 s, auf 50 % verlangsamt mit Bildinterpolation, ohne Ton, verkleinert und neu kodiert. Kein Herstellerauftrag oder Sponsoring.
 - Musik: [„Dream Culture“](https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046), Kevin MacLeod (incompetech.com), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Ausschnitt 12,0–17,3 s, reduzierte Lautstärke sowie Ein- und Ausblendung; [vollständige Angaben](dist/assets/intro-music-credits.json). Wird zum Filmstart angefragt; der Browser entscheidet über Ton-Autoplay. Eine Ausschalt- bzw. Einschalt-Taste bleibt sichtbar.
 - [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope), Mikhail Sharanda und Mirko Velimirovic, [SIL Open Font License 1.1](dist/assets/fonts/OFL.txt).

@@ -4,7 +4,7 @@
 
 ![ai-request-desk · Deutsch](../../assets/screenshots/request-desk.png)
 
-[Open live demo — no sign-in](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md) · [Русский](README.ru.md)
+[Open live demo — no sign-in](https://netaniya.github.io/Netaniya/ai-request-desk) · [Deutsch](README.md) · [Русский](README.ru.md)
 
 ## Try it in a minute
 

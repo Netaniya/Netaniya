@@ -4,7 +4,7 @@
 
 ![ai-request-desk · Deutsch](../../assets/screenshots/request-desk.png)
 
-[Открыть демо без входа](https://ai-request-desk-neta26.wellolm4.chatgpt.site) | [Deutsch](README.md) | [English](README.en.md)
+[Открыть демо без входа](https://netaniya.github.io/Netaniya/ai-request-desk) | [Deutsch](README.md) | [English](README.en.md)
 
 ## Для чего нужен проект
 
