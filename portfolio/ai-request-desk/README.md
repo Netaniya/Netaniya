@@ -2,6 +2,8 @@
 
 **Lern- und Portfolio-Projekt von Natalie Ragulina (Netaniya), gemeinsam mit KI-Unterstützung entwickelt.**
 
+![ai-request-desk · Deutsch](../../assets/screenshots/request-desk.png)
+
 [Live-Demo öffnen — ohne Anmeldung](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [English](README.en.md) · [Русский](README.ru.md)
 
 ## In einer Minute ausprobieren
@@ -34,10 +36,6 @@ Dies ist ein eigenständiges Lernprojekt, keine kommerzielle Kundenreferenz. Rea
 ## Mein Beitrag und KI-Unterstützung
 
 Ich habe das Projektziel festgelegt, acht Ablaufregeln geprüft und bestätigt, die vier Sprachen und die Lernprojekt-Kennzeichnung verlangt und die Oberfläche auf dem Smartphone geprüft. Ich habe den Kernablauf einschließlich Entwurfsänderung, Freigabe und Speicherung getestet und konkrete Layout-Korrekturen veranlasst. Der KI-Assistent hat Code, Tests und Dokumentation im Rahmen unserer gemeinsamen Entwicklung umgesetzt.
-
-## Meine Fähigkeiten und bisherige Erfahrung
-
-Ich habe bereits praktische Erfahrung darin, Code zu lesen, zu verstehen, zu ändern und zu prüfen, Fehler zu analysieren und Webanwendungen sowie APIs zu testen. In eigenen Projekten arbeite ich mit Python, JavaScript/TypeScript, HTML/CSS, API-Integrationen, Git/GitHub, Docker sowie automatisierten Tests und CI. Diese Erfahrung besteht bereits unabhängig von den beiden Portfolio-Demos.
 
 ## Lokal starten und prüfen
 

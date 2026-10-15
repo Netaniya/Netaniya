@@ -1,0 +1,42 @@
+name: Quality Lab full-stack checks
+on:
+  push:
+    paths:
+      - 'portfolio/ai-quality-lab/fullstack/**'
+      - 'portfolio/ai-quality-lab/python/**'
+      - 'portfolio/ai-quality-lab/src/fixtures.json'
+      - '.github/workflows/quality-lab-fullstack.yml'
+  pull_request:
+    paths:
+      - 'portfolio/ai-quality-lab/fullstack/**'
+      - 'portfolio/ai-quality-lab/python/**'
+      - 'portfolio/ai-quality-lab/src/fixtures.json'
+      - '.github/workflows/quality-lab-fullstack.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portfolio/ai-quality-lab/fullstack
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: portfolio/ai-quality-lab/fullstack/frontend/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: portfolio/ai-quality-lab/fullstack/requirements*.txt
+      - run: python -m pip install -r requirements-dev.txt
+      - run: npm ci --no-fund --no-audit
+        working-directory: portfolio/ai-quality-lab/fullstack/frontend
+      - run: npm run build
+        working-directory: portfolio/ai-quality-lab/fullstack/frontend
+      - run: npm test
+        working-directory: portfolio/ai-quality-lab/fullstack/frontend
+      - run: python -m pytest tests -q

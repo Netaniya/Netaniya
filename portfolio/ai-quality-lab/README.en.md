@@ -2,6 +2,8 @@
 
 An interactive **learning and portfolio project by Natalie Ragulina (Netaniya)** for reproducible evaluation of saved answer variants.
 
+![ai-quality-lab · Deutsch](../../assets/screenshots/quality-lab.png)
+
 [Live demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md) · [Русский](README.ru.md)
 
 Select eight German business test cases, edit two sample answer variants, run server-side checks, inspect each rule and export a reproducible JSON report. The UI supports German (first visit), English, Russian and Ukrainian. It includes responsive layouts, a Berlin clock, a real elapsed timer, request-completion progress and reduced-motion support.
@@ -28,11 +30,6 @@ Inputs are stored on the device when browser storage is available and sent to th
 
 I defined the project direction, languages, visual requirements, animation and time features. I reviewed the initial UI on a phone and requested specific changes to typography and layout. The AI assistant implemented the code, automated tests, technical fixes and publication as part of our collaborative development.
 
-## My skills and prior experience
-
-I have prior hands-on experience reading, understanding, modifying and reviewing code, debugging issues, and testing web applications and APIs. My own projects include Python, JavaScript/TypeScript, HTML/CSS, API integrations, Git/GitHub, Docker and automated checks with CI. I have used these skills before these two portfolio demos.
-
-
 ## Interface
 
 The revised interface uses a compact workspace, readable labels and mobile test cards. Animation is limited to running checks and result bars. Self-hosted Quality Sans is a renamed Noto Sans subset covering Latin and Cyrillic. The font is stored as Base64 text for the standalone Worker; source copyright and the SIL Open Font License are included in `assets/fonts/OFL.txt`.
@@ -41,3 +38,7 @@ The revised interface uses a compact workspace, readable labels and mobile test 
 Python uses the same Unicode trimming and UTF-16 response length limits as the web evaluator. Tests cover the actual report download payload, standalone replay using downloaded files, and continued comparison/export when local storage is blocked.
 
 23 automated checks passed. Natalie reviewed the initial appearance on a phone and requested clearer typography and a compact workspace without decorative dots; the changes were implemented with AI assistance.
+
+## React / TypeScript and FastAPI
+
+[Separately runnable implementation](fullstack/README.en.md): a React client, Python/FastAPI API, shared evaluation criteria and optional server-side Responses API generation. 17 backend and 8 client tests passed. A real model request has not yet been verified. The public Worker demo retains its saved-example workflow.

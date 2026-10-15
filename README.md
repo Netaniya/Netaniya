@@ -1,92 +1,54 @@
 # Natalie Ragulina (Netaniya)
 
-[Русский обзор портфолио](PORTFOLIO.ru.md)
+**Webentwicklung · KI-Integration · Automatisierung**  
+München, Deutschland · [English](README.en.md) · [Русский](PORTFOLIO.ru.md)
 
-**Software Development · AI-Assisted Engineering · Agentic Workflows**
+Ich entwickle Webanwendungen und arbeite mit Python, JavaScript/TypeScript, APIs und automatisierten Tests. Meine praktische Erfahrung stammt aus eigenen Softwareprojekten und selbstständiger Weiterbildung. Ich nutze KI-Coding-Assistenten und übernehme Anforderungen, Architekturentscheidungen, Code-Review, Fehlersuche und die Prüfung des tatsächlichen Ergebnisses.
 
-Munich, Germany
+## Projekte
 
-My practical experience comes from self-directed learning and hands-on work on my own software projects.
+### AI Request Desk
+Anfragen bearbeiten, Rechnungsdaten vergleichen und Antwortentwürfe vor der Freigabe prüfen.
 
-I build practical software with AI-assisted development workflows, combining human engineering judgment with coding agents, testing, CI, debugging, and iterative validation.
+[![AI Request Desk – deutsche Oberfläche](assets/screenshots/request-desk.png)](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
 
-My current work focuses on full-stack applications and AI/model workflows. I use AI agents as implementation tools while retaining responsibility for requirements, architecture, review, verification, and the final result.
+- Rechnungsabgleich, bearbeitbare Entwürfe, Statusverlauf, Fehlerbehandlung und browserlokale Speicherung.
+- **JavaScript · HTML · CSS** · vier UI-Sprachen · **17 automatische Prüfungen**.
+- Lernprojekt mit fiktiven Daten und transparenten Regeln; die veröffentlichte Demo verwendet kein Live-LLM.
 
-## Praktische Entwicklungserfahrung / Hands-on experience
+**[Live-Demo ohne Anmeldung](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Code & Dokumentation](portfolio/ai-request-desk/README.md)**
 
-**Deutsch:** Ich habe bereits praktische Erfahrung darin, Code zu lesen, zu verstehen, zu ändern und zu prüfen, Fehler zu analysieren und Webanwendungen sowie APIs zu testen. In eigenen Projekten arbeite ich mit Python, JavaScript/TypeScript, HTML/CSS, API-Integrationen, Git/GitHub, Docker sowie automatisierten Tests und CI. Diese Erfahrung besteht bereits unabhängig von den beiden Portfolio-Demos.
+### AI Quality Lab
+Gespeicherte Antworten anhand offener Kriterien vergleichen und Ergebnisse reproduzierbar exportieren.
 
-**English:** I have prior hands-on experience reading, understanding, modifying and reviewing code, debugging issues, and testing web applications and APIs. My own projects include Python, JavaScript/TypeScript, HTML/CSS, API integrations, Git/GitHub, Docker and automated checks with CI. I have used these skills before these two portfolio demos.
+[![AI Quality Lab – deutsche Oberfläche](assets/screenshots/quality-lab.png)](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)
 
-## Current focus
+- Acht Testfälle, bearbeitbare Varianten, gewichtete Scores und nachvollziehbare Einzelprüfungen.
+- **JavaScript Worker · HTML · CSS · Python-Evaluator** · vier UI-Sprachen · **23 automatische Prüfungen**.
+- Zusätzlich: **[React-/TypeScript-Client mit FastAPI-Backend](portfolio/ai-quality-lab/fullstack/README.md)**, lokal ausführbar, mit optionalem serverseitigem Responses-API-Adapter. **17 Backend- und 8 Client-Tests** bestanden; ein echter Modellaufruf ist noch nicht verifiziert.
+- Die öffentliche Worker-Demo prüft gespeicherte Beispiele und benötigt keinen API-Schlüssel.
 
-- Full-stack development with **Python / FastAPI** and **TypeScript / React / Next.js**
-- AI-assisted engineering and coding-agent workflows
-- API integration and automation
-- Docker, Git/GitHub, CI, automated testing, and debugging
-- Model-output evaluation and GPU inference troubleshooting
-- Reliable human-in-the-loop workflows for complex AI systems
+**[Live-Demo ohne Anmeldung](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Code & Dokumentation](portfolio/ai-quality-lab/README.md)**
 
-## Technical toolkit
+### Neta25X · früher Interface-Prototyp
+[Responsive Benutzeroberfläche mit eigener visueller Identität](https://github.com/Netaniya/Neta25X), HTML, TailwindCSS und JavaScript. Meine neueren Full-stack- und KI-Projekte befinden sich in privater Entwicklung.
 
-**Languages & web**  
-Python · JavaScript · TypeScript · HTML · CSS
+## Technische Kenntnisse
 
-**Frameworks & backend**  
-FastAPI · React · Next.js
+- **Sprachen:** Python, JavaScript, TypeScript, HTML, CSS.
+- **Web & API:** FastAPI, React, Next.js, API-Integration.
+- **Entwicklungsprozess:** Git/GitHub, Docker, automatisierte Tests, CI, Code-Review und Debugging.
+- **KI & Automatisierung:** Codex, KI-Coding-Agenten, n8n, Flowise; Arbeitskenntnisse in MCP, RAG und Agenten-Workflows.
+- **Qualität:** Modellantworten bewerten, Integrationsfehler und GPU-Inferenzprobleme untersuchen.
 
-**Engineering workflow**  
-Git · GitHub · Docker · CI · automated testing · debugging · API integration
+Die Technologien sind projektübergreifend angegeben; die jeweilige Projektbeschreibung nennt die tatsächlich veröffentlichte Implementierung. Die beiden aktuellen Portfolio-Demos wurden gemeinsam mit KI-Unterstützung entwickelt. Mein konkreter Beitrag ist bei jedem Projekt beschrieben.
 
-**AI & automation**  
-Codex · AI coding agents · n8n · Flowise  
-Working knowledge of MCP, RAG, ReAct, LangGraph/LangChain, and multi-agent patterns
+## Arbeitsweise
 
-## Öffentliches Portfolio / Selected public work
+Ein grüner Testlauf und ein korrektes Ergebnis sind zwei Prüfungen. Ich kontrolliere das tatsächliche Verhalten und untersuche Abweichungen in Code, Daten, Abhängigkeiten, Integrationen und Modellausgaben.
 
-### [AI Request Desk — Live-Demo](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
+## Weiterbildung
 
-**Deutsch:** Eigenständiges Lernprojekt zur Bearbeitung von Anfragen mit Rechnungsabgleich, bearbeitbaren Antwortentwürfen, menschlicher Freigabe und Fehlerbehandlung. Gemeinsam mit KI-Unterstützung entwickelt. Ich habe die Anforderungen und acht Ablaufregeln geprüft und bestätigt, den Kernablauf auf dem Smartphone getestet und konkrete UI-Korrekturen veranlasst.
+HarvardX / edX – CS50's Introduction to Artificial Intelligence with Python · Coursera – Hands-on Agentic AI: Building Intelligent Agents · Universität Helsinki / MinnaLearn – Elements of AI · TEL-RAN – Digital Web Marketing & Business.
 
-**English:** An independent learning project for request handling, invoice comparison, editable response drafts, human approval and failure recovery. Jointly developed with AI assistance. I reviewed and approved the requirements and eight workflow rules, tested the core flow on a phone, and requested specific UI corrections.
-
-**Published implementation:** JavaScript / HTML / CSS, browser-local persistence, four languages and 17 passing local automated checks. Analysis currently uses clearly labeled demo rules; live LLM integration is not part of this release. The demo opens without sign-in and defaults to German.
-
-[Projektbeschreibung & Quellcode](https://github.com/Netaniya/Netaniya/tree/main/portfolio/ai-request-desk) · [English documentation](https://github.com/Netaniya/Netaniya/blob/main/portfolio/ai-request-desk/README.en.md) · [Русский](portfolio/ai-request-desk/README.ru.md)
-
-### [AI Quality Lab — Live-Demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)
-
-**Deutsch:** Lernprojekt zur Prüfung gespeicherter Antwortvarianten mit acht offenen Testfällen, bearbeitbaren Beispielen, gewichteten Scores und einem reproduzierbaren Python-Evaluator. Mit KI-Unterstützung entwickelt.
-
-**English:** A learning project for evaluating saved answers using eight transparent test cases, editable samples, weighted scores and reproducible Python reports. Developed with AI assistance.
-
-**Published implementation:** JavaScript Worker / HTML / CSS, a separate local Python evaluator, four UI languages and 23 passing automated checks. Sample answers are illustrative; no model API is connected. The demo opens without sign-in and defaults to German. The test corpus is German.
-
-[Projektbeschreibung & Quellcode](portfolio/ai-quality-lab/README.md) · [English](portfolio/ai-quality-lab/README.en.md) · [Русский](portfolio/ai-quality-lab/README.ru.md)
-
-### [Neta25X](https://github.com/Netaniya/Neta25X)
-An early public AI-interface prototype exploring responsive UI, visual identity, and lightweight client-side interaction.
-
-My newer full-stack and AI-assisted engineering work is under active private development and is intentionally not published yet.
-
-## Engineering approach
-
-I treat a passing test suite and a correct real-world result as separate checks.
-
-When a system is technically green but the actual behavior is wrong, I trace the issue through code, dependencies, data, integration, runtime behavior, or model output and adjust the implementation or architecture accordingly.
-
-## Education & certifications
-
-- **HarvardX / edX** — CS50's Introduction to Artificial Intelligence with Python
-- **Coursera** — Hands-on Agentic AI: Building Intelligent Agents
-- **University of Helsinki / MinnaLearn** — Elements of AI
-- **TEL-RAN** — Digital Web Marketing & Business
-
-## Contact
-
-**Email:** netaniya3@gmail.com  
-**GitHub:** [@Netaniya](https://github.com/Netaniya)
-
----
-
-*Building carefully, testing aggressively, and keeping human judgment in the loop.*
+**Kontakt:** [netaniya3@gmail.com](mailto:netaniya3@gmail.com)

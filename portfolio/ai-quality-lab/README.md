@@ -2,6 +2,8 @@
 
 Ein interaktives Lernprojekt von **Natalie Ragulina (Netaniya)** zur reproduzierbaren Prüfung gespeicherter Antwortvarianten.
 
+![ai-quality-lab · Deutsch](../../assets/screenshots/quality-lab.png)
+
 **[Live-Demo](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)** · [English](README.en.md) · [Русский](README.ru.md)
 
 ## Was funktioniert?
@@ -46,10 +48,6 @@ Alternativ `evaluator.py` und `fixtures.json` von der Website in denselben Ordne
 
 Ich habe das Projektziel, die vier Sprachen, die Gestaltung sowie die gewünschten Animationen und Zeitangaben festgelegt. Ich habe die erste Oberfläche auf dem Smartphone geprüft und konkrete Änderungen an Typografie und Aufbau veranlasst. Der KI-Assistent hat Code, automatische Tests, technische Korrekturen und Veröffentlichung im Rahmen unserer gemeinsamen Entwicklung umgesetzt.
 
-## Meine Fähigkeiten und bisherige Erfahrung
-
-Ich habe bereits praktische Erfahrung darin, Code zu lesen, zu verstehen, zu ändern und zu prüfen, Fehler zu analysieren und Webanwendungen sowie APIs zu testen. In eigenen Projekten arbeite ich mit Python, JavaScript/TypeScript, HTML/CSS, API-Integrationen, Git/GitHub, Docker sowie automatisierten Tests und CI. Diese Erfahrung besteht bereits unabhängig von den beiden Portfolio-Demos.
-
 ## Nächster möglicher Schritt
 
 Eine echte Modellanbindung kann später ergänzt werden: Schlüssel ausschließlich serverseitig, begrenzte Aufrufe, nachvollziehbare Herkunft der Antworten und tatsächliche Verbrauchsdaten. Diese Funktionen sind in der aktuellen Version nicht implementiert.
@@ -63,3 +61,7 @@ Die überarbeitete Oberfläche verwendet eine kompakte Arbeitsansicht, lesbare B
 Der Python-Evaluator verwendet dieselben Regeln für äußere Unicode-Leerzeichen und die Antwortlänge in UTF-16-Einheiten wie die Web-Version. Exportierte Berichte sowie die herunterladbaren Python-Dateien werden durch einen eigenständigen Replay-Test geprüft.
 
 23 automatische Prüfungen bestanden. Natalie prüfte die erste Gestaltung auf dem Smartphone und verlangte eine klarere Typografie sowie eine kompakte Arbeitsansicht ohne dekorative Punkte; die Änderungen wurden mit KI-Unterstützung umgesetzt.
+
+## React / TypeScript und FastAPI
+
+[Separat ausführbare Implementierung](fullstack/README.md): React-Client, Python/FastAPI-API, gemeinsame Prüfkriterien und optionale Generierung über die serverseitige Responses API. 17 Backend- und 8 Client-Tests bestanden. Ein echter Modellaufruf ist noch nicht verifiziert. Die öffentliche Worker-Demo behält ihren Modus mit gespeicherten Beispielen.
