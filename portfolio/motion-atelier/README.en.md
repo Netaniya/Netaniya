@@ -29,7 +29,7 @@ After calculating a route, locally hosted **Leaflet 1.9.4** displays validated O
 
 Filtering, sorting, model comparison, explained matching, configurable pricing in integer eurocents, range estimates, shareable configuration URLs, JSON export and browser-local garage persistence. Public OSRM routing and user-requested Open-Meteo weather are validated and clearly distinguished from an explicit offline estimate.
 
-Tesla Model S, Model Y and Cybertruck are shown in real photographs. All technical numbers, options and prices are illustrative application fixtures. Range is battery capacity divided by model consumption, not WLTP. Paint, wheels and interior selections update the summary and demo price while the original photo remains unchanged. There is no dealer, reservation, payment, live LLM or manufacturer affiliation.
+Tesla Model S, Model Y and Cybertruck are shown in real photographs. All technical numbers, options and prices are illustrative application fixtures. Range is battery capacity divided by model consumption, not WLTP. Paint selection visibly changes the configurator and garage preview as well as the demo summary and price. AI-assisted cutouts derived from the original photos and a browser paint shader retain lighting, form and protected glass regions; screen shades are approximate. Wheel and interior options appear in the summary. There is no dealer, reservation, payment, live LLM or manufacturer affiliation.
 
 Charging estimates assume constant consumption and average charging power, with charging up to 80% and a selected arrival reserve. No live chargers, availability, traffic, charging curves or weather-based consumption model. Energy prices are user assumptions. Offline estimates use great-circle distance × 1.25 and 80 km/h, explicitly labelled as non-road-route estimates.
 
@@ -42,7 +42,7 @@ npm run check
 npm test
 ```
 
-Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **59 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
+Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **67 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
 
 ## External services and sources
 
@@ -50,7 +50,7 @@ Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framewor
 - [OSRM](https://project-osrm.org/) / [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL. The built-in graphic is a schematic route trace; a link opens a full external map.
 - [Open-Meteo](https://open-meteo.com/), CC BY 4.0, free non-commercial API. Both services can fail and have no guaranteed uptime.
 - Services are called only on user action. Selected city coordinates are sent; no device-location permission, accounts, tracking or API keys.
-- Vehicle photographs: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), via Wikimedia Commons, CC BY-SA 4.0 or 3.0. Road photograph: Mirko Fabian, Unsplash License. Authors, original pages and licenses are shown on the [about page](https://netaniya.github.io/Netaniya/motion-atelier/about/) and in [photo-credits.json](dist/assets/photo-credits.json). Resizing and format conversion only; no AI image editing.
+- Vehicle photographs: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), via Wikimedia Commons, CC BY-SA 4.0 or 3.0. Road photograph: Mirko Fabian, Unsplash License. Authors, original pages and licenses are shown on the [about page](https://netaniya.github.io/Netaniya/motion-atelier/about/) and in [photo-credits.json](dist/assets/photo-credits.json). Original photos were only resized and converted. Separate transparent blue-body derivatives were prepared with AI assistance for the configurator, then recolored in the browser. Sources, changes and share-alike licenses: [paint-preview-credits.json](dist/assets/paint-preview-credits.json).
 - Film: [Tesla Loveday: “Energy”](https://commons.wikimedia.org/wiki/File:Tesla_Loveday-_%22Energy%22.webm), Atellani LLC, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Excerpt 40.6–43.3 s, slowed to 50% with frame interpolation, audio removed, resized and re-encoded. No manufacturer commission or sponsorship.
 - Music: [“Dream Culture”](https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046), Kevin MacLeod (incompetech.com), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Excerpt 12.0–17.3 s, reduced level with fade-in/out; [full credits](dist/assets/intro-music-credits.json). Requested when the intro starts; the browser controls audible autoplay permission. A mute/enable control remains available.
 - [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope) by Mikhail Sharanda and Mirko Velimirovic, [SIL Open Font License 1.1](dist/assets/fonts/OFL.txt).

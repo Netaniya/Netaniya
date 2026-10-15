@@ -11,3 +11,5 @@ Leaflet 1.9.4 is distributed under BSD-2-Clause; its copyright notice and licenc
 Photographs, video, music and fonts retain their respective authors and licences. See `dist/assets/photo-credits.json`, `dist/assets/intro-video-credits.json`, `dist/assets/intro-music-credits.json`, and `dist/assets/fonts/OFL.txt`, with visible links on the About page. No affiliation with Tesla, BMW, or the media creators is implied.
 
 Public browser code can be inspected and copied technically. Author notices and source history do not provide technical copy prevention.
+
+Paint-preview derivatives are AI-assisted background removals and Ocean Blue body recolors of the credited Model S, Model Y and Cybertruck photographs. Each derivative remains under the respective source CC BY-SA 4.0 or 3.0 license. See dist/assets/paint-preview-credits.json for authors, original sources, license links and changes. Browser-generated color shades are illustrative and are not verified manufacturer paint options.
