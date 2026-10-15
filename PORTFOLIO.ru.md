@@ -30,11 +30,14 @@ JavaScript, HTML, CSS; четыре языка интерфейса; 25 авто
 **[Открыть без входа](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Описание и код](portfolio/ai-quality-lab/README.ru.md)**
 
 ### Motion Atelier
-Многостраничное автомобильное приложение: выбор, сравнение и настройка авторских электромобилей будущего.
+Многостраничное учебное автомобильное приложение с настоящими фотографиями Tesla Model S, Model Y и Cybertruck и учебными данными для конфигураций.
 
-[![Motion Atelier — авторский концепт-кар](portfolio/motion-atelier/dist/assets/gt-blue-cinematic.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
+[![Motion Atelier — Tesla Cybertruck](portfolio/motion-atelier/dist/assets/real-cybertruck.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
 
-- **10 HTML-страниц · четыре языка · 35 автоматических проверок** · плавное появление автомобиля с возможностью пропуска.
+Фото: Mr.choppers · CC BY-SA 3.0 · [Оригинал и авторы фотографий](portfolio/motion-atelier/dist/assets/photo-credits.json).
+
+- **10 HTML-страниц · четыре языка · 37 автоматических проверок** · плавное появление фотографии с возможностью пропуска, шрифт Manrope и центрированные заголовки.
+- Оригинальные фотографии остаются без изменений; выбранные цвет, колёса и салон показаны в настройках и итогах.
 - Подбор по правилам, конфигуратор с ценами, ссылки на конфигурации, локальный гараж и расчёт энергии для поездки.
 - Маршруты OSRM и погода Open-Meteo запрашиваются по действию пользователя. Вымышленные характеристики и приблизительные оценки явно обозначены.
 - **JavaScript ES modules · HTML · CSS**. Итоговая визуальная проверка опубликованной версии на компьютере и телефоне ещё не выполнена.

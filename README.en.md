@@ -33,11 +33,14 @@ Compare saved answers against transparent criteria and export reproducible repor
 **[Live demo without sign-in](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Code & documentation](portfolio/ai-quality-lab/README.en.md)**
 
 ### Motion Atelier
-A multi-page automotive application: discover, compare and configure original electric concept vehicles.
+A multi-page automotive learning application with real Tesla Model S, Model Y and Cybertruck photographs and illustrative configuration data.
 
-[![Motion Atelier – original concept vehicle](portfolio/motion-atelier/dist/assets/gt-blue-cinematic.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
+[![Motion Atelier – Tesla Cybertruck](portfolio/motion-atelier/dist/assets/real-cybertruck.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
 
-- **10 HTML pages · four languages · 35 automated checks** · slow, skippable vehicle arrival.
+Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/motion-atelier/dist/assets/photo-credits.json).
+
+- **10 HTML pages · four languages · 37 automated checks** · slow, skippable photographic arrival, Manrope and centered titles.
+- Original photographs stay unchanged; paint, wheel and interior choices appear in the controls and summary.
 - Rule-based finder, configuration pricing, shareable links, local garage and energy planning.
 - User-requested OSRM road routes and Open-Meteo weather; estimates and fictional specifications are labelled.
 - **JavaScript ES modules · HTML · CSS**. Final published desktop and mobile visual QA is still outstanding.

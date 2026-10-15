@@ -4,18 +4,18 @@
 
 [Live-Demo](https://motion-atelier-neta26.wellolm4.chatgpt.site) · [English](README.en.md)
 
-Eine eigenständige Fahrzeugkollektion mit großzügiger Typografie, heller Architektur, sattem Blau und einer langsamen, überspringbaren Fahrzeugankunft. **Zehn echte HTML-Seiten**, deutsche Erstansicht sowie vollständige englische, russische und ukrainische Oberflächen.
+Eine interaktive Fahrzeugkollektion mit echten Fotografien von Tesla Model S, Model Y und Cybertruck, selbst gehosteter Manrope-Schrift und sattem Blau. Eine langsame, überspringbare Fotoanimation eröffnet die Anwendung. **Zehn echte HTML-Seiten**, deutsche Erstansicht sowie vollständige englische, russische und ukrainische Oberflächen.
 
 ## Darstellung
 
-Dunkle Ansicht beim ersten Besuch, jederzeit umschaltbar auf hell. Die Auswahl bleibt im Browser über alle Unterseiten erhalten. Hauptüberschriften sind zentriert und ohne Satzpunkte. Das Fahrzeug bleibt auch auf schmalen Displays innerhalb seitlicher Ränder. Die Ankunft ist eine Animation eines generierten Standbilds, kein Filmclip.
+Dunkle Ansicht beim ersten Besuch, jederzeit umschaltbar auf hell. Die Auswahl bleibt im Browser über alle Unterseiten erhalten. Hauptüberschriften sind zentriert, ohne Satzpunkte und bei zweiteiligen Titeln auf getrennten Zeilen ohne führenden Gedankenstrich. Die Fotos werden vollständig in ihren Rahmen eingepasst; die mobile Ansicht stapelt Text und Foto. Die Ankunft animiert eine echte Fotografie, keinen Filmclip. Manrope wird einschließlich kyrillischer Zeichen lokal ausgeliefert.
 
 ## Funktionen
 
-- Drei originale, mit KI erzeugte elektrische Konzeptfahrzeuge und einzelne Modellseiten.
+- Drei reale Fahrzeugmodelle auf echten Fotos und einzelne Modellseiten. Technische Zahlen und Preise sind ausdrücklich illustrative Testdaten.
 - Katalog mit Filter, Sortierung und direktem Modellvergleich.
 - Fahrzeugfinder mit transparenten Auswahlregeln für Budget, Sitzplätze und Priorität; unerfüllbare Anforderungen werden benannt.
-- Konfigurator mit Lackierung, Rädern, Interieur, Preisaufschlüsselung und angepasster Modellreichweite. Farbvisualisierung ist illustrativ; Räder und Interieur werden im Text zusammengefasst.
+- Konfigurator mit Lackierung, Rädern, Interieur, Preisaufschlüsselung und angepasster Modellreichweite. Lackierung, Räder und Interieur erscheinen in der Auswahl und Preisübersicht; das Originalfoto bleibt unverändert.
 - Teilbare Konfigurationslinks, JSON-Export und browserlokale Garage mit Wiederherstellung und Löschbestätigung.
 - Reiseplanung zwischen zwölf europäischen Städten: öffentlicher OSRM-Routendienst mit OpenStreetMap-Daten, schematischer Routenverlauf, Energiebedarf, Ladestopps und Kostenrechnung.
 - Aktuelle Wetterdaten am Ziel von Open-Meteo, ausschließlich nach Klick. Externe Daten werden validiert; Fehler nicht als Live-Ergebnis ausgegeben.
@@ -24,7 +24,7 @@ Dunkle Ansicht beim ersten Besuch, jederzeit umschaltbar auf hell. Die Auswahl b
 
 ## Ehrliche Grenzen
 
-Dies ist ein **Lernprojekt**, kein Fahrzeugangebot. Alle Fahrzeugdaten und Preise sind erfunden. Reichweite = nutzbare Batterie ÷ Modellverbrauch × 100, keine WLTP-Messung. Keine Verbindung zu BMW oder anderen Herstellern.
+Dies ist ein **Lernprojekt**, kein Fahrzeugangebot. Modellnamen und Fotografien sind real; die technischen Zahlen, Optionen und Preise sind illustrative Testdaten. Reichweite = nutzbare Batterie ÷ Modellverbrauch × 100, keine WLTP-Messung. Keine Verbindung zu Tesla, BMW oder anderen Herstellern.
 
 Die Ladeplanung nimmt konstanten Verbrauch und mittlere Ladeleistung an, lädt bei Bedarf bis höchstens 80 % und hält die gewählte Reserve ein. Tatsächliche Ladesäulen, deren Verfügbarkeit, Ladekurven, Wettereffekte auf Verbrauch und Verkehrslage sind nicht eingebunden. Die Wetteranzeige ist eine gesonderte Information, kein Eingangsparameter des Energieverbrauchs.
 
@@ -43,13 +43,14 @@ npm test
 
 Statisch `dist/` bereitstellen. Alle Unterseiten besitzen eigene HTML-Dokumente. Für lokale manuelle Prüfung kann ein beliebiger statischer Webserver verwendet werden.
 
-**35 automatische Prüfungen bestanden.** Automatische Tests prüfen Konfigurationskombinationen, Preise in Eurocent, Energieerhaltung und Ladegrenzen, Eingabevalidierung, vier Sprachen, Speicherung, UI-Aktionen und Fehler-/Wettlaufszenarien. DOM-Tests ersetzen keine visuelle Browserprüfung. Eine abschließende mobile und Desktop-Sichtprüfung der veröffentlichten Version steht noch aus.
+**37 automatische Prüfungen bestanden.** Automatische Tests prüfen Konfigurationskombinationen, Preise in Eurocent, Energieerhaltung und Ladegrenzen, Eingabevalidierung, vier Sprachen, Speicherung, UI-Aktionen und Fehler-/Wettlaufszenarien. DOM-Tests ersetzen keine visuelle Browserprüfung. Eine abschließende mobile und Desktop-Sichtprüfung der veröffentlichten Version steht noch aus.
 
 ## Quellen und Zusammenarbeit
 
 - Routen: [OSRM](https://project-osrm.org/), [API-Dokumentation](https://github.com/Project-OSRM/osrm-backend/blob/master/docs/http.md), [Nutzungsregeln](https://github.com/Project-OSRM/osrm-backend/wiki/Api-usage-policy).
 - Kartendaten: [© OpenStreetMap contributors, ODbL](https://www.openstreetmap.org/copyright). Die lokale Grafik zeigt eine schematische Koordinatenspur; der Link öffnet eine echte Karte beim Anbieter.
 - Wetter: [Open-Meteo](https://open-meteo.com/), CC BY 4.0; [API](https://open-meteo.com/en/docs), [kostenlose nichtkommerzielle Nutzung](https://open-meteo.com/en/pricing).
-- Die Bilder wurden mit ImageGen erstellt; keine Herstellerfotos oder Markenlogos.
+- Fahrzeugfotos: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), über Wikimedia Commons; CC BY-SA 4.0 bzw. 3.0. Straßenfoto: Mirko Fabian, Unsplash-Lizenz. Autoren, Originalseiten und Lizenzen stehen sichtbar auf der [Projektseite](https://motion-atelier-neta26.wellolm4.chatgpt.site/about/) sowie in [photo-credits.json](dist/assets/photo-credits.json). Nur Größen- und Formatkonvertierung; keine KI-Bildbearbeitung.
+- [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope), Mikhail Sharanda und Mirko Velimirovic, [SIL Open Font License 1.1](dist/assets/fonts/OFL.txt).
 
-Natalie bestimmte Produkt, Mehrsprachigkeit, mehrseitige Struktur, mittige Typografie, blaue Farbwelt und die Idee der fließenden Ankunft. Code, Bilder und automatische Prüfungen entstanden mit KI-Unterstützung. Das Projekt stellt nachprüfbare Lernpraxis dar und behauptet keinen kommerziellen Einsatz.
+Natalie bestimmte Produkt, Mehrsprachigkeit, mehrseitige Struktur, mittige Typografie, blaue Farbwelt und die Idee der fließenden Ankunft. Code und automatische Prüfungen entstanden mit KI-Unterstützung; die Fotografien stammen von den oben genannten Urhebern. Das Projekt stellt nachprüfbare Lernpraxis dar und behauptet keinen kommerziellen Einsatz.

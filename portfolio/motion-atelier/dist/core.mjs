@@ -1,4 +1,4 @@
-import {VEHICLES,PAINTS,WHEELS,INTERIORS,CITIES,LANGS,LOCALES} from './data.mjs?v=3';
+import {VEHICLES,PAINTS,WHEELS,INTERIORS,CITIES,LANGS,LOCALES} from './data.mjs?v=4';
 export const vehicle=id=>VEHICLES.find(x=>x.id===id)||VEHICLES[0];
 export const defaultConfig=id=>({model:vehicle(id).id,paint:'ocean',wheels:'aero',interior:'light'});
 export function validConfig(c){return c&&VEHICLES.some(v=>v.id===c.model)&&PAINTS.some(v=>v.id===c.paint)&&WHEELS.some(v=>v.id===c.wheels)&&INTERIORS.some(v=>v.id===c.interior);}

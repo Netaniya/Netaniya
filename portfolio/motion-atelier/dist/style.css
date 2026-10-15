@@ -91,3 +91,97 @@ h2{text-wrap:balance}
 
 [data-theme="dark"] .button.primary{background:#145cd5;color:#fff}
 [data-theme="dark"] .button.primary:hover{background:#1b65df}
+/* Real photographic direction. No isolated generated vehicles. */
+@font-face{font-family:Manrope;src:url('/assets/fonts/Manrope.ttf') format('truetype');font-weight:200 800;font-style:normal;font-display:swap}
+:root{font-family:Manrope,Arial,sans-serif}
+body,button,input,select{font-family:Manrope,Arial,sans-serif}
+h1,h2,h3{font-weight:400;letter-spacing:-.045em}
+.balanced-heading{text-align:center;margin-inline:auto;line-height:1.15}
+.heading-line{display:block;max-width:100%;text-align:center;text-wrap:balance;margin-inline:auto}
+.heading-line+.heading-line{margin-top:.04em}
+.page-heading h1{max-width:1080px;font-size:clamp(2.5rem,4.7vw,5.25rem)}
+.page-heading .lead{max-width:800px;font-size:1rem;line-height:1.8}
+.wordmark{font-weight:500;letter-spacing:.28em}
+.photographic-hero{position:relative;display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);align-items:center;gap:40px;min-height:640px;height:auto;max-height:none;padding:58px 48px 85px;background:#eef2f4;overflow:hidden}
+.photographic-hero .hero-copy{position:relative;inset:auto;padding:0;z-index:2;text-align:center;min-width:0}
+.photographic-hero .hero-copy h1{font-size:clamp(3.1rem,5.25vw,6rem);line-height:1.1;letter-spacing:-.055em;margin:25px 0 24px;color:#193b57}
+.photographic-hero .hero-copy>p:not(.eyebrow){font-size:.95rem;line-height:1.8;max-width:460px;margin-inline:auto}
+.photographic-hero .hero-copy .button-row{display:flex;justify-content:center;gap:12px;margin-top:32px;flex-wrap:wrap}
+.photographic-hero .hero-vehicle{position:relative;inset:auto;width:100%;max-width:100%;height:auto;aspect-ratio:auto;transform:none;margin:0;min-width:0;z-index:1}
+.photographic-hero .hero-car{display:block;width:100%;height:auto;object-fit:contain;filter:none;transform:none;box-shadow:0 25px 70px #0715231a}
+.hero-photograph figcaption{text-align:right;font-size:.58rem;letter-spacing:.08em;line-height:1.8;color:var(--muted);margin-top:15px}
+.photographic-hero .hero-bottom{left:48px;right:48px;bottom:25px;color:var(--muted);font-size:.58rem;letter-spacing:.1em}
+.vehicle-visual,.vehicle-visual.cross-02,.vehicle-visual.sport-03{aspect-ratio:3/2;height:auto;background:#10171c;display:flex;align-items:center;justify-content:center}
+.vehicle-visual .car-image{width:100%;height:100%;padding:0;object-fit:contain;transform:none;transition:opacity .4s;filter:none}
+.vehicle-visual:hover .car-image{transform:none;opacity:.92}
+.vehicle-heading{flex-wrap:wrap;gap:12px 18px}
+.vehicle-heading h3{font-size:clamp(1.4rem,1.9vw,1.75rem);letter-spacing:-.04em}
+.vehicle-heading .eyebrow{font-size:.55rem;letter-spacing:.09em}
+.vehicle-heading>.text-link{flex-shrink:0}
+.visual-index,.oversize-label{display:none}
+.finder-feature{background:#edf2f4}
+.feature-car{height:auto;padding:30px 0}
+.feature-car .vehicle-photo{width:100%;height:auto;max-height:440px;object-fit:contain}
+.journey-photo{background-image:url('/assets/real-road.webp');background-position:center;height:auto;aspect-ratio:3/2}
+.model-hero,.model-hero.cross-02,.model-hero.sport-03{background:#eef2f4}
+.model-hero h1{font-size:clamp(2.6rem,6.2vw,6.5rem);text-wrap:balance;line-height:1.12;max-width:1100px;margin-inline:auto}
+.model-car{display:block;width:min(1040px,100%);max-width:100%;height:auto;object-fit:contain;margin:38px auto}
+.model-tagline{max-width:700px;margin-inline:auto;padding-inline:20px}
+.config-stage{background:#edf2f4;min-height:0}
+.config-car{height:auto;max-height:460px;object-fit:contain;margin:26px 0}
+.config-stats{margin-bottom:16px}
+.finder-layout .vehicle-visual,.garage-item .vehicle-visual{height:auto;aspect-ratio:3/2}
+.finder-placeholder img,.trip-placeholder img,.empty-garage img{width:100%;height:auto;max-height:330px;object-fit:contain}
+.about-visual{height:auto;padding:28px 0;background:none}
+.about-visual img{height:auto;width:100%;object-fit:contain}
+.photo-credit-list{display:grid;gap:22px;margin:25px 0}
+.photo-credit-list>div{border-bottom:1px solid var(--line);padding-bottom:18px}
+.photo-credit-list strong{font-size:.85rem;font-weight:500}
+.photo-credit-list p{font-size:.75rem;line-height:1.8;margin-top:8px}
+.photo-credit-list p.small{font-size:.65rem}
+.arrival{background:#080e14}
+.arrival-backdrop,[data-theme="dark"] .arrival-backdrop{background:#080e14;animation:none!important;transform:none}
+.arrival-vehicle{left:0!important;right:0!important;top:0!important;width:100%!important;height:100%!important;transform:none;display:flex;align-items:center;justify-content:center}
+.arrival-vehicle img{width:100%;height:100%;object-fit:contain;object-position:center;filter:none}
+.arrival.playing .arrival-vehicle{animation:photographicArrival 5.9s cubic-bezier(.12,.55,.22,1) both;transform:none}
+.arrival-wordmark,[data-theme="dark"] .arrival-wordmark{color:#fff;top:25px;z-index:3;text-shadow:0 2px 12px #000}
+.arrival-label,[data-theme="dark"] .arrival-label{color:white;top:15%;font-size:clamp(1.3rem,2.6vw,2.6rem);text-shadow:0 2px 12px #000;z-index:3}
+@keyframes photographicArrival{0%{opacity:0;transform:translateX(3%) scale(.98)}25%{opacity:1}100%{opacity:1;transform:translateX(0) scale(1)}}
+[data-theme="dark"] .photographic-hero{background:#0b1219}
+[data-theme="dark"] .photographic-hero .hero-copy h1{color:#eef4f8}
+[data-theme="dark"] .vehicle-visual,[data-theme="dark"] .vehicle-visual.cross-02,[data-theme="dark"] .vehicle-visual.sport-03{background:#080f15}
+[data-theme="dark"] .finder-feature{background:#131f29}
+[data-theme="dark"] .model-hero,[data-theme="dark"] .model-hero.cross-02,[data-theme="dark"] .model-hero.sport-03{background:#111d27}
+[data-theme="dark"] .config-stage{background:#162430}
+@media(min-width:1600px){.photographic-hero{padding:75px max(60px,calc((100vw - 1560px)/2)) 100px;gap:60px;min-height:760px}.photographic-hero .hero-vehicle{width:100%;height:auto}}
+@media(max-width:1100px) and (min-width:761px){.photographic-hero{padding-inline:32px;gap:28px;min-height:580px}.photographic-hero .hero-copy h1{font-size:3.5rem}.photographic-hero .hero-copy .button-row{flex-direction:column;align-items:center}.photographic-hero .hero-copy .button-row .button{min-width:220px}}
+@media(max-width:760px){
+ .page-heading{padding-top:38px;padding-bottom:36px}
+ .page-heading h1{font-size:clamp(1.9rem,7.6vw,2.85rem);line-height:1.2;letter-spacing:-.045em}
+ .heading-line+.heading-line{margin-top:.05em}
+ .page-heading .lead{font-size:.85rem;line-height:1.85;margin-top:26px;max-width:460px}
+ .photographic-hero{display:flex;flex-direction:column;gap:0;min-height:0;padding:36px 20px 70px;height:auto;max-height:none}
+ .photographic-hero .hero-copy{position:relative;inset:auto;width:100%;padding:0 0 32px}
+ .photographic-hero .hero-copy h1{font-size:clamp(2.5rem,10.5vw,4rem);line-height:1.12;margin:20px 0}
+ .photographic-hero .hero-copy>p:not(.eyebrow){font-size:.8rem;max-width:360px}
+ .photographic-hero .hero-copy .button-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:25px;max-width:420px;margin-inline:auto}
+ .photographic-hero .hero-copy .button-row .button{min-width:0;padding:12px 10px;font-size:.68rem}
+ .photographic-hero .hero-vehicle{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:auto;transform:none;margin:0;max-width:100%}
+ .photographic-hero .hero-car{height:auto;width:100%;object-fit:contain;filter:none;box-shadow:none}
+ .hero-photograph figcaption{font-size:.5rem;line-height:1.7;margin-top:12px;text-align:center;letter-spacing:.04em}
+ .photographic-hero .hero-bottom{left:20px;right:20px;bottom:20px;font-size:.49rem}
+ .vehicle-visual,.finder-layout .vehicle-visual,.garage-item .vehicle-visual{height:auto;aspect-ratio:3/2}
+ .vehicle-heading{display:flex;flex-wrap:wrap;gap:14px}
+ .vehicle-heading h3{font-size:1.55rem}
+ .model-hero h1{font-size:clamp(2.15rem,8.8vw,3.7rem)}
+ .model-car{height:auto;width:100%;max-width:100%;margin:28px auto}
+ .feature-car{height:auto;padding-top:30px}
+ .feature-car .vehicle-photo{height:auto;max-height:350px}
+ .journey-photo{height:auto;aspect-ratio:3/2}
+ .config-stage{min-height:0}
+ .config-car{height:auto;max-height:350px;margin:20px 0}
+ .about-visual{height:auto}
+ .about-visual img{height:auto}
+ .finder-placeholder img,.trip-placeholder img,.empty-garage img{height:auto;max-height:260px}
+ .arrival-label,[data-theme="dark"] .arrival-label{top:19%;font-size:1.5rem;padding-inline:20px}
+}

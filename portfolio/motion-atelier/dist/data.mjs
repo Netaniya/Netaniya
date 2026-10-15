@@ -1,8 +1,98 @@
+// Real photographed models; all numeric values below are illustrative application fixtures, not manufacturer specifications.
 export const VEHICLES=Object.freeze([
- {id:'gt-01',name:'GT 01',kind:'grandTourer',image:'gt-blue-cinematic.webp',battery:92,consumption:16.8,power:280,seats:5,zero100:4.8,chargeKw:140,price:7950000,tag:'distance',color:'#0759b6'},
- {id:'cross-02',name:'CROSS 02',kind:'crossover',image:'cross-silver.webp',battery:106,consumption:19.6,power:300,seats:5,zero100:5.2,chargeKw:150,price:8350000,tag:'family',color:'#9ea9b6'},
- {id:'sport-03',name:'SPORT 03',kind:'sportCoupe',image:'sport-red.webp',battery:82,consumption:18.9,power:390,seats:2,zero100:3.5,chargeKw:150,price:10950000,tag:'performance',color:'#b52821'}
+  {
+    "id": "gt-01",
+    "name": "Tesla Model S",
+    "kind": "grandTourer",
+    "image": "real-model-s.webp",
+    "imageWidth": 1280,
+    "imageHeight": 960,
+    "battery": 100,
+    "consumption": 18.2,
+    "power": 350,
+    "seats": 5,
+    "zero100": 4.0,
+    "chargeKw": 140,
+    "price": 8900000,
+    "tag": "distance",
+    "color": "#e7e7e2"
+  },
+  {
+    "id": "cross-02",
+    "name": "Tesla Model Y",
+    "kind": "crossover",
+    "image": "real-model-y.webp",
+    "imageWidth": 1280,
+    "imageHeight": 749,
+    "battery": 78,
+    "consumption": 16.4,
+    "power": 250,
+    "seats": 5,
+    "zero100": 5.9,
+    "chargeKw": 140,
+    "price": 4600000,
+    "tag": "family",
+    "color": "#636d73"
+  },
+  {
+    "id": "sport-03",
+    "name": "Tesla Cybertruck",
+    "kind": "pickup",
+    "image": "real-cybertruck.webp",
+    "imageWidth": 1600,
+    "imageHeight": 949,
+    "battery": 123,
+    "consumption": 25.2,
+    "power": 450,
+    "seats": 5,
+    "zero100": 4.4,
+    "chargeKw": 180,
+    "price": 11500000,
+    "tag": "performance",
+    "color": "#b1b7bc"
+  }
 ]);
+export const PHOTO_CREDITS=[
+  {
+    "filename": "real-model-s.webp",
+    "realmodel": "Tesla Model S Long Range (2021)",
+    "originalsourceURL": "https://commons.wikimedia.org/wiki/File:2021_Tesla_Model_S_P2_Long_Range_front_right_view.jpg",
+    "author": "Dllu",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceimageURL": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/2021_Tesla_Model_S_P2_Long_Range_front_right_view.jpg/1280px-2021_Tesla_Model_S_P2_Long_Range_front_right_view.jpg",
+    "modifications": "format conversion and resizing only"
+  },
+  {
+    "filename": "real-model-y.webp",
+    "realmodel": "Tesla Model Y (2020)",
+    "originalsourceURL": "https://commons.wikimedia.org/wiki/File:2020_Tesla_Model_Y,_front_8.1.20.jpg",
+    "author": "Kevauto",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceimageURL": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/2020_Tesla_Model_Y%2C_front_8.1.20.jpg/1280px-2020_Tesla_Model_Y%2C_front_8.1.20.jpg",
+    "modifications": "format conversion and resizing only"
+  },
+  {
+    "filename": "real-cybertruck.webp",
+    "realmodel": "Tesla Cybertruck Foundation Series (2024)",
+    "originalsourceURL": "https://commons.wikimedia.org/wiki/File:2024_Tesla_Cybertruck_Foundation_Series,_front_left_(Greenwich).jpg",
+    "author": "Mr.choppers",
+    "license": "CC BY-SA 3.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceimageURL": "https://upload.wikimedia.org/wikipedia/commons/9/95/2024_Tesla_Cybertruck_Foundation_Series%2C_front_left_%28Greenwich%29.jpg",
+    "modifications": "format conversion and resizing only"
+  },
+  {
+    "filename": "real-road.webp",
+    "realmodel": "Tesla Model S on a countryside road",
+    "originalsourceURL": "https://unsplash.com/photos/a-blue-car-driving-down-a-country-road-2uOBdYu1LMM",
+    "author": "Mirko Fabian",
+    "license": "Unsplash License",
+    "licenseURL": "https://unsplash.com/license",
+    "modifications": "format conversion and resizing only"
+  }
+];
 export const PAINTS=[{id:'ocean',price:0,color:'#0759b6',filter:'none'},{id:'silver',price:95000,color:'#aab3bd',filter:'saturate(.04) brightness(1.28)'},{id:'ruby',price:145000,color:'#a82030',filter:'hue-rotate(122deg) saturate(.85)'},{id:'graphite',price:120000,color:'#343b42',filter:'saturate(.1) brightness(.65)'}];
 export const WHEELS=[{id:'aero',price:0,extraConsumption:0},{id:'sport',price:180000,extraConsumption:1.1}];
 export const INTERIORS=[{id:'light',price:0},{id:'dark',price:120000}];
