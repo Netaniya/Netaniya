@@ -8,7 +8,13 @@ Ten separate HTML pages: home, collection, rule-based vehicle finder, configurat
 
 ## Appearance
 
-Dark on first visit, with a persistent light/dark toggle across every page. Main headings are centered without sentence dots. Paired titles use separate lines without a leading dash. Real photographs are fitted in full inside their frames; mobile layouts stack text and photo. The intro uses an approximately five-second slowed excerpt of real driving footage. It starts on every fresh home-page load; a replay control is visible in the hero. Mobile viewport resizing no longer closes it prematurely. Playback starts muted and inline. Music is fetched and enabled only after an explicit button gesture, then fades out when leaving the intro, with an explicit play control if autoplay is blocked. Reduced-motion preferences skip the film. Manrope, including Cyrillic glyphs, is self-hosted.
+Dark on first visit, with a persistent light/dark toggle across every page. Main headings are centered without sentence dots. Paired titles use separate lines without a leading dash. Real photographs are fitted in full inside their frames; mobile layouts stack text and photo. The intro uses an approximately five-second slowed excerpt of real driving footage. It starts on every fresh home-page load; a replay control is visible in the hero. Mobile viewport resizing no longer closes it prematurely. The film plays inline. Accompanying music is attempted automatically when the film starts and can be muted. If the browser blocks audible autoplay, the film remains usable with an enable-music control, with an explicit play control if autoplay is blocked. Reduced-motion preferences skip the film. Manrope, including Cyrillic glyphs, is self-hosted.
+
+## Project credit, clock and map
+
+Every page and the intro show **Natalie (Netaniya) Ragulina** with a live **Europe/Berlin** date/time. Clock updates do not rerender the page and account for daylight-saving time.
+
+After calculating a route, locally hosted **Leaflet 1.9.4** displays validated OSRM road geometry over OpenStreetMap tiles. Start/end markers, zoom and a full-route view are available. Approximate connections remain dashed and labelled. If the library or tiles fail, a labelled schematic route stays available with a retry control. No geolocation and no simulated live charging stations. Tile requests go directly from the browser to OpenStreetMap after route calculation, with no tile prefetch/offline packages.
 
 ## Motion and interaction
 
@@ -36,16 +42,17 @@ npm run check
 npm test
 ```
 
-Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **52 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
+Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **59 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
 
 ## External services and sources
 
+- Map: [Leaflet](https://leafletjs.com/) 1.9.4, [BSD-2-Clause](dist/assets/vendor/leaflet/LICENSE), served locally with official SRI checksums. [OpenStreetMap](https://www.openstreetmap.org/copyright) tiles follow the [usage policy](https://operations.osmfoundation.org/policies/tiles/); best-effort availability.
 - [OSRM](https://project-osrm.org/) / [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL. The built-in graphic is a schematic route trace; a link opens a full external map.
 - [Open-Meteo](https://open-meteo.com/), CC BY 4.0, free non-commercial API. Both services can fail and have no guaranteed uptime.
 - Services are called only on user action. Selected city coordinates are sent; no device-location permission, accounts, tracking or API keys.
 - Vehicle photographs: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), via Wikimedia Commons, CC BY-SA 4.0 or 3.0. Road photograph: Mirko Fabian, Unsplash License. Authors, original pages and licenses are shown on the [about page](https://motion-atelier-neta26.wellolm4.chatgpt.site/about/) and in [photo-credits.json](dist/assets/photo-credits.json). Resizing and format conversion only; no AI image editing.
 - Film: [Tesla Loveday: “Energy”](https://commons.wikimedia.org/wiki/File:Tesla_Loveday-_%22Energy%22.webm), Atellani LLC, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Excerpt 40.6–43.3 s, slowed to 50% with frame interpolation, audio removed, resized and re-encoded. No manufacturer commission or sponsorship.
-- Music: [“Dream Culture”](https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046), Kevin MacLeod (incompetech.com), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Excerpt 12.0–17.3 s, reduced level with fade-in/out; [full credits](dist/assets/intro-music-credits.json). Requested only after a click.
+- Music: [“Dream Culture”](https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046), Kevin MacLeod (incompetech.com), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Excerpt 12.0–17.3 s, reduced level with fade-in/out; [full credits](dist/assets/intro-music-credits.json). Requested when the intro starts; the browser controls audible autoplay permission. A mute/enable control remains available.
 - [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope) by Mikhail Sharanda and Mirko Velimirovic, [SIL Open Font License 1.1](dist/assets/fonts/OFL.txt).
 
 Natalie defined the product, languages, page structure, centered type, blue visual direction and flowing arrival. Implementation and automated checks were produced with AI assistance; photographs are by the credited authors. This demonstrates learning practice, not commercial deployment experience.
