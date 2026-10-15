@@ -30,7 +30,7 @@ Nach einer Routenberechnung lädt die Anwendung lokal bereitgestelltes **Leaflet
 - Drei reale Fahrzeugmodelle auf echten Fotos und einzelne Modellseiten. Technische Zahlen und Preise sind ausdrücklich illustrative Testdaten.
 - Katalog mit Filter, Sortierung, gespeichertem Auswahlzustand und direktem Modellvergleich.
 - Fahrzeugfinder mit transparenten Auswahlregeln für Budget, Sitzplätze und Priorität; unerfüllbare Anforderungen werden benannt.
-- Konfigurator mit Lackierung, Rädern, Interieur, Preisaufschlüsselung und angepasster Modellreichweite. Die gewählte Lackfarbe wird im Konfigurator und in der Garage visualisiert. Aus den Originalfotos mit KI-Unterstützung abgeleitete Freisteller und ein Browser-Farbshader erhalten Licht, Form und geschützte Glasbereiche; die Bildschirmfarben sind Näherungen. Räder und Interieur erscheinen in der Zusammenfassung.
+- Konfigurator mit Lackierung, Rädern, Interieur, Preisaufschlüsselung und angepasster Modellreichweite. Lackierung, Räder und Interieur erscheinen in der Auswahl und Preisübersicht; das Originalfoto bleibt unverändert.
 - Teilbare Konfigurationslinks, JSON-Export und browserlokale Garage mit Wiederherstellung und Löschbestätigung.
 - Reiseplanung zwischen zwölf europäischen Städten: öffentlicher OSRM-Routendienst mit OpenStreetMap-Daten, schematischer Routenverlauf, Energiebedarf, Ladestopps und Kostenrechnung.
 - Aktuelle Wetterdaten am Ziel von Open-Meteo, ausschließlich nach Klick. Externe Daten werden validiert; Fehler nicht als Live-Ergebnis ausgegeben.
@@ -58,7 +58,7 @@ npm test
 
 Statisch `dist/` bereitstellen. Alle Unterseiten besitzen eigene HTML-Dokumente. Für lokale manuelle Prüfung kann ein beliebiger statischer Webserver verwendet werden.
 
-**67 automatische Prüfungen bestanden.** Automatische Tests prüfen Konfigurationskombinationen, Preise in Eurocent, Energieerhaltung und Ladegrenzen, Eingabevalidierung, vier Sprachen, Speicherung, UI-Aktionen und Fehler-/Wettlaufszenarien. DOM-Tests ersetzen keine visuelle Browserprüfung. Eine abschließende mobile und Desktop-Sichtprüfung der veröffentlichten Version steht noch aus.
+**59 automatische Prüfungen bestanden.** Automatische Tests prüfen Konfigurationskombinationen, Preise in Eurocent, Energieerhaltung und Ladegrenzen, Eingabevalidierung, vier Sprachen, Speicherung, UI-Aktionen und Fehler-/Wettlaufszenarien. DOM-Tests ersetzen keine visuelle Browserprüfung. Eine abschließende mobile und Desktop-Sichtprüfung der veröffentlichten Version steht noch aus.
 
 ## Quellen und Zusammenarbeit
 
@@ -66,7 +66,7 @@ Statisch `dist/` bereitstellen. Alle Unterseiten besitzen eigene HTML-Dokumente.
 - Routen: [OSRM](https://project-osrm.org/), [API-Dokumentation](https://github.com/Project-OSRM/osrm-backend/blob/master/docs/http.md), [Nutzungsregeln](https://github.com/Project-OSRM/osrm-backend/wiki/Api-usage-policy).
 - Kartendaten: [© OpenStreetMap contributors, ODbL](https://www.openstreetmap.org/copyright). Die lokale Grafik zeigt eine schematische Koordinatenspur; der Link öffnet eine echte Karte beim Anbieter.
 - Wetter: [Open-Meteo](https://open-meteo.com/), CC BY 4.0; [API](https://open-meteo.com/en/docs), [kostenlose nichtkommerzielle Nutzung](https://open-meteo.com/en/pricing).
-- Fahrzeugfotos: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), über Wikimedia Commons; CC BY-SA 4.0 bzw. 3.0. Straßenfoto: Mirko Fabian, Unsplash-Lizenz. Autoren, Originalseiten und Lizenzen stehen sichtbar auf der [Projektseite](https://netaniya.github.io/Netaniya/motion-atelier/about/) sowie in [photo-credits.json](dist/assets/photo-credits.json). Die Originalfotos wurden nur in Größe und Format angepasst. Für den Konfigurator wurden separate Freisteller und blaue Grundlackierungen mit KI-Unterstützung abgeleitet; die Farbvorschau wird im Browser berechnet. Quellen, Änderungen und Share-Alike-Lizenzen: [paint-preview-credits.json](dist/assets/paint-preview-credits.json).
+- Fahrzeugfotos: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), über Wikimedia Commons; CC BY-SA 4.0 bzw. 3.0. Straßenfoto: Mirko Fabian, Unsplash-Lizenz. Autoren, Originalseiten und Lizenzen stehen sichtbar auf der [Projektseite](https://netaniya.github.io/Netaniya/motion-atelier/about/) sowie in [photo-credits.json](dist/assets/photo-credits.json). Nur Größen- und Formatkonvertierung; keine KI-Bildbearbeitung.
 - Film: [Tesla Loveday: „Energy“](https://commons.wikimedia.org/wiki/File:Tesla_Loveday-_%22Energy%22.webm), Atellani LLC, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Ausschnitt 40,6–43,3 s, auf 50 % verlangsamt mit Bildinterpolation, ohne Ton, verkleinert und neu kodiert. Kein Herstellerauftrag oder Sponsoring.
 - Musik: [„Dream Culture“](https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046), Kevin MacLeod (incompetech.com), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Ausschnitt 12,0–17,3 s, reduzierte Lautstärke sowie Ein- und Ausblendung; [vollständige Angaben](dist/assets/intro-music-credits.json). Wird zum Filmstart angefragt; der Browser entscheidet über Ton-Autoplay. Eine Ausschalt- bzw. Einschalt-Taste bleibt sichtbar.
 - [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope), Mikhail Sharanda und Mirko Velimirovic, [SIL Open Font License 1.1](dist/assets/fonts/OFL.txt).

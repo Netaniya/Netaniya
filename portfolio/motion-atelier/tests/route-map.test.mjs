@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {parseHTML} from 'linkedom';
-import {createRouteMap,mapCoordinates,loadLeaflet,TILE_URL} from '../dist/route-map.mjs?v=8';
+import {createRouteMap,mapCoordinates,loadLeaflet,TILE_URL} from '../dist/route-map.mjs?v=7';
 
 function fixture(){
  const {document}=parseHTML('<html><head></head><body><div id="map"></div><div id="fallback"></div><p id="status"></p><button id="retry"></button><button id="fit"></button></body></html>');

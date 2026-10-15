@@ -321,6 +321,3 @@ html{scroll-padding-top:190px}
  .film-arrival .arrival-label,[data-theme="dark"] .film-arrival .arrival-label{top:88px;font-size:.82rem}
  .sound-hint{bottom:64px;right:32px;left:auto;font-size:.52rem}
 }
-
-/* Interactive paint previews: original photographs elsewhere stay unchanged. */
-.paint-preview{position:relative;width:100%;height:100%;isolation:isolate}.paint-preview .paint-fallback,.paint-preview .paint-canvas{display:block;width:100%;height:100%;object-fit:contain}.paint-preview [hidden]{display:none!important}.paint-canvas{filter:drop-shadow(0 18px 12px rgba(0,0,0,.16))}.paint-status{position:absolute;bottom:0;left:10px;right:10px;text-align:center;font-size:.68rem;line-height:1.5;color:var(--muted);background:var(--paper);padding:5px 8px}.paint-status:empty{display:none}.paint-label{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;font-size:.8rem;margin:8px 0 12px;text-align:center}.paint-label strong{font-weight:500}.paint-label-swatch{width:17px;height:17px;border-radius:50%;background:var(--paint);border:1px solid #9aa7b3}.config-stage>.paint-preview{height:370px;margin:25px 0 0}.garage-item .paint-preview{height:100%}.garage-item .paint-status{font-size:.6rem}@media(max-width:760px){.config-stage>.paint-preview{height:260px;margin-top:16px}.paint-label{font-size:.75rem}.paint-status{font-size:.62rem}}

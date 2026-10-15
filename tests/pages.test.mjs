@@ -11,24 +11,23 @@ import {browserCopy,languages} from '../scripts/build-pages.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url)),site=path.join(root,'_site'),base='/Netaniya',motion=base+'/motion-atelier';
 const read=p=>fs.readFile(path.join(root,p),'utf8');
-const data=await import('../_site/motion-atelier/data.mjs?v=8'),core=await import('../_site/motion-atelier/core.mjs?v=8');
-const {translator}=await import('../_site/motion-atelier/i18n.mjs?v=8');
-const {createExperience}=await import('../_site/motion-atelier/experience.mjs?v=8');
-const {createRouteMap}=await import('../_site/motion-atelier/route-map.mjs?v=8');
-const {createPaintPreviews}=await import('../_site/motion-atelier/paint-preview.mjs?v=8');
+const data=await import('../_site/motion-atelier/data.mjs?v=7'),core=await import('../_site/motion-atelier/core.mjs?v=7');
+const {translator}=await import('../_site/motion-atelier/i18n.mjs?v=7');
+const {createExperience}=await import('../_site/motion-atelier/experience.mjs?v=7');
+const {createRouteMap}=await import('../_site/motion-atelier/route-map.mjs?v=7');
 const source=(await read('_site/motion-atelier/app.mjs')).replace(/^import .*?;\n/gm,''),html=await read('_site/motion-atelier/index.html');
 const original=await read('portfolio/motion-atelier/tests/ui.test.mjs');
 const bootText=original.slice(original.indexOf('function boot('),original.indexOf('\nconst tick='));
 assert(bootText.startsWith('function boot('));
-const boot=vm.runInNewContext('('+bootText+')',{parseHTML,Date,data,core,translator,createExperience,createRouteMap,createPaintPreviews,vm,source,html,assert,webcrypto,URL,URLSearchParams,Blob,Intl,AbortController});
+const boot=vm.runInNewContext('('+bootText+')',{parseHTML,Date,data,core,translator,createExperience,createRouteMap,vm,source,html,assert,webcrypto,URL,URLSearchParams,Blob,Intl,AbortController});
 const tick=async()=>{for(let i=0;i<12;i++)await Promise.resolve();};
 
 test('GitHub project base: all ten Motion pages and four languages render with valid links and photos',async()=>{
  for(const lang of languages)for(const local of data.ROUTES){
   const b=boot({path:motion+local,lang});assert.equal(b.document.documentElement.lang,lang);assert.equal(b.document.querySelectorAll('main h1').length,1,local);assert(!/undefined|NaN/.test(b.document.querySelector('main').textContent));
   if(local.startsWith('/models/'))assert(b.document.querySelector('main h1').textContent.includes(core.vehicle(local.split('/')[2]).name));
-  for(const node of b.document.querySelectorAll('a[href^="/"],img[src^="/"],[data-paint-src]')){
-   const href=node.getAttribute('href')??node.getAttribute('src')??node.getAttribute('data-paint-src');assert(href.startsWith(motion+'/'),href);const relative=href.split(/[?#]/)[0].slice(base.length+1);const target=path.join(site,relative,href.split(/[?#]/)[0].endsWith('/')?'index.html':'');assert((await fs.stat(target)).isFile(),href);
+  for(const node of b.document.querySelectorAll('a[href^="/"],img[src^="/"]')){
+   const href=node.getAttribute('href')??node.getAttribute('src');assert(href.startsWith(motion+'/'),href);const relative=href.split(/[?#]/)[0].slice(base.length+1);const target=path.join(site,relative,href.split(/[?#]/)[0].endsWith('/')?'index.html':'');assert((await fs.stat(target)).isFile(),href);
   }
  }
 });

@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {VEHICLES,PAINTS,WHEELS,INTERIORS,CITIES,LANGS,ROUTES} from '../dist/data.mjs?v=8';
-import {DICT} from '../dist/i18n.mjs?v=8';
-import {configuration,defaultConfig,validConfig,initialConfig,rememberConfig,readComparison,rememberComparison,encodeConfig,decodeConfig,planEnergy,haversine,recommend,validateGarage,loadState,fetchRoute,fetchWeather,readRoute,routePath,money,number} from '../dist/core.mjs?v=8';
+import {VEHICLES,PAINTS,WHEELS,INTERIORS,CITIES,LANGS,ROUTES} from '../dist/data.mjs?v=7';
+import {DICT} from '../dist/i18n.mjs?v=7';
+import {configuration,defaultConfig,validConfig,initialConfig,rememberConfig,readComparison,rememberComparison,encodeConfig,decodeConfig,planEnergy,haversine,recommend,validateGarage,loadState,fetchRoute,fetchWeather,readRoute,routePath,money,number} from '../dist/core.mjs?v=7';
 import {readFile,stat} from 'node:fs/promises';
 test('every complete configuration has a precise integer price and positive range',()=>{for(const v of VEHICLES)for(const p of PAINTS)for(const w of WHEELS)for(const i of INTERIORS){const c={model:v.id,paint:p.id,wheels:w.id,interior:i.id},r=configuration(c);assert.equal(r.price,v.price+p.price+w.price+i.price);assert(Number.isSafeInteger(r.price));assert.equal(r.range,Math.floor(v.battery/(v.consumption+w.extraConsumption)*100));assert.deepEqual(decodeConfig('?'+encodeConfig(c)),c);}});
 test('invalid configuration values rejected and URL input normalized',()=>{for(const k of ['model','paint','wheels','interior']){const c={...defaultConfig(),[k]:'<script>'};assert(!validConfig(c));assert.throws(()=>configuration(c));}assert.deepEqual(decodeConfig('?model=none&paint=no'),defaultConfig());assert(!encodeConfig({...defaultConfig(),price:1}).includes('price'));});

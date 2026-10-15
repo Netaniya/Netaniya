@@ -33,4 +33,4 @@ The original Worker implementation and its server endpoint remain in `portfolio/
 
 Seven deployment-contract tests cover 40 Motion page/language combinations, internal links and assets, vehicle detail pages, configuration calculations, garage saving, shared URLs, media paths, unchanged Leaflet files, browser-only Quality Lab scoring in all four languages, edited answers, report exports, translated downloads and the output allowlist. They use DOM doubles and do not claim real-browser rendering or visual QA.
 
-Motion Atelier retains its 67 checks. Request Desk and the Worker Quality Lab retain their existing test suites. Vehicle prices/specifications are illustrative; live routing, mapping and weather depend on their external providers. Browser autoplay restrictions still apply to intro music.
+Motion Atelier retains its original 59 checks. Request Desk and the Worker Quality Lab retain their existing test suites. Vehicle prices/specifications are illustrative; live routing, mapping and weather depend on their external providers. Browser autoplay restrictions still apply to intro music.
