@@ -30,7 +30,7 @@ Nach einer Routenberechnung lädt die Anwendung lokal bereitgestelltes **Leaflet
 - Drei reale Fahrzeugmodelle auf echten Fotos und einzelne Modellseiten. Technische Zahlen und Preise sind ausdrücklich illustrative Testdaten.
 - Katalog mit Filter, Sortierung, gespeichertem Auswahlzustand und direktem Modellvergleich.
 - Fahrzeugfinder mit transparenten Auswahlregeln für Budget, Sitzplätze und Priorität; unerfüllbare Anforderungen werden benannt.
-- Konfigurator mit Lackierung, Rädern, Interieur, Preisaufschlüsselung und angepasster Modellreichweite. Lackierung, Räder und Interieur erscheinen in der Auswahl und Preisübersicht; das Originalfoto bleibt unverändert.
+- Konfigurator mit Rädern, Interieur, Preisaufschlüsselung und angepasster Modellreichweite. Räder und Interieur erscheinen in der Auswahl und Preisübersicht; das Originalfoto bleibt unverändert. Keine Lackauswahl; ältere gespeicherte Lackoptionen erzeugen keinen Aufpreis.
 - Teilbare Konfigurationslinks, JSON-Export und browserlokale Garage mit Wiederherstellung und Löschbestätigung.
 - Reiseplanung zwischen zwölf europäischen Städten: öffentlicher OSRM-Routendienst mit OpenStreetMap-Daten, schematischer Routenverlauf, Energiebedarf, Ladestopps und Kostenrechnung.
 - Aktuelle Wetterdaten am Ziel von Open-Meteo, ausschließlich nach Klick. Externe Daten werden validiert; Fehler nicht als Live-Ergebnis ausgegeben.

@@ -29,7 +29,7 @@ After calculating a route, locally hosted **Leaflet 1.9.4** displays validated O
 
 Filtering, sorting, model comparison, explained matching, configurable pricing in integer eurocents, range estimates, shareable configuration URLs, JSON export and browser-local garage persistence. Public OSRM routing and user-requested Open-Meteo weather are validated and clearly distinguished from an explicit offline estimate.
 
-Tesla Model S, Model Y and Cybertruck are shown in real photographs. All technical numbers, options and prices are illustrative application fixtures. Range is battery capacity divided by model consumption, not WLTP. Paint, wheels and interior selections update the summary and demo price while the original photo remains unchanged. There is no dealer, reservation, payment, live LLM or manufacturer affiliation.
+Tesla Model S, Model Y and Cybertruck are shown in real photographs. All technical numbers, options and prices are illustrative application fixtures. Range is battery capacity divided by model consumption, not WLTP. Wheel and interior selections update the summary and demo price while the original photo remains unchanged. Paint selection is not offered; older saved paint options do not add a surcharge. There is no dealer, reservation, payment, live LLM or manufacturer affiliation.
 
 Charging estimates assume constant consumption and average charging power, with charging up to 80% and a selected arrival reserve. No live chargers, availability, traffic, charging curves or weather-based consumption model. Energy prices are user assumptions. Offline estimates use great-circle distance × 1.25 and 80 km/h, explicitly labelled as non-road-route estimates.
 

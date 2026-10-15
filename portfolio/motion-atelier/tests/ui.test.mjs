@@ -5,7 +5,7 @@ function boot({path='/',search='',lang='de',theme=null,rawGarage=null,reduced=tr
  vm.runInNewContext(source,ctx,{filename:'app.mjs'});return {window,document,ctx,memory,timers,media,video,sound,audio,clock,revealObservers,navigations,change(sel,value){const el=document.querySelector(sel);assert(el,sel);Object.defineProperty(el,'value',{value,configurable:true});el.dispatchEvent(new window.Event('change',{bubbles:true}));},click(sel){const el=document.querySelector(sel);assert(el,sel);el.dispatchEvent(new window.Event('click',{bubbles:true}));},submit(sel){const el=document.querySelector(sel);assert(el,sel);el.dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true}));}};}
 const tick=async()=>{for(let i=0;i<8;i++)await Promise.resolve();};
 test('all ten pages render in all four languages with one h1 and working internal links',async()=>{for(const lang of data.LANGS)for(const path of data.ROUTES){const b=boot({lang,path});assert.equal(b.document.documentElement.lang,lang);assert.equal(b.document.querySelectorAll('main h1').length,1,lang+path);assert.equal(b.document.querySelector('.project-meta strong').textContent,'Natalie (Netaniya) Ragulina');assert(b.document.querySelector('[data-munich-clock]').textContent.includes('14:00:00'));const text=b.document.querySelector('main').textContent;assert(!/undefined|NaN/.test(text),lang+path);if(lang==='de'||lang==='en')assert(!/[А-Яа-яЁёІіЇїЄє]/.test(text),lang+path);for(const a of b.document.querySelectorAll('a[href^="/"]')){const href=a.getAttribute('href').split(/[?#]/)[0];if(href.startsWith('/assets/'))assert((await stat(new URL('../dist'+href,import.meta.url))).isFile(),href);else assert(data.ROUTES.includes(href),href);}}});
-test('language switch translates built-in content, vehicle labels, units and title',()=>{const b=boot({path:'/configure/'});b.change('#language','uk');assert.equal(b.document.documentElement.lang,'uk');assert(b.document.querySelector('main').textContent.includes('Колір кузова'));assert(b.document.title.includes('Конфігуратор'));assert.equal(b.memory.get('motion-language'),'uk');b.change('#language','ru');assert(b.document.querySelector('main').textContent.includes('Итог')||b.document.querySelector('main').textContent.includes('итоговая'));});
+test('language switch translates built-in content, vehicle labels, units and title',()=>{const b=boot({path:'/configure/'});b.change('#language','uk');assert.equal(b.document.documentElement.lang,'uk');assert(b.document.querySelector('main').textContent.includes('Колеса'));assert(b.document.title.includes('Конфігуратор'));assert.equal(b.memory.get('motion-language'),'uk');b.change('#language','ru');assert(b.document.querySelector('main').textContent.includes('Итог')||b.document.querySelector('main').textContent.includes('итоговая'));});
 test('filter hides unselected body styles and comparison follows selected models',()=>{const b=boot({path:'/collection/'});b.change('#vehicle-filter','crossover');assert.equal(b.document.querySelectorAll('.vehicle-card').length,1);assert.match(b.document.querySelector('.vehicle-card h3').textContent,/Tesla Model Y/);b.change('#vehicle-filter','pickup');assert.equal(b.document.querySelectorAll('.vehicle-card').length,1);assert.match(b.document.querySelector('.vehicle-card h3').textContent,/Tesla Cybertruck/);b.change('#vehicle-filter','all');for(const id of ['gt-01','cross-02']){const el=b.document.querySelector(`input[name="compare"][value="${id}"]`);el.checked=true;el.dispatchEvent(new b.window.Event('change',{bubbles:true}));}assert.equal(b.document.querySelectorAll('table thead th').length,3);});
 test('configuration changes price and range; saving round-trips through garage storage',()=>{const b=boot({path:'/configure/'}),before=b.document.querySelector('.total strong').textContent;b.change('input[name="wheels"][value="sport"]','sport');assert.notEqual(b.document.querySelector('.total strong').textContent,before);b.click('[data-action="save"]');const raw=JSON.parse(b.memory.get('motion-garage'));assert.equal(raw.length,1);assert.equal(raw[0].config.wheels,'sport');b.click('[data-action="save"]');assert.equal(JSON.parse(b.memory.get('motion-garage')).length,1);const g=boot({path:'/garage/',rawGarage:JSON.stringify(raw),lang:'de'});assert.equal(g.document.querySelectorAll('.garage-item').length,1);assert(g.document.querySelector('.garage-item').textContent.includes('Sport 21'));g.click('[data-action="remove"]');assert.equal(JSON.parse(g.memory.get('motion-garage')).length,0);});
 test('corrupt storage remains untouched when saving temporary configuration',()=>{const b=boot({path:'/configure/',rawGarage:'{broken'});b.click('[data-action="save"]');assert.equal(b.memory.get('motion-garage'),'{broken');assert(b.document.querySelector('.storage-banner'));});
@@ -25,7 +25,7 @@ test('replaying driving film from below the hero scrolls back before opening',()
 
 test('paired headings use separate text lines without a leading dash in every language',()=>{for(const lang of data.LANGS){const b=boot({path:'/collection/',lang});const title=b.document.querySelector('main h1');const lines=[...title.querySelectorAll('.heading-line')].map(x=>x.textContent);assert.equal(lines.length,2,lang);assert(!/[—–]/.test(title.textContent),lang);assert(lines.every(line=>line.trim().length>0),lang);if(lang==='ru')assert.deepEqual(lines,['Три характера','Твой выбор']);for(const path of data.ROUTES){for(const h of boot({path,lang}).document.querySelectorAll('main .balanced-heading'))assert(!/[—–]/.test(h.textContent),lang+path);}}});
 
-test('actual photos remain unchanged by paint selection and all published photos have credit links',()=>{for(const lang of data.LANGS)for(const path of data.ROUTES){const b=boot({path,lang});for(const photo of b.document.querySelectorAll('main img')){assert.match(photo.getAttribute('src'),/^\/assets\/real-[a-z-]+\.webp$/);assert(!photo.getAttribute('style'));assert(Number(photo.getAttribute('width'))>0);assert(Number(photo.getAttribute('height'))>0);}}const b=boot({path:'/configure/'});const before=b.document.querySelector('.config-car').getAttribute('src');b.change('input[name="paint"][value="ruby"]','ruby');assert.equal(b.document.querySelector('.config-car').getAttribute('src'),before);assert(!b.document.querySelector('.config-car').getAttribute('style'));const about=boot({path:'/about/'});const credits=about.document.querySelectorAll('.photo-credit-list>div');assert.equal(credits.length,4);for(const credit of credits)assert.equal(credit.querySelectorAll('a[href^="https://"]').length,2);});
+test('all published photos remain original and have credit links',()=>{for(const lang of data.LANGS)for(const path of data.ROUTES){const b=boot({path,lang});for(const photo of b.document.querySelectorAll('main img')){assert.match(photo.getAttribute('src'),/^\/assets\/real-[a-z-]+\.webp$/);assert(!photo.getAttribute('style'));assert(Number(photo.getAttribute('width'))>0);assert(Number(photo.getAttribute('height'))>0);}}const b=boot({path:'/configure/'});assert(!b.document.querySelector('.paint-options'));assert(!b.document.querySelector('input[name="paint"]'));assert(!b.document.querySelector('.config-car').getAttribute('style'));const about=boot({path:'/about/'});const credits=about.document.querySelectorAll('.photo-credit-list>div');assert.equal(credits.length,4);for(const credit of credits)assert.equal(credit.querySelectorAll('a[href^="https://"]').length,2);});
 
 
 test('returning visitors still see the film and mobile viewport changes do not close it',()=>{
@@ -82,13 +82,13 @@ test('comparison tray reflects selected models, survives filtering and clears pe
 });
 
 test('last configuration returns on a fresh visit and an explicit configuration link takes priority',()=>{
- const b=boot({path:'/configure/'});b.change('input[name="paint"][value="ruby"]','ruby');b.change('input[name="wheels"][value="sport"]','sport');
+ const b=boot({path:'/configure/'});b.change('input[name="interior"][value="dark"]','dark');b.change('input[name="wheels"][value="sport"]','sport');
  const raw=b.memory.get('motion-last-config');const returned=boot({path:'/configure/',rawLastConfig:raw});
- assert(returned.document.querySelector('input[name="paint"][value="ruby"][checked]'));
+ assert(returned.document.querySelector('input[name="interior"][value="dark"][checked]'));
  assert(returned.document.querySelector('input[name="wheels"][value="sport"][checked]'));
  const linked=boot({path:'/configure/',search:'?model=cross-02&paint=silver&wheels=aero&interior=dark',rawLastConfig:raw});
- assert(linked.document.querySelector('input[name="paint"][value="silver"][checked]'));
- linked.click('[data-action="reset-choice"]');assert(linked.document.querySelector('input[name="paint"][value="ocean"][checked]'));
+ assert.equal(linked.document.querySelector('select[name="model"]').value,'cross-02');
+ linked.click('[data-action="reset-choice"]');assert(linked.document.querySelector('input[name="wheels"][value="aero"][checked]'));
 });
 
 test('mobile menu changes in place, exposes links only while open and closes on Escape',()=>{
@@ -151,4 +151,24 @@ test('Munich clock ticks without replacing the page and follows daylight-saving 
  const b=boot({path:'/configure/',lang:'de'});const main=b.document.querySelector('main');assert(b.document.querySelector('[data-munich-clock]').textContent.includes('14:00:00'));
  b.clock.now+=1000;[...b.timers.values()].find(x=>x.ms===1000).fn();assert(b.document.querySelector('[data-munich-clock]').textContent.includes('14:00:01'));assert.equal(b.document.querySelector('main'),main);
  b.clock.now=Date.parse('2026-12-15T12:00:00Z');[...b.timers.values()].find(x=>x.ms===1000).fn();assert(b.document.querySelector('[data-munich-clock]').textContent.includes('13:00:00'));assert(b.document.querySelector('[data-munich-clock]').textContent.includes('15.12.2026'));
+});
+
+test('removed paint controls cannot leave a hidden surcharge in links, remembered choices or garage totals',()=>{
+ for(const lang of data.LANGS)for(const v of data.VEHICLES){
+  const legacy={model:v.id,paint:'ruby',wheels:'sport',interior:'dark'};
+  const expected=core.money(v.price+data.WHEELS.find(x=>x.id==='sport').price+data.INTERIORS.find(x=>x.id==='dark').price,lang);
+  for(const source of [{search:'?'+core.encodeConfig(legacy)},{rawLastConfig:JSON.stringify(legacy)}]){
+   const b=boot({path:'/configure/',lang,...source});
+   assert.equal(b.document.querySelectorAll('input[name="paint"],.paint-options,.paint-choice').length,0);
+   assert.equal(b.document.querySelector('.config-car').getAttribute('src'),'/assets/'+v.image);
+   assert.equal(b.document.querySelector('.total strong').textContent,expected);
+   b.click('[data-action="save"]');
+   assert.equal(JSON.parse(b.memory.get('motion-garage'))[0].config.paint,'ocean');
+  }
+  const stored=JSON.stringify([{id:'legacy',savedAt:'2026-10-15T10:00:00Z',config:legacy}]);
+  const g=boot({path:'/garage/',lang,rawGarage:stored});
+  assert.equal(g.document.querySelector('.garage-price').textContent,expected);
+  assert(!g.document.querySelector('.garage-body').textContent.includes(translator(lang)('ruby')));
+  assert.equal(g.memory.get('motion-garage'),stored);
+ }
 });
