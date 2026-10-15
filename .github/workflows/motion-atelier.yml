@@ -1,0 +1,26 @@
+name: Motion Atelier checks
+on:
+  push:
+    paths: ["portfolio/motion-atelier/**", ".github/workflows/motion-atelier.yml"]
+  pull_request:
+    paths: ["portfolio/motion-atelier/**", ".github/workflows/motion-atelier.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portfolio/motion-atelier
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: portfolio/motion-atelier/package-lock.json
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm run check
+      - run: npm test

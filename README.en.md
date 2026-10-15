@@ -32,6 +32,18 @@ Compare saved answers against transparent criteria and export reproducible repor
 
 **[Live demo without sign-in](https://ai-quality-lab-neta26.wellolm4.chatgpt.site) · [Code & documentation](portfolio/ai-quality-lab/README.en.md)**
 
+### Motion Atelier
+A multi-page automotive application: discover, compare and configure original electric concept vehicles.
+
+[![Motion Atelier – original concept vehicle](portfolio/motion-atelier/dist/assets/gt-blue.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
+
+- **10 HTML pages · four languages · 30 automated checks** · slow, skippable vehicle arrival.
+- Rule-based finder, configuration pricing, shareable links, local garage and energy planning.
+- User-requested OSRM road routes and Open-Meteo weather; estimates and fictional specifications are labelled.
+- **JavaScript ES modules · HTML · CSS**. Final published desktop and mobile visual QA is still outstanding.
+
+**[Live demo without sign-in](https://motion-atelier-neta26.wellolm4.chatgpt.site) · [Code & documentation](portfolio/motion-atelier/README.en.md)**
+
 ### Neta25X · early interface prototype
 [A responsive interface with custom visual identity](https://github.com/Netaniya/Neta25X), built with HTML, TailwindCSS and JavaScript. Newer full-stack and AI work is under private development.
 

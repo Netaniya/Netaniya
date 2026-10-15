@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://motion-atelier-neta26.wellolm4.chatgpt.site/sitemap.xml
