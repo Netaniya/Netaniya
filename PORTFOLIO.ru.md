@@ -12,7 +12,7 @@
 
 [![AI Request Desk — немецкий интерфейс](assets/screenshots/request-desk.png)](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
 
-JavaScript, HTML, CSS; четыре языка интерфейса; 17 автоматических проверок. Данные учебные, анализ выполняется по открытым правилам.
+JavaScript, HTML, CSS; четыре языка интерфейса; 21 автоматическая проверка. Данные учебные, анализ выполняется по открытым правилам.
 
 **[Открыть без входа](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Описание и код](portfolio/ai-request-desk/README.ru.md)**
 
@@ -21,7 +21,7 @@ JavaScript, HTML, CSS; четыре языка интерфейса; 17 авто
 
 [![AI Quality Lab — немецкий интерфейс](assets/screenshots/quality-lab.png)](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)
 
-Публичная версия: JavaScript Worker, HTML, CSS и отдельный Python-модуль; четыре языка; 23 автоматические проверки.
+Публичная версия: JavaScript Worker, HTML, CSS и отдельный Python-модуль; четыре языка; 26 автоматических проверок.
 
 Добавлен **[открытый пример React/TypeScript + FastAPI](portfolio/ai-quality-lab/fullstack/README.ru.md)**. Он запускается локально, проверяет ответы через Python API и содержит серверный адаптер для настоящей модели. Прошли 17 проверок API и 8 проверок клиента. Реальный вызов модели ещё не проверен: нужен настроенный API-доступ. Публичная демонстрация продолжает работать с сохранёнными примерами.
 

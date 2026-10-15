@@ -5,7 +5,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-ENGINE_VERSION = "1.0.1"
+ENGINE_VERSION = "1.1.0"
 JS_WHITESPACE = "\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff"
 
 def output_valid(output):
@@ -49,7 +49,17 @@ def grade(item, output):
     passed_count = sum(c["pass"] for c in checks)
     return {"case_id": item["id"], "score": passed_count / len(checks), "passed": passed_count == len(checks), "checks": checks}
 
+def dataset_for_language(dataset, lang):
+    if lang not in ("de", "en", "ru", "uk"):
+        raise ValueError("invalid_language")
+    if dataset["language"] != "de" and dataset["language"] != lang:
+        raise ValueError("dataset_language")
+    cases = [{**{k:v for k,v in c.items() if k != "translations"}, **c.get("translations", {}).get(lang, {})} for c in dataset["cases"]]
+    return {**dataset, "id":dataset["id"].replace("-de-", "-"+lang+"-"), "language":lang, "cases":cases}
+
 def evaluate(payload, dataset):
+    if isinstance(payload, dict):
+        dataset = dataset_for_language(dataset, payload.get("language", dataset["language"]))
     if not isinstance(payload, dict) or not isinstance(payload.get("case_ids"), list) or not isinstance(payload.get("outputs"), dict):
         raise ValueError("invalid_input")
     ids = payload["case_ids"]
@@ -62,7 +72,7 @@ def evaluate(payload, dataset):
     for candidate in ("a", "b"):
         rows = [{**grade(c, payload["outputs"][candidate][c["id"]]), "weight": c["weight"]} for c in dataset["cases"] if c["id"] in ids]
         results[candidate] = {"score": sum(r["score"] * r["weight"] for r in rows) / sum(r["weight"] for r in rows), "passed": sum(r["passed"] for r in rows), "total": len(rows), "rows": rows}
-    return {"schema_version": 1, "engine_version": ENGINE_VERSION, "dataset_id": dataset["id"], "source": "saved_outputs", "model_calls": 0, "model_latency_ms": None, "model_cost_eur": None, "results": results}
+    return {"schema_version": 1, "engine_version": ENGINE_VERSION, "dataset_id": dataset["id"], "language": dataset["language"], "source": "saved_outputs", "model_calls": 0, "model_latency_ms": None, "model_cost_eur": None, "results": results}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -76,7 +86,7 @@ def main():
     payload = json.loads(args.input.read_text(encoding="utf-8")) if args.input else {"case_ids": [c["id"] for c in dataset["cases"]], "outputs": {k: {c["id"]: c["outputs"][k] for c in dataset["cases"]} for k in ("a", "b")}}
     started = time.perf_counter()
     report = evaluate(payload, dataset)
-    report.update({"outputs": payload["outputs"], "case_ids": payload["case_ids"], "created_at": datetime.now(timezone.utc).isoformat(), "validation_ms": (time.perf_counter() - started) * 1000, "runtime": "python"})
+    report.update({"language":payload.get("language",dataset["language"]), "outputs": payload["outputs"], "case_ids": payload["case_ids"], "created_at": datetime.now(timezone.utc).isoformat(), "validation_ms": (time.perf_counter() - started) * 1000, "runtime": "python"})
     text = json.dumps(report, ensure_ascii=False, indent=2)
     if args.output:
         args.output.write_text(text + "\n", encoding="utf-8")

@@ -60,8 +60,11 @@ Die überarbeitete Oberfläche verwendet eine kompakte Arbeitsansicht, lesbare B
 
 Der Python-Evaluator verwendet dieselben Regeln für äußere Unicode-Leerzeichen und die Antwortlänge in UTF-16-Einheiten wie die Web-Version. Exportierte Berichte sowie die herunterladbaren Python-Dateien werden durch einen eigenständigen Replay-Test geprüft.
 
-23 automatische Prüfungen bestanden. Natalie prüfte die erste Gestaltung auf dem Smartphone und verlangte eine klarere Typografie sowie eine kompakte Arbeitsansicht ohne dekorative Punkte; die Änderungen wurden mit KI-Unterstützung umgesetzt.
+26 automatische Prüfungen bestanden. Natalie prüfte die erste Gestaltung auf dem Smartphone und verlangte eine klarere Typografie sowie eine kompakte Arbeitsansicht ohne dekorative Punkte; die Änderungen wurden mit KI-Unterstützung umgesetzt.
 
 ## React / TypeScript und FastAPI
 
 [Separat ausführbare Implementierung](fullstack/README.md): React-Client, Python/FastAPI-API, gemeinsame Prüfkriterien und optionale Generierung über die serverseitige Responses API. 17 Backend- und 8 Client-Tests bestanden. Ein echter Modellaufruf ist noch nicht verifiziert. Die öffentliche Worker-Demo behält ihren Modus mit gespeicherten Beispielen.
+
+## Vier vollständige Testkataloge
+Titel, Aufgaben, Beispielantworten und sprachabhängige Prüfregeln folgen der gewählten Sprache. Berichte enthalten Sprache und Datensatz-ID; der heruntergeladene Katalog passt zur Auswahl. Eigene Antworten bleiben erhalten. Nach einem Sprachwechsel ist ein neuer Prüflauf erforderlich. Python und JavaScript liefern in allen vier Sprachen dieselben fachlichen Ergebnisse.

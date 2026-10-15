@@ -47,6 +47,9 @@ python3 -m http.server 8080 --directory dist
 node --test test-engine.cjs test-ui.cjs
 ```
 
-**17 local automated checks passed:** comparison, approval gating, failure/retry, languages, persistence, stale-state protection and DOM interactions. DOM tests use a test double and do not replace comprehensive browser QA. The owner tested the core workflow on a phone.
+**21 local automated checks passed:** comparison, approval gating, failure/retry, languages, persistence, stale-state protection and DOM interactions. DOM tests use a test double and do not replace comprehensive browser QA. The owner tested the core workflow on a phone.
 
 © 2026 Natalie Ragulina (Netaniya)
+
+## Language switching verified
+Built-in demo data follows German, English, Russian and Ukrainian, including saved sessions. Custom text and approved responses remain intact.

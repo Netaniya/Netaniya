@@ -47,6 +47,9 @@ python3 -m http.server 8080 --directory dist
 node --test test-engine.cjs test-ui.cjs
 ```
 
-**17 lokale automatische Prüfungen bestanden:** Vergleich, Freigabesperre, Fehler/Wiederholung, Sprachwechsel, Speicherung, veraltete Daten und DOM-Interaktionen. DOM-Prüfungen verwenden ein Test-Double und ersetzen keine vollständige Browser-Prüfung. Die Eigentümerprüfung des Kernablaufs wurde auf einem Smartphone durchgeführt.
+**21 lokale automatische Prüfungen bestanden:** Vergleich, Freigabesperre, Fehler/Wiederholung, Sprachwechsel, Speicherung, veraltete Daten und DOM-Interaktionen. DOM-Prüfungen verwenden ein Test-Double und ersetzen keine vollständige Browser-Prüfung. Die Eigentümerprüfung des Kernablaufs wurde auf einem Smartphone durchgeführt.
 
 © 2026 Natalie Ragulina (Netaniya)
+
+## Sprachwechsel geprüft
+Demo-Daten folgen Deutsch, Englisch, Russisch und Ukrainisch, auch nach Speicherung und erneutem Öffnen. Eigene Texte und bereits freigegebene Antworten bleiben erhalten.

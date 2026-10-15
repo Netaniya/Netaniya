@@ -1,4 +1,10 @@
-export const ENGINE_VERSION = '1.0.1';
+export const ENGINE_VERSION = '1.1.0';
+export function datasetForLanguage(dataset,lang=dataset.language||'de') {
+  if(!['de','en','ru','uk'].includes(lang))throw Error('invalid_language');
+  if(dataset.language===lang&&!dataset.cases.some(c=>c.translations))return dataset;
+  if(dataset.language!=='de'&&dataset.language!==lang)throw Error('dataset_language');
+  return {...dataset,id:dataset.id.replace(/-de-/,`-${lang}-`),language:lang,cases:dataset.cases.map(({translations,...c})=>({...c,...(translations?.[lang]||{})}))};
+}
 const plain = x => x !== null && typeof x === 'object' && !Array.isArray(x);
 const same = (a,b) => typeof a === typeof b && JSON.stringify(a) === JSON.stringify(b);
 export function grade(item, output) {
@@ -30,6 +36,7 @@ export function validateInput(payload, dataset) {
   return payload;
 }
 export function evaluate(payload, dataset) {
+  dataset=datasetForLanguage(dataset,payload?.language||dataset.language||'de');
   validateInput(payload,dataset);
   const cases = dataset.cases.filter(c=>payload.case_ids.includes(c.id));
   const results = {};
@@ -38,5 +45,5 @@ export function evaluate(payload, dataset) {
     const weight = rows.reduce((s,r)=>s+r.weight,0);
     results[candidate]={score:rows.reduce((s,r)=>s+r.score*r.weight,0)/weight,passed:rows.filter(r=>r.passed).length,total:rows.length,rows};
   }
-  return {schema_version:1,engine_version:ENGINE_VERSION,dataset_id:dataset.id,source:'saved_outputs',model_calls:0,model_latency_ms:null,model_cost_eur:null,results};
+  return {schema_version:1,engine_version:ENGINE_VERSION,dataset_id:dataset.id,language:dataset.language,source:'saved_outputs',model_calls:0,model_latency_ms:null,model_cost_eur:null,results};
 }

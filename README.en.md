@@ -13,7 +13,7 @@ Process requests, compare invoice data and review editable drafts before approva
 [![AI Request Desk – German interface](assets/screenshots/request-desk.png)](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
 
 - Invoice checks, editable drafts, state history, failure recovery and browser-local persistence.
-- **JavaScript · HTML · CSS** · four UI languages · **17 automated checks**.
+- **JavaScript · HTML · CSS** · four UI languages · **21 automated checks**.
 - Learning project with fictional data and transparent rules; the public demo has no live LLM.
 
 **[Live demo without sign-in](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Code & documentation](portfolio/ai-request-desk/README.en.md)**
@@ -24,7 +24,7 @@ Compare saved answers against transparent criteria and export reproducible repor
 [![AI Quality Lab – German interface](assets/screenshots/quality-lab.png)](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)
 
 - Eight cases, editable variants, weighted scores and inspectable checks.
-- **JavaScript Worker · HTML · CSS · Python evaluator** · four UI languages · **23 automated checks**.
+- **JavaScript Worker · HTML · CSS · Python evaluator** · four UI languages · **26 automated checks**.
 - Also available: a **[React/TypeScript client with a FastAPI backend](portfolio/ai-quality-lab/fullstack/README.en.md)**, runnable locally, including an optional server-side Responses API adapter. **17 backend and 8 client tests** passed; a real model call has not yet been verified.
 - The public Worker demo evaluates saved samples and needs no API key.
 

@@ -37,8 +37,11 @@ The revised interface uses a compact workspace, readable labels and mobile test 
 
 Python uses the same Unicode trimming and UTF-16 response length limits as the web evaluator. Tests cover the actual report download payload, standalone replay using downloaded files, and continued comparison/export when local storage is blocked.
 
-23 automated checks passed. Natalie reviewed the initial appearance on a phone and requested clearer typography and a compact workspace without decorative dots; the changes were implemented with AI assistance.
+26 automated checks passed. Natalie reviewed the initial appearance on a phone and requested clearer typography and a compact workspace without decorative dots; the changes were implemented with AI assistance.
 
 ## React / TypeScript and FastAPI
 
 [Separately runnable implementation](fullstack/README.en.md): a React client, Python/FastAPI API, shared evaluation criteria and optional server-side Responses API generation. 17 backend and 8 client tests passed. A real model request has not yet been verified. The public Worker demo retains its saved-example workflow.
+
+## Four complete test corpora
+Titles, tasks, sample answers and language-specific check rules follow the selected language. Reports include language and dataset ID; the downloaded corpus matches the selection. Custom answers are preserved. Rerun after switching language. Python and JavaScript produce equivalent results in all four languages.

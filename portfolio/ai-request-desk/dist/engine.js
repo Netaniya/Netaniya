@@ -21,7 +21,8 @@
     const matches=[...amountText.matchAll(/(?:€\s*([0-9][0-9.,]*)|(?<![\d.,])([0-9][0-9.,]*)\s*(?:EUR\b|Euro\b|€))/gi)];
     // Reject unsupported number formats rather than interpreting only a suffix.
     const raw=matches.map(x=>x[1]||x[2]);
-    const valid=raw.every(x=>/^\d{1,6}(?:[.,]\d{1,2})?$/.test(x));
+    const negative=/(?:-\s*\d[\d.,]*\s*(?:EUR\b|Euro\b|€)|€\s*-\s*\d)/i.test(amountText);
+    const valid=!negative&&raw.every(x=>/^\d{1,6}(?:[.,]\d{1,2})?$/.test(x));
     const values=valid?[...new Set(raw.map(x=>Math.round(Number(x.replace(',','.'))*100)))]:[];
     const amount=values.length===1?values[0]:null;
     return {kind:!record?'unknown':values.length>1?'ambiguous':amount===null?'noamount':amount===record.amount?'match':'mismatch',invoiceId:ids[0],amount,record:record?{...record}:null};
@@ -50,6 +51,9 @@
     ru:[['Проверка суммы · DEMO-104','Здравствуйте, в счёте DEMO-104 указано 179 EUR. Пожалуйста, проверьте сумму.'],['Вопрос · DEMO-205','В счёте DEMO-205 указано 89 EUR. У меня вопрос об услуге.'],['Счёт без номера','Сумма в моём счёте кажется неправильной. Можете проверить?']],
     uk:[['Перевірка суми · DEMO-104','Добрий день, у рахунку DEMO-104 зазначено 179 EUR. Будь ласка, перевірте суму.'],['Питання · DEMO-205','У рахунку DEMO-205 зазначено 89 EUR. У мене питання щодо послуги.'],['Рахунок без номера','Сума в моєму рахунку здається неправильною. Можете перевірити?']]
   };
-  function seed(lang='de'){language(lang);return samples[lang].map(([s,b],i)=>create(s,b,'de','sample-'+i));}
-  return {LANGS,INVOICES,create,invoiceCheck,process,makeDraft,resultText,setDraft,setReplyLanguage,approve,defer,serialize,restore,seed};
+  function sampleIndex(r){const m=/^sample-([0-2])$/.exec(r.id);if(!m)return -1;const i=Number(m[1]);return LANGS.some(l=>samples[l][i][0]===r.subject&&samples[l][i][1]===r.body)?i:-1;}
+  function sampleContent(r,lang){language(lang);const i=sampleIndex(r);return i<0?{subject:r.subject,body:r.body}:{subject:samples[lang][i][0],body:samples[lang][i][1]};}
+  function localizeSamples(rows,lang){language(lang);for(const r of rows){if(sampleIndex(r)<0)continue;Object.assign(r,sampleContent(r,lang));const edited=r.events.some(e=>['draft_edited','reply_language'].includes(e.action));if(r.status!=='approved'&&!edited){r.replyLang=lang;if(r.analysis){r.draft=makeDraft(r,lang);r.analysis.originalDraft=r.draft;}}}return rows;}
+  function seed(lang='de'){language(lang);return samples[lang].map(([s,b],i)=>create(s,b,lang,'sample-'+i));}
+  return {LANGS,INVOICES,create,invoiceCheck,process,makeDraft,resultText,setDraft,setReplyLanguage,approve,defer,serialize,restore,seed,sampleContent,localizeSamples};
 });

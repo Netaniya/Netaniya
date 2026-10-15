@@ -1,6 +1,6 @@
 // DOM interaction checks without a browser renderer. Visual browser QA is separate.
 const test=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const vm=require('node:vm');const E=require('./dist/engine.js');
-function setup(){
+function setup(saved={}){
  const ids=new Map();
  class Element{
   constructor(tag){this.tagName=tag;this.children=[];this.value='';this.hidden=false;this.disabled=false;this.checked=false;this.attributes={};this._text='';this._id='';}
@@ -12,7 +12,7 @@ function setup(){
  const html=fs.readFileSync('dist/index.html','utf8');
  for(const m of html.matchAll(/<(\w+)[^>]*\bid="([^"]+)"[^>]*>/g)){const e=new Element(m[1]);e.id=m[2]}
  ids.get('filter').value='all';ids.get('create-lang').value='de';
- const data=new Map(),storage={getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)};
+ const data=new Map(Object.entries(saved)),storage={getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)};
  const context={DeskEngine:E,document:{getElementById:id=>ids.get(id)||null,createElement:tag=>new Element(tag),documentElement:{}},localStorage:storage,console,Intl,Date,JSON,Blob,URL,confirm:()=>true,innerWidth:390,setTimeout:()=>1,clearTimeout:()=>{},window:{addEventListener(){}},crypto:globalThis.crypto};
  vm.createContext(context);vm.runInContext(fs.readFileSync('dist/ui.js','utf8'),context);
  return {ids,data,context,run:s=>vm.runInContext(s,context)};
@@ -22,3 +22,6 @@ test('UI approval requires checked evidence and persists edited answer',()=>{con
 test('failure UI retains request, removes approval and supports retry',()=>{const x=setup();x.run('mutate(selected,r=>E.process(r,{fail:true}))');assert.ok(x.ids.get('detail').textContent.includes(x.run("t('errorNote')")));assert.equal(E.restore(x.data.get('ai-request-desk-v2'))[0].status,'error');x.run('mutate(selected,r=>E.process(r))');assert.equal(x.ids.get('approve-button').disabled,true)});
 test('creating a request and switching UI language leaves response language independent',()=>{const x=setup();x.ids.get('subject').value='New example';x.ids.get('body').value='DEMO-104 179 EUR';x.ids.get('create-lang').value='en';x.ids.get('request-form').onsubmit({preventDefault(){},target:{reset(){}}});assert.equal(E.restore(x.data.get('ai-request-desk-v2'))[0].replyLang,'en');x.ids.get('ui-lang').value='uk';x.ids.get('ui-lang').onchange();assert.equal(E.restore(x.data.get('ai-request-desk-v2'))[0].replyLang,'en')});
 test('a stale page cannot overwrite a newer saved request',()=>{const x=setup();let newer=E.restore(x.data.get('ai-request-desk-v2'));newer.push(E.create('Other tab','Saved elsewhere'));const saved=E.serialize(newer);x.data.set('ai-request-desk-v2',saved);x.run('mutate(selected,r=>E.process(r))');assert.equal(x.data.get('ai-request-desk-v2'),saved);assert.ok(x.ids.get('toast').textContent.includes(x.run("t('storageError')")))});
+
+test('saved Russian demo requests switch to German without losing custom or approved data',()=>{let rows=E.seed('ru');E.process(rows[0]);E.approve(rows[0],{reviewed:true,draft:rows[0].draft});const approved=rows[0].draft;rows.push(E.create('Моя заявка','Мой текст','ru'));const x=setup({'ai-request-desk-v2':E.serialize(rows),'desk-language':'ru'});for(const lang of ['de','en','uk','ru','de']){x.ids.get('ui-lang').value=lang;x.ids.get('ui-lang').onchange();const saved=E.restore(x.data.get('ai-request-desk-v2'));assert.equal(saved[0].subject,E.seed(lang)[0].subject);assert.equal(saved[0].draft,approved);assert.equal(saved[0].status,'approved');assert.equal(saved[3].subject,'Моя заявка');assert.equal(x.ids.get('metric-total').textContent,'4');assert.equal(x.ids.get('metric-approved').textContent,'1');assert.ok(x.ids.get('queue').textContent.includes(E.seed(lang)[1].subject));}const reloaded=setup(Object.fromEntries(x.data));assert.equal(reloaded.context.document.documentElement.lang,'de');assert.ok(!reloaded.ids.get('queue').textContent.includes('Проверка суммы'));});
+test('generated demo replies follow language while manually edited replies are preserved',()=>{const x=setup();x.run('mutate(selected,r=>E.process(r))');x.ids.get('ui-lang').value='ru';x.ids.get('ui-lang').onchange();assert.match(x.ids.get('draft').value,/Спасибо/);x.run("mutate(selected,r=>E.setDraft(r,'My reviewed text'))");x.ids.get('ui-lang').value='uk';x.ids.get('ui-lang').onchange();assert.equal(x.ids.get('draft').value,'My reviewed text');});

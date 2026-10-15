@@ -4,8 +4,8 @@ import fs from 'node:fs';
 import {spawnSync} from 'node:child_process';
 import os from 'node:os';
 import path from 'node:path';
-import {grade,evaluate} from '../src/engine.mjs';
-import {defaults,restoreState} from '../src/state.mjs';
+import {grade,evaluate,datasetForLanguage} from '../src/engine.mjs';
+import {defaults,restoreState,switchLanguage} from '../src/state.mjs';
 import {dictionaries,translate} from '../src/i18n.mjs';
 import worker from '../worker/index.js';
 const dataset=JSON.parse(fs.readFileSync('src/fixtures.json','utf8'));
@@ -27,7 +27,7 @@ test('Python and JavaScript agree on demo, edited answers and malformed JSON',()
  for(const p of payloads){const code='import json,sys; from python.evaluator import evaluate; p=json.loads(sys.stdin.read()); d=json.load(open("src/fixtures.json")); print(json.dumps(evaluate(p,d)))';const py=spawnSync('python3',['-c',code],{input:JSON.stringify(p),encoding:'utf8'});assert.equal(py.status,0,py.stderr);const actual=JSON.parse(py.stdout),expected=evaluate(p,dataset);for(const k of ['a','b']){assert.ok(Math.abs(actual.results[k].score-expected.results[k].score)<1e-12);actual.results[k].score=expected.results[k].score}assert.deepEqual(actual,expected)}
 });
 test('safe persistence defaults and stale reports cannot be restored',()=>{
- assert.equal(restoreState('broken',dataset).lang,'de');const p=base();const report={...evaluate(p,dataset),...p,validation_ms:1,created_at:'2026-10-14T15:00:00Z'};const saved={version:1,lang:'uk',...p,report};assert.ok(restoreState(JSON.stringify(saved),dataset).report);saved.outputs.a.T02='delivery';assert.equal(restoreState(JSON.stringify(saved),dataset).report,null);saved.case_ids=[];assert.equal(restoreState(JSON.stringify(saved),dataset).report,null);
+ assert.equal(restoreState('broken',dataset).lang,'de');const p={...defaults(datasetForLanguage(dataset,'uk')),language:'uk'};const report={...evaluate(p,dataset),...p,validation_ms:1,created_at:'2026-10-14T15:00:00Z'};const saved={version:2,lang:'uk',...p,report};assert.ok(restoreState(JSON.stringify(saved),dataset).report);saved.outputs.a.T02='delivery';assert.equal(restoreState(JSON.stringify(saved),dataset).report,null);saved.case_ids=[];assert.equal(restoreState(JSON.stringify(saved),dataset).report,null);
 });
 test('four languages cover all visible labels and placeholders',()=>{
  const keys=Object.keys(dictionaries.de).sort();for(const [lang,d] of Object.entries(dictionaries)){assert.deepEqual(Object.keys(d).sort(),keys);for(const key of keys)assert.ok(translate(lang,key).length>0)}
@@ -71,3 +71,6 @@ test('downloaded evaluator and dataset replay a saved report in a standalone fol
   const py=spawnSync('python3',['evaluator.py','--input','report.json','--output','replay.json'],{cwd:tmp,encoding:'utf8'});assert.equal(py.status,0,py.stderr);const replay=JSON.parse(fs.readFileSync(path.join(tmp,'replay.json'),'utf8'));assert.equal(replay.results.b.score,1);assert.ok(Math.abs(replay.results.a.score-report.results.a.score)<1e-12);assert.equal(replay.model_calls,0);assert.equal(replay.runtime,'python');assert.deepEqual(replay.outputs,p.outputs);
  }finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });
+
+test('all localized corpora retain independent expected scores and replay identically in Python',async()=>{for(const language of ['de','en','ru','uk']){const localized=datasetForLanguage(dataset,language),p={...defaults(localized),language};const report=evaluate(p,dataset);assert.equal(report.language,language);assert.equal(report.results.a.passed,4);assert.equal(report.results.b.passed,7);assert.ok(Math.abs(report.results.a.score-20/39)<1e-12);assert.ok(Math.abs(report.results.b.score-11/13)<1e-12);const response=await worker.fetch(new Request('https://lab.test/download/fixtures.json?lang='+language));assert.deepEqual(await response.json(),localized);const py=spawnSync('python3',['-c','import json,sys; from python.evaluator import evaluate; p=json.loads(sys.stdin.read()); d=json.load(open("src/fixtures.json")); print(json.dumps(evaluate(p,d)))'],{input:JSON.stringify(p),encoding:'utf8'});assert.equal(py.status,0,py.stderr);const replay=JSON.parse(py.stdout);for(const k of ['a','b']){assert.ok(Math.abs(replay.results[k].score-report.results[k].score)<1e-12);replay.results[k].score=report.results[k].score;}assert.deepEqual(replay,report);const api=await worker.fetch(new Request('https://lab.test/api/evaluate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}));assert.equal(api.status,200);assert.deepEqual((await api.json()).results,report.results);}});
+test('old non-German saved samples migrate and custom answers survive language switching',()=>{const old=base();old.outputs.a.T08='My answer';const loaded=restoreState(JSON.stringify({version:1,lang:'ru',...old}),dataset);assert.equal(loaded.outputs.b.T06,'НЕИЗВЕСТНО');assert.equal(loaded.outputs.a.T08,'My answer');let state=loaded;for(const lang of ['uk','en','de']){state=switchLanguage(state,lang,dataset);assert.equal(state.outputs.a.T08,'My answer');assert.equal(state.outputs.b.T06,datasetForLanguage(dataset,lang).cases[5].outputs.b);assert.equal(state.report,null);}});
