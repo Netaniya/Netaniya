@@ -22,6 +22,21 @@ assert(bootText.startsWith('function boot('));
 const boot=vm.runInNewContext('('+bootText+')',{parseHTML,Date,data,core,translator,createExperience,createRouteMap,vm,source,html,assert,webcrypto,URL,URLSearchParams,Blob,Intl,AbortController});
 const tick=async()=>{for(let i=0;i<12;i++)await Promise.resolve();};
 
+test('official model films start and close under the GitHub Pages project path',()=>{
+ for(const lang of languages)for(const v of data.VEHICLES){
+  const b=boot({path:motion+'/models/'+v.id+'/',lang});
+  assert.equal(b.document.querySelector('.film-poster').getAttribute('src'),motion+'/assets/'+v.image);
+  assert(!b.document.querySelector('.model-film iframe'));
+  b.click('[data-action="play-film"]');
+  const url=new URL(b.document.querySelector('.model-film iframe').getAttribute('src'));
+  assert.equal(url.origin,'https://www.youtube-nocookie.com');
+  assert.equal(url.pathname,'/embed/'+data.TESLA_FILMS[v.id].youtubeId);
+  assert.equal(url.searchParams.get('origin'),'https://example.test');
+  b.click('[data-action="close-film"]');
+  assert(!b.document.querySelector('.model-film iframe'));
+ }
+});
+
 test('GitHub project base: all ten Motion pages and four languages render with valid links and photos',async()=>{
  for(const lang of languages)for(const local of data.ROUTES){
   const b=boot({path:motion+local,lang});assert.equal(b.document.documentElement.lang,lang);assert.equal(b.document.querySelectorAll('main h1').length,1,local);assert(!/undefined|NaN/.test(b.document.querySelector('main').textContent));

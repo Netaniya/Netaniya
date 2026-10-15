@@ -42,7 +42,7 @@ npm run check
 npm test
 ```
 
-Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **59 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
+Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **62 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage, video controls and race conditions. These do not verify browser rendering or actual YouTube playback; final desktop and mobile visual QA is still outstanding.
 
 ## External services and sources
 
@@ -60,3 +60,8 @@ Natalie defined the product, languages, page structure, centered type, blue visu
 ## Authorship and public files
 
 [NOTICE.md](NOTICE.md) records human product direction, AI assistance and separate media licences. No additional open-source licence is granted for this project. A public repository and browser code remain technically copyable; the notice is not copy prevention. The published application does not require API keys or credentials. A scan for common credential patterns found no matches; this is not a complete security audit.
+
+
+## Original Tesla films
+
+Each model page has an official Tesla YouTube film, a local photographic cover, an accessible play button, fullscreen controls and a permanent link to the original. The privacy-enhanced player loads only after the visitor starts the film; closing it removes the player. Interface labels are available in all four languages. The footage may show a different model year or trim from the photograph and illustrative data. No YouTube video files are downloaded or relicensed. Source links and metadata are in `dist/assets/tesla-video-credits.json`. Metadata and embed codes were checked through YouTube oEmbed on 15 October 2026; actual playback remains dependent on YouTube and the visitor’s browser/network.

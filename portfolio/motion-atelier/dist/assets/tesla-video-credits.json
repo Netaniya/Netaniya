@@ -1,0 +1,29 @@
+{
+  "provider": "YouTube",
+  "publisher": "Tesla",
+  "oEmbedCheckedOn": "2026-10-15",
+  "usage": "Official YouTube embeds only. No video files downloaded, edited or relicensed. Playback remains subject to YouTube availability.",
+  "films": {
+    "gt-01": {
+      "youtubeId": "Ujp3q_aryRA",
+      "title": "Model S Plaid at Nürburgring",
+      "author": "Tesla",
+      "watchURL": "https://www.youtube.com/watch?v=Ujp3q_aryRA",
+      "channelURL": "https://www.youtube.com/@tesla"
+    },
+    "cross-02": {
+      "youtubeId": "Jt7DqX2AlNo",
+      "title": "The New Model Y | Tesla",
+      "author": "Tesla",
+      "watchURL": "https://www.youtube.com/watch?v=Jt7DqX2AlNo",
+      "channelURL": "https://www.youtube.com/@tesla"
+    },
+    "sport-03": {
+      "youtubeId": "DsonSEllPmU",
+      "title": "CYBERTRUCK",
+      "author": "Tesla",
+      "watchURL": "https://www.youtube.com/watch?v=DsonSEllPmU",
+      "channelURL": "https://www.youtube.com/@tesla"
+    }
+  }
+}

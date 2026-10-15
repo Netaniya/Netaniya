@@ -11,3 +11,5 @@ Leaflet 1.9.4 is distributed under BSD-2-Clause; its copyright notice and licenc
 Photographs, video, music and fonts retain their respective authors and licences. See `dist/assets/photo-credits.json`, `dist/assets/intro-video-credits.json`, `dist/assets/intro-music-credits.json`, and `dist/assets/fonts/OFL.txt`, with visible links on the About page. No affiliation with Tesla, BMW, or the media creators is implied.
 
 Public browser code can be inspected and copied technically. Author notices and source history do not provide technical copy prevention.
+
+Official Tesla YouTube videos are embedded on model pages only after the visitor starts playback. They remain hosted by YouTube with rights held by their respective owners; no video files are included in this repository. See `dist/assets/tesla-video-credits.json` and the visible original-source links.

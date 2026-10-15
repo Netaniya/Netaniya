@@ -115,3 +115,28 @@ export const INTRO_CLIP=Object.freeze({
 });
 
 export const INTRO_MUSIC=Object.freeze({src:'/assets/intro-music.mp3',title:'Dream Culture',author:'Kevin MacLeod (incompetech.com)',sourceURL:'https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046',license:'CC BY 4.0',licenseURL:'https://creativecommons.org/licenses/by/4.0/'});
+
+// Official Tesla originals, loaded from YouTube only after the visitor starts a film.
+export const TESLA_FILMS=Object.freeze({
+  "gt-01": {
+    "youtubeId": "Ujp3q_aryRA",
+    "title": "Model S Plaid at Nürburgring",
+    "author": "Tesla",
+    "watchURL": "https://www.youtube.com/watch?v=Ujp3q_aryRA",
+    "channelURL": "https://www.youtube.com/@tesla"
+  },
+  "cross-02": {
+    "youtubeId": "Jt7DqX2AlNo",
+    "title": "The New Model Y | Tesla",
+    "author": "Tesla",
+    "watchURL": "https://www.youtube.com/watch?v=Jt7DqX2AlNo",
+    "channelURL": "https://www.youtube.com/@tesla"
+  },
+  "sport-03": {
+    "youtubeId": "DsonSEllPmU",
+    "title": "CYBERTRUCK",
+    "author": "Tesla",
+    "watchURL": "https://www.youtube.com/watch?v=DsonSEllPmU",
+    "channelURL": "https://www.youtube.com/@tesla"
+  }
+});

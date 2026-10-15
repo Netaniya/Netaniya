@@ -58,7 +58,7 @@ npm test
 
 Statisch `dist/` bereitstellen. Alle Unterseiten besitzen eigene HTML-Dokumente. Für lokale manuelle Prüfung kann ein beliebiger statischer Webserver verwendet werden.
 
-**59 automatische Prüfungen bestanden.** Automatische Tests prüfen Konfigurationskombinationen, Preise in Eurocent, Energieerhaltung und Ladegrenzen, Eingabevalidierung, vier Sprachen, Speicherung, UI-Aktionen und Fehler-/Wettlaufszenarien. DOM-Tests ersetzen keine visuelle Browserprüfung. Eine abschließende mobile und Desktop-Sichtprüfung der veröffentlichten Version steht noch aus.
+**62 automatische Prüfungen bestanden.** Automatische Tests prüfen Konfigurationskombinationen, Preise in Eurocent, Energieerhaltung und Ladegrenzen, Eingabevalidierung, vier Sprachen, Speicherung, UI-Aktionen, Videosteuerung und Fehler-/Wettlaufszenarien. DOM-Tests ersetzen keine visuelle Browserprüfung oder echte YouTube-Wiedergabe. Eine abschließende mobile und Desktop-Sichtprüfung der veröffentlichten Version steht noch aus.
 
 ## Quellen und Zusammenarbeit
 
@@ -76,3 +76,8 @@ Natalie bestimmte Produkt, Mehrsprachigkeit, mehrseitige Struktur, mittige Typog
 ## Autorschaft und öffentliche Dateien
 
 [NOTICE.md](NOTICE.md) dokumentiert die menschliche Produktleitung, KI-Unterstützung und getrennte Medienlizenzen. Dieses Projekt vergibt keine zusätzliche Open-Source-Lizenz. Ein öffentliches Repository und Browsercode können technisch kopiert werden; der Hinweis ist kein technischer Kopierschutz. Im veröffentlichten Anwendungscode sind keine API-Schlüssel oder Zugangsdaten vorgesehen. Die Prüfung häufiger Schlüssel- und Passwortmuster fand keine Treffer; dies ersetzt kein vollständiges Sicherheitsaudit.
+
+
+## Offizielle Tesla-Filme
+
+Jede Modellseite enthält ein offizielles Tesla-Video mit lokalem Fototitelbild, zugänglicher Starttaste, Vollbildfunktion und dauerhaftem Link zum Original. Der YouTube-Player im erweiterten Datenschutzmodus lädt erst nach dem Start; beim Schließen wird er entfernt. Die Bedienung ist in allen vier Sprachen verfügbar. Baujahr und Ausstattung im Film können von Foto und illustrativen Demodaten abweichen. Keine Videodateien werden heruntergeladen oder neu lizenziert. Quellen: `dist/assets/tesla-video-credits.json`. Metadaten und Einbettungscodes wurden am 15.10.2026 über YouTube oEmbed geprüft; die tatsächliche Wiedergabe hängt von YouTube, Browser und Netzwerk ab.
