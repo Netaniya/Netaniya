@@ -6,6 +6,10 @@ An original multi-page automotive learning project by **Natalie Ragulina (Netani
 
 Ten separate HTML pages: home, collection, rule-based vehicle finder, configurator, journey planner, local garage, project information and three model pages. German is the first-visit language, with full English, Russian and Ukrainian interfaces. The slow, skippable vehicle arrival respects reduced-motion preferences.
 
+## Appearance
+
+Dark on first visit, with a persistent light/dark toggle across every page. Main headings are centered without sentence dots. The hero car uses an inset mobile frame. The arrival animates a generated still image, not a film clip.
+
 ## Working features
 
 Filtering, sorting, model comparison, explained matching, configurable pricing in integer eurocents, range estimates, shareable configuration URLs, JSON export and browser-local garage persistence. Public OSRM routing and user-requested Open-Meteo weather are validated and clearly distinguished from an explicit offline estimate.
@@ -23,7 +27,7 @@ npm run check
 npm test
 ```
 
-Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **30 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
+Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **35 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
 
 ## External services and sources
 

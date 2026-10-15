@@ -1,5 +1,5 @@
 export const VEHICLES=Object.freeze([
- {id:'gt-01',name:'GT 01',kind:'grandTourer',image:'gt-blue.webp',battery:92,consumption:16.8,power:280,seats:5,zero100:4.8,chargeKw:140,price:7950000,tag:'distance',color:'#0759b6'},
+ {id:'gt-01',name:'GT 01',kind:'grandTourer',image:'gt-blue-cinematic.webp',battery:92,consumption:16.8,power:280,seats:5,zero100:4.8,chargeKw:140,price:7950000,tag:'distance',color:'#0759b6'},
  {id:'cross-02',name:'CROSS 02',kind:'crossover',image:'cross-silver.webp',battery:106,consumption:19.6,power:300,seats:5,zero100:5.2,chargeKw:150,price:8350000,tag:'family',color:'#9ea9b6'},
  {id:'sport-03',name:'SPORT 03',kind:'sportCoupe',image:'sport-red.webp',battery:82,consumption:18.9,power:390,seats:2,zero100:3.5,chargeKw:150,price:10950000,tag:'performance',color:'#b52821'}
 ]);

@@ -35,9 +35,9 @@ Gespeicherte Antworten anhand offener Kriterien vergleichen und Ergebnisse repro
 ### Motion Atelier
 Mehrseitige Automotive-Anwendung: elektrische Konzeptfahrzeuge entdecken, vergleichen und konfigurieren.
 
-[![Motion Atelier – originales Konzeptfahrzeug](portfolio/motion-atelier/dist/assets/gt-blue.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
+[![Motion Atelier – originales Konzeptfahrzeug](portfolio/motion-atelier/dist/assets/gt-blue-cinematic.webp)](https://motion-atelier-neta26.wellolm4.chatgpt.site)
 
-- **10 HTML-Seiten · vier Sprachen · 30 automatische Prüfungen** · langsame, überspringbare Fahrzeugankunft.
+- **10 HTML-Seiten · vier Sprachen · 35 automatische Prüfungen** · langsame, überspringbare Fahrzeugankunft.
 - Finder, Konfigurator mit Preisberechnung, teilbare Links, lokale Garage und Energieplanung.
 - OSRM-Straßenrouten und Open-Meteo-Wetter auf Anfrage; Schätzungen und fiktive Fahrzeugdaten sind gekennzeichnet.
 - **JavaScript-ES-Module · HTML · CSS**. Noch keine abschließende mobile oder Desktop-Sichtprüfung der veröffentlichten Version.

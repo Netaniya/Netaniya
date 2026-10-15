@@ -6,6 +6,10 @@
 
 Eine eigenständige Fahrzeugkollektion mit großzügiger Typografie, heller Architektur, sattem Blau und einer langsamen, überspringbaren Fahrzeugankunft. **Zehn echte HTML-Seiten**, deutsche Erstansicht sowie vollständige englische, russische und ukrainische Oberflächen.
 
+## Darstellung
+
+Dunkle Ansicht beim ersten Besuch, jederzeit umschaltbar auf hell. Die Auswahl bleibt im Browser über alle Unterseiten erhalten. Hauptüberschriften sind zentriert und ohne Satzpunkte. Das Fahrzeug bleibt auch auf schmalen Displays innerhalb seitlicher Ränder. Die Ankunft ist eine Animation eines generierten Standbilds, kein Filmclip.
+
 ## Funktionen
 
 - Drei originale, mit KI erzeugte elektrische Konzeptfahrzeuge und einzelne Modellseiten.
@@ -39,7 +43,7 @@ npm test
 
 Statisch `dist/` bereitstellen. Alle Unterseiten besitzen eigene HTML-Dokumente. Für lokale manuelle Prüfung kann ein beliebiger statischer Webserver verwendet werden.
 
-**30 automatische Prüfungen bestanden.** Automatische Tests prüfen Konfigurationskombinationen, Preise in Eurocent, Energieerhaltung und Ladegrenzen, Eingabevalidierung, vier Sprachen, Speicherung, UI-Aktionen und Fehler-/Wettlaufszenarien. DOM-Tests ersetzen keine visuelle Browserprüfung. Eine abschließende mobile und Desktop-Sichtprüfung der veröffentlichten Version steht noch aus.
+**35 automatische Prüfungen bestanden.** Automatische Tests prüfen Konfigurationskombinationen, Preise in Eurocent, Energieerhaltung und Ladegrenzen, Eingabevalidierung, vier Sprachen, Speicherung, UI-Aktionen und Fehler-/Wettlaufszenarien. DOM-Tests ersetzen keine visuelle Browserprüfung. Eine abschließende mobile und Desktop-Sichtprüfung der veröffentlichten Version steht noch aus.
 
 ## Quellen und Zusammenarbeit
 
