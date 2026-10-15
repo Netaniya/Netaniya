@@ -1,0 +1,11 @@
+# Authorship and third-party material
+
+Motion Atelier is a portfolio learning project directed and reviewed by **Natalie Ragulina (Netaniya)**.
+
+Natalie defined the product, multilingual structure, visual direction, motion requirements and acceptance decisions. Implementation and automated checks were developed with AI assistance. The project does not claim commercial vehicle-sales experience.
+
+This public source presentation does not add an open-source licence for original project material. Please contact the project author to discuss reuse. This notice does not override applicable law, GitHub platform rights, or the separate licences of third-party material.
+
+Photographs, video, music and fonts retain their respective authors and licences. See `dist/assets/photo-credits.json`, `dist/assets/intro-video-credits.json`, `dist/assets/intro-music-credits.json`, and `dist/assets/fonts/OFL.txt`, with visible links on the About page. No affiliation with Tesla, BMW, or the media creators is implied.
+
+Public browser code can be inspected and copied technically. Author notices and source history do not provide technical copy prevention.

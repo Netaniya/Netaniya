@@ -1,0 +1,22 @@
+{
+  "filename": "intro-music.mp3",
+  "title": "Dream Culture",
+  "author": "Kevin MacLeod",
+  "originalsourceURL": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046",
+  "sourceAudioURL": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Dream%20Culture.mp3",
+  "license": "CC BY 4.0",
+  "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+  "authorURL": "https://incompetech.com/",
+  "originalISRC": "USUAN1300046",
+  "sourceStartSeconds": 12.0,
+  "sourceEndSeconds": 17.3,
+  "durationSeconds": 5.3,
+  "format": "MP3",
+  "sampleRateHz": 44100,
+  "channels": 2,
+  "bitrateKbps": 128,
+  "bytes": 86683,
+  "modifications": "Excerpt 12.0–17.3 seconds; 0.45-second fade-in and 0.95-second fade-out; gain multiplied by 0.7; encoded as 128 kbps MP3.",
+  "attribution": "“Dream Culture” by Kevin MacLeod (incompetech.com), licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). Trimmed, faded, gain reduced and transcoded for Motion Atelier. https://creativecommons.org/licenses/by/4.0/",
+  "redistributionNote": "This music excerpt remains licensed under CC BY 4.0 independently of the application code. Retain author, source, license link and modification notice when redistributing."
+}

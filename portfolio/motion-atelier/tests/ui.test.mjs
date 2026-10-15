@@ -1,10 +1,10 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile,stat} from 'node:fs/promises';import vm from 'node:vm';import {webcrypto} from 'node:crypto';import {parseHTML} from 'linkedom';
-import * as data from '../dist/data.mjs?v=5';import * as core from '../dist/core.mjs?v=5';import {translator,DICT} from '../dist/i18n.mjs?v=5';
+import * as data from '../dist/data.mjs?v=6';import * as core from '../dist/core.mjs?v=6';import {translator,DICT} from '../dist/i18n.mjs?v=6';import {createExperience} from '../dist/experience.mjs?v=6';
 const source=(await readFile(new URL('../dist/app.mjs',import.meta.url),'utf8')).replace(/^import .*?;\n/gm,'');const html=await readFile(new URL('../dist/index.html',import.meta.url),'utf8');
-function boot({path='/',search='',lang='de',theme=null,rawGarage=null,reduced=true,seenIntro=false,playback='ok',fetcher=async()=>({ok:false})}={}){const {window,document}=parseHTML(html);const memory=new Map([['motion-language',lang]]);if(theme!==null)memory.set('motion-theme',theme);if(rawGarage!==null)memory.set('motion-garage',rawGarage);if(seenIntro)memory.set('motion-arrival','seen');const media={plays:0,pauses:0,loads:0,mode:playback};const video=document.querySelector('video');Object.defineProperty(video,'duration',{value:5.4,configurable:true});video.play=()=>{media.plays++;if(media.mode==='blocked')return Promise.reject(new Error('Autoplay unavailable'));video.dispatchEvent(new window.Event('playing'));return Promise.resolve();};video.pause=()=>{media.pauses++;};video.load=()=>{media.loads++;};const storage={getItem:k=>memory.get(k)??null,setItem:(k,v)=>memory.set(k,v)};Object.defineProperty(window,'localStorage',{value:storage,configurable:true});Object.defineProperty(window,'sessionStorage',{value:storage,configurable:true});window.scrollTo=()=>{};let timerId=0;const timers=new Map();const location={pathname:path,search,origin:'https://example.test'};const ctx={...data,...core,translator,document,window,location,history:{replaceState(_s,_t,url){location.search=url.split('?')[1]||'';}},AbortController,fetchRoute:(a,b,opts)=>core.fetchRoute(a,b,{...opts,fetcher}),fetchWeather:(a,opts)=>core.fetchWeather(a,{...opts,fetcher}),navigator:{clipboard:{writeText:async()=>{}}},crypto:webcrypto,matchMedia:()=>({matches:reduced}),Image:class{set src(v){this.complete=true;this.onload?.();}},requestAnimationFrame:fn=>fn(),setTimeout:(fn,ms)=>{const id=++timerId;timers.set(id,{fn,ms});return id;},clearTimeout:id=>timers.delete(id),URL,URLSearchParams,Blob,Intl,fetch:fetcher,confirm:()=>true,FormData:class{constructor(form){this.map=new Map();for(const el of form.querySelectorAll('input[name],select[name]')){if(el.type==='radio'&&!el.hasAttribute('checked'))continue;this.map.set(el.name,el.value);}}get(k){return this.map.get(k);}}};
- vm.runInNewContext(source,ctx,{filename:'app.mjs'});return {window,document,ctx,memory,timers,media,video,change(sel,value){const el=document.querySelector(sel);assert(el,sel);Object.defineProperty(el,'value',{value,configurable:true});el.dispatchEvent(new window.Event('change',{bubbles:true}));},click(sel){const el=document.querySelector(sel);assert(el,sel);el.dispatchEvent(new window.Event('click',{bubbles:true}));},submit(sel){const el=document.querySelector(sel);assert(el,sel);el.dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true}));}};}
+function boot({path='/',search='',lang='de',theme=null,rawGarage=null,reduced=true,mobile=false,observe=false,rawLastConfig=null,rawComparison=null,seenIntro=false,playback='ok',audioPlayback='ok',fetcher=async()=>({ok:false})}={}){const {window,document}=parseHTML(html);const memory=new Map([['motion-language',lang]]);if(theme!==null)memory.set('motion-theme',theme);if(rawGarage!==null)memory.set('motion-garage',rawGarage);if(seenIntro)memory.set('motion-arrival','seen');if(rawLastConfig!==null)memory.set('motion-last-config',rawLastConfig);if(rawComparison!==null)memory.set('motion-compare',rawComparison);const sound={plays:0,pauses:0};const audio=document.querySelector('audio');audio.play=()=>{sound.plays++;return audioPlayback==='blocked'?Promise.reject(new Error('audio unavailable')):Promise.resolve();};audio.pause=()=>{sound.pauses++;};const revealObservers=[];class Observer{constructor(fn){this.fn=fn;this.targets=new Set();revealObservers.push(this);}observe(el){this.targets.add(el);}unobserve(el){this.targets.delete(el);}disconnect(){this.targets.clear();}show(el){this.fn([{target:el,isIntersecting:true}]);}}const media={plays:0,pauses:0,loads:0,mode:playback};const video=document.querySelector('video');Object.defineProperty(video,'duration',{value:5.4,configurable:true});video.play=()=>{media.plays++;if(media.mode==='blocked')return Promise.reject(new Error('Autoplay unavailable'));video.dispatchEvent(new window.Event('playing'));return Promise.resolve();};video.pause=()=>{media.pauses++;};video.load=()=>{media.loads++;};const storage={getItem:k=>memory.get(k)??null,setItem:(k,v)=>memory.set(k,v)};Object.defineProperty(window,'localStorage',{value:storage,configurable:true});Object.defineProperty(window,'sessionStorage',{value:storage,configurable:true});window.scrollTo=()=>{};let timerId=0;const timers=new Map();const navigations=[];const location={pathname:path,search,origin:'https://example.test',href:'https://example.test'+path+search,assign:url=>navigations.push(url)};const ctx={...data,...core,translator,createExperience:opts=>createExperience({...opts,win:{matchMedia:ctx.matchMedia,addEventListener:(...args)=>window.addEventListener(...args),setTimeout:ctx.setTimeout,clearTimeout:ctx.clearTimeout,location,...(observe?{IntersectionObserver:Observer}:{})}}),document,window,location,history:{replaceState(_s,_t,url){location.search=url.split('?')[1]||'';}},AbortController,fetchRoute:(a,b,opts)=>core.fetchRoute(a,b,{...opts,fetcher}),fetchWeather:(a,opts)=>core.fetchWeather(a,{...opts,fetcher}),navigator:{clipboard:{writeText:async()=>{}}},crypto:webcrypto,matchMedia:query=>({matches:query.includes('prefers-reduced-motion')?reduced:query.includes('max-width')?mobile:false,addEventListener(){}}),Image:class{set src(v){this.complete=true;this.onload?.();}},requestAnimationFrame:fn=>fn(),setTimeout:(fn,ms)=>{const id=++timerId;timers.set(id,{fn,ms});return id;},clearTimeout:id=>timers.delete(id),URL,URLSearchParams,Blob,Intl,fetch:fetcher,confirm:()=>true,FormData:class{constructor(form){this.map=new Map();for(const el of form.querySelectorAll('input[name],select[name]')){if(el.type==='radio'&&!el.hasAttribute('checked'))continue;this.map.set(el.name,el.value);}}get(k){return this.map.get(k);}}};
+ vm.runInNewContext(source,ctx,{filename:'app.mjs'});return {window,document,ctx,memory,timers,media,video,sound,audio,revealObservers,navigations,change(sel,value){const el=document.querySelector(sel);assert(el,sel);Object.defineProperty(el,'value',{value,configurable:true});el.dispatchEvent(new window.Event('change',{bubbles:true}));},click(sel){const el=document.querySelector(sel);assert(el,sel);el.dispatchEvent(new window.Event('click',{bubbles:true}));},submit(sel){const el=document.querySelector(sel);assert(el,sel);el.dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true}));}};}
 const tick=async()=>{for(let i=0;i<8;i++)await Promise.resolve();};
-test('all ten pages render in all four languages with one h1 and working internal links',async()=>{for(const lang of data.LANGS)for(const path of data.ROUTES){const b=boot({lang,path});assert.equal(b.document.documentElement.lang,lang);assert.equal(b.document.querySelectorAll('main h1').length,1,lang+path);const text=b.document.querySelector('main').textContent;assert(!/undefined|NaN/.test(text),lang+path);if(lang==='de'||lang==='en')assert(!/[А-Яа-яЁёІіЇїЄє]/.test(text),lang+path);for(const a of b.document.querySelectorAll('a[href^="/"]')){const href=a.getAttribute('href').split('?')[0];if(href.startsWith('/assets/'))assert((await stat(new URL('../dist'+href,import.meta.url))).isFile(),href);else assert(data.ROUTES.includes(href),href);}}});
+test('all ten pages render in all four languages with one h1 and working internal links',async()=>{for(const lang of data.LANGS)for(const path of data.ROUTES){const b=boot({lang,path});assert.equal(b.document.documentElement.lang,lang);assert.equal(b.document.querySelectorAll('main h1').length,1,lang+path);const text=b.document.querySelector('main').textContent;assert(!/undefined|NaN/.test(text),lang+path);if(lang==='de'||lang==='en')assert(!/[А-Яа-яЁёІіЇїЄє]/.test(text),lang+path);for(const a of b.document.querySelectorAll('a[href^="/"]')){const href=a.getAttribute('href').split(/[?#]/)[0];if(href.startsWith('/assets/'))assert((await stat(new URL('../dist'+href,import.meta.url))).isFile(),href);else assert(data.ROUTES.includes(href),href);}}});
 test('language switch translates built-in content, vehicle labels, units and title',()=>{const b=boot({path:'/configure/'});b.change('#language','uk');assert.equal(b.document.documentElement.lang,'uk');assert(b.document.querySelector('main').textContent.includes('Колір кузова'));assert(b.document.title.includes('Конфігуратор'));assert.equal(b.memory.get('motion-language'),'uk');b.change('#language','ru');assert(b.document.querySelector('main').textContent.includes('Итог')||b.document.querySelector('main').textContent.includes('итоговая'));});
 test('filter hides unselected body styles and comparison follows selected models',()=>{const b=boot({path:'/collection/'});b.change('#vehicle-filter','crossover');assert.equal(b.document.querySelectorAll('.vehicle-card').length,1);assert.match(b.document.querySelector('.vehicle-card h3').textContent,/Tesla Model Y/);b.change('#vehicle-filter','pickup');assert.equal(b.document.querySelectorAll('.vehicle-card').length,1);assert.match(b.document.querySelector('.vehicle-card h3').textContent,/Tesla Cybertruck/);b.change('#vehicle-filter','all');for(const id of ['gt-01','cross-02']){const el=b.document.querySelector(`input[name="compare"][value="${id}"]`);el.checked=true;el.dispatchEvent(new b.window.Event('change',{bubbles:true}));}assert.equal(b.document.querySelectorAll('table thead th').length,3);});
 test('configuration changes price and range; saving round-trips through garage storage',()=>{const b=boot({path:'/configure/'}),before=b.document.querySelector('.total strong').textContent;b.change('input[name="wheels"][value="sport"]','sport');assert.notEqual(b.document.querySelector('.total strong').textContent,before);b.click('[data-action="save"]');const raw=JSON.parse(b.memory.get('motion-garage'));assert.equal(raw.length,1);assert.equal(raw[0].config.wheels,'sport');b.click('[data-action="save"]');assert.equal(JSON.parse(b.memory.get('motion-garage')).length,1);const g=boot({path:'/garage/',rawGarage:JSON.stringify(raw),lang:'de'});assert.equal(g.document.querySelectorAll('.garage-item').length,1);assert(g.document.querySelector('.garage-item').textContent.includes('Sport 21'));g.click('[data-action="remove"]');assert.equal(JSON.parse(g.memory.get('motion-garage')).length,0);});
@@ -67,4 +67,74 @@ test('inner pages and reduced-motion never request film playback',()=>{
   const b=boot({path,reduced:false});assert.equal(b.media.plays,0);assert.equal(b.video.getAttribute('src'),null);assert(b.document.getElementById('arrival').hidden);
  }
  const b=boot({reduced:true});assert.equal(b.media.plays,0);assert.equal(b.video.getAttribute('src'),null);
+});
+
+
+test('comparison tray reflects selected models, survives filtering and clears persisted choices',()=>{
+ const b=boot({path:'/collection/'});
+ for(const id of ['gt-01','cross-02']){const checkbox=b.document.querySelector(`input[name="compare"][value="${id}"]`);checkbox.checked=true;checkbox.dispatchEvent(new b.window.Event('change',{bubbles:true}));}
+ assert.equal(b.document.querySelector('[data-action="compare-jump"]').disabled,false);
+ assert.equal(b.document.querySelectorAll('.vehicle-card.selected').length,2);
+ b.change('#vehicle-filter','pickup');assert(b.document.querySelector('.compare-tray').textContent.includes('Tesla Model S'));
+ const restored=boot({path:'/collection/',rawComparison:b.memory.get('motion-compare')});
+ assert.equal(restored.document.querySelectorAll('.vehicle-card.selected').length,2);
+ restored.click('[data-action="clear-compare"]');assert(!restored.document.querySelector('.compare-tray'));assert.equal(restored.memory.get('motion-compare'),'[]');
+});
+
+test('last configuration returns on a fresh visit and an explicit configuration link takes priority',()=>{
+ const b=boot({path:'/configure/'});b.change('input[name="paint"][value="ruby"]','ruby');b.change('input[name="wheels"][value="sport"]','sport');
+ const raw=b.memory.get('motion-last-config');const returned=boot({path:'/configure/',rawLastConfig:raw});
+ assert(returned.document.querySelector('input[name="paint"][value="ruby"][checked]'));
+ assert(returned.document.querySelector('input[name="wheels"][value="sport"][checked]'));
+ const linked=boot({path:'/configure/',search:'?model=cross-02&paint=silver&wheels=aero&interior=dark',rawLastConfig:raw});
+ assert(linked.document.querySelector('input[name="paint"][value="silver"][checked]'));
+ linked.click('[data-action="reset-choice"]');assert(linked.document.querySelector('input[name="paint"][value="ocean"][checked]'));
+});
+
+test('mobile menu changes in place, exposes links only while open and closes on Escape',()=>{
+ const b=boot({path:'/collection/',mobile:true});const main=b.document.querySelector('main');const nav=b.document.querySelector('#main-nav');assert.equal(nav.inert,true);
+ b.click('[data-action="menu"]');assert.equal(b.document.querySelector('main'),main);assert.equal(nav.inert,false);assert.equal(b.document.querySelector('.menu-toggle').getAttribute('aria-expanded'),'true');
+ const escape=new b.window.Event('keydown');Object.defineProperty(escape,'key',{value:'Escape'});b.window.dispatchEvent(escape);
+ assert.equal(nav.inert,true);assert.equal(b.document.querySelector('.menu-toggle').getAttribute('aria-expanded'),'false');
+});
+
+test('music starts only after a sound-button gesture and stops when the intro is skipped',()=>{
+ const b=boot({reduced:false});assert.equal(b.sound.plays,0);assert.equal(b.audio.getAttribute('src'),null);
+ b.click('[data-intro-sound]');assert.equal(b.sound.plays,1);assert.equal(b.document.querySelector('[data-intro-sound]').getAttribute('aria-pressed'),'true');assert.equal(b.video.currentTime,0);
+ const before=b.sound.pauses;b.click('[data-intro-skip]');
+ for(const timer of [...b.timers.values()].filter(x=>x.ms<=280))timer.fn();
+ assert(b.sound.pauses>before);assert.equal(b.document.querySelector('[data-intro-sound]').getAttribute('aria-pressed'),'false');assert.equal(b.document.getElementById('app').inert,false);
+});
+
+test('audio failure keeps the film usable and resets the sound control',async()=>{
+ const b=boot({reduced:false,audioPlayback:'blocked'});b.click('[data-intro-sound]');await tick();
+ assert.equal(b.document.querySelector('[data-intro-sound]').getAttribute('aria-pressed'),'false');assert(b.document.getElementById('arrival').classList.contains('playing'));assert(b.document.querySelector('#toast').textContent.length>0);
+});
+
+test('reveals are observed once, remain visible after UI updates and disappear entirely for reduced motion',()=>{
+ const b=boot({path:'/collection/',reduced:false,observe:true});const h=b.document.querySelector('main h1');assert(h.classList.contains('reveal-item'));
+ b.revealObservers.at(-1).show(h);assert(h.classList.contains('is-visible'));
+ b.change('#language','en');assert(b.document.querySelector('main h1').classList.contains('is-visible'));
+ const reduced=boot({path:'/collection/',reduced:true,observe:true});assert.equal(reduced.document.querySelectorAll('.reveal-item').length,0);assert.equal(reduced.revealObservers.length,0);
+});
+
+test('fallback page transitions preserve modified clicks and navigate after only a short fade',()=>{
+ const b=boot({path:'/collection/',reduced:false});const link=b.document.querySelector('a[href="/finder/"]');
+ const modified=new b.window.Event('click',{bubbles:true,cancelable:true});Object.defineProperty(modified,'ctrlKey',{value:true});link.dispatchEvent(modified);assert.equal(modified.defaultPrevented,false);
+ const normal=new b.window.Event('click',{bubbles:true,cancelable:true});link.dispatchEvent(normal);assert.equal(normal.defaultPrevented,true);assert(b.document.documentElement.classList.contains('page-leaving'));
+ const timer=[...b.timers.values()].find(x=>x.ms===140);assert(timer);timer.fn();assert.equal(b.navigations[0],'https://example.test/finder/');b.window.dispatchEvent(new b.window.Event('pageshow'));assert(!b.document.documentElement.classList.contains('page-leaving'));
+});
+
+
+test('starting music late grants the restarted film its full playback time even without a second playing event',()=>{
+ const b=boot({reduced:false});const previous=[...b.timers].find(([,x])=>x.ms===5900);assert(previous);
+ b.video.currentTime=4;b.video.play=()=>Promise.resolve();b.click('[data-intro-sound]');
+ assert.equal(b.video.currentTime,0);assert(!b.timers.has(previous[0]));assert([...b.timers.values()].some(x=>x.ms===5900));
+});
+
+test('quick sound toggles cancel previous fade timers and leaving the page silences audio',()=>{
+ const b=boot({reduced:false});b.click('[data-intro-sound]');b.click('[data-intro-sound]');
+ const fades=[...b.timers].filter(([,x])=>x.ms>=35&&x.ms<=280);assert.equal(fades.length,8);
+ b.click('[data-intro-sound]');for(const [id]of fades)assert(!b.timers.has(id));
+ const before=b.sound.pauses;b.window.dispatchEvent(new b.window.Event('pagehide'));assert(b.sound.pauses>before);assert.equal(b.document.querySelector('[data-intro-sound]').getAttribute('aria-pressed'),'false');
 });

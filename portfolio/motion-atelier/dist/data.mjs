@@ -113,3 +113,5 @@ export const INTRO_CLIP=Object.freeze({
  licenseURL:'https://creativecommons.org/licenses/by/3.0/',
  modifications:'Excerpt 40.6–43.3 s; slowed to 50% with frame interpolation; audio removed; resized and re-encoded for the web'
 });
+
+export const INTRO_MUSIC=Object.freeze({src:'/assets/intro-music.mp3',title:'Dream Culture',author:'Kevin MacLeod (incompetech.com)',sourceURL:'https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1300046',license:'CC BY 4.0',licenseURL:'https://creativecommons.org/licenses/by/4.0/'});

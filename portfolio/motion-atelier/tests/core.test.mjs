@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {VEHICLES,PAINTS,WHEELS,INTERIORS,CITIES,LANGS,ROUTES} from '../dist/data.mjs?v=5';
-import {DICT} from '../dist/i18n.mjs?v=5';
-import {configuration,defaultConfig,validConfig,encodeConfig,decodeConfig,planEnergy,haversine,recommend,validateGarage,loadState,fetchRoute,fetchWeather,readRoute,routePath,money,number} from '../dist/core.mjs?v=5';
+import {VEHICLES,PAINTS,WHEELS,INTERIORS,CITIES,LANGS,ROUTES} from '../dist/data.mjs?v=6';
+import {DICT} from '../dist/i18n.mjs?v=6';
+import {configuration,defaultConfig,validConfig,initialConfig,rememberConfig,readComparison,rememberComparison,encodeConfig,decodeConfig,planEnergy,haversine,recommend,validateGarage,loadState,fetchRoute,fetchWeather,readRoute,routePath,money,number} from '../dist/core.mjs?v=6';
 import {readFile,stat} from 'node:fs/promises';
 test('every complete configuration has a precise integer price and positive range',()=>{for(const v of VEHICLES)for(const p of PAINTS)for(const w of WHEELS)for(const i of INTERIORS){const c={model:v.id,paint:p.id,wheels:w.id,interior:i.id},r=configuration(c);assert.equal(r.price,v.price+p.price+w.price+i.price);assert(Number.isSafeInteger(r.price));assert.equal(r.range,Math.floor(v.battery/(v.consumption+w.extraConsumption)*100));assert.deepEqual(decodeConfig('?'+encodeConfig(c)),c);}});
 test('invalid configuration values rejected and URL input normalized',()=>{for(const k of ['model','paint','wheels','interior']){const c={...defaultConfig(),[k]:'<script>'};assert(!validConfig(c));assert.throws(()=>configuration(c));}assert.deepEqual(decodeConfig('?model=none&paint=no'),defaultConfig());assert(!encodeConfig({...defaultConfig(),price:1}).includes('price'));});
@@ -22,4 +22,19 @@ test('route service errors and malformed geometry fail explicitly',async()=>{for
 test('weather request is explicit and validated without fabricated fallback',async()=>{let calls=0;const r=await fetchWeather(CITIES[6],{fetcher:async()=>{calls++;return {ok:true,json:async()=>({current:{temperature_2m:12.3,wind_speed_10m:4,time:'2026-10-15T10:00'}})}}});assert.equal(calls,1);assert.equal(r.temperature,12.3);await assert.rejects(()=>fetchWeather(CITIES[6],{fetcher:async()=>({ok:true,json:async()=>({current:{temperature_2m:Infinity}})})}));});
 test('route trace has finite coordinates for horizontal vertical and standard routes',()=>{for(const coords of [[[1,1],[1,2]],[[1,1],[2,1]],response.routes[0].geometry.coordinates]){const d=routePath(coords);assert(d.startsWith('M'));assert(!/NaN|Infinity/.test(d));}assert.throws(()=>routePath([[Infinity,2],[3,4]]));});
 test('currency and number formatting localizes separators',()=>{assert.match(money(7950000,'de'),/79\.500/);assert.match(money(7950000,'en'),/79,500/);assert.equal(number(16.8,'de',1),'16,8');assert.equal(number(16.8,'en',1),'16.8');});
-test('all ten routes have real HTML documents and all assets exist',async()=>{assert.equal(ROUTES.length,10);for(const path of ROUTES){const url=new URL('../dist'+(path==='/'?'':path.slice(0,-1))+'/index.html',import.meta.url);const s=await readFile(url,'utf8');assert.match(s,/id="app"/);assert.match(s,/type="module"/);assert(!s.includes('codex-preview'));}for(const filename of [...VEHICLES.map(v=>v.image),'real-road.webp','arrival-drive.mp4','arrival-poster.jpg'])assert((await stat(new URL('../dist/assets/'+filename,import.meta.url))).size>10000);});
+test('all ten routes have real HTML documents and all assets exist',async()=>{assert.equal(ROUTES.length,10);for(const path of ROUTES){const url=new URL('../dist'+(path==='/'?'':path.slice(0,-1))+'/index.html',import.meta.url);const s=await readFile(url,'utf8');assert.match(s,/id="app"/);assert.match(s,/type="module"/);assert(!s.includes('codex-preview'));}for(const filename of [...VEHICLES.map(v=>v.image),'real-road.webp','arrival-drive.mp4','arrival-poster.jpg','intro-music.mp3'])assert((await stat(new URL('../dist/assets/'+filename,import.meta.url))).size>10000);});
+
+
+test('remembered preferences ignore malformed data, blocked storage and unsupported options',()=>{
+ for(const raw of ['{broken','null','[]',JSON.stringify({model:'unknown',paint:'ocean',wheels:'aero',interior:'light'})])assert.deepEqual(initialConfig({getItem:()=>raw}),defaultConfig());
+ assert.deepEqual(initialConfig({getItem(){throw Error('blocked');}}),defaultConfig());
+ assert.equal(rememberConfig({setItem(){throw Error('blocked');}},defaultConfig()),false);
+ const data={};const storage={getItem:k=>data[k]??null,setItem:(k,v)=>data[k]=v};
+ const c={...defaultConfig('sport-03'),paint:'graphite',interior:'dark'};assert(rememberConfig(storage,c));assert.deepEqual(initialConfig(storage),c);assert.deepEqual(initialConfig(storage,'?model=cross-02'),defaultConfig('cross-02'));
+});
+
+test('comparison persistence accepts only known unique models and tolerates invalid storage',()=>{
+ assert.deepEqual([...readComparison({getItem:()=>JSON.stringify(['gt-01','gt-01','bad','cross-02'])})],['gt-01','cross-02']);
+ assert.equal(readComparison({getItem:()=>'{broken'}).size,0);assert.equal(readComparison({getItem(){throw Error();}}).size,0);
+ assert.equal(rememberComparison({setItem(){throw Error();}},new Set(['gt-01'])),false);
+});

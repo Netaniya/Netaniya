@@ -39,8 +39,9 @@ Mehrseitige Automotive-Lernanwendung mit echten Fotografien von Tesla Model S, M
 
 Foto: Mr.choppers · CC BY-SA 3.0 · [Original und Bildnachweise](portfolio/motion-atelier/dist/assets/photo-credits.json).
 
-- **10 HTML-Seiten · vier Sprachen · 41 automatische Prüfungen** · kurzer, überspringbarer Realfilm eines fahrenden Autos, Manrope und mittige Titel.
+- **10 HTML-Seiten · vier Sprachen · 52 automatische Prüfungen** · kurzer, überspringbarer Realfilm eines fahrenden Autos, Manrope und mittige Titel.
 - Unveränderte Originalfotos; Lackierung, Räder und Interieur erscheinen in der Auswahl und Zusammenfassung.
+- Sanfte Seitenwechsel, einmalige Scroll-Einblendungen, mobiles Menü, Vergleichsleiste, gemerkte Konfiguration und optionale Intro-Musik.
 - Finder, Konfigurator mit Preisberechnung, teilbare Links, lokale Garage und Energieplanung.
 - OSRM-Straßenrouten und Open-Meteo-Wetter auf Anfrage; Schätzungen und fiktive Fahrzeugdaten sind gekennzeichnet.
 - **JavaScript-ES-Module · HTML · CSS**. Noch keine abschließende mobile oder Desktop-Sichtprüfung der veröffentlichten Version.
