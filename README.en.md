@@ -39,7 +39,7 @@ A multi-page automotive learning application with real Tesla Model S, Model Y an
 
 Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/motion-atelier/dist/assets/photo-credits.json).
 
-- **10 HTML pages · four languages · 37 automated checks** · slow, skippable photographic arrival, Manrope and centered titles.
+- **10 HTML pages · four languages · 41 automated checks** · short, skippable real driving film, Manrope and centered titles.
 - Original photographs stay unchanged; paint, wheel and interior choices appear in the controls and summary.
 - Rule-based finder, configuration pricing, shareable links, local garage and energy planning.
 - User-requested OSRM road routes and Open-Meteo weather; estimates and fictional specifications are labelled.

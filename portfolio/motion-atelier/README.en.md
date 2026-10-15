@@ -4,11 +4,11 @@ An original multi-page automotive learning project by **Natalie Ragulina (Netani
 
 [Live demo](https://motion-atelier-neta26.wellolm4.chatgpt.site) · [Deutsch](README.md)
 
-Ten separate HTML pages: home, collection, rule-based vehicle finder, configurator, journey planner, local garage, project information and three model pages. German is the first-visit language, with full English, Russian and Ukrainian interfaces. The slow, skippable photographic arrival respects reduced-motion preferences.
+Ten separate HTML pages: home, collection, rule-based vehicle finder, configurator, journey planner, local garage, project information and three model pages. German is the first-visit language, with full English, Russian and Ukrainian interfaces. A short, skippable film of a real Tesla Model S driving opens the site and respects reduced-motion preferences.
 
 ## Appearance
 
-Dark on first visit, with a persistent light/dark toggle across every page. Main headings are centered without sentence dots. Paired titles use separate lines without a leading dash. Real photographs are fitted in full inside their frames; mobile layouts stack text and photo. The arrival animates a real photograph, not a film clip. Manrope, including Cyrillic glyphs, is self-hosted.
+Dark on first visit, with a persistent light/dark toggle across every page. Main headings are centered without sentence dots. Paired titles use separate lines without a leading dash. Real photographs are fitted in full inside their frames; mobile layouts stack text and photo. The intro uses an approximately five-second slowed excerpt of real driving footage. It starts on every fresh home-page load; a replay control is visible in the hero. Mobile viewport resizing no longer closes it prematurely. Playback is muted and inline, with an explicit play control if autoplay is blocked. Reduced-motion preferences skip the film. Manrope, including Cyrillic glyphs, is self-hosted.
 
 ## Working features
 
@@ -27,7 +27,7 @@ npm run check
 npm test
 ```
 
-Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **37 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
+Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framework dependency. `linkedom` is used only for automated DOM tests. **41 automated checks passed.** Tests cover calculations, all four languages, all pages, actions, storage and race conditions. These do not verify browser rendering; final desktop and mobile visual QA is still outstanding.
 
 ## External services and sources
 
@@ -35,6 +35,7 @@ Static output: `dist/`. Runtime: HTML/CSS and JavaScript ES modules, no framewor
 - [Open-Meteo](https://open-meteo.com/), CC BY 4.0, free non-commercial API. Both services can fail and have no guaranteed uptime.
 - Services are called only on user action. Selected city coordinates are sent; no device-location permission, accounts, tracking or API keys.
 - Vehicle photographs: Dllu (Model S), Kevauto (Model Y), Mr.choppers (Cybertruck), via Wikimedia Commons, CC BY-SA 4.0 or 3.0. Road photograph: Mirko Fabian, Unsplash License. Authors, original pages and licenses are shown on the [about page](https://motion-atelier-neta26.wellolm4.chatgpt.site/about/) and in [photo-credits.json](dist/assets/photo-credits.json). Resizing and format conversion only; no AI image editing.
+- Film: [Tesla Loveday: “Energy”](https://commons.wikimedia.org/wiki/File:Tesla_Loveday-_%22Energy%22.webm), Atellani LLC, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Excerpt 40.6–43.3 s, slowed to 50% with frame interpolation, audio removed, resized and re-encoded. No manufacturer commission or sponsorship.
 - [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope) by Mikhail Sharanda and Mirko Velimirovic, [SIL Open Font License 1.1](dist/assets/fonts/OFL.txt).
 
 Natalie defined the product, languages, page structure, centered type, blue visual direction and flowing arrival. Implementation and automated checks were produced with AI assistance; photographs are by the credited authors. This demonstrates learning practice, not commercial deployment experience.

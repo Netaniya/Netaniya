@@ -185,3 +185,31 @@ h1,h2,h3{font-weight:400;letter-spacing:-.045em}
  .finder-placeholder img,.trip-placeholder img,.empty-garage img{height:auto;max-height:260px}
  .arrival-label,[data-theme="dark"] .arrival-label{top:19%;font-size:1.5rem;padding-inline:20px}
 }
+
+/* A real, silent driving film opens the site. The scene moves within the video. */
+.hero-replay{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-bottom:1px solid var(--line);background:none;color:var(--muted);font-size:.68rem;line-height:1.6;padding:10px 0;margin:18px auto 0}
+.hero-replay:hover{color:var(--blue);border-color:var(--blue)}
+.hero-replay span{font-size:1rem}
+.film-arrival,[data-theme="dark"] .film-arrival{background:#03070b;transition:opacity .8s ease}
+.film-arrival .arrival-backdrop,[data-theme="dark"] .film-arrival .arrival-backdrop{background:radial-gradient(ellipse at 50% 60%,#10222d,#03070b 75%);animation:none;transform:none}
+.arrival-film{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .65s ease;z-index:1}
+.arrival-film video{width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
+.film-arrival.playing .arrival-film,.film-arrival.needs-play .arrival-film{opacity:1}
+.film-arrival .arrival-wordmark,[data-theme="dark"] .film-arrival .arrival-wordmark{top:34px;z-index:3;color:#fff;font-weight:500;letter-spacing:.32em;text-shadow:0 2px 14px #000}
+.film-arrival .arrival-label,[data-theme="dark"] .film-arrival .arrival-label{top:clamp(84px,11vh,130px);left:24px;right:24px;z-index:3;color:#e6edf4;font-size:clamp(1rem,1.65vw,1.5rem);font-weight:400;text-shadow:0 2px 14px #000;opacity:1;animation:none;line-height:1.65}
+.arrival-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);min-height:54px;border:1px solid #ffffff80;background:#08121bd9;color:white;padding:15px 24px;backdrop-filter:blur(12px);z-index:5}
+.arrival-play[hidden]{display:none}
+.arrival-credit{position:absolute;bottom:33px;left:36px;z-index:4;color:#bcc9d3;font-size:.6rem;line-height:1.6;text-shadow:0 2px 8px #000;border-bottom:1px solid #ffffff40}
+.film-arrival .arrival-skip,[data-theme="dark"] .film-arrival .arrival-skip{bottom:24px;right:32px;background:#09121ec9;border:1px solid #d5e3ee66;color:#fff;padding:12px 20px;min-height:46px;backdrop-filter:blur(10px)}
+.arrival-progress{position:absolute;bottom:0;left:0;right:0;height:3px;background:#ffffff12;z-index:5;overflow:hidden}
+.arrival-progress span{display:block;width:100%;height:100%;background:#1b78ef;transform-origin:left;transform:scaleX(0)}
+.film-arrival.playing .arrival-progress span{animation:filmProgress var(--film-duration,6s) linear forwards}
+@keyframes filmProgress{to{transform:scaleX(1)}}
+@media(max-width:760px){
+ .film-arrival .arrival-wordmark,[data-theme="dark"] .film-arrival .arrival-wordmark{top:34px;font-size:.85rem;letter-spacing:.25em}
+ .film-arrival .arrival-label,[data-theme="dark"] .film-arrival .arrival-label{top:clamp(100px,18vh,160px);font-size:1.05rem;padding:0 12px;max-width:340px;margin-inline:auto}
+ .arrival-film{inset:24% 0 19%}
+ .arrival-credit{bottom:100px;left:20px;right:20px;text-align:center;width:fit-content;max-width:calc(100% - 40px);margin-inline:auto;font-size:.55rem}
+ .film-arrival .arrival-skip,[data-theme="dark"] .film-arrival .arrival-skip{bottom:30px;right:50%;transform:translateX(50%);white-space:nowrap;min-width:185px}
+}
+@media(max-height:500px){.film-arrival .arrival-wordmark{top:18px}.film-arrival .arrival-label{top:55px;font-size:.85rem}.arrival-credit{bottom:23px}.film-arrival .arrival-skip{bottom:12px}.arrival-film{inset:0}}

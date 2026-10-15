@@ -102,3 +102,14 @@ export const CITIES=[
 export const LANGS=['de','en','ru','uk'];
 export const LOCALES={de:'de-DE',en:'en-GB',ru:'ru-RU',uk:'uk-UA'};
 export const ROUTES=['/','/collection/','/finder/','/configure/','/journey/','/garage/','/about/',...VEHICLES.map(v=>'/models/'+v.id+'/')];
+
+export const INTRO_CLIP=Object.freeze({
+ src:'/assets/arrival-drive.mp4',
+ poster:'/assets/arrival-poster.jpg',
+ title:'Tesla Loveday: Energy — Alpine driving excerpt',
+ author:'Atellani LLC',
+ sourceURL:'https://commons.wikimedia.org/wiki/File:Tesla_Loveday-_%22Energy%22.webm',
+ license:'CC BY 3.0',
+ licenseURL:'https://creativecommons.org/licenses/by/3.0/',
+ modifications:'Excerpt 40.6–43.3 s; slowed to 50% with frame interpolation; audio removed; resized and re-encoded for the web'
+});
