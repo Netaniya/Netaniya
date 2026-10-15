@@ -18,10 +18,10 @@
     if(!ids.length)return {kind:'missing',invoiceId:null,amount:null,record:null};
     const record=INVOICES.find(x=>x.id===ids[0])||null;
     const amountText=text.replace(/DEMO-\d+/gi,'');
-    const matches=[...amountText.matchAll(/(?:€\s*([0-9][0-9.,]*)|(?<![\d.,])([0-9][0-9.,]*)\s*(?:EUR\b|Euro\b|€))/gi)];
+    const matches=[...amountText.matchAll(/(?:€\s*([0-9](?:[0-9.,'’\s]*[0-9])?)|(?<![\d.,])([0-9](?:[0-9.,'’\s]*[0-9])?)\s*(?:EUR\b|Euro\b|€))/gi)];
     // Reject unsupported number formats rather than interpreting only a suffix.
     const raw=matches.map(x=>x[1]||x[2]);
-    const negative=/(?:-\s*\d[\d.,]*\s*(?:EUR\b|Euro\b|€)|€\s*-\s*\d)/i.test(amountText);
+    const negative=/(?:[−–-]\s*\d[\d.,]*\s*(?:EUR\b|Euro\b|€)|€\s*[−–-]\s*\d)/i.test(amountText);
     const valid=!negative&&raw.every(x=>/^\d{1,6}(?:[.,]\d{1,2})?$/.test(x));
     const values=valid?[...new Set(raw.map(x=>Math.round(Number(x.replace(',','.'))*100)))]:[];
     const amount=values.length===1?values[0]:null;
@@ -31,20 +31,32 @@
     if(!['new','error','review','deferred'].includes(r.status))throw Error('transition');
     if(fail){r.status='error';r.analysis=null;r.draft='';r.revision++;log(r,'analysis_failed');return r;}
     const text=r.subject+'\n'+r.body;const check=invoiceCheck(text);
-    const billing=!!check.invoiceId||/rechnung|invoice|сч[её]т|рахунк|рахунок|zahlung|payment/i.test(text);
+    const billing=!!check.invoiceId||check.kind==='ambiguous'||/rechnung|invoice|сч[её]т|рахунк|рахунок|zahlung|payment/i.test(text);
     const category=billing?'billing':/login|error|fehler|ошиб|помилк/i.test(text)?'technical':'general';
     r.analysis={category,check:billing?check:{kind:'general',invoiceId:null,amount:null,record:null},provider:'deterministic-demo',mode:'rules',originalDraft:''};
     r.status='review';r.revision++;r.draft=makeDraft(r,r.replyLang);r.analysis.originalDraft=r.draft;log(r,'analysis_ready',check.kind);return r;
   }
-  function makeDraft(r,lang){language(lang);const w=wording[lang];let kind=r.analysis?.check.kind;if(!r.analysis)return '';return w.intro+'\n\n'+(kind==='missing'?w.need:kind==='unknown'?w.lookup:kind==='general'?w.normal:w.review.replace('{id}',r.analysis.check.invoiceId||'—'));}
+  function makeDraft(r,lang){language(lang);const w=wording[lang];let kind=r.analysis?.check.kind;if(!r.analysis)return '';return w.intro+'\n\n'+(kind==='missing'?w.need:kind==='unknown'?w.lookup:kind==='general'?w.normal:kind==='ambiguous'?{de:'Bitte bestätigen Sie die Rechnungsnummer und den zu prüfenden Betrag.',en:'Please confirm the invoice number and the amount to review.',ru:'Пожалуйста, уточните номер счёта и сумму, которую нужно проверить.',uk:'Будь ласка, уточніть номер рахунку та суму, яку потрібно перевірити.'}[lang]:w.review.replace('{id}',r.analysis.check.invoiceId||'—'));}
   function resultText(r,lang){language(lang);const kind=r.analysis?.check.kind;return kind==='ambiguous'?{de:'Mehrere Nummern oder Beträge gefunden. Bitte manuell prüfen.',en:'Multiple numbers or amounts found. Please review manually.',ru:'Найдено несколько номеров или сумм. Нужна ручная проверка.',uk:'Знайдено кілька номерів або сум. Потрібна ручна перевірка.'}[lang]:wording[lang][kind]||'';}
   function setDraft(r,text){if(r.status!=='review')throw Error('transition');if(!validText(text,3000))throw Error('draft');r.draft=text.trim();r.revision++;log(r,'draft_edited');return r;}
   function setReplyLanguage(r,lang){language(lang);if(r.status!=='review'&&r.status!=='new')throw Error('transition');r.replyLang=lang;if(r.analysis){r.draft=makeDraft(r,lang);r.analysis.originalDraft=r.draft;}r.revision++;log(r,'reply_language',lang);return r;}
   function approve(r,{reviewed=false,reviewer='Natalie Ragulina',draft,expectedRevision}={}){if(r.status!=='review')throw Error('transition');if(!reviewed)throw Error('review');if(expectedRevision!==undefined&&expectedRevision!==r.revision)throw Error('stale');if(!validText(draft,3000))throw Error('draft');if(!validText(reviewer,100))throw Error('reviewer');r.draft=draft.trim();r.status='approved';r.revision++;r.approvedBy=reviewer;log(r,'human_approved',reviewer);return r;}
   function defer(r){if(r.status!=='review')throw Error('transition');r.status='deferred';r.revision++;log(r,'deferred');return r;}
-  function validStored(r){return r&&typeof r.id==='string'&&validText(r.subject,200)&&validText(r.body,10000)&&LANGS.includes(r.replyLang)&&['new','review','approved','error','deferred'].includes(r.status)&&Number.isInteger(r.revision)&&Array.isArray(r.events)&&typeof r.draft==='string'&&r.events.every(e=>typeof e.action==='string'&&typeof e.at==='string')&&(!r.analysis||r.analysis.provider==='deterministic-demo'&&r.analysis.check&&typeof r.analysis.check.kind==='string');}
-  function serialize(rows){if(!Array.isArray(rows)||!rows.every(validStored))throw Error('storage');return JSON.stringify({version:2,rows});}
-  function restore(text){const x=JSON.parse(text);if(x.version!==2||!Array.isArray(x.rows)||x.rows.length>500||!x.rows.every(validStored))throw Error('storage');return x.rows;}
+  function validStored(r){
+    const date=x=>typeof x==='string'&&Number.isFinite(Date.parse(x));
+    if(!r||!validText(r.id,100)||!validText(r.subject,200)||!validText(r.body,10000)||!LANGS.includes(r.replyLang)||!['new','review','approved','error','deferred'].includes(r.status)||!Number.isSafeInteger(r.revision)||r.revision<0||!date(r.created)||typeof r.draft!=='string'||r.draft.length>3000||!Array.isArray(r.events)||!r.events.every(e=>e&&['created','analysis_ready','analysis_failed','draft_edited','reply_language','human_approved','deferred'].includes(e.action)&&date(e.at)&&typeof e.detail==='string'))return false;
+    if(['new','error'].includes(r.status))return r.analysis===null&&r.draft==='';
+    const a=r.analysis,c=a?.check;
+    if(!a||a.provider!=='deterministic-demo'||a.mode!=='rules'||!['billing','technical','general'].includes(a.category)||typeof a.originalDraft!=='string'||a.originalDraft.length>3000||!c||!['missing','unknown','noamount','match','mismatch','general','ambiguous'].includes(c.kind))return false;
+    if(c.invoiceId!==null&&(typeof c.invoiceId!=='string'||!/^DEMO-\d+$/.test(c.invoiceId)))return false;
+    if(c.amount!==null&&(!Number.isSafeInteger(c.amount)||c.amount<0))return false;
+    if(c.record!==null&&!INVOICES.some(x=>x.id===c.record.id&&x.amount===c.record.amount&&x.currency===c.record.currency))return false;
+    if(['match','mismatch'].includes(c.kind)&&(!c.record||c.amount===null||c.invoiceId!==c.record.id||(c.kind==='match')!==(c.amount===c.record.amount)))return false;
+    return validText(r.draft,3000)&&(r.status!=='approved'||validText(r.approvedBy,100));
+  }
+  function validRows(rows){return Array.isArray(rows)&&rows.length<=500&&rows.every(validStored)&&new Set(rows.map(r=>r.id)).size===rows.length;}
+  function serialize(rows){if(!validRows(rows))throw Error('storage');return JSON.stringify({version:2,rows});}
+  function restore(text){const x=JSON.parse(text);if(!x||x.version!==2||!validRows(x.rows))throw Error('storage');return x.rows;}
   const samples={
     de:[['Betrag prüfen · DEMO-104','Guten Tag, auf Rechnung DEMO-104 stehen 179 EUR. Bitte prüfen Sie den Betrag.'],['Rückfrage · DEMO-205','Auf Rechnung DEMO-205 stehen 89 EUR. Ich habe eine Frage zur Leistung.'],['Rechnung ohne Nummer','Der Betrag meiner Rechnung erscheint mir falsch. Können Sie ihn prüfen?']],
     en:[['Check amount · DEMO-104','Hello, invoice DEMO-104 shows 179 EUR. Please check the amount.'],['Question · DEMO-205','Invoice DEMO-205 shows 89 EUR. I have a question about the service.'],['Invoice without number','The amount on my invoice seems wrong. Could you check it?']],

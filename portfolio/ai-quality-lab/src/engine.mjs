@@ -1,8 +1,8 @@
-export const ENGINE_VERSION = '1.1.0';
+export const ENGINE_VERSION = '1.1.1';
 export function datasetForLanguage(dataset,lang=dataset.language||'de') {
   if(!['de','en','ru','uk'].includes(lang))throw Error('invalid_language');
   if(dataset.language===lang&&!dataset.cases.some(c=>c.translations))return dataset;
-  if(dataset.language!=='de'&&dataset.language!==lang)throw Error('dataset_language');
+  if(dataset.language!==lang&&!dataset.cases.every(c=>c.translations?.[lang]))throw Error('dataset_language');
   return {...dataset,id:dataset.id.replace(/-de-/,`-${lang}-`),language:lang,cases:dataset.cases.map(({translations,...c})=>({...c,...(translations?.[lang]||{})}))};
 }
 const plain = x => x !== null && typeof x === 'object' && !Array.isArray(x);

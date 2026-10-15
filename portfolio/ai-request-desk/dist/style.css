@@ -37,3 +37,7 @@ body{background:linear-gradient(135deg,#f4f7f9 0%,#eff4f3 100%);letter-spacing:-
 textarea,input,select{border-color:#d5e0e5;border-radius:9px}
 .about{background:linear-gradient(130deg,#fff,#f7fbf9)}
 @media(max-width:740px){.page-heading h1{font-size:26px;line-height:1.24}.metrics strong{font-size:27px}.metrics>div{padding:12px 11px}.panel{border-radius:14px}.learning-banner{padding:14px}.topbar{padding:17px 16px}}
+
+/* Keep long untrusted messages inside narrow screens. */
+.queue-row h3,.detail h2,.original,.result,.audit-row{overflow-wrap:anywhere;min-width:0}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

@@ -85,7 +85,10 @@ export const dictionaries = {
     "elapsedLabel": "Laufzeit",
     "totalDuration": "Gesamtlaufzeit",
     "apiCalls": "Modellaufrufe",
-    "externalChange": "In einem anderen Fenster wurden Daten geändert. Der aktuelle Stand wurde übernommen."
+    "externalChange": "In einem anderen Fenster wurden Daten geändert. Der aktuelle Stand wurde übernommen.",
+    "discardChanges": "Ungespeicherte Änderungen verwerfen?",
+    "resetQuestion": "Eigene Antworten und Ergebnisse durch die Demo-Beispiele ersetzen?",
+    "invalidOutput": "Eine Antwort darf höchstens 20.000 Zeichen enthalten."
   },
   "en": {
     "skip": "Go to lab",
@@ -173,7 +176,10 @@ export const dictionaries = {
     "elapsedLabel": "Elapsed",
     "totalDuration": "Total duration",
     "apiCalls": "Model calls",
-    "externalChange": "Data changed in another window. The latest version has been loaded."
+    "externalChange": "Data changed in another window. The latest version has been loaded.",
+    "discardChanges": "Discard unsaved changes?",
+    "resetQuestion": "Replace custom answers and results with the demo samples?",
+    "invalidOutput": "Each answer must contain at most 20,000 characters."
   },
   "ru": {
     "skip": "Перейти в лабораторию",
@@ -261,7 +267,10 @@ export const dictionaries = {
     "elapsedLabel": "Время",
     "totalDuration": "Полное время",
     "apiCalls": "Вызовы ИИ-модели",
-    "externalChange": "Данные изменились в другом окне. Загружена последняя версия."
+    "externalChange": "Данные изменились в другом окне. Загружена последняя версия.",
+    "discardChanges": "Отменить несохранённые изменения?",
+    "resetQuestion": "Заменить свои ответы и результаты учебными примерами?",
+    "invalidOutput": "Ответ должен содержать не более 20 000 символов."
   },
   "uk": {
     "skip": "Перейти до лабораторії",
@@ -349,7 +358,10 @@ export const dictionaries = {
     "elapsedLabel": "Час",
     "totalDuration": "Загальний час",
     "apiCalls": "Виклики моделі ШІ",
-    "externalChange": "Дані змінилися в іншому вікні. Завантажено останню версію."
+    "externalChange": "Дані змінилися в іншому вікні. Завантажено останню версію.",
+    "discardChanges": "Скасувати незбережені зміни?",
+    "resetQuestion": "Замінити власні відповіді й результати навчальними прикладами?",
+    "invalidOutput": "Відповідь має містити не більше 20 000 символів."
   }
 };
 export function translate(lang,key,vars={}){return (dictionaries[lang]?.[key]??dictionaries.de[key]??key).replace(/\{(\w+)\}/g,(_,k)=>String(vars[k]??`{${k}}`));}

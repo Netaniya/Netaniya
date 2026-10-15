@@ -1,5 +1,7 @@
 # Natalie Ragulina (Netaniya)
 
+[![Request Desk checks](https://github.com/Netaniya/Netaniya/actions/workflows/ai-request-desk.yml/badge.svg)](https://github.com/Netaniya/Netaniya/actions/workflows/ai-request-desk.yml) [![Quality Lab checks](https://github.com/Netaniya/Netaniya/actions/workflows/ai-quality-lab.yml/badge.svg)](https://github.com/Netaniya/Netaniya/actions/workflows/ai-quality-lab.yml)
+
 **Webentwicklung · KI-Integration · Automatisierung**  
 München, Deutschland · [English](README.en.md) · [Русский](PORTFOLIO.ru.md)
 
@@ -13,7 +15,7 @@ Anfragen bearbeiten, Rechnungsdaten vergleichen und Antwortentwürfe vor der Fre
 [![AI Request Desk – deutsche Oberfläche](assets/screenshots/request-desk.png)](https://ai-request-desk-neta26.wellolm4.chatgpt.site)
 
 - Rechnungsabgleich, bearbeitbare Entwürfe, Statusverlauf, Fehlerbehandlung und browserlokale Speicherung.
-- **JavaScript · HTML · CSS** · vier UI-Sprachen · **21 automatische Prüfungen**.
+- **JavaScript · HTML · CSS** · vier UI-Sprachen · **25 automatische Prüfungen**.
 - Lernprojekt mit fiktiven Daten und transparenten Regeln; die veröffentlichte Demo verwendet kein Live-LLM.
 
 **[Live-Demo ohne Anmeldung](https://ai-request-desk-neta26.wellolm4.chatgpt.site) · [Code & Dokumentation](portfolio/ai-request-desk/README.md)**
@@ -24,7 +26,7 @@ Gespeicherte Antworten anhand offener Kriterien vergleichen und Ergebnisse repro
 [![AI Quality Lab – deutsche Oberfläche](assets/screenshots/quality-lab.png)](https://ai-quality-lab-neta26.wellolm4.chatgpt.site)
 
 - Acht Testfälle, bearbeitbare Varianten, gewichtete Scores und nachvollziehbare Einzelprüfungen.
-- **JavaScript Worker · HTML · CSS · Python-Evaluator** · vier UI-Sprachen · **26 automatische Prüfungen**.
+- **JavaScript Worker · HTML · CSS · Python-Evaluator** · vier UI-Sprachen · **32 automatische Prüfungen**.
 - Zusätzlich: **[React-/TypeScript-Client mit FastAPI-Backend](portfolio/ai-quality-lab/fullstack/README.md)**, lokal ausführbar, mit optionalem serverseitigem Responses-API-Adapter. **17 Backend- und 8 Client-Tests** bestanden; ein echter Modellaufruf ist noch nicht verifiziert.
 - Die öffentliche Worker-Demo prüft gespeicherte Beispiele und benötigt keinen API-Schlüssel.
 

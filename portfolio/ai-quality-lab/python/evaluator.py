@@ -5,7 +5,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-ENGINE_VERSION = "1.1.0"
+ENGINE_VERSION = "1.1.1"
 JS_WHITESPACE = "\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff"
 
 def output_valid(output):
@@ -52,7 +52,7 @@ def grade(item, output):
 def dataset_for_language(dataset, lang):
     if lang not in ("de", "en", "ru", "uk"):
         raise ValueError("invalid_language")
-    if dataset["language"] != "de" and dataset["language"] != lang:
+    if dataset["language"] != lang and not all(lang in c.get("translations", {}) for c in dataset["cases"]):
         raise ValueError("dataset_language")
     cases = [{**{k:v for k,v in c.items() if k != "translations"}, **c.get("translations", {}).get(lang, {})} for c in dataset["cases"]]
     return {**dataset, "id":dataset["id"].replace("-de-", "-"+lang+"-"), "language":lang, "cases":cases}

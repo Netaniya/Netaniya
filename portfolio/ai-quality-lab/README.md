@@ -60,7 +60,7 @@ Die überarbeitete Oberfläche verwendet eine kompakte Arbeitsansicht, lesbare B
 
 Der Python-Evaluator verwendet dieselben Regeln für äußere Unicode-Leerzeichen und die Antwortlänge in UTF-16-Einheiten wie die Web-Version. Exportierte Berichte sowie die herunterladbaren Python-Dateien werden durch einen eigenständigen Replay-Test geprüft.
 
-26 automatische Prüfungen bestanden. Natalie prüfte die erste Gestaltung auf dem Smartphone und verlangte eine klarere Typografie sowie eine kompakte Arbeitsansicht ohne dekorative Punkte; die Änderungen wurden mit KI-Unterstützung umgesetzt.
+32 automatische Prüfungen bestanden. Natalie prüfte die erste Gestaltung auf dem Smartphone und verlangte eine klarere Typografie sowie eine kompakte Arbeitsansicht ohne dekorative Punkte; die Änderungen wurden mit KI-Unterstützung umgesetzt.
 
 ## React / TypeScript und FastAPI
 
