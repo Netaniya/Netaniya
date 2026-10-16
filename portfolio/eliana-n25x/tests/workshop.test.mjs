@@ -34,7 +34,7 @@ test('Studio math: linear/quadratic solutions, identities and polynomial derivat
 });
 test('Studio: all four languages contain complete interface, teacher messages and copyright',()=>{
  assert.equal(fresh().lang,'de');for(const lang of ['en','ru','uk'])assert.deepEqual(Object.keys(TEXT[lang]).sort(),Object.keys(TEXT.de).sort());for(const copy of Object.values(TEXT))assert(Object.values(copy).every(v=>typeof v==='string'&&v.length));assert(TEXT.ru.rights.includes('Все права защищены'));
- for(const p of SHOP)assert(TEXT.de[p.id]);
+ for(const p of SHOP)assert(TEXT.de[p.id]);for(const copy of Object.values(TEXT)){assert(copy.robotGreeting.includes('{name}'));assert(!copy.greeting.includes('{name}'));}
 });
 test('Studio: daily exercises are reproducible, change by date, and have correct answers across 11 levels',()=>{
  for(let grade=1;grade<=11;grade++){

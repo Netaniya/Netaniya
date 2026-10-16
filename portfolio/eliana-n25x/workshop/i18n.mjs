@@ -25,7 +25,7 @@ continue|Weiter|Continue|Продолжить|Продовжити
 close|Schließen|Close|Закрыть|Закрити
 back|Zurück|Back|Назад|Назад
 ready|Bereit für deine nächste Idee.|Ready for your next idea.|Готов к твоей следующей идее.|Готовий до твоєї наступної ідеї.
-greeting|Hallo, ich bin {name}.|Hi, I'm {name}.|Привет, я {name}.|Привіт, я {name}.
+robotGreeting|Hallo, ich bin {name}.|Hi, I'm {name}.|Привет, я {name}.|Привіт, я {name}.
 homeHelp|Was machen wir heute zusammen?|What shall we do together today?|Что сегодня сделаем вместе?|Що сьогодні зробимо разом?
 assemble|Roboter gestalten|Customize robot|Настроить робота|Налаштувати робота
 assembleHelp|Tippe auf ein Teil. Dein Roboter verändert sich sofort.|Tap a part. Your robot changes instantly.|Нажми на деталь — робот сразу изменится.|Натисни на деталь — робот одразу зміниться.
@@ -314,5 +314,5 @@ endingSeedB|N25x liest die Meldung: Der Gartensensor braucht eine neue Batterie.
 checklistSeed|Eine Idee wählen; Einen Versuch machen; Das Ergebnis prüfen|Choose an idea; Try it out; Check the result|Выбрать идею; Попробовать; Проверить результат|Обрати ідею; Спробувати; Перевірити результат
 `;
 export const TEXT=Object.fromEntries(['de','en','ru','uk'].map(l=>[l,{}]));
-for(const line of rows.trim().split('\n')){const [key,...values]=line.split('|');if(values.length!==4)throw Error('translation '+key);Object.keys(TEXT).forEach((l,i)=>TEXT[l][key]=values[i]);}
+for(const line of rows.trim().split('\n')){const [key,...values]=line.split('|');if(values.length!==4)throw Error('translation '+key);if(Object.hasOwn(TEXT.de,key))throw Error('Duplicate translation '+key);Object.keys(TEXT).forEach((l,i)=>TEXT[l][key]=values[i]);}
 export function translate(lang,key,params={}){let text=TEXT[lang]?.[key];if(text===undefined)throw Error('Missing text '+lang+':'+key);return text.replace(/\{(\w+)\}/g,(_,k)=>String(params[k]??''));}

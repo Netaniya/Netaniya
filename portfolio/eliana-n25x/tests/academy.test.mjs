@@ -150,7 +150,7 @@ test('Academy application wiring: actual app navigation, inputs, rewards and lan
  try{
   for(const [k,value]of Object.entries(overrides))Object.defineProperty(globalThis,k,{value,writable:true,configurable:true});
   console.error=(...args)=>errors.push(args.join(' '));await import('../workshop/dist/app.mjs?automated-dom-fallback=1');console.error=consoleError;
-  assert.equal(document.body.dataset.ready,'fallback');assert(errors.every(v=>v.includes('WebGLRenderer')),'only expected canvas-unavailable errors');
+  assert.equal(document.body.dataset.ready,'fallback');assert.equal(document.querySelector('#content h2').textContent,TEXT.de.robotGreeting.replace('{name}','Nova'));assert(errors.every(v=>v.includes('WebGLRenderer')),'only expected canvas-unavailable errors');
   const click=async selector=>{const button=document.querySelector(selector);assert(button,selector);button.click();await new Promise(resolve=>setImmediate(resolve));};
   await click('#navigation [data-do=learn]');await click('[data-do=programming]');assert.equal(document.body.dataset.view,'programming');await click('[data-a=block][data-index="1"]');await click('[data-a=tests]');assert.equal(JSON.parse(storage.get(SAVE_KEY)).points,110);
   await click('#navigation [data-do=create]');await click('[data-a=template][data-template=quiz]');assert(document.querySelector('#quiz-question-0'));await click('[data-a=save-creation]');assert.equal(JSON.parse(storage.get(SAVE_KEY)).projects.length,1);
