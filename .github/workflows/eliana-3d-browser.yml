@@ -8,6 +8,13 @@ permissions:
   contents: read
 jobs:
   chromium:
+    name: Chromium · ${{ matrix.scope }}
+    strategy:
+      fail-fast: false
+      matrix:
+        scope: [desktop, touch]
+    env:
+      ELIANA_BROWSER_SCOPE: ${{ matrix.scope }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -18,11 +25,11 @@ jobs:
       - run: npm ci --ignore-scripts --prefix portfolio/eliana-n25x/3d/browser-tests
       - run: cd portfolio/eliana-n25x/3d/browser-tests && npx playwright install --with-deps chromium
       - run: node portfolio/eliana-n25x/3d/build.mjs
-      - name: Play all missions with real browser input; check touch and offline reload
+      - name: Verify rendered ${{ matrix.scope }} gameplay
         run: node portfolio/eliana-n25x/3d/browser-tests/run.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: eliana-3d-browser-evidence
+          name: eliana-3d-${{ matrix.scope }}-evidence
           path: portfolio/eliana-n25x/3d/browser-tests/results/
           retention-days: 14
