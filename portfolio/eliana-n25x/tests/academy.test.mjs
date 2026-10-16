@@ -159,3 +159,10 @@ test('Academy application wiring: actual app navigation, inputs, rewards and lan
   for(const lang of ['ru','en','uk','de']){const select=document.getElementById('site-language');for(const option of select.querySelectorAll('option')){option.removeAttribute('selected');if(option.value===lang)option.setAttribute('selected','');}select.dispatchEvent(new window.Event('change',{bubbles:true}));await new Promise(resolve=>setImmediate(resolve));assert.equal(document.documentElement.lang,lang);assert.equal(document.getElementById('site-language-label').textContent,TEXT[lang].interfaceLanguage);assert(document.getElementById('copyright').textContent.includes(TEXT[lang].rights));assert(document.querySelector('#content h2').textContent.includes(TEXT[lang].quiz));assert.equal(JSON.parse(storage.get(SAVE_KEY)).projects.length,1);}
  }finally{console.error=consoleError;timers.forEach(clearTimeout);for(const [k,d]of Object.entries(old))if(d)Object.defineProperty(globalThis,k,d);else delete globalThis[k];}
 });
+test('Academy panels: choosing predictions or scoring blocks keeps the open controls visible after rendering',async()=>{
+ const h=academyDOM();try{
+  h.document.getElementById('program-predict').setAttribute('open','');await h.click('[data-a=predict][data-index="0"]');assert(h.document.getElementById('program-predict').hasAttribute('open'));
+  h.academy.selectTemplate('quiz');h.document.getElementById('quiz-scoring').setAttribute('open','');await h.click('[data-a=score-block][data-index="1"]');assert(h.document.getElementById('quiz-scoring').hasAttribute('open'));await h.click('[data-a=check-scoring]');assert(h.document.getElementById('scoring-result').textContent.includes(TEXT.de.testsFailed));
+  await h.click('[data-a=score-block][data-index="0"]');assert(h.document.getElementById('quiz-scoring').hasAttribute('open'));await h.click('[data-a=check-scoring]');assert(h.document.getElementById('scoring-result').textContent.includes(TEXT.de.testsPassed));
+ }finally{h.cleanup();}
+});
