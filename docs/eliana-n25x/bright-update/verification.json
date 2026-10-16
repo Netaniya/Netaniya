@@ -1,0 +1,135 @@
+{
+  "project": "Eliana & N25x",
+  "author": "Natalie Ragulina",
+  "copyright": "© 2026 Natalie Ragulina. All rights reserved.",
+  "source_commit": "df8f0e6378a1da3f669fc53852ae568b4be1be92",
+  "workflow_run": 38888174485,
+  "workflow_url": "https://github.com/Netaniya/Netaniya/actions/runs/38888174485",
+  "build_version": "en25x3d-9dbaf6a63d4fed",
+  "automated_rules": {
+    "game": 46,
+    "portfolio": 11
+  },
+  "desktop": {
+    "scope": "desktop",
+    "buildVersion": "en25x3d-9dbaf6a63d4fed",
+    "author": "Natalie Ragulina",
+    "startedAt": "2026-10-16T10:35:22.619Z",
+    "checks": [
+      {
+        "name": "real WebGL scene initializes; first visit is German"
+      },
+      {
+        "name": "all four languages switch in the rendered browser"
+      },
+      {
+        "name": "native Web Audio starts on gesture; volume and mute controls work"
+      },
+      {
+        "name": "keyboard walk and run move the animated model",
+        "walkDistance": 1.1500000000000004,
+        "runDistance": 0.9100000000000001,
+        "walkSpeed": 2.65,
+        "runSpeed": 5
+      },
+      {
+        "name": "mouse drag changes the follow camera"
+      },
+      {
+        "name": "pause stops movement, elapsed time and native audio"
+      },
+      {
+        "name": "real movement is blocked by a solid planter"
+      },
+      {
+        "name": "mission 1 scan and repair complete with N25x on location"
+      },
+      {
+        "name": "cold offline reload restores the checkpoint and permits real movement; classic save untouched"
+      },
+      {
+        "name": "mission 2 scan and repair complete with N25x on location"
+      },
+      {
+        "name": "mission 3 scan and repair complete with N25x on location"
+      },
+      {
+        "name": "mission 4 scan and repair complete with N25x on location"
+      },
+      {
+        "name": "mission 5 scan and repair complete with N25x on location"
+      },
+      {
+        "name": "mission 6 scan and repair complete with N25x on location"
+      },
+      {
+        "name": "all six districts complete through browser input, with final screen and 2100 points"
+      }
+    ],
+    "missions": [
+      {
+        "level": 1,
+        "id": "cobalt",
+        "score": 350,
+        "elapsed": 74.0638
+      },
+      {
+        "level": 2,
+        "id": "silent",
+        "score": 350,
+        "elapsed": 53.048099999999984
+      },
+      {
+        "level": 3,
+        "id": "aurora",
+        "score": 350,
+        "elapsed": 57.764500000000005
+      },
+      {
+        "level": 4,
+        "id": "garden",
+        "score": 350,
+        "elapsed": 55.96459999999998
+      },
+      {
+        "level": 5,
+        "id": "home",
+        "score": 350,
+        "elapsed": 55.28119999999998
+      },
+      {
+        "level": 6,
+        "id": "lighthouse",
+        "score": 350,
+        "elapsed": 55.648
+      }
+    ],
+    "errors": [],
+    "physicalDevicesTested": false,
+    "success": true,
+    "finishedAt": "2026-10-16T10:41:38.866Z"
+  },
+  "emulated_touch": {
+    "scope": "touch",
+    "buildVersion": "en25x3d-9dbaf6a63d4fed",
+    "author": "Natalie Ragulina",
+    "startedAt": "2026-10-16T10:35:26.121Z",
+    "checks": [
+      {
+        "name": "emulated mobile multi-touch moves and orbits simultaneously without page scrolling",
+        "viewport": "390x844"
+      },
+      {
+        "name": "mobile landscape controls remain visible",
+        "viewport": "844x390"
+      }
+    ],
+    "missions": [],
+    "errors": [],
+    "physicalDevicesTested": false,
+    "success": true,
+    "finishedAt": "2026-10-16T10:35:33.412Z"
+  },
+  "physical_devices_tested": false,
+  "scope": "Visual palettes, architectural lights, procedural circuit displays and HUD accents. Gameplay rules and save schema unchanged."
+}

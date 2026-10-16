@@ -21,3 +21,5 @@ Automated tests cover collision-checked routes through all six mission rule sequ
 Installation uses a separate manifest and service-worker scope under `3d/`. All 15 required local files are read from cache and checked against build SHA-256 hashes before the UI announces offline readiness. Geometry and procedural material textures are generated from these cached modules. Only older `en25x3d-` caches are removed. Actual Android/iOS installation and offline restart require separate device checks; no such test is claimed without evidence.
 
 Verified browser playthrough and actual screenshots: [verification record](../../../docs/eliana-n25x/README.md). Physical-device tests are explicitly distinguished from Chromium emulation.
+
+Vivid district palettes and current gameplay captures: [Visual update](../../../docs/eliana-n25x/bright-update/README.md).

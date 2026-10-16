@@ -2,6 +2,8 @@
 
 **© 2026 Natalie Ragulina. Все права защищены.**
 
+**Последнее обновление:** [яркая технологичная палитра — новые кадры и повторная проверка](bright-update/README.md). Кадры первого прохождения ниже показывают предыдущую палитру.
+
 Автор концепции и художественного направления — Natalie Ragulina. Разработка и переводы выполнены с помощью ИИ.
 
 [Открыть 3D-игру](https://netaniya.github.io/Netaniya/eliana-n25x/3d/) · [Проверки в GitHub Actions](https://github.com/Netaniya/Netaniya/actions/runs/38883257868) · [Полный отчёт JSON](verification.json) · [Файл продолжения](../../portfolio/eliana-n25x/3d/PROGRESS.ru.md)

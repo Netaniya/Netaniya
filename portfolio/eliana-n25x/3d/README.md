@@ -52,3 +52,5 @@ Erst nach der bestätigten Dateiprüfung kann der Spieler ohne Netz erneut öffn
 English documentation: [README.en.md](README.en.md).
 
 Bestätigtes Browser-Durchspielen und echte Screenshots: [Prüfbericht](../../../docs/eliana-n25x/README.md). Physische Geräte sind ausdrücklich von der Chromium-Emulation getrennt.
+
+Neue Farbgestaltung und aktuelle Spielaufnahmen: [Vivid technology update](../../../docs/eliana-n25x/bright-update/README.md).
