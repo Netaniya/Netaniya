@@ -77,7 +77,7 @@ function updateHUD(){
  $('task-box').hidden=!task;
  if(task){$('task-status').textContent=distance(player,{x:0,z:-10})>4.7?tr('stay'):distance(robot,{x:-1.4,z:-9})>1.1?tr('robotComing'):tr(task.type==='scan'?'scanning':'repairing');$('task-progress').value=task.progress/(task.type==='scan'?3:4.2);}
  drawMap(boxes,next);
- if(new URLSearchParams(location.search).has('qa')){$('qa').hidden=false;$('qa').textContent='E '+player.x.toFixed(2)+','+player.z.toFixed(2)+' · N '+robot.x.toFixed(2)+','+robot.z.toFixed(2)+' · '+g+' · '+(near?.id||'—')+' · gate '+(world?.gateProgress||0).toFixed(2)+' · walk '+eliana?.phase.toFixed(1);}
+ if(new URLSearchParams(location.search).has('qa')){$('qa').hidden=false;$('qa').textContent='E '+player.x.toFixed(2)+','+player.z.toFixed(2)+' · N '+robot.x.toFixed(2)+','+robot.z.toFixed(2)+' · '+g+' · '+(near?.id||'—')+' · gate '+(world?.gateProgress||0).toFixed(2)+' · walk '+(eliana?.phase.toFixed(1)||'0')+' · yaw '+yaw.toFixed(3);}
 }
 function drawMap(boxes,next){const canvas=$('map'),ctx=canvas.getContext('2d');const w=canvas.width,h=canvas.height,s=2.65;ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(12,29,40,.88)';ctx.fillRect(0,0,w,h);const project=p=>[w/2+p.x*s,h/2+p.z*s];ctx.fillStyle='#3c5965';for(const b of boxes){const [x,y]=project(b);ctx.fillRect(x-b.w*s/2,y-b.d*s/2,b.w*s,b.d*s);}ctx.font='9px sans-serif';ctx.textAlign='center';
  for(const o of candidates()){const [x,y]=project(o);ctx.fillStyle=o.id===next.id?'#ffdc95':'#79cfde';ctx.beginPath();ctx.arc(x,y,o.id==='clue'?3:2.4,0,Math.PI*2);ctx.fill();if(LEVELS[state.level].kind==='relay'&&o.id.startsWith('item'))ctx.fillText(String(Number(o.id.at(-1))+1),x,y-4);}

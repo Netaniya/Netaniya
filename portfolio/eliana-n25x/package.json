@@ -1,1 +1,2 @@
-{"name":"eliana-n25x","version":"1.0.0","private":true,"type":"module","scripts":{"build":"node build.mjs","check":"node --check app.mjs && node --check audio.mjs && node --check engine.mjs && node --check i18n.mjs && node --check sw.js","test":"node --test tests/*.test.mjs"},"devDependencies":{"linkedom":"0.18.13"}}
+{"name":"eliana-n25x","version":"1.0.0","private":true,"type":"module","scripts":{"build":"node build.mjs && node 3d/build.mjs","check":"node --check app.mjs && node --check audio.mjs && node --check engine.mjs && node --check i18n.mjs && node --check sw.js && node --check 3d/app.mjs && node --check 3d/world.mjs && node --check 3d/actors.mjs && node --check 3d/dist/sw.js","test":"node --test tests/*.test.mjs"},"devDependencies":{"linkedom":"0.18.13"}}
+

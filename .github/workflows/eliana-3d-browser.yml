@@ -1,0 +1,28 @@
+name: Eliana 3D browser playthrough
+on:
+  push:
+    branches: [main]
+    paths: ['portfolio/eliana-n25x/**', '.github/workflows/eliana-3d-browser.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts --prefix portfolio/eliana-n25x/3d/browser-tests
+      - run: cd portfolio/eliana-n25x/3d/browser-tests && npx playwright install --with-deps chromium
+      - run: node portfolio/eliana-n25x/3d/build.mjs
+      - name: Play all missions with real browser input; check touch and offline reload
+        run: node portfolio/eliana-n25x/3d/browser-tests/run.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eliana-3d-browser-evidence
+          path: portfolio/eliana-n25x/3d/browser-tests/results/
+          retention-days: 14
