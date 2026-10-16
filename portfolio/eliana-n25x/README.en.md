@@ -1,5 +1,10 @@
 # Eliana & N25x
 
+
+## New version: Robot Studio
+
+The new phone-first workshop with a personal robot, learning tasks, creative tools and points is documented in **[Robot Studio](workshop/README.en.md)**. The illustrated quest documented below and the **[3D adventure](3d/README.en.md)** remain available.
+
 **A shared future · [Deutsch](README.md)**
 
 [Play](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Download offline edition](https://netaniya.github.io/Netaniya/eliana-n25x/download/eliana-n25x-offline.html)
@@ -45,3 +50,4 @@ Tests cover both modes, complete six-chapter DOM walkthroughs in all four langua
 ## Copyright
 
 **© 2026 Natalie Ragulina. All rights reserved.** [Copyright notice and third-party licenses](LICENSE.md).
+

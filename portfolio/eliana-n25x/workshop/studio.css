@@ -7,3 +7,5 @@
 
 .daily-card{display:flex;gap:18px;align-items:center;padding:20px;border:1px solid #c9dcd1;background:#e5efe4;border-radius:22px;margin:0 0 20px}.daily-card .eyebrow{display:block;font-size:9px;margin-bottom:7px}.daily-card h3{margin:0 0 6px;font-size:17px}.daily-card p{font-size:11px;line-height:1.5;color:#5a7c6d;margin-bottom:10px}.daily-card>div{flex:1}.daily-card>button{font-size:12px;min-width:90px;max-width:140px}.daily-dots{display:flex;gap:6px}.daily-dots i{width:26px;height:4px;border-radius:3px;background:#c6d8c7}.daily-dots i.done{background:#559477}.mode-row{margin-top:18px}.mode-row button{flex:1;font-size:12px;min-height:48px}
 @media(max-width:700px){.daily-card{padding:18px;gap:12px}.daily-card h3{font-size:16px}.daily-card>button{max-width:115px;padding:12px}.daily-card p{font-size:11px}}
+
+.welcome-portraits img:only-child{width:160px;height:190px;border-radius:32px}label:has(input[type=checkbox]){min-height:44px;display:flex;align-items:center;font-size:14px;color:var(--ink)}

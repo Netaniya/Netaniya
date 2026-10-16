@@ -1,5 +1,10 @@
 # Eliana & N25x
 
+
+## Neue Version: Robot Studio
+
+Die neue mobile Werkstatt mit persönlichem Roboter, Lernaufgaben, kreativen Werkzeugen und Punkten liegt separat unter **[Robot Studio](workshop/README.md)**. Der unten dokumentierte Bilderquest und das **[3D-Abenteuer](3d/README.md)** bleiben erhalten.
+
 **Ein gemeinsames Zukunftsabenteuer · [English](README.en.md)**
 
 [Spielen](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Offline-Datei herunterladen](https://netaniya.github.io/Netaniya/eliana-n25x/download/eliana-n25x-offline.html)
@@ -47,3 +52,4 @@ Die Tests prüfen beide Spielmodi, das vollständige Durchspielen aller sechs Ka
 ## Copyright
 
 **© 2026 Natalie Ragulina. All rights reserved.** [Copyright notice and third-party licenses](LICENSE.md).
+

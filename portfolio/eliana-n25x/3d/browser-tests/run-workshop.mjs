@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
 import {TEXT} from '../../workshop/i18n.mjs';
 import {MATH,dailyTasks} from '../../workshop/math.mjs';
 import {SAVE_KEY} from '../../workshop/model.mjs';
-const root=fileURLToPath(new URL('../../workshop/dist/',import.meta.url)),results=fileURLToPath(new URL('./workshop-results/',import.meta.url));
+const root=path.resolve(fileURLToPath(new URL('../../workshop/dist/',import.meta.url))),results=fileURLToPath(new URL('./workshop-results/',import.meta.url));
 await fs.mkdir(results,{recursive:true});
 const base='/Netaniya/eliana-n25x/workshop/';
 const mime={'.html':'text/html','.mjs':'text/javascript','.js':'text/javascript','.css':'text/css','.json':'application/json','.webmanifest':'application/manifest+json','.ttf':'font/ttf','.png':'image/png','.webp':'image/webp','.txt':'text/plain'};
