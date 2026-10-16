@@ -49,6 +49,23 @@ test('GitHub project base: all ten Motion pages and four languages render with v
 test('configuration and garage keep calculations and shareable links inside the project base',async()=>{
  const b=boot({path:motion+'/configure/',search:'?model=cross-02&paint=silver&wheels=aero&interior=dark'});const before=b.document.querySelector('.total strong').textContent;b.change('input[name="wheels"][value="sport"]','sport');assert.notEqual(b.document.querySelector('.total strong').textContent,before);let copied;b.ctx.navigator.clipboard.writeText=async text=>{copied=text;};b.click('[data-action="share"]');await tick();assert(copied.startsWith('https://example.test'+motion+'/configure/?'),copied);assert(copied.includes('model=cross-02'));b.click('[data-action="save"]');assert.equal(JSON.parse(b.memory.get('motion-garage'))[0].config.wheels,'sport');
 });
+test('configuration edits and reset preserve a reloadable GitHub Pages address in every language',()=>{
+ for(const lang of languages){
+  const b=boot({path:motion+'/configure/',lang});
+  let current=new URL(b.ctx.location.href);
+  b.ctx.history.replaceState=(_state,_title,address)=>{
+   current=new URL(address,current);
+   Object.assign(b.ctx.location,{pathname:current.pathname,search:current.search,href:current.href});
+  };
+  for(const change of [()=>b.change('input[name="wheels"][value="sport"]','sport'),()=>b.change('select[name="model"]','cross-02'),()=>b.click('[data-action="reset-choice"]')]){
+   change();assert.equal(current.pathname,motion+'/configure/');
+   const refreshed=boot({path:current.pathname,search:current.search,lang});
+   assert(refreshed.document.querySelector('#config-form'));
+   assert.equal(refreshed.document.querySelector('.total strong').textContent,b.document.querySelector('.total strong').textContent);
+   assert.equal(refreshed.document.querySelector('.config-car').getAttribute('src'),b.document.querySelector('.config-car').getAttribute('src'));
+  }
+ }
+});
 test('video, audio, stylesheet and map assets retain valid addresses and Leaflet integrity',async()=>{
  const b=boot({path:motion+'/',reduced:false});assert.equal(b.video.src,motion+'/assets/arrival-drive.mp4');assert.equal(b.audio.src,motion+'/assets/intro-music.mp3');
  for(const asset of ['leaflet.js','leaflet.css'])assert((await fs.readFile(path.join(site,'motion-atelier/assets/vendor/leaflet',asset))).equals(await fs.readFile(path.join(root,'portfolio/motion-atelier/dist/assets/vendor/leaflet',asset))));
