@@ -1,11 +1,11 @@
 {
   "scope": "desktop",
-  "buildVersion": "en25xstudio-74cbc406ecf5bf",
+  "buildVersion": "en25xstudio-1a7d105e6d671a",
   "author": "Natalie Ragulina",
-  "startedAt": "2026-10-16T13:03:59.165Z",
+  "startedAt": "2026-10-16T20:04:21.696Z",
   "checks": [
     {
-      "name": "real WebGL model initializes; first visit is German"
+      "name": "real humanoid WebGL model initializes on a dark background; first visit is German"
     },
     {
       "name": "robot name, head, movement base, hands and personality update; actual arm joint waves"
@@ -44,12 +44,30 @@
       "name": "four languages translate home, learning, exercises, creation tools, parts and copyright in rendered UI"
     },
     {
+      "name": "five real JavaScript programs run and pass normal/edge cases; first failing programs and repeat rewards are rejected"
+    },
+    {
+      "name": "all ten learning languages display actual script and accept a practice answer through real input"
+    },
+    {
+      "name": "own two-question quiz plays in sandbox, validates scoring code, saves once, downloads real playable HTML, and imports editable project without profile data"
+    },
+    {
+      "name": "visible header language control translates active quiz, practice, tutor, story and copyright in all four languages without changing points"
+    },
+    {
+      "name": "downloaded full app starts from an actual local HTML file without network, renders the humanoid, changes language and completes programming practice",
+      "bytes": 2404833
+    },
+    {
       "name": "cold offline reload restores real 3D robot, projects and balance; lessons still work; both older saves untouched",
-      "precacheFiles": 17
+      "precacheFiles": 22
     }
   ],
   "errors": [],
   "physicalDevicesTested": false,
   "success": true,
-  "finishedAt": "2026-10-16T13:05:53.434Z"
+  "finishedAt": "2026-10-16T20:07:44.241Z",
+  "sourceCommit": "7235d6a06e447dae2b07a1502b20bbe86e9f8ad5",
+  "workflowRun": 38959488222
 }

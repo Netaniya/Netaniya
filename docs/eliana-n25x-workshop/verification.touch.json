@@ -1,11 +1,11 @@
 {
   "scope": "touch",
-  "buildVersion": "en25xstudio-74cbc406ecf5bf",
+  "buildVersion": "en25xstudio-1a7d105e6d671a",
   "author": "Natalie Ragulina",
-  "startedAt": "2026-10-16T13:03:58.946Z",
+  "startedAt": "2026-10-16T20:04:19.173Z",
   "checks": [
     {
-      "name": "real WebGL model initializes; first visit is German"
+      "name": "real humanoid WebGL model initializes on a dark background; first visit is German"
     },
     {
       "name": "emulated phone can assemble a personal robot using real taps; Eliana face opens large"
@@ -25,12 +25,30 @@
       ]
     },
     {
+      "name": "five real JavaScript programs run and pass normal/edge cases; first failing programs and repeat rewards are rejected"
+    },
+    {
+      "name": "all ten learning languages display actual script and accept a practice answer through real input"
+    },
+    {
+      "name": "own two-question quiz plays in sandbox, validates scoring code, saves once, downloads real playable HTML, and imports editable project without profile data"
+    },
+    {
+      "name": "visible header language control translates active quiz, practice, tutor, story and copyright in all four languages without changing points"
+    },
+    {
+      "name": "downloaded full app starts from an actual local HTML file without network, renders the humanoid, changes language and completes programming practice",
+      "bytes": 2404833
+    },
+    {
       "name": "cold offline reload restores real 3D robot, projects and balance; lessons still work; both older saves untouched",
-      "precacheFiles": 17
+      "precacheFiles": 22
     }
   ],
   "errors": [],
   "physicalDevicesTested": false,
   "success": true,
-  "finishedAt": "2026-10-16T13:04:55.534Z"
+  "finishedAt": "2026-10-16T20:06:43.616Z",
+  "sourceCommit": "7235d6a06e447dae2b07a1502b20bbe86e9f8ad5",
+  "workflowRun": 38959488222
 }
