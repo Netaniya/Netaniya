@@ -30,7 +30,7 @@ Both older games remain independently available, along with their original save 
 - [Original illustrated quest](https://netaniya.github.io/Netaniya/eliana-n25x/) — `eliana-n25x.save.v1`
 - [Controllable 3D adventure](https://netaniya.github.io/Netaniya/eliana-n25x/3d/) — `eliana-n25x.3d.v1`
 
-Use the browser's Install App/Add to Home Screen option where supported (Share menu on iPhone). This is a web app, not a native APK or store release. Visit online first and wait for the offline confirmation in ⚙. The scoped worker verifies all 17 runtime, portrait, font, icon and license files by SHA-256 before reporting ready. Cleanup is limited to older `en25xstudio-` caches. Browsers can evict local data, so keep an exported profile for important work.
+Use the browser's Install App/Add to Home Screen option where supported (Share menu on iPhone). This is a web app, not a native APK or store release. Visit online first and wait for the offline confirmation in ⚙. The scoped worker verifies all 22 runtime, portrait, font, icon and license files by SHA-256 before reporting ready. Cleanup is limited to older `en25xstudio-` caches. Browsers can evict local data, so keep an exported profile for important work.
 
 ## Ownership and dependencies
 
@@ -42,6 +42,17 @@ Locally bundled Three.js r160: [MIT](../3d/vendor/LICENSE.three.txt). Manrope, C
 
 From `portfolio/eliana-n25x`: `npm ci --ignore-scripts`, `npm run build`, `npm run check`, `npm test`. From the repository root: `node scripts/build-pages.mjs`, then `node --test tests/pages.test.mjs`.
 
-Twelve Studio automated tests cover reward/purchase invariants, validated profile round-trips, arithmetic/equations/derivatives, 1,980 generated daily exercises, all translations, real mesh/joint changes, actual WAV bytes, hashed offline inventory, cold offline navigation and corrupt-cache failure. These are not physical-device tests.
+Fifteen core Studio automated tests cover reward/purchase invariants, validated profile round-trips, arithmetic/equations/derivatives, 1,980 generated daily exercises, all translations, real mesh/joint changes, actual WAV bytes, hashed offline inventory, cold offline navigation and corrupt-cache failure. These are not physical-device tests.
 
 The `eliana-workshop-browser.yml` workflow runs real Chromium with SwiftShader for desktop and an emulated phone. Actual clicks, keys and touches exercise the app without injecting rewards or completed progress. Artifacts include screenshots, downloaded user creations and a machine-readable report. See [PROGRESS.ru.md](PROGRESS.ru.md) for confirmed results. Physical Android/iOS usage and actual installation require separate checks.
+
+
+## Practical-learning edition
+
+Creator, original idea, concept and art direction: **Natalie Ragulina**. **© 2026 Natalie Ragulina. All rights reserved.** Development with AI assistance.
+
+The current feature list, ten introductory languages, twenty creation choices, visible four-language UI selector and installation/download instructions are in the [project overview](../README.en.md). It includes executable programming practice, a quiz editor, per-tool drafts and validated project exchange. No live chat, accounts, cloud AI or cash rewards are connected.
+
+The build generates a standalone `download/Eliana-N25x-Studio.html` and includes it among 22 SHA-256-verified offline resources. The HTML contains 11 embedded modules and requires no runtime network. Its save storage may differ from the website; use profile import/export. Generated files are not committed; GitHub Pages builds them from source.
+
+Current browser and release evidence is recorded separately in [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Physical-device installation remains a separate check. The project tests cover models, interpreter, actual export-player code, UI in a DOM, save migration and cache integrity; DOM tests are not a real browser.

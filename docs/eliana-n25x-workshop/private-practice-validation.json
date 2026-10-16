@@ -1,0 +1,75 @@
+{
+  "status": "private-review-ready",
+  "author": "Natalie Ragulina",
+  "copyright": "© 2026 Natalie Ragulina. All rights reserved.",
+  "recordedAt": "2026-10-16T19:21:25.205876+00:00",
+  "sourceCommit": "d4eebbab2dbf6d353eeaf88423b9e415e6bd0289",
+  "branch": "codex/eliana-n25x-practice",
+  "publicSourceBase": "806731fcd805a336872322439857a284ad59cefa",
+  "runtimeVersion": "en25xstudio-b5cdc91ed45a23",
+  "precacheFiles": 21,
+  "privatePortableModules": 11,
+  "automated": {
+    "syntax": "passed",
+    "gameTests": {
+      "passed": 77,
+      "failed": 0,
+      "priorGames": 46,
+      "coreStudio": 15,
+      "academy": 16
+    },
+    "portfolioTests": {
+      "passed": 12,
+      "failed": 0
+    },
+    "method": "Node tests; linkedom DOM controllers; actual exported-player JavaScript in a VM; hash-checked service-worker cache simulation",
+    "webglGeometry": "automated mesh/joint checks only"
+  },
+  "browser": {
+    "thisRevisionRun": false,
+    "desktop": false,
+    "emulatedTouch": false,
+    "reason": "No supported browser-preview tool; source privacy unresolved, so no public Actions upload",
+    "futureHarness": "portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs"
+  },
+  "physicalDevices": {
+    "android": false,
+    "ios": false,
+    "installation": false
+  },
+  "publication": {
+    "publicRepositoryUpdated": false,
+    "repositoryMadePrivate": false,
+    "repositoryVisibility": "public",
+    "sharedPortfolioUnchanged": true
+  },
+  "available": {
+    "programmingMissions": 5,
+    "languageTracks": 10,
+    "vocabularyCards": 60,
+    "creationChoices": 20,
+    "additionalSubjectQuestions": 7,
+    "drafts": "per-tool local drafts",
+    "exchange": "standalone HTML and editable project JSON"
+  },
+  "unavailable": [
+    "live messaging",
+    "accounts/friends",
+    "cloud AI conversation",
+    "cloud sync",
+    "native speaker audio",
+    "full language/school curricula"
+  ],
+  "persistence": {
+    "saveKey": "eliana-n25x.workshop.v1",
+    "oldClassicSaveUntouched": true,
+    "oldAdventureSaveUntouched": true,
+    "publishedProfileUntouched": true
+  },
+  "commands": [
+    "node scripts/build-pages.mjs",
+    "npm run check --prefix portfolio/eliana-n25x",
+    "node --test portfolio/eliana-n25x/tests/*.test.mjs",
+    "node --test tests/pages.test.mjs"
+  ]
+}

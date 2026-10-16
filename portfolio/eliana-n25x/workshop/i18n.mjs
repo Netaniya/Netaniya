@@ -8,6 +8,8 @@ parts|Bauteile|Parts|Детали|Деталі
 settings|Einstellungen|Settings|Настройки|Налаштування
 points|Punkte|Points|Поинты|Поінти
 language|Sprache|Language|Язык|Мова
+interfaceLanguage|Sprache der App|App language|Язык приложения|Мова застосунку
+downloadStudio|App als HTML herunterladen|Download app as HTML|Скачать приложение в HTML|Завантажити застосунок у HTML
 daily|Heute zusammen|Today together|Сегодня вместе|Сьогодні разом
 dailyHelp|Drei neue Aufgaben für dein Level. Ohne Zeitdruck.|Three new exercises for your level. Take your time.|Три новых задания твоего уровня. Без спешки.|Три нові завдання твого рівня. Без поспіху.
 dailyProgress|{n} von 3 gelöst|{n} of 3 solved|Решено {n} из 3|Розв’язано {n} із 3
@@ -28,21 +30,29 @@ homeHelp|Was machen wir heute zusammen?|What shall we do together today?|Что 
 assemble|Roboter gestalten|Customize robot|Настроить робота|Налаштувати робота
 assembleHelp|Tippe auf ein Teil. Dein Roboter verändert sich sofort.|Tap a part. Your robot changes instantly.|Нажми на деталь — робот сразу изменится.|Натисни на деталь — робот одразу зміниться.
 name|Name des Roboters|Robot name|Имя робота|Ім’я робота
-color|Material & Farbe|Material & color|Материал и цвет|Матеріал і колір
+color|Farbe der Paneele|Panel color|Цвет панелей|Колір панелей
 head|Kopf|Head|Голова|Голова
+frame|Körperbau|Body build|Телосложение|Статура
+balanced|Ausgewogen|Balanced|Сбалансированное|Збалансована
+athletic|Athletisch|Athletic|Атлетичное|Атлетична
+slender|Schlank|Slender|Стройное|Струнка
+finish|Oberfläche|Finish|Покрытие|Покриття
+ceramic|Keramik|Ceramic|Керамика|Кераміка
+titanium|Titan|Titanium|Титан|Титан
+satin|Satiniert|Satin|Матовый металл|Матовий метал
 base|Bewegung|Movement|Передвижение|Пересування
 hands|Hände|Hands|Руки|Руки
 personality|Art zu sprechen|Speaking style|Характер общения|Характер спілкування
 interest|Lieblingsthema|Favorite interest|Любимая тема|Улюблена тема
 style|So erkläre ich|How I explain|Как объяснять|Як пояснювати
 module|Extra-Modul|Extra module|Дополнительный модуль|Додатковий модуль
-arc|Bogen|Arc|Дуга|Дуга
+arc|Kontur|Contour|Контур|Контур
 visor|Visier|Visor|Визор|Візор
-antenna|Antenne|Antenna|Антенна|Антена
-feet|Füße|Feet|Ноги|Ноги
-wheels|Räder|Wheels|Колёса|Колеса
-hover|Schweben|Hover|Парение|Левітація
-round|Gelenkhände|Joint hands|Суставные руки|Суглобові руки
+antenna|Sensorkopf|Sensor head|Сенсорная голова|Сенсорна голова
+feet|Gelenkbeine|Articulated legs|Шарнирные ноги|Шарнірні ноги
+wheels|Rollfüße|Roller feet|Роликовые стопы|Роликові стопи
+hover|Schwebefüße|Hover feet|Реактивные стопы|Реактивні стопи
+round|Fünf Finger|Five fingers|Пять пальцев|П’ять пальців
 clamp|Greifer|Grippers|Захваты|Захвати
 calm|Ruhig|Calm|Спокойный|Спокійний
 cheerful|Fröhlich|Cheerful|Весёлый|Веселий
@@ -168,6 +178,7 @@ delete|Entfernen|Remove|Удалить|Видалити
 sound|Klang|Sound|Звук|Звук
 volume|Lautstärke|Volume|Громкость|Гучність
 audioHelp|Der Klang startet nach deinem ersten Tippen.|Sound starts after your first tap.|Звук запускается после первого нажатия.|Звук запускається після першого натискання.
+offlinePortable|Eigenständige HTML-Kopie: Alle Laufzeitdateien sind eingebettet. Zur Installation auf dem Startbildschirm nutze die Webversion.|Standalone HTML copy: all runtime assets are embedded. Use the web version to install on your home screen.|Самостоятельная HTML-копия: все ресурсы встроены. Для установки на главный экран используй веб-версию.|Самостійна HTML-копія: усі ресурси вбудовано. Для встановлення на головний екран використовуй вебверсію.
 offlinePending|Offline-Dateien werden geprüft …|Checking offline files…|Проверяются офлайн-файлы…|Перевіряються офлайн-файли…
 offlineReady|Dateien geprüft. Diese Version ist offline bereit.|Files verified. This version is ready offline.|Файлы проверены. Эта версия готова к работе без сети.|Файли перевірено. Ця версія готова до роботи без мережі.
 offlineError|Offline-Dateien konnten nicht vollständig geprüft werden.|Offline files could not be fully verified.|Не удалось проверить все офлайн-файлы.|Не вдалося перевірити всі офлайн-файли.
@@ -181,7 +192,7 @@ resetHelp|Dein Studio-Profil wird ersetzt. Exportiere es zuerst, wenn du es beha
 confirm|Ja, neu beginnen|Yes, start over|Да, начать заново|Так, почати заново
 cancel|Abbrechen|Cancel|Отмена|Скасувати
 credits|Über das Studio|About the studio|О мастерской|Про майстерню
-about|Konzept und künstlerische Leitung: Natalie Ragulina. Entwicklung mit KI-Unterstützung. Originale 3D-Robotermodelle und synthetische Klänge. Manrope: SIL OFL. Three.js: MIT.|Concept and art direction: Natalie Ragulina. Developed with AI assistance. Original 3D robot models and synthesized sounds. Manrope: SIL OFL. Three.js: MIT.|Концепция и художественное направление: Natalie Ragulina. Разработка с помощью ИИ. Оригинальные 3D-модели роботов и синтезированные звуки. Manrope: SIL OFL. Three.js: MIT.|Концепція та художній напрям: Natalie Ragulina. Розробка за допомогою ШІ. Оригінальні 3D-моделі роботів і синтезовані звуки. Manrope: SIL OFL. Three.js: MIT.
+about|Schöpferin, Idee und künstlerische Leitung: Natalie Ragulina. Entwicklung mit KI-Unterstützung. Originale 3D-Robotermodelle und synthetische Klänge. Manrope: SIL OFL. Three.js: MIT.|Creator, original idea and art direction: Natalie Ragulina. Developed with AI assistance. Original 3D robot models and synthesized sounds. Manrope: SIL OFL. Three.js: MIT.|Создатель, автор идеи и художественного направления: Natalie Ragulina. Разработка с помощью ИИ. Оригинальные 3D-модели роботов и синтезированные звуки. Manrope: SIL OFL. Three.js: MIT.|Творець, автор ідеї та художнього напряму: Natalie Ragulina. Розробка за допомогою ШІ. Оригінальні 3D-моделі роботів і синтезовані звуки. Manrope: SIL OFL. Three.js: MIT.
 portraitCredits|Eliana und N25x: vorhandene KI-generierte Porträts nach freigegebenen Referenzen. Die private Originalfotografie wird nicht veröffentlicht.|Eliana and N25x: existing AI-generated portraits based on approved references. The private source photograph is not published.|Eliana и N25x: ранее созданные ИИ-портреты по согласованным референсам. Личная исходная фотография не публикуется.|Eliana й N25x: раніше створені ШІ-портрети за погодженими референсами. Особиста вихідна фотографія не публікується.
 localHelp|Dein Profil bleibt auf diesem Gerät. Es gibt keine Konten und keine Synchronisierung. Exportiere eine Kopie zum Übertragen.|Your profile stays on this device. There are no accounts or sync. Export a copy to transfer it.|Профиль хранится на этом устройстве. Аккаунтов и синхронизации нет. Для переноса экспортируй копию.|Профіль зберігається на цьому пристрої. Акаунтів і синхронізації немає. Для перенесення експортуй копію.
 rights|Alle Rechte vorbehalten.|All rights reserved.|Все права защищены.|Усі права захищені.
@@ -195,6 +206,112 @@ helpHint|Tippe auf Eliana oder N25x, wenn du Hilfe möchtest.|Tap Eliana or N25x
 note|Ton|Note|Нота|Нота
 fileError|Die Datei konnte nicht erstellt werden.|The file could not be created.|Не удалось создать файл.|Не вдалося створити файл.
 motionHint|Tippen zum Winken. Ansicht optional drehen.|Tap to wave. Rotating the view is optional.|Нажми — робот помашет. Вид можно повернуть.|Натисни — робот помахає. Вигляд можна повернути.
+programming|Programmieren & Ausprobieren|Programming & practice|Программирование и практика|Програмування й практика
+programmingHelp|Ändere echten Code. Starte ihn und baue danach dein eigenes Spiel.|Change real code. Run it, then build your own game.|Меняй настоящий код. Запускай его, затем создай свою игру.|Змінюй справжній код. Запускай його, потім створи власну гру.
+missionHelp|Vorhersagen → ausprobieren → verbessern → selbst gestalten.|Predict → try → improve → create.|Предскажи → попробуй → исправь → создай своё.|Передбач → спробуй → виправ → створи своє.
+missionSelect|Dein Lernpfad|Your learning path|Твой путь обучения|Твій шлях навчання
+predict|Was liefert das ursprüngliche Programm?|What does the original program return?|Что вернёт исходная программа?|Що поверне початкова програма?
+predictionRight|Genau. Jetzt verbessere das Programm für die Aufgabe.|Exactly. Now improve the program for the task.|Верно. Теперь измени программу под задание.|Правильно. Тепер зміни програму під завдання.
+predictionWrong|Starte das ursprüngliche Beispiel und beobachte die Werte.|Run the original example and watch the values.|Запусти исходный пример и проследи за значениями.|Запусти початковий приклад і простеж за значеннями.
+blocks|Bausteine|Blocks|Блоки|Блоки
+codeEditor|JavaScript bearbeiten|Edit JavaScript|Редактировать JavaScript|Редагувати JavaScript
+codeScope|Kleiner JavaScript-Lernbereich: Zahlen, true/false, let, if, for, function und return. Ohne Browser- oder Netzwerkbefehle.|Small JavaScript learning area: numbers, true/false, let, if, for, function and return. Browser and network commands are unavailable.|Учебная часть JavaScript: числа, true/false, let, if, for, function и return. Команды браузера и сети недоступны.|Навчальна частина JavaScript: числа, true/false, let, if, for, function і return. Команди браузера й мережі недоступні.
+runSample|Beispiel starten|Run example|Запустить пример|Запустити приклад
+runTests|Alle Fälle prüfen|Check all cases|Проверить все случаи|Перевірити всі випадки
+restoreCode|Code zurücksetzen|Restore code|Вернуть исходный код|Повернути початковий код
+expected|Erwartet|Expected|Ожидается|Очікується
+actual|Erhalten|Actual|Получено|Отримано
+testCases|Prüffälle|Test cases|Проверочные примеры|Перевірочні приклади
+testsPassed|Alle Fälle geschafft. Deine Lösung funktioniert!|All cases passed. Your solution works!|Все примеры пройдены. Твоё решение работает!|Усі приклади пройдено. Твоє рішення працює!
+testsFailed|Noch nicht alle Fälle stimmen. Vergleiche Erwartung und Ergebnis.|Some cases still fail. Compare the expected and actual results.|Пока не все примеры сходятся. Сравни ожидаемое с результатом.|Поки не всі приклади збігаються. Порівняй очікуване з результатом.
+programError|Prüfe Schreibweise und erlaubte Befehle. Lange Schleifen werden angehalten.|Check the syntax and supported commands. Long loops are stopped.|Проверь запись и доступные команды. Длинные циклы останавливаются.|Перевір запис і доступні команди. Довгі цикли зупиняються.
+trace|Werte im Ablauf|Values along the way|Значения по шагам|Значення покроково
+askRobot|Fragen an N25x|Questions for N25x|Вопросы N25x|Запитання N25x
+whyWorks|Erkläre die Idee|Explain the idea|Объясни идею|Поясни ідею
+helpNext|Gib mir einen Hinweis|Give me a hint|Дай подсказку|Дай підказку
+helpTest|Warum mehrere Tests?|Why several tests?|Зачем несколько проверок?|Навіщо кілька перевірок?
+testExplanation|Prüfe normale Eingaben und Sonderfälle, etwa 0 oder eine falsche Antwort. Ein einzelner Treffer beweist die Lösung nicht.|Check ordinary inputs and edge cases such as 0 or a wrong answer. One passing example does not prove a solution.|Проверяй обычные значения и особые случаи: например 0 или неверный ответ. Одного удачного примера мало.|Перевіряй звичайні значення й особливі випадки: наприклад 0 або неправильну відповідь. Одного вдалого прикладу замало.
+localTutor|Lokale Lernhilfe mit vorbereiteten Erklärungen. Kein freier KI-Chat.|Local learning help with prepared explanations. No open-ended AI chat.|Локальный помощник с подготовленными объяснениями. Свободного ИИ-чата нет.|Локальний помічник із підготовленими поясненнями. Вільного ШІ-чату немає.
+nextMission|Nächster Schritt|Next step|Следующий шаг|Наступний крок
+languagesLearn|10 Sprachen entdecken|Explore 10 languages|Изучать 10 языков|Вивчати 10 мов
+languageStarter|Startwortschatz: sechs Wörter pro Sprache. Karten, Auswahlübungen und Schreiben. Kein vollständiger Sprachkurs; Umschrift ist eine Lesehilfe.|Starter vocabulary: six words per language. Cards, choices and typing. Not a complete language course; transliteration is a reading aid.|Стартовый словарь: шесть слов на язык. Карточки, выбор ответа и письмо. Это начало курса; транслитерация помогает читать.|Стартовий словник: шість слів на мову. Картки, вибір відповіді та письмо. Це початок курсу; транслітерація допомагає читати.
+learningLanguage|Welche Sprache lernst du?|Which language are you learning?|Какой язык изучаешь?|Яку мову вивчаєш?
+cardsMode|Karten ansehen|Explore cards|Посмотреть карточки|Переглянути картки
+practiceMode|Mich prüfen|Test myself|Проверить себя|Перевірити себе
+flip|Umdrehen|Flip|Перевернуть|Перевернути
+writeWord|Wort schreiben|Type the word|Написать слово|Написати слово
+languageHint|Wähle oder schreibe das Wort in der Lernsprache.|Choose or type the word in the language you are learning.|Выбери или напиши слово на изучаемом языке.|Обери або напиши слово мовою, яку вивчаєш.
+starterComplete|Alle sechs Wörter gelöst. Du kannst sie wiederholen oder eigene Lernkarten erstellen.|All six words solved. Review them or make your own flashcards.|Все шесть слов пройдены. Повтори их или создай свои карточки.|Усі шість слів пройдено. Повтори їх або створи свої картки.
+schoolLabs|Wissen ausprobieren|Try out knowledge|Практика по предметам|Практика з предметів
+schoolLabsHelp|Kurze Originalaufgaben mit Erklärungen: Logik, Physik, Biologie, Geografie und digitale Fähigkeiten.|Short original exercises with explanations: logic, physics, biology, geography and digital skills.|Короткие авторские задания с объяснениями: логика, физика, биология, география и цифровые навыки.|Короткі авторські завдання з поясненнями: логіка, фізика, біологія, географія й цифрові навички.
+quiz|Mein Quizspiel|My quiz game|Моя игра-викторина|Моя гра-вікторина
+quizHelp|Erfinde 1–8 Fragen, jeweils drei unterschiedliche Antworten. Wähle die richtige und probiere dein Spiel aus.|Write 1–8 questions, each with three different answers. Select the right one and try your game.|Придумай 1–8 вопросов с тремя разными ответами. Отметь правильный и попробуй свою игру.|Придумай 1–8 запитань із трьома різними відповідями. Познач правильну й спробуй свою гру.
+quizExample|Was ist 2 + 2?|What is 2 + 2?|Сколько будет 2 + 2?|Скільки буде 2 + 2?
+quizPrompt|Deine Frage|Your question|Твой вопрос|Твоє запитання
+correctAnswer|Richtige Antwort|Correct answer|Правильный ответ|Правильна відповідь
+addQuestion|Frage hinzufügen|Add question|Добавить вопрос|Додати запитання
+removeQuestion|Diese Frage entfernen|Remove this question|Убрать этот вопрос|Прибрати це запитання
+scoring|Punkte programmieren|Program the scoring|Программировать очки|Програмувати очки
+scoringHelp|mark erhält score, correct und points. Richtige Antworten addieren points; falsche behalten score. Die Prüfung startet beide Fälle.|mark receives score, correct and points. Right answers add points; wrong answers keep score. The check runs both cases.|mark получает score, correct и points. Верный ответ добавляет points, неверный сохраняет score. Проверка запускает оба случая.|mark отримує score, correct і points. Правильна відповідь додає points, неправильна зберігає score. Перевірка запускає обидва випадки.
+preview|Ausprobieren|Try it|Попробовать|Спробувати
+previewTitle|Dein laufendes Projekt|Your running project|Твой работающий проект|Твій робочий проєкт
+previewInvalid|Fülle alle Felder aus. Die Antworten müssen verschieden sein; das Punkteprogramm muss die Prüffälle bestehen.|Complete every field. Answers must differ and the scoring program must pass the tests.|Заполни все поля. Ответы должны различаться, а программа очков — проходить проверки.|Заповни всі поля. Відповіді мають відрізнятися, а програма очок — проходити перевірки.
+creationInvalid|Fülle den Inhalt aus und beachte das Format im Hinweis.|Add your content and follow the format in the hint.|Добавь свой текст и проверь формат по подсказке.|Додай свій текст і перевір формат за підказкою.
+draftSaved|Entwurf automatisch auf diesem Gerät gespeichert.|Draft saved automatically on this device.|Черновик автоматически сохранён на этом устройстве.|Чернетку автоматично збережено на цьому пристрої.
+exportGame|Spiel als HTML speichern|Save playable HTML|Скачать рабочий HTML|Завантажити робочий HTML
+exportProject|Projektdatei speichern|Save project file|Скачать файл проекта|Завантажити файл проєкту
+importProject|Projektdatei öffnen|Open project file|Открыть файл проекта|Відкрити файл проєкту
+exchange|Projekte teilen|Share projects|Обмен проектами|Обмін проєктами
+exchangeHelp|Speichere ein HTML zum Spielen oder eine Projektdatei zum Weiterbearbeiten. Sende sie selbst an einen Freund. Dein Profil und Punktestand werden nicht mitgesendet.|Save HTML to play or a project file to edit. Send it to a friend yourself. Your profile and points are not included.|Скачай HTML для игры или файл проекта для редактирования. Отправь другу самостоятельно. Профиль и поинты в файл не попадают.|Завантаж HTML для гри або файл проєкту для редагування. Надішли другу самостійно. Профіль і поінти у файл не потрапляють.
+chatStatus|Gemeinschaft und Nachrichten sind noch nicht verbunden. Es gibt keine Online-Konten oder vorgetäuschten Mitspieler.|Community and messaging are not connected yet. There are no online accounts or simulated players.|Сообщество и переписка пока не подключены. Онлайн-аккаунтов и вымышленных собеседников нет.|Спільноту й листування поки не підключено. Онлайн-акаунтів і вигаданих співрозмовників немає.
+projectImportError|Keine gültige Studio-Projektdatei. Dein Profil wurde nicht verändert.|Not a valid Studio project file. Your profile was not changed.|Это не подходящий файл проекта. Твой профиль не изменён.|Це не відповідний файл проєкту. Твій профіль не змінено.
+score|Punkte|Score|Счёт|Рахунок
+finishGame|Ergebnis ansehen|See result|Посмотреть результат|Переглянути результат
+completeGame|Geschafft!|Complete!|Готово!|Готово!
+restart|Neu starten|Restart|Начать заново|Почати заново
+pause|Pause|Pause|Пауза|Пауза
+startTimer|Start|Start|Старт|Старт
+createdWith|Mit Eliana & N25x erstellt.|Made with Eliana & N25x.|Создано в Eliana & N25x.|Створено в Eliana & N25x.
+moreTools|Weitere Werkzeuge|More tools|Другие инструменты|Інші інструменти
+creation|Meine Arbeit|My creation|Моя работа|Моя робота
+creationHelp|Wähle eines von 20 Werkzeugen. Du schreibst und gestaltest selbst; Vorschau und Dateien entstehen aus deiner Arbeit.|Choose from 20 tools. Write and design it yourself; your work becomes a preview and downloadable files.|Выбери один из 20 инструментов. Ты сам пишешь и создаёшь; из твоей работы получаются просмотр и файлы.|Обери один із 20 інструментів. Ти сам пишеш і створюєш; із твоєї роботи виходять перегляд і файли.
+story|Geschichte mit Entscheidungen|Interactive story|История с выбором|Історія з вибором
+letter|Brief|Letter|Письмо|Лист
+message|Nachricht|Message|Сообщение|Повідомлення
+script|Videoskript|Video script|Сценарий ролика|Сценарій ролика
+lyrics|Songtext|Song lyrics|Текст песни|Текст пісні
+poem|Gedicht|Poem|Стихотворение|Вірш
+article|Kurzer Artikel|Short article|Короткая статья|Коротка стаття
+comic|Comic-Szenen|Comic scenes|Сцены комикса|Сцени коміксу
+greeting|Grußkarte|Greeting card|Открытка|Листівка
+webpage|Meine Webseite|My webpage|Моя веб-страница|Моя вебсторінка
+checklist|Nützliche Checkliste|Useful checklist|Полезный чек-лист|Корисний чекліст
+timer|Mein Fokus-Timer|My focus timer|Мой таймер занятий|Мій таймер занять
+flashcards|Eigene Lernkarten|My flashcards|Свои учебные карточки|Свої навчальні картки
+badge|Mein Abzeichen|My badge|Мой значок|Мій значок
+sticker|Bewegter Sticker|Animated sticker|Анимированный стикер|Анімований стікер
+mindmap|Ideenkarte|Idea map|Карта идей|Карта ідей
+plan|Mein Tagesplan|My day plan|Мой план дня|Мій план дня
+contentText|Dein Inhalt|Your content|Твой текст|Твій текст
+writingHint|Schreibe deinen Text. Beginne mit einer Idee, füge Details hinzu und überarbeite den Schluss.|Write your text. Start with one idea, add details and revise the ending.|Напиши свой текст. Начни с идеи, добавь детали и отредактируй завершение.|Напиши свій текст. Почни з ідеї, додай деталі й відредагуй завершення.
+linesHint|Ein Eintrag pro Zeile, höchstens 24. Für Comics: eine Szene pro Zeile. Für Ideenkarten: Thema zuerst, dann Zweige.|One item per line, up to 24. Comics: one scene per line. Idea maps: topic first, then branches.|Один пункт на строку, до 24. Комикс: одна сцена на строку. Карта идей: сначала тема, затем ветви.|Один пункт на рядок, до 24. Комікс: одна сцена на рядок. Карта ідей: спочатку тема, потім гілки.
+flashcardHint|Pro Zeile: Vorderseite, ein senkrechter Strich, Rückseite. Höchstens 20 Karten.|Each line: front, a vertical bar, back. Up to 20 cards.|В каждой строке: лицевая сторона, вертикальная черта, обратная сторона. До 20 карточек.|У кожному рядку: лицьова сторона, вертикальна риска, зворотна сторона. До 20 карток.
+timerHint|Gib die Minuten ein: eine ganze Zahl von 1 bis 60.|Enter the minutes: a whole number from 1 to 60.|Введи время в минутах: целое число от 1 до 60.|Введи час у хвилинах: ціле число від 1 до 60.
+badgeHint|Schreibe bis zu 24 Zeichen für deinen Sticker oder dein Abzeichen.|Write up to 24 characters for your sticker or badge.|Напиши до 24 символов для стикера или значка.|Напиши до 24 символів для стікера або значка.
+accentColor|Akzentfarbe|Accent color|Цвет акцента|Колір акценту
+cyan|Eisblau|Ice blue|Ледяной голубой|Крижаний блакитний
+violet|Violett|Violet|Фиолетовый|Фіолетовий
+introStory|Beginn der Geschichte|Story opening|Начало истории|Початок історії
+choiceA|Erste Entscheidung|First choice|Первый выбор|Перший вибір
+choiceB|Zweite Entscheidung|Second choice|Второй выбор|Другий вибір
+endingA|Erstes Ende|First ending|Первая концовка|Перша кінцівка
+endingB|Zweites Ende|Second ending|Вторая концовка|Друга кінцівка
+storySeed|Eliana und N25x finden ein Signal im Garten. Wo suchen sie zuerst?|Eliana and N25x find a signal in the garden. Where do they look first?|Eliana и N25x находят сигнал в саду. Где искать сначала?|Eliana й N25x знаходять сигнал у саду. Де шукати спочатку?
+choiceSeedA|Die Pflanzen untersuchen|Examine the plants|Осмотреть растения|Оглянути рослини
+choiceSeedB|Das Terminal prüfen|Check the terminal|Проверить терминал|Перевірити термінал
+endingSeedA|Zwischen den Blättern liegt ein Sensor. Die beiden verbinden ihn wieder mit dem Netz.|A sensor lies between the leaves. They reconnect it to the network.|Между листьями лежит датчик. Герои возвращают его в сеть.|Між листям лежить датчик. Герої повертають його в мережу.
+endingSeedB|N25x liest die Meldung: Der Gartensensor braucht eine neue Batterie. Eliana findet eine im Werkzeugkasten.|N25x reads the alert: the garden sensor needs a new battery. Eliana finds one in the toolbox.|N25x читает сообщение: датчику сада нужна новая батарейка. Eliana находит её среди инструментов.|N25x читає повідомлення: датчику саду потрібна нова батарейка. Eliana знаходить її серед інструментів.
+checklistSeed|Eine Idee wählen; Einen Versuch machen; Das Ergebnis prüfen|Choose an idea; Try it out; Check the result|Выбрать идею; Попробовать; Проверить результат|Обрати ідею; Спробувати; Перевірити результат
 `;
 export const TEXT=Object.fromEntries(['de','en','ru','uk'].map(l=>[l,{}]));
 for(const line of rows.trim().split('\n')){const [key,...values]=line.split('|');if(values.length!==4)throw Error('translation '+key);Object.keys(TEXT).forEach((l,i)=>TEXT[l][key]=values[i]);}

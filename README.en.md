@@ -51,9 +51,9 @@ Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/mot
 
 ### Eliana & N25x
 
-Robot Studio: customize a personal 3D robot, practice mathematics daily, learn English words and execute arrow programs. Create real WAV melodies, robot movement sequences and personalized PNG cards; motivational points unlock parts. Four languages, large touch controls, local profile and verified offline support. Developed with AI assistance following the concept and art direction of **Natalie Ragulina**. The original illustrated quest and 3D adventure remain independently available.
+Robot Studio: customize a humanoid 3D robot, practice JavaScript and create your own quiz games and projects. Four UI languages, ten introductory learning languages, mathematics, twenty creation choices, local profiles and an installable web app with HTML download. **Creator, original idea and art direction: Natalie Ragulina.** Developed with AI assistance. **© 2026 Natalie Ragulina. All rights reserved.**
 
-[Open Robot Studio](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/) · [Code & documentation](portfolio/eliana-n25x/workshop/README.en.md)
+[Open Robot Studio](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/) · [Code & documentation](portfolio/eliana-n25x/README.en.md)
 
 ### Neta25X · early interface prototype
 [A responsive interface with custom visual identity](https://github.com/Netaniya/Neta25X), built with HTML, TailwindCSS and JavaScript. Newer full-stack and AI work is under private development.

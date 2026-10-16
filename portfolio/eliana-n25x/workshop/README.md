@@ -33,7 +33,7 @@ Profil, Roboter, Punkte, Erfolge und gespeicherte Projekte bleiben browserlokal 
 - [Ursprünglicher Bilderquest](https://netaniya.github.io/Netaniya/eliana-n25x/): `eliana-n25x.save.v1`
 - [3D-Abenteuer](https://netaniya.github.io/Netaniya/eliana-n25x/3d/): `eliana-n25x.3d.v1`
 
-Auf unterstützten Browsern über „App installieren“/„Zum Startbildschirm“ installieren; am iPhone im Teilen-Menü. Es ist eine Web-App, keine native APK. Erster Online-Aufruf erforderlich. Der eigene Service Worker prüft SHA-256 sämtlicher 17 Programm-, Grafik-, Schrift- und Lizenzdateien, bevor er Offline-Bereitschaft meldet. Die Bestätigung steht unter ⚙. Nur ältere `en25xstudio-`-Caches werden bereinigt. Browser können lokalen Speicher entfernen; eine exportierte Kopie schützt den Fortschritt.
+Auf unterstützten Browsern über „App installieren“/„Zum Startbildschirm“ installieren; am iPhone im Teilen-Menü. Es ist eine Web-App, keine native APK. Erster Online-Aufruf erforderlich. Der eigene Service Worker prüft SHA-256 sämtlicher 22 Programm-, Grafik-, Schrift- und Lizenzdateien, bevor er Offline-Bereitschaft meldet. Die Bestätigung steht unter ⚙. Nur ältere `en25xstudio-`-Caches werden bereinigt. Browser können lokalen Speicher entfernen; eine exportierte Kopie schützt den Fortschritt.
 
 ## Technik und Lizenzen
 
@@ -54,6 +54,22 @@ npm test
 
 Gesamtausgabe: `node scripts/build-pages.mjs`; Portfolioprüfungen: `node --test tests/pages.test.mjs` aus dem Repository-Stamm.
 
-Die zwölf automatischen Studio-Tests prüfen Mathematik (einschließlich 1.980 erzeugter Tagesaufgaben), Punkte, Profilvalidierung, echte Modellgeometrie und Gelenke, WAV-Daten, vollständige Cache-Inventare, kalte Offline-Navigation und beschädigte Ressourcen. Das sind keine Geräteprüfungen.
+Die fünfzehn automatischen Studio-Tests prüfen Mathematik (einschließlich 1.980 erzeugter Tagesaufgaben), Punkte, Profilvalidierung, echte Modellgeometrie und Gelenke, WAV-Daten, vollständige Cache-Inventare, kalte Offline-Navigation und beschädigte Ressourcen. Das sind keine Geräteprüfungen.
 
 `.github/workflows/eliana-workshop-browser.yml` führt echtes Chromium mit SwiftShader aus: Desktop sowie emuliertes Telefon mit tatsächlichen Klicks/Tastatur-/Touch-Eingaben, ohne Einspritzen von Lernfortschritt oder Punkten. Es exportiert Screenshots, echte Nutzerdateien und `verification.json`. Der aktuelle bestätigte Stand steht in [PROGRESS.ru.md](PROGRESS.ru.md). Physische Android-/iOS-Geräte und eine echte Installation müssen getrennt geprüft werden.
+
+
+## Lokale Weiterentwicklung
+
+Eine neue lokale, noch nicht im Browser geprüfte Variante ergänzt ein dunkles Design und einen humanoiden Roboter mit konfigurierbarem Körperbau und Material. Bestehende Profile bleiben kompatibel. Sie wurde wegen des gewünschten privaten Quellcodes noch nicht auf GitHub veröffentlicht. Eine private HTML-Prüfkopie lässt sich nach dem Build mit `node workshop/portable.mjs /absoluter/pfad/review.html` aus dem Spielordner erstellen.
+
+
+## Practical-learning edition
+
+Creator, original idea, concept and art direction: **Natalie Ragulina**. **© 2026 Natalie Ragulina. All rights reserved.** Development with AI assistance.
+
+The current feature list, ten introductory languages, twenty creation choices, visible four-language UI selector and installation/download instructions are in the [project overview](../README.en.md). It includes executable programming practice, a quiz editor, per-tool drafts and validated project exchange. No live chat, accounts, cloud AI or cash rewards are connected.
+
+The build generates a standalone `download/Eliana-N25x-Studio.html` and includes it among 22 SHA-256-verified offline resources. The HTML contains 11 embedded modules and requires no runtime network. Its save storage may differ from the website; use profile import/export. Generated files are not committed; GitHub Pages builds them from source.
+
+Current browser and release evidence is recorded separately in [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Physical-device installation remains a separate check. The project tests cover models, interpreter, actual export-player code, UI in a DOM, save migration and cache integrity; DOM tests are not a real browser.

@@ -1,55 +1,67 @@
-# Eliana & N25x
+# Eliana & N25x · Robot Studio
 
+**Schöpferin, ursprüngliche Idee, Konzept und künstlerische Leitung: Natalie Ragulina.**
+**© 2026 Natalie Ragulina. All rights reserved.**
 
-## Neue Version: Robot Studio
+[English](README.en.md) · [Русский](README.ru.md) · **[App öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)** · [HTML-Kopie öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/Eliana-N25x-Studio.html)
 
-Die neue mobile Werkstatt mit persönlichem Roboter, Lernaufgaben, kreativen Werkzeugen und Punkten liegt separat unter **[Robot Studio](workshop/README.md)**. Der unten dokumentierte Bilderquest und das **[3D-Abenteuer](3d/README.md)** bleiben erhalten.
+Eine interaktive Lern- und Kreativwerkstatt für Smartphone und Computer. Nutzer gestalten einen persönlichen humanoiden 3D-Roboter, lösen praktische Aufgaben und bauen eigene kleine Projekte. Eliana und N25x begleiten die Werkstatt als benannte Figuren. Entwicklung, Übersetzungen, generierte Porträts und technische Prüfungen entstanden mit KI-Unterstützung nach den Entscheidungen und Vorgaben von Natalie Ragulina.
 
-**Ein gemeinsames Zukunftsabenteuer · [English](README.en.md)**
+## In drei Minuten ausprobieren
 
-[Spielen](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Offline-Datei herunterladen](https://netaniya.github.io/Netaniya/eliana-n25x/download/eliana-n25x-offline.html)
+1. Oben **Sprache der App** wählen: Deutsch, English, Русский oder Українська. Deutsch ist die Voreinstellung; die Wahl wird auf dem Gerät gespeichert.
+2. Unter **Mein Roboter** Namen, Körperbau, Paneele und Material gestalten. Tippen lässt den wirklichen 3D-Roboter winken.
+3. **Lernen → Programmieren & Ausprobieren** öffnen. Einen Baustein ändern oder JavaScript bearbeiten, das Beispiel starten und alle Prüffälle ausführen.
+4. Unter **Gestalten → Mein Quizspiel** Fragen und Antworten schreiben. Die Punktefunktion prüfen und das eigene Spiel ausprobieren.
+5. Das Projekt speichern, als spielbares HTML herunterladen oder als Projektdatei zur Weiterbearbeitung übertragen.
 
-![Eliana und N25x in der Zukunftsstadt](assets/duo-cover.webp)
+## Enthaltene Funktionen
 
-Ein fotografisch gestaltetes Point-and-Click-Abenteuer mit sechs eigenständigen Orten: Zukunftsstadt, verlassenes Viertel, Schule, Dachgarten, Zuhause und Relaisstation. Eliana deutet Hinweise; N25x bedient die Geräte. Die Reise hat einen Anfang, sechs spielbare Missionen und einen Abschluss.
+- Originaler artikulierter 3D-Humanoid mit Gelenken und Fingern, konfigurierbaren Materialien und Beleuchtung in einer dunklen Werkstatt.
+- Fünf Programmieraufgaben zu Variablen, Bedingungen, Schleifen, Funktionen und Fehlersuche. Der begrenzte JavaScript-Interpreter führt den eigenen Code wirklich aus und zeigt Werte sowie Prüfergebnisse.
+- Quiz-Editor mit 1–8 Fragen und eigener Punktefunktion; spielbare Vorschau, HTML-Export und validierter JSON-Austausch.
+- Mathematik auf elf Schwierigkeitsstufen, tägliche Aufgaben, lokaler Rechenhelfer und drei ausführbare Wegprogramme.
+- Zehn Einstiegssprachen mit insgesamt 60 Wortkarten sowie Auswahl- und Schreibübungen. Die Lernsprache ist von der Sprache der Oberfläche getrennt.
+- Kleine Übungssets zu Logik, Physik, Biologie, Geografie und digitalen Fähigkeiten.
+- Zwanzig Gestaltungsmöglichkeiten: Quiz, Entscheidungsgeschichte, Texte, Comic-Szenenkarten, Webseite, Checkliste, Timer, Lernkarten, Abzeichen, Sticker, Ideenkarte, Tagesplan, Melodie und Roboterbewegungen. Einige teilen sich denselben Texteditor; Inhalte verfasst der Nutzer selbst.
+- Punkte für bestätigte Ergebnisse, freischaltbare Teile, separate Werkzeugentwürfe, lokale Profile und Profil-Import/-Export. Keine Geldprämien oder Käufe mit echtem Geld.
+- Vier Oberflächensprachen, große Bedienelemente, eigene synthetische Klänge, Lautstärke, Stummschaltung, installierbare Web-App und eigenständige HTML-Kopie.
 
-## Funktionen
+## Als App nutzen oder weitergeben
 
-- Sechs unterschiedliche Rätsel: Strompfad, Symbolfolge, Energiebalance, Bewässerungsventile, Startreihenfolge und Signalabgleich.
-- Entdeckungsmodus ohne Zeitdruck und Challenge mit Zeitbonus; nachvollziehbare Punkte, persönliche Rekorde und ein optionales Datenmodul pro Ort.
-- Vollständige Oberflächen und Missionstexte auf Deutsch, Englisch, Russisch und Ukrainisch; Deutsch beim ersten Besuch.
-- Maus, Touch und Tastatur; responsive Oberfläche, vollständig sichtbare Szenen und vergrößerbare Ansicht.
-- Browserlokaler Spielstand, Export und geprüfter JSON-Import, bestätigtes Zurücksetzen und Fortsetzen nach Neuladen.
-- Installierbare PWA auf unterstützten Browsern. Der Service Worker speichert alle Orte, Porträts, Schriften und Skripte. Ein Erfolg wird erst nach vollständiger Cache-Prüfung angezeigt.
-- Eigenständige Offline-HTML-Datei mit eingebetteten Bildern, Schrift und Spiellogik; keine Laufzeitabhängigkeit von CDNs, Konten, Werbung oder kostenpflichtigen APIs.
-- Eigene Klänge für Scans, Fundstücke, Fehler, Rätsel und Szenenwechsel; dezente Umgebungstöne ab dem Spieleinstieg, mit Lautstärkeregler und Ausschalter. Reduzierte Bewegung wird respektiert.
+**Android / Chrome:** App-Link öffnen, im Browsermenü **Installieren / App installieren** wählen. Je nach Version liegt dies unter „Installieren und Verknüpfung erstellen“.
+**iPhone / Safari:** App-Link öffnen, **Teilen → Zum Home-Bildschirm**; falls angeboten, „Als Web-App öffnen“ aktivieren.
+**Computer:** In einem unterstützten Browser das Installationssymbol bzw. „App installieren“ verwenden.
 
-## Installation und Bedienung
+Die erste Nutzung benötigt Internet. Unter **⚙ Einstellungen** auf die Bestätigung der geprüften Offline-Dateien warten. Erst dann wurde die lokale Bereitschaft dieser Version bestätigt. Browser können gespeicherte Daten entfernen; wichtige Profile exportieren. Nachrichten und Cloud-Synchronisierung sind nicht verfügbar.
 
-Im Browsermenü „App installieren“ oder „Zum Startbildschirm“ wählen, falls angeboten. In den Einstellungen „Alle Orte offline speichern“ wählen und die Bestätigung abwarten. Am iPhone wird der Startbildschirm über das Teilen-Menü hinzugefügt. Die Offline-HTML-Datei ist eine zusätzliche Desktop-Option; nicht jeder mobile Dateibetrachter führt JavaScript aus. Es handelt sich um eine Web-App, nicht um eine native APK oder App-Store-Veröffentlichung.
+Unter **⚙ → App als HTML herunterladen** lässt sich eine komplette Datei speichern und weitergeben. Alle Laufzeitmodule, Bilder, Schrift und Lizenzhinweise sind eingebettet. Mit einem modernen Browser öffnen; einfache mobile Dateibetrachter führen JavaScript möglicherweise nicht aus. Die Datei ist eine zusätzliche Offline-Kopie, keine APK und kein App-Store-Paket. Web-App und HTML-Datei können unterschiedliche lokale Profile verwenden; der Profil-Export überträgt Fortschritt.
 
-E / N wechselt die Figur. 1–4 untersucht Hinweis, Terminal, Datenmodul und Ausgang. Die Leertaste pausiert. Rätsel werden über beschriftete Schaltflächen und Regler bedient. Spielstände sind geräte- und browserspezifisch; für einen Gerätewechsel vorher exportieren.
+## Für die technische Prüfung
 
-## Umsetzung und Beitrag
-
-Konzept, Figurenbenennung, Referenzwahl, Gestaltungsvorgaben und gewünschte Spielmechanik: **Natalie Ragulina**. Implementierung, generierte Szenen, Übersetzungen und automatisierte Prüfungen wurden gemeinsam mit KI-Unterstützung ausgearbeitet. Die Auftraggeberin bewertet das spielbare Ergebnis und steuert die Weiterentwicklung. Es werden keine erfundenen kommerziellen Referenzen oder prozentualen Beitragsangaben verwendet.
-
-Die Bildwelt besteht aus generierten Rasterbildern mit interaktiven Markierungen. Es gibt keine frei begehbare 3D-Welt, keine physikalische Robotersimulation und keinen Live-KI-Charakter. Rätsel, Punkte und Fortschritt werden vollständig im Browser berechnet. [Bild- und Schriftangaben](assets/credits.json).
-
-## Lokal prüfen
+Persönliches Portfolio-Projekt mit JavaScript-ES-Modulen, HTML/CSS, Three.js, Web Audio, Web App Manifest, Service Worker, Node-Tests und GitHub Actions. Keine Runtime-CDNs, Benutzerkonten, Tracker oder kostenpflichtigen KI-APIs. Der Rechenhelfer und die vorbereiteten N25x-Erklärungen laufen lokal. Es gibt keinen freien KI-Chat, keine aktive soziale Plattform und keine vollständigen zertifizierten Schul- oder Sprachkurse.
 
 ```sh
+cd portfolio/eliana-n25x
 npm ci --ignore-scripts
 npm run build
 npm run check
 npm test
+python3 -m http.server 8080 --bind 127.0.0.1 --directory workshop/dist
 ```
 
-ES-Module ohne Runtime-Framework, Web Audio, Web App Manifest und ein auf dieses Spiel begrenzter Service Worker. `build.mjs` erzeugt die Offline-Datei und einen Inhalts-Hash für den Cache. `node_modules`, generierte Downloads und Service-Worker-Ausgabe werden nicht eingecheckt. Der gemeinsame Pages-Build kopiert ausschließlich öffentliche Laufzeitdateien.
+Danach `http://localhost:8080/` öffnen. CI verwendet Node.js 24; Python dient hier nur als optionaler lokaler HTTP-Server. Der gemeinsame Portfolio-Build lautet `node scripts/build-pages.mjs` im Repository-Stamm. Einzelheiten: [technische Studio-Dokumentation](workshop/README.md), [Prüfbelege](../../docs/eliana-n25x-workshop/README.ru.md), [Browser-Workflow](../../.github/workflows/eliana-workshop-browser.yml).
 
-Die Tests prüfen beide Spielmodi, das vollständige Durchspielen aller sechs Kapitel in allen vier Sprachen über DOM-Interaktionen, Punktelogik, Rollen und Zugangssperren, Speicherung, Import/Export, Pause und Seitenrückkehr, die eigenständige Offline-Datei sowie Cache-Erfolg und -Fehler. DOM- und Service-Worker-Tests ersetzen keine Sichtprüfung in echten Desktop- und Mobilbrowsern. Eine solche Geräteprüfung ist für diese Veröffentlichung noch offen.
+Automatisierte Logik-/DOM-/Cache-Prüfungen, echtes Chromium und physische Geräte werden getrennt dokumentiert. Aktuelle Freigabe und Version stehen in [publication.json](../../docs/eliana-n25x-workshop/publication.json). Eine emulierte Telefonansicht ist kein physisches Android-/iOS-Gerät.
 
-## Copyright
+## Frühere Spielversionen
 
-**© 2026 Natalie Ragulina. All rights reserved.** [Copyright notice and third-party licenses](LICENSE.md).
+[Illustrierter Quest](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Steuerbares 3D-Abenteuer](https://netaniya.github.io/Netaniya/eliana-n25x/3d/) · [3D-Dokumentation](3d/README.md). Beide Versionen und ihre eigenen Speicherstände bleiben getrennt erhalten.
 
+## Urheberschaft und Lizenzen
+
+Die Idee, Konzeption, Figurenwahl und künstlerische Leitung gehören zu Natalie Ragulinas menschlichem kreativen Beitrag. Der Einsatz von KI wird offen benannt. Die privaten Originalfotos werden nicht verteilt; für das menschliche Gesicht wird keine exakte animierte Rekonstruktion behauptet.
+
+**© 2026 Natalie Ragulina. All rights reserved.** Veröffentlichung erteilt keine allgemeine Wiederverwendungslizenz für die Originalmaterialien. [Copyright-Hinweis](LICENSE.md). Three.js bleibt MIT-lizenziert, Manrope unter SIL OFL; [Bildangaben](assets/credits.json) und Lizenzdateien bleiben erhalten.
+
+[Chrome-Installationshilfe](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid) · [Safari-Installationshilfe](https://support.apple.com/guide/iphone/iphea86e5236/ios)

@@ -1,53 +1,67 @@
-# Eliana & N25x
+# Eliana & N25x · Robot Studio
 
+**Creator, original idea, concept and art direction: Natalie Ragulina.**
+**© 2026 Natalie Ragulina. All rights reserved.**
 
-## New version: Robot Studio
+[Deutsch](README.md) · [Русский](README.ru.md) · **[Open the app](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)** · [Open standalone HTML](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/Eliana-N25x-Studio.html)
 
-The new phone-first workshop with a personal robot, learning tasks, creative tools and points is documented in **[Robot Studio](workshop/README.en.md)**. The illustrated quest documented below and the **[3D adventure](3d/README.en.md)** remain available.
+An interactive learning and creation workshop for phones and computers. Users customize a personal humanoid 3D robot, practice skills and make small projects. Eliana and N25x remain the named mentor characters. Implementation, translations, generated portraits and technical checks were developed with AI assistance, following Natalie Ragulina's creative decisions and requirements.
 
-**A shared future · [Deutsch](README.md)**
+## Try it in three minutes
 
-[Play](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Download offline edition](https://netaniya.github.io/Netaniya/eliana-n25x/download/eliana-n25x-offline.html)
+1. Use the visible **App language** selector at the top: Deutsch, English, Русский or Українська. German is the default; the choice stays on this device.
+2. Customize the robot's name, body, panels and finish. Tap the actual 3D robot to wave.
+3. Open **Learn → Programming & practice**. Change a block or edit JavaScript, run an example and check all test cases.
+4. Open **Create → My quiz game**, write your questions and answers, check the scoring function and play the result.
+5. Save it, download playable HTML or send an editable project file yourself.
 
-A cinematic point-and-click adventure across six distinct locations: a future city, an abandoned district, a school, a rooftop garden, a home and a relay station. Eliana interprets clues; N25x operates equipment. Six working puzzles connect a complete journey with an ending.
+## What is implemented
 
-## Features
+- Original articulated 3D humanoid with joints and fingers, configurable materials and a dark, lit studio.
+- Five executable programming missions: variables, conditions, loops, functions and debugging. A bounded JavaScript interpreter runs learner code and reports real values and test cases.
+- Quiz editor with 1–8 questions, an editable scoring function, sandbox preview, standalone HTML and validated project JSON.
+- Eleven mathematics difficulty levels, daily exercises, a local expression helper and three executable grid-route programs.
+- Ten introductory learning languages: German, English, Georgian, Ukrainian, Russian, Mandarin Chinese, Spanish, French, Italian and Japanese. Six vocabulary entries each, with cards, choice and typing practice. Learning language is separate from the four UI languages.
+- Short original exercises in logic, physics, biology, geography and digital skills.
+- Twenty creation choices, including branching stories, writing, comic-scene cards, a webpage, checklists, timer, flashcards, badge, animated sticker, idea map, day plan, melody and robot movements. Some share a writing editor. Users write their own content; there is no generative writing service.
+- One-time achievement points, unlockable parts, autosaved per-tool drafts, local profiles and validated profile import/export. No cash rewards, payments or real-money marketplace.
+- Four complete interface languages, large controls, original synthesized audio, volume/mute, installable web app and a standalone HTML edition.
 
-- Six puzzle systems: electrical paths, symbol sequences, energy allocation, irrigation valves, startup ordering and signal tuning.
-- Explorer and timed challenge modes, discovery and accuracy points, speed bonuses, local personal records and optional collectibles.
-- German by default, with complete English, Russian and Ukrainian interfaces and mission text.
-- Mouse, touch and keyboard controls, responsive layouts and a larger scene view. Images retain their full aspect ratio.
-- Local progress, validated JSON import/export, confirmation before reset, and reload recovery.
-- Installable PWA where supported, with all six locations cached for offline use. Readiness is announced only after every required file is present.
-- A separate self-contained HTML download with embedded images, font and game logic; no account, analytics, runtime CDN or paid API.
-- Distinct procedural game effects, scene ambience, volume controls and reduced-motion support.
+## Install, download or share
 
-## Install and play
+**Android / Chrome:** Open the app link and choose **Install app** in Chrome's menu. Depending on the version, it appears under “Install and create shortcut.”
+**iPhone / Safari:** Open the link, select **Share → Add to Home Screen**, then enable “Open as Web App” if offered.
+**Desktop:** Use the installation icon or “Install app” in a supported browser.
 
-Use the browser’s **Install app** or **Add to Home Screen** option where available. On iPhone, use Safari’s Share menu. In game settings, prepare all locations offline and wait for confirmation. The standalone HTML download is an additional desktop option; some mobile file viewers do not execute JavaScript. This is a web app, not a native APK or app-store release.
+Visit online first and wait for the verified offline confirmation in **⚙ Settings**. That confirmation applies to the files present in this browser. Browsers may evict storage; export important profiles. Messaging and cloud synchronization are not connected.
 
-Press **E / N** to switch characters, **1–4** to interact and **Space** to pause. Puzzles have labeled buttons and sliders. Progress is local to a browser and device; export it before moving devices.
+**⚙ → Download app as HTML** saves a complete file you can pass to someone else. It embeds the runtime modules, images, font and licence notices. Open it in a modern browser; basic mobile file viewers may not execute JavaScript. This is a web app plus an optional offline file, not an APK or app-store release. Web and file origins can use separate storage; profile export/import transfers progress.
 
-## Authorship and scope
+## Technical review
 
-**Natalie Ragulina** defined the concept, character names, references, art direction and requested mechanics. Implementation, generated artwork, translations and automated checks were developed with AI assistance. The project owner reviews the playable result and directs subsequent development. This is a fictional portfolio project with no claimed commercial deployment.
-
-The scenes are generated raster images with interactive hotspots. This edition does not have free-roaming 3D movement, physical robot simulation or live AI dialogue. Puzzles, scores and progress run locally in JavaScript. Original personal reference photographs are not distributed. See [asset credits](assets/credits.json).
-
-## Development and verification
+A personal portfolio project using JavaScript ES modules, HTML/CSS, Three.js, Web Audio, a Web App Manifest, scoped service worker, Node tests and GitHub Actions. No runtime CDNs, accounts, tracking SDKs or paid AI API. The math helper and prepared N25x explanations run locally. Open-ended AI chat, live social features and complete certified school/language curricula are not implemented.
 
 ```sh
+cd portfolio/eliana-n25x
 npm ci --ignore-scripts
 npm run build
 npm run check
 npm test
+python3 -m http.server 8080 --bind 127.0.0.1 --directory workshop/dist
 ```
 
-Framework-free ES modules, Web Audio, a Web App Manifest and a service worker scoped to this game. The build generates a content-versioned cache and a standalone offline HTML bundle. Generated files and dependencies are excluded from source control; the shared Pages workflow builds and publishes the allowlisted runtime files.
+Open `http://localhost:8080/`. CI uses Node.js 24; Python is only an optional local HTTP server. The shared portfolio build is `node scripts/build-pages.mjs` from the repository root. See [Studio technical documentation](workshop/README.en.md), [verification evidence](../../docs/eliana-n25x-workshop/README.ru.md) and the [browser workflow](../../.github/workflows/eliana-workshop-browser.yml).
 
-Tests cover both modes, complete six-chapter DOM walkthroughs in all four languages, scoring, role and progression gates, save recovery, import/export, pause and page return, the standalone bundle, and service-worker cache success/failure. These are logic and DOM tests, not real-browser rendering or mobile-device certification. Visual checks on actual desktop and mobile browsers remain open for this release.
+Logic/DOM/cache tests, real Chromium and physical-device checks are recorded separately. Current release and version: [publication.json](../../docs/eliana-n25x-workshop/publication.json). An emulated mobile viewport is not a physical Android/iOS test.
 
-## Copyright
+## Earlier games
 
-**© 2026 Natalie Ragulina. All rights reserved.** [Copyright notice and third-party licenses](LICENSE.md).
+[Illustrated quest](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Controllable 3D adventure](https://netaniya.github.io/Netaniya/eliana-n25x/3d/) · [3D documentation](3d/README.en.md). Both editions and their independent save keys remain available.
 
+## Authorship and licences
+
+Natalie Ragulina's human creative contribution includes the original idea, concept, character choices and art direction. AI assistance is disclosed. Private source photographs are not distributed; no exact animated face reconstruction is claimed.
+
+**© 2026 Natalie Ragulina. All rights reserved.** Public availability grants no general reuse licence for original project materials. See the [copyright notice](LICENSE.md). Bundled Three.js retains MIT, Manrope retains SIL OFL, and [image credits](assets/credits.json) and licence files are preserved.
+
+[Chrome installation help](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid) · [Safari installation help](https://support.apple.com/guide/iphone/iphea86e5236/ios)

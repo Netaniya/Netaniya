@@ -14,6 +14,6 @@ self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key
 self.addEventListener('message',event=>{if(event.data?.type!=='VERIFY_OFFLINE')return;event.waitUntil((async()=>{try{const count=await verify();event.source?.postMessage({type:'OFFLINE_READY',version:CACHE,count});}catch{event.source?.postMessage({type:'OFFLINE_ERROR',version:CACHE});}})());});
 self.addEventListener('fetch',event=>{
  const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin||!url.href.startsWith(self.registration.scope))return;
- if(event.request.mode==='navigate'){event.respondWith((async()=>{try{const response=await fetch(event.request);if(response.ok)return response;}catch{}const cache=await caches.open(CACHE);return await cache.match(scoped('./index.html'))||Response.error();})());return;}
+ if(event.request.mode==='navigate'){event.respondWith((async()=>{try{const response=await fetch(event.request);if(response.ok)return response;}catch{}const cache=await caches.open(CACHE),exact=await cache.match(event.request,{ignoreSearch:true});if(exact)return exact;const home=url.pathname===new URL('./',self.registration.scope).pathname||url.pathname===new URL('./index.html',self.registration.scope).pathname;return home?await cache.match(scoped('./index.html'))||Response.error():Response.error();})());return;}
  event.respondWith((async()=>{const cache=await caches.open(CACHE);return await cache.match(event.request,{ignoreSearch:true})||fetch(event.request);})());
 });
