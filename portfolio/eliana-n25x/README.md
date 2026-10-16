@@ -24,9 +24,13 @@ Oben die Oberflächensprache wählen: Deutsch, English, Русский oder Ук
 
 ## Installation und Offline-Kopie
 
+Die Oberfläche nutzt 16 px für normalen Lesetext, 14 px für ergänzende Texte und kräftige Akzentfarben auf dunklem Hintergrund. Die Telefon-Navigation verwendet 13 px.
+
 Android/Chrome: Menü → App installieren. iPhone/Safari: Teilen → Zum Home-Bildschirm. Desktop: Installation im unterstützten Browser. Es ist eine installierbare Web-App; eine Veröffentlichung in App-Stores wird nicht behauptet. Zuerst online öffnen und unter ⚙ die Dateiprüfung abwarten: 30 notwendige Ressourcen werden per SHA-256 geprüft. Optionale lokale Sprechstimmen hängen vom Gerät ab.
 
 Unter ⚙ **App als HTML herunterladen** wählen. Die eigenständige Datei enthält Module, Robotergrafik, Schrift und Lizenzen. [HTML-Kopie öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/N25x-Studio.html). Ein Dateibetrachter auf dem Telefon führt möglicherweise kein JavaScript aus. Website und lokale Datei können unterschiedliche Speicher haben; Profile exportieren und importieren. Browser können lokale Daten entfernen, daher Sicherungen behalten.
+
+Für Updates die installierte Web-App online öffnen, vollständig schließen und erneut öffnen. Eine heruntergeladene HTML-Datei aktualisiert sich nicht selbst: eine neue Kopie über denselben Link herunterladen. Vor dem Wechsel den bisherigen lokalen Profilstand exportieren, damit Roboter, Punkte und Projekte bei Bedarf importiert werden können.
 
 ## Prüfung durch Arbeitgeber
 

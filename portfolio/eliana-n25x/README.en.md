@@ -24,9 +24,13 @@ Choose Deutsch, English, Русский or Українська in the visible h
 
 ## Install, download and save
 
+The interface uses a medium 16 px main reading size, 14 px secondary text and vivid accents on the dark background. Phone navigation labels are 13 px.
+
 Use Install App in Android/Chrome or Share → Add to Home Screen in iPhone/Safari. Desktop installation depends on browser support. This is an installable web app; no app-store release is claimed. Visit online and wait for the verified offline status under ⚙: 30 required resources are checked with SHA-256. Optional local speech voices depend on the device.
 
 Under ⚙ choose **Download app as HTML** for the complete standalone copy with embedded modules, robot assets, font and licenses. [Open standalone copy](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/N25x-Studio.html). A phone's file viewer may not run JavaScript. Browser/file storage can differ; transfer profiles with export/import. Keep backups because browsers may evict local storage.
+
+To update the installed web version, open it online, then close it fully and reopen. A downloaded HTML file does not update itself: download a fresh copy from the same link. Export the old local profile before switching files so the robot, points and projects can be imported if needed.
 
 ## Employer review and local build
 
