@@ -22,7 +22,7 @@ function boot(){
  const run=code=>vm.runInContext(code,scope);
  const emit=(el,type,props={})=>{const event=new window.Event(type,{bubbles:true,cancelable:true});for(const [k,v]of Object.entries(props))Object.defineProperty(event,k,{value:v});el.dispatchEvent(event);return event;};
  const click=selector=>emit(document.querySelector(selector),'click');
- const frames=(n=60)=>{for(let i=0;i<n;i++){now+=1000/60;callbacks.shift()(now);}};
+ const frames=(n=60,step=1000/60)=>{for(let i=0;i<n;i++){now+=step;callbacks.shift()(now);}};
  return {document,window,memory,run,emit,click,frames,start:()=>click('[data-action="start"]')};
 }
 test('3D input: two simultaneous pointers move and orbit independently; cancellation releases only its own input',()=>{
@@ -41,4 +41,8 @@ test('3D input: keyboard moves, running is faster, pause stops motion/time/audio
 test('3D input: live language switches translate the open menu, goal and copyright without resetting position',()=>{
  const b=boot();b.start();b.click('[data-action="pause"]');const position=b.run('JSON.stringify(player)');
  for(const lang of core.LANGUAGES){const select=b.document.querySelector('#overlay [data-language]');Object.defineProperty(select,'value',{value:lang,configurable:true});b.emit(select,'change');assert.equal(b.document.documentElement.lang,lang);assert.equal(b.document.getElementById('panel-title').textContent,t(lang,'pause'));assert.equal(b.document.getElementById('goal').textContent,t(lang,'clueGoal'));assert(b.document.getElementById('copyright').textContent.includes(t(lang,'rights')));assert.equal(b.run('JSON.stringify(player)'),position);}
+});
+test('3D input: a second of walking covers the same ground at 5 and 60 rendered frames per second',()=>{
+ const fast=boot(),slow=boot();for(const b of [fast,slow]){b.start();b.frames(1);b.emit(b.window,'keydown',{code:'KeyW'});}
+ fast.frames(60);slow.frames(5,200);assert(Math.abs(fast.run('player.z')-slow.run('player.z'))<.02);assert(17-slow.run('player.z')>2.6);
 });

@@ -105,7 +105,7 @@ function updateCamera(dt){
  const desired=focus.clone().add(offset);camera.position.lerp(desired,1-Math.exp(-dt*12));camera.lookAt(focus);
 }
 function frame(time){
- if(!renderer)return;const raw=last?(time-last)/1000:0;last=time;const dt=Math.min(raw,.05);clock+=dt;
+ if(!renderer)return;const raw=last?(time-last)/1000:0;last=time;const dt=Math.min(raw,.25);clock+=dt;
  if(isRunning()){
   chapter().elapsed+=Math.min(raw,.5);let x=(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0)+stick.x,y=(keys.has('KeyW')||keys.has('ArrowUp')?1:0)-(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-stick.y;const length=Math.hypot(x,y);if(length>1){x/=length;y/=length;}
   const running=runToggle||keys.has('ShiftLeft')||keys.has('ShiftRight'),speed=running?5:2.65,dx=(Math.cos(yaw)*x-Math.sin(yaw)*y)*speed*dt,dz=(-Math.sin(yaw)*x-Math.cos(yaw)*y)*speed*dt,boxes=obstacles(state.level,world.gateProgress>.92),before=player;player=move(player,dx,dz,boxes);const actual=distance(before,player)/Math.max(.001,dt);
