@@ -21,7 +21,9 @@ const metadata=JSON.parse(await fs.readFile(path.join(root,'build-info.json'),'u
 const report={scope,buildVersion:metadata.version,author:'Natalie Ragulina',startedAt:new Date().toISOString(),checks:[],errors:[],physicalDevicesTested:false};
 const browser=await chromium.launch({headless:true,args:['--use-gl=angle','--use-angle=swiftshader','--enable-webgl','--ignore-gpu-blocklist','--enable-unsafe-swiftshader']});
 const context=await browser.newContext(scope==='touch'?{viewport:{width:390,height:844},hasTouch:true,isMobile:true,deviceScaleFactor:1}:{viewport:{width:1360,height:960}});
-await context.addInitScript(()=>{if(!localStorage.getItem('eliana-n25x.save.v1'))localStorage.setItem('eliana-n25x.save.v1','classic-sentinel');if(!localStorage.getItem('eliana-n25x.3d.v1'))localStorage.setItem('eliana-n25x.3d.v1','adventure-sentinel');});
+// Seed only the app's top-level origin. Init scripts also run inside sandboxed
+// project previews, where localStorage is intentionally unavailable.
+await context.addInitScript(()=>{if(window!==window.top||!location.pathname.startsWith('/Netaniya/eliana-n25x/workshop/'))return;if(!localStorage.getItem('eliana-n25x.save.v1'))localStorage.setItem('eliana-n25x.save.v1','classic-sentinel');if(!localStorage.getItem('eliana-n25x.3d.v1'))localStorage.setItem('eliana-n25x.3d.v1','adventure-sentinel');});
 const page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',e=>report.errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});
 function check(name,detail={}){report.checks.push({name,...detail});console.log('PASS '+name,JSON.stringify(detail));}
 const click=async selector=>{const el=page.locator(selector).first();await el.scrollIntoViewIfNeeded();if(scope==='touch')await el.tap();else await el.click();};
@@ -40,8 +42,7 @@ async function offlineCheck(){
  await click('#navigation [data-do=learn]');await click('[data-subject=math]');await page.locator('#grade').selectOption('1');await page.locator('#answer').fill('12');await click('#check-answer');assert((await page.locator('#feedback').innerText()).includes(TEXT[after.lang].correct));await context.setOffline(false);
  check('cold offline reload restores real 3D robot, projects and balance; lessons still work; both older saves untouched',{precacheFiles:metadata.precacheFiles});
 }
-// Prepared for the next authorized private Chromium run. These scenarios have
-// not been executed merely because this harness is present in the repository.
+// Real input drives the practical edition; a report records the outcome of each run.
 async function practicalProjectsCheck(){
  await click('#navigation [data-do=learn]');await click('[data-do=programming]');
  for(let i=0;i<MISSIONS.length;i++){

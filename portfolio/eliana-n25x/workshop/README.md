@@ -10,7 +10,7 @@ Eine mobile Web-App: eigenen Roboter gestalten, kleine Aufgaben verstehen und et
 
 ## Ausprobieren
 
-1. Beim ersten Besuch Deutsch; im Begrüßungsfenster oder unter ⚙ die Sprache wechseln. Deutsch, Englisch, Russisch und Ukrainisch sind vollständig enthalten.
+1. Beim ersten Besuch Deutsch; die Sprache direkt oben unter „App-Sprache“ wechseln. Der Schalter bleibt auf jedem Bildschirm sichtbar. Deutsch, Englisch, Russisch und Ukrainisch sind enthalten; die zehn Lernsprachen werden separat gewählt.
 2. Roboter benennen; Kopf, Hände, Füße/Räder/Schwebebasis, Farbe, Sprechweise, Interesse und Erklärungsstil wählen. Änderungen sind sofort am animierten 3D-Modell sichtbar. Antippen lässt es winken; die Ansicht kann optional gedreht werden. Es gibt keinen Bewegungs-Joystick.
 3. Unter **Lernen** Mathematik, englische Wörter oder Pfeilprogramme wählen. Die tägliche Einheit erzeugt lokal drei neue Mathematikaufgaben für das gewählte Niveau. Kein Zeitdruck und keine Strafe für einen ausgelassenen Tag.
 4. Unter **Gestalten** eine achtschrittige Melodie komponieren und als echte WAV-Datei exportieren; oder eine Bewegungsfolge für den Roboter bauen. Eigene Projekte lassen sich speichern und wieder öffnen. Die Roboterkarte enthält die tatsächliche 3D-Ansicht als PNG.
@@ -54,22 +54,15 @@ npm test
 
 Gesamtausgabe: `node scripts/build-pages.mjs`; Portfolioprüfungen: `node --test tests/pages.test.mjs` aus dem Repository-Stamm.
 
-Die fünfzehn automatischen Studio-Tests prüfen Mathematik (einschließlich 1.980 erzeugter Tagesaufgaben), Punkte, Profilvalidierung, echte Modellgeometrie und Gelenke, WAV-Daten, vollständige Cache-Inventare, kalte Offline-Navigation und beschädigte Ressourcen. Das sind keine Geräteprüfungen.
+16 automatische Studio-Kerntests und 17 Praxistests prüfen Mathematik (einschließlich 1.980 erzeugter Tagesaufgaben), Punkte, Profilvalidierung, echte Modellgeometrie und Gelenke, WAV-Daten, den begrenzten JavaScript-Interpreter, ausführbare Nutzerprojekte, Übersetzungen, vollständige Cache-Inventare, kalte Offline-Navigation und beschädigte Ressourcen. Mit den älteren Spielen umfasst das Projekt 79 Tests; das Portfolio hat 12 weitere Prüfungen. Das sind keine Geräteprüfungen.
 
 `.github/workflows/eliana-workshop-browser.yml` führt echtes Chromium mit SwiftShader aus: Desktop sowie emuliertes Telefon mit tatsächlichen Klicks/Tastatur-/Touch-Eingaben, ohne Einspritzen von Lernfortschritt oder Punkten. Es exportiert Screenshots, echte Nutzerdateien und `verification.json`. Der aktuelle bestätigte Stand steht in [PROGRESS.ru.md](PROGRESS.ru.md). Physische Android-/iOS-Geräte und eine echte Installation müssen getrennt geprüft werden.
 
 
-## Lokale Weiterentwicklung
+## Aktuelle Praxis-Ausgabe
 
-Eine neue lokale, noch nicht im Browser geprüfte Variante ergänzt ein dunkles Design und einen humanoiden Roboter mit konfigurierbarem Körperbau und Material. Bestehende Profile bleiben kompatibel. Sie wurde wegen des gewünschten privaten Quellcodes noch nicht auf GitHub veröffentlicht. Eine private HTML-Prüfkopie lässt sich nach dem Build mit `node workshop/portable.mjs /absoluter/pfad/review.html` aus dem Spielordner erstellen.
+Der dunkle humanoide Roboter hat menschliche Proportionen, gelenkige Finger sowie wählbaren Körperbau und Material. Bestehende Studio-Profile bleiben kompatibel. Die [Projektübersicht](../README.md) beschreibt fünf ausführbare JavaScript-Aufgaben, zehn Einstiegswortschätze, zwanzig Gestaltungsangebote, den Quiz-Editor und validierten Projektaustausch. Werkzeuge behalten eigene Entwürfe. Kein Live-Chat, Konto oder Cloud-KI-Dienst ist angeschlossen.
 
+Der Build erzeugt `download/Eliana-N25x-Studio.html` als vollständige eigenständige Kopie und nimmt sie in die 22 mit SHA-256 geprüften Offline-Ressourcen auf. Sie enthält elf eingebettete Module und alle benötigten Bilder, Schrift- und Lizenzdaten. Zum Herunterladen unter ⚙ „App als HTML herunterladen“ wählen. Der Speicher einer lokalen Datei kann vom Website-Speicher abweichen; Profile lassen sich exportieren und importieren. Generierte Dateien werden nicht eingecheckt; GitHub Pages baut sie aus dem Quellcode.
 
-## Practical-learning edition
-
-Creator, original idea, concept and art direction: **Natalie Ragulina**. **© 2026 Natalie Ragulina. All rights reserved.** Development with AI assistance.
-
-The current feature list, ten introductory languages, twenty creation choices, visible four-language UI selector and installation/download instructions are in the [project overview](../README.en.md). It includes executable programming practice, a quiz editor, per-tool drafts and validated project exchange. No live chat, accounts, cloud AI or cash rewards are connected.
-
-The build generates a standalone `download/Eliana-N25x-Studio.html` and includes it among 22 SHA-256-verified offline resources. The HTML contains 11 embedded modules and requires no runtime network. Its save storage may differ from the website; use profile import/export. Generated files are not committed; GitHub Pages builds them from source.
-
-Current browser and release evidence is recorded separately in [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Physical-device installation remains a separate check. The project tests cover models, interpreter, actual export-player code, UI in a DOM, save migration and cache integrity; DOM tests are not a real browser.
+Tatsächliche Browser- und Veröffentlichungsergebnisse stehen in [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Eine Geräteinstallation ist eine separate Prüfung.

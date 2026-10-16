@@ -42,7 +42,7 @@ Locally bundled Three.js r160: [MIT](../3d/vendor/LICENSE.three.txt). Manrope, C
 
 From `portfolio/eliana-n25x`: `npm ci --ignore-scripts`, `npm run build`, `npm run check`, `npm test`. From the repository root: `node scripts/build-pages.mjs`, then `node --test tests/pages.test.mjs`.
 
-Fifteen core Studio automated tests cover reward/purchase invariants, validated profile round-trips, arithmetic/equations/derivatives, 1,980 generated daily exercises, all translations, real mesh/joint changes, actual WAV bytes, hashed offline inventory, cold offline navigation and corrupt-cache failure. These are not physical-device tests.
+16 core Studio tests and 17 practical-learning tests cover reward/purchase invariants, validated profile round-trips, arithmetic/equations/derivatives, 1,980 generated daily exercises, all translations, real mesh/joint changes, actual WAV bytes, the restricted JavaScript interpreter, runnable user projects, hashed offline inventory, cold offline navigation and corrupt-cache failure. Including the older games, the project has 79 tests; the portfolio has 12 separate checks. These are not physical-device tests.
 
 The `eliana-workshop-browser.yml` workflow runs real Chromium with SwiftShader for desktop and an emulated phone. Actual clicks, keys and touches exercise the app without injecting rewards or completed progress. Artifacts include screenshots, downloaded user creations and a machine-readable report. See [PROGRESS.ru.md](PROGRESS.ru.md) for confirmed results. Physical Android/iOS usage and actual installation require separate checks.
 
@@ -52,6 +52,8 @@ The `eliana-workshop-browser.yml` workflow runs real Chromium with SwiftShader f
 Creator, original idea, concept and art direction: **Natalie Ragulina**. **© 2026 Natalie Ragulina. All rights reserved.** Development with AI assistance.
 
 The current feature list, ten introductory languages, twenty creation choices, visible four-language UI selector and installation/download instructions are in the [project overview](../README.en.md). It includes executable programming practice, a quiz editor, per-tool drafts and validated project exchange. No live chat, accounts, cloud AI or cash rewards are connected.
+
+The dark humanoid has articulated fingers, human proportions and selectable body build and finish. Change the interface language with the persistent header control. The ten learning languages have a separate selector; they do not change the interface language.
 
 The build generates a standalone `download/Eliana-N25x-Studio.html` and includes it among 22 SHA-256-verified offline resources. The HTML contains 11 embedded modules and requires no runtime network. Its save storage may differ from the website; use profile import/export. Generated files are not committed; GitHub Pages builds them from source.
 
