@@ -71,9 +71,12 @@ export async function buildPages({basePath='/Netaniya',origin='https://netaniya.
  await promisify(execFile)(process.execPath,[path.join(game,'build.mjs')]);
  for(const name of ['index.html','style.css','app.mjs','engine.mjs','i18n.mjs','audio.mjs','manifest.webmanifest','sw.js','build-info.json'])await write('eliana-n25x/'+name,await fs.readFile(path.join(game,name)));
  for(const name of ['assets','download'])await fs.cp(path.join(game,name),path.join(outDir,'eliana-n25x',name),{recursive:true});
+ await promisify(execFile)(process.execPath,[path.join(game,'3d/build.mjs')]);
+ await fs.cp(path.join(game,'3d/dist'),path.join(outDir,'eliana-n25x/3d'),{recursive:true});
  await write('index.html',(await read('pages/index.html')).replaceAll('__BASE__',basePath));
  await write('404.html',(await read('pages/404.html')).replaceAll('__BASE__',basePath));
  await write('.nojekyll','');
  return {outDir,basePath,origin,projects};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))console.log(JSON.stringify(await buildPages({basePath:process.env.PAGES_BASE_PATH??'/Netaniya',origin:process.env.PAGES_ORIGIN??'https://netaniya.github.io'})));
+

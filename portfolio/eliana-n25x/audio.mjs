@@ -1,6 +1,7 @@
 // Original procedural score and effects: no recordings, downloads or runtime APIs.
 // Notes: frequency, delay, length, wave shape, relative level, optional end frequency.
 export const SOUND_CUES={
+ step:[[115,0,.055,'triangle',.18,63]],
  touch:[[570,0,.045,'sine',.35]],
  clue:[[659,0,.16,'sine',.7],[784,.10,.18,'sine',.65],[987,.20,.25,'sine',.5]],
  collect:[[1046,0,.22,'triangle',.55],[1318,.08,.26,'sine',.55],[1568,.17,.32,'sine',.4]],
@@ -54,3 +55,4 @@ export function createGameAudio({getContext=()=>globalThis.AudioContext||globalT
  function suspend(){stopEffects();try{context?.suspend?.().catch?.(()=>{});}catch{}}
  return {start,update,play,suspend};
 }
+

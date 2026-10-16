@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+ <meta name="theme-color" content="#102b39"><meta name="description" content="Eliana & N25x — ein spielbares 3D-Abenteuer von Natalie Ragulina. Erkunde sechs Stadtviertel und stelle ihre Verbindung wieder her.">
+ <meta name="author" content="Natalie Ragulina"><title>Eliana & N25x · 3D-Abenteuer</title>
+ <link rel="icon" href="./assets/icon-192.png"><link rel="apple-touch-icon" href="./assets/icon-192.png"><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./game.css">
+</head>
+<body>
+ <canvas id="viewport" tabindex="0" aria-label="Eliana & N25x · 3D-Abenteuer"></canvas>
+ <div id="loading" role="status">Die Stadt wird aufgebaut …</div>
+ <header id="hud"><div class="brand">ELIANA <span>&</span> N25x<small id="location"></small></div><div class="header-tools"><span id="hud-language"></span><button id="menu" data-action="pause"><span>Ⅱ</span><small id="pause-label">Menü</small></button></div></header>
+ <section id="objective-card"><div class="eyebrow"><span id="chapter"></span><span id="waypoint"></span></div><small id="objective-label"></small><p id="goal"></p><div class="objective-stats"><span><span id="inventory-label"></span> <b id="item-count">0 / 3</b></span><span><span id="points-label"></span> <b id="points">0</b></span><span id="clock-wrap"><b id="clock">0:00</b></span></div></section>
+ <canvas id="map" width="118" height="134" aria-label="Map"></canvas>
+ <div id="task-box" hidden><span id="task-status" role="status"></span><progress id="task-progress" value="0" max="1"></progress></div>
+ <div id="toast" role="status" aria-live="polite"></div><div id="interaction-context"></div>
+ <div id="joystick" role="button" aria-label="Bewegen"><span id="stick-knob"></span></div>
+ <div class="actions"><div class="secondary-actions"><button id="run" data-action="run" aria-pressed="false">Rennen</button><button id="center" data-action="center" aria-label="Kamera zentrieren">⌖</button></div><button id="interact" data-action="interact" disabled><b id="interaction-key">E</b><span id="interaction-name">Interagieren</span></button></div>
+ <div class="hints"><span id="hint"></span><small id="camera-hint"></small></div><small id="copyright">© 2026 Natalie Ragulina. All rights reserved.</small>
+ <output id="qa" hidden></output><div id="overlay"></div><input id="save-file" type="file" accept="application/json,.json" hidden>
+ <script type="module" src="./app.mjs"></script>
+ <noscript>Dieses Spiel benötigt JavaScript. © 2026 Natalie Ragulina. All rights reserved.</noscript>
+</body>
+</html>
