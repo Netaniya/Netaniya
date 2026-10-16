@@ -4,12 +4,12 @@ export const LANGUAGES=['de','en','ru','uk'];
 export const BOUNDS={minX:-19,maxX:19,minZ:-23,maxZ:22};
 export const SPAWN={x:0,z:17};
 export const LEVELS=[
- {id:'cobalt',name:'city',color:0x49d8df,sky:0x9caeb9,ground:0x9ba6a4,wall:0xced5d3,target:180,items:[[6,9],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'energy'},
- {id:'silent',name:'silent',color:0xffb266,sky:0x6e7d89,ground:0x696d6f,wall:0x899395,target:190,items:[[7,8],[-12,-8],[7,-9]],clue:[-4,13],terminal:[0,-11],kind:'relay'},
- {id:'aurora',name:'campus',color:0x88a9ff,sky:0xb1c4cf,ground:0xb6bfc1,wall:0xe2e3dd,target:190,items:[[-6,7],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'archive'},
- {id:'garden',name:'garden',color:0x9cebaf,sky:0xadcac1,ground:0x718c75,wall:0xc6d3be,target:210,items:[[7,8],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'valve'},
- {id:'home',name:'home',color:0xffd18c,sky:0xc2aea1,ground:0xa9a199,wall:0xe0d1bd,target:180,items:[[-6,7],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'panel'},
- {id:'lighthouse',name:'tower',color:0xa8eaff,sky:0x475971,ground:0x7d8b9c,wall:0xabb8ca,target:210,items:[[7,8],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'beacon'}
+ {id:'cobalt',name:'city',color:0x19e9ff,sky:0x62b4ee,ground:0x6a9bb9,wall:0x3262c4,target:180,items:[[6,9],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'energy'},
+ {id:'silent',name:'silent',color:0xffa63d,sky:0x7093cf,ground:0x797a9c,wall:0x585c87,target:190,items:[[7,8],[-12,-8],[7,-9]],clue:[-4,13],terminal:[0,-11],kind:'relay'},
+ {id:'aurora',name:'campus',color:0x66e5ff,sky:0x84c9f5,ground:0x87a8c8,wall:0x7861cc,target:190,items:[[-6,7],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'archive'},
+ {id:'garden',name:'garden',color:0x9fff43,sky:0x73d0dc,ground:0x67a783,wall:0x288d97,target:210,items:[[7,8],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'valve'},
+ {id:'home',name:'home',color:0xffcf46,sky:0xffc49a,ground:0xb49caa,wall:0xc5709c,target:180,items:[[-6,7],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'panel'},
+ {id:'lighthouse',name:'tower',color:0x39e6ff,sky:0x485eb3,ground:0x6385b5,wall:0x435ac1,target:210,items:[[7,8],[-12,-8],[12,-5]],clue:[-4,13],terminal:[0,-11],kind:'beacon'}
 ];
 export function obstacles(level=0,gateOpen=false){
  const L=LEVELS[level];
