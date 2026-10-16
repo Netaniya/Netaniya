@@ -8,7 +8,7 @@ import {createGameAudio} from './audio.mjs';
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let state;try{state=parseSave(localStorage.getItem(SAVE_KEY))||newGame();}catch{state=newGame();}
 let panel='intro',renderer,world,eliana,n25x,camera,task=null,robotPath=[],navWait=0,lastNavTarget=null;
-let player={...state.position},robot={x:player.x-1.5,z:player.z+1},yaw=state.yaw,pitch=.37,zoom=5.3,runToggle=false,quality='auto',near=null,last=0,clock=0,hudWait=0,saveWait=0,stepTime=0,robotSpeed=0;
+let player={...state.position},robot={x:player.x-1.5,z:player.z+1},yaw=state.yaw,pitch=.37,zoom=5.3,runToggle=false,quality='auto',near=null,last=0,clock=0,hudWait=0,saveWait=0,stepTime=0,robotSpeed=0,actualSpeed=0;
 let offlineState='offlinePending',workerReg=null,installPrompt=null,offlineTimer=null,hiddenPause=false,storageFailed=false;
 const keys=new Set(),stick={id:null,x:0,y:0},look={id:null,x:0,y:0};
 const touch=matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0;
@@ -77,7 +77,7 @@ function updateHUD(){
  $('task-box').hidden=!task;
  if(task){$('task-status').textContent=distance(player,{x:0,z:-10})>4.7?tr('stay'):distance(robot,{x:-1.4,z:-9})>1.1?tr('robotComing'):tr(task.type==='scan'?'scanning':'repairing');$('task-progress').value=task.progress/(task.type==='scan'?3:4.2);}
  drawMap(boxes,next);
- if(new URLSearchParams(location.search).has('qa')){$('qa').hidden=false;$('qa').textContent='E '+player.x.toFixed(2)+','+player.z.toFixed(2)+' · N '+robot.x.toFixed(2)+','+robot.z.toFixed(2)+' · '+g+' · '+(near?.id||'—')+' · gate '+(world?.gateProgress||0).toFixed(2)+' · walk '+(eliana?.phase.toFixed(1)||'0')+' · yaw '+yaw.toFixed(3);}
+ if(new URLSearchParams(location.search).has('qa')){$('qa').hidden=false;$('qa').textContent='E '+player.x.toFixed(2)+','+player.z.toFixed(2)+' · N '+robot.x.toFixed(2)+','+robot.z.toFixed(2)+' · '+g+' · '+(near?.id||'—')+' · gate '+(world?.gateProgress||0).toFixed(2)+' · walk '+(eliana?.phase.toFixed(1)||'0')+' · yaw '+yaw.toFixed(3)+' · speed '+actualSpeed.toFixed(2);}
 }
 function drawMap(boxes,next){const canvas=$('map'),ctx=canvas.getContext('2d');const w=canvas.width,h=canvas.height,s=2.65;ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(12,29,40,.88)';ctx.fillRect(0,0,w,h);const project=p=>[w/2+p.x*s,h/2+p.z*s];ctx.fillStyle='#3c5965';for(const b of boxes){const [x,y]=project(b);ctx.fillRect(x-b.w*s/2,y-b.d*s/2,b.w*s,b.d*s);}ctx.font='9px sans-serif';ctx.textAlign='center';
  for(const o of candidates()){const [x,y]=project(o);ctx.fillStyle=o.id===next.id?'#ffdc95':'#79cfde';ctx.beginPath();ctx.arc(x,y,o.id==='clue'?3:2.4,0,Math.PI*2);ctx.fill();if(LEVELS[state.level].kind==='relay'&&o.id.startsWith('item'))ctx.fillText(String(Number(o.id.at(-1))+1),x,y-4);}
@@ -108,7 +108,7 @@ function frame(time){
  if(!renderer)return;const raw=last?(time-last)/1000:0;last=time;const dt=Math.min(raw,.25);clock+=dt;
  if(isRunning()){
   chapter().elapsed+=Math.min(raw,.5);let x=(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0)+stick.x,y=(keys.has('KeyW')||keys.has('ArrowUp')?1:0)-(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-stick.y;const length=Math.hypot(x,y);if(length>1){x/=length;y/=length;}
-  const running=runToggle||keys.has('ShiftLeft')||keys.has('ShiftRight'),speed=running?5:2.65,dx=(Math.cos(yaw)*x-Math.sin(yaw)*y)*speed*dt,dz=(-Math.sin(yaw)*x-Math.cos(yaw)*y)*speed*dt,boxes=obstacles(state.level,world.gateProgress>.92),before=player;player=move(player,dx,dz,boxes);const actual=distance(before,player)/Math.max(.001,dt);
+  const running=runToggle||keys.has('ShiftLeft')||keys.has('ShiftRight'),speed=running?5:2.65,dx=(Math.cos(yaw)*x-Math.sin(yaw)*y)*speed*dt,dz=(-Math.sin(yaw)*x-Math.cos(yaw)*y)*speed*dt,boxes=obstacles(state.level,world.gateProgress>.92),before=player;player=move(player,dx,dz,boxes);const actual=distance(before,player)/Math.max(.001,dt);actualSpeed=actual;
   if(actual>.08){const angle=Math.atan2(before.x-player.x,before.z-player.z);eliana.root.rotation.y+=Math.atan2(Math.sin(angle-eliana.root.rotation.y),Math.cos(angle-eliana.root.rotation.y))*Math.min(1,dt*12);stepTime+=dt;if(stepTime>(running?.25:.41)){tone('step');stepTime=0;}}else stepTime=0;
   eliana.root.position.set(player.x,0,player.z);eliana.update(dt,actual);updateRobot(dt,boxes);updateTask(dt);
   if(chapter().restored&&world.gateProgress>.92&&player.z<-19.1&&!chapter().finished){finish(state);save();tone(state.complete?'finale':'arrival');showPanel(state.complete?'results':'chapter');}
