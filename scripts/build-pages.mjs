@@ -1,11 +1,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
 import {datasetForLanguage} from '../portfolio/ai-quality-lab/src/engine.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 export const languages=['de','en','ru','uk'];
-const projects=['motion-atelier','ai-request-desk','ai-quality-lab'];
+const projects=['motion-atelier','ai-request-desk','ai-quality-lab','eliana-n25x'];
 const read=p=>fs.readFile(path.join(root,p),'utf8');
 const embed=s=>s.replace(/^import .*?;\n/gm,'').replace(/\bexport (?=(const|function))/g,'');
 function replaceOnce(source,find,replacement){if(source.split(find).length!==2)throw Error('Source contract changed: '+find.slice(0,80));return source.replace(find,replacement);}
@@ -65,6 +67,10 @@ export async function buildPages({basePath='/Netaniya',origin='https://netaniya.
  await write('ai-quality-lab/assets/OFL.txt',await read(lab+'assets/fonts/OFL.txt'));
  await write('ai-quality-lab/download/evaluator.py',await read(lab+'python/evaluator.py'));
  for(const lang of languages)await write('ai-quality-lab/download/fixtures.'+lang+'.json',JSON.stringify(datasetForLanguage(dataset,lang),null,2));
+ const game=path.join(root,'portfolio/eliana-n25x');
+ await promisify(execFile)(process.execPath,[path.join(game,'build.mjs')]);
+ for(const name of ['index.html','style.css','app.mjs','engine.mjs','i18n.mjs','manifest.webmanifest','sw.js','build-info.json'])await write('eliana-n25x/'+name,await fs.readFile(path.join(game,name)));
+ for(const name of ['assets','download'])await fs.cp(path.join(game,name),path.join(outDir,'eliana-n25x',name),{recursive:true});
  await write('index.html',(await read('pages/index.html')).replaceAll('__BASE__',basePath));
  await write('404.html',(await read('pages/404.html')).replaceAll('__BASE__',basePath));
  await write('.nojekyll','');

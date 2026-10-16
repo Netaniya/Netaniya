@@ -1,0 +1,12 @@
+{
+  "project": "Eliana & N25x",
+  "art_direction": "Natalie Ragulina (Netaniya)",
+  "created": "2026-10-16",
+  "method": "AI-generated artwork, selected and integrated for this fictional portfolio adventure.",
+  "scenes": ["super-city.webp", "silent-city.webp", "aurora-school.webp", "sky-garden.webp", "home-sector.webp", "sky-station.webp"],
+  "characters": ["duo-cover.webp", "eliana-portrait.webp", "n25x-portrait.webp"],
+  "character_references": "Generated character artwork uses references supplied by the project owner. Original personal reference photographs are not distributed in this repository.",
+  "font": {"name": "Manrope", "license": "SIL Open Font License 1.1", "license_file": "OFL.txt"},
+  "icon": "Original vector monogram created for this project; PNG versions rasterized from the same design.",
+  "audio": "Original procedural Web Audio tones and ambient oscillators; no external recordings."
+}

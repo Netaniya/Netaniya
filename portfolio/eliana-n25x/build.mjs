@@ -1,0 +1,22 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+const root=fileURLToPath(new URL('./',import.meta.url));
+const read=name=>fs.readFile(path.join(root,name),'utf8');
+const html=await read('index.html'),css=await read('style.css'),engine=await read('engine.mjs'),i18n=await read('i18n.mjs'),app=await read('app.mjs');
+const assets=(await fs.readdir(path.join(root,'assets'))).filter(name=>/\.(webp|png|ttf|svg|txt|json)$/.test(name)).map(name=>'./assets/'+name).sort();
+for(const required of ['duo-cover.webp','eliana-portrait.webp','n25x-portrait.webp','super-city.webp','silent-city.webp','aurora-school.webp','sky-garden.webp','home-sector.webp','sky-station.webp','icon-192.png','icon-512.png'])if(!assets.includes('./assets/'+required))throw Error('Missing game asset: '+required);
+const cacheFiles=['./index.html','./style.css','./engine.mjs','./i18n.mjs','./app.mjs','./manifest.webmanifest',...assets];
+const digest=createHash('sha256');digest.update(await read('sw-template.js'));for(const name of cacheFiles)digest.update(await fs.readFile(path.join(root,name)));
+const version='en25x-'+digest.digest('hex').slice(0,12);
+await fs.writeFile(path.join(root,'sw.js'),(await read('sw-template.js')).replace('__CACHE_VERSION__',version).replace('__PRECACHE_FILES__',JSON.stringify(cacheFiles)));
+const inlineAssets={};for(const name of assets){const mime=name.endsWith('.webp')?'image/webp':name.endsWith('.png')?'image/png':name.endsWith('.svg')?'image/svg+xml':name.endsWith('.ttf')?'font/ttf':name.endsWith('.txt')?'text/plain':'application/json';inlineAssets[name.slice(2)]='data:'+mime+';base64,'+(await fs.readFile(path.join(root,name))).toString('base64');}
+const removeExports=source=>source.replace(/\bexport\s+(?=(?:const|let|function|class)\b)/g,'');
+const coreNames=['SCHEMA','LANGUAGES','SCENES','SYMBOLS','GRID_TYPES','newGame','command','connections','poweredTiles','overallScore','completedCount','loadProgress','saveProgress','parseSave','formatTime'];
+const bundle=`(()=>{window.EN25X_PORTABLE=true;window.EN25X_ASSETS=${JSON.stringify(inlineAssets)};const Core=(()=>{${removeExports(engine)};return {${coreNames.join(',')}}})();const I18n=(()=>{${removeExports(i18n)};return {translate}})();const {${coreNames.join(',')}}=Core;const {translate}=I18n;${app.replace(/^import .*?;\n/gm,'')}\n})();`.replaceAll('</script','<\\/script');
+let portable=html.replace(/<link rel="(?:manifest|preload|stylesheet|apple-touch-icon)"[^>]*>/g,'').replace('<link rel="icon" href="./assets/icon.svg" type="image/svg+xml">','<link rel="icon" href="'+inlineAssets['assets/icon.svg']+'" type="image/svg+xml">').replace('<script type="module" src="./app.mjs"></script>','');
+portable=portable.replace('</head>','<style>'+css.replace("url('./assets/Manrope.ttf')","url('"+inlineAssets['assets/Manrope.ttf']+"')")+'</style></head>').replace('</body>','<script>'+bundle+'</script></body>');
+await fs.mkdir(path.join(root,'download'),{recursive:true});await fs.writeFile(path.join(root,'download/eliana-n25x-offline.html'),portable);
+await fs.writeFile(path.join(root,'build-info.json'),JSON.stringify({version,locations:6,languages:['de','en','ru','uk'],precacheFiles:cacheFiles.length,offlineBytes:Buffer.byteLength(portable)},null,2)+'\n');
+console.log(JSON.stringify({version,locations:6,precacheFiles:cacheFiles.length,offlineBytes:Buffer.byteLength(portable)}));

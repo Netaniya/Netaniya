@@ -48,6 +48,13 @@ Foto: Mr.choppers · CC BY-SA 3.0 · [Original und Bildnachweise](portfolio/moti
 
 **[Live-Demo ohne Anmeldung](https://netaniya.github.io/Netaniya/motion-atelier) · [Code & Dokumentation](portfolio/motion-atelier/README.md)**
 
+
+### Eliana & N25x
+
+Fotorealistisch gestaltetes Point-and-Click-Abenteuer: sechs Orte, sechs Rätsel, zwei Figuren und Punkte. Vier Sprachen, zwei Spielmodi, browserlokaler Fortschritt mit Import/Export, installierbare PWA und eine eigenständige Offline-HTML-Datei. Gemeinsam mit KI-Unterstützung nach meinen Konzept- und Gestaltungsvorgaben entwickelt; generierte Bildwelten. JavaScript-ES-Module, HTML und CSS.
+
+[Play / Spielen](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Code](portfolio/eliana-n25x/README.md)
+
 ### Neta25X · früher Interface-Prototyp
 [Responsive Benutzeroberfläche mit eigener visueller Identität](https://github.com/Netaniya/Neta25X), HTML, TailwindCSS und JavaScript. Meine neueren Full-stack- und KI-Projekte befinden sich in privater Entwicklung.
 
@@ -59,7 +66,7 @@ Foto: Mr.choppers · CC BY-SA 3.0 · [Original und Bildnachweise](portfolio/moti
 - **KI & Automatisierung:** Codex, KI-Coding-Agenten, n8n, Flowise; Arbeitskenntnisse in MCP, RAG und Agenten-Workflows.
 - **Qualität:** Modellantworten bewerten, Integrationsfehler und GPU-Inferenzprobleme untersuchen.
 
-Die Technologien sind projektübergreifend angegeben; die jeweilige Projektbeschreibung nennt die tatsächlich veröffentlichte Implementierung. Die drei aktuellen Portfolio-Demos wurden gemeinsam mit KI-Unterstützung entwickelt. Mein konkreter Beitrag ist bei jedem Projekt beschrieben.
+Die Technologien sind projektübergreifend angegeben; die jeweilige Projektbeschreibung nennt die tatsächlich veröffentlichte Implementierung. Die vier aktuellen Portfolio-Projekte wurden gemeinsam mit KI-Unterstützung entwickelt. Mein konkreter Beitrag ist bei jedem Projekt beschrieben.
 
 ## Arbeitsweise
 

@@ -1,0 +1,4 @@
+node_modules/
+download/
+sw.js
+build-info.json

@@ -93,3 +93,25 @@ test('public output has no old hosting addresses, broken static references or pr
  async function walk(dir){for(const entry of await fs.readdir(dir,{withFileTypes:true})){const file=path.join(dir,entry.name);if(entry.isDirectory()){assert(!['.openai','fullstack','backend'].includes(entry.name));await walk(file);}else if(/\.(html|mjs|css|xml|txt)$/.test(entry.name)&&!file.includes('/assets/vendor/')){const text=await fs.readFile(file,'utf8');assert(!/\.chatgpt\.site/.test(text),file);if(entry.name.endsWith('.html')){const {document}=parseHTML(text);for(const node of document.querySelectorAll('[href],[src],[poster]'))for(const attribute of ['href','src','poster']){const href=node.getAttribute(attribute);if(!href?.startsWith('/')||href.startsWith('//'))continue;const url=href.split(/[?#]/)[0];assert(url.startsWith(base+'/'),url);const target=path.join(site,url.slice(base.length+1),url.endsWith('/')?'index.html':'');assert((await fs.stat(target)).isFile(),url);}}}}}
  await walk(site);
 });
+
+test('adventure runtime, all six locations and offline download resolve under the Pages project path',async()=>{
+ const dir=path.join(site,'eliana-n25x'),html=await fs.readFile(path.join(dir,'index.html'),'utf8');
+ const {document}=parseHTML(html);
+ for(const el of document.querySelectorAll('link[href],script[src]')){
+  const href=el.getAttribute('href')||el.getAttribute('src'),url=new URL(href,'https://netaniya.github.io'+base+'/eliana-n25x/');
+  assert(url.pathname.startsWith(base+'/eliana-n25x/'));assert((await fs.stat(path.join(site,url.pathname.slice(base.length+1)))).isFile());
+ }
+ const sw=await fs.readFile(path.join(dir,'sw.js'),'utf8');
+ const files=JSON.parse(sw.match(/const FILES=(\[[^;]+\]);/)[1]);
+ for(const item of files)assert((await fs.stat(path.join(dir,item))).isFile(),item);
+ const metadata=JSON.parse(await fs.readFile(path.join(dir,'build-info.json'),'utf8'));
+ assert.equal(metadata.locations,6);assert.deepEqual(metadata.languages,languages);assert.equal(metadata.precacheFiles,files.length);
+ const offline=await fs.readFile(path.join(dir,'download/eliana-n25x-offline.html'),'utf8');assert(offline.includes('window.EN25X_PORTABLE=true'));assert(!/<script[^>]+src=/.test(offline));assert.equal(Buffer.byteLength(offline),metadata.offlineBytes);
+ for(const name of ['node_modules','tests','build.mjs','sw-template.js','package.json'])await assert.rejects(fs.stat(path.join(dir,name)));
+});
+test('portfolio overview exposes four projects and complete four-language descriptions',async()=>{
+ const html=await fs.readFile(path.join(site,'index.html'),'utf8'),{document}=parseHTML(html);
+ assert.equal(document.querySelectorAll('.card').length,4);assert(document.querySelector('a.card[href="'+base+'/eliana-n25x/"]'));
+ const script=html.slice(html.indexOf('<script>')+8,html.indexOf('</script>')),ctx={document};vm.createContext(ctx);vm.runInContext(script,ctx);
+ const dictionaries=vm.runInContext('copy',ctx);for(const lang of languages){for(const key of ['label','title','intro','motion','desk','lab','game','open'])assert(dictionaries[lang][key],lang+key);}
+});

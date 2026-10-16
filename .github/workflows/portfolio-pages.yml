@@ -18,11 +18,16 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: portfolio/motion-atelier/package-lock.json
+          cache-dependency-path: |
+            portfolio/motion-atelier/package-lock.json
+            portfolio/eliana-n25x/package-lock.json
       - run: npm ci --ignore-scripts --prefix portfolio/motion-atelier
-      - name: Build and verify all three public demos
+      - run: npm ci --ignore-scripts --prefix portfolio/eliana-n25x
+      - name: Build and verify public projects
         run: |
           node scripts/build-pages.mjs
+          npm run check --prefix portfolio/eliana-n25x
+          npm test --prefix portfolio/eliana-n25x
           node --test tests/pages.test.mjs
       - uses: actions/upload-pages-artifact@v4
         with:

@@ -48,6 +48,13 @@ Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/mot
 
 **[Live demo without sign-in](https://netaniya.github.io/Netaniya/motion-atelier) · [Code & documentation](portfolio/motion-atelier/README.en.md)**
 
+
+### Eliana & N25x
+
+A cinematic point-and-click adventure with six locations, six puzzles, two characters and points. Four languages, two game modes, local progress with import/export, an installable PWA and a self-contained offline HTML download. Developed with AI assistance following my concept and art direction; generated artwork. JavaScript ES modules, HTML and CSS.
+
+[Play / Spielen](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Code](portfolio/eliana-n25x/README.md)
+
 ### Neta25X · early interface prototype
 [A responsive interface with custom visual identity](https://github.com/Netaniya/Neta25X), built with HTML, TailwindCSS and JavaScript. Newer full-stack and AI work is under private development.
 
@@ -59,7 +66,7 @@ Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/mot
 - **AI & automation:** Codex, coding agents, n8n, Flowise; working knowledge of MCP, RAG and agent workflows.
 - **Quality:** model-output evaluation, integration debugging and GPU inference troubleshooting.
 
-This toolkit spans my projects; each project documents its actual implementation. The three current portfolio demos were developed collaboratively with AI assistance. Specific contributions are described in their documentation.
+This toolkit spans my projects; each project documents its actual implementation. The four current portfolio projects were developed collaboratively with AI assistance. Specific contributions are described in their documentation.
 
 ## Engineering approach
 
