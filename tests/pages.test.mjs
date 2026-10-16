@@ -111,7 +111,8 @@ test('adventure runtime, all six locations and offline download resolve under th
 });
 test('portfolio overview exposes four projects and complete four-language descriptions',async()=>{
  const html=await fs.readFile(path.join(site,'index.html'),'utf8'),{document}=parseHTML(html);
- assert.equal(document.querySelectorAll('.card').length,4);assert(document.querySelector('a.card[href="'+base+'/eliana-n25x/"]'));
+ assert.equal(document.querySelectorAll('.card').length,4);assert(document.querySelector('a.card[href="'+base+'/eliana-n25x/3d/"]'));
  const script=html.slice(html.indexOf('<script>')+8,html.indexOf('</script>')),ctx={document};vm.createContext(ctx);vm.runInContext(script,ctx);
  const dictionaries=vm.runInContext('copy',ctx);for(const lang of languages){for(const key of ['label','title','intro','motion','desk','lab','game','open'])assert(dictionaries[lang][key],lang+key);}
 });
+

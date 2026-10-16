@@ -50,3 +50,5 @@ Erst nach der bestätigten Dateiprüfung kann der Spieler ohne Netz erneut öffn
 - Keine heruntergeladenen Fremdmodelle, Bewegungsclips oder Tonaufnahmen. Keine kostenpflichtigen Dienste.
 
 English documentation: [README.en.md](README.en.md).
+
+Bestätigtes Browser-Durchspielen und echte Screenshots: [Prüfbericht](../../../docs/eliana-n25x/README.md). Physische Geräte sind ausdrücklich von der Chromium-Emulation getrennt.
