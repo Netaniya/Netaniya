@@ -1,0 +1,55 @@
+{
+  "scope": "desktop",
+  "buildVersion": "en25xstudio-74cbc406ecf5bf",
+  "author": "Natalie Ragulina",
+  "startedAt": "2026-10-16T13:03:59.165Z",
+  "checks": [
+    {
+      "name": "real WebGL model initializes; first visit is German"
+    },
+    {
+      "name": "robot name, head, movement base, hands and personality update; actual arm joint waves"
+    },
+    {
+      "name": "unlocking a color spends 60 points once and applies it to the model"
+    },
+    {
+      "name": "real answer forms validate all eleven difficulty levels, show chosen explanation style and prevent repeat rewards"
+    },
+    {
+      "name": "math helper calculates expressions, solves equations and differentiates a polynomial"
+    },
+    {
+      "name": "daily lesson completes three generated problems and awards its bonus once"
+    },
+    {
+      "name": "English word exercise validates the chosen answer and awards points"
+    },
+    {
+      "name": "arrow program executes on the real grid; walls block a wrong program; valid route reaches the star"
+    },
+    {
+      "name": "touch-sized melody editor plays native audio and exports real WAV; project saves once"
+    },
+    {
+      "name": "movement creator drives actual robot joints and saved projects reopen"
+    },
+    {
+      "name": "personal robot card downloads as a real 1000×1150 PNG containing the WebGL model"
+    },
+    {
+      "name": "volume and mute affect native audio; actual profile export and file import restore robot and creations"
+    },
+    {
+      "name": "four languages translate home, learning, exercises, creation tools, parts and copyright in rendered UI"
+    },
+    {
+      "name": "cold offline reload restores real 3D robot, projects and balance; lessons still work; both older saves untouched",
+      "precacheFiles": 17
+    }
+  ],
+  "errors": [],
+  "physicalDevicesTested": false,
+  "success": true,
+  "finishedAt": "2026-10-16T13:05:53.434Z"
+}

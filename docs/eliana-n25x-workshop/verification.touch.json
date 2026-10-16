@@ -1,0 +1,36 @@
+{
+  "scope": "touch",
+  "buildVersion": "en25xstudio-74cbc406ecf5bf",
+  "author": "Natalie Ragulina",
+  "startedAt": "2026-10-16T13:03:58.946Z",
+  "checks": [
+    {
+      "name": "real WebGL model initializes; first visit is German"
+    },
+    {
+      "name": "emulated phone can assemble a personal robot using real taps; Eliana face opens large"
+    },
+    {
+      "name": "mobile controls are at least 44px; melody composition, playback and save work with touch"
+    },
+    {
+      "name": "full coding puzzle completes through real touch input with points"
+    },
+    {
+      "name": "portrait, landscape and narrow 320px layout remain usable",
+      "emulatedViewports": [
+        "390×844",
+        "844×390",
+        "320×740"
+      ]
+    },
+    {
+      "name": "cold offline reload restores real 3D robot, projects and balance; lessons still work; both older saves untouched",
+      "precacheFiles": 17
+    }
+  ],
+  "errors": [],
+  "physicalDevicesTested": false,
+  "success": true,
+  "finishedAt": "2026-10-16T13:04:55.534Z"
+}

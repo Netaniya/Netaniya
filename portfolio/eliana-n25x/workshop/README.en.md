@@ -36,7 +36,7 @@ Use the browser's Install App/Add to Home Screen option where supported (Share m
 
 Original procedural robot geometry, materials, studio lighting, animations and synthesized sounds. Existing AI-generated mentor portraits reuse the approved project references; the private source photo is not published. Portraits are illustrations, and no exact animated reconstruction of the person's face is claimed. [Image credits](../assets/credits.json).
 
-Locally bundled Three.js r160: [MIT](../3d/vendor/LICENSE.three.txt). Manrope by Mikhail Sharanda, Mirko Velimirović and contributors: [SIL OFL](../assets/OFL.txt). No additional third-party models, animations, textures or sound recordings. Sound starts after a user gesture; mute and volume are under ⚙.
+Locally bundled Three.js r160: [MIT](../3d/vendor/LICENSE.three.txt). Manrope, Copyright 2018 The Manrope Project Authors: [SIL OFL](../assets/OFL.txt). No additional third-party models, animations, textures or sound recordings. Sound starts after a user gesture; mute and volume are under ⚙.
 
 ## Verification
 

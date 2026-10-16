@@ -51,9 +51,9 @@ Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/mot
 
 ### Eliana & N25x
 
-A cinematic point-and-click adventure with six locations, six puzzles, two characters and points. Four languages, two game modes, local progress with import/export, an installable PWA and a self-contained offline HTML download. Developed with AI assistance following my concept and art direction; generated artwork. JavaScript ES modules, HTML and CSS.
+Robot Studio: customize a personal 3D robot, practice mathematics daily, learn English words and execute arrow programs. Create real WAV melodies, robot movement sequences and personalized PNG cards; motivational points unlock parts. Four languages, large touch controls, local profile and verified offline support. Developed with AI assistance following the concept and art direction of **Natalie Ragulina**. The original illustrated quest and 3D adventure remain independently available.
 
-[Play / Spielen](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Code](portfolio/eliana-n25x/README.md)
+[Open Robot Studio](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/) · [Code & documentation](portfolio/eliana-n25x/workshop/README.en.md)
 
 ### Neta25X · early interface prototype
 [A responsive interface with custom visual identity](https://github.com/Netaniya/Neta25X), built with HTML, TailwindCSS and JavaScript. Newer full-stack and AI work is under private development.
@@ -77,3 +77,4 @@ A passing test suite and a correct real-world result are separate checks. I exam
 HarvardX / edX – CS50's Introduction to Artificial Intelligence with Python · Coursera – Hands-on Agentic AI: Building Intelligent Agents · University of Helsinki / MinnaLearn – Elements of AI · TEL-RAN – Digital Web Marketing & Business.
 
 **Contact:** [netaniya3@gmail.com](mailto:netaniya3@gmail.com)
+

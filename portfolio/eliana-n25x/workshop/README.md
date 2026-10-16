@@ -39,7 +39,7 @@ Auf unterstützten Browsern über „App installieren“/„Zum Startbildschirm�
 
 Lokales Three.js r160 (MIT, [Lizenz](../3d/vendor/LICENSE.three.txt)); keine CDN-Laufzeitabhängigkeit. Originale prozedurale, gegliederte 3D-Robotermodelle, Studiolicht und Animationen. Web Audio erzeugt die Klänge nach einer Nutzeraktion; Lautstärke und Stummschaltung unter ⚙. WAV-Export erzeugt PCM-Audiodaten.
 
-Manrope von Mikhail Sharanda, Mirko Velimirović und Community unter SIL OFL: [Schriftlizenz](../assets/OFL.txt). Die vorhandenen Mentorporträts wurden mit KI anhand freigegebener Referenzen erstellt: [Bildnachweise](../assets/credits.json). Die private Originalfotografie wird nicht veröffentlicht. Porträts sind Illustrationen; eine exakt nachgebildete animierte menschliche Gesichtsfigur wird nicht behauptet. Keine zusätzlichen fremden Modelle, Animationen oder Tonaufnahmen.
+Manrope, Copyright 2018 The Manrope Project Authors, unter SIL OFL: [Schriftlizenz](../assets/OFL.txt). Die vorhandenen Mentorporträts wurden mit KI anhand freigegebener Referenzen erstellt: [Bildnachweise](../assets/credits.json). Die private Originalfotografie wird nicht veröffentlicht. Porträts sind Illustrationen; eine exakt nachgebildete animierte menschliche Gesichtsfigur wird nicht behauptet. Keine zusätzlichen fremden Modelle, Animationen oder Tonaufnahmen.
 
 ## Prüfen
 

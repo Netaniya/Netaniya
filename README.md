@@ -51,9 +51,9 @@ Foto: Mr.choppers · CC BY-SA 3.0 · [Original und Bildnachweise](portfolio/moti
 
 ### Eliana & N25x
 
-Fotorealistisch gestaltetes Point-and-Click-Abenteuer: sechs Orte, sechs Rätsel, zwei Figuren und Punkte. Vier Sprachen, zwei Spielmodi, browserlokaler Fortschritt mit Import/Export, installierbare PWA und eine eigenständige Offline-HTML-Datei. Gemeinsam mit KI-Unterstützung nach meinen Konzept- und Gestaltungsvorgaben entwickelt; generierte Bildwelten. JavaScript-ES-Module, HTML und CSS.
+Robot Studio: einen persönlichen 3D-Roboter gestalten, täglich Mathematik üben, englische Wörter lernen und Pfeilprogramme ausführen. Eigene Melodien als WAV, Bewegungsfolgen und Roboterkarten als PNG; motivierende Punkte öffnen Teile. Vier Sprachen, große Touch-Schaltflächen, browserlokales Profil und geprüfter Offline-Modus. Entwicklung mit KI-Unterstützung nach Konzept und künstlerischer Leitung von **Natalie Ragulina**. Der ursprüngliche Bilderquest und das 3D-Abenteuer bleiben separat erhalten.
 
-[Play / Spielen](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Code](portfolio/eliana-n25x/README.md)
+[Robot Studio öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/) · [Code & Dokumentation](portfolio/eliana-n25x/workshop/README.md)
 
 ### Neta25X · früher Interface-Prototyp
 [Responsive Benutzeroberfläche mit eigener visueller Identität](https://github.com/Netaniya/Neta25X), HTML, TailwindCSS und JavaScript. Meine neueren Full-stack- und KI-Projekte befinden sich in privater Entwicklung.
@@ -77,3 +77,4 @@ Ein grüner Testlauf und ein korrektes Ergebnis sind zwei Prüfungen. Ich kontro
 HarvardX / edX – CS50's Introduction to Artificial Intelligence with Python · Coursera – Hands-on Agentic AI: Building Intelligent Agents · Universität Helsinki / MinnaLearn – Elements of AI · TEL-RAN – Digital Web Marketing & Business.
 
 **Kontakt:** [netaniya3@gmail.com](mailto:netaniya3@gmail.com)
+
