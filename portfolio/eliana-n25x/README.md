@@ -1,9 +1,9 @@
-# Eliana & N25x · Robot Studio
+# N25x · Robot Studio
 
 **Schöpferin, ursprüngliche Idee, Konzept und künstlerische Leitung: Natalie Ragulina.**
 **© 2026 Natalie Ragulina. All rights reserved.**
 
-[English](README.en.md) · [Русский](README.ru.md) · **[App öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)** · [HTML-Kopie öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/Eliana-N25x-Studio.html)
+[English](README.en.md) · [Русский](README.ru.md) · **[App öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)** · [HTML-Kopie öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/N25x-Studio.html)
 
 Eine interaktive Lern- und Kreativwerkstatt für Smartphone und Computer. Nutzer gestalten einen persönlichen humanoiden 3D-Roboter, lösen praktische Aufgaben und bauen eigene kleine Projekte. Eliana und N25x begleiten die Werkstatt als benannte Figuren. Entwicklung, Übersetzungen, generierte Porträts und technische Prüfungen entstanden mit KI-Unterstützung nach den Entscheidungen und Vorgaben von Natalie Ragulina.
 

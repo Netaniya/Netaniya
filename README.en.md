@@ -49,7 +49,7 @@ Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/mot
 **[Live demo without sign-in](https://netaniya.github.io/Netaniya/motion-atelier) · [Code & documentation](portfolio/motion-atelier/README.en.md)**
 
 
-### Eliana & N25x
+### N25x
 
 Robot Studio: customize a humanoid 3D robot, practice JavaScript and create your own quiz games and projects. Four UI languages, ten introductory learning languages, mathematics, twenty creation choices, local profiles and an installable web app with HTML download. **Creator, original idea and art direction: Natalie Ragulina.** Developed with AI assistance. **© 2026 Natalie Ragulina. All rights reserved.**
 

@@ -1,4 +1,4 @@
-# Eliana & N25x · Robot Studio
+# N25x · Robot Studio
 
 [Deutsch](README.md) · [Open studio](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)
 
@@ -55,6 +55,6 @@ The current feature list, ten introductory languages, twenty creation choices, v
 
 The dark humanoid has articulated fingers, human proportions and selectable body build and finish. Change the interface language with the persistent header control. The ten learning languages have a separate selector; they do not change the interface language.
 
-The build generates a standalone `download/Eliana-N25x-Studio.html` and includes it among 22 SHA-256-verified offline resources. The HTML contains 11 embedded modules and requires no runtime network. Its save storage may differ from the website; use profile import/export. Generated files are not committed; GitHub Pages builds them from source.
+The build generates a standalone `download/N25x-Studio.html` and includes it among 22 SHA-256-verified offline resources. The HTML contains 11 embedded modules and requires no runtime network. Its save storage may differ from the website; use profile import/export. Generated files are not committed; GitHub Pages builds them from source.
 
 Current browser and release evidence is recorded separately in [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Physical-device installation remains a separate check. The project tests cover models, interpreter, actual export-player code, UI in a DOM, save migration and cache integrity; DOM tests are not a real browser.

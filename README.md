@@ -49,7 +49,7 @@ Foto: Mr.choppers · CC BY-SA 3.0 · [Original und Bildnachweise](portfolio/moti
 **[Live-Demo ohne Anmeldung](https://netaniya.github.io/Netaniya/motion-atelier) · [Code & Dokumentation](portfolio/motion-atelier/README.md)**
 
 
-### Eliana & N25x
+### N25x
 
 Robot Studio: einen humanoiden 3D-Roboter gestalten, JavaScript praktisch üben, eigene Quizspiele und Projekte erstellen. Vier Oberflächensprachen, zehn Einstiegssprachen, Mathematik, zwanzig Gestaltungsmöglichkeiten, lokale Profile und eine installierbare Web-App mit HTML-Download. **Schöpferin, Idee und künstlerische Leitung: Natalie Ragulina.** Entwicklung mit KI-Unterstützung. **© 2026 Natalie Ragulina. All rights reserved.**
 

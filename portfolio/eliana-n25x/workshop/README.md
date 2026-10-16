@@ -1,4 +1,4 @@
-# Eliana & N25x · Robot Studio
+# N25x · Robot Studio
 
 [English](README.en.md) · [Studio öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)
 
@@ -63,6 +63,6 @@ Gesamtausgabe: `node scripts/build-pages.mjs`; Portfolioprüfungen: `node --test
 
 Der dunkle humanoide Roboter hat menschliche Proportionen, gelenkige Finger sowie wählbaren Körperbau und Material. Bestehende Studio-Profile bleiben kompatibel. Die [Projektübersicht](../README.md) beschreibt fünf ausführbare JavaScript-Aufgaben, zehn Einstiegswortschätze, zwanzig Gestaltungsangebote, den Quiz-Editor und validierten Projektaustausch. Werkzeuge behalten eigene Entwürfe. Kein Live-Chat, Konto oder Cloud-KI-Dienst ist angeschlossen.
 
-Der Build erzeugt `download/Eliana-N25x-Studio.html` als vollständige eigenständige Kopie und nimmt sie in die 22 mit SHA-256 geprüften Offline-Ressourcen auf. Sie enthält elf eingebettete Module und alle benötigten Bilder, Schrift- und Lizenzdaten. Zum Herunterladen unter ⚙ „App als HTML herunterladen“ wählen. Der Speicher einer lokalen Datei kann vom Website-Speicher abweichen; Profile lassen sich exportieren und importieren. Generierte Dateien werden nicht eingecheckt; GitHub Pages baut sie aus dem Quellcode.
+Der Build erzeugt `download/N25x-Studio.html` als vollständige eigenständige Kopie und nimmt sie in die 22 mit SHA-256 geprüften Offline-Ressourcen auf. Sie enthält elf eingebettete Module und alle benötigten Bilder, Schrift- und Lizenzdaten. Zum Herunterladen unter ⚙ „App als HTML herunterladen“ wählen. Der Speicher einer lokalen Datei kann vom Website-Speicher abweichen; Profile lassen sich exportieren und importieren. Generierte Dateien werden nicht eingecheckt; GitHub Pages baut sie aus dem Quellcode.
 
 Tatsächliche Browser- und Veröffentlichungsergebnisse stehen in [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Eine Geräteinstallation ist eine separate Prüfung.

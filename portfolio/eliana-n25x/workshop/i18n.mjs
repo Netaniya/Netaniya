@@ -19,7 +19,7 @@ dailyBonus|Tagesziel erreicht!|Daily goal complete!|Цель дня выполн
 challengeHelp|Probiere es zuerst selbst. Der Hinweis ist jederzeit da.|Try it yourself first. The hint is always available.|Сначала попробуй сам. Подсказка всегда рядом.|Спочатку спробуй сам. Підказка завжди поруч.
 level|Klasse|Grade|Класс|Клас
 welcome|Hallo. Lass uns etwas bauen.|Hello. Let's build something.|Привет. Давай что-нибудь создадим.|Привіт. Створімо щось разом.
-intro|Ich bin Eliana. N25x und ich helfen dir, deinen Roboter zu gestalten, Aufgaben zu verstehen und eigene Projekte zu bauen.|I'm Eliana. N25x and I will help you design your robot, understand problems and build your own projects.|Я Eliana. Мы с N25x поможем собрать твоего робота, разобраться с задачами и создать свои проекты.|Я Eliana. Ми з N25x допоможемо зібрати твого робота, розібратися із завданнями та створити власні проєкти.
+intro|Ich bin N25x. Gemeinsam lernen wir, verstehen Aufgaben und bauen eigene Projekte.|I am N25x. Together we learn, understand problems and build our own projects.|Я N25x. Вместе будем учиться, разбираться с задачами и создавать свои проекты.|Я N25x. Разом будемо вчитися, розбиратися із завданнями та створювати власні проєкти.
 start|Meinen Roboter bauen|Build my robot|Собрать своего робота|Зібрати свого робота
 continue|Weiter|Continue|Продолжить|Продовжити
 close|Schließen|Close|Закрыть|Закрити
@@ -91,7 +91,6 @@ glow|Licht|Light|Подсветка|Підсвічування
 nod|Nicken|Nod|Кивок|Кивок
 rest|Pause|Rest|Пауза|Пауза
 rotate|Ansicht drehen|Rotate view|Повернуть вид|Повернути вид
-mentorEliana|Ich helfe dir, aus einer Idee etwas Eigenes zu machen.|I'll help you turn an idea into something of your own.|Я помогу превратить идею в твою собственную работу.|Я допоможу перетворити ідею на твою власну роботу.
 mentorN25x|Wir probieren es aus und prüfen das Ergebnis zusammen.|Let's try it and check the result together.|Давай попробуем и вместе проверим результат.|Спробуймо й разом перевіримо результат.
 mentor|Dein Team|Your team|Твоя команда|Твоя команда
 math|Mathematik|Mathematics|Математика|Математика
@@ -193,7 +192,7 @@ confirm|Ja, neu beginnen|Yes, start over|Да, начать заново|Так,
 cancel|Abbrechen|Cancel|Отмена|Скасувати
 credits|Über das Studio|About the studio|О мастерской|Про майстерню
 about|Schöpferin, Idee und künstlerische Leitung: Natalie Ragulina. Entwicklung mit KI-Unterstützung. Originale 3D-Robotermodelle und synthetische Klänge. Manrope: SIL OFL. Three.js: MIT.|Creator, original idea and art direction: Natalie Ragulina. Developed with AI assistance. Original 3D robot models and synthesized sounds. Manrope: SIL OFL. Three.js: MIT.|Создатель, автор идеи и художественного направления: Natalie Ragulina. Разработка с помощью ИИ. Оригинальные 3D-модели роботов и синтезированные звуки. Manrope: SIL OFL. Three.js: MIT.|Творець, автор ідеї та художнього напряму: Natalie Ragulina. Розробка за допомогою ШІ. Оригінальні 3D-моделі роботів і синтезовані звуки. Manrope: SIL OFL. Three.js: MIT.
-portraitCredits|Eliana und N25x: vorhandene KI-generierte Porträts nach freigegebenen Referenzen. Die private Originalfotografie wird nicht veröffentlicht.|Eliana and N25x: existing AI-generated portraits based on approved references. The private source photograph is not published.|Eliana и N25x: ранее созданные ИИ-портреты по согласованным референсам. Личная исходная фотография не публикуется.|Eliana й N25x: раніше створені ШІ-портрети за погодженими референсами. Особиста вихідна фотографія не публікується.
+portraitCredits|N25x: KI-generiertes Roboterporträt. Originale prozedurale 3D-Geometrie.|N25x: AI-generated robot portrait. Original procedural 3D geometry.|N25x: ИИ-портрет робота. Оригинальная процедурная 3D-геометрия.|N25x: ШІ-портрет робота. Оригінальна процедурна 3D-геометрія.
 localHelp|Dein Profil bleibt auf diesem Gerät. Es gibt keine Konten und keine Synchronisierung. Exportiere eine Kopie zum Übertragen.|Your profile stays on this device. There are no accounts or sync. Export a copy to transfer it.|Профиль хранится на этом устройстве. Аккаунтов и синхронизации нет. Для переноса экспортируй копию.|Профіль зберігається на цьому пристрої. Акаунтів і синхронізації немає. Для перенесення експортуй копію.
 rights|Alle Rechte vorbehalten.|All rights reserved.|Все права защищены.|Усі права захищені.
 webgl|Die 3D-Ansicht ist hier nicht verfügbar. Lernen und Projekte funktionieren weiter.|The 3D view is unavailable here. Learning and projects still work.|3D-вид здесь недоступен. Занятия и проекты продолжают работать.|3D-вигляд тут недоступний. Заняття й проєкти продовжують працювати.
@@ -202,7 +201,7 @@ progress|Deine Fortschritte|Your progress|Твои достижения|Твої
 solved|Gelöst|Solved|Решено|Розв’язано
 projects|Projekte|Projects|Проекты|Проєкти
 newPart|Ein neues Teil wartet auf dich.|A new part is waiting for you.|Тебя ждёт новая деталь.|На тебе чекає нова деталь.
-helpHint|Tippe auf Eliana oder N25x, wenn du Hilfe möchtest.|Tap Eliana or N25x for a hand.|Нажми на Eliana или N25x, если нужна помощь.|Натисни на Eliana або N25x, якщо потрібна допомога.
+helpHint|Tippe auf N25x, wenn du Hilfe möchtest.|Tap N25x for help.|Нажми на N25x, если нужна помощь.|Натисни на N25x, якщо потрібна допомога.
 note|Ton|Note|Нота|Нота
 fileError|Die Datei konnte nicht erstellt werden.|The file could not be created.|Не удалось создать файл.|Не вдалося створити файл.
 motionHint|Tippen zum Winken. Ansicht optional drehen.|Tap to wave. Rotating the view is optional.|Нажми — робот помашет. Вид можно повернуть.|Натисни — робот помахає. Вигляд можна повернути.
@@ -271,7 +270,7 @@ completeGame|Geschafft!|Complete!|Готово!|Готово!
 restart|Neu starten|Restart|Начать заново|Почати заново
 pause|Pause|Pause|Пауза|Пауза
 startTimer|Start|Start|Старт|Старт
-createdWith|Mit Eliana & N25x erstellt.|Made with Eliana & N25x.|Создано в Eliana & N25x.|Створено в Eliana & N25x.
+createdWith|Mit N25x erstellt.|Made with N25x.|Создано в N25x.|Створено в N25x.
 moreTools|Weitere Werkzeuge|More tools|Другие инструменты|Інші інструменти
 creation|Meine Arbeit|My creation|Моя работа|Моя робота
 creationHelp|Wähle eines von 20 Werkzeugen. Du schreibst und gestaltest selbst; Vorschau und Dateien entstehen aus deiner Arbeit.|Choose from 20 tools. Write and design it yourself; your work becomes a preview and downloadable files.|Выбери один из 20 инструментов. Ты сам пишешь и создаёшь; из твоей работы получаются просмотр и файлы.|Обери один із 20 інструментів. Ти сам пишеш і створюєш; із твоєї роботи виходять перегляд і файли.
@@ -306,11 +305,11 @@ choiceA|Erste Entscheidung|First choice|Первый выбор|Перший в�
 choiceB|Zweite Entscheidung|Second choice|Второй выбор|Другий вибір
 endingA|Erstes Ende|First ending|Первая концовка|Перша кінцівка
 endingB|Zweites Ende|Second ending|Вторая концовка|Друга кінцівка
-storySeed|Eliana und N25x finden ein Signal im Garten. Wo suchen sie zuerst?|Eliana and N25x find a signal in the garden. Where do they look first?|Eliana и N25x находят сигнал в саду. Где искать сначала?|Eliana й N25x знаходять сигнал у саду. Де шукати спочатку?
+storySeed|N25x findet ein Signal im Garten. Wo sucht der Roboter zuerst?|N25x finds a signal in the garden. Where does the robot look first?|N25x находит сигнал в саду. Где робот будет искать сначала?|N25x знаходить сигнал у саду. Де робот шукатиме спочатку?
 choiceSeedA|Die Pflanzen untersuchen|Examine the plants|Осмотреть растения|Оглянути рослини
 choiceSeedB|Das Terminal prüfen|Check the terminal|Проверить терминал|Перевірити термінал
 endingSeedA|Zwischen den Blättern liegt ein Sensor. Die beiden verbinden ihn wieder mit dem Netz.|A sensor lies between the leaves. They reconnect it to the network.|Между листьями лежит датчик. Герои возвращают его в сеть.|Між листям лежить датчик. Герої повертають його в мережу.
-endingSeedB|N25x liest die Meldung: Der Gartensensor braucht eine neue Batterie. Eliana findet eine im Werkzeugkasten.|N25x reads the alert: the garden sensor needs a new battery. Eliana finds one in the toolbox.|N25x читает сообщение: датчику сада нужна новая батарейка. Eliana находит её среди инструментов.|N25x читає повідомлення: датчику саду потрібна нова батарейка. Eliana знаходить її серед інструментів.
+endingSeedB|N25x liest die Meldung: Der Gartensensor braucht eine neue Batterie. Im Werkzeugkasten liegt eine.|N25x reads the alert: the garden sensor needs a new battery. There is one in the toolbox.|N25x читает сообщение: датчику сада нужна новая батарейка. Одна есть среди инструментов.|N25x читає повідомлення: датчику саду потрібна нова батарейка. Одна є серед інструментів.
 checklistSeed|Eine Idee wählen; Einen Versuch machen; Das Ergebnis prüfen|Choose an idea; Try it out; Check the result|Выбрать идею; Попробовать; Проверить результат|Обрати ідею; Спробувати; Перевірити результат
 `;
 export const TEXT=Object.fromEntries(['de','en','ru','uk'].map(l=>[l,{}]));

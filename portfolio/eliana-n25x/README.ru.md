@@ -1,10 +1,10 @@
-# Eliana & N25x · Мастерская роботов
+# N25x · Мастерская роботов
 
 **Создатель, автор идеи, концепции и художественного направления — Natalie Ragulina.**
 **© 2026 Natalie Ragulina. Все права защищены.**
 **© 2026 Natalie Ragulina. All rights reserved.**
 
-[Deutsch](README.md) · [English](README.en.md) · **[Открыть приложение](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)** · [Открыть самостоятельную HTML-копию](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/Eliana-N25x-Studio.html)
+[Deutsch](README.md) · [English](README.en.md) · **[Открыть приложение](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)** · [Открыть самостоятельную HTML-копию](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/N25x-Studio.html)
 
 Интерактивная учебная и творческая мастерская для телефона и компьютера. Пользователь собирает своего гуманоидного 3D-робота, практикуется и создаёт собственные небольшие проекты. Eliana и N25x — постоянные герои-наставники. Код, переводы, сгенерированные портреты и технические проверки разработаны с помощью ИИ по решениям и требованиям Natalie Ragulina.
 

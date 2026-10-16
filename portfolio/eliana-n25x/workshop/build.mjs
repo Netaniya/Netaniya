@@ -9,7 +9,7 @@ await fs.rm(out,{recursive:true,force:true});await fs.mkdir(out,{recursive:true}
 const files=['index.html','studio.css','app.mjs','model.mjs','math.mjs','robot.mjs','sound.mjs','i18n.mjs','program.mjs','curriculum.mjs','creations.mjs','academy.mjs','manifest.webmanifest'];
 for(const file of files)await fs.copyFile(path.join(root,file),path.join(out,file));
 await fs.mkdir(path.join(out,'vendor'));for(const file of ['three.module.js','LICENSE.three.txt']){await fs.copyFile(path.join(root,'../3d/vendor',file),path.join(out,'vendor',file));files.push('vendor/'+file);}
-await fs.mkdir(path.join(out,'assets'));for(const file of ['Manrope.ttf','OFL.txt','icon-192.png','icon-512.png','eliana-portrait.webp','n25x-portrait.webp']){await fs.copyFile(path.join(root,'../assets',file),path.join(out,'assets',file));files.push('assets/'+file);}
+await fs.mkdir(path.join(out,'assets'));for(const file of ['Manrope.ttf','OFL.txt','icon-192.png','icon-512.png','n25x-portrait.webp']){await fs.copyFile(path.join(root,'../assets',file),path.join(out,'assets',file));files.push('assets/'+file);}
 const hashes={};for(const file of files)hashes['./'+file]=createHash('sha256').update(await fs.readFile(path.join(out,file))).digest('hex');
 const source=await fs.readFile(path.join(root,'sw-template.js'),'utf8'),portableSource=await fs.readFile(path.join(root,'portable.mjs'),'utf8'),version='en25xstudio-'+createHash('sha256').update(JSON.stringify(hashes)+source+portableSource).digest('hex').slice(0,14);
 // Inject the expected worker version, then hash the final app bytes. The version
@@ -19,8 +19,9 @@ hashes['./app.mjs']=createHash('sha256').update(await fs.readFile(appPath)).dige
 // Generate the standalone download from the already-versioned core files. Its
 // metadata excludes downloads, so including its hash below is not recursive.
 await fs.writeFile(path.join(out,'build-info.json'),JSON.stringify({version,precacheFiles:files.length,hashes},null,2)+'\n');
-const standalone='download/Eliana-N25x-Studio.html';
+const standalone='download/N25x-Studio.html';
 await promisify(execFile)(process.execPath,[path.join(root,'portable.mjs'),path.join(out,standalone)]);
+await fs.copyFile(path.join(out,standalone),path.join(out,'download/Eliana-N25x-Studio.html')); // Existing shared download links.
 files.push(standalone);hashes['./'+standalone]=createHash('sha256').update(await fs.readFile(path.join(out,standalone))).digest('hex');
 await fs.writeFile(path.join(out,'sw.js'),source.replace('__CACHE_VERSION__',version).replace('__PRECACHE_FILES__',JSON.stringify(Object.keys(hashes))).replace('__PRECACHE_HASHES__',JSON.stringify(hashes)));
 await fs.writeFile(path.join(out,'build-info.json'),JSON.stringify({version,precacheFiles:files.length,hashes},null,2)+'\n');

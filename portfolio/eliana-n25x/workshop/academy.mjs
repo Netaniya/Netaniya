@@ -105,8 +105,8 @@ export function createAcademy(api){
    const p=currentProject();if(!p||!validateCreation(p.kind,p.data)){toast(tr(currentView==='quiz'?'previewInvalid':'creationInvalid'));audio.cue(false);return true;}
    if(action==='preview'){showPreview=true;refresh();$('creation-preview')?.scrollIntoView({block:'nearest',behavior:'auto'});}
    else if(action==='save-creation'){const result=updateProject(state(),p.id,p.kind,p.data,p.name);if(result){if(p.kind==='quiz')ensureQuiz().editingID=result.project.id;else progress().creator.editingID=result.project.id;save();caption();toast(tr('projectSaved')+(result.bonus?' '+tr('earned',{n:result.bonus}):''));audio.cue(true);}}
-   else if(action==='export-html')download(new Blob([renderCreationHTML(p,state().lang,copy())],{type:'text/html;charset=utf-8'}),'Eliana-N25x-'+projectTemplate(p)+'.html');
-   else download(new Blob([serializeCreation(p)],{type:'application/json'}),'Eliana-N25x-project.json');
+   else if(action==='export-html')download(new Blob([renderCreationHTML(p,state().lang,copy())],{type:'text/html;charset=utf-8'}),'N25x-'+projectTemplate(p)+'.html');
+   else download(new Blob([serializeCreation(p)],{type:'application/json'}),'N25x-project.json');
   }
   else if(action==='import-creation'){$('creation-file')?.click();}
   return true;
