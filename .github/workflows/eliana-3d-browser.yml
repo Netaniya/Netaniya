@@ -2,7 +2,7 @@ name: Eliana 3D browser playthrough
 on:
   push:
     branches: [main]
-    paths: ['portfolio/eliana-n25x/**', '.github/workflows/eliana-3d-browser.yml']
+    paths: ['portfolio/eliana-n25x/**', '!portfolio/eliana-n25x/**/*.md', '.github/workflows/eliana-3d-browser.yml']
   workflow_dispatch:
 permissions:
   contents: read
