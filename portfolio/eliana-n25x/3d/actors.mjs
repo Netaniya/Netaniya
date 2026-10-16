@@ -67,7 +67,12 @@ export function createActor(robot=false){
   shoulder.rotation.z=side*.06;arms.push({shoulder,elbow,hand});
  }
  if(robot)root.scale.setScalar(1.12);
- const halo=new T.Mesh(new T.RingGeometry(.24,.32,32),new T.MeshBasicMaterial({color:robot?0x66dce7:0xffcf90,transparent:true,opacity:.2,side:T.DoubleSide}));halo.rotation.x=-Math.PI/2;halo.position.y=.012;root.add(halo);
+ const shadowMaterial=new T.MeshBasicMaterial({color:0x0b1b20,transparent:true,opacity:.28,depthWrite:false});
+ if(typeof document!=='undefined'){
+  const canvas=document.createElement('canvas');canvas.width=canvas.height=64;const c=canvas.getContext('2d');const fade=c.createRadialGradient(32,32,2,32,32,32);fade.addColorStop(0,'rgba(255,255,255,.85)');fade.addColorStop(.55,'rgba(255,255,255,.38)');fade.addColorStop(1,'rgba(255,255,255,0)');c.fillStyle=fade;c.fillRect(0,0,64,64);shadowMaterial.map=new T.CanvasTexture(canvas);
+ }
+ const shadow=new T.Mesh(new T.CircleGeometry(.35,24),shadowMaterial);shadow.rotation.x=-Math.PI/2;shadow.scale.y=1.3;shadow.position.y=.041;root.add(shadow);
+ const halo=new T.Mesh(new T.RingGeometry(.24,.32,32),new T.MeshBasicMaterial({color:robot?0x66dce7:0xffcf90,transparent:true,opacity:robot?.13:.06,side:T.DoubleSide,depthWrite:false}));halo.rotation.x=-Math.PI/2;halo.position.y=.039;root.add(halo);
  let phase=0,pace=0;
  return {root,body,head,legs,arms,get phase(){return phase;},update(dt,speed=0,working=false){
   pace=T.MathUtils.damp(pace,Math.min(speed/2.7,1.8),10,dt);phase+=dt*(speed>3.6?10:7.2)*Math.min(1,pace);

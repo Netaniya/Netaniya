@@ -85,13 +85,13 @@ function drawMap(boxes,next){const canvas=$('map'),ctx=canvas.getContext('2d');c
  const [px,py]=project(player);ctx.strokeStyle='#fff4d9';ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(px-Math.sin(yaw)*8,py-Math.cos(yaw)*8);ctx.stroke();ctx.fillStyle='#c7d6dc';ctx.fillText(tr('north'),w-10,12);}
 function perform(){if(!isRunning()||!near||task)return;unlock();const result=interact(state,near.id,player);if(result==='clue'){tone('clue');save();showPanel('briefing');}else if(result==='collect'){tone(LEVELS[state.level].kind==='valve'?'switch':'collect');save();toast(tr('collected'));}else if(result==='scan'||result==='repair'){task={type:result,progress:0};navWait=0;robotPath=[];tone(result==='scan'?'scan':'switch');}else{tone('error');toast(tr(result));}updateHUD();}
 function updateRobot(dt,boxes){
- const desired=task?{x:-1.4,z:-9}:{x:player.x+Math.sin(eliana.root.rotation.y)*1.8-1.1,z:player.z+Math.cos(eliana.root.rotation.y)*1.8};
+ const desired=task?{x:-1.4,z:-9}:{x:player.x+Math.sin(eliana.root.rotation.y)*1.6-Math.cos(eliana.root.rotation.y)*.8,z:player.z+Math.cos(eliana.root.rotation.y)*1.6+Math.sin(eliana.root.rotation.y)*.8};
  navWait-=dt;const movingTarget=!lastNavTarget||distance(desired,lastNavTarget)>1.2;
  if(navWait<=0&&(movingTarget||!robotPath.length||task)){robotPath=pathTo(robot,desired,boxes,.38);lastNavTarget={...desired};navWait=.65;}
  let speed=0;
  if(robotPath.length&&distance(robot,desired)>.25&&(task||distance(robot,player)>1.35)){
   const p=robotPath[0],d=distance(robot,p);if(d<.12)robotPath.shift();else{
-   const v=Math.min(task?3.1:distance(robot,player)>5?4.8:3.4,d/Math.max(.001,dt)),previous=robot;robot=move(robot,(p.x-robot.x)/d*v*dt,(p.z-robot.z)/d*v*dt,boxes,.38);speed=distance(previous,robot)/Math.max(.001,dt);
+   const followSpeed=Math.min(6.2,3.1+Math.max(0,distance(robot,player)-2)*2),v=Math.min(task?3.1:followSpeed,d/Math.max(.001,dt)),previous=robot;robot=move(robot,(p.x-robot.x)/d*v*dt,(p.z-robot.z)/d*v*dt,boxes,.38);speed=distance(previous,robot)/Math.max(.001,dt);
    if(speed>.08){const angle=Math.atan2(previous.x-robot.x,previous.z-robot.z);n25x.root.rotation.y+=Math.atan2(Math.sin(angle-n25x.root.rotation.y),Math.cos(angle-n25x.root.rotation.y))*Math.min(1,dt*9);}else{robotPath=[];navWait=0;}
   }
  }
@@ -100,7 +100,9 @@ function updateRobot(dt,boxes){
 }
 function updateTask(dt){if(!task)return;if(distance(robot,{x:-1.4,z:-9})>1.1||distance(player,{x:0,z:-10})>4.7)return;task.progress+=dt;if(task.progress<(task.type==='scan'?3:4.2))return;if(task.type==='scan'){chapter().scanned=true;tone('solved');toast(tr('scanned'));}else{chapter().restored=true;tone('door');toast(tr('restored'),6500);}task=null;save(true);}
 function updateCamera(dt){
- const focus=new T.Vector3(player.x,1.15,player.z),offset=new T.Vector3(Math.sin(yaw)*Math.cos(pitch)*zoom,Math.sin(pitch)*zoom,Math.cos(yaw)*Math.cos(pitch)*zoom);
+ const portrait=camera.aspect<.8,blend=distance(player,robot)<5?(portrait?.3:.18):0,boxes=obstacles(state.level,world.gateProgress>.92),midpoint={x:player.x+(robot.x-player.x)*blend,z:player.z+(robot.z-player.z)*blend};
+ const anchor=freeAt(midpoint,boxes,.1)&&clearLine(player,midpoint,boxes,.1)?midpoint:player,cameraDistance=zoom*(portrait?1.4:1.05);
+ const focus=new T.Vector3(anchor.x,1.15,anchor.z),offset=new T.Vector3(Math.sin(yaw)*Math.cos(pitch)*cameraDistance,Math.sin(pitch)*cameraDistance,Math.cos(yaw)*Math.cos(pitch)*cameraDistance);
  const ray=new T.Raycaster(focus,offset.clone().normalize(),0,offset.length());const hit=ray.intersectObjects(world.solids,false)[0];if(hit)offset.setLength(Math.max(.55,hit.distance-.25));
  const desired=focus.clone().add(offset);camera.position.lerp(desired,1-Math.exp(-dt*12));camera.lookAt(focus);
 }

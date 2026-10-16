@@ -87,6 +87,6 @@ export function createWorld(index=0,mobile=false){
   scanRing.visible=beam.visible=Boolean(task);if(task){const scale=1+Math.sin(time*4)*.2;scanRing.scale.setScalar(scale);beam.rotation.y=time;}
   particles.rotation.y=Math.sin(time*.05)*.03;screen.material=chapter.restored?white:neon;
  },snapGate(open){gateProgress=open?1:0;gate.position.y=1.8+gateProgress*4.1;},dispose(){
-  const geometries=new Set(),materials=new Set();scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material){for(const m of Array.isArray(o.material)?o.material:[o.material])materials.add(m);}});for(const g of geometries)g.dispose();for(const m of materials)m.dispose();for(const t of disposables)t.dispose();sun.shadow.map?.dispose();
+  const geometries=new Set(),materials=new Set(),textures=new Set(disposables);scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material){for(const m of Array.isArray(o.material)?o.material:[o.material])materials.add(m);}});for(const g of geometries)g.dispose();for(const m of materials){if(m.map)textures.add(m.map);m.dispose();}for(const t of textures)t.dispose();sun.shadow.map?.dispose();
  }};
 }
