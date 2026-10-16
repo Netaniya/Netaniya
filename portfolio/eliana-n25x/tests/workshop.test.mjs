@@ -19,7 +19,7 @@ test('Studio: one achievement has one reward and projects survive duplicate save
 });
 test('Studio: separate profile round-trips without changing name, parts, projects or earned balance',()=>{
  const s=fresh();s.started=true;configure(s,'name','Neta');configure(s,'base','hover');reward(s,'code:0',30);buy(s,'projector');addProject(s,'routine',{actions:['wave','nod']},'Hi');
- const p=parseProfile(JSON.stringify(s));assert.deepEqual(p,s);assert.notEqual(SAVE_KEY,'eliana-n25x.3d.v1');assert.notEqual(SAVE_KEY,'eliana-n25x.save.v1');assert.equal(parseProfile('{'),null);assert.equal(parseProfile(JSON.stringify({...s,points:-1})),null);
+ const p=parseProfile(JSON.stringify(s));assert.deepEqual(p,s);assert.notEqual(SAVE_KEY,'eliana-n25x.3d.v1');assert.notEqual(SAVE_KEY,'eliana-n25x.save.v1');assert.equal(parseProfile('{'),null);const long=fresh();long.points=120000;for(let i=0;i<3000;i++){long.earned['daily:2026-10-16:'+i]=15;long.solved.push('daily:2026-10-16:'+i);}assert.deepEqual(parseProfile(JSON.stringify(long)),long);assert.equal(parseProfile(JSON.stringify({...s,points:-1})),null);
  const malformed={...s,robot:{...s.robot,color:'evil',module:'orbit',name:'<b>hello</b>'}};const safe=parseProfile(JSON.stringify(malformed));assert.equal(safe.robot.color,'pearl');assert.equal(safe.robot.module,'none');assert(!safe.robot.name.includes('<'));
 });
 test('Studio math: precedence, implicit multiplication, percentages and fractions are computed without executing input',()=>{

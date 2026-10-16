@@ -109,9 +109,21 @@ test('adventure runtime, all six locations and offline download resolve under th
  const offline=await fs.readFile(path.join(dir,'download/eliana-n25x-offline.html'),'utf8');assert(offline.includes('window.EN25X_PORTABLE=true'));assert(!/<script[^>]+src=/.test(offline));assert.equal(Buffer.byteLength(offline),metadata.offlineBytes);
  for(const name of ['node_modules','tests','build.mjs','sw-template.js','package.json'])await assert.rejects(fs.stat(path.join(dir,name)));
 });
+test('Robot Studio is independently installable and all offline resources resolve under its Pages path',async()=>{
+ const studio=path.join(site,'eliana-n25x/workshop'),{document}=parseHTML(await fs.readFile(path.join(studio,'index.html'),'utf8'));
+ for(const node of document.querySelectorAll('link[href],script[src]')){
+  const u=new URL(node.getAttribute('href')||node.getAttribute('src'),'https://netaniya.github.io'+base+'/eliana-n25x/workshop/');
+  assert(u.pathname.startsWith(base+'/eliana-n25x/workshop/'));assert((await fs.stat(path.join(site,u.pathname.slice(base.length+1)))).isFile());
+ }
+ const info=JSON.parse(await fs.readFile(path.join(studio,'build-info.json'),'utf8'));
+ for(const file of Object.keys(info.hashes))assert((await fs.stat(path.join(studio,file))).isFile());
+ const manifest=JSON.parse(await fs.readFile(path.join(studio,'manifest.webmanifest'),'utf8'));assert.equal(manifest.scope,'./');assert.equal(manifest.start_url,'./');
+ assert((await fs.stat(path.join(site,'eliana-n25x/3d/index.html'))).isFile());
+ for(const name of ['node_modules','tests','build.mjs','sw-template.js','PROGRESS.ru.md'])await assert.rejects(fs.stat(path.join(studio,name)));
+});
 test('portfolio overview exposes four projects and complete four-language descriptions',async()=>{
  const html=await fs.readFile(path.join(site,'index.html'),'utf8'),{document}=parseHTML(html);
- assert.equal(document.querySelectorAll('.card').length,4);assert(document.querySelector('a.card[href="'+base+'/eliana-n25x/3d/"]'));
+ assert.equal(document.querySelectorAll('.card').length,4);assert(document.querySelector('a.card[href="'+base+'/eliana-n25x/workshop/"]'));
  const script=html.slice(html.indexOf('<script>')+8,html.indexOf('</script>')),ctx={document};vm.createContext(ctx);vm.runInContext(script,ctx);
  const dictionaries=vm.runInContext('copy',ctx);for(const lang of languages){for(const key of ['label','title','intro','motion','desk','lab','game','open'])assert(dictionaries[lang][key],lang+key);}
 });

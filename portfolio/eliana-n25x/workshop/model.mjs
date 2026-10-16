@@ -1,3 +1,4 @@
+export const MAX_PROFILE_BYTES=4*1024*1024;
 export const SAVE_KEY='eliana-n25x.workshop.v1';
 export const LANGUAGES=['de','en','ru','uk'];
 export const COLORS={pearl:'#e9eef5',ocean:'#297fce',orchid:'#a48ae6',copper:'#df9b66',graphite:'#3c485c',mint:'#78c4b1'};
@@ -26,12 +27,12 @@ export function addProject(state,kind,data,name){
  const count=state.projects.filter(p=>p.kind===kind).length,bonus=count<=3?reward(state,'project:'+kind+':'+count,30):0;return {project,bonus,duplicate:false};
 }
 export function parseProfile(raw){
- try{if(typeof raw!=='string'||raw.length>100000)return null;const p=JSON.parse(raw);if(p.schema!==SAVE_KEY||!LANGUAGES.includes(p.lang)||!p.robot||!Array.isArray(p.owned)||!Array.isArray(p.projects)||!Array.isArray(p.solved)||typeof p.earned!=='object'||!p.earned)return null;
+ try{if(typeof raw!=='string'||raw.length>MAX_PROFILE_BYTES)return null;const p=JSON.parse(raw);if(p.schema!==SAVE_KEY||!LANGUAGES.includes(p.lang)||!p.robot||!Array.isArray(p.owned)||!Array.isArray(p.projects)||!Array.isArray(p.solved)||typeof p.earned!=='object'||!p.earned)return null;
  const s=fresh();s.started=Boolean(p.started);s.lang=p.lang;s.grade=Number.isInteger(p.grade)&&p.grade>=1&&p.grade<=11?p.grade:5;
  s.owned=[...new Set(['pearl','ocean',...p.owned.filter(v=>SHOP.some(i=>i.id===v))])];for(const [key,value]of Object.entries(p.robot))configure(s,key,value);
- if(!Number.isSafeInteger(p.points)||p.points<0||p.points>100000)return null;s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,2000));s.solved=p.solved.filter(v=>typeof v==='string'&&v.length<100).slice(0,2000);
+ if(!Number.isSafeInteger(p.points)||p.points<0||p.points>1000000000)return null;s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,20000));s.solved=p.solved.filter(v=>typeof v==='string'&&v.length<100).slice(0,20000);
  s.projects=[];for(const item of p.projects.slice(0,24).reverse()){if(!item||!item.data)continue;const result=addProject(s,item.kind,item.data,item.name);if(result)result.project.id=Number.isSafeInteger(item.id)&&item.id>0?item.id:result.project.id;}
- s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,2000));
+ s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,20000));
  s.sound=p.sound!==false;s.volume=Math.max(0,Math.min(1,Number.isFinite(p.volume)?p.volume:.35));s.visits=Math.max(0,Math.min(100000,Number(p.visits)||0));return s;
  }catch{return null;}
 }
