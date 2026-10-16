@@ -1,35 +1,35 @@
 {
   "url": "https://netaniya.github.io/Netaniya/eliana-n25x/workshop/",
-  "runtimeVersion": "en25xstudio-1a7d105e6d671a",
-  "checkedAt": "2026-10-16T20:10:39.803168+00:00",
+  "runtimeVersion": "en25xstudio-fbcb0a052494e4",
+  "checkedAt": "2026-10-16T23:21:46.967962+00:00",
   "runtimeAssets": [
     {
       "file": "./index.html",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/html",
-      "bytes": 2729
+      "bytes": 2541
     },
     {
       "file": "./studio.css",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/css",
-      "bytes": 25085
+      "bytes": 29457
     },
     {
       "file": "./app.mjs",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/javascript",
-      "bytes": 34241
+      "bytes": 35763
     },
     {
       "file": "./model.mjs",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/javascript",
-      "bytes": 7781
+      "bytes": 8348
     },
     {
       "file": "./math.mjs",
@@ -37,6 +37,20 @@
       "sha256Matches": true,
       "contentType": "text/javascript",
       "bytes": 7535
+    },
+    {
+      "file": "./math-course.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 26306
+    },
+    {
+      "file": "./math-classroom.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 5534
     },
     {
       "file": "./robot.mjs",
@@ -53,11 +67,32 @@
       "bytes": 2625
     },
     {
+      "file": "./piano-score.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 5732
+    },
+    {
+      "file": "./piano-audio.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 2082
+    },
+    {
+      "file": "./piano.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 16081
+    },
+    {
       "file": "./i18n.mjs",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/javascript",
-      "bytes": 50131
+      "bytes": 63663
     },
     {
       "file": "./program.mjs",
@@ -67,32 +102,60 @@
       "bytes": 7495
     },
     {
+      "file": "./program-lessons.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 40269
+    },
+    {
       "file": "./curriculum.mjs",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/javascript",
-      "bytes": 18482
+      "bytes": 18571
+    },
+    {
+      "file": "./language-data.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 91429
+    },
+    {
+      "file": "./language-course.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 3223
+    },
+    {
+      "file": "./language-classroom.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 7939
     },
     {
       "file": "./creations.mjs",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/javascript",
-      "bytes": 11814
+      "bytes": 11796
     },
     {
       "file": "./academy.mjs",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/javascript",
-      "bytes": 23996
+      "bytes": 23982
     },
     {
       "file": "./manifest.webmanifest",
       "status": 200,
       "sha256Matches": true,
       "contentType": "application/manifest+json",
-      "bytes": 419
+      "bytes": 405
     },
     {
       "file": "./vendor/three.module.js",
@@ -137,13 +200,6 @@
       "bytes": 19593
     },
     {
-      "file": "./assets/eliana-portrait.webp",
-      "status": 200,
-      "sha256Matches": true,
-      "contentType": "image/webp",
-      "bytes": 196716
-    },
-    {
       "file": "./assets/n25x-portrait.webp",
       "status": 200,
       "sha256Matches": true,
@@ -151,11 +207,11 @@
       "bytes": 83492
     },
     {
-      "file": "./download/Eliana-N25x-Studio.html",
+      "file": "./download/N25x-Studio.html",
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/html",
-      "bytes": 2404833
+      "bytes": 2171395
     }
   ],
   "otherPublicEntries": [
@@ -191,27 +247,67 @@
   "status": "published_and_http_verified",
   "author": "Natalie Ragulina",
   "copyright": "© 2026 Natalie Ragulina. All rights reserved.",
-  "sourceCommit": "b7070e81160f92d866bc39949aa64b75bee455a0",
-  "pagesWorkflowRun": 38960241734,
+  "copyrightRu": "© 2026 Natalie Ragulina. Все права защищены.",
+  "development": "AI-assisted under the author’s concept and art direction",
+  "sourceCommit": "920e9cc028833906f66b9cfe85eb7e1d16c9aef2",
+  "pagesWorkflowRun": 38980916468,
   "pagesWorkflowConclusion": "success",
-  "browserVerificationRun": 38959488222,
-  "browserVerifiedSourceCommit": "7235d6a06e447dae2b07a1502b20bbe86e9f8ad5",
+  "browserVerificationRun": 38979855746,
+  "browserVerifiedSourceCommit": "00c6f973c9abd1085c21e9ba2136d2acb2fb3f7d",
   "browserVerificationConclusion": "success",
   "browserChecks": {
-    "desktop": 19,
-    "emulatedTouch": 11
+    "desktop": 22,
+    "emulatedTouch": 14
   },
+  "runtimeUnchangedAfterBrowserVerification": true,
+  "releaseBrowserRun": 38980916326,
+  "releaseBrowserConclusion": "in_progress",
+  "priorAdventureBrowserRun": 38980916419,
   "automated": {
-    "gameProjectPassed": 79,
+    "gameProjectPassed": 88,
     "portfolioPassed": 12,
-    "failed": 0
+    "failed": 0,
+    "alsoPassedInPagesBuild": true
   },
-  "releaseBrowserRun": 38960241839,
-  "releaseBrowserConclusion": "success",
-  "priorAdventureBrowserRun": 38960241710,
-  "releaseBrowserChecks": {
-    "desktop": 19,
-    "emulatedTouch": 11
+  "scope": {
+    "branding": "N25x only in the current Studio; historical games retained at their own routes",
+    "mathTaskTypes": 48,
+    "mathVariantsPerType": 256,
+    "mathNumericVariants": 12288,
+    "learningLanguages": 10,
+    "languageTopics": 12,
+    "sourceSentencesPerLanguage": 120,
+    "translatedTextsTotal": 1200,
+    "textExerciseModes": [
+      "reading",
+      "writing",
+      "word-order"
+    ],
+    "nativeSpeakerReviewed": false,
+    "completeCEFRPath": false,
+    "completeNationalMathCurriculumVerified": false,
+    "programmingMissions": 20,
+    "programmingCheckingInputs": 95,
+    "pianoPitchRange": "A0–C8",
+    "pianoPitchCount": 88,
+    "pianoMaxTracks": 4,
+    "pianoMaxBars": 64,
+    "pianoMaxNotes": 2048,
+    "pianoExports": [
+      "MIDI",
+      "WAV",
+      "JSON"
+    ],
+    "uiLanguages": [
+      "de",
+      "en",
+      "ru",
+      "uk"
+    ],
+    "humanPortraitInCurrentBuild": false,
+    "deviceSpeechVoices": "Optional installed local voices only; not bundled or verified on physical devices"
   },
-  "finalizedAt": "2026-10-16T20:16:07.918499+00:00"
+  "otherPortfolioProjectSourcesUnchanged": true,
+  "humanListeningTested": false,
+  "finalizedAt": "2026-10-16T23:23:28.308378+00:00"
 }
