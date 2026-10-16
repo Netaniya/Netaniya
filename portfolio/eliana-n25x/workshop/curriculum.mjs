@@ -1,3 +1,4 @@
+import {EXTRA_MISSIONS} from './program-lessons.mjs';
 export const UI_LANGUAGES = ['de','en','ru','uk'];
 export const local = (values,lang) => values[UI_LANGUAGES.indexOf(lang) < 0 ? 0 : UI_LANGUAGES.indexOf(lang)];
 export const LEARNING_LANGUAGES = [
@@ -56,6 +57,8 @@ export const MISSIONS = [
     source:'function check(answer, correct) {\n  return answer !== correct;\n}',entry:'check',sample:[3,3],prediction:[true,false,3],expectedPrediction:false,
     block:{from:'answer !== correct',choices:['answer !== correct','answer === correct','answer > correct']},tests:[[[3,3],true],[[3,4],false],[[0,0],true],[[-1,1],false]]}
 ];
+
+MISSIONS.push(...EXTRA_MISSIONS);
 
 // Small original practice sets, rather than claims of full national curricula.
 export const SUBJECTS = [

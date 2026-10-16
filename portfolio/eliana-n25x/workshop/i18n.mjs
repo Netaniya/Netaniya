@@ -291,7 +291,7 @@ startTimer|Start|Start|Старт|Старт
 createdWith|Mit N25x erstellt.|Made with N25x.|Создано в N25x.|Створено в N25x.
 moreTools|Weitere Werkzeuge|More tools|Другие инструменты|Інші інструменти
 creation|Meine Arbeit|My creation|Моя работа|Моя робота
-creationHelp|Wähle eines von 20 Werkzeugen. Du schreibst und gestaltest selbst; Vorschau und Dateien entstehen aus deiner Arbeit.|Choose from 20 tools. Write and design it yourself; your work becomes a preview and downloadable files.|Выбери один из 20 инструментов. Ты сам пишешь и создаёшь; из твоей работы получаются просмотр и файлы.|Обери один із 20 інструментів. Ти сам пишеш і створюєш; із твоєї роботи виходять перегляд і файли.
+creationHelp|Wähle eines von 21 Werkzeugen. Du schreibst und gestaltest selbst; Vorschau und Dateien entstehen aus deiner Arbeit.|Choose from 21 tools. Write and design it yourself; your work becomes a preview and downloadable files.|Выбери один из 21 инструмента. Ты сам пишешь и создаёшь; из твоей работы получаются просмотр и файлы.|Обери один із 21 інструмента. Ти сам пишеш і створюєш; із твоєї роботи виходять перегляд і файли.
 story|Geschichte mit Entscheidungen|Interactive story|История с выбором|Історія з вибором
 letter|Brief|Letter|Письмо|Лист
 message|Nachricht|Message|Сообщение|Повідомлення
@@ -329,6 +329,61 @@ choiceSeedB|Das Terminal prüfen|Check the terminal|Проверить терм�
 endingSeedA|Zwischen den Blättern liegt ein Sensor. Die beiden verbinden ihn wieder mit dem Netz.|A sensor lies between the leaves. They reconnect it to the network.|Между листьями лежит датчик. Герои возвращают его в сеть.|Між листям лежить датчик. Герої повертають його в мережу.
 endingSeedB|N25x liest die Meldung: Der Gartensensor braucht eine neue Batterie. Im Werkzeugkasten liegt eine.|N25x reads the alert: the garden sensor needs a new battery. There is one in the toolbox.|N25x читает сообщение: датчику сада нужна новая батарейка. Одна есть среди инструментов.|N25x читає повідомлення: датчику саду потрібна нова батарейка. Одна є серед інструментів.
 checklistSeed|Eine Idee wählen; Einen Versuch machen; Das Ergebnis prüfen|Choose an idea; Try it out; Check the result|Выбрать идею; Попробовать; Проверить результат|Обрати ідею; Спробувати; Перевірити результат
+piano|Klavier und Komposition|Piano and composition|Пианино и композиция|Піаніно та композиція
+pianoHelp|Spiele mit Tasten oder mehreren Fingern. Nimm eine Melodie auf, ergänze Stimmen und bearbeite jede Note.|Play with keys or multiple fingers. Record a melody, add parts and edit every note.|Играй клавишами или несколькими пальцами. Записывай мелодию, добавляй партии и редактируй каждую ноту.|Грай клавішами або кількома пальцями. Записуй мелодію, додавай партії й редагуй кожну ноту.
+bass|Bass|Bass|Бас|Бас
+bell|Glocke|Bell|Колокольчик|Дзвіночок
+editNotes|Noten bearbeiten|Edit notes|Редактировать ноты|Редагувати ноти
+pianoRoll|Zeitachse der gewählten Spur|Timeline of the selected track|Ноты выбранной дорожки на временной шкале|Ноти обраної доріжки на часовій шкалі
+beat|Schlag|Beat|Доля|Доля
+duration|Dauer in Schlägen|Duration in beats|Длительность в долях|Тривалість у долях
+applyNote|Änderung übernehmen|Apply note changes|Изменить ноту|Змінити ноту
+addNote|Note hinzufügen|Add note|Добавить ноту|Додати ноту
+newNote|Neue Note|New note|Новая нота|Нова нота
+recording|Aufnahme läuft · Stoppen|Recording · stop|Идёт запись · остановить|Триває запис · зупинити
+record|Aufnehmen|Record|Записать|Записати
+bars|Takte · 4 Schläge|Bars · 4 beats|Такты · по 4 доли|Такти · по 4 долі
+quantization|Raster in Schlägen|Snap in beats|Привязка в долях|Прив’язка в долях
+off|Aus|Off|Выкл.|Вимк.
+metronome|Metronom bei Aufnahme|Metronome while recording|Метроном при записи|Метроном під час запису
+track|Spur|Track|Дорожка|Доріжка
+instrument|Instrument|Instrument|Инструмент|Інструмент
+addTrack|Spur hinzufügen|Add track|Добавить дорожку|Додати доріжку
+octave|Oktave|Octave|Октава|Октава
+keysLeft|Tasten nach links|Scroll keys left|Клавиши влево|Клавіші ліворуч
+keysRight|Tasten nach rechts|Scroll keys right|Клавиши вправо|Клавіші праворуч
+pianoKeysHelp|Wische die Tastatur seitlich. Am Computer: A W S E D F T G Y H U J K. Die Oktave ist wählbar.|Swipe the keyboard sideways. On a computer: A W S E D F T G Y H U J K. Select the octave above.|Клавиатуру можно листать вбок. На компьютере: A W S E D F T G Y H U J K. Октава выбирается сверху.|Клавіатуру можна гортати вбік. На комп’ютері: A W S E D F T G Y H U J K. Октава обирається зверху.
+notesCount|Noten in der Komposition|notes in the composition|нот в композиции|нот у композиції
+renderingAudio|Audiodatei wird erstellt…|Rendering audio…|Создаётся аудиофайл…|Створюється аудіофайл…
+exportMidi|MIDI herunterladen|Download MIDI|Скачать MIDI|Завантажити MIDI
+pianoExample|Originalbeispiel laden|Load original example|Загрузить авторский пример|Завантажити авторський приклад
+pianoSoundNote|Originale synthetische Klavier-, Bass- und Glockenklänge. Bis zu 4 Spuren, 64 Takte und 2048 Noten. Lautstärke unter Einstellungen.|Original synthesized piano, bass and bell sounds. Up to 4 tracks, 64 bars and 2048 notes. Volume is in Settings.|Оригинальные синтезированные звуки пианино, баса и колокольчика. До 4 дорожек, 64 тактов и 2048 нот. Громкость — в настройках.|Оригінальні синтезовані звуки піаніно, баса й дзвіночка. До 4 доріжок, 64 тактів і 2048 нот. Гучність — у налаштуваннях.
+scoreLimit|Prüfe Tonhöhe, Start und Dauer. Maximal 4 Spuren und 2048 Noten innerhalb der gewählten Takte.|Check pitch, start and duration. Maximum 4 tracks and 2048 notes within the selected bars.|Проверь высоту, начало и длительность. До 4 дорожек и 2048 нот в пределах выбранных тактов.|Перевір висоту, початок і тривалість. До 4 доріжок і 2048 нот у межах обраних тактів.
+barsTooShort|Vorhandene Noten reichen über diese Taktzahl hinaus.|Existing notes extend beyond this number of bars.|Существующие ноты выходят за это число тактов.|Наявні ноти виходять за цю кількість тактів.
+languageCourse|Sprachunterricht|Language lessons|Языковые уроки|Мовні уроки
+languageCourseHelp|Aufeinanderfolgende Themen, ganze Sätze und drei Offline-Übungsformen|Sequential topics, complete sentences and three offline exercise forms|Последовательные темы, полные предложения и три вида офлайн-практики|Послідовні теми, повні речення й три види офлайн-практики
+languageInventory|{units} Themen · {n} Originalaussagen pro Sprache. Lesen, Schreiben und Satzbau; Hören bei lokaler Stimme.|{units} topics · {n} source sentences per language. Reading, writing and word order; listening with a local voice.|{units} тем · {n} исходных реплик на язык. Чтение, письмо, порядок слов; аудирование при наличии локального голоса.|{units} тем · {n} вихідних реплік на мову. Читання, письмо, порядок слів; аудіювання за наявності локального голосу.
+sourcePhrases|Ausgangssätze|source sentences|исходных реплик|вихідних реплік
+completedExercises|Übungen abgeschlossen|exercises completed|упражнений выполнено|вправ виконано
+chooseLesson|Lektion wählen|Choose a lesson|Выбрать урок|Обрати урок
+meaningLanguage|Übersetzungssprache|Translation language|Язык перевода|Мова перекладу
+sameAsApp|Sprache der Oberfläche|Interface language|Язык интерфейса|Мова інтерфейсу
+lessonExplanation|Erklärung der Lektion|Lesson explanation|Объяснение урока|Пояснення уроку
+mode_read|Lesen|Read|Чтение|Читання
+mode_write|Schreiben|Write|Письмо|Письмо
+mode_order|Satzbau|Word order|Порядок слов|Порядок слів
+mode_listen|Hören|Listen|Аудирование|Аудіювання
+chooseMeaning|Wähle die Bedeutung des Satzes.|Choose the meaning of the sentence.|Выбери значение предложения.|Обери значення речення.
+orderSentence|Baue den Satz aus den Wörtern zusammen.|Build the sentence from the words.|Собери предложение из слов.|Склади речення зі слів.
+listenPhrase|Satz anhören|Listen to the sentence|Прослушать предложение|Прослухати речення
+writeStudiedPhrase|Schreibe die gelernte Wendung. Großschreibung und Satzzeichen sind optional.|Write the studied phrase. Capitalization and punctuation are optional.|Напиши изучаемую реплику. Регистр и знаки препинания необязательны.|Напиши репліку, яку вивчаєш. Регістр і розділові знаки необов’язкові.
+showPhrase|Satz zeigen|Show the sentence|Показать реплику|Показати репліку
+deviceVoice|Die installierte lokale Stimme deines Geräts liest vor.|Your device's installed local voice reads the sentence.|Читает установленный локальный голос твоего устройства.|Читає встановлений локальний голос твого пристрою.
+voiceUnavailable|Keine lokale Stimme für diese Sprache gefunden. Lesen, Schreiben und Satzbau funktionieren ohne sie.|No local voice was found for this language. Reading, writing and word order work without it.|Для этого языка не найден локальный голос. Чтение, письмо и порядок слов работают без него.|Для цієї мови не знайдено локального голосу. Читання, письмо й порядок слів працюють без нього.
+languageScopeNote|Aktuell: Einstiegsmaterial mit KI-Unterstützung, noch ohne Prüfung durch Muttersprachler. Der vollständige Weg bis C1 wird weiterentwickelt und ist noch nicht fertig.|Current material is introductory and AI-assisted, awaiting native-speaker review. The complete path to C1 is in development and is not finished.|Сейчас доступны начальные материалы с ИИ-помощью, пока без проверки носителями. Полный путь до C1 находится в разработке и ещё не готов.|Зараз доступні початкові матеріали з ШІ-допомогою, поки без перевірки носіями. Повний шлях до C1 розробляється й ще не готовий.
+listenSoundOff|Aktiviere den Ton in den Einstellungen.|Enable sound in Settings.|Включи звук в настройках.|Увімкни звук у налаштуваннях.
+extraExercises|Weitere Übungen|More exercises|Дополнительные упражнения|Додаткові вправи
+starterCards|Erste Wortkarten|Starter word cards|Первые словарные карточки|Перші словникові картки
 `;
 export const TEXT=Object.fromEntries(['de','en','ru','uk'].map(l=>[l,{}]));
 for(const line of rows.trim().split('\n')){const [key,...values]=line.split('|');if(values.length!==4)throw Error('translation '+key);if(Object.hasOwn(TEXT.de,key))throw Error('Duplicate translation '+key);Object.keys(TEXT).forEach((l,i)=>TEXT[l][key]=values[i]);}

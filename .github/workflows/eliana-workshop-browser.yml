@@ -1,8 +1,8 @@
 name: Robot Studio browser verification
 on:
   push:
-    branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice]
-    paths: ['portfolio/eliana-n25x/workshop/**', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', 'portfolio/eliana-n25x/tests/academy.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
+    branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice, codex/n25x-learning-platform]
+    paths: ['portfolio/eliana-n25x/workshop/**', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', 'portfolio/eliana-n25x/tests/academy.test.mjs', 'portfolio/eliana-n25x/tests/learning.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,7 +27,7 @@ jobs:
       - run: cd portfolio/eliana-n25x/3d/browser-tests && npx playwright install --with-deps chromium
       - run: node portfolio/eliana-n25x/workshop/build.mjs
       - name: Verify core, math, audio and offline cache
-        run: node --test portfolio/eliana-n25x/tests/workshop.test.mjs portfolio/eliana-n25x/tests/academy.test.mjs
+        run: node --test portfolio/eliana-n25x/tests/workshop.test.mjs portfolio/eliana-n25x/tests/academy.test.mjs portfolio/eliana-n25x/tests/learning.test.mjs
       - name: Exercise rendered studio through real input
         run: node portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs
       - uses: actions/upload-artifact@v4

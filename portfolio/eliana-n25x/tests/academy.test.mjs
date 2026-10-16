@@ -13,7 +13,7 @@ import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
 const {MISSIONS,LEARNING_LANGUAGES,WORD_MEANINGS,SUBJECTS,local,checkMission}=curriculum;
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const playerCopy={complete:'Complete',restart:'Restart',score:'Score',correct:'Correct',correctAnswer:'Correct answer',finish:'Finish',next:'Next',programError:'Program error',start:'Start',pause:'Pause',flip:'Flip',createdWith:'Made with Eliana & N25x',rights:'All rights reserved.'};
+const playerCopy={complete:'Complete',restart:'Restart',score:'Score',correct:'Correct',correctAnswer:'Correct answer',finish:'Finish',next:'Next',programError:'Program error',start:'Start',pause:'Pause',flip:'Flip',createdWith:'Made with N25x',rights:'All rights reserved.'};
 const quiz=()=>({name:'My quiz',kind:'quiz',data:blankQuiz(k=>translate('en',k))});
 function clickByText(document,text){const e=[...document.querySelectorAll('button')].find(e=>e.textContent===text);assert(e,'button '+text);e.click();return e;}
 
@@ -29,7 +29,7 @@ test('Academy interpreter: loops, recursion, excessive nesting and host access f
  assert.equal(runProgram('x'.repeat(4001),'x',[]).error,'size');assert(!validScoreProgram(SCORE_PROGRAM.replace('+ points','- points')));assert(validScoreProgram(SCORE_PROGRAM));
 });
 test('Academy missions: initial bugs fail and learner repairs pass every normal and zero/false test case',()=>{
- assert.equal(MISSIONS.length,5);
+ assert.equal(MISSIONS.length,20);
  for(const m of MISSIONS){assert(checkMission(m,m.source,runProgram).some(r=>!r.ok||r.value!==r.expected),m.id);const corrected=m.source.replace(m.block.from,m.block.choices[1]);assert(checkMission(m,corrected,runProgram).every(r=>r.ok&&r.value===r.expected),m.id);assert.equal(runProgram(m.source,m.entry,m.sample).value,m.expectedPrediction);}
 });
 test('Academy content: ten language tracks, sixty cards and all original subject explanations have four UI languages',()=>{
