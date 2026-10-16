@@ -327,6 +327,7 @@ textarea.source-code{min-height:230px;font-size:16px}
 
 /* Comfortable default reading size; the existing app sections retain their order. */
 body{font-size:16px;line-height:1.55}
+.intro-copy .help{font-size:16px}
 button{line-height:1.4;overflow-wrap:anywhere}
 button.primary{box-shadow:0 4px 20px #12bcd126}
 button:hover{filter:brightness(1.08)}
