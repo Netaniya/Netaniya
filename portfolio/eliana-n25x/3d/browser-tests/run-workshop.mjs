@@ -36,6 +36,22 @@ async function settingsLanguage(lang){await click('#settings-button');await page
 async function screenshot(name){await page.waitForTimeout(500);await page.locator('#qa').evaluate(el=>el.style.display='none');await page.screenshot({path:path.join(results,name+'.png'),fullPage:false});await page.locator('#qa').evaluate(el=>el.style.display='');}
 async function download(selector,name){const pending=page.waitForEvent('download');await click(selector);const file=await pending;await file.saveAs(path.join(results,name));return fs.readFile(path.join(results,name));}
 async function noOverflow(){assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal page overflow');}
+async function readableLayoutCheck(){
+ const widths=scope==='touch'?[320,844]:[760,1360],layouts=[];
+ async function bounds(){await noOverflow();const bad=await page.locator('#content .buttons>button,#content .choice,#content .daily-card>button,#content .action-card,#content .subject-list button,#navigation button').evaluateAll(els=>els.filter(el=>el.getBoundingClientRect().width>0&&el.scrollWidth>el.clientWidth+1).map(el=>el.textContent.trim()));assert.deepEqual(bad,[],'readable button labels stay inside their controls');}
+ for(const width of widths){await page.setViewportSize({width,height:width===844?390:960});
+  for(const lang of ['de','en','ru','uk']){
+   await page.locator('#site-language').selectOption(lang);await click('#navigation [data-do=home]');await bounds();
+   assert(await page.locator('#content .help').first().evaluate(el=>parseFloat(getComputedStyle(el).fontSize)>=16));
+   assert(await page.locator('.action-card small').first().evaluate(el=>parseFloat(getComputedStyle(el).fontSize)>=14));
+   await click('#navigation [data-do=learn]');await bounds();await click('[data-subject=mathCourse]');await bounds();
+   await click('#navigation [data-do=create]');await bounds();await click('[data-do=piano]');await bounds();
+   await click('#settings-button');assert(await page.locator('#dialog .help').first().evaluate(el=>parseFloat(getComputedStyle(el).fontSize)>=16));await noOverflow();await click('[data-do=close]');layouts.push({width,lang});
+  }
+ }
+ await page.setViewportSize(scope==='touch'?{width:390,height:844}:{width:1360,height:960});await page.locator('#site-language').selectOption('ru');await click('#navigation [data-do=home]');await screenshot(scope+'-readable-home');
+ check('medium-size text and vivid controls remain readable without overflowing labels on narrow, landscape and desktop layouts in all four UI languages',{layouts,bodyTextAtLeast:16,cardDescriptionsAtLeast:14});
+}
 async function offlineCheck(){
  await waitText('#qa','offline offlineReady');const before=await state();await context.setOffline(true);await page.reload({waitUntil:'domcontentloaded'});await ready();await waitText('#qa','offline offlineReady');const after=await state();for(const key of ['points','robot','projects','solved','owned','learning','piano'])assert.deepEqual(after[key],before[key],key);
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'mentor images available offline');
@@ -74,7 +90,7 @@ async function practicalProjectsCheck(){
 async function standaloneAppCheck(){
  await click('#settings-button');await waitText('#offline-status',TEXT[(await state()).lang].offlineReady);const bytes=await download('#download-studio','studio-offline.html');await click('[data-do=close]');assert(bytes.toString().includes('id="portable-build-info"'));assert(!bytes.toString().includes('private-update-patch'));
  const local=await browser.newContext(scope==='touch'?{viewport:{width:390,height:844},hasTouch:true,isMobile:true}:{viewport:{width:1360,height:960}});await local.setOffline(true);const p=await local.newPage();p.on('pageerror',e=>report.errors.push(String(e)));p.on('request',r=>{if(/^https?:/.test(r.url()))report.errors.push('Unexpected standalone request: '+r.url());});
- try{await p.goto(pathToFileURL(path.join(results,'studio-offline.html')).href);await p.waitForFunction(()=>document.body.dataset.ready==='3d');await p.locator('#dialog [data-language]').selectOption('ru');await p.locator('[data-do=start]').click();await p.locator('#navigation [data-do=learn]').click();await p.locator('[data-do=programming]').click();await p.locator('[data-a=block][data-index="1"]').click();await p.locator('[data-a=tests]').click();assert.equal(await p.locator('.test-case.fail').count(),0);await p.locator('#settings-button').click();assert((await p.locator('#offline-status').innerText()).includes(TEXT.ru.offlinePortable));assert.equal(await p.locator('[data-do=install]').count(),0);await p.screenshot({path:path.join(results,scope+'-standalone-offline.png')});}
+ try{await p.goto(pathToFileURL(path.join(results,'studio-offline.html')).href);await p.waitForFunction(()=>document.body.dataset.ready==='3d');await p.locator('#dialog [data-language]').selectOption('ru');await p.locator('[data-do=start]').click();await p.locator('#navigation [data-do=learn]').click();await p.locator('[data-do=programming]').click();await p.locator('[data-a=block][data-index="1"]').click();await p.locator('[data-a=tests]').click();assert.equal(await p.locator('.test-case.fail').count(),0);await p.locator('#settings-button').click();assert((await p.locator('#offline-status').innerText()).includes(TEXT.ru.offlinePortable));assert.equal(await p.locator('[data-do=install]').count(),0);assert(await p.locator('#dialog .help').first().evaluate(el=>parseFloat(getComputedStyle(el).fontSize)>=16),'standalone copy uses the medium reading size');await p.screenshot({path:path.join(results,scope+'-standalone-offline.png')});}
  finally{await local.close();}
  check('downloaded full app starts from an actual local HTML file without network, renders the humanoid, changes language and completes programming practice',{bytes:bytes.length});
 }
@@ -145,6 +161,6 @@ try{
   await click('#navigation [data-do=learn]');await click('[data-subject=coding]');for(const d of ['up','up','up','up','right','right','right','right'])await click('[data-code='+d+']');await click('#run-code');await waitText('#feedback',TEXT.ru.codeWin);assert.equal((await state()).points,140);await screenshot('mobile-code');check('full coding puzzle completes through real touch input with points');
   await page.setViewportSize({width:844,height:390});await click('#navigation [data-do=home]');await noOverflow();for(const box of await page.locator('#navigation button').evaluateAll(els=>els.map(el=>{const r=el.getBoundingClientRect();return {top:r.top,bottom:r.bottom};})))assert(box.top>=0&&box.bottom<=390);await screenshot('mobile-landscape');await page.setViewportSize({width:320,height:740});await click('#navigation [data-do=home]');await noOverflow();await screenshot('mobile-320');await page.setViewportSize({width:390,height:844});check('portrait, landscape and narrow 320px layout remain usable',{emulatedViewports:['390×844','844×390','320×740']});
  }
- await practicalProjectsCheck();await expandedLearningCheck();await standaloneAppCheck();await offlineCheck();assert.deepEqual(report.errors,[]);report.success=true;
+ await practicalProjectsCheck();await expandedLearningCheck();await readableLayoutCheck();await standaloneAppCheck();await offlineCheck();assert.deepEqual(report.errors,[]);report.success=true;
 }catch(error){report.success=false;report.failure=String(error.stack||error);console.error(error);await page.screenshot({path:path.join(results,'failure.png'),fullPage:false}).catch(()=>{});process.exitCode=1;}
 finally{report.finishedAt=new Date().toISOString();await fs.writeFile(path.join(results,'verification.json'),JSON.stringify(report,null,2));await context.close();await browser.close();await new Promise(resolve=>server.close(resolve));}
