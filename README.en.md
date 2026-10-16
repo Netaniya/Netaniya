@@ -51,9 +51,9 @@ Photo: Mr.choppers · CC BY-SA 3.0 · [Original and image credits](portfolio/mot
 
 ### N25x
 
-Robot Studio: customize a humanoid 3D robot, practice JavaScript and create your own quiz games and projects. Four UI languages, ten introductory learning languages, mathematics, twenty creation choices, local profiles and an installable web app with HTML download. **Creator, original idea and art direction: Natalie Ragulina.** Developed with AI assistance. **© 2026 Natalie Ragulina. All rights reserved.**
+Customize a humanoid 3D robot, practise 48 mathematics task types, ten introductory language courses and 20 programming missions. A piano with multitrack recording, note editing and MIDI/WAV export, personal quiz games, four UI languages and local profiles. Installable web app with a standalone HTML copy. **Creator, original idea and art direction: Natalie Ragulina.** Developed with AI assistance. **© 2026 Natalie Ragulina. All rights reserved.**
 
-[Open Robot Studio](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/) · [Code & documentation](portfolio/eliana-n25x/README.en.md)
+[Open N25x](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/) · [Code & documentation](portfolio/eliana-n25x/README.en.md)
 
 ### Neta25X · early interface prototype
 [A responsive interface with custom visual identity](https://github.com/Netaniya/Neta25X), built with HTML, TailwindCSS and JavaScript. Newer full-stack and AI work is under private development.

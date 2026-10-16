@@ -1,8 +1,8 @@
 {
   "scope": "desktop",
-  "buildVersion": "en25xstudio-1a7d105e6d671a",
+  "buildVersion": "en25xstudio-fbcb0a052494e4",
   "author": "Natalie Ragulina",
-  "startedAt": "2026-10-16T20:04:21.696Z",
+  "startedAt": "2026-10-16T23:09:41.932Z",
   "checks": [
     {
       "name": "real humanoid WebGL model initializes on a dark background; first visit is German"
@@ -44,7 +44,7 @@
       "name": "four languages translate home, learning, exercises, creation tools, parts and copyright in rendered UI"
     },
     {
-      "name": "five real JavaScript programs run and pass normal/edge cases; first failing programs and repeat rewards are rejected"
+      "name": "20 real JavaScript programs run and pass normal/edge cases; first failing programs and repeat rewards are rejected"
     },
     {
       "name": "all ten learning languages display actual script and accept a practice answer through real input"
@@ -56,18 +56,34 @@
       "name": "visible header language control translates active quiz, practice, tutor, story and copyright in all four languages without changing points"
     },
     {
+      "name": "mathematics classroom completes a ten-task assessment through answer forms; wrong answers enter review and correct ones persist",
+      "topics": 48,
+      "variants": 12288
+    },
+    {
+      "name": "whole sentences in all ten languages are read and written; English, Georgian, Chinese and Japanese word-order tasks complete through native script",
+      "topics": 12,
+      "sourceSentencesPerLanguage": 120
+    },
+    {
+      "name": "piano records a real two-note chord, edits note timing, adds a bass track, saves once, exports real MIDI/WAV and restores after reload",
+      "input": "two held physical keyboard keys",
+      "tracks": 2,
+      "notes": 4,
+      "midiBytes": 131,
+      "wavBytes": 150586
+    },
+    {
       "name": "downloaded full app starts from an actual local HTML file without network, renders the humanoid, changes language and completes programming practice",
-      "bytes": 2404833
+      "bytes": 2171395
     },
     {
       "name": "cold offline reload restores real 3D robot, projects and balance; lessons still work; both older saves untouched",
-      "precacheFiles": 22
+      "precacheFiles": 30
     }
   ],
   "errors": [],
   "physicalDevicesTested": false,
   "success": true,
-  "finishedAt": "2026-10-16T20:07:44.241Z",
-  "sourceCommit": "7235d6a06e447dae2b07a1502b20bbe86e9f8ad5",
-  "workflowRun": 38959488222
+  "finishedAt": "2026-10-16T23:17:56.791Z"
 }
