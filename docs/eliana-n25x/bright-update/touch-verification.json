@@ -1,0 +1,21 @@
+{
+  "scope": "touch",
+  "buildVersion": "en25x3d-9dbaf6a63d4fed",
+  "author": "Natalie Ragulina",
+  "startedAt": "2026-10-16T10:35:26.121Z",
+  "checks": [
+    {
+      "name": "emulated mobile multi-touch moves and orbits simultaneously without page scrolling",
+      "viewport": "390x844"
+    },
+    {
+      "name": "mobile landscape controls remain visible",
+      "viewport": "844x390"
+    }
+  ],
+  "missions": [],
+  "errors": [],
+  "physicalDevicesTested": false,
+  "success": true,
+  "finishedAt": "2026-10-16T10:35:33.412Z"
+}
