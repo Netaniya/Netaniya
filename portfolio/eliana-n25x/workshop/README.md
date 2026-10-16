@@ -1,68 +1,16 @@
-# N25x · Robot Studio
+# N25x · technische Hinweise
 
-[English](README.en.md) · [Studio öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)
+**Schöpferin, ursprüngliche Idee, Konzept und künstlerische Leitung: Natalie Ragulina.**
+**© 2026 Natalie Ragulina. All rights reserved.** Entwicklung und Lernmaterialien mit KI-Unterstützung.
 
-**© 2026 Natalie Ragulina. All rights reserved.**
+[Aktueller Funktionsumfang und Installation](../README.md) · [English technical notes](README.en.md) · [Lernumfang und Ausbauplan](LEARNING-PLAN.ru.md)
 
-Konzept, Figuren und künstlerische Leitung: **Natalie Ragulina**. Entwicklung, Übersetzungen und technische Prüfungen mit KI-Unterstützung. Keine erfundenen kommerziellen Referenzen oder prozentualen Beitragsangaben.
+Die aktuelle Werkstatt zeigt nur N25x. Das menschliche Porträt wird nicht in den Build übernommen. Der originale gegliederte 3D-Humanoid nutzt lokal gebündeltes Three.js r160 (MIT), Manrope steht unter SIL OFL. Klänge und Musikinstrumente werden lokal synthetisiert; keine fremden Klavieraufnahmen.
 
-Eine mobile Web-App: eigenen Roboter gestalten, kleine Aufgaben verstehen und etwas Eigenes herstellen. Eliana und N25x begleiten als benannte Mentorfiguren. Es gibt nur motivierende Spielpunkte, keine Zahlungen, Geldprämien oder verkäuflichen Guthaben.
+48 Mathematikfamilien liefern 12.288 Zahlenvarianten mit Lösungen und Wiederholung. Zehn Sprachen enthalten jeweils 120 Ausgangsaussagen in zwölf Themen. 20 Programmiermissionen haben 95 Prüfeingaben. Das Klavier umfasst A0–C8, Aufnahme, mehrere Spuren, Notenbearbeitung und MIDI/WAV/JSON. Die Modulaufteilung ist in den englischen technischen Hinweisen beschrieben.
 
-## Ausprobieren
+Der Build prüft 30 notwendige Offline-Ressourcen mit SHA-256. Die vollständige HTML-Kopie `download/N25x-Studio.html` enthält 20 eingebettete Module. Der frühere Dateiname bleibt als Online-Kompatibilitätskopie erhalten. Lokale Sprechstimmen sind optional und nicht enthalten. Lesen, Schreiben und Satzbau funktionieren ohne Stimme.
 
-1. Beim ersten Besuch Deutsch; die Sprache direkt oben unter „App-Sprache“ wechseln. Der Schalter bleibt auf jedem Bildschirm sichtbar. Deutsch, Englisch, Russisch und Ukrainisch sind enthalten; die zehn Lernsprachen werden separat gewählt.
-2. Roboter benennen; Kopf, Hände, Füße/Räder/Schwebebasis, Farbe, Sprechweise, Interesse und Erklärungsstil wählen. Änderungen sind sofort am animierten 3D-Modell sichtbar. Antippen lässt es winken; die Ansicht kann optional gedreht werden. Es gibt keinen Bewegungs-Joystick.
-3. Unter **Lernen** Mathematik, englische Wörter oder Pfeilprogramme wählen. Die tägliche Einheit erzeugt lokal drei neue Mathematikaufgaben für das gewählte Niveau. Kein Zeitdruck und keine Strafe für einen ausgelassenen Tag.
-4. Unter **Gestalten** eine achtschrittige Melodie komponieren und als echte WAV-Datei exportieren; oder eine Bewegungsfolge für den Roboter bauen. Eigene Projekte lassen sich speichern und wieder öffnen. Die Roboterkarte enthält die tatsächliche 3D-Ansicht als PNG.
-5. Mit Punkten zusätzliche Farben und sichtbare Module freischalten. Aufgaben, Tagesbonus und Projekte können dieselbe Belohnung nicht beliebig wiederholen.
+Vom Spielordner: `npm ci --ignore-scripts`, `npm run build`, `npm run check`, `npm test`. Im Stamm: `node scripts/build-pages.mjs` und `node --test tests/pages.test.mjs`. CI nutzt Node.js 24. 88 automatisierte Projekttests und zwölf Portfolioprüfungen sind von echten Chromium-Läufen und physischen Geräten zu unterscheiden.
 
-Desktop: Navigation links, Roboter und Werkzeuge nebeneinander. Telefon: untere Navigation, große berührbare Schaltflächen und eigener vertikaler Aufbau. Die Oberfläche braucht keine Kameradrehung, um Aufgaben zu bedienen.
-
-## Lernumfang und Grenzen
-
-- 33 feste Originalübungen, 11 Schwierigkeitsstufen, dazu täglich reproduzierbar erzeugte Aufgaben: Addition, Multiplikation, Division, Brüche, Dezimalzahlen, Prozente, negative Zahlen, lineare Gleichungen, Potenzen, einfache quadratische Gleichungen und ausgewertete Polynomableitungen.
-- Die Klassenangabe 1–11 ist eine Orientierung. Das ist kein vollständiger, nach einem bestimmten nationalen Lehrplan geprüfter Schulkurs.
-- Rechenwerkstatt: Klammern, Brüche, Prozente, Polynome in `x`, lineare/quadratische Gleichungen und `d/dx x^3`. Begrenzter Parser; Benutzereingaben werden nie als JavaScript ausgeführt. Allgemeine Textaufgaben, Brüche mit Variablen im Nenner, trigonometrische Funktionen und offene KI-Unterhaltung sind nicht enthalten.
-- Zwölf englische Wortübungen und drei eigene Programmierlabyrinthe mit ausführbaren Schritten und Hindernissen. Kein generischer KI-Tutor und keine API-Aufrufe.
-- Interessen verändern die Lichtfarbe; Sprechstil verändert Ansprache und Ausdruck. „Mit Beispielen“ zeigt den Rechenschritt direkt; andere Erklärungsstile lassen den Hinweis optional.
-
-## Speichern und offline
-
-Profil, Roboter, Punkte, Erfolge und gespeicherte Projekte bleiben browserlokal unter `eliana-n25x.workshop.v1`. Keine Konten, Cloud-Synchronisierung oder soziale Kontaktfunktionen. Profil unter ⚙ als JSON exportieren und auf einem anderen Gerät importieren. Ein neues Profil ersetzt ausschließlich dieses Studio-Profil nach Bestätigung. Die ursprünglichen Spiele und ihre Speicherstände bleiben erhalten:
-
-- [Ursprünglicher Bilderquest](https://netaniya.github.io/Netaniya/eliana-n25x/): `eliana-n25x.save.v1`
-- [3D-Abenteuer](https://netaniya.github.io/Netaniya/eliana-n25x/3d/): `eliana-n25x.3d.v1`
-
-Auf unterstützten Browsern über „App installieren“/„Zum Startbildschirm“ installieren; am iPhone im Teilen-Menü. Es ist eine Web-App, keine native APK. Erster Online-Aufruf erforderlich. Der eigene Service Worker prüft SHA-256 sämtlicher 22 Programm-, Grafik-, Schrift- und Lizenzdateien, bevor er Offline-Bereitschaft meldet. Die Bestätigung steht unter ⚙. Nur ältere `en25xstudio-`-Caches werden bereinigt. Browser können lokalen Speicher entfernen; eine exportierte Kopie schützt den Fortschritt.
-
-## Technik und Lizenzen
-
-Lokales Three.js r160 (MIT, [Lizenz](../3d/vendor/LICENSE.three.txt)); keine CDN-Laufzeitabhängigkeit. Originale prozedurale, gegliederte 3D-Robotermodelle, Studiolicht und Animationen. Web Audio erzeugt die Klänge nach einer Nutzeraktion; Lautstärke und Stummschaltung unter ⚙. WAV-Export erzeugt PCM-Audiodaten.
-
-Manrope, Copyright 2018 The Manrope Project Authors, unter SIL OFL: [Schriftlizenz](../assets/OFL.txt). Die vorhandenen Mentorporträts wurden mit KI anhand freigegebener Referenzen erstellt: [Bildnachweise](../assets/credits.json). Die private Originalfotografie wird nicht veröffentlicht. Porträts sind Illustrationen; eine exakt nachgebildete animierte menschliche Gesichtsfigur wird nicht behauptet. Keine zusätzlichen fremden Modelle, Animationen oder Tonaufnahmen.
-
-## Prüfen
-
-Vom Spielordner `portfolio/eliana-n25x`:
-
-```sh
-npm ci --ignore-scripts
-npm run build
-npm run check
-npm test
-```
-
-Gesamtausgabe: `node scripts/build-pages.mjs`; Portfolioprüfungen: `node --test tests/pages.test.mjs` aus dem Repository-Stamm.
-
-16 automatische Studio-Kerntests und 17 Praxistests prüfen Mathematik (einschließlich 1.980 erzeugter Tagesaufgaben), Punkte, Profilvalidierung, echte Modellgeometrie und Gelenke, WAV-Daten, den begrenzten JavaScript-Interpreter, ausführbare Nutzerprojekte, Übersetzungen, vollständige Cache-Inventare, kalte Offline-Navigation und beschädigte Ressourcen. Mit den älteren Spielen umfasst das Projekt 79 Tests; das Portfolio hat 12 weitere Prüfungen. Das sind keine Geräteprüfungen.
-
-`.github/workflows/eliana-workshop-browser.yml` führt echtes Chromium mit SwiftShader aus: Desktop sowie emuliertes Telefon mit tatsächlichen Klicks/Tastatur-/Touch-Eingaben, ohne Einspritzen von Lernfortschritt oder Punkten. Es exportiert Screenshots, echte Nutzerdateien und `verification.json`. Der aktuelle bestätigte Stand steht in [PROGRESS.ru.md](PROGRESS.ru.md). Physische Android-/iOS-Geräte und eine echte Installation müssen getrennt geprüft werden.
-
-
-## Aktuelle Praxis-Ausgabe
-
-Der dunkle humanoide Roboter hat menschliche Proportionen, gelenkige Finger sowie wählbaren Körperbau und Material. Bestehende Studio-Profile bleiben kompatibel. Die [Projektübersicht](../README.md) beschreibt fünf ausführbare JavaScript-Aufgaben, zehn Einstiegswortschätze, zwanzig Gestaltungsangebote, den Quiz-Editor und validierten Projektaustausch. Werkzeuge behalten eigene Entwürfe. Kein Live-Chat, Konto oder Cloud-KI-Dienst ist angeschlossen.
-
-Der Build erzeugt `download/N25x-Studio.html` als vollständige eigenständige Kopie und nimmt sie in die 22 mit SHA-256 geprüften Offline-Ressourcen auf. Sie enthält elf eingebettete Module und alle benötigten Bilder, Schrift- und Lizenzdaten. Zum Herunterladen unter ⚙ „App als HTML herunterladen“ wählen. Der Speicher einer lokalen Datei kann vom Website-Speicher abweichen; Profile lassen sich exportieren und importieren. Generierte Dateien werden nicht eingecheckt; GitHub Pages baut sie aus dem Quellcode.
-
-Tatsächliche Browser- und Veröffentlichungsergebnisse stehen in [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Eine Geräteinstallation ist eine separate Prüfung.
+Der Speicher bleibt unter `eliana-n25x.workshop.v1` kompatibel. Profile und Projekte lassen sich übertragen; Website und lokale Datei können getrennte Speicher haben. Aktuelle Ergebnisse: [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Physische Geräte und Installation sind separat zu prüfen. Das Sprachmaterial ist noch nicht durch Muttersprachler geprüft; der vollständige C1-Weg ist noch nicht fertig. Konten, freier KI-Chat, Nachrichten und Zahlungen sind nicht angeschlossen.

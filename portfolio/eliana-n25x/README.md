@@ -1,45 +1,36 @@
-# N25x · Robot Studio
+# N25x · Lern- und Kreativwerkstatt
 
 **Schöpferin, ursprüngliche Idee, Konzept und künstlerische Leitung: Natalie Ragulina.**
 **© 2026 Natalie Ragulina. All rights reserved.**
 
-[English](README.en.md) · [Русский](README.ru.md) · **[App öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)** · [HTML-Kopie öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/N25x-Studio.html)
+[App öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/) · [English](README.en.md) · [Русский](README.ru.md)
 
-Eine interaktive Lern- und Kreativwerkstatt für Smartphone und Computer. Nutzer gestalten einen persönlichen humanoiden 3D-Roboter, lösen praktische Aufgaben und bauen eigene kleine Projekte. Eliana und N25x begleiten die Werkstatt als benannte Figuren. Entwicklung, Übersetzungen, generierte Porträts und technische Prüfungen entstanden mit KI-Unterstützung nach den Entscheidungen und Vorgaben von Natalie Ragulina.
+Eine mobile Lernwerkstatt mit einem originalen humanoiden Roboter, praktischen Aufgaben und eigenen Projekten. Entwicklung, Übersetzungen und technische Prüfungen mit KI-Unterstützung unter Leitung der Urheberin. Das aktuelle Studio verwendet nur N25x; frühere Spiele sind separat archiviert.
 
-## In drei Minuten ausprobieren
+## Ausprobieren
 
-1. Oben **Sprache der App** wählen: Deutsch, English, Русский oder Українська. Deutsch ist die Voreinstellung; die Wahl wird auf dem Gerät gespeichert.
-2. Unter **Mein Roboter** Namen, Körperbau, Paneele und Material gestalten. Tippen lässt den wirklichen 3D-Roboter winken.
-3. **Lernen → Programmieren & Ausprobieren** öffnen. Einen Baustein ändern oder JavaScript bearbeiten, das Beispiel starten und alle Prüffälle ausführen.
-4. Unter **Gestalten → Mein Quizspiel** Fragen und Antworten schreiben. Die Punktefunktion prüfen und das eigene Spiel ausprobieren.
-5. Das Projekt speichern, als spielbares HTML herunterladen oder als Projektdatei zur Weiterbearbeitung übertragen.
+Oben die Oberflächensprache wählen: Deutsch, English, Русский oder Українська. Beim ersten Besuch ist Deutsch aktiv. Den Roboter gestalten und unter **Lernen** die Mathematik-Werkstatt, Sprachunterricht oder Programmierung öffnen. Unter **Gestalten → Klavier und Komposition** mit mehreren Fingern oder A W S E D F T G Y H U J K spielen, aufnehmen, Stimmen ergänzen, Noten bearbeiten und exportieren.
 
-## Enthaltene Funktionen
+## Tatsächlicher Umfang
 
-- Originaler artikulierter 3D-Humanoid mit Gelenken und Fingern, konfigurierbaren Materialien und Beleuchtung in einer dunklen Werkstatt.
-- Fünf Programmieraufgaben zu Variablen, Bedingungen, Schleifen, Funktionen und Fehlersuche. Der begrenzte JavaScript-Interpreter führt den eigenen Code wirklich aus und zeigt Werte sowie Prüfergebnisse.
-- Quiz-Editor mit 1–8 Fragen und eigener Punktefunktion; spielbare Vorschau, HTML-Export und validierter JSON-Austausch.
-- Mathematik auf elf Schwierigkeitsstufen, tägliche Aufgaben, lokaler Rechenhelfer und drei ausführbare Wegprogramme.
-- Zehn Einstiegssprachen mit insgesamt 60 Wortkarten sowie Auswahl- und Schreibübungen. Die Lernsprache ist von der Sprache der Oberfläche getrennt.
-- Kleine Übungssets zu Logik, Physik, Biologie, Geografie und digitalen Fähigkeiten.
-- Zwanzig Gestaltungsmöglichkeiten: Quiz, Entscheidungsgeschichte, Texte, Comic-Szenenkarten, Webseite, Checkliste, Timer, Lernkarten, Abzeichen, Sticker, Ideenkarte, Tagesplan, Melodie und Roboterbewegungen. Einige teilen sich denselben Texteditor; Inhalte verfasst der Nutzer selbst.
-- Punkte für bestätigte Ergebnisse, freischaltbare Teile, separate Werkzeugentwürfe, lokale Profile und Profil-Import/-Export. Keine Geldprämien oder Käufe mit echtem Geld.
-- Vier Oberflächensprachen, große Bedienelemente, eigene synthetische Klänge, Lautstärke, Stummschaltung, installierbare Web-App und eigenständige HTML-Kopie.
+- **48 mathematische Aufgabenfamilien / 12.288 Zahlenvarianten** mit Erklärung, Beispiel, Lösungsweg, Fehlerwiederholung und fortsetzbarem Selbsttest. Klassen sind Schwierigkeitsorientierung; ein vollständiger nationaler Lehrplan ist nicht geprüft.
+- **12 Themen / 120 Ausgangssätze pro Sprache / zehn Sprachen**: insgesamt 1.200 übersetzte Texte. Lesen, Schreiben und Satzbau. Einstiegsmaterial mit KI-Unterstützung; eine Prüfung durch Muttersprachler steht aus. **Der vollständige Weg bis C1 ist noch nicht fertig.**
+- Deutsch, Englisch, Georgisch, Ukrainisch, Russisch, Mandarin, Spanisch, Französisch, Italienisch und Japanisch. Hören nutzt eine installierte lokale Gerätestimme, falls vorhanden; keine aufgenommenen Muttersprachlerstimmen.
+- **20 ausführbare Programmiermissionen**, 95 normale und Grenzfall-Eingaben, Codeeditor, Vorhersage, Korrektur und Erklärungen. Begrenzter JavaScript-Interpreter für Zahlen, Logik, Bedingungen, Schleifen und Funktionen.
+- **Klavier A0–C8**, Akkordaufnahme, bis zu vier Spuren, 64 Takte, 2.048 Noten und 32 gleichzeitige Stimmen. Tonhöhe, Beginn und Dauer bearbeiten; originale synthetische Klavier-/Bass-/Glockenklänge; MIDI, WAV und JSON exportieren.
+- Quiz, verzweigte Geschichten, Schreibwerkzeuge, frühere kreative Projekte, Punkte und validierter Dateiaustausch bleiben verfügbar.
 
-## Als App nutzen oder weitergeben
+[Lernumfang und Ausbauplan](workshop/LEARNING-PLAN.ru.md) · [Technik](workshop/README.en.md) · [Prüfungen](../../docs/eliana-n25x-workshop/README.ru.md)
 
-**Android / Chrome:** App-Link öffnen, im Browsermenü **Installieren / App installieren** wählen. Je nach Version liegt dies unter „Installieren und Verknüpfung erstellen“.
-**iPhone / Safari:** App-Link öffnen, **Teilen → Zum Home-Bildschirm**; falls angeboten, „Als Web-App öffnen“ aktivieren.
-**Computer:** In einem unterstützten Browser das Installationssymbol bzw. „App installieren“ verwenden.
+## Installation und Offline-Kopie
 
-Die erste Nutzung benötigt Internet. Unter **⚙ Einstellungen** auf die Bestätigung der geprüften Offline-Dateien warten. Erst dann wurde die lokale Bereitschaft dieser Version bestätigt. Browser können gespeicherte Daten entfernen; wichtige Profile exportieren. Nachrichten und Cloud-Synchronisierung sind nicht verfügbar.
+Android/Chrome: Menü → App installieren. iPhone/Safari: Teilen → Zum Home-Bildschirm. Desktop: Installation im unterstützten Browser. Es ist eine installierbare Web-App; eine Veröffentlichung in App-Stores wird nicht behauptet. Zuerst online öffnen und unter ⚙ die Dateiprüfung abwarten: 30 notwendige Ressourcen werden per SHA-256 geprüft. Optionale lokale Sprechstimmen hängen vom Gerät ab.
 
-Unter **⚙ → App als HTML herunterladen** lässt sich eine komplette Datei speichern und weitergeben. Alle Laufzeitmodule, Bilder, Schrift und Lizenzhinweise sind eingebettet. Mit einem modernen Browser öffnen; einfache mobile Dateibetrachter führen JavaScript möglicherweise nicht aus. Die Datei ist eine zusätzliche Offline-Kopie, keine APK und kein App-Store-Paket. Web-App und HTML-Datei können unterschiedliche lokale Profile verwenden; der Profil-Export überträgt Fortschritt.
+Unter ⚙ **App als HTML herunterladen** wählen. Die eigenständige Datei enthält Module, Robotergrafik, Schrift und Lizenzen. [HTML-Kopie öffnen](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/N25x-Studio.html). Ein Dateibetrachter auf dem Telefon führt möglicherweise kein JavaScript aus. Website und lokale Datei können unterschiedliche Speicher haben; Profile exportieren und importieren. Browser können lokale Daten entfernen, daher Sicherungen behalten.
 
-## Für die technische Prüfung
+## Prüfung durch Arbeitgeber
 
-Persönliches Portfolio-Projekt mit JavaScript-ES-Modulen, HTML/CSS, Three.js, Web Audio, Web App Manifest, Service Worker, Node-Tests und GitHub Actions. Keine Runtime-CDNs, Benutzerkonten, Tracker oder kostenpflichtigen KI-APIs. Der Rechenhelfer und die vorbereiteten N25x-Erklärungen laufen lokal. Es gibt keinen freien KI-Chat, keine aktive soziale Plattform und keine vollständigen zertifizierten Schul- oder Sprachkurse.
+JavaScript-ES-Module, Three.js, Web Audio, begrenzte Interpreter, responsives HTML/CSS, PWA, Node/linkedom/VM-Tests und echte Chromium-Actions. Keine Konten, Nachrichten, freie Cloud-KI-Unterhaltung, Cloud-Synchronisierung oder kostenpflichtigen APIs.
 
 ```sh
 cd portfolio/eliana-n25x
@@ -50,18 +41,10 @@ npm test
 python3 -m http.server 8080 --bind 127.0.0.1 --directory workshop/dist
 ```
 
-Danach `http://localhost:8080/` öffnen. CI verwendet Node.js 24; Python dient hier nur als optionaler lokaler HTTP-Server. Der gemeinsame Portfolio-Build lautet `node scripts/build-pages.mjs` im Repository-Stamm. Einzelheiten: [technische Studio-Dokumentation](workshop/README.md), [Prüfbelege](../../docs/eliana-n25x-workshop/README.ru.md), [Browser-Workflow](../../.github/workflows/eliana-workshop-browser.yml).
+Dann `http://localhost:8080/` öffnen. CI verwendet Node.js 24. Im Stamm: `node scripts/build-pages.mjs` und `node --test tests/pages.test.mjs`. Automatische Tests, Chromium mit Desktop/Touch-Emulation und echte Geräteinstallationen werden getrennt dokumentiert. [Aktuelle Veröffentlichung](../../docs/eliana-n25x-workshop/publication.json).
 
-Automatisierte Logik-/DOM-/Cache-Prüfungen, echtes Chromium und physische Geräte werden getrennt dokumentiert. Aktuelle Freigabe und Version stehen in [publication.json](../../docs/eliana-n25x-workshop/publication.json). Eine emulierte Telefonansicht ist kein physisches Android-/iOS-Gerät.
+Der Schlüssel `eliana-n25x.workshop.v1` bleibt kompatibel; bisherige Roboter, Punkte und Projekte werden erhalten. [Bilderquest](https://netaniya.github.io/Netaniya/eliana-n25x/) und [3D-Abenteuer](https://netaniya.github.io/Netaniya/eliana-n25x/3d/) haben eigene Speicherstände.
 
-## Frühere Spielversionen
+## Urheberrecht
 
-[Illustrierter Quest](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Steuerbares 3D-Abenteuer](https://netaniya.github.io/Netaniya/eliana-n25x/3d/) · [3D-Dokumentation](3d/README.md). Beide Versionen und ihre eigenen Speicherstände bleiben getrennt erhalten.
-
-## Urheberschaft und Lizenzen
-
-Die Idee, Konzeption, Figurenwahl und künstlerische Leitung gehören zu Natalie Ragulinas menschlichem kreativen Beitrag. Der Einsatz von KI wird offen benannt. Die privaten Originalfotos werden nicht verteilt; für das menschliche Gesicht wird keine exakte animierte Rekonstruktion behauptet.
-
-**© 2026 Natalie Ragulina. All rights reserved.** Veröffentlichung erteilt keine allgemeine Wiederverwendungslizenz für die Originalmaterialien. [Copyright-Hinweis](LICENSE.md). Three.js bleibt MIT-lizenziert, Manrope unter SIL OFL; [Bildangaben](assets/credits.json) und Lizenzdateien bleiben erhalten.
-
-[Chrome-Installationshilfe](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid) · [Safari-Installationshilfe](https://support.apple.com/guide/iphone/iphea86e5236/ios)
+Natalie Ragulina verantwortet die menschliche Idee, Konzeption, Figurenwahl und künstlerische Leitung. KI-Unterstützung wird offengelegt; kommerzielle Referenzen und prozentuale Beiträge werden nicht erfunden. Private Originalfotos werden im neuen Studio nicht verwendet. [Urheberrechtsvermerk](LICENSE.md). Three.js: MIT; Manrope: SIL OFL; [Bildnachweise](assets/credits.json).

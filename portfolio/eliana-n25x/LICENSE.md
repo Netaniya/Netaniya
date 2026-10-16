@@ -2,7 +2,7 @@
 
 **© 2026 Natalie Ragulina. All rights reserved.**
 
-Eliana & N25x, including Robot Studio, is a portfolio project by Natalie Ragulina. No general license to copy, modify, redistribute, sell or reuse the original project code, writing, design or other original project materials is granted by publication of this repository. Permission for reuse must be obtained from the author, except where applicable law or a separately stated license permits it.
+N25x, including its earlier illustrated quest, 3D adventure and Robot Studio, is a portfolio project by Natalie Ragulina. No general license to copy, modify, redistribute, sell or reuse the original project code, writing, design or other original project materials is granted by publication of this repository. Permission for reuse must be obtained from the author, except where applicable law or a separately stated license permits it.
 
 AI assistance in code, artwork and translations is disclosed in the project documentation. This notice does not claim exclusive rights over material that is not protected by copyright.
 

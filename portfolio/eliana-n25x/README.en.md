@@ -1,45 +1,36 @@
-# N25x · Robot Studio
+# N25x · Learning and Creative Studio
 
 **Creator, original idea, concept and art direction: Natalie Ragulina.**
 **© 2026 Natalie Ragulina. All rights reserved.**
 
-[Deutsch](README.md) · [Русский](README.ru.md) · **[Open the app](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/)** · [Open standalone HTML](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/N25x-Studio.html)
+[Open app](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/) · [Русский](README.ru.md) · [Deutsch](README.md)
 
-An interactive learning and creation workshop for phones and computers. Users customize a personal humanoid 3D robot, practice skills and make small projects. Eliana and N25x remain the named mentor characters. Implementation, translations, generated portraits and technical checks were developed with AI assistance, following Natalie Ragulina's creative decisions and requirements.
+A phone-first learning workshop with an original articulated humanoid, practical exercises, user creations and motivational points. Development, translations and technical checks use AI assistance under the creator's direction. The current Studio uses only N25x. Earlier games remain separately archived.
 
-## Try it in three minutes
+## Try it
 
-1. Use the visible **App language** selector at the top: Deutsch, English, Русский or Українська. German is the default; the choice stays on this device.
-2. Customize the robot's name, body, panels and finish. Tap the actual 3D robot to wave.
-3. Open **Learn → Programming & practice**. Change a block or edit JavaScript, run an example and check all test cases.
-4. Open **Create → My quiz game**, write your questions and answers, check the scoring function and play the result.
-5. Save it, download playable HTML or send an editable project file yourself.
+Choose Deutsch, English, Русский or Українська in the visible header selector; German is the first-visit default. Customize the robot, then open **Learn → Mathematics classroom**, **Language lessons** or **Programming**. In **Create → Piano and composition**, record notes with multiple fingers or A W S E D F T G Y H U J K, add parts, edit notes and download the composition.
 
-## What is implemented
+## Actual scope
 
-- Original articulated 3D humanoid with joints and fingers, configurable materials and a dark, lit studio.
-- Five executable programming missions: variables, conditions, loops, functions and debugging. A bounded JavaScript interpreter runs learner code and reports real values and test cases.
-- Quiz editor with 1–8 questions, an editable scoring function, sandbox preview, standalone HTML and validated project JSON.
-- Eleven mathematics difficulty levels, daily exercises, a local expression helper and three executable grid-route programs.
-- Ten introductory learning languages: German, English, Georgian, Ukrainian, Russian, Mandarin Chinese, Spanish, French, Italian and Japanese. Six vocabulary entries each, with cards, choice and typing practice. Learning language is separate from the four UI languages.
-- Short original exercises in logic, physics, biology, geography and digital skills.
-- Twenty creation choices, including branching stories, writing, comic-scene cards, a webpage, checklists, timer, flashcards, badge, animated sticker, idea map, day plan, melody and robot movements. Some share a writing editor. Users write their own content; there is no generative writing service.
-- One-time achievement points, unlockable parts, autosaved per-tool drafts, local profiles and validated profile import/export. No cash rewards, payments or real-money marketplace.
-- Four complete interface languages, large controls, original synthesized audio, volume/mute, installable web app and a standalone HTML edition.
+- **48 mathematics task families / 12,288 numeric variants**: explanations, examples, worked solutions, review queue and resumable ten-task assessments. Grade labels are difficulty guides, not a validated national syllabus.
+- **12 topics / 120 source sentences per language / 10 languages**: 1,200 translated texts, with reading, writing and word-order exercises. Introductory AI-assisted material awaiting native-speaker review. **The complete path to C1 is not finished.**
+- German, English, Georgian, Ukrainian, Russian, Mandarin Chinese, Spanish, French, Italian and Japanese. Listening uses an installed local device voice when available; no native-speaker audio recordings are bundled.
+- **20 runnable programming missions**, 95 normal/edge-case inputs, editable code, predictions, repairs and local explanations. The restricted JavaScript interpreter supports numbers, logic, conditions, loops and functions.
+- **A0–C8 piano**, chord recording, up to four tracks, 64 bars, 2,048 notes and 32 simultaneous voices. Edit pitch, beat and duration. Original synthesized piano/bass/bell sounds; actual MIDI, PCM WAV and editable JSON export.
+- Quiz and branching-story builders, writing tools, earlier creative projects, points and validated file exchange remain available.
 
-## Install, download or share
+[Learning scope and roadmap](workshop/LEARNING-PLAN.ru.md) · [Technical notes](workshop/README.en.md) · [Evidence](../../docs/eliana-n25x-workshop/README.ru.md)
 
-**Android / Chrome:** Open the app link and choose **Install app** in Chrome's menu. Depending on the version, it appears under “Install and create shortcut.”
-**iPhone / Safari:** Open the link, select **Share → Add to Home Screen**, then enable “Open as Web App” if offered.
-**Desktop:** Use the installation icon or “Install app” in a supported browser.
+## Install, download and save
 
-Visit online first and wait for the verified offline confirmation in **⚙ Settings**. That confirmation applies to the files present in this browser. Browsers may evict storage; export important profiles. Messaging and cloud synchronization are not connected.
+Use Install App in Android/Chrome or Share → Add to Home Screen in iPhone/Safari. Desktop installation depends on browser support. This is an installable web app; no app-store release is claimed. Visit online and wait for the verified offline status under ⚙: 30 required resources are checked with SHA-256. Optional local speech voices depend on the device.
 
-**⚙ → Download app as HTML** saves a complete file you can pass to someone else. It embeds the runtime modules, images, font and licence notices. Open it in a modern browser; basic mobile file viewers may not execute JavaScript. This is a web app plus an optional offline file, not an APK or app-store release. Web and file origins can use separate storage; profile export/import transfers progress.
+Under ⚙ choose **Download app as HTML** for the complete standalone copy with embedded modules, robot assets, font and licenses. [Open standalone copy](https://netaniya.github.io/Netaniya/eliana-n25x/workshop/download/N25x-Studio.html). A phone's file viewer may not run JavaScript. Browser/file storage can differ; transfer profiles with export/import. Keep backups because browsers may evict local storage.
 
-## Technical review
+## Employer review and local build
 
-A personal portfolio project using JavaScript ES modules, HTML/CSS, Three.js, Web Audio, a Web App Manifest, scoped service worker, Node tests and GitHub Actions. No runtime CDNs, accounts, tracking SDKs or paid AI API. The math helper and prepared N25x explanations run locally. Open-ended AI chat, live social features and complete certified school/language curricula are not implemented.
+JavaScript ES modules, Three.js, Web Audio, bounded interpreters, responsive HTML/CSS, PWA, Node/linkedom/VM checks and real Chromium Actions. No accounts, live messaging, unrestricted cloud AI, cloud sync, tracking SDK or paid API is connected.
 
 ```sh
 cd portfolio/eliana-n25x
@@ -50,18 +41,10 @@ npm test
 python3 -m http.server 8080 --bind 127.0.0.1 --directory workshop/dist
 ```
 
-Open `http://localhost:8080/`. CI uses Node.js 24; Python is only an optional local HTTP server. The shared portfolio build is `node scripts/build-pages.mjs` from the repository root. See [Studio technical documentation](workshop/README.en.md), [verification evidence](../../docs/eliana-n25x-workshop/README.ru.md) and the [browser workflow](../../.github/workflows/eliana-workshop-browser.yml).
+Open `http://localhost:8080/`. CI uses Node.js 24. From repository root: `node scripts/build-pages.mjs`, then `node --test tests/pages.test.mjs`. Automated tests, real desktop/emulated-touch Chromium and physical-device installation are separate claims. [Current publication record](../../docs/eliana-n25x-workshop/publication.json).
 
-Logic/DOM/cache tests, real Chromium and physical-device checks are recorded separately. Current release and version: [publication.json](../../docs/eliana-n25x-workshop/publication.json). An emulated mobile viewport is not a physical Android/iOS test.
+The save key `eliana-n25x.workshop.v1` is retained for compatibility. New fields preserve existing robots, points and projects. [Original quest](https://netaniya.github.io/Netaniya/eliana-n25x/) and [3D adventure](https://netaniya.github.io/Netaniya/eliana-n25x/3d/) retain independent saves.
 
-## Earlier games
+## Ownership
 
-[Illustrated quest](https://netaniya.github.io/Netaniya/eliana-n25x/) · [Controllable 3D adventure](https://netaniya.github.io/Netaniya/eliana-n25x/3d/) · [3D documentation](3d/README.en.md). Both editions and their independent save keys remain available.
-
-## Authorship and licences
-
-Natalie Ragulina's human creative contribution includes the original idea, concept, character choices and art direction. AI assistance is disclosed. Private source photographs are not distributed; no exact animated face reconstruction is claimed.
-
-**© 2026 Natalie Ragulina. All rights reserved.** Public availability grants no general reuse licence for original project materials. See the [copyright notice](LICENSE.md). Bundled Three.js retains MIT, Manrope retains SIL OFL, and [image credits](assets/credits.json) and licence files are preserved.
-
-[Chrome installation help](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid) · [Safari installation help](https://support.apple.com/guide/iphone/iphea86e5236/ios)
+Natalie Ragulina controls the original idea, concept, characters and art direction. AI assistance is disclosed, with no invented commercial experience or contribution percentages. Personal source photos are not used in the new Studio. [Copyright notice](LICENSE.md). Three.js remains under MIT, Manrope under SIL OFL; [image credits](assets/credits.json) are retained.
