@@ -15,7 +15,7 @@ const integer=(n,min,max)=>Number.isInteger(n)&&n>=min&&n<=max;
 const bool=x=>typeof x==='boolean';
 export function initialPuzzle(type){return type==='grid'?[0,0,0,0,0,0,0,0,0]:type==='sequence'?[]:type==='balance'?[2,4,6]:type==='valves'?[true,false,true,false]:type==='order'?[2,0,3,1]:[20,3];}
 export function newAttempt(index,mode='explorer'){return {entered:false,mode,clue:false,solved:false,collected:false,completed:false,puzzle:initialPuzzle(SCENES[index].type),moves:0,mistakes:0,elapsedMs:0,award:null};}
-export function newGame({lang='de',mode='explorer'}={}){mode=['explorer','challenge'].includes(mode)?mode:'explorer';return {schema:SCHEMA,lang:LANGUAGES.includes(lang)?lang:'de',mode:['explorer','challenge'].includes(mode)?mode:'explorer',actor:'eliana',active:0,started:false,unlocked:0,sound:false,volume:.35,chapters:SCENES.map((_,i)=>newAttempt(i,mode)),records:{explorer:SCENES.map(()=>null),challenge:SCENES.map(()=>null)}};}
+export function newGame({lang='de',mode='explorer'}={}){mode=['explorer','challenge'].includes(mode)?mode:'explorer';return {schema:SCHEMA,lang:LANGUAGES.includes(lang)?lang:'de',mode:['explorer','challenge'].includes(mode)?mode:'explorer',actor:'eliana',active:0,started:false,unlocked:0,sound:true,volume:.35,chapters:SCENES.map((_,i)=>newAttempt(i,mode)),records:{explorer:SCENES.map(()=>null),challenge:SCENES.map(()=>null)}};}
 export function connections(type,rotation){return (type==='straight'?[0,2]:[0,1]).map(x=>(x+rotation)%4);}
 export function poweredTiles(rotations){
  if(!Array.isArray(rotations)||rotations.length!==9)return [];

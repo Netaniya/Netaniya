@@ -69,7 +69,7 @@ export async function buildPages({basePath='/Netaniya',origin='https://netaniya.
  for(const lang of languages)await write('ai-quality-lab/download/fixtures.'+lang+'.json',JSON.stringify(datasetForLanguage(dataset,lang),null,2));
  const game=path.join(root,'portfolio/eliana-n25x');
  await promisify(execFile)(process.execPath,[path.join(game,'build.mjs')]);
- for(const name of ['index.html','style.css','app.mjs','engine.mjs','i18n.mjs','manifest.webmanifest','sw.js','build-info.json'])await write('eliana-n25x/'+name,await fs.readFile(path.join(game,name)));
+ for(const name of ['index.html','style.css','app.mjs','engine.mjs','i18n.mjs','audio.mjs','manifest.webmanifest','sw.js','build-info.json'])await write('eliana-n25x/'+name,await fs.readFile(path.join(game,name)));
  for(const name of ['assets','download'])await fs.cp(path.join(game,name),path.join(outDir,'eliana-n25x',name),{recursive:true});
  await write('index.html',(await read('pages/index.html')).replaceAll('__BASE__',basePath));
  await write('404.html',(await read('pages/404.html')).replaceAll('__BASE__',basePath));

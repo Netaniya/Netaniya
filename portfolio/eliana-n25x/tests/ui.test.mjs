@@ -8,6 +8,9 @@ import {SCENES,LANGUAGES} from '../engine.mjs';
 test('every locale has complete copy with no Russian/Ukrainian leakage in German or English',()=>{
  for(const lang of LANGUAGES){assert.deepEqual(Object.keys(TEXT[lang]).sort(),Object.keys(TEXT.de).sort());for(const value of Object.values(TEXT[lang])){assert(value.trim());if(['de','en'].includes(lang))assert(!/[\u0400-\u04ff]/u.test(value));}}
 });
+test('copyright visibly names Natalie Ragulina in every language',()=>{
+ for(const lang of LANGUAGES){const b=boot({lang});const footer=b.document.querySelector('footer').textContent;assert(footer.includes('© 2026 Natalie Ragulina'));assert(footer.includes(translate(lang,'rightsReserved')));b.click('[data-action="credits"]');assert.equal(b.document.querySelector('.ownership').textContent,translate(lang,'ownershipNotice'));assert(!b.document.querySelector('.ownership').textContent.includes('Netaniya'));}
+});
 for(const lang of LANGUAGES)test(`all six chapters can be completed through the UI in ${lang}`,()=>{
  const b=boot({lang});assert.equal(b.document.documentElement.lang,lang);assert.equal(b.document.querySelectorAll('.world-card').length,6);
  b.click('[data-action="mode"][data-mode="challenge"]');b.click('[data-action="continue"]');b.route(b.ctx.location.hash);

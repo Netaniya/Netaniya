@@ -15,7 +15,7 @@ A cinematic point-and-click adventure across six distinct locations: a future ci
 - Local progress, validated JSON import/export, confirmation before reset, and reload recovery.
 - Installable PWA where supported, with all six locations cached for offline use. Readiness is announced only after every required file is present.
 - A separate self-contained HTML download with embedded images, font and game logic; no account, analytics, runtime CDN or paid API.
-- Optional procedural sound, volume controls and reduced-motion support.
+- Distinct procedural game effects, scene ambience, volume controls and reduced-motion support.
 
 ## Install and play
 
@@ -25,7 +25,7 @@ Press **E / N** to switch characters, **1–4** to interact and **Space** to pau
 
 ## Authorship and scope
 
-**Natalie Ragulina (Netaniya)** defined the concept, character names, references, art direction and requested mechanics. Implementation, generated artwork, translations and automated checks were developed with AI assistance. The project owner reviews the playable result and directs subsequent development. This is a fictional portfolio project with no claimed commercial deployment.
+**Natalie Ragulina** defined the concept, character names, references, art direction and requested mechanics. Implementation, generated artwork, translations and automated checks were developed with AI assistance. The project owner reviews the playable result and directs subsequent development. This is a fictional portfolio project with no claimed commercial deployment.
 
 The scenes are generated raster images with interactive hotspots. This edition does not have free-roaming 3D movement, physical robot simulation or live AI dialogue. Puzzles, scores and progress run locally in JavaScript. Original personal reference photographs are not distributed. See [asset credits](assets/credits.json).
 
@@ -41,3 +41,7 @@ npm test
 Framework-free ES modules, Web Audio, a Web App Manifest and a service worker scoped to this game. The build generates a content-versioned cache and a standalone offline HTML bundle. Generated files and dependencies are excluded from source control; the shared Pages workflow builds and publishes the allowlisted runtime files.
 
 Tests cover both modes, complete six-chapter DOM walkthroughs in all four languages, scoring, role and progression gates, save recovery, import/export, pause and page return, the standalone bundle, and service-worker cache success/failure. These are logic and DOM tests, not real-browser rendering or mobile-device certification. Visual checks on actual desktop and mobile browsers remain open for this release.
+
+## Copyright
+
+**© 2026 Natalie Ragulina. All rights reserved.** [Copyright notice and third-party licenses](LICENSE.md).

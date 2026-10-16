@@ -5,13 +5,15 @@ import assert from 'node:assert/strict';
 import {parseHTML} from 'linkedom';
 import * as core from '../engine.mjs';
 import {translate} from '../i18n.mjs';
+import {createGameAudio} from '../audio.mjs';
 const html=await fs.readFile(new URL('../index.html',import.meta.url),'utf8');
 const source=(await fs.readFile(new URL('../app.mjs',import.meta.url),'utf8')).replace(/^import .*?;\n/gm,'');
-export function boot({lang='de',rawSave,hash='#home',code=source,markup=html,portable=false,blockedStorage=false,serviceWorker}={}){
+export function boot({lang='de',rawSave,hash='#home',code=source,markup=html,portable=false,blockedStorage=false,serviceWorker,AudioContext}={}){
  const {window,document}=parseHTML(markup),memory=new Map();
  memory.set(core.SCHEMA,rawSave??JSON.stringify(core.newGame({lang})));
  Object.defineProperty(window,'localStorage',{value:{getItem:k=>{if(blockedStorage)throw Error('blocked');return memory.get(k)??null;},setItem:(k,v)=>{if(blockedStorage)throw Error('blocked');memory.set(k,v);}},configurable:true});
  window.matchMedia=()=>({matches:false});window.EN25X_PORTABLE=portable;
+ if(AudioContext)window.AudioContext=AudioContext;
  const dialog=document.getElementById('modal');
  Object.defineProperty(dialog,'open',{get(){return this.hasAttribute('open');}});
  dialog.showModal=function(){this.setAttribute('open','');};dialog.close=function(){this.removeAttribute('open');};
@@ -19,7 +21,7 @@ export function boot({lang='de',rawSave,hash='#home',code=source,markup=html,por
  const createURL=blob=>{const id='blob:test-'+downloads.length;downloads.push({url:id,blob});return id;};
  class BrowserURL extends URL{static createObjectURL=createURL;static revokeObjectURL(){}}
  const navigator={onLine:true,...(serviceWorker?{serviceWorker}:{} )};
- const ctx={...core,translate,document,window,location:{hash,protocol:'https:',origin:'https://example.test',pathname:'/Netaniya/eliana-n25x/'},navigator,performance:{now:()=>clock.now},Intl,Blob,URL:BrowserURL,console,
+ const ctx={...core,translate,createGameAudio,document,window,location:{hash,protocol:'https:',origin:'https://example.test',pathname:'/Netaniya/eliana-n25x/'},navigator,performance:{now:()=>clock.now},Intl,Blob,URL:BrowserURL,console,
   setTimeout:(fn,ms)=>{const id=++timerId;timeouts.set(id,{fn,ms});return id;},clearTimeout:id=>timeouts.delete(id),
   setInterval:(fn,ms)=>{const id=++timerId;intervals.set(id,{fn,ms});return id;},clearInterval:id=>intervals.delete(id)};
  vm.createContext(ctx);vm.runInContext(code,ctx,{filename:'game-app.js'});
