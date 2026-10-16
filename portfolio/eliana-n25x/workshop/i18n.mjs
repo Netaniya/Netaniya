@@ -1,4 +1,22 @@
 const rows=`
+mathCourse|Mathematik-Werkstatt|Mathematics classroom|Математический практикум|Математичний практикум
+mathCourseHelp|48 Themen mit Erklärungen, Lösungen und Wiederholung|48 topics with explanations, solutions and review|48 тем с объяснениями, решениями и повторением|48 тем із поясненнями, розв’язаннями та повторенням
+mathInventory|{topics} Aufgabenfamilien · {n} Zahlenvarianten. Varianten werden getrennt von Themen gezählt.|{topics} task families · {n} numeric variants. Variants are counted separately from topics.|{topics} типов заданий · {n} числовых вариантов. Это варианты задач, а не столько разных тем.|{topics} типів завдань · {n} числових варіантів. Це варіанти задач, а не стільки різних тем.
+reviewQueue|Zur Wiederholung|To review|К повторению|До повторення
+accuracy|Richtige Antworten|Correct answers|Правильных ответов|Правильних відповідей
+chooseTopic|Thema wählen|Choose a topic|Выбрать тему|Обрати тему
+topicProgress|{n} von {total} Varianten gelöst|{n} of {total} variants solved|Решено {n} из {total} вариантов|Розв’язано {n} із {total} варіантів
+assessment|Selbsttest: 10 Aufgaben|Self-test: 10 tasks|Самопроверка: 10 задач|Самоперевірка: 10 задач
+reviewMistakes|Fehler wiederholen|Review mistakes|Повторить ошибки|Повторити помилки
+assessmentResult|Ergebnis: {n} / 10|Result: {n} / 10|Результат: {n} / 10|Результат: {n} / 10
+assessmentPass|Guter Stand in dieser Aufgabenfamilie. Die nächste Themenwahl ist frei.|Good progress in this task family. You can choose the next topic.|Хороший результат по этому типу заданий. Можно выбрать следующую тему.|Гарний результат із цього типу завдань. Можна обрати наступну тему.
+assessmentReview|Wiederhole die Fehler mit ihren Lösungswegen.|Review mistakes with their worked solutions.|Повтори ошибки с разбором решения.|Повтори помилки з розбором розв’язання.
+lessonAndExample|Erklärung und Beispiel|Explanation and example|Объяснение и пример|Пояснення та приклад
+assessmentStep|Selbsttest · Aufgabe {n} / 10|Self-test · task {n} / 10|Самопроверка · задача {n} / 10|Самоперевірка · задача {n} / 10
+variantNumber|Variante {n} / 256|Variant {n} / 256|Вариант {n} / 256|Варіант {n} / 256
+numericAnswerHelp|Eine Zahl oder ein Bruch, zum Beispiel 3/4. Einheiten stehen in der Aufgabe.|Enter a number or fraction, such as 3/4. Units are shown in the task.|Введи число или дробь, например 3/4. Единица измерения указана в задаче.|Введи число або дріб, наприклад 3/4. Одиницю виміру вказано в задачі.
+showSolution|Lösungsweg zeigen|Show worked solution|Показать решение|Показати розв’язання
+mathScopeNote|Klassenstufen sind Orientierung. Dies ist eine Sammlung von Aufgabenfamilien, kein vollständig geprüfter nationaler Lehrplan.|Grades are a guide. This is a task-family collection, not a fully validated national syllabus.|Классы — ориентир сложности. Это набор типов задач; соответствие полной школьной программе ещё не проверено.|Класи — орієнтир складності. Це набір типів задач; відповідність повній шкільній програмі ще не перевірено.
 brand|Dein Roboter. Deine Ideen.|Your robot. Your ideas.|Твой робот. Твои идеи.|Твій робот. Твої ідеї.
 workshop|Robot Studio|Robot Studio|Мастерская роботов|Майстерня роботів
 home|Mein Roboter|My robot|Мой робот|Мій робот

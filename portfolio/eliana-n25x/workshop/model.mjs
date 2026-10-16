@@ -1,3 +1,4 @@
+import {freshMathCourse,parseMathCourse} from './math-course.mjs';
 import {validateCreation,CREATION_TEMPLATES} from './creations.mjs';
 import {LEARNING_LANGUAGES,MISSIONS} from './curriculum.mjs';
 export const MAX_PROFILE_BYTES=4*1024*1024;
@@ -12,7 +13,7 @@ export const SHOP=[
 export const ACTIONS=['wave','turn','step','glow','nod','rest'];
 export function cleanName(value){return String(value??'').normalize('NFC').replace(/[<>\x00-\x1f]/g,'').trim().slice(0,24)||'Nova';}
 export function freshAcademy(){return {mission:0,drafts:{},learningLanguage:'en',languageIndex:0,languageMode:'cards',quiz:null,creator:null,creators:{}};}
-export function fresh(){return {schema:SAVE_KEY,lang:'de',started:false,robot:{name:'Nova',color:'pearl',head:'arc',base:'feet',hands:'round',frame:'balanced',finish:'ceramic',personality:'calm',interest:'space',style:'steps',module:'none'},grade:5,points:80,owned:['pearl','ocean'],earned:{},solved:[],projects:[],academy:freshAcademy(),sound:true,volume:.35,visits:0};}
+export function fresh(){return {schema:SAVE_KEY,lang:'de',started:false,robot:{name:'Nova',color:'pearl',head:'arc',base:'feet',hands:'round',frame:'balanced',finish:'ceramic',personality:'calm',interest:'space',style:'steps',module:'none'},grade:5,points:80,owned:['pearl','ocean'],earned:{},solved:[],projects:[],academy:freshAcademy(),learning:{math:freshMathCourse()},sound:true,volume:.35,visits:0};}
 export function configure(state,key,value){
  const choices={color:Object.keys(COLORS).filter(v=>state.owned.includes(v)),head:['arc','visor','antenna'],base:['feet','wheels','hover'],hands:['round','clamp'],frame:['balanced','athletic','slender'],finish:['ceramic','titanium','satin'],personality:['calm','cheerful','focused'],interest:['space','nature','music'],style:['steps','visual','challenge'],module:['none',...SHOP.filter(v=>v.kind==='module'&&state.owned.includes(v.id)).map(v=>v.id)]};
  if(key==='name')state.robot.name=cleanName(value);else if(choices[key]?.includes(value))state.robot[key]=value;else return false;return true;
@@ -58,6 +59,6 @@ export function parseProfile(raw){
  if(!Number.isSafeInteger(p.points)||p.points<0||p.points>1000000000)return null;s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,20000));s.solved=p.solved.filter(v=>typeof v==='string'&&v.length<100).slice(0,20000);
  s.projects=[];for(const item of p.projects.slice(0,24).reverse()){if(!item||!item.data)continue;const result=addProject(s,item.kind,item.data,item.name);if(result)result.project.id=Number.isSafeInteger(item.id)&&item.id>0?item.id:result.project.id;}
  s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,20000));
- s.academy=parseAcademy(p.academy);s.sound=p.sound!==false;s.volume=Math.max(0,Math.min(1,Number.isFinite(p.volume)?p.volume:.35));s.visits=Math.max(0,Math.min(100000,Number(p.visits)||0));return s;
+ s.academy=parseAcademy(p.academy);s.learning.math=parseMathCourse(p.learning?.math);s.sound=p.sound!==false;s.volume=Math.max(0,Math.min(1,Number.isFinite(p.volume)?p.volume:.35));s.visits=Math.max(0,Math.min(100000,Number(p.visits)||0));return s;
  }catch{return null;}
 }
