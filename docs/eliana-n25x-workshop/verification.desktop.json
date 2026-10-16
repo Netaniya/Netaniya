@@ -1,8 +1,8 @@
 {
   "scope": "desktop",
-  "buildVersion": "en25xstudio-fbcb0a052494e4",
+  "buildVersion": "en25xstudio-fc63d4cc0d318b",
   "author": "Natalie Ragulina",
-  "startedAt": "2026-10-16T23:09:41.932Z",
+  "startedAt": "2026-10-16T23:45:59.888Z",
   "checks": [
     {
       "name": "real humanoid WebGL model initializes on a dark background; first visit is German"
@@ -74,8 +74,47 @@
       "wavBytes": 150586
     },
     {
+      "name": "medium-size text and vivid controls remain readable without overflowing labels on narrow, landscape and desktop layouts in all four UI languages",
+      "layouts": [
+        {
+          "width": 760,
+          "lang": "de"
+        },
+        {
+          "width": 760,
+          "lang": "en"
+        },
+        {
+          "width": 760,
+          "lang": "ru"
+        },
+        {
+          "width": 760,
+          "lang": "uk"
+        },
+        {
+          "width": 1360,
+          "lang": "de"
+        },
+        {
+          "width": 1360,
+          "lang": "en"
+        },
+        {
+          "width": 1360,
+          "lang": "ru"
+        },
+        {
+          "width": 1360,
+          "lang": "uk"
+        }
+      ],
+      "bodyTextAtLeast": 16,
+      "cardDescriptionsAtLeast": 14
+    },
+    {
       "name": "downloaded full app starts from an actual local HTML file without network, renders the humanoid, changes language and completes programming practice",
-      "bytes": 2171395
+      "bytes": 2174360
     },
     {
       "name": "cold offline reload restores real 3D robot, projects and balance; lessons still work; both older saves untouched",
@@ -85,5 +124,5 @@
   "errors": [],
   "physicalDevicesTested": false,
   "success": true,
-  "finishedAt": "2026-10-16T23:17:56.791Z"
+  "finishedAt": "2026-10-16T23:54:39.698Z"
 }
