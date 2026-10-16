@@ -73,6 +73,8 @@ export async function buildPages({basePath='/Netaniya',origin='https://netaniya.
  for(const name of ['assets','download'])await fs.cp(path.join(game,name),path.join(outDir,'eliana-n25x',name),{recursive:true});
  await promisify(execFile)(process.execPath,[path.join(game,'3d/build.mjs')]);
  await fs.cp(path.join(game,'3d/dist'),path.join(outDir,'eliana-n25x/3d'),{recursive:true});
+ await promisify(execFile)(process.execPath,[path.join(game,'workshop/build.mjs')]);
+ await fs.cp(path.join(game,'workshop/dist'),path.join(outDir,'eliana-n25x/workshop'),{recursive:true});
  await write('index.html',(await read('pages/index.html')).replaceAll('__BASE__',basePath));
  await write('404.html',(await read('pages/404.html')).replaceAll('__BASE__',basePath));
  await write('.nojekyll','');

@@ -1,0 +1,37 @@
+name: Robot Studio browser verification
+on:
+  push:
+    branches: [main, codex/eliana-n25x-robot-workshop]
+    paths: ['portfolio/eliana-n25x/workshop/**', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chromium:
+    name: Studio Chromium · ${{ matrix.scope }}
+    strategy:
+      fail-fast: false
+      matrix:
+        scope: [desktop, touch]
+    env:
+      ELIANA_BROWSER_SCOPE: ${{ matrix.scope }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts --prefix portfolio/eliana-n25x/3d/browser-tests
+      - run: cd portfolio/eliana-n25x/3d/browser-tests && npx playwright install --with-deps chromium
+      - run: node portfolio/eliana-n25x/workshop/build.mjs
+      - name: Verify core, math, audio and offline cache
+        run: node --test portfolio/eliana-n25x/tests/workshop.test.mjs
+      - name: Exercise rendered studio through real input
+        run: node portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: robot-studio-${{ matrix.scope }}-evidence
+          path: portfolio/eliana-n25x/3d/browser-tests/workshop-results/
+          retention-days: 14

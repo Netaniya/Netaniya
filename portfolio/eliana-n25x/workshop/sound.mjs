@@ -1,0 +1,13 @@
+export const FREQUENCIES=[0,261.6256,293.6648,329.6276,391.9954,440];
+export function makeWav(steps,tempo=110){
+ const rate=22050,beat=60/Math.max(70,Math.min(160,tempo)),length=Math.ceil((steps.length*beat+.3)*rate),buffer=new ArrayBuffer(44+length*2),v=new DataView(buffer);
+ const str=(offset,s)=>{for(let i=0;i<s.length;i++)v.setUint8(offset+i,s.charCodeAt(i));};str(0,'RIFF');v.setUint32(4,36+length*2,true);str(8,'WAVE');str(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,rate,true);v.setUint32(28,rate*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);str(36,'data');v.setUint32(40,length*2,true);
+ for(let i=0;i<length;i++){const t=i/rate,n=Math.floor(t/beat),u=t-n*beat,f=FREQUENCIES[steps[n]]||0,env=Math.min(1,u/.012)*Math.exp(-u*6),sample=f?(Math.sin(2*Math.PI*f*t)+Math.sin(4*Math.PI*f*t)*.16)*env*.32:0;v.setInt16(44+i*2,Math.max(-32767,Math.min(32767,Math.round(sample*32767))),true);}return buffer;
+}
+export function createSound(){
+ let context,gain,enabled=true,volume=.35,timers=[],voices=[];
+ function start(){if(!context){const C=globalThis.AudioContext||globalThis.webkitAudioContext;if(!C)return false;context=new C();gain=context.createGain();gain.connect(context.destination);}if(enabled&&!document.hidden)context.resume().catch(()=>{});gain.gain.value=enabled?volume:0;return true;}
+ function tone(f,d=.2,delay=0){if(!enabled||document.hidden||!start()||!f)return;const o=context.createOscillator(),g=context.createGain(),t=context.currentTime+delay;o.type='sine';o.frequency.value=f;o.connect(g);g.connect(gain);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.4,t+.012);g.gain.exponentialRampToValueAtTime(.001,t+d);o.start(t);o.stop(t+d+.02);voices.push(o);o.onended=()=>{voices=voices.filter(v=>v!==o);o.disconnect();g.disconnect();};}
+ function stop(){for(const id of timers)clearTimeout(id);timers=[];for(const voice of voices)try{voice.stop();}catch{}voices=[];}
+ return {start,tone,stop,get state(){return context?.state||'uninitialized';},update(sound,value){enabled=sound;volume=value;if(gain)gain.gain.value=enabled?volume:0;if(!enabled){stop();context?.suspend().catch(()=>{});}else if(context&&!document.hidden)context.resume().catch(()=>{});},cue(success=true){tone(success?660:180,.14);if(success)tone(880,.2,.10);},melody(steps,tempo,onBeat=()=>{},done=()=>{}){stop();start();const beat=60/tempo;steps.forEach((n,i)=>{tone(FREQUENCIES[n],beat*.85,i*beat);timers.push(setTimeout(()=>onBeat(i),i*beat*1000));});timers.push(setTimeout(done,steps.length*beat*1000));},suspend(){stop();context?.suspend().catch(()=>{});}};
+}
