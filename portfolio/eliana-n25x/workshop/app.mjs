@@ -3,6 +3,7 @@ import {translate} from './i18n.mjs';
 import {MATH,WORDS,solve,matchesAnswer,dailyTasks} from './math.mjs';
 import {createStage} from './robot.mjs';
 import {createSound,makeWav,FREQUENCIES} from './sound.mjs';
+const BUILD_VERSION='__STUDIO_BUILD__';
 const $=id=>document.getElementById(id),esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let state;try{state=parseProfile(localStorage.getItem(SAVE_KEY));}catch{}state||=fresh();
 let view='home',dialogKind='',subject='math',taskIndex=0,wordIndex=0,puzzle=0,code=[],marker=[0,4],runToken=0,offline='offlinePending',installEvent=null,toastTimer;
@@ -120,6 +121,15 @@ let drag=null;$('robot-canvas').addEventListener('pointerdown',e=>{drag={x:e.cli
 function suspend(){audio.suspend();stage?.stop();playing=false;document.querySelectorAll('.note-tile').forEach(el=>el.classList.remove('active'));runToken++;if($('run-code'))$('run-code').disabled=false;save();}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)suspend();});addEventListener('pagehide',suspend);addEventListener('blur',suspend);
 addEventListener('beforeinstallprompt',event=>{event.preventDefault();installEvent=event;});
-if('serviceWorker' in navigator){navigator.serviceWorker.addEventListener('message',event=>{if(event.data?.type==='OFFLINE_READY'||event.data?.type==='OFFLINE_ERROR'){offline=event.data.type==='OFFLINE_READY'?'offlineReady':'offlineError';if($('offline-status'))$('offline-status').textContent=tr(offline);}});navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'}).then(async reg=>{if(!reg.active){const worker=reg.installing||reg.waiting;await new Promise((resolve,reject)=>{if(!worker)return reject(Error());const check=()=>worker.state==='activated'?resolve():worker.state==='redundant'?reject(Error()):null;worker.addEventListener('statechange',check);check();});}reg.active?.postMessage({type:'VERIFY_OFFLINE'});}).catch(()=>{offline='offlineError';if($('offline-status'))$('offline-status').textContent=tr(offline);});}else offline='offlineError';
+function offlineStatus(key){offline=key;if($('offline-status'))$('offline-status').textContent=tr(key);}
+if('serviceWorker' in navigator){
+ const verify=worker=>worker?.postMessage({type:'VERIFY_OFFLINE'});
+ navigator.serviceWorker.addEventListener('message',event=>{if(event.data?.version!==BUILD_VERSION)return;if(event.data.type==='OFFLINE_READY'||event.data.type==='OFFLINE_ERROR')offlineStatus(event.data.type==='OFFLINE_READY'?'offlineReady':'offlineError');});
+ navigator.serviceWorker.addEventListener('controllerchange',()=>verify(navigator.serviceWorker.controller));
+ navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'}).then(reg=>{
+  const watch=worker=>{if(!worker)return;const check=()=>{if(worker.state==='activated')verify(worker);else if(worker.state==='redundant')offlineStatus('offlineError');};worker.addEventListener('statechange',check);check();};
+  reg.addEventListener('updatefound',()=>watch(reg.installing));watch(reg.installing||reg.waiting);verify(reg.active);
+ }).catch(()=>offlineStatus('offlineError'));
+}else offlineStatus('offlineError');
 if(new URLSearchParams(location.search).has('qa')){$('qa').hidden=false;setInterval(()=>$('qa').textContent='view '+view+' | color '+state.robot.color+' | points '+state.points+' | phase '+(stage?.actor?.phase||0).toFixed(2)+' | active '+Boolean(stage?.active)+' | arm '+(stage?.actor?.arms[1]?.rotation.z||0).toFixed(2)+' | base '+state.robot.base+' | head '+state.robot.head+' | audio '+audio.state+' | offline '+offline,150);}
 state.visits++;render();if(!state.started)dialog('welcome');save();

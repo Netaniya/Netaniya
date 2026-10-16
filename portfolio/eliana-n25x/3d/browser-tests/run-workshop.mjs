@@ -28,7 +28,7 @@ const state=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE_KE
 const waitText=(selector,text)=>page.waitForFunction(([s,t])=>document.querySelector(s)?.textContent.includes(t),[selector,text]);
 const ready=async()=>{await page.waitForFunction(()=>document.body.dataset.ready==='3d');await page.waitForFunction(()=>/phase [1-9]/.test(document.querySelector('#qa').textContent),null,{timeout:60000});await page.evaluate(()=>document.fonts.ready);};
 async function settingsLanguage(lang){await click('#settings-button');await page.locator('[data-language]').selectOption(lang);await click('[data-do=close]');}
-async function screenshot(name){await page.waitForTimeout(300);await page.screenshot({path:path.join(results,name+'.png'),fullPage:false});}
+async function screenshot(name){await page.waitForTimeout(500);await page.locator('#qa').evaluate(el=>el.style.display='none');await page.screenshot({path:path.join(results,name+'.png'),fullPage:false});await page.locator('#qa').evaluate(el=>el.style.display='');}
 async function download(selector,name){const pending=page.waitForEvent('download');await click(selector);const file=await pending;await file.saveAs(path.join(results,name));return fs.readFile(path.join(results,name));}
 async function noOverflow(){assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal page overflow');}
 async function offlineCheck(){

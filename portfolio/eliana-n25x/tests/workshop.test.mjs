@@ -55,7 +55,7 @@ test('Studio: WAV export is actual mono PCM audio with nonzero samples and corre
 });
 const dir=new URL('../workshop/dist/',import.meta.url);
 test('Studio: offline inventory hashes all modules, mentor images, font, icon and licenses',async()=>{
- const info=JSON.parse(await fs.readFile(new URL('build-info.json',dir),'utf8'));assert.equal(info.precacheFiles,17);
+ const info=JSON.parse(await fs.readFile(new URL('build-info.json',dir),'utf8'));assert.equal(info.precacheFiles,17);const app=await fs.readFile(new URL('app.mjs',dir),'utf8');assert(app.includes("const BUILD_VERSION='"+info.version+"'"));assert(!app.includes('__STUDIO_BUILD__'));
  for(const [file,hash]of Object.entries(info.hashes)){const bytes=await fs.readFile(new URL(file,dir));assert.equal(createHash('sha256').update(bytes).digest('hex'),hash);if(/\.m?js$/.test(file)){for(const match of bytes.toString().matchAll(/from\s*['"](\.[^'"]+)['"]/g)){const target=new URL(match[1],new URL(file,dir)),key='./'+target.pathname.slice(dir.pathname.length);assert(info.hashes[key],key);}}}
  assert(info.hashes['./assets/eliana-portrait.webp']);assert(info.hashes['./assets/n25x-portrait.webp']);
 });

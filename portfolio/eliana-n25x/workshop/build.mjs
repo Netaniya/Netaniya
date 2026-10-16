@@ -10,6 +10,10 @@ await fs.mkdir(path.join(out,'vendor'));for(const file of ['three.module.js','LI
 await fs.mkdir(path.join(out,'assets'));for(const file of ['Manrope.ttf','OFL.txt','icon-192.png','icon-512.png','eliana-portrait.webp','n25x-portrait.webp']){await fs.copyFile(path.join(root,'../assets',file),path.join(out,'assets',file));files.push('assets/'+file);}
 const hashes={};for(const file of files)hashes['./'+file]=createHash('sha256').update(await fs.readFile(path.join(out,file))).digest('hex');
 const source=await fs.readFile(path.join(root,'sw-template.js'),'utf8'),version='en25xstudio-'+createHash('sha256').update(JSON.stringify(hashes)+source).digest('hex').slice(0,14);
+// Inject the expected worker version, then hash the final app bytes. The version
+// fingerprint uses the unexpanded source, avoiding a self-referential hash.
+const appPath=path.join(out,'app.mjs');await fs.writeFile(appPath,(await fs.readFile(appPath,'utf8')).replace('__STUDIO_BUILD__',version));
+hashes['./app.mjs']=createHash('sha256').update(await fs.readFile(appPath)).digest('hex');
 await fs.writeFile(path.join(out,'sw.js'),source.replace('__CACHE_VERSION__',version).replace('__PRECACHE_FILES__',JSON.stringify(Object.keys(hashes))).replace('__PRECACHE_HASHES__',JSON.stringify(hashes)));
 await fs.writeFile(path.join(out,'build-info.json'),JSON.stringify({version,precacheFiles:files.length,hashes},null,2)+'\n');
 console.log(JSON.stringify({version,precacheFiles:files.length}));

@@ -9,3 +9,5 @@
 @media(max-width:700px){.daily-card{padding:18px;gap:12px}.daily-card h3{font-size:16px}.daily-card>button{max-width:115px;padding:12px}.daily-card p{font-size:11px}}
 
 .welcome-portraits img:only-child{width:160px;height:190px;border-radius:32px}label:has(input[type=checkbox]){min-height:44px;display:flex;align-items:center;font-size:14px;color:var(--ink)}
+
+button{min-width:44px}
