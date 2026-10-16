@@ -1,118 +1,168 @@
 {
-  "status": "published_and_http_verified",
   "url": "https://netaniya.github.io/Netaniya/eliana-n25x/workshop/",
-  "runtimeVersion": "en25xstudio-74cbc406ecf5bf",
-  "sourceCommit": "fd5fad3deb31770d92b89e2cde3e79d1cce8a403",
-  "pagesWorkflowRun": 38914837110,
-  "pagesWorkflowConclusion": "success",
-  "browserVerificationRun": 38904952046,
-  "browserVerifiedSourceCommit": "1d5d1a25296f8d70010bea845f7091e2adcf6dfe",
-  "checkedAt": "2026-10-16T14:21:53.077379+00:00",
+  "runtimeVersion": "en25xstudio-1a7d105e6d671a",
+  "checkedAt": "2026-10-16T20:10:39.803168+00:00",
   "runtimeAssets": [
     {
       "file": "./index.html",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/html"
+      "contentType": "text/html",
+      "bytes": 2729
     },
     {
       "file": "./studio.css",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/css"
+      "contentType": "text/css",
+      "bytes": 25085
     },
     {
       "file": "./app.mjs",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/javascript"
+      "contentType": "text/javascript",
+      "bytes": 34241
     },
     {
       "file": "./model.mjs",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/javascript"
+      "contentType": "text/javascript",
+      "bytes": 7781
     },
     {
       "file": "./math.mjs",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/javascript"
+      "contentType": "text/javascript",
+      "bytes": 7535
     },
     {
       "file": "./robot.mjs",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/javascript"
+      "contentType": "text/javascript",
+      "bytes": 16650
     },
     {
       "file": "./sound.mjs",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/javascript"
+      "contentType": "text/javascript",
+      "bytes": 2625
     },
     {
       "file": "./i18n.mjs",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/javascript"
+      "contentType": "text/javascript",
+      "bytes": 50131
+    },
+    {
+      "file": "./program.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 7495
+    },
+    {
+      "file": "./curriculum.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 18482
+    },
+    {
+      "file": "./creations.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 11814
+    },
+    {
+      "file": "./academy.mjs",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/javascript",
+      "bytes": 23996
     },
     {
       "file": "./manifest.webmanifest",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "application/manifest+json"
+      "contentType": "application/manifest+json",
+      "bytes": 419
     },
     {
       "file": "./vendor/three.module.js",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "application/javascript"
+      "contentType": "application/javascript",
+      "bytes": 670681
     },
     {
       "file": "./vendor/LICENSE.three.txt",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/plain"
+      "contentType": "text/plain",
+      "bytes": 1082
     },
     {
       "file": "./assets/Manrope.ttf",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "font/ttf"
+      "contentType": "font/ttf",
+      "bytes": 164700
     },
     {
       "file": "./assets/OFL.txt",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "text/plain"
+      "contentType": "text/plain",
+      "bytes": 4387
     },
     {
       "file": "./assets/icon-192.png",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "image/png"
+      "contentType": "image/png",
+      "bytes": 7057
     },
     {
       "file": "./assets/icon-512.png",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "image/png"
+      "contentType": "image/png",
+      "bytes": 19593
     },
     {
       "file": "./assets/eliana-portrait.webp",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "image/webp"
+      "contentType": "image/webp",
+      "bytes": 196716
     },
     {
       "file": "./assets/n25x-portrait.webp",
       "status": 200,
       "sha256Matches": true,
-      "contentType": "image/webp"
+      "contentType": "image/webp",
+      "bytes": 83492
+    },
+    {
+      "file": "./download/Eliana-N25x-Studio.html",
+      "status": 200,
+      "sha256Matches": true,
+      "contentType": "text/html",
+      "bytes": 2404833
     }
   ],
   "otherPublicEntries": [
+    {
+      "url": "https://netaniya.github.io/Netaniya/",
+      "status": 200
+    },
     {
       "url": "https://netaniya.github.io/Netaniya/eliana-n25x/",
       "status": 200
@@ -134,8 +184,34 @@
       "status": 200
     }
   ],
+  "serviceWorkerVersionMatches": true,
+  "downloadMatchesTestedBuild": true,
   "physicalDevicesTested": false,
   "physicalInstallationTested": false,
-  "releaseBrowserRun": 38914837275,
-  "releaseBrowserConclusion": "success"
+  "status": "published_and_http_verified",
+  "author": "Natalie Ragulina",
+  "copyright": "© 2026 Natalie Ragulina. All rights reserved.",
+  "sourceCommit": "b7070e81160f92d866bc39949aa64b75bee455a0",
+  "pagesWorkflowRun": 38960241734,
+  "pagesWorkflowConclusion": "success",
+  "browserVerificationRun": 38959488222,
+  "browserVerifiedSourceCommit": "7235d6a06e447dae2b07a1502b20bbe86e9f8ad5",
+  "browserVerificationConclusion": "success",
+  "browserChecks": {
+    "desktop": 19,
+    "emulatedTouch": 11
+  },
+  "automated": {
+    "gameProjectPassed": 79,
+    "portfolioPassed": 12,
+    "failed": 0
+  },
+  "releaseBrowserRun": 38960241839,
+  "releaseBrowserConclusion": "success",
+  "priorAdventureBrowserRun": 38960241710,
+  "releaseBrowserChecks": {
+    "desktop": 19,
+    "emulatedTouch": 11
+  },
+  "finalizedAt": "2026-10-16T20:16:07.918499+00:00"
 }
