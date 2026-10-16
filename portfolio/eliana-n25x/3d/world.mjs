@@ -21,7 +21,7 @@ export function createWorld(index=0,mobile=false){
  for(const x of [-3.6,3.6])box(x,.02,1,.045,.025,36,neon);
  for(const x of [-19.5,19.5]){box(x,.55,0,.35,1.1,47,metal,true);box(x,1.12,0,.35,.04,47,neon);}
  box(0,.5,22.7,39,1,.3,metal,true);box(0,.5,-23.5,39,1,.3,metal,true);
- const walls=obstacles(index,true).filter(b=>!['terminal','clue'].includes(b.id)&&!b.id.startsWith('item'));
+ const walls=obstacles(index,true).filter(b=>['west','east','planter','bench'].includes(b.id)||b.id.startsWith('room-')||b.id.startsWith('gate-'));
  for(const b of walls){
   if(b.id==='planter'){
    box(b.x,b.h/2,b.z,b.w,b.h,b.d,white,true);box(b.x,b.h,b.z,b.w-.2,.1,b.d-.2,green);
@@ -44,7 +44,7 @@ export function createWorld(index=0,mobile=false){
  }
  // Light roof beams make the small room legible while leaving its doorway open.
  box(-13,3.7,-8,10,.15,.15,metal);box(-13,3.7,-3,10,.15,.15,metal);box(-13,3.76,-8,.1,.1,10,neon);
- for(let j=0;j<3;j++){box(-16+j*2.3,.75,-11.9,1.5,.15,.7,white);box(-16+j*2.3,.42,-12.1,.1,.7,.1,metal);box(-16+j*2.3,1.1,-12.1,.7,.55,.08,glass);}
+  for(let j=0;j<3;j++){box(-16+j*2.3,.75,-11.9,1.5,.15,.7,white,true);box(-16+j*2.3,.42,-12.1,.1,.7,.1,metal);box(-16+j*2.3,1.1,-12.1,.7,.55,.08,glass);}
  box(0,4,-16,8.6,.35,1.1,metal);
  const gate=new T.Group();gate.position.set(0,1.8,-16);scene.add(gate);
  const gatePanel=new T.Mesh(new T.BoxGeometry(7.9,3.6,.3),new T.MeshStandardMaterial({color:L.color,emissive:L.color,emissiveIntensity:.18,metalness:.55,roughness:.2,transparent:true,opacity:.72}));gate.add(gatePanel);solids.push(gatePanel);

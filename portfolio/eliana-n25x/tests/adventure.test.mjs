@@ -11,6 +11,7 @@ function walk(from,to,boxes){let p={...from};const route=pathTo(p,to,boxes);asse
 test('3D: swept movement stops at buildings, bounds, corners and the locked physical gate',()=>{
  const boxes=obstacles(0);assert(distance(move({x:-7,z:6},-15,0,boxes),{x:-8.66,z:6})<.15);
  const p=move({x:0,z:-13},0,-20,boxes);assert(p.z>-15.4);const q=move({x:0,z:-13},0,-8,obstacles(0,true));assert(q.z<-20);
+ const desk=move({x:-16,z:-10},0,-3,boxes);assert(desk.z>-11.22,'laboratory desks block the character');
  for(const d of [[200,200],[-200,200],[200,-200],[-200,-200]])assert(freeAt(move(SPAWN,...d,boxes),boxes));
 });
 test('3D: navigation goes around the central planter and uses the open room doorway',()=>{

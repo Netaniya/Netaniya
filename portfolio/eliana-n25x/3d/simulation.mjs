@@ -25,9 +25,12 @@ export function obstacles(level=0,gateOpen=false){
   {id:'gate-left',x:-11.5,z:-16,w:15,d:1,h:3.8},
   {id:'gate-right',x:11.5,z:-16,w:15,d:1,h:3.8},
   {id:'terminal',x:L.terminal[0],z:L.terminal[1],w:1.3,d:.8,h:1.4},
-  {id:'clue',x:L.clue[0],z:L.clue[1],w:.7,d:.7,h:1.05},
-  ...L.items.map(([x,z],i)=>({id:'item'+i,x,z,w:.65,d:.65,h:.65}))
+  {id:'clue',x:L.clue[0],z:L.clue[1],w:.94,d:.94,h:1.05},
+  {id:'antenna',x:1.5,z:-11,w:.14,d:.14,h:4.4},
+  ...[0,1,2].map(j=>({id:'desk'+j,x:-16+j*2.3,z:-11.9,w:1.5,d:.7,h:.83})),
+  ...L.items.map(([x,z],i)=>({id:'item'+i,x,z,w:.94,d:.94,h:.65}))
  ];
+ if(level===1)for(const [id,x,z,d]of[['west',-13,6,10],['east',13,5,12]])for(let j=0;j<7;j++)a.push({id:'debris-'+id+j,x:x+(j%3-1)*2,z:z+d/2+1+j%2,w:.94,d:.94,h:.3});
  if(!gateOpen)a.push({id:'gate',x:0,z:-16,w:8,d:.65,h:3.6});
  return a;
 }
