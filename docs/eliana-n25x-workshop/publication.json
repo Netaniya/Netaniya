@@ -1,7 +1,7 @@
 {
   "url": "https://netaniya.github.io/Netaniya/eliana-n25x/workshop/",
-  "runtimeVersion": "en25xstudio-fbcb0a052494e4",
-  "checkedAt": "2026-10-16T23:21:46.967962+00:00",
+  "runtimeVersion": "en25xstudio-fc63d4cc0d318b",
+  "checkedAt": "2026-10-17T00:09:14.180437+00:00",
   "runtimeAssets": [
     {
       "file": "./index.html",
@@ -15,7 +15,7 @@
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/css",
-      "bytes": 29457
+      "bytes": 32422
     },
     {
       "file": "./app.mjs",
@@ -211,7 +211,7 @@
       "status": 200,
       "sha256Matches": true,
       "contentType": "text/html",
-      "bytes": 2171395
+      "bytes": 2174360
     }
   ],
   "otherPublicEntries": [
@@ -249,20 +249,33 @@
   "copyright": "© 2026 Natalie Ragulina. All rights reserved.",
   "copyrightRu": "© 2026 Natalie Ragulina. Все права защищены.",
   "development": "AI-assisted under the author’s concept and art direction",
-  "sourceCommit": "920e9cc028833906f66b9cfe85eb7e1d16c9aef2",
-  "pagesWorkflowRun": 38980916468,
+  "sourceCommit": "9ca415df2079c259bcc07087b37ae39945fc7e2a",
+  "pagesWorkflowRun": 38984051405,
   "pagesWorkflowConclusion": "success",
-  "browserVerificationRun": 38979855746,
-  "browserVerifiedSourceCommit": "00c6f973c9abd1085c21e9ba2136d2acb2fb3f7d",
+  "browserVerificationRun": 38983084872,
+  "browserVerifiedSourceCommit": "6b7317338ded02767e6da3f7bc7cb3b4f5b946e7",
   "browserVerificationConclusion": "success",
   "browserChecks": {
-    "desktop": 22,
-    "emulatedTouch": 14
+    "desktop": 23,
+    "emulatedTouch": 15
   },
   "runtimeUnchangedAfterBrowserVerification": true,
-  "releaseBrowserRun": 38980916326,
-  "releaseBrowserConclusion": "in_progress",
-  "priorAdventureBrowserRun": 38980916419,
+  "appearance": {
+    "mainReadingPx": 16,
+    "secondaryTextPx": 14,
+    "phoneNavigationPx": 13,
+    "palette": "Vivid cyan, blue, violet and green accents on the retained dark background",
+    "verifiedLayoutWidthsPx": [
+      320,
+      760,
+      844,
+      1360
+    ],
+    "standaloneReadingSizeVerified": true
+  },
+  "releaseBrowserRun": 38984051340,
+  "releaseBrowserConclusion": "success",
+  "priorAdventureBrowserRun": 38984051350,
   "automated": {
     "gameProjectPassed": 88,
     "portfolioPassed": 12,
@@ -309,5 +322,9 @@
   },
   "otherPortfolioProjectSourcesUnchanged": true,
   "humanListeningTested": false,
-  "finalizedAt": "2026-10-16T23:23:28.308378+00:00"
+  "finalizedAt": "2026-10-17T00:10:58.497878+00:00",
+  "releaseBrowserChecks": {
+    "desktop": 23,
+    "emulatedTouch": 15
+  }
 }
