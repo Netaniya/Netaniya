@@ -45,3 +45,6 @@ The creator explicitly challenged the initial eight-lesson German and English cy
 
 ### 27 November — all ten languages
 Creator explicitly required continued expansion of every supported language, not just German and English. Assistant authored and implemented the first five grammar topics per remaining language (40 additional topics, 160 exercises), with language-specific rules and examples. No human authorship of the generated text or native-speaker review is claimed. Full curriculum and browser acceptance remain outstanding.
+
+### 27 November — piano learning
+The creator explicitly requested continued music development and parallel testing, consistent with her original decision to build a full digital piano. Assistant implemented 12 original note-order exercises, local progress and regression checks. No creator-performed musical assessment or human-authored compositions are claimed; the exercise melody is AI-assisted original material. Full browser acceptance pending.
