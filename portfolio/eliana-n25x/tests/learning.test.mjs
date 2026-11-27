@@ -7,7 +7,7 @@ import {fresh,parseProfile,reward} from '../workshop/model.mjs';
 import {translate} from '../workshop/i18n.mjs';
 import {freshScore,validateScore,noteName,midiFrequency,makeMidi,renderScoreWav,RHYTHM_LESSONS,gradeRhythm} from '../workshop/piano-score.mjs';
 import {createPiano} from '../workshop/piano.mjs';
-import {LANGUAGE_UNITS,LANGUAGE_ITEMS,COURSE_LANGUAGES,phraseTokens,phraseMatches,meaningChoices,parseLanguageCourse,meaningSource,wordOrder,nextLanguageExercise,scheduleLanguage,dueLanguageReviews,REVIEW_INTERVALS,GRAMMAR_LESSONS,grammarOptions,gradeGrammar,grammarRoute} from '../workshop/language-course.mjs';
+import {LANGUAGE_UNITS,LANGUAGE_ITEMS,COURSE_LANGUAGES,phraseTokens,phraseMatches,meaningChoices,parseLanguageCourse,meaningSource,wordOrder,nextLanguageExercise,languageMistakes,scheduleLanguage,dueLanguageReviews,REVIEW_INTERVALS,GRAMMAR_LESSONS,grammarOptions,gradeGrammar,grammarRoute} from '../workshop/language-course.mjs';
 import {createLanguageClassroom} from '../workshop/language-classroom.mjs';
 import {updateProject} from '../workshop/model.mjs';
 test('Mathematics: all 12,288 parameter variants are finite, uniquely presented within their topic, and accept exact fractions',()=>{
@@ -128,4 +128,22 @@ test('Rhythm controller: failed and successful takes, replay, mute guards and pr
   s.sound=false;api.render();assert(disabled('rhythm-example'));assert(disabled('practice-example'));
   await click('stop');assert(disabled('rhythm-tap'));
  }finally{piano?.stop(false);globalThis.document=previous;globalThis.performance=perf;}
+});
+
+
+test('Language mistakes: queue is isolated per selected language and imported keys are validated',()=>{
+ const item=LANGUAGE_ITEMS[0],en='en|write|'+item.id,de='de|read|'+item.id,ja='ja|listen|'+item.id;
+ const p=parseLanguageCourse({language:'en',review:[de,en,en,ja,en+'|junk','en|bogus|'+item.id,'en|read|missing',42]});
+ assert.deepEqual(p.review,[de,en,ja]);assert.deepEqual(languageMistakes(p),[en]);
+ p.language='de';assert.deepEqual(languageMistakes(p),[de]);p.language='ja';assert.deepEqual(languageMistakes(p),[ja]);p.language='fr';assert.deepEqual(languageMistakes(p),[]);
+});
+
+test('Language classroom: manual mistake review cannot silently change the chosen language',()=>{
+ const previous=globalThis.document,{document}=parseHTML('<html><body><section id="content"></section></body></html>');globalThis.document=document;
+ try{const s=fresh(),p=s.learning.languages,item=LANGUAGE_ITEMS[0],de='de|read|'+item.id,en='en|write|'+item.id;p.language='en';p.review=[de,en];let controller;
+ const api={getState:()=>s,tr:(k,v)=>translate(s.lang,k,v),esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;'),save(){},award:(id,n)=>reward(s,id,n),navigate(){},toast(){},audio:{cue(){}},render(){document.getElementById('content').innerHTML=controller.render();}};
+ controller=createLanguageClassroom(api);api.render();const button=()=>document.querySelector('[data-l="review"]');
+ assert(!button().hasAttribute('disabled'));controller.click({dataset:{l:'review'}});assert.equal(p.language,'en');assert.equal(p.mode,'write');assert.deepEqual(p.review,[de,en]);
+ p.language='fr';api.render();assert(button().hasAttribute('disabled'));controller.click({dataset:{l:'review'}});assert.equal(p.language,'fr');
+ }finally{globalThis.document=previous;}
 });

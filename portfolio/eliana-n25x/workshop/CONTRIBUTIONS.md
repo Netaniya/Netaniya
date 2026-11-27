@@ -54,3 +54,6 @@ Continued the creator-approved music and testing direction. Assistant implemente
 
 ### 28 November — rhythm practice stabilization
 Creator requested resuming the existing GitHub project from the previous session, including language and music modules. Assistant selected and corrected rhythm replay and conflicting audio controls, and added persistent grading, controller and Chromium regression scenarios. This is AI-assisted implementation under the existing creator direction; no manual acceptance or successful CI run is claimed. Main/publication remains unchanged.
+
+### 28 November — language review isolation
+Assistant corrected a cross-language manual-review navigation issue across all ten learning languages, validated imported mistake keys, and added model/DOM regressions. This is an AI-assisted implementation decision under the creator's ongoing request to expand and test every language. No completed CI or manual acceptance is claimed.
