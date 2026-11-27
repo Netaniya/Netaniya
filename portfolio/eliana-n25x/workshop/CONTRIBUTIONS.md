@@ -57,3 +57,6 @@ Creator requested resuming the existing GitHub project from the previous session
 
 ### 28 November — language review isolation
 Assistant corrected a cross-language manual-review navigation issue across all ten learning languages, validated imported mistake keys, and added model/DOM regressions. This is an AI-assisted implementation decision under the creator's ongoing request to expand and test every language. No completed CI or manual acceptance is claimed.
+
+### 28 November — extended piano pathway
+The creator requested continued development and verification. Assistant added 12 advanced note-order exercises (24 in total, six stages), covering additional keys, natural and harmonic minor scales, broken dominant seventh, inversions and minor cadence. Technical content and testing are AI-assisted; no creator-performed evaluation or certification is claimed. Old IDs preserved. Browser acceptance is outstanding.
