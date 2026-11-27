@@ -17,3 +17,6 @@ Der Speicher bleibt unter `eliana-n25x.workshop.v1` kompatibel. Profile und Proj
 
 ## Academy-Erweiterung (Entwicklungszweig)
 14 Sprachthemen mit 136 Ausgangssätzen pro Sprache; sechs Fachkurse (Logik, Physik, Biologie, Geografie, digitale Kompetenz und Musiktheorie) mit 61 Aufgaben in 23 Stufen. Mathe und Programmierung in je vier Stufen. Kandidat: Veröffentlichung und vollständige Browser-Abnahme noch offen. Keine CEFR-Zertifizierung.
+
+## Academy-Kandidat
+Lokale Wiederholungsplanung pro Sprache und Fertigkeit (1/3/7/14/30 Tage, UTC-Tage); Fehler und Hilfen setzen die Wiederholung zurück. Frühzeitiges Üben verlängert das Intervall nicht. [Menschlicher kreativer Beitrag](CONTRIBUTIONS.de.md). Browser-Abnahme noch offen.

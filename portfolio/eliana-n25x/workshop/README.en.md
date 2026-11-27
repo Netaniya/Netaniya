@@ -31,3 +31,6 @@ The standalone HTML embeds the robot portrait, font, icons, licenses and module 
 `.github/workflows/eliana-workshop-browser.yml` runs actual Chromium with SwiftShader on desktop and emulated phone dimensions. It uses real input for lessons, tests, MIDI/WAV downloads, two simultaneous touch contacts, offline reload and a real local standalone file. Results are only claimed after successful jobs. Current publication evidence is [recorded separately](../../../docs/eliana-n25x-workshop/publication.json).
 
 Physical Android/iOS testing and actual installation are separate. The ten-language material is introductory, AI-assisted and awaiting native-speaker review. The complete C1 path is not implemented. There is no unrestricted cloud AI conversation, live messaging, account system, cloud sync or payment service.
+
+## Academy candidate: spaced practice
+`language-course.mjs` adds a validated per-language/per-skill review schedule. UTC-day intervals 1/3/7/14/30, early practice does not promote, mistakes/assisted answers reset, legacy completions remain intact. Local only. [Provenance](CONTRIBUTIONS.md). Full browser regression pending.

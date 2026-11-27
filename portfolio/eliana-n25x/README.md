@@ -55,3 +55,5 @@ Natalie Ragulina verantwortet die menschliche Idee, Konzeption, Figurenwahl und 
 
 ## Erweiterung der Academy (Entwicklungskandidat)
 Neue gestufte Fachkurse und zwei weitere Sprachthemen sind im Entwicklungszweig enthalten. [Entwicklungsstand](workshop/PROGRESS.ru.md). Die öffentlich bereitgestellte Version kann bis zur Abnahme davon abweichen.
+
+[Ursprünglicher kreativer Beitrag und Entwicklungsgeschichte](workshop/CONTRIBUTIONS.de.md). Der Academy-Kandidat ergänzt 14 Sprachthemen, 32 Programmiermissionen und lokales zeitgesteuertes Wiederholen (1/3/7/14/30 Tage); Browser-Abnahme noch offen.
