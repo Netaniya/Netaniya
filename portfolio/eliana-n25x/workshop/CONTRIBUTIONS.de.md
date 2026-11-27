@@ -6,3 +6,5 @@ Die ursprünglichen Entscheidungen vom 16.10.2026 umfassen das realistische inte
 [Chronologische Dokumentation und Nachweise (English)](CONTRIBUTIONS.md) · [Arbeitsjournal (Russisch)](PROGRESS.ru.md) · [Lernumfang](LEARNING-PLAN.ru.md).
 
 © 2026 Natalie Ragulina (Netaniya). Alle Rechte vorbehalten für projekteigene Inhalte. Drittanbieter-Lizenzen bleiben bestehen.
+
+Erweiterung vom 27.11.2026: 16 Grammatiklektionen (Deutsch/Englisch), getrennte Übungs- und Prüfungsfragen und gespeicherter Lernfortschritt. Umsetzung und Lerntexte mit KI-Unterstützung gemäß der zuvor festgelegten Zielsetzung der Schöpferin; keine Behauptung einer persönlichen Programmierleistung oder einer vollständigen CEFR-Zertifizierung.
