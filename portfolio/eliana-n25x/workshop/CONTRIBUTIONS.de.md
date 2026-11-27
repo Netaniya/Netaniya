@@ -8,3 +8,5 @@ Die ursprünglichen Entscheidungen vom 16.10.2026 umfassen das realistische inte
 © 2026 Natalie Ragulina (Netaniya). Alle Rechte vorbehalten für projekteigene Inhalte. Drittanbieter-Lizenzen bleiben bestehen.
 
 Erweiterung vom 27.11.2026: 16 Grammatiklektionen (Deutsch/Englisch), getrennte Übungs- und Prüfungsfragen und gespeicherter Lernfortschritt. Umsetzung und Lerntexte mit KI-Unterstützung gemäß der zuvor festgelegten Zielsetzung der Schöpferin; keine Behauptung einer persönlichen Programmierleistung oder einer vollständigen CEFR-Zertifizierung.
+
+Die Schöpferin forderte ausdrücklich mehr als acht Grammatiklektionen pro Sprache. Der Kandidat enthält jetzt je 20 Themen für Deutsch und Englisch, fünf thematische Stufen und 160 Aufgaben insgesamt. Umsetzung KI-unterstützt; keine geprüfte CEFR-Einstufung.

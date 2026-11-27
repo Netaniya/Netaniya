@@ -39,3 +39,6 @@ New entries must identify the source and date of a creator decision, distinguish
 
 ### 27 November — grammar extension
 Owner confirmed continued work toward the established deep-learning goal. Assistant selected German and English for the first grammar release and implemented 16 lessons, separate practice and checkpoint examples, and local saved progress. AI-assisted implementation; no additional human-authored grammar material or manual acceptance claimed. See [development log](PROGRESS.ru.md).
+
+### 27 November — increased lesson depth
+The creator explicitly challenged the initial eight-lesson German and English cycles as too small and requested deeper courses. Assistant expanded both to 20 grammar topics per language and five thematic stages, with 96 additional questions, progress and guided continuation. The proposed 460-lesson-per-language goal is an assistant planning estimate, not an official CEFR standard or a completed curriculum. Implementation and educational material are AI-assisted. Full browser and teacher acceptance pending.

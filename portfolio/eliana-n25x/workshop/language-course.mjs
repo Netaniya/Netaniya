@@ -39,3 +39,5 @@ export function nextLanguageExercise(course,day=studyDay()){const language=cours
 export function grammarLesson(id){return GRAMMAR_LESSONS.find(v=>v.id===id);}
 export function grammarOptions(question,seed){return wordOrder(question.options,seed).map(v=>v.text);}
 export function gradeGrammar(lesson,answers){if(!lesson||!Array.isArray(answers)||answers.length!==lesson.checkpoint.length)return null;return answers.reduce((n,v,i)=>n+Number(v===lesson.checkpoint[i].answer),0);}
+
+export function grammarRoute(language){return GRAMMAR_LESSONS.filter(v=>v.language===language).sort((a,b)=>a.stage-b.stage);}

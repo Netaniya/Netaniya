@@ -1737,3 +1737,1399 @@ export const GRAMMAR_LESSONS=[
     ]
   }
 ];
+
+// Second grammar expansion: preserve every existing lesson ID.
+GRAMMAR_LESSONS.push(...[
+  {
+    "id": "de-pronouns",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Personalpronomen",
+      "en": "Personal pronouns",
+      "ru": "Личные местоимения",
+      "uk": "Особові займенники"
+    },
+    "rule": {
+      "de": "Er ersetzt ein maskulines Nomen, sie ein feminines, es ein neutrales. Im Plural steht sie.",
+      "en": "Er replaces a masculine noun, sie a feminine one, es a neuter one. Plural: sie.",
+      "ru": "Er заменяет существительное мужского рода, sie женского, es среднего. Во множественном sie.",
+      "uk": "Er замінює іменник чоловічого роду, sie жіночого, es середнього. У множині sie."
+    },
+    "example": "Der Stuhl ist alt. Er ist alt.",
+    "practice": [
+      {
+        "sentence": "Die Tasche ist neu. ___ ist neu.",
+        "options": [
+          "Sie",
+          "Er",
+          "Es"
+        ],
+        "answer": "Sie"
+      },
+      {
+        "sentence": "Das Fenster ist offen. ___ ist offen.",
+        "options": [
+          "Es",
+          "Er",
+          "Sie"
+        ],
+        "answer": "Es"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Der Hund schläft. ___ schläft.",
+        "options": [
+          "Er",
+          "Es",
+          "Sie"
+        ],
+        "answer": "Er"
+      },
+      {
+        "sentence": "Die Kinder spielen. ___ spielen.",
+        "options": [
+          "Sie",
+          "Er",
+          "Es"
+        ],
+        "answer": "Sie"
+      }
+    ]
+  },
+  {
+    "id": "de-negation",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Nicht und kein",
+      "en": "Nicht and kein",
+      "ru": "Отрицания nicht и kein",
+      "uk": "Заперечення nicht і kein"
+    },
+    "rule": {
+      "de": "Kein verneint Nomen mit unbestimmtem oder ohne Artikel; nicht verneint z. B. Adjektive.",
+      "en": "Kein negates nouns with an indefinite or no article; nicht negates, for example, adjectives.",
+      "ru": "Kein отрицает существительные с неопределённым артиклем или без него; nicht — например, прилагательные.",
+      "uk": "Kein заперечує іменники з неозначеним артиклем або без нього; nicht — наприклад, прикметники."
+    },
+    "example": "Das ist kein Hund. Das ist nicht teuer.",
+    "practice": [
+      {
+        "sentence": "Das ist ___ Auto.",
+        "options": [
+          "kein",
+          "nicht",
+          "keine"
+        ],
+        "answer": "kein"
+      },
+      {
+        "sentence": "Der Kaffee ist ___ heiß.",
+        "options": [
+          "nicht",
+          "kein",
+          "keine"
+        ],
+        "answer": "nicht"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ich habe ___ Zeit.",
+        "options": [
+          "keine",
+          "kein",
+          "nicht"
+        ],
+        "answer": "keine"
+      },
+      {
+        "sentence": "Das Wetter ist ___ schön.",
+        "options": [
+          "nicht",
+          "keine",
+          "kein"
+        ],
+        "answer": "nicht"
+      }
+    ]
+  },
+  {
+    "id": "de-v2",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Verb an Position zwei",
+      "en": "Verb-second order",
+      "ru": "Глагол на втором месте",
+      "uk": "Дієслово на другому місці"
+    },
+    "rule": {
+      "de": "Im Aussagesatz steht das finite Verb an zweiter Satzgliedposition, auch nach einer Zeitangabe.",
+      "en": "In statements the finite verb is the second constituent, including after a time expression.",
+      "ru": "В повествовательном предложении спрягаемый глагол занимает вторую позицию, в том числе после обстоятельства времени.",
+      "uk": "У розповідному реченні відмінюване дієслово займає другу позицію, зокрема після обставини часу."
+    },
+    "example": "Heute gehe ich zur Schule.",
+    "practice": [
+      {
+        "sentence": "Morgen ___ zur Arbeit. (ich / fahren)",
+        "options": [
+          "fahre ich",
+          "ich fahre",
+          "fahren ich"
+        ],
+        "answer": "fahre ich"
+      },
+      {
+        "sentence": "Am Abend ___ Musik. (wir / hören)",
+        "options": [
+          "hören wir",
+          "wir hören",
+          "hört wir"
+        ],
+        "answer": "hören wir"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Jetzt ___ ein Buch. (er / lesen)",
+        "options": [
+          "liest er",
+          "er liest",
+          "lesen er"
+        ],
+        "answer": "liest er"
+      },
+      {
+        "sentence": "Im Sommer ___ oft. (sie, Plural / schwimmen)",
+        "options": [
+          "schwimmen sie",
+          "sie schwimmen",
+          "schwimmt sie"
+        ],
+        "answer": "schwimmen sie"
+      }
+    ]
+  },
+  {
+    "id": "de-separable",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Trennbare Verben",
+      "en": "Separable verbs",
+      "ru": "Отделяемые приставки",
+      "uk": "Відокремлювані префікси"
+    },
+    "rule": {
+      "de": "Im Hauptsatz steht die betonte trennbare Vorsilbe oft am Ende: aufstehen → stehe ... auf.",
+      "en": "In main clauses the stressed separable prefix often comes last: aufstehen → stehe ... auf.",
+      "ru": "В главном предложении отделяемая приставка часто в конце: aufstehen → stehe ... auf.",
+      "uk": "У головному реченні відокремлюваний префікс часто в кінці: aufstehen → stehe ... auf."
+    },
+    "example": "Ich stehe um sieben Uhr auf.",
+    "practice": [
+      {
+        "sentence": "Ich ___ dich später ___. (anrufen)",
+        "options": [
+          "rufe ... an",
+          "anrufe ... an",
+          "rufe ... auf"
+        ],
+        "answer": "rufe ... an"
+      },
+      {
+        "sentence": "Wir ___ heute ___. (einkaufen)",
+        "options": [
+          "kaufen ... ein",
+          "einkaufen ... ein",
+          "kaufen ... aus"
+        ],
+        "answer": "kaufen ... ein"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Der Zug ___ um acht Uhr ___. (abfahren)",
+        "options": [
+          "fährt ... ab",
+          "abfährt ... ab",
+          "fährt ... an"
+        ],
+        "answer": "fährt ... ab"
+      },
+      {
+        "sentence": "Du ___ das Licht ___. (ausmachen)",
+        "options": [
+          "machst ... aus",
+          "ausmachst ... aus",
+          "machst ... ein"
+        ],
+        "answer": "machst ... aus"
+      }
+    ]
+  },
+  {
+    "id": "de-possessive",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Possessivartikel",
+      "en": "Possessive determiners",
+      "ru": "Притяжательные артикли",
+      "uk": "Присвійні артиклі"
+    },
+    "rule": {
+      "de": "Mein/dein/sein/ihr/unser/euer richten sich nach dem Besitzer; die Endung nach Genus, Numerus und Kasus des Nomens.",
+      "en": "Mein/dein/sein/ihr/unser/euer depend on the possessor; endings depend on noun gender, number and case.",
+      "ru": "Mein/dein/sein/ihr/unser/euer зависят от владельца, окончания — от рода, числа и падежа существительного.",
+      "uk": "Mein/dein/sein/ihr/unser/euer залежать від власника, закінчення — від роду, числа й відмінка іменника."
+    },
+    "example": "Ich habe einen Bruder. Das ist mein Bruder.",
+    "practice": [
+      {
+        "sentence": "Ich habe eine Schwester. Das ist ___ Schwester.",
+        "options": [
+          "meine",
+          "mein",
+          "meinen"
+        ],
+        "answer": "meine"
+      },
+      {
+        "sentence": "Du hast ein Fahrrad. Das ist ___ Fahrrad.",
+        "options": [
+          "dein",
+          "deine",
+          "deinen"
+        ],
+        "answer": "dein"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir haben einen Hund. Das ist ___ Hund.",
+        "options": [
+          "unser",
+          "unsere",
+          "unseren"
+        ],
+        "answer": "unser"
+      },
+      {
+        "sentence": "Er hat zwei Bücher. Das sind ___ Bücher.",
+        "options": [
+          "seine",
+          "sein",
+          "seinen"
+        ],
+        "answer": "seine"
+      }
+    ]
+  },
+  {
+    "id": "de-two-way",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Wechselpräpositionen",
+      "en": "Two-way prepositions",
+      "ru": "Предлоги места и направления",
+      "uk": "Прийменники місця й напрямку"
+    },
+    "rule": {
+      "de": "Bei in, auf usw. steht Dativ für den Ort (wo?), Akkusativ für das Ziel einer Ortsveränderung (wohin?).",
+      "en": "With in, auf, etc., dative marks location (where?), accusative destination (where to?).",
+      "ru": "С in, auf и др. дательный обозначает место (где?), винительный — направление к цели (куда?).",
+      "uk": "З in, auf та ін. давальний позначає місце (де?), знахідний — напрямок до цілі (куди?)."
+    },
+    "example": "Das Buch liegt auf dem Tisch. Ich lege es auf den Tisch.",
+    "practice": [
+      {
+        "sentence": "Das Bild hängt an ___ Wand. (die)",
+        "options": [
+          "der",
+          "die",
+          "den"
+        ],
+        "answer": "der"
+      },
+      {
+        "sentence": "Ich hänge das Bild an ___ Wand. (die)",
+        "options": [
+          "die",
+          "der",
+          "dem"
+        ],
+        "answer": "die"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Die Katze sitzt auf ___ Sofa. (das)",
+        "options": [
+          "dem",
+          "das",
+          "den"
+        ],
+        "answer": "dem"
+      },
+      {
+        "sentence": "Die Katze springt auf ___ Sofa. (das, Ziel)",
+        "options": [
+          "das",
+          "dem",
+          "den"
+        ],
+        "answer": "das"
+      }
+    ]
+  },
+  {
+    "id": "de-prateritum",
+    "language": "de",
+    "stage": 3,
+    "title": {
+      "de": "Präteritum von sein und haben",
+      "en": "Past of sein and haben",
+      "ru": "Präteritum sein и haben",
+      "uk": "Präteritum sein і haben"
+    },
+    "rule": {
+      "de": "Sein: ich/er war, du warst, wir/sie waren, ihr wart. Haben: hatte, hattest, hatte, hatten, hattet, hatten.",
+      "en": "Sein: ich/er war, du warst, wir/sie waren, ihr wart. Haben: hatte, hattest, hatte, hatten, hattet, hatten.",
+      "ru": "Sein: ich/er war, du warst, wir/sie waren, ihr wart. Haben: hatte, hattest, hatte, hatten, hattet, hatten.",
+      "uk": "Sein: ich/er war, du warst, wir/sie waren, ihr wart. Haben: hatte, hattest, hatte, hatten, hattet, hatten."
+    },
+    "example": "Gestern war ich krank. Wir hatten Zeit.",
+    "practice": [
+      {
+        "sentence": "Gestern ___ du müde. (sein)",
+        "options": [
+          "warst",
+          "war",
+          "waren"
+        ],
+        "answer": "warst"
+      },
+      {
+        "sentence": "Wir ___ gestern frei. (haben)",
+        "options": [
+          "hatten",
+          "hatte",
+          "hattet"
+        ],
+        "answer": "hatten"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Er ___ damals Lehrer. (sein)",
+        "options": [
+          "war",
+          "waren",
+          "wart"
+        ],
+        "answer": "war"
+      },
+      {
+        "sentence": "Ihr ___ viel Glück. (haben)",
+        "options": [
+          "hattet",
+          "hatten",
+          "hatte"
+        ],
+        "answer": "hattet"
+      }
+    ]
+  },
+  {
+    "id": "de-relative",
+    "language": "de",
+    "stage": 3,
+    "title": {
+      "de": "Relativsätze",
+      "en": "Relative clauses",
+      "ru": "Относительные предложения",
+      "uk": "Відносні речення"
+    },
+    "rule": {
+      "de": "Das Relativpronomen richtet sich im Genus/Numerus nach dem Bezugswort, im Kasus nach seiner Funktion im Relativsatz.",
+      "en": "Relative pronouns match the antecedent in gender/number; case depends on their role in the relative clause.",
+      "ru": "Относительное местоимение согласуется с определяемым словом по роду и числу, падеж зависит от роли в придаточном.",
+      "uk": "Відносний займенник узгоджується за родом і числом, відмінок залежить від ролі у підрядному."
+    },
+    "example": "Der Mann, der dort steht, ist mein Nachbar.",
+    "practice": [
+      {
+        "sentence": "Das ist der Mann, ___ dort arbeitet.",
+        "options": [
+          "der",
+          "den",
+          "dem"
+        ],
+        "answer": "der"
+      },
+      {
+        "sentence": "Das ist die Frau, ___ hier wohnt.",
+        "options": [
+          "die",
+          "der",
+          "den"
+        ],
+        "answer": "die"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Das ist der Film, ___ ich gesehen habe.",
+        "options": [
+          "den",
+          "der",
+          "dem"
+        ],
+        "answer": "den"
+      },
+      {
+        "sentence": "Das sind die Bücher, ___ ich gekauft habe.",
+        "options": [
+          "die",
+          "der",
+          "den"
+        ],
+        "answer": "die"
+      }
+    ]
+  },
+  {
+    "id": "de-adjective",
+    "language": "de",
+    "stage": 4,
+    "title": {
+      "de": "Adjektive nach bestimmtem Artikel",
+      "en": "Adjectives after definite articles",
+      "ru": "Прилагательные после определённого артикля",
+      "uk": "Прикметники після означеного артикля"
+    },
+    "rule": {
+      "de": "Nach der/die/das steht im Nominativ Singular -e; im Akkusativ Maskulinum -en; im Dativ -en.",
+      "en": "After der/die/das use -e in nominative singular, -en in masculine accusative and dative.",
+      "ru": "После der/die/das в именительном ед. числа -e; в винительном мужского рода и дательном -en.",
+      "uk": "Після der/die/das у називному однини -e; у знахідному чоловічого роду й давальному -en."
+    },
+    "example": "Der kleine Hund. Ich sehe den kleinen Hund.",
+    "practice": [
+      {
+        "sentence": "Der ___ Tisch ist neu. (alt)",
+        "options": [
+          "alte",
+          "alten",
+          "altes"
+        ],
+        "answer": "alte"
+      },
+      {
+        "sentence": "Ich sehe den ___ Hund. (klein)",
+        "options": [
+          "kleinen",
+          "kleine",
+          "kleiner"
+        ],
+        "answer": "kleinen"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Die ___ Tasche ist schön. (rot)",
+        "options": [
+          "rote",
+          "roten",
+          "roter"
+        ],
+        "answer": "rote"
+      },
+      {
+        "sentence": "Mit dem ___ Bus. (neu)",
+        "options": [
+          "neuen",
+          "neue",
+          "neuer"
+        ],
+        "answer": "neuen"
+      }
+    ]
+  },
+  {
+    "id": "de-passive",
+    "language": "de",
+    "stage": 4,
+    "title": {
+      "de": "Vorgangspassiv",
+      "en": "Process passive",
+      "ru": "Пассив действия",
+      "uk": "Пасив дії"
+    },
+    "rule": {
+      "de": "Vorgangspassiv: werden + Partizip II. Werden trägt die Zeitform, z. B. wird/wurde.",
+      "en": "Process passive: werden + past participle. Werden carries tense, e.g. wird/wurde.",
+      "ru": "Пассив действия: werden + Partizip II. Werden выражает время, например wird/wurde.",
+      "uk": "Пасив дії: werden + Partizip II. Werden виражає час, наприклад wird/wurde."
+    },
+    "example": "Die Tür wird geöffnet. Die Tür wurde geöffnet.",
+    "practice": [
+      {
+        "sentence": "Die Briefe ___ gerade geschrieben. (Präsens)",
+        "options": [
+          "werden",
+          "wird",
+          "wurden"
+        ],
+        "answer": "werden"
+      },
+      {
+        "sentence": "Das Haus ___ 1990 gebaut. (Präteritum)",
+        "options": [
+          "wurde",
+          "wird",
+          "wurden"
+        ],
+        "answer": "wurde"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Der Computer wird ___. (reparieren)",
+        "options": [
+          "repariert",
+          "reparieren",
+          "reparierte"
+        ],
+        "answer": "repariert"
+      },
+      {
+        "sentence": "Die Fenster ___ gestern geputzt. (Präteritum)",
+        "options": [
+          "wurden",
+          "wurde",
+          "werden"
+        ],
+        "answer": "wurden"
+      }
+    ]
+  },
+  {
+    "id": "de-konjunktiv2",
+    "language": "de",
+    "stage": 5,
+    "title": {
+      "de": "Konjunktiv II: Wünsche und Irreales",
+      "en": "Subjunctive II: wishes and unreal situations",
+      "ru": "Konjunktiv II: желания и нереальное",
+      "uk": "Konjunktiv II: бажання й нереальне"
+    },
+    "rule": {
+      "de": "Für hypothetische Situationen: wäre, hätte, könnte oder würde + Infinitiv.",
+      "en": "For hypothetical situations: wäre, hätte, könnte or würde + infinitive.",
+      "ru": "Для гипотетических ситуаций: wäre, hätte, könnte или würde + инфинитив.",
+      "uk": "Для гіпотетичних ситуацій: wäre, hätte, könnte або würde + інфінітив."
+    },
+    "example": "Wenn ich Zeit hätte, würde ich reisen.",
+    "practice": [
+      {
+        "sentence": "Wenn ich reich ___, würde ich reisen. (sein)",
+        "options": [
+          "wäre",
+          "war",
+          "bin"
+        ],
+        "answer": "wäre"
+      },
+      {
+        "sentence": "Wenn du mehr Zeit ___, könntest du lesen. (haben)",
+        "options": [
+          "hättest",
+          "hast",
+          "hatte"
+        ],
+        "answer": "hättest"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ich ___ gern mitkommen, wenn ich frei wäre. (können)",
+        "options": [
+          "könnte",
+          "kannst",
+          "konnte"
+        ],
+        "answer": "könnte"
+      },
+      {
+        "sentence": "Wenn es möglich wäre, ___ wir bleiben. (würde)",
+        "options": [
+          "würden",
+          "werden",
+          "würde"
+        ],
+        "answer": "würden"
+      }
+    ]
+  },
+  {
+    "id": "de-indirect",
+    "language": "de",
+    "stage": 5,
+    "title": {
+      "de": "Indirekte Rede: Konjunktiv I",
+      "en": "Reported speech: subjunctive I",
+      "ru": "Косвенная речь: Konjunktiv I",
+      "uk": "Непряма мова: Konjunktiv I"
+    },
+    "rule": {
+      "de": "In formeller indirekter Rede kann Konjunktiv I Distanz zur Aussage zeigen. Bei er/sie: sei, habe, komme, gehe.",
+      "en": "In formal reported speech, subjunctive I can signal attribution. With er/sie: sei, habe, komme, gehe.",
+      "ru": "В формальной косвенной речи Konjunktiv I передаёт чужое высказывание: er/sie sei, habe, komme, gehe.",
+      "uk": "У формальній непрямій мові Konjunktiv I передає чуже висловлювання: er/sie sei, habe, komme, gehe."
+    },
+    "example": "Er sagt, er sei müde.",
+    "practice": [
+      {
+        "sentence": "Sie sagt, sie ___ krank. (sein, Konjunktiv I)",
+        "options": [
+          "sei",
+          "ist",
+          "war"
+        ],
+        "answer": "sei"
+      },
+      {
+        "sentence": "Er erklärt, er ___ keine Zeit. (haben, Konjunktiv I)",
+        "options": [
+          "habe",
+          "hat",
+          "hatte"
+        ],
+        "answer": "habe"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Sie sagt, sie ___ morgen. (kommen, Konjunktiv I)",
+        "options": [
+          "komme",
+          "kommt",
+          "kam"
+        ],
+        "answer": "komme"
+      },
+      {
+        "sentence": "Er berichtet, er ___ nach Hause. (gehen, Konjunktiv I)",
+        "options": [
+          "gehe",
+          "geht",
+          "ging"
+        ],
+        "answer": "gehe"
+      }
+    ]
+  },
+  {
+    "id": "en-articles",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "Artikel a, an, the",
+      "en": "Articles a, an, the",
+      "ru": "Артикли a, an, the",
+      "uk": "Артиклі a, an, the"
+    },
+    "rule": {
+      "de": "A/an bei einem nicht bestimmten zählbaren Nomen im Singular. An vor Vokallaut, a vor Konsonantenlaut.",
+      "en": "A/an for a nonspecific singular count noun. An before a vowel sound, a before a consonant sound.",
+      "ru": "A/an — неопределённое исчисляемое существительное в ед. числе. An перед гласным звуком, a перед согласным.",
+      "uk": "A/an — неозначений злічуваний іменник в однині. An перед голосним звуком, a перед приголосним."
+    },
+    "example": "A book, an apple, an hour, a university.",
+    "practice": [
+      {
+        "sentence": "I would like ___ apple. (any apple)",
+        "options": [
+          "an",
+          "a",
+          "the"
+        ],
+        "answer": "an"
+      },
+      {
+        "sentence": "She has ___ dog. (a nonspecific dog)",
+        "options": [
+          "a",
+          "an",
+          "some"
+        ],
+        "answer": "a"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "We waited for ___ hour. (one hour)",
+        "options": [
+          "an",
+          "a",
+          "some"
+        ],
+        "answer": "an"
+      },
+      {
+        "sentence": "He studies at ___ university. (nonspecific)",
+        "options": [
+          "a",
+          "an",
+          "some"
+        ],
+        "answer": "a"
+      }
+    ]
+  },
+  {
+    "id": "en-pronouns",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "Objektpronomen",
+      "en": "Object pronouns",
+      "ru": "Объектные местоимения",
+      "uk": "Об'єктні займенники"
+    },
+    "rule": {
+      "de": "Nach Verben und Präpositionen: me, you, him, her, it, us, them.",
+      "en": "After verbs and prepositions: me, you, him, her, it, us, them.",
+      "ru": "После глаголов и предлогов: me, you, him, her, it, us, them.",
+      "uk": "Після дієслів і прийменників: me, you, him, her, it, us, them."
+    },
+    "example": "I know Anna. I know her.",
+    "practice": [
+      {
+        "sentence": "I know Tom. I know ___.",
+        "options": [
+          "him",
+          "he",
+          "his"
+        ],
+        "answer": "him"
+      },
+      {
+        "sentence": "She helps Anna. She helps ___.",
+        "options": [
+          "her",
+          "she",
+          "hers"
+        ],
+        "answer": "her"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "They see the children. They see ___.",
+        "options": [
+          "them",
+          "they",
+          "their"
+        ],
+        "answer": "them"
+      },
+      {
+        "sentence": "Come with my sister and me. Come with ___.",
+        "options": [
+          "us",
+          "we",
+          "our"
+        ],
+        "answer": "us"
+      }
+    ]
+  },
+  {
+    "id": "en-there",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "There is / there are",
+      "en": "There is / there are",
+      "ru": "Конструкция there is / there are",
+      "uk": "Конструкція there is / there are"
+    },
+    "rule": {
+      "de": "There is + Singular, there are + Plural. Fragen: Is there...? Are there...?",
+      "en": "There is + singular, there are + plural. Questions: Is there...? Are there...?",
+      "ru": "There is + единственное, there are + множественное. Вопрос: Is there...? Are there...?",
+      "uk": "There is + однина, there are + множина. Питання: Is there...? Are there...?"
+    },
+    "example": "There is a book. There are two chairs.",
+    "practice": [
+      {
+        "sentence": "There ___ a cat in the garden.",
+        "options": [
+          "is",
+          "are",
+          "am"
+        ],
+        "answer": "is"
+      },
+      {
+        "sentence": "There ___ three books on the table.",
+        "options": [
+          "are",
+          "is",
+          "am"
+        ],
+        "answer": "are"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ there a bus stop nearby?",
+        "options": [
+          "Is",
+          "Are",
+          "Am"
+        ],
+        "answer": "Is"
+      },
+      {
+        "sentence": "___ there any chairs in the room?",
+        "options": [
+          "Are",
+          "Is",
+          "Am"
+        ],
+        "answer": "Are"
+      }
+    ]
+  },
+  {
+    "id": "en-quantifiers",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Much, many, a lot of",
+      "en": "Much, many, a lot of",
+      "ru": "Much, many, a lot of",
+      "uk": "Much, many, a lot of"
+    },
+    "rule": {
+      "de": "Many bei zählbaren Pluralnomen, much bei nicht zählbaren Nomen; a lot of bei beiden.",
+      "en": "Many with plural count nouns, much with uncountable nouns; a lot of with both.",
+      "ru": "Many с исчисляемыми во множественном, much с неисчисляемыми; a lot of с обоими.",
+      "uk": "Many зі злічуваними у множині, much з незлічуваними; a lot of з обома."
+    },
+    "example": "How many books? How much water?",
+    "practice": [
+      {
+        "sentence": "How ___ apples do you need?",
+        "options": [
+          "many",
+          "much",
+          "a lot"
+        ],
+        "answer": "many"
+      },
+      {
+        "sentence": "How ___ water is left?",
+        "options": [
+          "much",
+          "many",
+          "a lot"
+        ],
+        "answer": "much"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "We don't have ___ time.",
+        "options": [
+          "much",
+          "many",
+          "a lot"
+        ],
+        "answer": "much"
+      },
+      {
+        "sentence": "How ___ people came?",
+        "options": [
+          "many",
+          "much",
+          "a lot"
+        ],
+        "answer": "many"
+      }
+    ]
+  },
+  {
+    "id": "en-future",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Will: spontane Entscheidungen",
+      "en": "Will: spontaneous decisions",
+      "ru": "Will: спонтанные решения",
+      "uk": "Will: спонтанні рішення"
+    },
+    "rule": {
+      "de": "Will + Grundform, z. B. für ein spontanes Angebot; nach will kein to und kein -s.",
+      "en": "Will + base form, e.g. for a spontaneous offer; no to or -s after will.",
+      "ru": "Will + начальная форма, например для спонтанного предложения помощи; без to и -s.",
+      "uk": "Will + початкова форма, наприклад для спонтанної пропозиції допомоги; без to та -s."
+    },
+    "example": "The phone is ringing. I will answer it.",
+    "practice": [
+      {
+        "sentence": "I will ___ the door. (open)",
+        "options": [
+          "open",
+          "opens",
+          "to open"
+        ],
+        "answer": "open"
+      },
+      {
+        "sentence": "She will ___ you tomorrow. (call)",
+        "options": [
+          "call",
+          "calls",
+          "called"
+        ],
+        "answer": "call"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Will you ___ me? (help)",
+        "options": [
+          "help",
+          "helps",
+          "to help"
+        ],
+        "answer": "help"
+      },
+      {
+        "sentence": "They won't ___ late. (arrive)",
+        "options": [
+          "arrive",
+          "arrives",
+          "arriving"
+        ],
+        "answer": "arrive"
+      }
+    ]
+  },
+  {
+    "id": "en-modal",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Modalverben",
+      "en": "Modal verbs",
+      "ru": "Модальные глаголы",
+      "uk": "Модальні дієслова"
+    },
+    "rule": {
+      "de": "Can, must und should stehen vor der Grundform ohne to; kein -s in der 3. Person.",
+      "en": "Can, must and should take the bare infinitive; no third-person -s.",
+      "ru": "Can, must и should требуют начальной формы без to; нет окончания -s в третьем лице.",
+      "uk": "Can, must і should вимагають початкової форми без to; немає -s у третій особі."
+    },
+    "example": "She can swim. You should rest.",
+    "practice": [
+      {
+        "sentence": "He can ___ very fast. (run)",
+        "options": [
+          "run",
+          "runs",
+          "to run"
+        ],
+        "answer": "run"
+      },
+      {
+        "sentence": "You must ___ here. (wait)",
+        "options": [
+          "wait",
+          "waits",
+          "to wait"
+        ],
+        "answer": "wait"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "She should ___ more water. (drink)",
+        "options": [
+          "drink",
+          "drinks",
+          "drinking"
+        ],
+        "answer": "drink"
+      },
+      {
+        "sentence": "Can they ___ with us? (come)",
+        "options": [
+          "come",
+          "comes",
+          "to come"
+        ],
+        "answer": "come"
+      }
+    ]
+  },
+  {
+    "id": "en-past-cont",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "Past Continuous",
+      "en": "Past continuous",
+      "ru": "Прошедшее длительное",
+      "uk": "Минулий тривалий"
+    },
+    "rule": {
+      "de": "Was/were + Verb-ing für eine Handlung, die zu einem vergangenen Zeitpunkt im Gang war.",
+      "en": "Was/were + verb-ing for an action in progress at a past time.",
+      "ru": "Was/were + глагол-ing для действия, продолжавшегося в момент прошлого.",
+      "uk": "Was/were + дієслово-ing для дії, що тривала в момент минулого."
+    },
+    "example": "I was reading when the phone rang.",
+    "practice": [
+      {
+        "sentence": "At eight I ___ breakfast. (eat)",
+        "options": [
+          "was eating",
+          "were eating",
+          "was eat"
+        ],
+        "answer": "was eating"
+      },
+      {
+        "sentence": "They ___ when I arrived. (sleep)",
+        "options": [
+          "were sleeping",
+          "was sleeping",
+          "were sleep"
+        ],
+        "answer": "were sleeping"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "She was ___ when I called. (work)",
+        "options": [
+          "working",
+          "worked",
+          "work"
+        ],
+        "answer": "working"
+      },
+      {
+        "sentence": "We ___ when it began to rain. (walk)",
+        "options": [
+          "were walking",
+          "was walking",
+          "were walk"
+        ],
+        "answer": "were walking"
+      }
+    ]
+  },
+  {
+    "id": "en-relative",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "Relativsätze",
+      "en": "Relative clauses",
+      "ru": "Относительные предложения",
+      "uk": "Відносні речення"
+    },
+    "rule": {
+      "de": "Who bezieht sich auf Personen, which auf Dinge; that kann in bestimmenden Relativsätzen oft beide ersetzen.",
+      "en": "Who refers to people, which to things; that can often replace both in defining relative clauses.",
+      "ru": "Who относится к людям, which к вещам; that часто заменяет оба в определительных придаточных.",
+      "uk": "Who стосується людей, which речей; that часто замінює обидва у означальних підрядних."
+    },
+    "example": "The person who called is my friend.",
+    "practice": [
+      {
+        "sentence": "The teacher, ___ lives nearby, is here.",
+        "options": [
+          "who",
+          "which",
+          "what"
+        ],
+        "answer": "who"
+      },
+      {
+        "sentence": "This phone, ___ is new, works well.",
+        "options": [
+          "which",
+          "who",
+          "what"
+        ],
+        "answer": "which"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "My sister, ___ is a doctor, lives in Berlin.",
+        "options": [
+          "who",
+          "which",
+          "what"
+        ],
+        "answer": "who"
+      },
+      {
+        "sentence": "The book, ___ has ten chapters, is interesting.",
+        "options": [
+          "which",
+          "who",
+          "what"
+        ],
+        "answer": "which"
+      }
+    ]
+  },
+  {
+    "id": "en-past-perfect",
+    "language": "en",
+    "stage": 4,
+    "title": {
+      "de": "Past Perfect",
+      "en": "Past perfect",
+      "ru": "Past Perfect",
+      "uk": "Past Perfect"
+    },
+    "rule": {
+      "de": "Had + past participle zeigt eine Handlung vor einem anderen vergangenen Zeitpunkt.",
+      "en": "Had + past participle marks an action before another past point.",
+      "ru": "Had + третья форма обозначает действие до другого момента прошлого.",
+      "uk": "Had + третя форма позначає дію до іншого моменту минулого."
+    },
+    "example": "When we arrived, the film had started.",
+    "practice": [
+      {
+        "sentence": "When I arrived, she had already ___. (leave)",
+        "options": [
+          "left",
+          "leave",
+          "leaving"
+        ],
+        "answer": "left"
+      },
+      {
+        "sentence": "He had ___ before the lesson began. (finish)",
+        "options": [
+          "finished",
+          "finish",
+          "finishing"
+        ],
+        "answer": "finished"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "We had ___ the news before they called. (hear)",
+        "options": [
+          "heard",
+          "hear",
+          "hearing"
+        ],
+        "answer": "heard"
+      },
+      {
+        "sentence": "They had ___ home before sunset. (go)",
+        "options": [
+          "gone",
+          "went",
+          "going"
+        ],
+        "answer": "gone"
+      }
+    ]
+  },
+  {
+    "id": "en-second-conditional",
+    "language": "en",
+    "stage": 4,
+    "title": {
+      "de": "Second Conditional",
+      "en": "Second conditional",
+      "ru": "Второй тип условных",
+      "uk": "Другий тип умовних"
+    },
+    "rule": {
+      "de": "Hypothetische Gegenwart/Zukunft: if + Simple Past, would + Grundform.",
+      "en": "Hypothetical present/future: if + simple past, would + base form.",
+      "ru": "Гипотетическое настоящее/будущее: if + Simple Past, would + начальная форма.",
+      "uk": "Гіпотетичне теперішнє/майбутнє: if + Simple Past, would + початкова форма."
+    },
+    "example": "If I had more time, I would travel.",
+    "practice": [
+      {
+        "sentence": "If I ___ more money, I would buy a bike. (have)",
+        "options": [
+          "had",
+          "have",
+          "will have"
+        ],
+        "answer": "had"
+      },
+      {
+        "sentence": "If she lived here, we would ___ often. (meet)",
+        "options": [
+          "meet",
+          "met",
+          "meeting"
+        ],
+        "answer": "meet"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "If we ___ the answer, we would tell you. (know)",
+        "options": [
+          "knew",
+          "know",
+          "will know"
+        ],
+        "answer": "knew"
+      },
+      {
+        "sentence": "If he were free, he ___ join us.",
+        "options": [
+          "would",
+          "will",
+          "has"
+        ],
+        "answer": "would"
+      }
+    ]
+  },
+  {
+    "id": "en-third-conditional",
+    "language": "en",
+    "stage": 5,
+    "title": {
+      "de": "Third Conditional",
+      "en": "Third conditional",
+      "ru": "Третий тип условных",
+      "uk": "Третій тип умовних"
+    },
+    "rule": {
+      "de": "Irreale Vergangenheit: if + had + Partizip, would have + Partizip.",
+      "en": "Unreal past: if + had + past participle, would have + past participle.",
+      "ru": "Нереальное прошлое: if + had + третья форма, would have + третья форма.",
+      "uk": "Нереальне минуле: if + had + третя форма, would have + третя форма."
+    },
+    "example": "If I had left earlier, I would have caught the train.",
+    "practice": [
+      {
+        "sentence": "If I had ___ harder, I would have passed. (study)",
+        "options": [
+          "studied",
+          "study",
+          "studying"
+        ],
+        "answer": "studied"
+      },
+      {
+        "sentence": "If she had called, I would have ___. (answer)",
+        "options": [
+          "answered",
+          "answer",
+          "answering"
+        ],
+        "answer": "answered"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "If they had ___ the map, they would not have got lost. (read)",
+        "options": [
+          "read",
+          "reading",
+          "reads"
+        ],
+        "answer": "read"
+      },
+      {
+        "sentence": "If we had left early, we ___ have arrived on time.",
+        "options": [
+          "would",
+          "will",
+          "had"
+        ],
+        "answer": "would"
+      }
+    ]
+  },
+  {
+    "id": "en-inversion",
+    "language": "en",
+    "stage": 5,
+    "title": {
+      "de": "Inversion nach negativen Adverbien",
+      "en": "Negative-adverb inversion",
+      "ru": "Инверсия после отрицательных наречий",
+      "uk": "Інверсія після заперечних прислівників"
+    },
+    "rule": {
+      "de": "In formeller Betonung am Satzanfang, z. B. never oder rarely, steht das Hilfsverb vor dem Subjekt.",
+      "en": "In formal emphasis with initial never or rarely, the auxiliary precedes the subject.",
+      "ru": "При формальном усилении с never или rarely в начале вспомогательный глагол перед подлежащим.",
+      "uk": "За формального підсилення з never або rarely на початку допоміжне дієслово перед підметом."
+    },
+    "example": "Never have I seen such a view.",
+    "practice": [
+      {
+        "sentence": "Never ___ such a thing. (I / have / seen)",
+        "options": [
+          "have I seen",
+          "I have seen",
+          "I seen have"
+        ],
+        "answer": "have I seen"
+      },
+      {
+        "sentence": "Rarely ___ such results. (we / do / see)",
+        "options": [
+          "do we see",
+          "we do see",
+          "we see do"
+        ],
+        "answer": "do we see"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Seldom ___ so happy. (she / is)",
+        "options": [
+          "is she",
+          "she is",
+          "she be"
+        ],
+        "answer": "is she"
+      },
+      {
+        "sentence": "Never before ___ this method. (they / have / tried)",
+        "options": [
+          "have they tried",
+          "they have tried",
+          "they tried have"
+        ],
+        "answer": "have they tried"
+      }
+    ]
+  }
+]);
