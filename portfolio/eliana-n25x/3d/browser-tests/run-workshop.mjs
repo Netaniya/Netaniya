@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
 import {TEXT} from '../../workshop/i18n.mjs';
 import {MATH,dailyTasks} from '../../workshop/math.mjs';
 import {SAVE_KEY} from '../../workshop/model.mjs';
-import {MISSIONS,LEARNING_LANGUAGES} from '../../workshop/curriculum.mjs';
+import {MISSIONS,LEARNING_LANGUAGES,SUBJECTS} from '../../workshop/curriculum.mjs';
 import {courseTask} from '../../workshop/math-course.mjs';
 import {LANGUAGE_UNITS,phraseTokens} from '../../workshop/language-course.mjs';
 const root=path.resolve(fileURLToPath(new URL('../../workshop/dist/',import.meta.url))),results=fileURLToPath(new URL('./workshop-results/',import.meta.url));
@@ -109,7 +109,12 @@ async function expandedLearningCheck(){
   if(['en','ka','zh','ja'].includes(language.id)){await click('[data-l=mode][data-mode=order]');for(const [i]of phraseTokens(first.text[language.id],language.id).entries())await click('[data-l=word][data-index="'+i+'"]');await click('[data-l=check-order]');assert.equal((await state()).points,before+15);}
   await noOverflow();
  }
+ await page.locator('#course-language').selectOption('en');await page.locator('#course-language-unit').selectOption('problem-solving');await click('[data-l=mode][data-mode=read]');let added=LANGUAGE_UNITS.find(u=>u.id==='problem-solving').items[0];await click('[data-l=meaning][data-id="'+added.id+'"]');assert((await state()).learning.languages.done['en/'+added.id]&1);
+ await page.locator('#course-language-unit').selectOption('compare-decide');await click('[data-l=mode][data-mode=write]');added=LANGUAGE_UNITS.find(u=>u.id==='compare-decide').items[0];await page.locator('#course-language-answer').fill(added.text.en);await click('#course-language-form button[type=submit]');assert((await state()).learning.languages.done['en/'+added.id]&2);
  await screenshot(scope+'-language-course');check('whole sentences in all ten languages are read and written; English, Georgian, Chinese and Japanese word-order tasks complete through native script',{topics:LANGUAGE_UNITS.length,sourceSentencesPerLanguage:LANGUAGE_UNITS.reduce((n,u)=>n+u.items.length,0)});
+ await click('#navigation [data-do=learn]');await click('[data-do=study-subjects]');
+ for(const subject of SUBJECTS){await click('[data-a=lab][data-lab="'+subject.id+'"]');await page.locator('#lab-stage').selectOption(String(subject.stages.length-1));const start=subject.stages.at(-1).start;await click('[data-a=lab-answer][data-index="'+subject.tasks[start].answer+'"]');assert((await state()).solved.includes('lab:'+subject.id+':'+start));await click('[data-a=navigate][data-target=schoolLabs]');}
+ check('all six subject courses open their final stage and record an actual correct response',{subjects:SUBJECTS.length});
  await click('#navigation [data-do=create]');await click('[data-do=piano]');await page.locator('#piano-title').fill('My complete composition');await click('[data-p=record]');
  if(scope==='touch'){
   await page.locator('#piano-keyboard').scrollIntoViewIfNeeded();const points=[];for(const [id,midi]of [[1,60],[2,64]]){const box=await page.locator('[data-piano-note="'+midi+'"]').boundingBox();assert(box);points.push({id,x:box.x+box.width/2,y:box.y+box.height-25});}

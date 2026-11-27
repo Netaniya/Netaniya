@@ -15,8 +15,8 @@ test('Mathematics: all 12,288 parameter variants are finite, uniquely presented 
  for(const topic of MATH_TOPICS){const seen=new Set();for(const lang of ['de','en','ru','uk'])assert(topic.title[lang]&&topic.rule[lang]);for(let i=0;i<256;i++){const t=courseTask(topic.id,i);assert(Number.isFinite(t.answer),t.id);assert(checkCourseAnswer(t,t.display),t.id);assert(!checkCourseAnswer(t,String(t.answer+1)),t.id);assert(!checkCourseAnswer(t,'window.location=1'),t.id);assert(!seen.has(t.expression),t.id);seen.add(t.expression);assert(t.steps.length);}}
  assert.throws(()=>courseTask('add',256));assert.throws(()=>courseTask('missing',0));
 });
-test('Language lessons: 120 distinct meanings have all ten scripts, four explanations and usable reading/writing/order exercises',()=>{
- assert.equal(LANGUAGE_UNITS.length,12);assert.equal(LANGUAGE_ITEMS.length,120);assert.equal(new Set(LANGUAGE_ITEMS.map(i=>i.id)).size,120);
+test('Language lessons: 136 distinct meanings have all ten scripts, four explanations and usable reading/writing/order exercises',()=>{
+ assert.equal(LANGUAGE_UNITS.length,14);assert.equal(LANGUAGE_ITEMS.length,136);assert.equal(new Set(LANGUAGE_ITEMS.map(i=>i.id)).size,136);
  for(const u of LANGUAGE_UNITS)for(const lang of ['de','en','ru','uk'])assert(u.title[lang]&&u.note[lang]);
  for(const item of LANGUAGE_ITEMS)for(const lang of COURSE_LANGUAGES){assert(item.text[lang]?.length>2,item.id+':'+lang);assert(phraseMatches(item.text[lang],item.text[lang],lang));const tokens=phraseTokens(item.text[lang],lang);assert(tokens.length);assert(phraseMatches(tokens.join(' '),item.text[lang],lang),item.id+':'+lang);}
  for(const item of LANGUAGE_ITEMS)for(const lang of ['de','en','ru','uk']){const choices=meaningChoices(item,lang);assert.equal(choices.length,3);assert.equal(new Set(choices.map(v=>v.text[lang])).size,3);assert(choices.some(v=>v.id===item.id));}

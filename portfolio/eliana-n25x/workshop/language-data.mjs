@@ -13,8 +13,8 @@
 export const LANGUAGE_CONTENT_INFO = Object.freeze({
   author: 'Natalie Ragulina',
   copyright: '© 2026 Natalie Ragulina. All rights reserved.',
-  contentVersion: 1,
-  scope: 'introductory-practice',
+  contentVersion: 2,
+  scope: 'introductory-and-connected-sentence-practice',
   aiAssisted: true,
   nativeSpeakerReviewed: false,
   completeCEFRPath: false,
@@ -527,3 +527,281 @@ export const LANGUAGE_UNITS = [
     ],
   },
 ];
+
+// New original connected-sentence practice; all previous item IDs preserved.
+LANGUAGE_UNITS.push(...[
+  {
+    "id": "problem-solving",
+    "title": {
+      "de": "13 · Probleme erklären",
+      "en": "13 · Explaining problems",
+      "ru": "13 · Объяснение проблем",
+      "uk": "13 · Пояснення проблем"
+    },
+    "note": {
+      "de": "Beschreibe ein Problem, seine Ursache und die nächsten Schritte. Vergleiche Zeitformen und Verknüpfungen in deiner Zielsprache. Dies ist Satztraining, keine Einstufung.",
+      "en": "Describe a problem, its cause and the next steps. Compare tenses and linking expressions in your target language. This is sentence practice, not a placement test.",
+      "ru": "Опиши проблему, её причину и следующие действия. Сравни времена и связующие выражения изучаемого языка. Это практика фраз, а не определение уровня.",
+      "uk": "Опиши проблему, її причину й наступні дії. Порівняй часи та сполучні вирази мови, яку вивчаєш. Це практика фраз, а не визначення рівня."
+    },
+    "items": [
+      {
+        "id": "problem.delay",
+        "text": {
+          "de": "Der Zug hat Verspätung, deshalb komme ich später.",
+          "en": "The train is delayed, so I will arrive later.",
+          "ka": "მატარებელი აგვიანებს, ამიტომ მოგვიანებით მოვალ.",
+          "uk": "Потяг запізнюється, тому я приїду пізніше.",
+          "ru": "Поезд задерживается, поэтому я приеду позже.",
+          "zh": "火车晚点了，所以我会晚一点到。",
+          "es": "El tren lleva retraso, así que llegaré más tarde.",
+          "fr": "Le train est en retard, donc j’arriverai plus tard.",
+          "it": "Il treno è in ritardo, quindi arriverò più tardi.",
+          "ja": "電車が遅れているので、到着が遅くなります。"
+        }
+      },
+      {
+        "id": "problem.describe",
+        "text": {
+          "de": "Kannst du genauer erklären, was passiert ist?",
+          "en": "Can you explain exactly what happened?",
+          "ka": "შეგიძლია უფრო ზუსტად ახსნა, რა მოხდა?",
+          "uk": "Можеш точніше пояснити, що сталося?",
+          "ru": "Можешь точнее объяснить, что произошло?",
+          "zh": "你能更详细地解释发生了什么吗？",
+          "es": "¿Puedes explicar con más detalle lo que pasó?",
+          "fr": "Peux-tu expliquer plus précisément ce qui s’est passé ?",
+          "it": "Puoi spiegare più precisamente che cosa è successo?",
+          "ja": "何が起きたのか、もう少し詳しく説明できますか。"
+        }
+      },
+      {
+        "id": "problem.internet",
+        "text": {
+          "de": "Die Internetverbindung funktioniert seit gestern nicht.",
+          "en": "The internet connection has not worked since yesterday.",
+          "ka": "ინტერნეტკავშირი გუშინდელი დღიდან არ მუშაობს.",
+          "uk": "Інтернет-з’єднання не працює з учорашнього дня.",
+          "ru": "Интернет-соединение не работает со вчерашнего дня.",
+          "zh": "网络连接从昨天起就不能用了。",
+          "es": "La conexión a internet no funciona desde ayer.",
+          "fr": "La connexion Internet ne fonctionne plus depuis hier.",
+          "it": "La connessione a Internet non funziona da ieri.",
+          "ja": "昨日からインターネット接続が使えません。"
+        }
+      },
+      {
+        "id": "problem.tried",
+        "text": {
+          "de": "Ich habe das Gerät neu gestartet, aber das Problem bleibt.",
+          "en": "I restarted the device, but the problem remains.",
+          "ka": "მოწყობილობა გადავტვირთე, მაგრამ პრობლემა ისევ არსებობს.",
+          "uk": "Я перезапустив пристрій, але проблема залишилася.",
+          "ru": "Я перезапустил устройство, но проблема осталась.",
+          "zh": "我重启了设备，但问题仍然存在。",
+          "es": "Reinicié el dispositivo, pero el problema persiste.",
+          "fr": "J’ai redémarré l’appareil, mais le problème persiste.",
+          "it": "Ho riavviato il dispositivo, ma il problema rimane.",
+          "ja": "機器を再起動しましたが、問題は解決していません。"
+        }
+      },
+      {
+        "id": "problem.instructions",
+        "text": {
+          "de": "Bevor wir anfangen, lesen wir die Anleitung.",
+          "en": "Before we begin, we will read the instructions.",
+          "ka": "სანამ დავიწყებთ, ინსტრუქციას წავიკითხავთ.",
+          "uk": "Перш ніж почати, прочитаємо інструкцію.",
+          "ru": "Прежде чем начать, мы прочитаем инструкцию.",
+          "zh": "开始之前，我们先阅读说明。",
+          "es": "Antes de empezar, leeremos las instrucciones.",
+          "fr": "Avant de commencer, nous lirons les instructions.",
+          "it": "Prima di iniziare, leggeremo le istruzioni.",
+          "ja": "始める前に、説明書を読みましょう。"
+        }
+      },
+      {
+        "id": "problem.missing",
+        "text": {
+          "de": "Uns fehlt eine wichtige Information.",
+          "en": "We are missing an important piece of information.",
+          "ka": "ერთი მნიშვნელოვანი ინფორმაცია გვაკლია.",
+          "uk": "Нам бракує важливої інформації.",
+          "ru": "Нам не хватает важной информации.",
+          "zh": "我们还缺少一条重要信息。",
+          "es": "Nos falta una información importante.",
+          "fr": "Il nous manque une information importante.",
+          "it": "Ci manca un’informazione importante.",
+          "ja": "重要な情報が一つ不足しています。"
+        }
+      },
+      {
+        "id": "problem.alternative",
+        "text": {
+          "de": "Falls das nicht funktioniert, versuchen wir eine andere Lösung.",
+          "en": "If that does not work, we will try another solution.",
+          "ka": "თუ ეს არ იმუშავებს, სხვა გამოსავალს ვცდით.",
+          "uk": "Якщо це не спрацює, спробуємо інше рішення.",
+          "ru": "Если это не сработает, попробуем другое решение.",
+          "zh": "如果这个办法不行，我们就试试另一种解决方案。",
+          "es": "Si eso no funciona, probaremos otra solución.",
+          "fr": "Si cela ne fonctionne pas, nous essaierons une autre solution.",
+          "it": "Se non funziona, proveremo un’altra soluzione.",
+          "ja": "それがうまくいかなければ、別の解決策を試します。"
+        }
+      },
+      {
+        "id": "problem.confirm",
+        "text": {
+          "de": "Bitte bestätige, dass du die Nachricht erhalten hast.",
+          "en": "Please confirm that you received the message.",
+          "ka": "გთხოვ, დაადასტურე, რომ შეტყობინება მიიღე.",
+          "uk": "Будь ласка, підтвердь, що отримав повідомлення.",
+          "ru": "Пожалуйста, подтверди, что получил сообщение.",
+          "zh": "请确认你已收到消息。",
+          "es": "Por favor, confirma que has recibido el mensaje.",
+          "fr": "Merci de confirmer que tu as reçu le message.",
+          "it": "Per favore, conferma di aver ricevuto il messaggio.",
+          "ja": "メッセージを受け取ったことを確認してください。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "compare-decide",
+    "title": {
+      "de": "14 · Vergleichen und entscheiden",
+      "en": "14 · Comparing and deciding",
+      "ru": "14 · Сравнение и выбор",
+      "uk": "14 · Порівняння й вибір"
+    },
+    "note": {
+      "de": "Vergleiche Möglichkeiten, begründe deine Wahl und unterscheide Fakten von Meinungen. Übe Begründungen und Bedingungen als ganze Sätze.",
+      "en": "Compare options, justify a choice and distinguish facts from opinions. Practise reasons and conditions as whole sentences.",
+      "ru": "Сравни варианты, обоснуй выбор и различай факты и мнения. Тренируй причинные и условные конструкции целыми предложениями.",
+      "uk": "Порівняй варіанти, обґрунтуй вибір і розрізняй факти та думки. Тренуй причинні й умовні конструкції цілими реченнями."
+    },
+    "items": [
+      {
+        "id": "compare.cost",
+        "text": {
+          "de": "Die erste Möglichkeit ist günstiger, aber sie dauert länger.",
+          "en": "The first option is cheaper, but it takes longer.",
+          "ka": "პირველი ვარიანტი უფრო იაფია, მაგრამ მეტ დროს მოითხოვს.",
+          "uk": "Перший варіант дешевший, але потребує більше часу.",
+          "ru": "Первый вариант дешевле, но занимает больше времени.",
+          "zh": "第一种方案更便宜，但需要更长时间。",
+          "es": "La primera opción es más barata, pero tarda más.",
+          "fr": "La première option coûte moins cher, mais prend plus de temps.",
+          "it": "La prima opzione costa meno, ma richiede più tempo.",
+          "ja": "最初の選択肢は安いですが、時間がかかります。"
+        }
+      },
+      {
+        "id": "compare.priority",
+        "text": {
+          "de": "Für mich ist die Qualität wichtiger als der Preis.",
+          "en": "Quality is more important to me than price.",
+          "ka": "ჩემთვის ხარისხი ფასზე მნიშვნელოვანია.",
+          "uk": "Для мене якість важливіша за ціну.",
+          "ru": "Для меня качество важнее цены.",
+          "zh": "对我来说，质量比价格更重要。",
+          "es": "Para mí, la calidad es más importante que el precio.",
+          "fr": "Pour moi, la qualité est plus importante que le prix.",
+          "it": "Per me la qualità è più importante del prezzo.",
+          "ja": "私にとって、価格より品質のほうが重要です。"
+        }
+      },
+      {
+        "id": "compare.evidence",
+        "text": {
+          "de": "Welche Belege stützen diese Behauptung?",
+          "en": "What evidence supports this claim?",
+          "ka": "რა მტკიცებულებები ამყარებს ამ მტკიცებას?",
+          "uk": "Які докази підтверджують це твердження?",
+          "ru": "Какие доказательства подтверждают это утверждение?",
+          "zh": "有什么证据支持这一说法？",
+          "es": "¿Qué pruebas respaldan esta afirmación?",
+          "fr": "Quelles preuves étayent cette affirmation ?",
+          "it": "Quali prove sostengono questa affermazione?",
+          "ja": "この主張を裏付ける証拠は何ですか。"
+        }
+      },
+      {
+        "id": "compare.unsure",
+        "text": {
+          "de": "Ich bin nicht sicher, ob diese Zahlen stimmen.",
+          "en": "I am not sure whether these numbers are correct.",
+          "ka": "არ ვარ დარწმუნებული, რომ ეს რიცხვები სწორია.",
+          "uk": "Я не впевнений, чи ці числа правильні.",
+          "ru": "Я не уверен, верны ли эти числа.",
+          "zh": "我不确定这些数字是否正确。",
+          "es": "No estoy seguro de que estas cifras sean correctas.",
+          "fr": "Je ne suis pas sûr que ces chiffres soient exacts.",
+          "it": "Non sono sicuro che questi numeri siano corretti.",
+          "ja": "これらの数字が正しいかどうか分かりません。"
+        }
+      },
+      {
+        "id": "compare.question",
+        "text": {
+          "de": "Was würde sich ändern, wenn wir weniger Zeit hätten?",
+          "en": "What would change if we had less time?",
+          "ka": "რა შეიცვლებოდა, ნაკლები დრო რომ გვქონდეს?",
+          "uk": "Що змінилося б, якби в нас було менше часу?",
+          "ru": "Что изменилось бы, если бы у нас было меньше времени?",
+          "zh": "如果我们的时间更少，会有什么变化？",
+          "es": "¿Qué cambiaría si tuviéramos menos tiempo?",
+          "fr": "Qu’est-ce qui changerait si nous avions moins de temps ?",
+          "it": "Che cosa cambierebbe se avessimo meno tempo?",
+          "ja": "もし時間が少なかったら、何が変わるでしょうか。"
+        }
+      },
+      {
+        "id": "compare.agree",
+        "text": {
+          "de": "Ich stimme dir teilweise zu, sehe aber ein Risiko.",
+          "en": "I partly agree with you, but I see a risk.",
+          "ka": "ნაწილობრივ გეთანხმები, მაგრამ ერთ რისკს ვხედავ.",
+          "uk": "Я частково з тобою погоджуюся, але бачу ризик.",
+          "ru": "Я частично с тобой согласен, но вижу риск.",
+          "zh": "我部分同意你的看法，但我看到了一个风险。",
+          "es": "Estoy parcialmente de acuerdo contigo, pero veo un riesgo.",
+          "fr": "Je suis en partie d’accord avec toi, mais je vois un risque.",
+          "it": "Sono in parte d’accordo con te, ma vedo un rischio.",
+          "ja": "一部は同意しますが、リスクもあると思います。"
+        }
+      },
+      {
+        "id": "compare.summary",
+        "text": {
+          "de": "Fassen wir zuerst die wichtigsten Punkte zusammen.",
+          "en": "Let us summarize the most important points first.",
+          "ka": "ჯერ ყველაზე მნიშვნელოვანი საკითხები შევაჯამოთ.",
+          "uk": "Спочатку підсумуймо найважливіші пункти.",
+          "ru": "Сначала подведём итог по самым важным пунктам.",
+          "zh": "我们先总结最重要的几点。",
+          "es": "Resumamos primero los puntos más importantes.",
+          "fr": "Résumons d’abord les points les plus importants.",
+          "it": "Riassumiamo prima i punti più importanti.",
+          "ja": "まず最も重要な点をまとめましょう。"
+        }
+      },
+      {
+        "id": "compare.decision",
+        "text": {
+          "de": "Wir entscheiden erst, nachdem wir beide Möglichkeiten geprüft haben.",
+          "en": "We will decide only after checking both options.",
+          "ka": "გადაწყვეტილებას მხოლოდ ორივე ვარიანტის შემოწმების შემდეგ მივიღებთ.",
+          "uk": "Ми ухвалимо рішення лише після перевірки обох варіантів.",
+          "ru": "Мы примем решение только после проверки обоих вариантов.",
+          "zh": "我们核实两种方案后再作决定。",
+          "es": "Decidiremos solo después de comprobar ambas opciones.",
+          "fr": "Nous déciderons seulement après avoir examiné les deux possibilités.",
+          "it": "Decideremo solo dopo aver verificato entrambe le opzioni.",
+          "ja": "両方の選択肢を確認してから決めます。"
+        }
+      }
+    ]
+  }
+]);

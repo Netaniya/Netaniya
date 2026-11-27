@@ -52,3 +52,6 @@ Der Schlüssel `eliana-n25x.workshop.v1` bleibt kompatibel; bisherige Roboter, P
 ## Urheberrecht
 
 Natalie Ragulina verantwortet die menschliche Idee, Konzeption, Figurenwahl und künstlerische Leitung. KI-Unterstützung wird offengelegt; kommerzielle Referenzen und prozentuale Beiträge werden nicht erfunden. Private Originalfotos werden im neuen Studio nicht verwendet. [Urheberrechtsvermerk](LICENSE.md). Three.js: MIT; Manrope: SIL OFL; [Bildnachweise](assets/credits.json).
+
+## Erweiterung der Academy (Entwicklungskandidat)
+Neue gestufte Fachkurse und zwei weitere Sprachthemen sind im Entwicklungszweig enthalten. [Entwicklungsstand](workshop/PROGRESS.ru.md). Die öffentlich bereitgestellte Version kann bis zur Abnahme davon abweichen.

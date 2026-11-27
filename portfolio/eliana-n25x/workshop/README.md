@@ -14,3 +14,6 @@ Der Build prüft 30 notwendige Offline-Ressourcen mit SHA-256. Die vollständige
 Vom Spielordner: `npm ci --ignore-scripts`, `npm run build`, `npm run check`, `npm test`. Im Stamm: `node scripts/build-pages.mjs` und `node --test tests/pages.test.mjs`. CI nutzt Node.js 24. 88 automatisierte Projekttests und zwölf Portfolioprüfungen sind von echten Chromium-Läufen und physischen Geräten zu unterscheiden.
 
 Der Speicher bleibt unter `eliana-n25x.workshop.v1` kompatibel. Profile und Projekte lassen sich übertragen; Website und lokale Datei können getrennte Speicher haben. Aktuelle Ergebnisse: [publication.json](../../../docs/eliana-n25x-workshop/publication.json). Physische Geräte und Installation sind separat zu prüfen. Das Sprachmaterial ist noch nicht durch Muttersprachler geprüft; der vollständige C1-Weg ist noch nicht fertig. Konten, freier KI-Chat, Nachrichten und Zahlungen sind nicht angeschlossen.
+
+## Academy-Erweiterung (Entwicklungszweig)
+14 Sprachthemen mit 136 Ausgangssätzen pro Sprache; sechs Fachkurse (Logik, Physik, Biologie, Geografie, digitale Kompetenz und Musiktheorie) mit 61 Aufgaben in 23 Stufen. Mathe und Programmierung in je vier Stufen. Kandidat: Veröffentlichung und vollständige Browser-Abnahme noch offen. Keine CEFR-Zertifizierung.
