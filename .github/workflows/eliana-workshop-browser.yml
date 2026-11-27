@@ -1,8 +1,11 @@
 name: Robot Studio browser verification
 on:
   push:
-    branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice, codex/n25x-learning-platform]
+    branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice, codex/n25x-learning-platform, codex/n25x-learning-review]
     paths: ['portfolio/eliana-n25x/workshop/**', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', 'portfolio/eliana-n25x/tests/academy.test.mjs', 'portfolio/eliana-n25x/tests/learning.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
+  pull_request:
+    branches: [main]
+    paths: ['portfolio/eliana-n25x/**', '.github/workflows/eliana-workshop-browser.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,7 +18,7 @@ jobs:
         scope: [desktop, touch]
     env:
       ELIANA_BROWSER_SCOPE: ${{ matrix.scope }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +29,7 @@ jobs:
       - run: npm ci --ignore-scripts --prefix portfolio/eliana-n25x
       - run: cd portfolio/eliana-n25x/3d/browser-tests && npx playwright install --with-deps chromium
       - run: node portfolio/eliana-n25x/workshop/build.mjs
-      - name: Verify core, math, audio and offline cache
+      - name: Verify all workshop modules, math, audio and offline cache
         run: node --test portfolio/eliana-n25x/tests/workshop.test.mjs portfolio/eliana-n25x/tests/academy.test.mjs portfolio/eliana-n25x/tests/learning.test.mjs
       - name: Exercise rendered studio through real input
         run: node portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs
