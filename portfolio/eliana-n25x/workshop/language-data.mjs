@@ -997,7 +997,7 @@ LANGUAGE_UNITS.push(...[
           "en": "The result is not yet conclusive.",
           "ka": "შედეგი ჯერ ერთმნიშვნელოვანი არ არის.",
           "uk": "Результат поки не є однозначним.",
-          "ru": "Результат пока не однозначен.",
+          "ru": "Результат пока неоднозначен.",
           "zh": "目前的结果还不明确。",
           "es": "El resultado todavía no es concluyente.",
           "fr": "Le résultat n’est pas encore concluant.",
@@ -1070,7 +1070,7 @@ LANGUAGE_UNITS.push(...[
         "text": {
           "de": "Wenn neue Belege auftauchen, müssen wir unsere Schlussfolgerung überdenken.",
           "en": "If new evidence emerges, we must reconsider our conclusion.",
-          "ka": "თუ ახალი მტკიცებულებები გამოჩნდება, ჩვენი დასკვნა უნდა გადავხედოთ.",
+          "ka": "თუ ახალი მტკიცებულებები გამოჩნდება, ჩვენს დასკვნას უნდა გადავხედოთ.",
           "uk": "Якщо з’являться нові докази, ми маємо переглянути наш висновок.",
           "ru": "Если появятся новые доказательства, мы должны пересмотреть наш вывод.",
           "zh": "如果出现新的证据，我们就必须重新审视结论。",

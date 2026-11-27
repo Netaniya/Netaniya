@@ -111,6 +111,22 @@ async function expandedLearningCheck(){
  }
  await page.locator('#course-language').selectOption('en');await page.locator('#course-language-unit').selectOption('problem-solving');await click('[data-l=mode][data-mode=read]');let added=LANGUAGE_UNITS.find(u=>u.id==='problem-solving').items[0];await click('[data-l=meaning][data-id="'+added.id+'"]');assert((await state()).learning.languages.done['en/'+added.id]&1);
  await page.locator('#course-language-unit').selectOption('compare-decide');await click('[data-l=mode][data-mode=write]');added=LANGUAGE_UNITS.find(u=>u.id==='compare-decide').items[0];await page.locator('#course-language-answer').fill(added.text.en);await click('#course-language-form button[type=submit]');assert((await state()).learning.languages.done['en/'+added.id]&2);
+ for(const language of LEARNING_LANGUAGES.map(v=>v.id)){
+  await page.locator('#course-language').selectOption(language);
+  await page.locator('#course-language-unit').selectOption('professional-communication');
+  await click('[data-l=mode][data-mode=read]');
+  const professional=LANGUAGE_UNITS.find(u=>u.id==='professional-communication').items[0];
+  await click('[data-l=meaning][data-id="'+professional.id+'"]');
+  assert((await state()).learning.languages.done[language+'/'+professional.id]&1);
+  await page.locator('#course-language-unit').selectOption('evidence-arguments');
+  await click('[data-l=mode][data-mode=write]');
+  const evidence=LANGUAGE_UNITS.find(u=>u.id==='evidence-arguments').items[0];
+  await page.locator('#course-language-answer').fill(evidence.text[language]);
+  await click('#course-language-form button[type=submit]');
+  assert((await state()).learning.languages.done[language+'/'+evidence.id]&2);
+  await noOverflow();
+ }
+ check('Professional communication and evidence topics work across all ten languages through real inputs');
  for(const language of LEARNING_LANGUAGES.map(v=>v.id)){await page.locator('#course-language').selectOption(language);await click('[data-l=grammar-open]');const lesson=GRAMMAR_LESSONS.find(v=>v.language===language);await page.locator('#grammar-lesson').selectOption(lesson.id);for(const q of lesson.practice){await page.locator('#content').getByRole('button',{name:q.answer,exact:true}).click();await click('[data-l=grammar-next]');}await click('[data-l=grammar-test]');assert(!(await page.locator('#content').innerText()).includes(lesson.example));for(const q of lesson.checkpoint)await page.locator('#content').getByRole('button',{name:q.answer,exact:true}).click();assert((await state()).learning.languages.grammar.passed[lesson.id]);await noOverflow();await click('[data-l=grammar-close]');}
  check('All ten languages: grammar exercises and separate checkpoints save progress through actual inputs');
  await screenshot(scope+'-language-course');check('Whole sentences in all ten languages are read and written; English, Georgian, Chinese and Japanese word-order tasks complete through native script',{topics:LANGUAGE_UNITS.length,sourceSentencesPerLanguage:LANGUAGE_UNITS.reduce((n,u)=>n+u.items.length,0)});
