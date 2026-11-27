@@ -1,3 +1,5 @@
+![N25X](branding/n25x-logo.webp)
+
 # Natalie Ragulina (Netaniya)
 
 [![Request Desk checks](https://github.com/Netaniya/Netaniya/actions/workflows/ai-request-desk.yml/badge.svg)](https://github.com/Netaniya/Netaniya/actions/workflows/ai-request-desk.yml) [![Quality Lab checks](https://github.com/Netaniya/Netaniya/actions/workflows/ai-quality-lab.yml/badge.svg)](https://github.com/Netaniya/Netaniya/actions/workflows/ai-quality-lab.yml)
