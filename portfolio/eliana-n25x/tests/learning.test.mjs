@@ -7,7 +7,7 @@ import {fresh,parseProfile,reward} from '../workshop/model.mjs';
 import {translate} from '../workshop/i18n.mjs';
 import {freshScore,validateScore,noteName,midiFrequency,makeMidi,renderScoreWav} from '../workshop/piano-score.mjs';
 import {createPiano} from '../workshop/piano.mjs';
-import {LANGUAGE_UNITS,LANGUAGE_ITEMS,COURSE_LANGUAGES,phraseTokens,phraseMatches,meaningChoices,parseLanguageCourse} from '../workshop/language-course.mjs';
+import {LANGUAGE_UNITS,LANGUAGE_ITEMS,COURSE_LANGUAGES,phraseTokens,phraseMatches,meaningChoices,parseLanguageCourse,meaningSource,wordOrder} from '../workshop/language-course.mjs';
 import {createLanguageClassroom} from '../workshop/language-classroom.mjs';
 import {updateProject} from '../workshop/model.mjs';
 test('Mathematics: all 12,288 parameter variants are finite, uniquely presented within their topic, and accept exact fractions',()=>{
@@ -70,3 +70,6 @@ test('Mathematics classroom: real DOM forms reward once, review errors and compl
  for(const lang of ['de','en','ru','uk']){s.lang=lang;api.render();assert(document.getElementById('content').textContent.includes(translate(lang,'mathCourse')));assert(!document.getElementById('content').textContent.includes('undefined'));}assert(saves>10);
  }finally{globalThis.document=previous;}
 });
+
+test('Language exercise source cannot reveal the target answer; deterministic word shuffle varies by item',()=>{for(const target of COURSE_LANGUAGES)for(const ui of ['de','en','ru','uk'])for(const selected of ['auto','de','en','ru','uk'])assert.notEqual(meaningSource(target,selected,ui),target);const samples=LANGUAGE_ITEMS.map(q=>wordOrder(['a','b','c','d'],q.id+'|en').map(v=>v.i).join(','));assert(new Set(samples).size>10);assert(samples.every(v=>v!=='0,1,2,3'));assert.deepEqual(wordOrder(['a','b','c'],'test'),wordOrder(['a','b','c'],'test'));for(const lang of ['de','en','ru','uk'])assert(translate(lang,'studyProgress'));});
+test('Imported math assessment restores the expected exercise and clamps impossible accuracy',()=>{const p=freshMathCourse();p.attempts=2;p.correct=99;p.index=255;p.assessment={topic:'add',indices:Array.from({length:10},(_,i)=>i*5),answers:[true,false],answered:false};let r=parseMathCourse(p);assert.equal(r.correct,2);assert.equal(r.index,10);p.assessment.answered=true;r=parseMathCourse(p);assert.equal(r.index,5);});

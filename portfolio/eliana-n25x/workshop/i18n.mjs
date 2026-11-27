@@ -388,3 +388,10 @@ starterCards|Erste Wortkarten|Starter word cards|Первые словарные
 export const TEXT=Object.fromEntries(['de','en','ru','uk'].map(l=>[l,{}]));
 for(const line of rows.trim().split('\n')){const [key,...values]=line.split('|');if(values.length!==4)throw Error('translation '+key);if(Object.hasOwn(TEXT.de,key))throw Error('Duplicate translation '+key);Object.keys(TEXT).forEach((l,i)=>TEXT[l][key]=values[i]);}
 export function translate(lang,key,params={}){let text=TEXT[lang]?.[key];if(text===undefined)throw Error('Missing text '+lang+':'+key);return text.replace(/\{(\w+)\}/g,(_,k)=>String(params[k]??''));}
+
+const studyCopy={
+de:{studyProgress:'Mein Lernfortschritt',studyProgressNote:'Abgeschlossene Übungen, keine Einstufung oder Prüfung. Hörübungen sind optional.',studyMathDetail:'{topics} Themen geübt · {review} Fehler zur Wiederholung',studyLanguageDetail:'Lesen, Schreiben, Satzbau · {review} offene Wiederholungen',studyProgramDetail:'Missionen mit bestandenen Prüfeingaben'},
+en:{studyProgress:'My learning progress',studyProgressNote:'Completed exercises, not a proficiency rating. Listening is optional.',studyMathDetail:'{topics} topics practised · {review} mistakes to review',studyLanguageDetail:'Reading, writing, word order · {review} reviews due',studyProgramDetail:'Missions with passing test inputs'},
+ru:{studyProgress:'Мой учебный прогресс',studyProgressNote:'Выполненные упражнения, не оценка уровня знаний. Аудирование необязательно.',studyMathDetail:'Тем в практике: {topics} · Ошибок для повторения: {review}',studyLanguageDetail:'Чтение, письмо, порядок слов · Повторить: {review}',studyProgramDetail:'Миссии с успешно пройденными тестами'},
+uk:{studyProgress:'Мій навчальний прогрес',studyProgressNote:'Виконані вправи, не оцінка рівня знань. Аудіювання необов’язкове.',studyMathDetail:'Тем опрацьовано: {topics} · Помилок для повторення: {review}',studyLanguageDetail:'Читання, письмо, порядок слів · Повторити: {review}',studyProgramDetail:'Місії з успішно пройденими тестами'}};
+for(const [lang,copy] of Object.entries(studyCopy))Object.assign(TEXT[lang],copy);

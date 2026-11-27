@@ -1,4 +1,7 @@
 import {createLanguageClassroom} from './language-classroom.mjs';
+import {MATH_TOPICS,MATH_VARIANTS} from './math-course.mjs';
+import {LANGUAGE_ITEMS} from './language-course.mjs';
+import {MISSIONS} from './curriculum.mjs';
 import {createPiano} from './piano.mjs';
 import {createMathClassroom} from './math-classroom.mjs';
 import {createAcademy,ACADEMY_VIEWS,CREATIVE_ICONS} from './academy.mjs';
@@ -18,7 +21,7 @@ let dailyMode=false;
 let melody=[1,0,3,0,4,0,5,3],tempo=110,moves=['wave','turn','glow'],projectTitle='',playing=false,feedback='',feedbackKind='';
 const symbols={languageCourse:'Aa',piano:'♫',mathCourse:'∑',...CREATIVE_ICONS,programming:'⌘',languages:'Aa',schoolLabs:'✧',creation:'◇',home:'◉',learn:'✧',create:'◇',parts:'▦',wave:'⌁',turn:'↻',step:'↟',glow:'✦',nod:'⌄',rest:'○',math:'∑',english:'Aa',coding:'⌘',melody:'♫',routine:'⌁',collection:'▤',assemble:'⚙'};
 const puzzles=[[[2,1],[2,2],[2,3]],[[0,2],[1,2],[3,2],[4,2]],[[1,0],[1,1],[1,2],[3,2],[3,3],[3,4]]];
-const tr=(key,params)=>translate(state.lang,key,params),rights=()=> '© 2026 Natalie Ragulina. '+tr('rights');
+const tr=(key,params)=>translate(state.lang,key,params),rights=()=> '© 2026 Natalie Ragulina (Netaniya). '+tr('rights');
 const audio=createSound();audio.update(state.sound,state.volume);
 const piano=createPiano({getState:()=>state,tr,esc,save,navigate,toast,download,audio,render,saveProject:(kind,data,name,id)=>{const r=updateProject(state,id,kind,data,name);if(r){save();caption();}return r;}});
 const languageClass=createLanguageClassroom({getState:()=>state,tr,esc,save,award,navigate,toast,audio,render});
@@ -47,7 +50,14 @@ function assembleView(){return pageHead('assemble','assembleHelp')+'<label for="
  '<label>'+esc(tr('color'))+'</label><div class="choice-row">'+Object.keys(COLORS).filter(v=>state.owned.includes(v)).map(v=>'<button data-config="color" data-value="'+v+'" class="swatch" style="--swatch:'+COLORS[v]+'" aria-label="'+esc(tr(v))+'" aria-pressed="'+(v===state.robot.color)+'"></button>').join('')+'</div>'+
  choices('frame',['balanced','athletic','slender'])+choices('finish',['ceramic','titanium','satin'])+choices('head',['arc','visor','antenna'])+choices('base',['feet','wheels','hover'])+choices('hands',['round','clamp'])+
  '<div class="panel">'+choices('personality',['calm','cheerful','focused'])+choices('interest',['space','nature','music'])+choices('style',['steps','visual','challenge'])+'</div>'+choices('module',['none',...SHOP.filter(v=>v.kind==='module'&&state.owned.includes(v.id)).map(v=>v.id)])+'<div class="buttons">'+btn('wave',esc(tr('wave')),'secondary')+btn('home',esc(tr('continue')),'primary')+'</div>';}
-function learnView(){const list=items=>'<div class="subject-list">'+items.map(v=>'<button data-do="subject" data-subject="'+v+'"><span class="symbol">'+symbols[v]+'</span><span><b>'+esc(tr(v==='languages'?'starterCards':v))+'</b><small>'+esc(tr(v==='mathCourse'?'mathCourseHelp':v==='languageCourse'?'languageCourseHelp':v==='english'?'wordHelp':'practice'))+'</small></span><span class="arrow">↗</span></button>').join('')+'</div>';return pageHead('learn','learnHelp')+list(['mathCourse','languageCourse'])+'<div class="practice-banner"><h3>'+esc(tr('programming'))+'</h3><p class="help">'+esc(tr('programmingHelp'))+'</p>'+btn('programming',esc(tr('continue')),'primary')+'</div><details><summary>'+esc(tr('extraExercises'))+'</summary>'+list(['schoolLabs','coding','math','languages','english'])+'</details>';}
+function studyProgress(){
+ const m=state.learning.math,l=state.learning.languages,examples=Object.values(m.done).reduce((n,v)=>n+v.length,0),topics=MATH_TOPICS.filter(t=>m.done[t.id]?.length).length;
+ const langDone=LANGUAGE_ITEMS.reduce((n,i)=>n+[1,2,4].filter(bit=>(l.done[l.language+'/'+i.id]||0)&bit).length,0),langReview=l.review.filter(v=>v.startsWith(l.language+'|')).length;
+ const missions=MISSIONS.filter(v=>state.solved.includes('program:'+v.id)).length;
+ const card=(title,count,total,detail,action)=>'<section class="panel"><h3>'+esc(title)+'</h3><p class="help">'+esc(detail)+'</p><progress aria-label="'+esc(title)+'" max="'+total+'" value="'+count+'"></progress><p>'+count+' / '+total+'</p>'+btn(action,esc(tr('continue')),'secondary')+'</section>';
+ return '<section id="study-progress" aria-label="'+esc(tr('studyProgress'))+'"><h3>'+esc(tr('studyProgress'))+'</h3><p class="help">'+esc(tr('studyProgressNote'))+'</p><div class="study-grid">'+card(tr('mathCourse'),examples,MATH_VARIANTS,tr('studyMathDetail',{topics,review:m.mistakes.length}),'study-math')+card(tr('languageCourse')+' · '+l.language.toUpperCase(),langDone,LANGUAGE_ITEMS.length*3,tr('studyLanguageDetail',{review:langReview}),'study-language')+card(tr('programming'),missions,MISSIONS.length,tr('studyProgramDetail'),'programming')+'</div></section>';
+}
+function learnView(){const list=items=>'<div class="subject-list">'+items.map(v=>'<button data-do="subject" data-subject="'+v+'"><span class="symbol">'+symbols[v]+'</span><span><b>'+esc(tr(v==='languages'?'starterCards':v))+'</b><small>'+esc(tr(v==='mathCourse'?'mathCourseHelp':v==='languageCourse'?'languageCourseHelp':v==='english'?'wordHelp':'practice'))+'</small></span><span class="arrow">↗</span></button>').join('')+'</div>';return pageHead('learn','learnHelp')+studyProgress()+list(['mathCourse','languageCourse'])+'<div class="practice-banner"><h3>'+esc(tr('programming'))+'</h3><p class="help">'+esc(tr('programmingHelp'))+'</p>'+btn('programming',esc(tr('continue')),'primary')+'</div><details><summary>'+esc(tr('extraExercises'))+'</summary>'+list(['schoolLabs','coding','math','languages','english'])+'</details>';}
 
 function gradeRow(){return '<div class="grade-row"><label for="grade">'+esc(tr('level'))+'</label><select id="grade">'+Array.from({length:11},(_,i)=>'<option '+(i+1===state.grade?'selected':'')+'>'+(i+1)+'</option>').join('')+'</select><p>'+esc(tr(MATH[state.grade-1].topic))+'</p></div>';}
 function mathView(){const task=tasks()[taskIndex];return back('learn','learn')+'<h2>'+esc(tr('math'))+'</h2>'+gradeRow()+'<div class="choice-row mode-row">'+btn('practice',esc(tr('practice')),dailyMode?'outline':'secondary','aria-pressed="'+!dailyMode+'"')+btn('daily',esc(tr('daily')),dailyMode?'secondary':'outline','aria-pressed="'+dailyMode+'"')+'</div><div class="panel"><div class="eyebrow">'+esc(tr(dailyMode?'daily':'practice'))+' / '+(taskIndex+1)+' · 3</div><p class="help">'+esc(tr(state.robot.style==='challenge'?'challengeHelp':state.robot.personality==='calm'?'explainCalm':state.robot.personality==='cheerful'?'explainCheerful':'explainFocused'))+'</p><div class="exercise" id="exercise">'+esc(task[0])+'</div><form id="answer-form" class="answer-row"><input id="answer" aria-label="'+esc(tr('answer'))+'" placeholder="'+esc(tr('answer'))+'" inputmode="decimal" autocomplete="off" maxlength="60"><button class="primary" id="check-answer" type="submit">'+esc(tr('check'))+'</button></form><div id="feedback" class="feedback '+feedbackKind+'" aria-live="polite">'+esc(feedback)+'</div><div id="hint" '+(state.robot.style==='visual'?'':'hidden')+' class="hint-box">'+esc(task[2])+'</div><div class="buttons">'+btn('hint',esc(tr('hint')),'outline')+btn('next-task',esc(tr('next')),'secondary')+'</div></div>'+btn('helper',esc(tr('helper'))+' ↗','outline')+'<p class="help">'+esc(tr('scope'))+'</p>';}
@@ -100,6 +110,8 @@ document.addEventListener('click',async event=>{const button=event.target.closes
  if(button.id==='settings-button'){dialog('settings');return;}
  if(button.id==='rotate-left'||button.id==='rotate-right'){stage?.rotate(button.id==='rotate-left'?-.5:.5);return;}
  if(['home','learn','create','parts','assemble','languageCourse','mathCourse','math','helper','english','coding','piano','melody','routine','collection',...ACADEMY_VIEWS].includes(action)){if(dialogKind)dialog('');navigate(action);}
+ else if(action==='study-math'){navigate('mathCourse');}
+ else if(action==='study-language'){navigate('languageCourse');}
  else if(action==='subject'){subject=button.dataset.subject;dailyMode=false;navigate(subject);}
  else if(action==='daily'){dailyMode=true;taskIndex=[0,1,2].find(i=>!state.solved.includes(dailyPrefix()+i))??0;navigate('math');}
  else if(action==='practice'){dailyMode=false;taskIndex=0;navigate('math');}

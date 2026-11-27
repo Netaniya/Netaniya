@@ -1,7 +1,7 @@
 name: Robot Studio browser verification
 on:
   push:
-    branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice, codex/n25x-learning-platform]
+    branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice, codex/n25x-learning-platform, codex/n25x-learning-review]
     paths: ['portfolio/eliana-n25x/workshop/**', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', 'portfolio/eliana-n25x/tests/academy.test.mjs', 'portfolio/eliana-n25x/tests/learning.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
   workflow_dispatch:
 permissions:
@@ -15,7 +15,7 @@ jobs:
         scope: [desktop, touch]
     env:
       ELIANA_BROWSER_SCOPE: ${{ matrix.scope }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
