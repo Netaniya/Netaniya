@@ -60,3 +60,6 @@ Assistant corrected a cross-language manual-review navigation issue across all t
 
 ### 28 November — extended piano pathway
 The creator requested continued development and verification. Assistant added 12 advanced note-order exercises (24 in total, six stages), covering additional keys, natural and harmonic minor scales, broken dominant seventh, inversions and minor cadence. Technical content and testing are AI-assisted; no creator-performed evaluation or certification is claimed. Old IDs preserved. Browser acceptance is outstanding.
+
+### 28 November — independent verification and CI diagnostics
+At the owner's request to resolve the testing blocker, the assistant added a source-only smoke test and independent CI job, verified its assertions against retrieved source modules, and documented the lack of new Actions events. These are assistant implementation decisions; no physical-device, Chromium or formal educational acceptance is claimed.
