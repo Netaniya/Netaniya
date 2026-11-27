@@ -26,7 +26,7 @@ jobs:
       - run: npm ci --ignore-scripts --prefix portfolio/eliana-n25x
       - run: cd portfolio/eliana-n25x/3d/browser-tests && npx playwright install --with-deps chromium
       - run: node portfolio/eliana-n25x/workshop/build.mjs
-      - name: Verify core, math, audio and offline cache
+      - name: Verify all workshop modules, math, audio and offline cache
         run: node --test portfolio/eliana-n25x/tests/workshop.test.mjs portfolio/eliana-n25x/tests/academy.test.mjs portfolio/eliana-n25x/tests/learning.test.mjs
       - name: Exercise rendered studio through real input
         run: node portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs
