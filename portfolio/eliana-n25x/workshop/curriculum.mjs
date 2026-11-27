@@ -87,7 +87,10 @@ export const MISSION_STAGES=[
  {title:['Grundlagen','Foundations','Основы','Основи'],start:0,end:5},
  {title:['Rechnen und Bedingungen','Arithmetic and conditions','Вычисления и условия','Обчислення й умови'],start:5,end:10},
  {title:['Schleifen und Funktionen','Loops and functions','Циклы и функции','Цикли й функції'],start:10,end:15},
- {title:['Algorithmen und Grenzfälle','Algorithms and edge cases','Алгоритмы и граничные случаи','Алгоритми й крайові випадки'],start:15,end:20}
+ {title:['Algorithmen und Grenzfälle','Algorithms and edge cases','Алгоритмы и граничные случаи','Алгоритми й крайові випадки'],start:15,end:20},
+ {title:['Zahlen und Beweise','Numbers and reasoning','Числа и рассуждения','Числа й міркування'],start:20,end:24},
+ {title:['Algorithmische Muster','Algorithmic patterns','Алгоритмические шаблоны','Алгоритмічні шаблони'],start:24,end:28},
+ {title:['Anwendungsprojekte','Applied projects','Прикладные проекты','Прикладні проєкти'],start:28,end:32}
 ];
 export function checkMission(mission,source,runner) {
  return mission.tests.map(([args,expected])=>({args,expected,...runner(source,mission.entry,args)}));

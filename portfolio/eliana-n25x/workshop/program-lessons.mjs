@@ -402,3 +402,1024 @@ export const EXTRA_MISSIONS = [
     tests: [[[-2, 10], 0], [[0, 0], 0], [[6, 10], 6], [[10, 10], 10], [[12, 10], 10]],
   },
 ];
+
+// Academy extension: preserve legacy IDs and order.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "range-sum",
+    "title": [
+      "Intervallsumme",
+      "Range sum",
+      "Сумма диапазона",
+      "Сума діапазону"
+    ],
+    "task": [
+      "Addiere ganze Zahlen von a bis b einschließlich (0 ≤ a ≤ b ≤ 20).",
+      "Add integers from a through b inclusive (0 ≤ a ≤ b ≤ 20).",
+      "Сложи целые числа от a до b включительно (0 ≤ a ≤ b ≤ 20).",
+      "Додай цілі числа від a до b включно (0 ≤ a ≤ b ≤ 20)."
+    ],
+    "hint": [
+      "<= schließt b ein.",
+      "<= includes b.",
+      "<= включает b.",
+      "<= включає b."
+    ],
+    "why": [
+      "<= schließt b ein.",
+      "<= includes b.",
+      "<= включает b.",
+      "<= включає b."
+    ],
+    "entry": "rangeSum",
+    "source": "function rangeSum(a,b) { let sum=0; for (let i=a; i<b; i++) { sum=sum+i; } return sum; }",
+    "sample": [
+      2,
+      4
+    ],
+    "block": {
+      "from": "i<b",
+      "choices": [
+        "i<b",
+        "i<=b",
+        "i>b"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2,
+          4
+        ],
+        9
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        5
+      ],
+      [
+        [
+          0,
+          3
+        ],
+        6
+      ],
+      [
+        [
+          10,
+          12
+        ],
+        33
+      ]
+    ],
+    "expectedPrediction": 5,
+    "prediction": [
+      5,
+      9,
+      6
+    ]
+  },
+  {
+    "id": "count-multiples",
+    "title": [
+      "Vielfache zählen",
+      "Count multiples",
+      "Подсчёт кратных",
+      "Підрахунок кратних"
+    ],
+    "task": [
+      "Zähle positive Vielfache von k bis n (1 ≤ k ≤ 20, 0 ≤ n ≤ 40).",
+      "Count positive multiples of k up to n (1 ≤ k ≤ 20, 0 ≤ n ≤ 40).",
+      "Посчитай положительные кратные k до n (1 ≤ k ≤ 20, 0 ≤ n ≤ 40).",
+      "Порахуй додатні кратні k до n (1 ≤ k ≤ 20, 0 ≤ n ≤ 40)."
+    ],
+    "hint": [
+      "Ein Vielfaches hat Rest null.",
+      "A multiple has zero remainder.",
+      "У кратного остаток равен нулю.",
+      "Кратне має нульову остачу."
+    ],
+    "why": [
+      "Ein Vielfaches hat Rest null.",
+      "A multiple has zero remainder.",
+      "У кратного остаток равен нулю.",
+      "Кратне має нульову остачу."
+    ],
+    "entry": "countMultiples",
+    "source": "function countMultiples(n,k) { let count=0; for (let i=1; i<=n; i++) { if (i%k!==0) { count++; } } return count; }",
+    "sample": [
+      7,
+      2
+    ],
+    "block": {
+      "from": "i%k!==0",
+      "choices": [
+        "i%k!==0",
+        "i%k===0",
+        "i%k===1"
+      ]
+    },
+    "tests": [
+      [
+        [
+          7,
+          2
+        ],
+        3
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          1
+        ],
+        5
+      ],
+      [
+        [
+          12,
+          3
+        ],
+        4
+      ],
+      [
+        [
+          3,
+          5
+        ],
+        0
+      ]
+    ],
+    "expectedPrediction": 4,
+    "prediction": [
+      4,
+      3,
+      5
+    ]
+  },
+  {
+    "id": "digit-sum",
+    "title": [
+      "Quersumme",
+      "Digit sum",
+      "Сумма цифр",
+      "Сума цифр"
+    ],
+    "task": [
+      "Addiere die Ziffern h,t,o (je 0 bis 9).",
+      "Add digits h,t,o (each 0 to 9).",
+      "Сложи цифры h,t,o (каждая от 0 до 9).",
+      "Додай цифри h,t,o (кожна від 0 до 9)."
+    ],
+    "hint": [
+      "Die Quersumme von 307 ist 3+0+7.",
+      "The digit sum of 307 is 3+0+7.",
+      "Сумма цифр 307 — 3+0+7.",
+      "Сума цифр 307 — 3+0+7."
+    ],
+    "why": [
+      "Die Quersumme von 307 ist 3+0+7.",
+      "The digit sum of 307 is 3+0+7.",
+      "Сумма цифр 307 — 3+0+7.",
+      "Сума цифр 307 — 3+0+7."
+    ],
+    "entry": "digits",
+    "source": "function digits(h,t,o) { return h*100+t+o; }",
+    "sample": [
+      3,
+      0,
+      7
+    ],
+    "block": {
+      "from": "h*100+t+o",
+      "choices": [
+        "h*100+t+o",
+        "h+t+o",
+        "h*t*o"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          0,
+          7
+        ],
+        10
+      ],
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          9,
+          9,
+          9
+        ],
+        27
+      ],
+      [
+        [
+          1,
+          2,
+          3
+        ],
+        6
+      ],
+      [
+        [
+          0,
+          4,
+          9
+        ],
+        13
+      ]
+    ],
+    "expectedPrediction": 307,
+    "prediction": [
+      307,
+      10,
+      308
+    ]
+  },
+  {
+    "id": "triangle-check",
+    "title": [
+      "Dreiecksungleichung",
+      "Triangle inequality",
+      "Неравенство треугольника",
+      "Нерівність трикутника"
+    ],
+    "task": [
+      "Prüfe, ob positive Seiten a,b,c ein nicht entartetes Dreieck bilden.",
+      "Check whether positive sides a,b,c form a non-degenerate triangle.",
+      "Проверь, образуют ли положительные стороны a,b,c невырожденный треугольник.",
+      "Перевір, чи утворюють додатні сторони a,b,c невироджений трикутник."
+    ],
+    "hint": [
+      "Jede Seite muss kleiner als die Summe der anderen sein.",
+      "Each side must be smaller than the sum of the others.",
+      "Каждая сторона меньше суммы двух других.",
+      "Кожна сторона менша за суму двох інших."
+    ],
+    "why": [
+      "Jede Seite muss kleiner als die Summe der anderen sein.",
+      "Each side must be smaller than the sum of the others.",
+      "Каждая сторона меньше суммы двух других.",
+      "Кожна сторона менша за суму двох інших."
+    ],
+    "entry": "triangle",
+    "source": "function triangle(a,b,c) { return a+b>c || a+c>b || b+c>a; }",
+    "sample": [
+      1,
+      2,
+      3
+    ],
+    "block": {
+      "from": "a+b>c || a+c>b || b+c>a",
+      "choices": [
+        "a+b>c || a+c>b || b+c>a",
+        "a+b>c && a+c>b && b+c>a",
+        "a+b>=c && a+c>=b && b+c>=a"
+      ]
+    },
+    "tests": [
+      [
+        [
+          1,
+          2,
+          3
+        ],
+        false
+      ],
+      [
+        [
+          3,
+          4,
+          5
+        ],
+        true
+      ],
+      [
+        [
+          9,
+          1,
+          2
+        ],
+        false
+      ],
+      [
+        [
+          2,
+          9,
+          2
+        ],
+        false
+      ],
+      [
+        [
+          1,
+          1,
+          1
+        ],
+        true
+      ]
+    ],
+    "expectedPrediction": true,
+    "prediction": [
+      true,
+      false
+    ]
+  },
+  {
+    "id": "prime-check",
+    "title": [
+      "Primzahlen",
+      "Prime numbers",
+      "Простые числа",
+      "Прості числа"
+    ],
+    "task": [
+      "Ist n prim? 0 ≤ n ≤ 40, ganzzahlig.",
+      "Is n prime? 0 ≤ n ≤ 40, integer.",
+      "Является ли n простым? Целое 0 ≤ n ≤ 40.",
+      "Чи є n простим? Ціле 0 ≤ n ≤ 40."
+    ],
+    "hint": [
+      "Teste mögliche Teiler von 2 bis n-1; n muss größer als 1 sein.",
+      "Test divisors from 2 to n-1; n must exceed 1.",
+      "Проверяй делители от 2 до n−1; n больше 1.",
+      "Перевіряй дільники від 2 до n−1; n більше 1."
+    ],
+    "why": [
+      "Teste mögliche Teiler von 2 bis n-1; n muss größer als 1 sein.",
+      "Test divisors from 2 to n-1; n must exceed 1.",
+      "Проверяй делители от 2 до n−1; n больше 1.",
+      "Перевіряй дільники від 2 до n−1; n більше 1."
+    ],
+    "entry": "prime",
+    "source": "function prime(n) { if (n<2) { return false; } for (let i=2; i<=n; i++) { if (n%i===0) { return false; } } return true; }",
+    "sample": [
+      7
+    ],
+    "block": {
+      "from": "i<=n",
+      "choices": [
+        "i<=n",
+        "i<n",
+        "i>n"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2
+        ],
+        true
+      ],
+      [
+        [
+          7
+        ],
+        true
+      ],
+      [
+        [
+          1
+        ],
+        false
+      ],
+      [
+        [
+          9
+        ],
+        false
+      ],
+      [
+        [
+          0
+        ],
+        false
+      ],
+      [
+        [
+          37
+        ],
+        true
+      ]
+    ],
+    "expectedPrediction": false,
+    "prediction": [
+      false,
+      true
+    ]
+  },
+  {
+    "id": "common-divisor",
+    "title": [
+      "Größter gemeinsamer Teiler",
+      "Greatest common divisor",
+      "НОД",
+      "НСД"
+    ],
+    "task": [
+      "Finde den ggT positiver ganzer a,b bis 30.",
+      "Find GCD of positive integers a,b up to 30.",
+      "Найди НОД положительных целых a,b до 30.",
+      "Знайди НСД додатних цілих a,b до 30."
+    ],
+    "hint": [
+      "Beide Reste müssen null sein; speichere den größten gemeinsamen Teiler.",
+      "Both remainders must be zero; keep the largest common divisor.",
+      "Оба остатка нулевые; сохраняй наибольший общий делитель.",
+      "Обидві остачі нульові; зберігай найбільший спільний дільник."
+    ],
+    "why": [
+      "Beide Reste müssen null sein; speichere den größten gemeinsamen Teiler.",
+      "Both remainders must be zero; keep the largest common divisor.",
+      "Оба остатка нулевые; сохраняй наибольший общий делитель.",
+      "Обидві остачі нульові; зберігай найбільший спільний дільник."
+    ],
+    "entry": "gcd",
+    "source": "function gcd(a,b) { let best=1; for (let i=1; i<=a; i++) { if (a%i===0 || b%i===0) { best=i; } } return best; }",
+    "sample": [
+      12,
+      8
+    ],
+    "block": {
+      "from": "a%i===0 || b%i===0",
+      "choices": [
+        "a%i===0 || b%i===0",
+        "a%i===0 && b%i===0",
+        "a%i!==0 && b%i!==0"
+      ]
+    },
+    "tests": [
+      [
+        [
+          12,
+          8
+        ],
+        4
+      ],
+      [
+        [
+          7,
+          5
+        ],
+        1
+      ],
+      [
+        [
+          6,
+          6
+        ],
+        6
+      ],
+      [
+        [
+          1,
+          10
+        ],
+        1
+      ],
+      [
+        [
+          18,
+          24
+        ],
+        6
+      ]
+    ],
+    "expectedPrediction": 12,
+    "prediction": [
+      12,
+      4,
+      13
+    ]
+  },
+  {
+    "id": "fibonacci-step",
+    "title": [
+      "Fibonacci-Folge",
+      "Fibonacci sequence",
+      "Последовательность Фибоначчи",
+      "Послідовність Фібоначчі"
+    ],
+    "task": [
+      "Berechne F(n), 0 ≤ n ≤ 15, F(0)=0, F(1)=1.",
+      "Compute F(n), 0 ≤ n ≤ 15, F(0)=0, F(1)=1.",
+      "Вычисли F(n), 0 ≤ n ≤ 15, F(0)=0, F(1)=1.",
+      "Обчисли F(n), 0 ≤ n ≤ 15, F(0)=0, F(1)=1."
+    ],
+    "hint": [
+      "Speichere a+b vor der Aktualisierung beider Werte.",
+      "Store a+b before updating both values.",
+      "Сохрани a+b до обновления обоих значений.",
+      "Збережи a+b до оновлення обох значень."
+    ],
+    "why": [
+      "Speichere a+b vor der Aktualisierung beider Werte.",
+      "Store a+b before updating both values.",
+      "Сохрани a+b до обновления обоих значений.",
+      "Збережи a+b до оновлення обох значень."
+    ],
+    "entry": "fib",
+    "source": "function fib(n) { let a=0; let b=1; let t=0; for (let i=0; i<n; i++) { t=a*b; a=b; b=t; } return a; }",
+    "sample": [
+      5
+    ],
+    "block": {
+      "from": "t=a*b",
+      "choices": [
+        "t=a*b",
+        "t=a+b",
+        "t=a-b"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0
+        ],
+        0
+      ],
+      [
+        [
+          1
+        ],
+        1
+      ],
+      [
+        [
+          2
+        ],
+        1
+      ],
+      [
+        [
+          5
+        ],
+        5
+      ],
+      [
+        [
+          10
+        ],
+        55
+      ],
+      [
+        [
+          15
+        ],
+        610
+      ]
+    ],
+    "expectedPrediction": 0,
+    "prediction": [
+      0,
+      5,
+      1
+    ]
+  },
+  {
+    "id": "nested-grid",
+    "title": [
+      "Verschachtelte Schleifen",
+      "Nested loops",
+      "Вложенные циклы",
+      "Вкладені цикли"
+    ],
+    "task": [
+      "Zähle Zellen eines Rasters mit r Zeilen und c Spalten (0 ≤ r,c ≤ 8).",
+      "Count cells in a grid with r rows and c columns (0 ≤ r,c ≤ 8).",
+      "Посчитай клетки сетки с r строками и c столбцами (0 ≤ r,c ≤ 8).",
+      "Порахуй клітинки сітки з r рядками та c стовпцями (0 ≤ r,c ≤ 8)."
+    ],
+    "hint": [
+      "Die innere Schleife zählt c Spalten pro Zeile.",
+      "The inner loop counts c columns per row.",
+      "Внутренний цикл считает c столбцов в строке.",
+      "Внутрішній цикл рахує c стовпців у рядку."
+    ],
+    "why": [
+      "Die innere Schleife zählt c Spalten pro Zeile.",
+      "The inner loop counts c columns per row.",
+      "Внутренний цикл считает c столбцов в строке.",
+      "Внутрішній цикл рахує c стовпців у рядку."
+    ],
+    "entry": "gridCells",
+    "source": "function gridCells(r,c) { let n=0; for (let i=0; i<r; i++) { for (let j=0; j<r; j++) { n++; } } return n; }",
+    "sample": [
+      2,
+      3
+    ],
+    "block": {
+      "from": "j<r",
+      "choices": [
+        "j<r",
+        "j<c",
+        "j<=c"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2,
+          3
+        ],
+        6
+      ],
+      [
+        [
+          0,
+          4
+        ],
+        0
+      ],
+      [
+        [
+          4,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          1,
+          5
+        ],
+        5
+      ],
+      [
+        [
+          8,
+          8
+        ],
+        64
+      ]
+    ],
+    "expectedPrediction": 4,
+    "prediction": [
+      4,
+      6,
+      5
+    ]
+  },
+  {
+    "id": "shipping-cost",
+    "title": [
+      "Projekt: Versand",
+      "Project: shipping",
+      "Проект: доставка",
+      "Проєкт: доставка"
+    ],
+    "task": [
+      "3 Grundeinheiten plus 2 pro kg; ab 10 kg entfällt der Grundpreis. 1–20 kg.",
+      "3 base units plus 2 per kg; at 10 kg or above, no base charge. 1–20 kg.",
+      "3 базовые единицы плюс 2 за кг; от 10 кг базовая плата отменяется. 1–20 кг.",
+      "3 базові одиниці плюс 2 за кг; від 10 кг базова плата скасовується. 1–20 кг."
+    ],
+    "hint": [
+      "10 kg gehört zum zweiten Tarif.",
+      "10 kg belongs to the second rate.",
+      "10 кг относится ко второму тарифу.",
+      "10 кг належить до другого тарифу."
+    ],
+    "why": [
+      "10 kg gehört zum zweiten Tarif.",
+      "10 kg belongs to the second rate.",
+      "10 кг относится ко второму тарифу.",
+      "10 кг належить до другого тарифу."
+    ],
+    "entry": "shipping",
+    "source": "function shipping(kg) { if (kg>10) { return 2*kg; } return 3+2*kg; }",
+    "sample": [
+      10
+    ],
+    "block": {
+      "from": "kg>10",
+      "choices": [
+        "kg>10",
+        "kg>=10",
+        "kg<10"
+      ]
+    },
+    "tests": [
+      [
+        [
+          1
+        ],
+        5
+      ],
+      [
+        [
+          9
+        ],
+        21
+      ],
+      [
+        [
+          10
+        ],
+        20
+      ],
+      [
+        [
+          11
+        ],
+        22
+      ],
+      [
+        [
+          20
+        ],
+        40
+      ]
+    ],
+    "expectedPrediction": 23,
+    "prediction": [
+      23,
+      20,
+      24
+    ]
+  },
+  {
+    "id": "budget-balance",
+    "title": [
+      "Projekt: Budget",
+      "Project: budget",
+      "Проект: бюджет",
+      "Проєкт: бюджет"
+    ],
+    "task": [
+      "Berechne den Rest nach zwei Ausgaben; negative Werte sind erlaubt.",
+      "Compute the remaining budget after two expenses; negative values allowed.",
+      "Вычисли остаток бюджета после двух расходов; отрицательные значения допустимы.",
+      "Обчисли залишок бюджету після двох витрат; від’ємні значення допустимі."
+    ],
+    "hint": [
+      "Beide Ausgaben abziehen.",
+      "Subtract both expenses.",
+      "Вычти оба расхода.",
+      "Відніми обидві витрати."
+    ],
+    "why": [
+      "Beide Ausgaben abziehen.",
+      "Subtract both expenses.",
+      "Вычти оба расхода.",
+      "Відніми обидві витрати."
+    ],
+    "entry": "remaining",
+    "source": "function remaining(budget,a,b) { return budget-a+b; }",
+    "sample": [
+      100,
+      30,
+      20
+    ],
+    "block": {
+      "from": "budget-a+b",
+      "choices": [
+        "budget-a+b",
+        "budget-a-b",
+        "budget+a+b"
+      ]
+    },
+    "tests": [
+      [
+        [
+          100,
+          30,
+          20
+        ],
+        50
+      ],
+      [
+        [
+          10,
+          8,
+          5
+        ],
+        -3
+      ],
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          10,
+          5,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          50,
+          0,
+          10
+        ],
+        40
+      ]
+    ],
+    "expectedPrediction": 90,
+    "prediction": [
+      90,
+      50,
+      91
+    ]
+  },
+  {
+    "id": "sensor-window",
+    "title": [
+      "Projekt: Sensor",
+      "Project: sensor",
+      "Проект: датчик",
+      "Проєкт: датчик"
+    ],
+    "task": [
+      "Prüfe min ≤ value ≤ max; min ≤ max.",
+      "Check min ≤ value ≤ max; min ≤ max.",
+      "Проверь min ≤ value ≤ max; min ≤ max.",
+      "Перевір min ≤ value ≤ max; min ≤ max."
+    ],
+    "hint": [
+      "Beide Grenzen müssen gelten.",
+      "Both bounds must hold.",
+      "Обе границы должны соблюдаться.",
+      "Обидві межі мають виконуватися."
+    ],
+    "why": [
+      "Beide Grenzen müssen gelten.",
+      "Both bounds must hold.",
+      "Обе границы должны соблюдаться.",
+      "Обидві межі мають виконуватися."
+    ],
+    "entry": "validReading",
+    "source": "function validReading(value,min,max) { return value>=min || value<=max; }",
+    "sample": [
+      12,
+      0,
+      10
+    ],
+    "block": {
+      "from": "value>=min || value<=max",
+      "choices": [
+        "value>=min || value<=max",
+        "value>=min && value<=max",
+        "value>min && value<max"
+      ]
+    },
+    "tests": [
+      [
+        [
+          12,
+          0,
+          10
+        ],
+        false
+      ],
+      [
+        [
+          0,
+          0,
+          10
+        ],
+        true
+      ],
+      [
+        [
+          10,
+          0,
+          10
+        ],
+        true
+      ],
+      [
+        [
+          -1,
+          0,
+          10
+        ],
+        false
+      ],
+      [
+        [
+          5,
+          5,
+          5
+        ],
+        true
+      ]
+    ],
+    "expectedPrediction": true,
+    "prediction": [
+      true,
+      false
+    ]
+  },
+  {
+    "id": "tier-discount",
+    "title": [
+      "Projekt: Mengenrabatt",
+      "Project: quantity discount",
+      "Проект: скидка",
+      "Проєкт: знижка"
+    ],
+    "task": [
+      "Ein Stück kostet 10; ab 5 Stück kostet jedes 8. Gesamtpreis für 0–20 Stück.",
+      "Each item costs 10; from 5 items each costs 8. Total for 0–20 items.",
+      "Цена штуки 10; от 5 штук каждая стоит 8. Общая цена для 0–20 штук.",
+      "Ціна штуки 10; від 5 штук кожна коштує 8. Загальна ціна для 0–20 штук."
+    ],
+    "hint": [
+      "Wähle zuerst den Stückpreis, dann multipliziere.",
+      "Choose the unit price, then multiply.",
+      "Выбери цену единицы, затем умножь.",
+      "Обери ціну одиниці, потім помнож."
+    ],
+    "why": [
+      "Wähle zuerst den Stückpreis, dann multipliziere.",
+      "Choose the unit price, then multiply.",
+      "Выбери цену единицы, затем умножь.",
+      "Обери ціну одиниці, потім помнож."
+    ],
+    "entry": "totalPrice",
+    "source": "function totalPrice(n) { if (n>=5) { return n*10-2; } return n*10; }",
+    "sample": [
+      5
+    ],
+    "block": {
+      "from": "n*10-2",
+      "choices": [
+        "n*10-2",
+        "n*8",
+        "n*10"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0
+        ],
+        0
+      ],
+      [
+        [
+          4
+        ],
+        40
+      ],
+      [
+        [
+          5
+        ],
+        40
+      ],
+      [
+        [
+          6
+        ],
+        48
+      ],
+      [
+        [
+          20
+        ],
+        160
+      ]
+    ],
+    "expectedPrediction": 48,
+    "prediction": [
+      48,
+      40,
+      49
+    ]
+  }
+]);
