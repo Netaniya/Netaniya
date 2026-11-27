@@ -36,3 +36,6 @@ Joint process: iterative requirements, review, feedback, correction, and release
 - [Historical publication record](../../../docs/eliana-n25x-workshop/publication.json) — historical, not evidence of publication of this candidate.
 
 New entries must identify the source and date of a creator decision, distinguish AI assistance, link relevant implementation and verification, and disclose outstanding tests. Do not fabricate manual work, professional qualifications, or contribution percentages. No claim of complete CEFR C1 or accredited curriculum is made.
+
+### 27 November — grammar extension
+Owner confirmed continued work toward the established deep-learning goal. Assistant selected German and English for the first grammar release and implemented 16 lessons, separate practice and checkpoint examples, and local saved progress. AI-assisted implementation; no additional human-authored grammar material or manual acceptance claimed. See [development log](PROGRESS.ru.md).

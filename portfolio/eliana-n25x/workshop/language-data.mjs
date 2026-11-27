@@ -805,3 +805,935 @@ LANGUAGE_UNITS.push(...[
     ]
   }
 ]);
+
+// Original AI-assisted grammar material, not a certified CEFR curriculum.
+export const GRAMMAR_LESSONS=[
+  {
+    "id": "de-present",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Präsens",
+      "en": "Present tense",
+      "ru": "Настоящее время",
+      "uk": "Теперішній час"
+    },
+    "rule": {
+      "de": "Regelmäßige Verben: ich -e, du -st, er -t, wir -en, ihr -t, sie -en.",
+      "en": "Regular verbs: ich -e, du -st, er -t, wir -en, ihr -t, sie -en.",
+      "ru": "Правильные глаголы: ich -e, du -st, er -t, wir -en, ihr -t, sie -en.",
+      "uk": "Правильні дієслова: ich -e, du -st, er -t, wir -en, ihr -t, sie -en."
+    },
+    "example": "Ich lerne. Du lernst.",
+    "practice": [
+      {
+        "sentence": "Du ___ Deutsch. (lernen)",
+        "options": [
+          "lernst",
+          "lerne",
+          "lernen"
+        ],
+        "answer": "lernst"
+      },
+      {
+        "sentence": "Wir ___ in München. (wohnen)",
+        "options": [
+          "wohnen",
+          "wohnt",
+          "wohnst"
+        ],
+        "answer": "wohnen"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Er ___ Musik. (hören)",
+        "options": [
+          "hört",
+          "höre",
+          "hören"
+        ],
+        "answer": "hört"
+      },
+      {
+        "sentence": "Ihr ___ Fußball. (spielen)",
+        "options": [
+          "spielt",
+          "spielen",
+          "spielst"
+        ],
+        "answer": "spielt"
+      }
+    ]
+  },
+  {
+    "id": "de-sein",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Sein und haben",
+      "en": "Sein and haben",
+      "ru": "Sein и haben",
+      "uk": "Sein і haben"
+    },
+    "rule": {
+      "de": "Sein: bin, bist, ist, sind, seid, sind. Haben: habe, hast, hat, haben, habt, haben (ich bis sie).",
+      "en": "Sein: bin, bist, ist, sind, seid, sind. Haben: habe, hast, hat, haben, habt, haben (ich through sie).",
+      "ru": "Sein: bin, bist, ist, sind, seid, sind. Haben: habe, hast, hat, haben, habt, haben (от ich до sie).",
+      "uk": "Sein: bin, bist, ist, sind, seid, sind. Haben: habe, hast, hat, haben, habt, haben (від ich до sie)."
+    },
+    "example": "Ich bin müde. Du hast Zeit.",
+    "practice": [
+      {
+        "sentence": "Ich ___ zu Hause.",
+        "options": [
+          "bin",
+          "bist",
+          "ist"
+        ],
+        "answer": "bin"
+      },
+      {
+        "sentence": "Du ___ ein Buch.",
+        "options": [
+          "hast",
+          "hat",
+          "haben"
+        ],
+        "answer": "hast"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ihr ___ bereit.",
+        "options": [
+          "seid",
+          "sind",
+          "ist"
+        ],
+        "answer": "seid"
+      },
+      {
+        "sentence": "Sie (Plural) ___ zwei Fahrräder.",
+        "options": [
+          "haben",
+          "hat",
+          "habt"
+        ],
+        "answer": "haben"
+      }
+    ]
+  },
+  {
+    "id": "de-articles",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Artikel",
+      "en": "Articles",
+      "ru": "Артикли",
+      "uk": "Артиклі"
+    },
+    "rule": {
+      "de": "Lerne das Genus mit dem Nomen: der Tisch, die Lampe, das Buch; Plural die Bücher.",
+      "en": "Learn noun gender: der Tisch, die Lampe, das Buch; plural die Bücher.",
+      "ru": "Запоминай род: der Tisch, die Lampe, das Buch; множественное die Bücher.",
+      "uk": "Запам'ятовуй рід: der Tisch, die Lampe, das Buch; множина die Bücher."
+    },
+    "example": "Der Tisch ist neu.",
+    "practice": [
+      {
+        "sentence": "___ Tisch ist groß.",
+        "options": [
+          "Der",
+          "Die",
+          "Das"
+        ],
+        "answer": "Der"
+      },
+      {
+        "sentence": "___ Buch ist interessant.",
+        "options": [
+          "Das",
+          "Der",
+          "Die"
+        ],
+        "answer": "Das"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ Lampe ist an.",
+        "options": [
+          "Die",
+          "Der",
+          "Das"
+        ],
+        "answer": "Die"
+      },
+      {
+        "sentence": "___ Bücher liegen hier.",
+        "options": [
+          "Die",
+          "Der",
+          "Das"
+        ],
+        "answer": "Die"
+      }
+    ]
+  },
+  {
+    "id": "de-accusative",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Akkusativ",
+      "en": "Accusative",
+      "ru": "Винительный падеж",
+      "uk": "Знахідний відмінок"
+    },
+    "rule": {
+      "de": "Beim direkten Objekt: der → den, ein → einen; die/das bleiben gleich.",
+      "en": "Direct object: der → den, ein → einen; die/das unchanged.",
+      "ru": "Прямое дополнение: der → den, ein → einen; die/das без изменений.",
+      "uk": "Прямий додаток: der → den, ein → einen; die/das без змін."
+    },
+    "example": "Ich sehe den Hund.",
+    "practice": [
+      {
+        "sentence": "Ich sehe ___ Hund. (der)",
+        "options": [
+          "den",
+          "der",
+          "dem"
+        ],
+        "answer": "den"
+      },
+      {
+        "sentence": "Sie kauft ___ Apfel. (ein)",
+        "options": [
+          "einen",
+          "ein",
+          "einem"
+        ],
+        "answer": "einen"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir lesen ___ Buch. (das)",
+        "options": [
+          "das",
+          "dem",
+          "den"
+        ],
+        "answer": "das"
+      },
+      {
+        "sentence": "Er öffnet ___ Tür. (die)",
+        "options": [
+          "die",
+          "der",
+          "den"
+        ],
+        "answer": "die"
+      }
+    ]
+  },
+  {
+    "id": "de-dative",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Dativ mit mit",
+      "en": "Dative with mit",
+      "ru": "Дательный после mit",
+      "uk": "Давальний після mit"
+    },
+    "rule": {
+      "de": "Mit verlangt Dativ: dem (m/n), der (f), den (Plural).",
+      "en": "Mit requires dative: dem (m/n), der (f), den (plural).",
+      "ru": "После mit — дательный: dem (м/ср), der (ж), den (мн).",
+      "uk": "Після mit — давальний: dem (ч/с), der (ж), den (мн)."
+    },
+    "example": "Mit dem Bus, mit der Bahn.",
+    "practice": [
+      {
+        "sentence": "Ich fahre mit ___ Bus. (der)",
+        "options": [
+          "dem",
+          "den",
+          "der"
+        ],
+        "answer": "dem"
+      },
+      {
+        "sentence": "Er spricht mit ___ Lehrerin. (die)",
+        "options": [
+          "der",
+          "die",
+          "dem"
+        ],
+        "answer": "der"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Sie spielt mit ___ Kind. (das)",
+        "options": [
+          "dem",
+          "das",
+          "den"
+        ],
+        "answer": "dem"
+      },
+      {
+        "sentence": "Wir reisen mit ___ Freunden. (Plural)",
+        "options": [
+          "den",
+          "die",
+          "dem"
+        ],
+        "answer": "den"
+      }
+    ]
+  },
+  {
+    "id": "de-modal",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Modalverben",
+      "en": "Modal verbs",
+      "ru": "Модальные глаголы",
+      "uk": "Модальні дієслова"
+    },
+    "rule": {
+      "de": "Konjugiertes Modalverb und Infinitiv ohne zu: können, müssen, wollen.",
+      "en": "Finite modal and bare infinitive: können, müssen, wollen.",
+      "ru": "Модальный глагол и инфинитив без zu: können, müssen, wollen.",
+      "uk": "Модальне дієслово та інфінітив без zu: können, müssen, wollen."
+    },
+    "example": "Ich kann heute kommen.",
+    "practice": [
+      {
+        "sentence": "Ich muss morgen ___.",
+        "options": [
+          "arbeiten",
+          "arbeite",
+          "zu arbeiten"
+        ],
+        "answer": "arbeiten"
+      },
+      {
+        "sentence": "Du kannst gut ___.",
+        "options": [
+          "schwimmen",
+          "schwimmst",
+          "zu schwimmen"
+        ],
+        "answer": "schwimmen"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir wollen zusammen ___.",
+        "options": [
+          "lernen",
+          "lernen zu",
+          "lernt"
+        ],
+        "answer": "lernen"
+      },
+      {
+        "sentence": "Sie (Singular) ___ heute gehen.",
+        "options": [
+          "muss",
+          "müssen",
+          "musst"
+        ],
+        "answer": "muss"
+      }
+    ]
+  },
+  {
+    "id": "de-perfect",
+    "language": "de",
+    "stage": 3,
+    "title": {
+      "de": "Perfekt",
+      "en": "Perfect tense",
+      "ru": "Perfekt",
+      "uk": "Perfekt"
+    },
+    "rule": {
+      "de": "Viele Verben: haben + Partizip. Gehen/kommen bei Bewegung: sein + Partizip.",
+      "en": "Many verbs: haben + participle. Motion gehen/kommen: sein + participle.",
+      "ru": "Многие глаголы: haben + причастие. Gehen/kommen при движении: sein + причастие.",
+      "uk": "Багато дієслів: haben + дієприкметник. Gehen/kommen при русі: sein + дієприкметник."
+    },
+    "example": "Ich habe gelernt. Ich bin gegangen.",
+    "practice": [
+      {
+        "sentence": "Ich ___ gestern gearbeitet.",
+        "options": [
+          "habe",
+          "bin",
+          "hat"
+        ],
+        "answer": "habe"
+      },
+      {
+        "sentence": "Er ___ nach Hause gegangen.",
+        "options": [
+          "ist",
+          "hat",
+          "bist"
+        ],
+        "answer": "ist"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir ___ Musik gehört.",
+        "options": [
+          "haben",
+          "sind",
+          "hat"
+        ],
+        "answer": "haben"
+      },
+      {
+        "sentence": "Sie (Plural) ___ angekommen.",
+        "options": [
+          "sind",
+          "haben",
+          "seid"
+        ],
+        "answer": "sind"
+      }
+    ]
+  },
+  {
+    "id": "de-weil",
+    "language": "de",
+    "stage": 3,
+    "title": {
+      "de": "Nebensatz mit weil",
+      "en": "Weil clauses",
+      "ru": "Придаточное с weil",
+      "uk": "Підрядне з weil"
+    },
+    "rule": {
+      "de": "Im schriftlichen Standarddeutsch steht das finite Verb im weil-Satz am Ende.",
+      "en": "In standard written German the finite verb ends a weil clause.",
+      "ru": "В письменном немецком спрягаемый глагол с weil стоит в конце.",
+      "uk": "У письмовій німецькій відмінюване дієслово з weil стоїть у кінці."
+    },
+    "example": "Ich bleibe zu Hause, weil ich krank bin.",
+    "practice": [
+      {
+        "sentence": "Ich lerne, weil ich die Prüfung ___.",
+        "options": [
+          "bestehen möchte",
+          "möchte bestehen",
+          "möchte ich bestehen"
+        ],
+        "answer": "bestehen möchte"
+      },
+      {
+        "sentence": "Er kommt später, weil er noch ___.",
+        "options": [
+          "arbeitet",
+          "arbeitet er",
+          "er arbeitet"
+        ],
+        "answer": "arbeitet"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir bleiben drinnen, weil es ___.",
+        "options": [
+          "regnet",
+          "regnen",
+          "es regnet"
+        ],
+        "answer": "regnet"
+      },
+      {
+        "sentence": "Sie nimmt den Bus, weil sie kein Auto ___.",
+        "options": [
+          "hat",
+          "haben",
+          "hat sie"
+        ],
+        "answer": "hat"
+      }
+    ]
+  },
+  {
+    "id": "en-be",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "To be",
+      "en": "To be",
+      "ru": "Глагол to be",
+      "uk": "Дієслово to be"
+    },
+    "rule": {
+      "de": "I am, you/we/they are, he/she/it is. In Fragen vor das Subjekt stellen.",
+      "en": "I am, you/we/they are, he/she/it is. In questions invert with the subject.",
+      "ru": "I am, you/we/they are, he/she/it is. В вопросе перед подлежащим.",
+      "uk": "I am, you/we/they are, he/she/it is. У питанні перед підметом."
+    },
+    "example": "She is ready. Are you ready?",
+    "practice": [
+      {
+        "sentence": "I ___ a student.",
+        "options": [
+          "am",
+          "is",
+          "are"
+        ],
+        "answer": "am"
+      },
+      {
+        "sentence": "They ___ at home.",
+        "options": [
+          "are",
+          "is",
+          "am"
+        ],
+        "answer": "are"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ he your friend?",
+        "options": [
+          "Is",
+          "Are",
+          "Am"
+        ],
+        "answer": "Is"
+      },
+      {
+        "sentence": "We ___ ready.",
+        "options": [
+          "are",
+          "am",
+          "is"
+        ],
+        "answer": "are"
+      }
+    ]
+  },
+  {
+    "id": "en-present",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "Simple Present",
+      "en": "Simple present",
+      "ru": "Простое настоящее",
+      "uk": "Простий теперішній"
+    },
+    "rule": {
+      "de": "Gewohnheiten: Grundform; he/she/it meist -s. Nach does Grundform.",
+      "en": "Habits: base form; he/she/it usually -s. After does use base form.",
+      "ru": "Привычки: начальная форма; he/she/it обычно -s. После does начальная форма.",
+      "uk": "Звички: початкова форма; he/she/it зазвичай -s. Після does початкова форма."
+    },
+    "example": "She reads every day.",
+    "practice": [
+      {
+        "sentence": "He ___ books every day. (read)",
+        "options": [
+          "reads",
+          "read",
+          "reading"
+        ],
+        "answer": "reads"
+      },
+      {
+        "sentence": "We ___ football on Mondays. (play)",
+        "options": [
+          "play",
+          "plays",
+          "playing"
+        ],
+        "answer": "play"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Does she ___ here? (live)",
+        "options": [
+          "live",
+          "lives",
+          "living"
+        ],
+        "answer": "live"
+      },
+      {
+        "sentence": "Tom doesn't ___ coffee. (drink)",
+        "options": [
+          "drink",
+          "drinks",
+          "drinking"
+        ],
+        "answer": "drink"
+      }
+    ]
+  },
+  {
+    "id": "en-progressive",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Present Continuous",
+      "en": "Present continuous",
+      "ru": "Настоящее длительное",
+      "uk": "Теперішній тривалий"
+    },
+    "rule": {
+      "de": "Gerade stattfindende Handlung: am/is/are + Verb-ing.",
+      "en": "Action happening now: am/is/are + verb-ing.",
+      "ru": "Действие сейчас: am/is/are + глагол-ing.",
+      "uk": "Дія зараз: am/is/are + дієслово-ing."
+    },
+    "example": "They are playing now.",
+    "practice": [
+      {
+        "sentence": "Look! She ___ a picture.",
+        "options": [
+          "is drawing",
+          "draw",
+          "are drawing"
+        ],
+        "answer": "is drawing"
+      },
+      {
+        "sentence": "I ___ dinner right now.",
+        "options": [
+          "am cooking",
+          "is cooking",
+          "cook"
+        ],
+        "answer": "am cooking"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Listen! The children ___.",
+        "options": [
+          "are singing",
+          "is singing",
+          "sings"
+        ],
+        "answer": "are singing"
+      },
+      {
+        "sentence": "He is ___ a book now.",
+        "options": [
+          "reading",
+          "read",
+          "reads"
+        ],
+        "answer": "reading"
+      }
+    ]
+  },
+  {
+    "id": "en-past",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Simple Past",
+      "en": "Simple past",
+      "ru": "Простое прошедшее",
+      "uk": "Простий минулий"
+    },
+    "rule": {
+      "de": "Abgeschlossene Vergangenheit: meist -ed oder unregelmäßige Form; nach did Grundform.",
+      "en": "Finished past: usually -ed or irregular form; after did use base form.",
+      "ru": "Завершённое прошлое: обычно -ed или неправильная форма; после did начальная форма.",
+      "uk": "Завершене минуле: зазвичай -ed або неправильна форма; після did початкова форма."
+    },
+    "example": "I visited my friend. She went home.",
+    "practice": [
+      {
+        "sentence": "Yesterday we ___ the museum. (visit)",
+        "options": [
+          "visited",
+          "visit",
+          "visits"
+        ],
+        "answer": "visited"
+      },
+      {
+        "sentence": "Last night he ___ home. (go)",
+        "options": [
+          "went",
+          "go",
+          "goed"
+        ],
+        "answer": "went"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Did you ___ the film? (watch)",
+        "options": [
+          "watch",
+          "watched",
+          "watches"
+        ],
+        "answer": "watch"
+      },
+      {
+        "sentence": "I didn't ___ the bus. (take)",
+        "options": [
+          "take",
+          "took",
+          "takes"
+        ],
+        "answer": "take"
+      }
+    ]
+  },
+  {
+    "id": "en-comparative",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Vergleiche",
+      "en": "Comparatives",
+      "ru": "Сравнения",
+      "uk": "Порівняння"
+    },
+    "rule": {
+      "de": "Kurze Adjektive oft -er, längere oft more. Good → better. Vergleich mit than.",
+      "en": "Short adjectives often -er, longer ones often more. Good → better. Compare with than.",
+      "ru": "Короткие прилагательные часто -er, длинные — more. Good → better. Сравнение с than.",
+      "uk": "Короткі прикметники часто -er, довгі — more. Good → better. Порівняння з than."
+    },
+    "example": "This book is cheaper than that one.",
+    "practice": [
+      {
+        "sentence": "A mouse is ___ than an elephant. (small)",
+        "options": [
+          "smaller",
+          "smallest",
+          "more small"
+        ],
+        "answer": "smaller"
+      },
+      {
+        "sentence": "This task is ___ than that one. (difficult)",
+        "options": [
+          "more difficult",
+          "difficultest",
+          "most difficult"
+        ],
+        "answer": "more difficult"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Her result is ___ than mine. (good)",
+        "options": [
+          "better",
+          "gooder",
+          "best"
+        ],
+        "answer": "better"
+      },
+      {
+        "sentence": "Today is ___ than yesterday. (cold)",
+        "options": [
+          "colder",
+          "coldest",
+          "more colder"
+        ],
+        "answer": "colder"
+      }
+    ]
+  },
+  {
+    "id": "en-perfect",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "Present Perfect",
+      "en": "Present perfect",
+      "ru": "Present Perfect",
+      "uk": "Present Perfect"
+    },
+    "rule": {
+      "de": "Have/has + Partizip, etwa bei Erfahrung ohne abgeschlossene Zeitangabe. Mit last year meist Simple Past.",
+      "en": "Have/has + participle, e.g. experience without a finished time. With last year normally simple past.",
+      "ru": "Have/has + третья форма, например опыт без завершённого времени. С last year обычно Simple Past.",
+      "uk": "Have/has + третя форма, наприклад досвід без завершеного часу. З last year зазвичай Simple Past."
+    },
+    "example": "I have never visited London.",
+    "practice": [
+      {
+        "sentence": "She ___ never been to London.",
+        "options": [
+          "has",
+          "have",
+          "is"
+        ],
+        "answer": "has"
+      },
+      {
+        "sentence": "We have already ___ our homework. (finish)",
+        "options": [
+          "finished",
+          "finish",
+          "finishing"
+        ],
+        "answer": "finished"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "I ___ Rome last year. (visit)",
+        "options": [
+          "visited",
+          "have visited",
+          "visit"
+        ],
+        "answer": "visited"
+      },
+      {
+        "sentence": "He has ___ his keys. (lose)",
+        "options": [
+          "lost",
+          "lose",
+          "losing"
+        ],
+        "answer": "lost"
+      }
+    ]
+  },
+  {
+    "id": "en-conditional",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "First Conditional",
+      "en": "First conditional",
+      "ru": "Первый тип условных",
+      "uk": "Перший тип умовних"
+    },
+    "rule": {
+      "de": "Mögliche Zukunft: if + Simple Present, Hauptsatz will + Grundform.",
+      "en": "Possible future: if + simple present, main clause will + base form.",
+      "ru": "Возможное будущее: if + Simple Present, главное will + начальная форма.",
+      "uk": "Можливе майбутнє: if + Simple Present, головне will + початкова форма."
+    },
+    "example": "If it rains, we will stay home.",
+    "practice": [
+      {
+        "sentence": "If it ___, we will stay inside. (rain)",
+        "options": [
+          "rains",
+          "will rain",
+          "raining"
+        ],
+        "answer": "rains"
+      },
+      {
+        "sentence": "If you study, you ___ pass.",
+        "options": [
+          "will",
+          "are",
+          "did"
+        ],
+        "answer": "will"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "If she ___ early, we will meet. (arrive)",
+        "options": [
+          "arrives",
+          "will arrive",
+          "arriving"
+        ],
+        "answer": "arrives"
+      },
+      {
+        "sentence": "If we miss the bus, we will ___. (walk)",
+        "options": [
+          "walk",
+          "walked",
+          "walking"
+        ],
+        "answer": "walk"
+      }
+    ]
+  },
+  {
+    "id": "en-passive",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "Passiv",
+      "en": "Passive voice",
+      "ru": "Пассивный залог",
+      "uk": "Пасивний стан"
+    },
+    "rule": {
+      "de": "Passiv: passende Form von be + Partizip. Be trägt die Zeitform.",
+      "en": "Passive: appropriate be + past participle. Be carries tense.",
+      "ru": "Пассив: форма be + третья форма. Be выражает время.",
+      "uk": "Пасив: форма be + третя форма. Be виражає час."
+    },
+    "example": "The room is cleaned daily.",
+    "practice": [
+      {
+        "sentence": "The letters ___ delivered every day.",
+        "options": [
+          "are",
+          "is",
+          "were"
+        ],
+        "answer": "are"
+      },
+      {
+        "sentence": "The bridge was ___ in 1990. (build)",
+        "options": [
+          "built",
+          "build",
+          "building"
+        ],
+        "answer": "built"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "These windows ___ cleaned yesterday.",
+        "options": [
+          "were",
+          "was",
+          "are"
+        ],
+        "answer": "were"
+      },
+      {
+        "sentence": "English is ___ in many countries. (speak)",
+        "options": [
+          "spoken",
+          "speaking",
+          "speak"
+        ],
+        "answer": "spoken"
+      }
+    ]
+  }
+];

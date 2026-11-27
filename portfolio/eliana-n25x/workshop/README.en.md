@@ -34,3 +34,5 @@ Physical Android/iOS testing and actual installation are separate. The ten-langu
 
 ## Academy candidate: spaced practice
 `language-course.mjs` adds a validated per-language/per-skill review schedule. UTC-day intervals 1/3/7/14/30, early practice does not promote, mistakes/assisted answers reset, legacy completions remain intact. Local only. [Provenance](CONTRIBUTIONS.md). Full browser regression pending.
+
+Grammar candidate: 16 DE/EN lessons, 64 original questions, separate practice/checkpoint examples, local passed-topic state, rules in four UI languages. Not a certified curriculum. Full browser acceptance pending.
