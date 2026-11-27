@@ -51,3 +51,6 @@ The creator explicitly requested continued music development and parallel testin
 
 ### 27 November — rhythm extension
 Continued the creator-approved music and testing direction. Assistant implemented eight rhythm patterns, timing assessment, local progress and test cases. Timing tolerance and examples are AI-assisted technical decisions; no manual creator assessment or professional music certification is claimed.
+
+### 28 November — rhythm practice stabilization
+Creator requested resuming the existing GitHub project from the previous session, including language and music modules. Assistant selected and corrected rhythm replay and conflicting audio controls, and added persistent grading, controller and Chromium regression scenarios. This is AI-assisted implementation under the existing creator direction; no manual acceptance or successful CI run is claimed. Main/publication remains unchanged.

@@ -5,7 +5,7 @@ import {MATH_TOPICS,MATH_VARIANTS,courseTask,checkCourseAnswer,freshMathCourse,p
 import {createMathClassroom} from '../workshop/math-classroom.mjs';
 import {fresh,parseProfile,reward} from '../workshop/model.mjs';
 import {translate} from '../workshop/i18n.mjs';
-import {freshScore,validateScore,noteName,midiFrequency,makeMidi,renderScoreWav} from '../workshop/piano-score.mjs';
+import {freshScore,validateScore,noteName,midiFrequency,makeMidi,renderScoreWav,RHYTHM_LESSONS,gradeRhythm} from '../workshop/piano-score.mjs';
 import {createPiano} from '../workshop/piano.mjs';
 import {LANGUAGE_UNITS,LANGUAGE_ITEMS,COURSE_LANGUAGES,phraseTokens,phraseMatches,meaningChoices,parseLanguageCourse,meaningSource,wordOrder,nextLanguageExercise,scheduleLanguage,dueLanguageReviews,REVIEW_INTERVALS,GRAMMAR_LESSONS,grammarOptions,gradeGrammar,grammarRoute} from '../workshop/language-course.mjs';
 import {createLanguageClassroom} from '../workshop/language-classroom.mjs';
@@ -91,3 +91,41 @@ test('Grammar controller: wrong answers, separate checkpoint examples, local per
 test('Grammar progression: both languages have 20 lessons across five ordered stages',()=>{for(const language of ['de','en']){const route=grammarRoute(language);assert.equal(route.length,20);assert.deepEqual([...new Set(route.map(v=>v.stage))],[1,2,3,4,5]);assert.equal(new Set(route.map(v=>v.id)).size,20);}});
 
 test('All ten languages have their own grammar routes and original lesson IDs',()=>{for(const language of COURSE_LANGUAGES){const route=grammarRoute(language);assert.equal(route.length,['de','en'].includes(language)?20:5);assert.deepEqual([...new Set(route.map(v=>v.stage))],['de','en'].includes(language)?[1,2,3,4,5]:[1,2,3]);}assert.equal(new Set(GRAMMAR_LESSONS.map(v=>v.id)).size,80);});
+
+
+test('Rhythm grading: all eight patterns accept exact and bounded jitter, reject drift and invalid input',()=>{
+ for(const lesson of RHYTHM_LESSONS){
+  const beat=60000/lesson.bpm,origin=2000,ideal=lesson.beats.map(b=>origin+b*beat);
+  assert(gradeRhythm(lesson,ideal).passed,lesson.id);
+  assert(gradeRhythm(lesson,ideal.map((t,i)=>t+(i%2?40:0))).passed,lesson.id);
+  const bad=gradeRhythm(lesson,ideal.map((t,i)=>t+(i===ideal.length-1?250:0)));
+  assert.equal(bad.passed,false);assert.equal(bad.correct,ideal.length-1);
+  assert.equal(gradeRhythm(lesson,ideal.slice(1)),null);
+  assert.equal(gradeRhythm(lesson,ideal.map(()=>origin)),null);
+  assert.equal(gradeRhythm(lesson,ideal.map((t,i)=>i===1?NaN:t)),null);
+ }
+});
+
+test('Rhythm controller: failed and successful takes, replay, mute guards and profile round-trip',async()=>{
+ const previous=globalThis.document,perf=globalThis.performance,{document}=parseHTML('<html><body data-view="piano"><section id="content"></section></body></html>');
+ globalThis.document=document;let now=0;globalThis.performance={now:()=>now};let piano;
+ try{
+  const s=fresh();s.lang='en';s.sound=true;
+  const api={getState:()=>s,tr:(k,p)=>translate(s.lang,k,p),esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;'),save(){},navigate(){},toast(){},download(){},audio:{tone(){}},render(){document.getElementById('content').innerHTML=piano.render();piano.mount();}};
+  piano=createPiano(api);api.render();
+  const click=async p=>piano.click({dataset:{p}});
+  const disabled=p=>document.querySelector('[data-p="'+p+'"]').hasAttribute('disabled');
+  const original=structuredClone(s.piano.score),points=s.points;
+  assert(!disabled('rhythm-example'));await click('rhythm-start');
+  assert(disabled('rhythm-example'));assert(disabled('practice-example'));
+  for(let i=0;i<5;i++){now=1000+i*100;await click('rhythm-tap');}
+  assert(!s.piano.practice.rhythmPassed.steady);assert(disabled('rhythm-tap'));assert(!disabled('rhythm-example'));assert(!disabled('practice-example'));
+  await click('rhythm-start');
+  for(let i=0;i<5;i++){now=3000+i*1000;await click('rhythm-tap');}
+  assert(s.piano.practice.rhythmPassed.steady);assert(!disabled('rhythm-example'));assert(disabled('rhythm-tap'));
+  assert.deepEqual(s.piano.score,original);assert.equal(s.points,points);
+  assert(parseProfile(JSON.stringify(s)).piano.practice.rhythmPassed.steady);
+  s.sound=false;api.render();assert(disabled('rhythm-example'));assert(disabled('practice-example'));
+  await click('stop');assert(disabled('rhythm-tap'));
+ }finally{piano?.stop(false);globalThis.document=previous;globalThis.performance=perf;}
+});
