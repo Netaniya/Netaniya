@@ -13,7 +13,7 @@
 export const LANGUAGE_CONTENT_INFO = Object.freeze({
   author: 'Natalie Ragulina',
   copyright: '© 2026 Natalie Ragulina. All rights reserved.',
-  contentVersion: 2,
+  contentVersion: 3,
   scope: 'introductory-and-connected-sentence-practice',
   aiAssisted: true,
   nativeSpeakerReviewed: false,
@@ -800,6 +800,284 @@ LANGUAGE_UNITS.push(...[
           "fr": "Nous déciderons seulement après avoir examiné les deux possibilités.",
           "it": "Decideremo solo dopo aver verificato entrambe le opzioni.",
           "ja": "両方の選択肢を確認してから決めます。"
+        }
+      }
+    ]
+  }
+]);
+
+// Additional original multilingual professional and evidence-oriented practice.
+LANGUAGE_UNITS.push(...[
+  {
+    "id": "professional-communication",
+    "title": {
+      "de": "15 · Berufliche Kommunikation",
+      "en": "15 · Professional communication",
+      "ru": "15 · Профессиональное общение",
+      "uk": "15 · Професійне спілкування"
+    },
+    "note": {
+      "de": "Übe höfliche Fragen, Terminabsprachen und klare Aussagen über deine Arbeit. Achte auf die passende Anrede.",
+      "en": "Practise polite questions, scheduling and clear statements about your work. Notice appropriate forms of address.",
+      "ru": "Тренируй вежливые вопросы, согласование встреч и ясные высказывания о своей работе. Обращай внимание на форму обращения.",
+      "uk": "Тренуй ввічливі запитання, узгодження зустрічей та чіткі висловлювання про свою роботу. Звертай увагу на форму звертання."
+    },
+    "items": [
+      {
+        "id": "professional-communication.experience",
+        "text": {
+          "de": "Ich habe Erfahrung mit der Entwicklung von Webseiten.",
+          "en": "I have experience developing websites.",
+          "ka": "ვებსაიტების შექმნის გამოცდილება მაქვს.",
+          "uk": "Я маю досвід розробки вебсайтів.",
+          "ru": "У меня есть опыт разработки сайтов.",
+          "zh": "我有开发网站的经验。",
+          "es": "Tengo experiencia desarrollando sitios web.",
+          "fr": "J’ai de l’expérience dans la création de sites web.",
+          "it": "Ho esperienza nello sviluppo di siti web.",
+          "ja": "ウェブサイト開発の経験があります。"
+        }
+      },
+      {
+        "id": "professional-communication.responsibilities",
+        "text": {
+          "de": "Welche Aufgaben gehören zu dieser Stelle?",
+          "en": "What responsibilities does this position involve?",
+          "ka": "რა მოვალეობებს მოიცავს ეს პოზიცია?",
+          "uk": "Які обов’язки передбачає ця посада?",
+          "ru": "Какие обязанности предусматривает эта должность?",
+          "zh": "这个职位有哪些职责？",
+          "es": "¿Qué responsabilidades implica este puesto?",
+          "fr": "Quelles sont les responsabilités liées à ce poste ?",
+          "it": "Quali responsabilità comporta questa posizione?",
+          "ja": "この職種にはどのような業務がありますか。"
+        }
+      },
+      {
+        "id": "professional-communication.meeting",
+        "text": {
+          "de": "Könnten wir einen Termin für nächste Woche vereinbaren?",
+          "en": "Could we arrange a meeting for next week?",
+          "ka": "შეგვიძლია შეხვედრა მომავალი კვირისთვის დავნიშნოთ?",
+          "uk": "Чи могли б ми домовитися про зустріч наступного тижня?",
+          "ru": "Можем ли мы договориться о встрече на следующей неделе?",
+          "zh": "我们可以约在下周见面吗？",
+          "es": "¿Podríamos concertar una reunión para la próxima semana?",
+          "fr": "Pourrions-nous convenir d’un rendez-vous pour la semaine prochaine ?",
+          "it": "Potremmo fissare un incontro per la prossima settimana?",
+          "ja": "来週の打ち合わせを設定できますか。"
+        }
+      },
+      {
+        "id": "professional-communication.portfolio",
+        "text": {
+          "de": "Ich kann Ihnen Beispiele meiner Arbeit zeigen.",
+          "en": "I can show you examples of my work.",
+          "ka": "შემიძლია ჩემი ნამუშევრების მაგალითები გაჩვენოთ.",
+          "uk": "Я можу показати вам приклади моєї роботи.",
+          "ru": "Я могу показать вам примеры своей работы.",
+          "zh": "我可以给您看一些我的作品。",
+          "es": "Puedo mostrarle ejemplos de mi trabajo.",
+          "fr": "Je peux vous montrer des exemples de mon travail.",
+          "it": "Posso mostrarle alcuni esempi del mio lavoro.",
+          "ja": "これまでの仕事の例をお見せできます。"
+        }
+      },
+      {
+        "id": "professional-communication.deadline",
+        "text": {
+          "de": "Bis wann soll das Projekt fertig sein?",
+          "en": "By when should the project be completed?",
+          "ka": "როდისთვის უნდა დასრულდეს პროექტი?",
+          "uk": "До якого терміну потрібно завершити проєкт?",
+          "ru": "К какому сроку нужно закончить проект?",
+          "zh": "这个项目需要在什么时候完成？",
+          "es": "¿Para cuándo debe estar terminado el proyecto?",
+          "fr": "Pour quand le projet doit-il être terminé ?",
+          "it": "Entro quando deve essere completato il progetto?",
+          "ja": "プロジェクトはいつまでに完成させる必要がありますか。"
+        }
+      },
+      {
+        "id": "professional-communication.clarify",
+        "text": {
+          "de": "Könnten Sie die Anforderungen genauer erklären?",
+          "en": "Could you explain the requirements in more detail?",
+          "ka": "შეგიძლიათ მოთხოვნები უფრო დეტალურად განმარტოთ?",
+          "uk": "Чи могли б ви детальніше пояснити вимоги?",
+          "ru": "Не могли бы вы объяснить требования подробнее?",
+          "zh": "您能更详细地解释一下要求吗？",
+          "es": "¿Podría explicar los requisitos con más detalle?",
+          "fr": "Pourriez-vous expliquer les exigences plus en détail ?",
+          "it": "Potrebbe spiegare i requisiti più dettagliatamente?",
+          "ja": "要件をもう少し詳しく説明していただけますか。"
+        }
+      },
+      {
+        "id": "professional-communication.feedback",
+        "text": {
+          "de": "Vielen Dank für Ihre Rückmeldung.",
+          "en": "Thank you for your feedback.",
+          "ka": "გმადლობთ გამოხმაურებისთვის.",
+          "uk": "Дякую за ваш відгук.",
+          "ru": "Спасибо за вашу обратную связь.",
+          "zh": "感谢您的反馈。",
+          "es": "Muchas gracias por sus comentarios.",
+          "fr": "Merci beaucoup pour votre retour.",
+          "it": "La ringrazio per il suo riscontro.",
+          "ja": "ご意見をいただき、ありがとうございます。"
+        }
+      },
+      {
+        "id": "professional-communication.followup",
+        "text": {
+          "de": "Ich schicke Ihnen die Unterlagen morgen.",
+          "en": "I will send you the documents tomorrow.",
+          "ka": "ხვალ დოკუმენტებს გამოგიგზავნით.",
+          "uk": "Я надішлю вам документи завтра.",
+          "ru": "Я отправлю вам документы завтра.",
+          "zh": "我明天会把文件发给您。",
+          "es": "Le enviaré los documentos mañana.",
+          "fr": "Je vous enverrai les documents demain.",
+          "it": "Le invierò i documenti domani.",
+          "ja": "明日、書類をお送りします。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "evidence-arguments",
+    "title": {
+      "de": "16 · Argumente und Belege",
+      "en": "16 · Arguments and evidence",
+      "ru": "16 · Аргументы и доказательства",
+      "uk": "16 · Аргументи та докази"
+    },
+    "note": {
+      "de": "Unterscheide Beobachtung, Schlussfolgerung und Vermutung. Begründe Aussagen und benenne Unsicherheit.",
+      "en": "Distinguish observations, conclusions and assumptions. Support statements and express uncertainty.",
+      "ru": "Различай наблюдения, выводы и предположения. Обосновывай утверждения и обозначай неопределённость.",
+      "uk": "Розрізняй спостереження, висновки та припущення. Обґрунтовуй твердження й позначай невизначеність."
+    },
+    "items": [
+      {
+        "id": "evidence-arguments.source",
+        "text": {
+          "de": "Woher stammen diese Informationen?",
+          "en": "Where does this information come from?",
+          "ka": "საიდან არის ეს ინფორმაცია?",
+          "uk": "Звідки походить ця інформація?",
+          "ru": "Откуда получена эта информация?",
+          "zh": "这些信息来自哪里？",
+          "es": "¿De dónde procede esta información?",
+          "fr": "D’où viennent ces informations ?",
+          "it": "Da dove provengono queste informazioni?",
+          "ja": "この情報はどこから得られたものですか。"
+        }
+      },
+      {
+        "id": "evidence-arguments.evidence",
+        "text": {
+          "de": "Wir brauchen Belege für diese Behauptung.",
+          "en": "We need evidence for this claim.",
+          "ka": "ამ მტკიცებისთვის მტკიცებულებები გვჭირდება.",
+          "uk": "Нам потрібні докази цього твердження.",
+          "ru": "Нам нужны доказательства этого утверждения.",
+          "zh": "我们需要证据来支持这一说法。",
+          "es": "Necesitamos pruebas que respalden esta afirmación.",
+          "fr": "Nous avons besoin de preuves à l’appui de cette affirmation.",
+          "it": "Abbiamo bisogno di prove a sostegno di questa affermazione.",
+          "ja": "この主張を裏付ける証拠が必要です。"
+        }
+      },
+      {
+        "id": "evidence-arguments.uncertainty",
+        "text": {
+          "de": "Das Ergebnis ist noch nicht eindeutig.",
+          "en": "The result is not yet conclusive.",
+          "ka": "შედეგი ჯერ ერთმნიშვნელოვანი არ არის.",
+          "uk": "Результат поки не є однозначним.",
+          "ru": "Результат пока не однозначен.",
+          "zh": "目前的结果还不明确。",
+          "es": "El resultado todavía no es concluyente.",
+          "fr": "Le résultat n’est pas encore concluant.",
+          "it": "Il risultato non è ancora conclusivo.",
+          "ja": "結果はまだ明確ではありません。"
+        }
+      },
+      {
+        "id": "evidence-arguments.alternative",
+        "text": {
+          "de": "Es könnte auch eine andere Erklärung geben.",
+          "en": "There could also be another explanation.",
+          "ka": "შესაძლოა სხვა ახსნაც არსებობდეს.",
+          "uk": "Може бути й інше пояснення.",
+          "ru": "Возможно, существует и другое объяснение.",
+          "zh": "也可能有另一种解释。",
+          "es": "También podría haber otra explicación.",
+          "fr": "Il pourrait aussi y avoir une autre explication.",
+          "it": "Potrebbe esserci anche un’altra spiegazione.",
+          "ja": "別の説明もあり得ます。"
+        }
+      },
+      {
+        "id": "evidence-arguments.contrast",
+        "text": {
+          "de": "Die Ergebnisse widersprechen unserer ursprünglichen Annahme.",
+          "en": "The results contradict our original assumption.",
+          "ka": "შედეგები ჩვენს თავდაპირველ ვარაუდს ეწინააღმდეგება.",
+          "uk": "Результати суперечать нашому початковому припущенню.",
+          "ru": "Результаты противоречат нашему первоначальному предположению.",
+          "zh": "结果与我们最初的假设相矛盾。",
+          "es": "Los resultados contradicen nuestra hipótesis inicial.",
+          "fr": "Les résultats contredisent notre hypothèse initiale.",
+          "it": "I risultati contraddicono la nostra ipotesi iniziale.",
+          "ja": "結果は当初の仮説と矛盾しています。"
+        }
+      },
+      {
+        "id": "evidence-arguments.limit",
+        "text": {
+          "de": "Aus einem einzigen Beispiel können wir keine allgemeine Regel ableiten.",
+          "en": "We cannot infer a general rule from a single example.",
+          "ka": "ერთი მაგალითიდან ზოგად წესს ვერ გამოვიტანთ.",
+          "uk": "З одного прикладу не можна вивести загальне правило.",
+          "ru": "Из одного примера нельзя вывести общее правило.",
+          "zh": "我们不能从一个例子推导出普遍规律。",
+          "es": "No podemos deducir una regla general a partir de un solo ejemplo.",
+          "fr": "On ne peut pas déduire une règle générale d’un seul exemple.",
+          "it": "Non possiamo dedurre una regola generale da un solo esempio.",
+          "ja": "一つの例だけから一般的な規則を導くことはできません。"
+        }
+      },
+      {
+        "id": "evidence-arguments.test",
+        "text": {
+          "de": "Wie können wir diese Vermutung überprüfen?",
+          "en": "How can we test this assumption?",
+          "ka": "როგორ შეგვიძლია ამ ვარაუდის შემოწმება?",
+          "uk": "Як ми можемо перевірити це припущення?",
+          "ru": "Как мы можем проверить это предположение?",
+          "zh": "我们怎样验证这个假设？",
+          "es": "¿Cómo podemos comprobar esta hipótesis?",
+          "fr": "Comment pouvons-nous vérifier cette hypothèse ?",
+          "it": "Come possiamo verificare questa ipotesi?",
+          "ja": "この仮説をどのように検証できますか。"
+        }
+      },
+      {
+        "id": "evidence-arguments.revise",
+        "text": {
+          "de": "Wenn neue Belege auftauchen, müssen wir unsere Schlussfolgerung überdenken.",
+          "en": "If new evidence emerges, we must reconsider our conclusion.",
+          "ka": "თუ ახალი მტკიცებულებები გამოჩნდება, ჩვენი დასკვნა უნდა გადავხედოთ.",
+          "uk": "Якщо з’являться нові докази, ми маємо переглянути наш висновок.",
+          "ru": "Если появятся новые доказательства, мы должны пересмотреть наш вывод.",
+          "zh": "如果出现新的证据，我们就必须重新审视结论。",
+          "es": "Si aparecen nuevas pruebas, debemos reconsiderar nuestra conclusión.",
+          "fr": "Si de nouvelles preuves apparaissent, nous devons revoir notre conclusion.",
+          "it": "Se emergono nuove prove, dobbiamo riconsiderare la nostra conclusione.",
+          "ja": "新たな証拠が出てきたら、結論を見直す必要があります。"
         }
       }
     ]

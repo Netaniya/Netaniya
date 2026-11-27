@@ -14,3 +14,5 @@ Die Schöpferin forderte ausdrücklich mehr als acht Grammatiklektionen pro Spra
 Die Schöpferin verlangte am 27.11.2026 ausdrücklich die Erweiterung aller zehn Sprachen. Der Kandidat umfasst 80 Grammatikthemen und 320 Aufgaben: je 20 für Deutsch/Englisch und je fünf für die übrigen acht Sprachen. KI-unterstützte Umsetzung, keine fachliche Zertifizierung.
 
 Die musikalische Erweiterung enthält acht Rhythmusübungen mit zeitlicher Auswertung und lokal gespeichertem Fortschritt. Umsetzung KI-unterstützt im Rahmen der ursprünglichen Entscheidung der Schöpferin für ein vollwertiges digitales Klavier.
+
+28.11.2026: Die Schöpferin beauftragte die Fortsetzung des bestehenden Projekts. Der Assistent ergänzte mit KI-Unterstützung weitere Klavierübungen und zwei Sprachthemen (berufliche Kommunikation sowie Argumente und Belege) in allen zehn Sprachen, erweiterte Tests und dokumentierte die Ergebnisse. Die Themenauswahl und Umsetzung sind technische bzw. redaktionelle Beiträge des Assistenten; keine erfundene persönliche Programmierarbeit. Browser-Abnahme und fachliche Sprachprüfung stehen aus.

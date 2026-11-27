@@ -56,3 +56,6 @@ Natalie Ragulina controls the original idea, concept, characters and art directi
 [Original creative contribution and provenance](workshop/CONTRIBUTIONS.md). The Academy candidate includes 14 language topics, 32 programming missions and local spaced review (1/3/7/14/30 days); browser acceptance is pending.
 
 Academy candidate: 20 grammar topics each for German and English, 160 questions in total; five thematic stages, not CEFR certification. Publication pending.
+
+## Current review candidate (28 November 2026)
+16 language topics, 152 meanings per language, 4,560 core exercise forms, 80 grammar topics/320 questions; 32 programming missions across seven stages; 24 guided piano exercises in six stages and eight rhythm patterns. The public app remains the earlier verified release until browser acceptance. [Current scope](workshop/LEARNING-PLAN.ru.md) · [Human contribution](workshop/CONTRIBUTIONS.md).

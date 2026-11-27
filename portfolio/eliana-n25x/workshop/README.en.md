@@ -44,3 +44,6 @@ Grammar candidate update: 80 topics across all ten target languages, 320 exercis
 Piano learning candidate: twelve original note-order patterns with local saved completion, optional synthesized example playback, no score changes from practice input, no rhythm/fingering assessment. Deterministic note and MIDI/WAV buffer checks passed. Browser regression added but not run.
 
 Rhythm candidate: eight original patterns, first-tap-relative onset assessment, bounded tolerance, signed timing deviations and independent local completion. Deterministic checks passed; real-device latency and browser acceptance pending.
+
+## Current development snapshot — 28 November 2026
+The review branch now has 16 language topics, 152 shared meanings per language (1,520 translations, 4,560 core exercise forms), 80 grammar topics/320 questions, 32 programming missions/seven stages, 61 subject tasks/23 stages, 24 piano patterns/six stages and eight rhythm patterns. Earlier figures above describe historical releases. Source-only verification passed; Chromium and publication remain pending. See [curriculum](LEARNING-PLAN.ru.md), [development history](PROGRESS.ru.md) and [contributions](CONTRIBUTIONS.md). The public release is still separately tracked in publication.json.
