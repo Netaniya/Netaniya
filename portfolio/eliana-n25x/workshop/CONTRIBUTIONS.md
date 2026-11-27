@@ -48,3 +48,6 @@ Creator explicitly required continued expansion of every supported language, not
 
 ### 27 November — piano learning
 The creator explicitly requested continued music development and parallel testing, consistent with her original decision to build a full digital piano. Assistant implemented 12 original note-order exercises, local progress and regression checks. No creator-performed musical assessment or human-authored compositions are claimed; the exercise melody is AI-assisted original material. Full browser acceptance pending.
+
+### 27 November — rhythm extension
+Continued the creator-approved music and testing direction. Assistant implemented eight rhythm patterns, timing assessment, local progress and test cases. Timing tolerance and examples are AI-assisted technical decisions; no manual creator assessment or professional music certification is claimed.

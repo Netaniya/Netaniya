@@ -12,3 +12,5 @@ Erweiterung vom 27.11.2026: 16 Grammatiklektionen (Deutsch/Englisch), getrennte 
 Die Schöpferin forderte ausdrücklich mehr als acht Grammatiklektionen pro Sprache. Der Kandidat enthält jetzt je 20 Themen für Deutsch und Englisch, fünf thematische Stufen und 160 Aufgaben insgesamt. Umsetzung KI-unterstützt; keine geprüfte CEFR-Einstufung.
 
 Die Schöpferin verlangte am 27.11.2026 ausdrücklich die Erweiterung aller zehn Sprachen. Der Kandidat umfasst 80 Grammatikthemen und 320 Aufgaben: je 20 für Deutsch/Englisch und je fünf für die übrigen acht Sprachen. KI-unterstützte Umsetzung, keine fachliche Zertifizierung.
+
+Die musikalische Erweiterung enthält acht Rhythmusübungen mit zeitlicher Auswertung und lokal gespeichertem Fortschritt. Umsetzung KI-unterstützt im Rahmen der ursprünglichen Entscheidung der Schöpferin für ein vollwertiges digitales Klavier.

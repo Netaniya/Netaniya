@@ -42,3 +42,5 @@ Grammar expansion candidate: 40 lessons total, 20 per DE/EN, 160 tasks, five the
 Grammar candidate update: 80 topics across all ten target languages, 320 exercises; 20 topics each DE/EN and five each for KA/UK/RU/ZH/ES/FR/IT/JA. Separate practice and checkpoints. Browser and native-speaker acceptance pending.
 
 Piano learning candidate: twelve original note-order patterns with local saved completion, optional synthesized example playback, no score changes from practice input, no rhythm/fingering assessment. Deterministic note and MIDI/WAV buffer checks passed. Browser regression added but not run.
+
+Rhythm candidate: eight original patterns, first-tap-relative onset assessment, bounded tolerance, signed timing deviations and independent local completion. Deterministic checks passed; real-device latency and browser acceptance pending.
