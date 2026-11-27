@@ -166,3 +166,5 @@ test('Academy panels: choosing predictions or scoring blocks keeps the open cont
   await h.click('[data-a=score-block][data-index="0"]');assert(h.document.getElementById('quiz-scoring').hasAttribute('open'));await h.click('[data-a=check-scoring]');assert(h.document.getElementById('scoring-result').textContent.includes(TEXT.de.testsPassed));
  }finally{h.cleanup();}
 });
+
+test('Guided subjects cover six disciplines, stable stages and 54 new localized questions',()=>{assert.equal(SUBJECTS.length,6);assert.equal(SUBJECTS.reduce((n,s)=>n+s.tasks.length,0),61);for(const s of SUBJECTS){assert.equal(s.stages[0].start,0);assert.equal(s.stages.at(-1).end,s.tasks.length);for(const [i,g] of s.stages.entries()){assert(g.end>g.start);assert.equal(g.title.length,4);if(i)assert.equal(g.start,s.stages[i-1].end);}for(const t of s.tasks){assert.equal(t.options.length,3);for(let k=0;k<4;k++)assert.equal(new Set(t.options.map(v=>v[k])).size,3);}}assert.equal(curriculum.MISSION_STAGES.at(-1).end,MISSIONS.length);});
