@@ -3133,3 +3133,2327 @@ GRAMMAR_LESSONS.push(...[
     ]
   }
 ]);
+
+// First dedicated grammar routes for the other eight languages.
+GRAMMAR_LESSONS.push(...[
+  {
+    "id": "ka-copula",
+    "language": "ka",
+    "stage": 1,
+    "title": {
+      "de": "Kopula",
+      "en": "Copula",
+      "ru": "Глагол-связка",
+      "uk": "Дієслово-зв'язка"
+    },
+    "rule": {
+      "de": "Ich bin: ვარ; du bist: ხარ; er/sie ist: არის; wir sind: ვართ; ihr seid: ხართ; sie sind: არიან.",
+      "en": "I am: ვარ; you are: ხარ; he/she is: არის; we are: ვართ; you plural: ხართ; they are: არიან.",
+      "ru": "Я есть: ვარ; ты: ხარ; он/она: არის; мы: ვართ; вы: ხართ; они: არიან.",
+      "uk": "Я є: ვარ; ти: ხარ; він/вона: არის; ми: ვართ; ви: ხართ; вони: არიან."
+    },
+    "example": "მე სტუდენტი ვარ.",
+    "practice": [
+      {
+        "sentence": "მე მასწავლებელი ___.",
+        "options": [
+          "ვარ",
+          "ხარ",
+          "არის"
+        ],
+        "answer": "ვარ"
+      },
+      {
+        "sentence": "შენ სტუდენტი ___.",
+        "options": [
+          "ხარ",
+          "ვარ",
+          "ვართ"
+        ],
+        "answer": "ხარ"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ჩვენ მეგობრები ___.",
+        "options": [
+          "ვართ",
+          "ხართ",
+          "არიან"
+        ],
+        "answer": "ვართ"
+      },
+      {
+        "sentence": "ისინი სახლში ___.",
+        "options": [
+          "არიან",
+          "არის",
+          "ვარ"
+        ],
+        "answer": "არიან"
+      }
+    ]
+  },
+  {
+    "id": "ka-plural",
+    "language": "ka",
+    "stage": 1,
+    "title": {
+      "de": "Plural -ები",
+      "en": "Plural -ები",
+      "ru": "Множественное -ები",
+      "uk": "Множина -ები"
+    },
+    "rule": {
+      "de": "Viele konsonantische Nomen verlieren nominatives -ი vor -ები: წიგნი → წიგნები.",
+      "en": "Many consonant-stem nouns drop nominative -ი before -ები: წიგნი → წიგნები.",
+      "ru": "Многие существительные с основой на согласный теряют -ი перед -ები: წიგნი → წიგნები.",
+      "uk": "Багато іменників з основою на приголосний втрачають -ი перед -ები: წიგნი → წიგნები."
+    },
+    "example": "წიგნი → წიგნები",
+    "practice": [
+      {
+        "sentence": "ძაღლი → ___ (Plural)",
+        "options": [
+          "ძაღლები",
+          "ძაღლი",
+          "ძაღლებს"
+        ],
+        "answer": "ძაღლები"
+      },
+      {
+        "sentence": "სახლი → ___ (Plural)",
+        "options": [
+          "სახლები",
+          "სახლი",
+          "სახლებს"
+        ],
+        "answer": "სახლები"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ბავშვი → ___ (Plural)",
+        "options": [
+          "ბავშვები",
+          "ბავშვი",
+          "ბავშვებს"
+        ],
+        "answer": "ბავშვები"
+      },
+      {
+        "sentence": "მეგობარი → ___ (Plural)",
+        "options": [
+          "მეგობრები",
+          "მეგობარი",
+          "მეგობრებს"
+        ],
+        "answer": "მეგობრები"
+      }
+    ]
+  },
+  {
+    "id": "ka-negation",
+    "language": "ka",
+    "stage": 2,
+    "title": {
+      "de": "Verneinung mit არ",
+      "en": "Negation with არ",
+      "ru": "Отрицание არ",
+      "uk": "Заперечення არ"
+    },
+    "rule": {
+      "de": "არ steht zur einfachen Verneinung vor dem Verb; ვერ bezeichnet häufig fehlende Möglichkeit.",
+      "en": "არ precedes the verb for ordinary negation; ვერ often indicates inability.",
+      "ru": "არ стоит перед глаголом при обычном отрицании; ვერ часто означает невозможность.",
+      "uk": "არ стоїть перед дієсловом при звичайному запереченні; ვერ часто означає неможливість."
+    },
+    "example": "მე არ ვიცი.",
+    "practice": [
+      {
+        "sentence": "მე ___ ვიცი. (not know)",
+        "options": [
+          "არ",
+          "და",
+          "თუ"
+        ],
+        "answer": "არ"
+      },
+      {
+        "sentence": "ის ___ მოდის. (not coming)",
+        "options": [
+          "არ",
+          "და",
+          "თუ"
+        ],
+        "answer": "არ"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ჩვენ ___ ვართ სახლში. (not at home)",
+        "options": [
+          "არ",
+          "და",
+          "თუ"
+        ],
+        "answer": "არ"
+      },
+      {
+        "sentence": "შენ ___ ხარ მარტო. (not alone)",
+        "options": [
+          "არ",
+          "და",
+          "თუ"
+        ],
+        "answer": "არ"
+      }
+    ]
+  },
+  {
+    "id": "ka-location",
+    "language": "ka",
+    "stage": 2,
+    "title": {
+      "de": "Ort mit -ში",
+      "en": "Location with -ში",
+      "ru": "Место с -ში",
+      "uk": "Місце з -ში"
+    },
+    "rule": {
+      "de": "-ში bezeichnet in vielen Ortsangaben das Innere eines Ortes: სახლი → სახლში, სკოლა → სკოლაში.",
+      "en": "-ში marks inside a place: სახლი → სახლში, სკოლა → სკოლაში.",
+      "ru": "-ში обозначает нахождение внутри места: სახლი → სახლში, სკოლა → სკოლაში.",
+      "uk": "-ში позначає перебування всередині місця: სახლი → სახლში, სკოლა → სკოლაში."
+    },
+    "example": "ის სკოლაშია.",
+    "practice": [
+      {
+        "sentence": "სახლი → ___ (in the house)",
+        "options": [
+          "სახლში",
+          "სახლიდან",
+          "სახლთან"
+        ],
+        "answer": "სახლში"
+      },
+      {
+        "sentence": "სკოლა → ___ (in the school)",
+        "options": [
+          "სკოლაში",
+          "სკოლიდან",
+          "სკოლასთან"
+        ],
+        "answer": "სკოლაში"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ქალაქი → ___ (in the city)",
+        "options": [
+          "ქალაქში",
+          "ქალაქიდან",
+          "ქალაქთან"
+        ],
+        "answer": "ქალაქში"
+      },
+      {
+        "sentence": "ოთახი → ___ (in the room)",
+        "options": [
+          "ოთახში",
+          "ოთახიდან",
+          "ოთახთან"
+        ],
+        "answer": "ოთახში"
+      }
+    ]
+  },
+  {
+    "id": "ka-genitive",
+    "language": "ka",
+    "stage": 3,
+    "title": {
+      "de": "Genitiv -ის",
+      "en": "Genitive -ის",
+      "ru": "Родительный -ის",
+      "uk": "Родовий -ის"
+    },
+    "rule": {
+      "de": "Bei vielen konsonantischen Nomen markiert -ის Zugehörigkeit: სახლი → სახლის.",
+      "en": "For many consonant-stem nouns, -ის marks possession: სახლი → სახლის.",
+      "ru": "У многих существительных на согласный -ის обозначает принадлежность: სახლი → სახლის.",
+      "uk": "У багатьох іменників на приголосний -ის позначає належність: სახლი → სახლის."
+    },
+    "example": "სახლის კარი",
+    "practice": [
+      {
+        "sentence": "წიგნი → ___ (of the book)",
+        "options": [
+          "წიგნის",
+          "წიგნში",
+          "წიგნიდან"
+        ],
+        "answer": "წიგნის"
+      },
+      {
+        "sentence": "სახლი → ___ (of the house)",
+        "options": [
+          "სახლის",
+          "სახლში",
+          "სახლიდან"
+        ],
+        "answer": "სახლის"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ქალაქი → ___ (of the city)",
+        "options": [
+          "ქალაქის",
+          "ქალაქში",
+          "ქალაქიდან"
+        ],
+        "answer": "ქალაქის"
+      },
+      {
+        "sentence": "ოთახი → ___ (of the room)",
+        "options": [
+          "ოთახის",
+          "ოთახში",
+          "ოთახიდან"
+        ],
+        "answer": "ოთახის"
+      }
+    ]
+  },
+  {
+    "id": "uk-gender",
+    "language": "uk",
+    "stage": 1,
+    "title": {
+      "de": "Genus",
+      "en": "Gender",
+      "ru": "Род",
+      "uk": "Рід"
+    },
+    "rule": {
+      "de": "Im Ukrainischen stimmen Adjektive in Genus und Numerus mit dem Nomen überein: новий, нова, нове.",
+      "en": "Ukrainian adjectives agree in gender and number: новий, нова, нове.",
+      "ru": "Прилагательные согласуются в роде и числе: новий, нова, нове.",
+      "uk": "Прикметники узгоджуються в роді й числі: новий, нова, нове."
+    },
+    "example": "новий стіл, нова книга, нове вікно",
+    "practice": [
+      {
+        "sentence": "___ стіл (new)",
+        "options": [
+          "новий",
+          "нова",
+          "нове"
+        ],
+        "answer": "новий"
+      },
+      {
+        "sentence": "___ книга (new)",
+        "options": [
+          "нова",
+          "новий",
+          "нове"
+        ],
+        "answer": "нова"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ вікно (new)",
+        "options": [
+          "нове",
+          "новий",
+          "нова"
+        ],
+        "answer": "нове"
+      },
+      {
+        "sentence": "___ будинок (new)",
+        "options": [
+          "новий",
+          "нова",
+          "нове"
+        ],
+        "answer": "новий"
+      }
+    ]
+  },
+  {
+    "id": "uk-vocative",
+    "language": "uk",
+    "stage": 1,
+    "title": {
+      "de": "Vokativ",
+      "en": "Vocative",
+      "ru": "Звательный падеж",
+      "uk": "Кличний відмінок"
+    },
+    "rule": {
+      "de": "Bei direkter Anrede wird der Vokativ verwendet: Олена → Олено, Петро → Петре.",
+      "en": "Direct address uses the vocative: Олена → Олено, Петро → Петре.",
+      "ru": "В прямом обращении используется звательный: Олена → Олено, Петро → Петре.",
+      "uk": "У прямому звертанні вживається кличний: Олена → Олено, Петро → Петре."
+    },
+    "example": "Олено, добрий день!",
+    "practice": [
+      {
+        "sentence": "___, привіт! (Олена)",
+        "options": [
+          "Олено",
+          "Олену",
+          "Олени"
+        ],
+        "answer": "Олено"
+      },
+      {
+        "sentence": "___, добрий день! (Петро)",
+        "options": [
+          "Петре",
+          "Петра",
+          "Петру"
+        ],
+        "answer": "Петре"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___, дякую! (мама)",
+        "options": [
+          "Мамо",
+          "Маму",
+          "Мами"
+        ],
+        "answer": "Мамо"
+      },
+      {
+        "sentence": "___, заходь! (брат)",
+        "options": [
+          "Брате",
+          "Брата",
+          "Братом"
+        ],
+        "answer": "Брате"
+      }
+    ]
+  },
+  {
+    "id": "uk-present",
+    "language": "uk",
+    "stage": 2,
+    "title": {
+      "de": "Präsens",
+      "en": "Present",
+      "ru": "Настоящее время",
+      "uk": "Теперішній час"
+    },
+    "rule": {
+      "de": "Читати: я читаю, ти читаєш, він читає, ми читаємо, ви читаєте, вони читають.",
+      "en": "Читати: я читаю, ти читаєш, він читає, ми читаємо, ви читаєте, вони читають.",
+      "ru": "Спряжение читати: я читаю, ти читаєш, він читає, ми читаємо, ви читаєте, вони читають.",
+      "uk": "Дієвідміна читати: я читаю, ти читаєш, він читає, ми читаємо, ви читаєте, вони читають."
+    },
+    "example": "Я читаю книжку.",
+    "practice": [
+      {
+        "sentence": "Ти ___ газету. (читати)",
+        "options": [
+          "читаєш",
+          "читаю",
+          "читають"
+        ],
+        "answer": "читаєш"
+      },
+      {
+        "sentence": "Ми ___ книжку. (читати)",
+        "options": [
+          "читаємо",
+          "читаєте",
+          "читає"
+        ],
+        "answer": "читаємо"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Вона ___ лист. (читати)",
+        "options": [
+          "читає",
+          "читаю",
+          "читаєш"
+        ],
+        "answer": "читає"
+      },
+      {
+        "sentence": "Вони ___ журнал. (читати)",
+        "options": [
+          "читають",
+          "читаємо",
+          "читаєте"
+        ],
+        "answer": "читають"
+      }
+    ]
+  },
+  {
+    "id": "uk-past",
+    "language": "uk",
+    "stage": 2,
+    "title": {
+      "de": "Vergangenheit und Genus",
+      "en": "Past and gender",
+      "ru": "Прошедшее и род",
+      "uk": "Минулий час і рід"
+    },
+    "rule": {
+      "de": "In der Vergangenheit stimmt das Verb mit Genus und Numerus überein: читав, читала, читало, читали.",
+      "en": "Past verbs agree with gender and number: читав, читала, читало, читали.",
+      "ru": "Прошедшее время согласуется по роду и числу: читав, читала, читало, читали.",
+      "uk": "Минулий час узгоджується за родом і числом: читав, читала, читало, читали."
+    },
+    "example": "Вона читала.",
+    "practice": [
+      {
+        "sentence": "Він ___ книжку. (мин.)",
+        "options": [
+          "читав",
+          "читала",
+          "читали"
+        ],
+        "answer": "читав"
+      },
+      {
+        "sentence": "Вона ___ газету. (мин.)",
+        "options": [
+          "читала",
+          "читав",
+          "читали"
+        ],
+        "answer": "читала"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Діти ___ листи. (мин.)",
+        "options": [
+          "читали",
+          "читало",
+          "читала"
+        ],
+        "answer": "читали"
+      },
+      {
+        "sentence": "Ми ___ журнал. (мин.)",
+        "options": [
+          "читали",
+          "читав",
+          "читала"
+        ],
+        "answer": "читали"
+      }
+    ]
+  },
+  {
+    "id": "uk-future",
+    "language": "uk",
+    "stage": 3,
+    "title": {
+      "de": "Zusammengesetztes Futur",
+      "en": "Compound future",
+      "ru": "Составное будущее",
+      "uk": "Складене майбутнє"
+    },
+    "rule": {
+      "de": "Unvollendete Verben können Futur mit буду/будеш/буде/будемо/будете/будуть + Infinitiv bilden.",
+      "en": "Imperfective verbs can form the future with буду/будеш/буде/будемо/будете/будуть + infinitive.",
+      "ru": "Несовершенный вид может образовывать будущее с буду/будеш/буде/будемо/будете/будуть + инфинитив.",
+      "uk": "Недоконаний вид може утворювати майбутнє з буду/будеш/буде/будемо/будете/будуть + інфінітив."
+    },
+    "example": "Я буду читати.",
+    "practice": [
+      {
+        "sentence": "Ти ___ працювати. (future)",
+        "options": [
+          "будеш",
+          "буду",
+          "будуть"
+        ],
+        "answer": "будеш"
+      },
+      {
+        "sentence": "Ми ___ навчатися. (future)",
+        "options": [
+          "будемо",
+          "будете",
+          "буде"
+        ],
+        "answer": "будемо"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Вона ___ читати. (future)",
+        "options": [
+          "буде",
+          "буду",
+          "будеш"
+        ],
+        "answer": "буде"
+      },
+      {
+        "sentence": "Вони ___ грати. (future)",
+        "options": [
+          "будуть",
+          "будемо",
+          "будете"
+        ],
+        "answer": "будуть"
+      }
+    ]
+  },
+  {
+    "id": "ru-gender",
+    "language": "ru",
+    "stage": 1,
+    "title": {
+      "de": "Genus und Adjektive",
+      "en": "Gender and adjectives",
+      "ru": "Род и прилагательные",
+      "uk": "Рід і прикметники"
+    },
+    "rule": {
+      "de": "Adjektive stimmen mit dem Nomen überein: новый, новая, новое; Plural новые.",
+      "en": "Adjectives agree with nouns: новый, новая, новое; plural новые.",
+      "ru": "Прилагательное согласуется с существительным: новый, новая, новое; множественное новые.",
+      "uk": "Прикметник узгоджується з іменником: новый, новая, новое; множина новые."
+    },
+    "example": "новый дом, новая книга",
+    "practice": [
+      {
+        "sentence": "___ дом (new)",
+        "options": [
+          "новый",
+          "новая",
+          "новое"
+        ],
+        "answer": "новый"
+      },
+      {
+        "sentence": "___ книга (new)",
+        "options": [
+          "новая",
+          "новый",
+          "новое"
+        ],
+        "answer": "новая"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ окно (new)",
+        "options": [
+          "новое",
+          "новый",
+          "новая"
+        ],
+        "answer": "новое"
+      },
+      {
+        "sentence": "___ дома (new)",
+        "options": [
+          "новые",
+          "новый",
+          "новая"
+        ],
+        "answer": "новые"
+      }
+    ]
+  },
+  {
+    "id": "ru-prepositional",
+    "language": "ru",
+    "stage": 1,
+    "title": {
+      "de": "Präpositiv mit о",
+      "en": "Prepositional with о",
+      "ru": "Предложный с о",
+      "uk": "Прийменниковий з о"
+    },
+    "rule": {
+      "de": "О/об bei einem Gesprächsthema verlangt den Präpositiv: о книге, о доме, об окне.",
+      "en": "О/об for a topic of discussion takes the prepositional: о книге, о доме, об окне.",
+      "ru": "О/об в значении темы разговора требует предложного падежа.",
+      "uk": "О/об у значенні теми розмови вимагає прийменникового відмінка."
+    },
+    "example": "Мы говорим о книге.",
+    "practice": [
+      {
+        "sentence": "Мы говорим о ___. (дом)",
+        "options": [
+          "доме",
+          "дом",
+          "дома"
+        ],
+        "answer": "доме"
+      },
+      {
+        "sentence": "Она думает о ___. (работа)",
+        "options": [
+          "работе",
+          "работу",
+          "работой"
+        ],
+        "answer": "работе"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Он рассказывает о ___. (город)",
+        "options": [
+          "городе",
+          "города",
+          "городом"
+        ],
+        "answer": "городе"
+      },
+      {
+        "sentence": "Мы говорим об ___. (окно)",
+        "options": [
+          "окне",
+          "окно",
+          "окна"
+        ],
+        "answer": "окне"
+      }
+    ]
+  },
+  {
+    "id": "ru-accusative",
+    "language": "ru",
+    "stage": 2,
+    "title": {
+      "de": "Akkusativ belebt/unbelebt",
+      "en": "Animate accusative",
+      "ru": "Винительный одушевлённых",
+      "uk": "Знахідний істот"
+    },
+    "rule": {
+      "de": "Bei maskulinen Nomen im Singular entspricht der Akkusativ bei Belebten häufig dem Genitiv, bei Unbelebten dem Nominativ.",
+      "en": "Masculine singular animate accusative generally matches genitive; inanimate matches nominative.",
+      "ru": "У существительных мужского рода ед. числа винительный одушевлённых совпадает с родительным, неодушевлённых — с именительным.",
+      "uk": "В іменників чоловічого роду однини знахідний істот збігається з родовим, неістот — з називним."
+    },
+    "example": "Я вижу брата. Я вижу стол.",
+    "practice": [
+      {
+        "sentence": "Я вижу ___. (брат)",
+        "options": [
+          "брата",
+          "брат",
+          "братом"
+        ],
+        "answer": "брата"
+      },
+      {
+        "sentence": "Я вижу ___. (стол)",
+        "options": [
+          "стол",
+          "стола",
+          "столом"
+        ],
+        "answer": "стол"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Она встретила ___. (друг)",
+        "options": [
+          "друга",
+          "друг",
+          "другом"
+        ],
+        "answer": "друга"
+      },
+      {
+        "sentence": "Он купил ___. (телефон)",
+        "options": [
+          "телефон",
+          "телефона",
+          "телефоном"
+        ],
+        "answer": "телефон"
+      }
+    ]
+  },
+  {
+    "id": "ru-aspect",
+    "language": "ru",
+    "stage": 2,
+    "title": {
+      "de": "Verbalaspekt",
+      "en": "Verb aspect",
+      "ru": "Вид глагола",
+      "uk": "Вид дієслова"
+    },
+    "rule": {
+      "de": "Несовершенный вид beschreibt Verlauf oder Wiederholung; совершенный вид ein begrenztes Ereignis/Resultat.",
+      "en": "Imperfective describes ongoing or repeated actions; perfective a bounded event/result.",
+      "ru": "Несовершенный вид обозначает процесс или повторение, совершенный — целостное действие или результат.",
+      "uk": "Недоконаний вид позначає процес або повторення, доконаний — цілісну дію чи результат."
+    },
+    "example": "Я читал письмо. Я прочитал письмо до конца.",
+    "practice": [
+      {
+        "sentence": "Каждый день он ___ газету. (habit)",
+        "options": [
+          "читал",
+          "прочитал",
+          "прочитает"
+        ],
+        "answer": "читал"
+      },
+      {
+        "sentence": "Он ___ книгу до конца вчера. (completion)",
+        "options": [
+          "прочитал",
+          "читает",
+          "прочитает"
+        ],
+        "answer": "прочитал"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Она обычно ___ письма утром. (habit)",
+        "options": [
+          "писала",
+          "написала",
+          "напишет"
+        ],
+        "answer": "писала"
+      },
+      {
+        "sentence": "Он наконец ___ письмо и отправил его. (completion)",
+        "options": [
+          "написал",
+          "пишет",
+          "напишет"
+        ],
+        "answer": "написал"
+      }
+    ]
+  },
+  {
+    "id": "ru-conditional",
+    "language": "ru",
+    "stage": 3,
+    "title": {
+      "de": "Irrealis mit бы",
+      "en": "Conditional with бы",
+      "ru": "Условное с бы",
+      "uk": "Умовне з бы"
+    },
+    "rule": {
+      "de": "Бы kombiniert sich mit der Vergangenheitsform für hypothetische Situationen; die Form stimmt in Genus/Numerus überein.",
+      "en": "Бы combines with past forms for hypothetical situations; gender/number agreement remains.",
+      "ru": "Бы образует условное наклонение с формой прошедшего времени, согласование по роду и числу сохраняется.",
+      "uk": "Бы утворює умовний спосіб з минулою формою; узгодження за родом і числом зберігається."
+    },
+    "example": "Если бы я знал, я бы помог.",
+    "practice": [
+      {
+        "sentence": "Если бы он знал, он бы ___. (помочь)",
+        "options": [
+          "помог",
+          "помогла",
+          "помогли"
+        ],
+        "answer": "помог"
+      },
+      {
+        "sentence": "Если бы она знала, она бы ___. (помочь)",
+        "options": [
+          "помогла",
+          "помог",
+          "помогли"
+        ],
+        "answer": "помогла"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Если бы мы знали, мы бы ___. (помочь)",
+        "options": [
+          "помогли",
+          "помог",
+          "помогла"
+        ],
+        "answer": "помогли"
+      },
+      {
+        "sentence": "Если бы они знали, они бы ___. (прийти)",
+        "options": [
+          "пришли",
+          "пришёл",
+          "пришла"
+        ],
+        "answer": "пришли"
+      }
+    ]
+  },
+  {
+    "id": "zh-wordorder",
+    "language": "zh",
+    "stage": 1,
+    "title": {
+      "de": "Subjekt–Verb–Objekt",
+      "en": "Subject–verb–object",
+      "ru": "Подлежащее–глагол–объект",
+      "uk": "Підмет–дієслово–додаток"
+    },
+    "rule": {
+      "de": "Ein einfacher Aussagesatz hat oft Subjekt + Verb + Objekt. Verben werden nicht nach Person konjugiert.",
+      "en": "A simple statement often uses subject + verb + object. Verbs do not conjugate by person.",
+      "ru": "Простое предложение часто строится подлежащее + глагол + объект. Глаголы не спрягаются по лицам.",
+      "uk": "Просте речення часто має підмет + дієслово + додаток. Дієслова не відмінюються за особами."
+    },
+    "example": "我喝水。",
+    "practice": [
+      {
+        "sentence": "我___水。 (drink)",
+        "options": [
+          "喝",
+          "水",
+          "我"
+        ],
+        "answer": "喝"
+      },
+      {
+        "sentence": "她___书。 (read)",
+        "options": [
+          "看",
+          "书",
+          "她"
+        ],
+        "answer": "看"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "他___中文。 (study)",
+        "options": [
+          "学",
+          "中文",
+          "他"
+        ],
+        "answer": "学"
+      },
+      {
+        "sentence": "我们___米饭。 (eat)",
+        "options": [
+          "吃",
+          "米饭",
+          "我们"
+        ],
+        "answer": "吃"
+      }
+    ]
+  },
+  {
+    "id": "zh-ma",
+    "language": "zh",
+    "stage": 1,
+    "title": {
+      "de": "Ja/Nein-Frage mit 吗",
+      "en": "Yes/no question with 吗",
+      "ru": "Вопрос с 吗",
+      "uk": "Питання з 吗"
+    },
+    "rule": {
+      "de": "吗 am Satzende macht aus vielen Aussagesätzen eine Ja/Nein-Frage, ohne die Satzstellung zu ändern.",
+      "en": "Sentence-final 吗 turns many statements into yes/no questions without changing word order.",
+      "ru": "吗 в конце превращает многие утверждения в общий вопрос без изменения порядка слов.",
+      "uk": "吗 у кінці перетворює багато тверджень на загальне питання без зміни порядку слів."
+    },
+    "example": "你是学生吗？",
+    "practice": [
+      {
+        "sentence": "你喝茶___？ (yes/no)",
+        "options": [
+          "吗",
+          "的",
+          "很"
+        ],
+        "answer": "吗"
+      },
+      {
+        "sentence": "他是老师___？ (yes/no)",
+        "options": [
+          "吗",
+          "的",
+          "很"
+        ],
+        "answer": "吗"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "你喜欢音乐___？ (yes/no)",
+        "options": [
+          "吗",
+          "的",
+          "很"
+        ],
+        "answer": "吗"
+      },
+      {
+        "sentence": "她会游泳___？ (yes/no)",
+        "options": [
+          "吗",
+          "的",
+          "很"
+        ],
+        "answer": "吗"
+      }
+    ]
+  },
+  {
+    "id": "zh-classifier",
+    "language": "zh",
+    "stage": 2,
+    "title": {
+      "de": "Zählwörter",
+      "en": "Classifiers",
+      "ru": "Счётные слова",
+      "uk": "Лічильні слова"
+    },
+    "rule": {
+      "de": "Zwischen Zahl und Nomen steht häufig ein Zählwort: 一本书, 三个人, 一杯水, 一张纸.",
+      "en": "A classifier often occurs between number and noun: 一本书, 三个人, 一杯水, 一张纸.",
+      "ru": "Между числом и существительным часто стоит счётное слово: 一本书, 三个人, 一杯水, 一张纸.",
+      "uk": "Між числом та іменником часто стоїть лічильне слово: 一本书, 三个人, 一杯水, 一张纸."
+    },
+    "example": "两本书。",
+    "practice": [
+      {
+        "sentence": "三___书。",
+        "options": [
+          "本",
+          "杯",
+          "张"
+        ],
+        "answer": "本"
+      },
+      {
+        "sentence": "两___人。",
+        "options": [
+          "个",
+          "本",
+          "杯"
+        ],
+        "answer": "个"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "一___水。",
+        "options": [
+          "杯",
+          "本",
+          "张"
+        ],
+        "answer": "杯"
+      },
+      {
+        "sentence": "一___纸。",
+        "options": [
+          "张",
+          "本",
+          "杯"
+        ],
+        "answer": "张"
+      }
+    ]
+  },
+  {
+    "id": "zh-negation",
+    "language": "zh",
+    "stage": 2,
+    "title": {
+      "de": "不 und 没有",
+      "en": "不 and 没有",
+      "ru": "Отрицания 不 и 没有",
+      "uk": "Заперечення 不 і 没有"
+    },
+    "rule": {
+      "de": "不 verneint oft Gewohnheiten oder Zustände; 没有 verneint Besitz. Vor 有 steht 没, nicht 不.",
+      "en": "不 often negates habits or states; 没有 negates possession. Negate 有 with 没, not 不.",
+      "ru": "不 часто отрицает привычки и состояния; 没有 — наличие. Перед 有 отрицание 没, не 不.",
+      "uk": "不 часто заперечує звички й стани; 没有 — наявність. Перед 有 заперечення 没, не 不."
+    },
+    "example": "我不喝咖啡。我没有车。",
+    "practice": [
+      {
+        "sentence": "我___有车。",
+        "options": [
+          "没",
+          "不",
+          "很"
+        ],
+        "answer": "没"
+      },
+      {
+        "sentence": "他___是老师。",
+        "options": [
+          "不",
+          "有",
+          "很"
+        ],
+        "answer": "不"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "她___有钱。",
+        "options": [
+          "没",
+          "不",
+          "很"
+        ],
+        "answer": "没"
+      },
+      {
+        "sentence": "我___喜欢咖啡。",
+        "options": [
+          "不",
+          "有",
+          "很"
+        ],
+        "answer": "不"
+      }
+    ]
+  },
+  {
+    "id": "zh-comparison",
+    "language": "zh",
+    "stage": 3,
+    "title": {
+      "de": "Vergleich mit 比",
+      "en": "Comparison with 比",
+      "ru": "Сравнение с 比",
+      "uk": "Порівняння з 比"
+    },
+    "rule": {
+      "de": "A 比 B + Adjektiv: A ist im betreffenden Merkmal stärker als B.",
+      "en": "A 比 B + adjective: A has more of that quality than B.",
+      "ru": "A 比 B + прилагательное: у A признак выражен сильнее, чем у B.",
+      "uk": "A 比 B + прикметник: у A ознака виражена сильніше, ніж у B."
+    },
+    "example": "今天比昨天热。",
+    "practice": [
+      {
+        "sentence": "他___我高。 (taller than)",
+        "options": [
+          "比",
+          "在",
+          "和"
+        ],
+        "answer": "比"
+      },
+      {
+        "sentence": "今天___昨天冷。 (colder than)",
+        "options": [
+          "比",
+          "在",
+          "和"
+        ],
+        "answer": "比"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "这个___那个贵。 (more expensive than)",
+        "options": [
+          "比",
+          "在",
+          "和"
+        ],
+        "answer": "比"
+      },
+      {
+        "sentence": "姐姐___妹妹大。 (older than)",
+        "options": [
+          "比",
+          "在",
+          "和"
+        ],
+        "answer": "比"
+      }
+    ]
+  },
+  {
+    "id": "es-gender",
+    "language": "es",
+    "stage": 1,
+    "title": {
+      "de": "Genus und Artikel",
+      "en": "Gender and articles",
+      "ru": "Род и артикли",
+      "uk": "Рід і артиклі"
+    },
+    "rule": {
+      "de": "Bestimmte Artikel: el/la im Singular, los/las im Plural. Genus mit Nomen lernen.",
+      "en": "Definite articles: el/la singular, los/las plural. Learn gender with nouns.",
+      "ru": "Определённые артикли: el/la в ед. числе, los/las во множественном. Род учим со словом.",
+      "uk": "Означені артиклі: el/la в однині, los/las у множині. Рід вчимо зі словом."
+    },
+    "example": "el libro, la mesa",
+    "practice": [
+      {
+        "sentence": "___ libro (definite)",
+        "options": [
+          "el",
+          "la",
+          "las"
+        ],
+        "answer": "el"
+      },
+      {
+        "sentence": "___ mesa (definite)",
+        "options": [
+          "la",
+          "el",
+          "los"
+        ],
+        "answer": "la"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ libros (definite)",
+        "options": [
+          "los",
+          "las",
+          "el"
+        ],
+        "answer": "los"
+      },
+      {
+        "sentence": "___ mesas (definite)",
+        "options": [
+          "las",
+          "los",
+          "la"
+        ],
+        "answer": "las"
+      }
+    ]
+  },
+  {
+    "id": "es-present",
+    "language": "es",
+    "stage": 1,
+    "title": {
+      "de": "Präsens -ar",
+      "en": "Present -ar",
+      "ru": "Настоящее -ar",
+      "uk": "Теперішній -ar"
+    },
+    "rule": {
+      "de": "Hablar: hablo, hablas, habla, hablamos, habláis, hablan.",
+      "en": "Hablar: hablo, hablas, habla, hablamos, habláis, hablan.",
+      "ru": "Спряжение hablar: hablo, hablas, habla, hablamos, habláis, hablan.",
+      "uk": "Дієвідміна hablar: hablo, hablas, habla, hablamos, habláis, hablan."
+    },
+    "example": "Yo hablo español.",
+    "practice": [
+      {
+        "sentence": "Tú ___ español. (hablar)",
+        "options": [
+          "hablas",
+          "hablo",
+          "hablan"
+        ],
+        "answer": "hablas"
+      },
+      {
+        "sentence": "Nosotros ___ español. (hablar)",
+        "options": [
+          "hablamos",
+          "hablan",
+          "habláis"
+        ],
+        "answer": "hablamos"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ella ___ español. (hablar)",
+        "options": [
+          "habla",
+          "hablas",
+          "hablo"
+        ],
+        "answer": "habla"
+      },
+      {
+        "sentence": "Ellos ___ español. (hablar)",
+        "options": [
+          "hablan",
+          "habla",
+          "hablamos"
+        ],
+        "answer": "hablan"
+      }
+    ]
+  },
+  {
+    "id": "es-ser-estar",
+    "language": "es",
+    "stage": 2,
+    "title": {
+      "de": "Ser und estar",
+      "en": "Ser and estar",
+      "ru": "Глаголы ser и estar",
+      "uk": "Дієслова ser і estar"
+    },
+    "rule": {
+      "de": "Ser dient u. a. Identität/Beruf; estar u. a. Zustand und Ort von Personen oder Dingen.",
+      "en": "Ser for identity/profession; estar for states and location of people/things, among other uses.",
+      "ru": "Ser — в частности личность и профессия; estar — состояние и место людей/предметов.",
+      "uk": "Ser — зокрема особа й професія; estar — стан і місце людей/предметів."
+    },
+    "example": "Soy médico. Estoy en casa.",
+    "practice": [
+      {
+        "sentence": "Yo ___ profesora. (profession)",
+        "options": [
+          "soy",
+          "estoy",
+          "eres"
+        ],
+        "answer": "soy"
+      },
+      {
+        "sentence": "Ella ___ en casa. (location)",
+        "options": [
+          "está",
+          "es",
+          "soy"
+        ],
+        "answer": "está"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Nosotros ___ estudiantes. (identity)",
+        "options": [
+          "somos",
+          "estamos",
+          "son"
+        ],
+        "answer": "somos"
+      },
+      {
+        "sentence": "Tú ___ cansado ahora. (state)",
+        "options": [
+          "estás",
+          "eres",
+          "soy"
+        ],
+        "answer": "estás"
+      }
+    ]
+  },
+  {
+    "id": "es-preterite",
+    "language": "es",
+    "stage": 2,
+    "title": {
+      "de": "Pretérito indefinido -ar",
+      "en": "Preterite -ar",
+      "ru": "Прошедшее indefinido -ar",
+      "uk": "Минулий indefinido -ar"
+    },
+    "rule": {
+      "de": "Abgeschlossene Ereignisse: hablé, hablaste, habló, hablamos, hablasteis, hablaron.",
+      "en": "Completed events: hablé, hablaste, habló, hablamos, hablasteis, hablaron.",
+      "ru": "Завершённые события: hablé, hablaste, habló, hablamos, hablasteis, hablaron.",
+      "uk": "Завершені події: hablé, hablaste, habló, hablamos, hablasteis, hablaron."
+    },
+    "example": "Ayer hablé con Ana.",
+    "practice": [
+      {
+        "sentence": "Ayer yo ___ con Ana. (hablar, preterite)",
+        "options": [
+          "hablé",
+          "hablo",
+          "habló"
+        ],
+        "answer": "hablé"
+      },
+      {
+        "sentence": "Ayer ella ___ con Ana. (hablar, preterite)",
+        "options": [
+          "habló",
+          "hablé",
+          "hablas"
+        ],
+        "answer": "habló"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ayer tú ___ con Ana. (hablar, preterite)",
+        "options": [
+          "hablaste",
+          "habló",
+          "hablan"
+        ],
+        "answer": "hablaste"
+      },
+      {
+        "sentence": "Ayer ellos ___ con Ana. (hablar, preterite)",
+        "options": [
+          "hablaron",
+          "habló",
+          "hablamos"
+        ],
+        "answer": "hablaron"
+      }
+    ]
+  },
+  {
+    "id": "es-subjunctive",
+    "language": "es",
+    "stage": 3,
+    "title": {
+      "de": "Subjuntivo nach querer que",
+      "en": "Subjunctive after querer que",
+      "ru": "Subjuntivo после querer que",
+      "uk": "Subjuntivo після querer que"
+    },
+    "rule": {
+      "de": "Bei Wunsch mit verschiedenem Subjekt: quiero que + Subjuntivo, z. B. hables, vengas.",
+      "en": "A wish with a different subject: quiero que + subjunctive, e.g. hables, vengas.",
+      "ru": "Желание с другим подлежащим: quiero que + subjuntivo, например hables, vengas.",
+      "uk": "Бажання з іншим підметом: quiero que + subjuntivo, наприклад hables, vengas."
+    },
+    "example": "Quiero que vengas.",
+    "practice": [
+      {
+        "sentence": "Quiero que tú ___ conmigo. (hablar)",
+        "options": [
+          "hables",
+          "hablas",
+          "hablar"
+        ],
+        "answer": "hables"
+      },
+      {
+        "sentence": "Quiero que ella ___ aquí. (venir)",
+        "options": [
+          "venga",
+          "viene",
+          "venir"
+        ],
+        "answer": "venga"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Quiero que ellos ___ más. (estudiar)",
+        "options": [
+          "estudien",
+          "estudian",
+          "estudiar"
+        ],
+        "answer": "estudien"
+      },
+      {
+        "sentence": "Quiero que nosotros ___ juntos. (trabajar)",
+        "options": [
+          "trabajemos",
+          "trabajamos",
+          "trabajar"
+        ],
+        "answer": "trabajemos"
+      }
+    ]
+  },
+  {
+    "id": "fr-articles",
+    "language": "fr",
+    "stage": 1,
+    "title": {
+      "de": "Bestimmte Artikel",
+      "en": "Definite articles",
+      "ru": "Определённые артикли",
+      "uk": "Означені артиклі"
+    },
+    "rule": {
+      "de": "Le (m), la (f), l’ vor Vokal oder stummem h, les im Plural.",
+      "en": "Le (m), la (f), l’ before a vowel or mute h, les plural.",
+      "ru": "Le (м), la (ж), l’ перед гласным или немым h, les во множественном.",
+      "uk": "Le (ч), la (ж), l’ перед голосним або німим h, les у множині."
+    },
+    "example": "le livre, la table, l’école",
+    "practice": [
+      {
+        "sentence": "___ livre (definite)",
+        "options": [
+          "le",
+          "la",
+          "les"
+        ],
+        "answer": "le"
+      },
+      {
+        "sentence": "___ table (definite)",
+        "options": [
+          "la",
+          "le",
+          "les"
+        ],
+        "answer": "la"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ école (definite)",
+        "options": [
+          "l’",
+          "le",
+          "la"
+        ],
+        "answer": "l’"
+      },
+      {
+        "sentence": "___ livres (definite)",
+        "options": [
+          "les",
+          "le",
+          "la"
+        ],
+        "answer": "les"
+      }
+    ]
+  },
+  {
+    "id": "fr-present",
+    "language": "fr",
+    "stage": 1,
+    "title": {
+      "de": "Präsens -er",
+      "en": "Present -er",
+      "ru": "Настоящее -er",
+      "uk": "Теперішній -er"
+    },
+    "rule": {
+      "de": "Parler: parle, parles, parle, parlons, parlez, parlent.",
+      "en": "Parler: parle, parles, parle, parlons, parlez, parlent.",
+      "ru": "Спряжение parler: parle, parles, parle, parlons, parlez, parlent.",
+      "uk": "Дієвідміна parler: parle, parles, parle, parlons, parlez, parlent."
+    },
+    "example": "Je parle français.",
+    "practice": [
+      {
+        "sentence": "Tu ___ français. (parler)",
+        "options": [
+          "parles",
+          "parle",
+          "parlez"
+        ],
+        "answer": "parles"
+      },
+      {
+        "sentence": "Nous ___ français. (parler)",
+        "options": [
+          "parlons",
+          "parlez",
+          "parlent"
+        ],
+        "answer": "parlons"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Vous ___ français. (parler)",
+        "options": [
+          "parlez",
+          "parlons",
+          "parle"
+        ],
+        "answer": "parlez"
+      },
+      {
+        "sentence": "Elles ___ français. (parler)",
+        "options": [
+          "parlent",
+          "parle",
+          "parles"
+        ],
+        "answer": "parlent"
+      }
+    ]
+  },
+  {
+    "id": "fr-negation",
+    "language": "fr",
+    "stage": 2,
+    "title": {
+      "de": "Ne ... pas",
+      "en": "Ne ... pas",
+      "ru": "Отрицание ne ... pas",
+      "uk": "Заперечення ne ... pas"
+    },
+    "rule": {
+      "de": "In der Standardschriftsprache umschließt ne/n’ ... pas das finite Verb im einfachen Satz.",
+      "en": "In standard writing ne/n’ ... pas surrounds the finite verb in simple clauses.",
+      "ru": "В стандартной письменной речи ne/n’ ... pas окружает спрягаемый глагол.",
+      "uk": "У стандартному письмі ne/n’ ... pas оточує відмінюване дієслово."
+    },
+    "example": "Je ne parle pas.",
+    "practice": [
+      {
+        "sentence": "Je ne mange ___. (not)",
+        "options": [
+          "pas",
+          "très",
+          "oui"
+        ],
+        "answer": "pas"
+      },
+      {
+        "sentence": "Il n’est ___ ici. (not)",
+        "options": [
+          "pas",
+          "très",
+          "oui"
+        ],
+        "answer": "pas"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Nous ne savons ___. (not)",
+        "options": [
+          "pas",
+          "très",
+          "oui"
+        ],
+        "answer": "pas"
+      },
+      {
+        "sentence": "Elle ne vient ___. (not)",
+        "options": [
+          "pas",
+          "très",
+          "oui"
+        ],
+        "answer": "pas"
+      }
+    ]
+  },
+  {
+    "id": "fr-perfect",
+    "language": "fr",
+    "stage": 2,
+    "title": {
+      "de": "Passé composé avec avoir",
+      "en": "Passé composé with avoir",
+      "ru": "Passé composé с avoir",
+      "uk": "Passé composé з avoir"
+    },
+    "rule": {
+      "de": "Viele Verben: avoir im Präsens + participe passé; -er → -é.",
+      "en": "Many verbs: present avoir + past participle; -er → -é.",
+      "ru": "Многие глаголы: avoir в настоящем + причастие; -er → -é.",
+      "uk": "Багато дієслів: avoir у теперішньому + дієприкметник; -er → -é."
+    },
+    "example": "J’ai parlé.",
+    "practice": [
+      {
+        "sentence": "Tu ___ mangé. (avoir)",
+        "options": [
+          "as",
+          "a",
+          "ai"
+        ],
+        "answer": "as"
+      },
+      {
+        "sentence": "Nous avons ___. (parler)",
+        "options": [
+          "parlé",
+          "parler",
+          "parle"
+        ],
+        "answer": "parlé"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Elle ___ travaillé. (avoir)",
+        "options": [
+          "a",
+          "as",
+          "avons"
+        ],
+        "answer": "a"
+      },
+      {
+        "sentence": "Ils ont ___. (visiter)",
+        "options": [
+          "visité",
+          "visiter",
+          "visitent"
+        ],
+        "answer": "visité"
+      }
+    ]
+  },
+  {
+    "id": "fr-relative",
+    "language": "fr",
+    "stage": 3,
+    "title": {
+      "de": "Qui und que",
+      "en": "Qui and que",
+      "ru": "Относительные qui и que",
+      "uk": "Відносні qui й que"
+    },
+    "rule": {
+      "de": "Qui ist Subjekt des Relativsatzes, que/qu’ direktes Objekt.",
+      "en": "Qui is the subject of a relative clause, que/qu’ the direct object.",
+      "ru": "Qui — подлежащее придаточного, que/qu’ — прямое дополнение.",
+      "uk": "Qui — підмет підрядного, que/qu’ — прямий додаток."
+    },
+    "example": "Le livre que je lis. La personne qui parle.",
+    "practice": [
+      {
+        "sentence": "La femme ___ parle est ici.",
+        "options": [
+          "qui",
+          "que",
+          "où"
+        ],
+        "answer": "qui"
+      },
+      {
+        "sentence": "Le livre ___ tu lis est neuf.",
+        "options": [
+          "que",
+          "qui",
+          "où"
+        ],
+        "answer": "que"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Le train ___ arrive est rapide.",
+        "options": [
+          "qui",
+          "que",
+          "où"
+        ],
+        "answer": "qui"
+      },
+      {
+        "sentence": "Le film ___ nous regardons est long.",
+        "options": [
+          "que",
+          "qui",
+          "où"
+        ],
+        "answer": "que"
+      }
+    ]
+  },
+  {
+    "id": "it-articles",
+    "language": "it",
+    "stage": 1,
+    "title": {
+      "de": "Bestimmte Artikel",
+      "en": "Definite articles",
+      "ru": "Определённые артикли",
+      "uk": "Означені артиклі"
+    },
+    "rule": {
+      "de": "Il vor vielen maskulinen Konsonanten, lo vor z oder s+Konsonant, la feminin, l’ vor Vokal im Singular.",
+      "en": "Il before many masculine consonants, lo before z or s+consonant, la feminine, l’ before vowels in singular.",
+      "ru": "Il перед многими мужскими согласными, lo перед z или s+согласной, la женский, l’ перед гласным в ед. числе.",
+      "uk": "Il перед багатьма чоловічими приголосними, lo перед z або s+приголосною, la жіночий, l’ перед голосним в однині."
+    },
+    "example": "il libro, lo studente, la casa",
+    "practice": [
+      {
+        "sentence": "___ libro (definite)",
+        "options": [
+          "il",
+          "lo",
+          "la"
+        ],
+        "answer": "il"
+      },
+      {
+        "sentence": "___ studente (definite)",
+        "options": [
+          "lo",
+          "il",
+          "la"
+        ],
+        "answer": "lo"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ casa (definite)",
+        "options": [
+          "la",
+          "il",
+          "lo"
+        ],
+        "answer": "la"
+      },
+      {
+        "sentence": "___ amico (definite)",
+        "options": [
+          "l’",
+          "il",
+          "la"
+        ],
+        "answer": "l’"
+      }
+    ]
+  },
+  {
+    "id": "it-present",
+    "language": "it",
+    "stage": 1,
+    "title": {
+      "de": "Präsens -are",
+      "en": "Present -are",
+      "ru": "Настоящее -are",
+      "uk": "Теперішній -are"
+    },
+    "rule": {
+      "de": "Parlare: parlo, parli, parla, parliamo, parlate, parlano.",
+      "en": "Parlare: parlo, parli, parla, parliamo, parlate, parlano.",
+      "ru": "Спряжение parlare: parlo, parli, parla, parliamo, parlate, parlano.",
+      "uk": "Дієвідміна parlare: parlo, parli, parla, parliamo, parlate, parlano."
+    },
+    "example": "Io parlo italiano.",
+    "practice": [
+      {
+        "sentence": "Tu ___ italiano. (parlare)",
+        "options": [
+          "parli",
+          "parlo",
+          "parlano"
+        ],
+        "answer": "parli"
+      },
+      {
+        "sentence": "Noi ___ italiano. (parlare)",
+        "options": [
+          "parliamo",
+          "parlate",
+          "parla"
+        ],
+        "answer": "parliamo"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Voi ___ italiano. (parlare)",
+        "options": [
+          "parlate",
+          "parliamo",
+          "parli"
+        ],
+        "answer": "parlate"
+      },
+      {
+        "sentence": "Loro ___ italiano. (parlare)",
+        "options": [
+          "parlano",
+          "parla",
+          "parli"
+        ],
+        "answer": "parlano"
+      }
+    ]
+  },
+  {
+    "id": "it-essere",
+    "language": "it",
+    "stage": 2,
+    "title": {
+      "de": "Essere und avere",
+      "en": "Essere and avere",
+      "ru": "Essere и avere",
+      "uk": "Essere і avere"
+    },
+    "rule": {
+      "de": "Essere: sono, sei, è, siamo, siete, sono; avere: ho, hai, ha, abbiamo, avete, hanno. Alter mit avere.",
+      "en": "Essere: sono, sei, è, siamo, siete, sono; avere: ho, hai, ha, abbiamo, avete, hanno. Age uses avere.",
+      "ru": "Essere: sono, sei, è, siamo, siete, sono; avere: ho, hai, ha, abbiamo, avete, hanno. Возраст с avere.",
+      "uk": "Essere: sono, sei, è, siamo, siete, sono; avere: ho, hai, ha, abbiamo, avete, hanno. Вік з avere."
+    },
+    "example": "Sono studente. Ho vent’anni.",
+    "practice": [
+      {
+        "sentence": "Io ___ vent’anni.",
+        "options": [
+          "ho",
+          "sono",
+          "ha"
+        ],
+        "answer": "ho"
+      },
+      {
+        "sentence": "Tu ___ a casa. (essere)",
+        "options": [
+          "sei",
+          "hai",
+          "sono"
+        ],
+        "answer": "sei"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Noi ___ una macchina. (avere)",
+        "options": [
+          "abbiamo",
+          "siamo",
+          "avete"
+        ],
+        "answer": "abbiamo"
+      },
+      {
+        "sentence": "Loro ___ italiani. (essere)",
+        "options": [
+          "sono",
+          "hanno",
+          "siamo"
+        ],
+        "answer": "sono"
+      }
+    ]
+  },
+  {
+    "id": "it-perfect",
+    "language": "it",
+    "stage": 2,
+    "title": {
+      "de": "Passato prossimo",
+      "en": "Passato prossimo",
+      "ru": "Passato prossimo",
+      "uk": "Passato prossimo"
+    },
+    "rule": {
+      "de": "Viele Verben: avere + participio passato. Andare benutzt essere; das Partizip stimmt dann mit dem Subjekt überein.",
+      "en": "Many verbs: avere + past participle. Andare uses essere; its participle agrees with the subject.",
+      "ru": "Многие глаголы: avere + причастие. Andare требует essere; причастие согласуется с подлежащим.",
+      "uk": "Багато дієслів: avere + дієприкметник. Andare вимагає essere; дієприкметник узгоджується з підметом."
+    },
+    "example": "Ho mangiato. Maria è andata.",
+    "practice": [
+      {
+        "sentence": "Io ho ___. (mangiare)",
+        "options": [
+          "mangiato",
+          "mangiare",
+          "mangiando"
+        ],
+        "answer": "mangiato"
+      },
+      {
+        "sentence": "Maria ___ andata a casa.",
+        "options": [
+          "è",
+          "ha",
+          "sono"
+        ],
+        "answer": "è"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Loro hanno ___. (parlare)",
+        "options": [
+          "parlato",
+          "parlare",
+          "parlano"
+        ],
+        "answer": "parlato"
+      },
+      {
+        "sentence": "Marco è ___ a scuola. (andare)",
+        "options": [
+          "andato",
+          "andata",
+          "andare"
+        ],
+        "answer": "andato"
+      }
+    ]
+  },
+  {
+    "id": "it-subjunctive",
+    "language": "it",
+    "stage": 3,
+    "title": {
+      "de": "Congiuntivo nach penso che",
+      "en": "Subjunctive after penso che",
+      "ru": "Congiuntivo после penso che",
+      "uk": "Congiuntivo після penso che"
+    },
+    "rule": {
+      "de": "In der Standardsprache folgt nach penso che oft Congiuntivo: sia, abbia, venga.",
+      "en": "In standard usage penso che often takes the subjunctive: sia, abbia, venga.",
+      "ru": "В стандартной речи после penso che часто congiuntivo: sia, abbia, venga.",
+      "uk": "У стандартному мовленні після penso che часто congiuntivo: sia, abbia, venga."
+    },
+    "example": "Penso che sia vero.",
+    "practice": [
+      {
+        "sentence": "Penso che lui ___ stanco. (congiuntivo)",
+        "options": [
+          "sia",
+          "è",
+          "sono"
+        ],
+        "answer": "sia"
+      },
+      {
+        "sentence": "Penso che lei ___ ragione. (congiuntivo)",
+        "options": [
+          "abbia",
+          "ha",
+          "avere"
+        ],
+        "answer": "abbia"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Penso che lui ___ domani. (congiuntivo)",
+        "options": [
+          "venga",
+          "viene",
+          "venire"
+        ],
+        "answer": "venga"
+      },
+      {
+        "sentence": "Penso che loro ___ pronti. (congiuntivo)",
+        "options": [
+          "siano",
+          "sono",
+          "siamo"
+        ],
+        "answer": "siano"
+      }
+    ]
+  },
+  {
+    "id": "ja-copula",
+    "language": "ja",
+    "stage": 1,
+    "title": {
+      "de": "Höfliche Kopula です",
+      "en": "Polite copula です",
+      "ru": "Вежливая связка です",
+      "uk": "Ввічлива зв'язка です"
+    },
+    "rule": {
+      "de": "Nomen + です bildet höfliche Aussagen. です wird nicht nach Person verändert.",
+      "en": "Noun + です makes polite statements. です does not change by person.",
+      "ru": "Существительное + です образует вежливое утверждение. です не меняется по лицам.",
+      "uk": "Іменник + です утворює ввічливе твердження. です не змінюється за особами."
+    },
+    "example": "私は学生です。",
+    "practice": [
+      {
+        "sentence": "私は先生___。 (polite statement)",
+        "options": [
+          "です",
+          "を",
+          "に"
+        ],
+        "answer": "です"
+      },
+      {
+        "sentence": "これは本___。 (polite statement)",
+        "options": [
+          "です",
+          "を",
+          "に"
+        ],
+        "answer": "です"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "彼は医者___。 (polite statement)",
+        "options": [
+          "です",
+          "を",
+          "に"
+        ],
+        "answer": "です"
+      },
+      {
+        "sentence": "ここは学校___。 (polite statement)",
+        "options": [
+          "です",
+          "を",
+          "に"
+        ],
+        "answer": "です"
+      }
+    ]
+  },
+  {
+    "id": "ja-object",
+    "language": "ja",
+    "stage": 1,
+    "title": {
+      "de": "Objektpartikel を",
+      "en": "Object particle を",
+      "ru": "Частица объекта を",
+      "uk": "Частка додатка を"
+    },
+    "rule": {
+      "de": "を markiert häufig das direkte Objekt eines transitiven Verbs. Es wird gewöhnlich o ausgesprochen.",
+      "en": "を often marks the direct object of a transitive verb; usually pronounced o.",
+      "ru": "を часто обозначает прямое дополнение переходного глагола; обычно произносится o.",
+      "uk": "を часто позначає прямий додаток перехідного дієслова; зазвичай вимовляється o."
+    },
+    "example": "水を飲みます。",
+    "practice": [
+      {
+        "sentence": "本___読みます。",
+        "options": [
+          "を",
+          "に",
+          "で"
+        ],
+        "answer": "を"
+      },
+      {
+        "sentence": "水___飲みます。",
+        "options": [
+          "を",
+          "に",
+          "で"
+        ],
+        "answer": "を"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ご飯___食べます。",
+        "options": [
+          "を",
+          "に",
+          "で"
+        ],
+        "answer": "を"
+      },
+      {
+        "sentence": "手紙___書きます。",
+        "options": [
+          "を",
+          "に",
+          "で"
+        ],
+        "answer": "を"
+      }
+    ]
+  },
+  {
+    "id": "ja-masu",
+    "language": "ja",
+    "stage": 2,
+    "title": {
+      "de": "Höfliche Verbformen",
+      "en": "Polite verb forms",
+      "ru": "Вежливые формы глаголов",
+      "uk": "Ввічливі форми дієслів"
+    },
+    "rule": {
+      "de": "ます: höflich nichtvergangen; ません: negativ; ました: vergangen; ませんでした: negativ vergangen.",
+      "en": "ます: polite nonpast; ません: negative; ました: past; ませんでした: negative past.",
+      "ru": "ます: вежливое непрошедшее; ません: отрицание; ました: прошедшее; ませんでした: отрицательное прошедшее.",
+      "uk": "ます: ввічливе неминуле; ません: заперечення; ました: минуле; ませんでした: заперечне минуле."
+    },
+    "example": "食べます。食べません。",
+    "practice": [
+      {
+        "sentence": "昨日パンを食べ___。 (past affirmative)",
+        "options": [
+          "ました",
+          "ます",
+          "ません"
+        ],
+        "answer": "ました"
+      },
+      {
+        "sentence": "明日は行き___。 (nonpast negative)",
+        "options": [
+          "ません",
+          "ました",
+          "ます"
+        ],
+        "answer": "ません"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "昨日は働き___。 (past negative)",
+        "options": [
+          "ませんでした",
+          "ます",
+          "ました"
+        ],
+        "answer": "ませんでした"
+      },
+      {
+        "sentence": "毎日本を読み___。 (habit affirmative)",
+        "options": [
+          "ます",
+          "ました",
+          "ません"
+        ],
+        "answer": "ます"
+      }
+    ]
+  },
+  {
+    "id": "ja-location",
+    "language": "ja",
+    "stage": 2,
+    "title": {
+      "de": "Ort der Handlung mit で",
+      "en": "Action location with で",
+      "ru": "Место действия с で",
+      "uk": "Місце дії з で"
+    },
+    "rule": {
+      "de": "で markiert oft den Ort einer Handlung; に kann Ziel oder Existenzort markieren.",
+      "en": "で often marks the location of an action; に can mark destination or location of existence.",
+      "ru": "で часто обозначает место действия; に может обозначать цель движения или место существования.",
+      "uk": "で часто позначає місце дії; に може позначати ціль руху або місце існування."
+    },
+    "example": "図書館で勉強します。",
+    "practice": [
+      {
+        "sentence": "学校___勉強します。 (action location)",
+        "options": [
+          "で",
+          "を",
+          "の"
+        ],
+        "answer": "で"
+      },
+      {
+        "sentence": "家___ご飯を食べます。 (action location)",
+        "options": [
+          "で",
+          "を",
+          "の"
+        ],
+        "answer": "で"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "公園___走ります。 (action location)",
+        "options": [
+          "で",
+          "を",
+          "の"
+        ],
+        "answer": "で"
+      },
+      {
+        "sentence": "駅___友達に会います。 (action location)",
+        "options": [
+          "で",
+          "を",
+          "の"
+        ],
+        "answer": "で"
+      }
+    ]
+  },
+  {
+    "id": "ja-te",
+    "language": "ja",
+    "stage": 3,
+    "title": {
+      "de": "て-Form + ください",
+      "en": "Te-form + ください",
+      "ru": "Форма て + ください",
+      "uk": "Форма て + ください"
+    },
+    "rule": {
+      "de": "Die て-Form mit ください bildet eine höfliche Bitte: 読む → 読んでください.",
+      "en": "Te-form + ください forms a polite request: 読む → 読んでください.",
+      "ru": "Форма て с ください образует вежливую просьбу: 読む → 読んでください.",
+      "uk": "Форма て з ください утворює ввічливе прохання: 読む → 読んでください."
+    },
+    "example": "ここに座ってください。",
+    "practice": [
+      {
+        "sentence": "本を___ください。 (読む)",
+        "options": [
+          "読んで",
+          "読みます",
+          "読む"
+        ],
+        "answer": "読んで"
+      },
+      {
+        "sentence": "ここに___ください。 (座る)",
+        "options": [
+          "座って",
+          "座ります",
+          "座る"
+        ],
+        "answer": "座って"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "名前を___ください。 (書く)",
+        "options": [
+          "書いて",
+          "書きます",
+          "書く"
+        ],
+        "answer": "書いて"
+      },
+      {
+        "sentence": "水を___ください。 (飲む)",
+        "options": [
+          "飲んで",
+          "飲みます",
+          "飲む"
+        ],
+        "answer": "飲んで"
+      }
+    ]
+  }
+]);

@@ -10,3 +10,5 @@ Die ursprünglichen Entscheidungen vom 16.10.2026 umfassen das realistische inte
 Erweiterung vom 27.11.2026: 16 Grammatiklektionen (Deutsch/Englisch), getrennte Übungs- und Prüfungsfragen und gespeicherter Lernfortschritt. Umsetzung und Lerntexte mit KI-Unterstützung gemäß der zuvor festgelegten Zielsetzung der Schöpferin; keine Behauptung einer persönlichen Programmierleistung oder einer vollständigen CEFR-Zertifizierung.
 
 Die Schöpferin forderte ausdrücklich mehr als acht Grammatiklektionen pro Sprache. Der Kandidat enthält jetzt je 20 Themen für Deutsch und Englisch, fünf thematische Stufen und 160 Aufgaben insgesamt. Umsetzung KI-unterstützt; keine geprüfte CEFR-Einstufung.
+
+Die Schöpferin verlangte am 27.11.2026 ausdrücklich die Erweiterung aller zehn Sprachen. Der Kandidat umfasst 80 Grammatikthemen und 320 Aufgaben: je 20 für Deutsch/Englisch und je fünf für die übrigen acht Sprachen. KI-unterstützte Umsetzung, keine fachliche Zertifizierung.

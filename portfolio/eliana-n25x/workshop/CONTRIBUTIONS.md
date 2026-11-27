@@ -42,3 +42,6 @@ Owner confirmed continued work toward the established deep-learning goal. Assist
 
 ### 27 November — increased lesson depth
 The creator explicitly challenged the initial eight-lesson German and English cycles as too small and requested deeper courses. Assistant expanded both to 20 grammar topics per language and five thematic stages, with 96 additional questions, progress and guided continuation. The proposed 460-lesson-per-language goal is an assistant planning estimate, not an official CEFR standard or a completed curriculum. Implementation and educational material are AI-assisted. Full browser and teacher acceptance pending.
+
+### 27 November — all ten languages
+Creator explicitly required continued expansion of every supported language, not just German and English. Assistant authored and implemented the first five grammar topics per remaining language (40 additional topics, 160 exercises), with language-specific rules and examples. No human authorship of the generated text or native-speaker review is claimed. Full curriculum and browser acceptance remain outstanding.
