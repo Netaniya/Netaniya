@@ -29,7 +29,7 @@ test('Academy interpreter: loops, recursion, excessive nesting and host access f
  assert.equal(runProgram('x'.repeat(4001),'x',[]).error,'size');assert(!validScoreProgram(SCORE_PROGRAM.replace('+ points','- points')));assert(validScoreProgram(SCORE_PROGRAM));
 });
 test('Academy missions: initial bugs fail and learner repairs pass every normal and zero/false test case',()=>{
- assert.equal(MISSIONS.length,32);
+ assert.equal(MISSIONS.length,36);
  for(const m of MISSIONS){assert(checkMission(m,m.source,runProgram).some(r=>!r.ok||r.value!==r.expected),m.id);const corrected=m.source.replace(m.block.from,m.block.choices[1]);assert(checkMission(m,corrected,runProgram).every(r=>r.ok&&r.value===r.expected),m.id);assert.equal(runProgram(m.source,m.entry,m.sample).value,m.expectedPrediction);}
 });
 test('Academy content: ten language tracks, sixty cards and all original subject explanations have four UI languages',()=>{

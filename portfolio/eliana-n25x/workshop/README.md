@@ -37,3 +37,5 @@ Grammatik: 88 Themen, 352 Aufgaben, je 20 Themen in Deutsch und Englisch, je sec
 Einheitliche Lernübersicht: sechs getrennte Fortschrittsanzeigen für Mathematik, Sprachübungen, Grammatik, Programmierung, Fachkurse und Musik sowie gespeicherte kreative Projekte. Keine Änderung von Profilen oder Punkten. Der aktive Pull Request vermeidet doppelte CI-Läufe.
 
 Mathematik: 52 Themen mit je 256 Varianten (13.312); Fachkurse: 73 Fragen in 29 Stufen. Bestehende Aufgabenkennungen bleiben stabil. Browser-Abnahme dieser Erweiterung offen.
+
+Programmieren: 36 Missionen, acht Stufen, 182 Testfälle; vier fächerübergreifende Aufgaben. Begrenzter Lerninterpreter, keine vollständige JavaScript-Laufzeit. Browser-Abnahme offen.

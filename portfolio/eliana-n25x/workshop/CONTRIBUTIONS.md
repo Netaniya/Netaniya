@@ -90,3 +90,6 @@ At the creator's request to optimize the entire product, assistant implemented s
 
 ### 28 November — mathematics and subject expansion
 Under the creator's direction to advance all modules, assistant added four original generated math families and six subject stages with twelve localized questions, preserving existing question IDs and indices. Earlier revision dd965e9 passed all three CI jobs. Latest extension awaits its own browser acceptance.
+
+### 28 November — cross-disciplinary programming
+Assistant added four debugging projects and an eighth programming stage under the creator's direction to advance the complete platform. Existing 32 missions and indices preserved. Limited educational interpreter, not unrestricted JavaScript execution. Browser acceptance of the new revision pending.

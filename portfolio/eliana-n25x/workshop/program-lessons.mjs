@@ -1423,3 +1423,385 @@ EXTRA_MISSIONS.push(...[
     ]
   }
 ]);
+
+// Cross-disciplinary debugging projects, appended to preserve saved mission indices.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "bounded-sensor",
+    "title": [
+      "Projekt: Messwert begrenzen",
+      "Project: clamp sensor reading",
+      "Проект: ограничение показаний датчика",
+      "Проєкт: обмеження показань датчика"
+    ],
+    "task": [
+      "Begrenze x auf [lo, hi], lo ≤ hi. Werte im Intervall bleiben unverändert.",
+      "Clamp x to [lo, hi], lo ≤ hi. Values inside remain unchanged.",
+      "Ограничь x диапазоном [lo, hi], lo ≤ hi. Внутри диапазона значение не меняется.",
+      "Обмеж x діапазоном [lo, hi], lo ≤ hi. Усередині діапазону значення не змінюється."
+    ],
+    "hint": [
+      "Unterhalb der Untergrenze gib lo zurück, oberhalb hi.",
+      "Return lo below the lower bound and hi above the upper bound.",
+      "Ниже нижней границы верни lo, выше верхней — hi.",
+      "Нижче нижньої межі поверни lo, вище верхньої — hi."
+    ],
+    "entry": "clamp",
+    "source": "function clamp(x,lo,hi) { if (x<lo) { return hi; } if (x>hi) { return hi; } return x; }",
+    "sample": [
+      -3,
+      0,
+      10
+    ],
+    "block": {
+      "from": "if (x<lo) { return hi; }",
+      "choices": [
+        "if (x<lo) { return hi; }",
+        "if (x<lo) { return lo; }",
+        "if (x<lo) { return x; }"
+      ]
+    },
+    "tests": [
+      [
+        [
+          -3,
+          0,
+          10
+        ],
+        0
+      ],
+      [
+        [
+          12,
+          0,
+          10
+        ],
+        10
+      ],
+      [
+        [
+          5,
+          0,
+          10
+        ],
+        5
+      ],
+      [
+        [
+          0,
+          0,
+          10
+        ],
+        0
+      ],
+      [
+        [
+          10,
+          0,
+          10
+        ],
+        10
+      ],
+      [
+        [
+          2,
+          5,
+          5
+        ],
+        5
+      ]
+    ],
+    "expectedPrediction": 10,
+    "prediction": [
+      10,
+      0,
+      -3
+    ],
+    "why": [
+      "Unterhalb der Untergrenze gib lo zurück, oberhalb hi.",
+      "Return lo below the lower bound and hi above the upper bound.",
+      "Ниже нижней границы верни lo, выше верхней — hi.",
+      "Нижче нижньої межі поверни lo, вище верхньої — hi."
+    ]
+  },
+  {
+    "id": "weighted-score",
+    "title": [
+      "Projekt: gewichteter Lernwert",
+      "Project: weighted learning score",
+      "Проект: взвешенный учебный балл",
+      "Проєкт: зважений навчальний бал"
+    ],
+    "task": [
+      "Berechne 40% von a plus 60% von b (0–100). Nur ein Übungsmodell, keine Schulnote.",
+      "Compute 40% of a plus 60% of b (0–100). Practice model, not a school grade.",
+      "Вычисли 40% от a плюс 60% от b (0–100). Учебная модель, не школьная оценка.",
+      "Обчисли 40% від a плюс 60% від b (0–100). Навчальна модель, не шкільна оцінка."
+    ],
+    "hint": [
+      "Die Gewichte müssen zusammen 100 ergeben; verwende erst ganze Zahlen und dividiere dann.",
+      "Weights must add to 100; use integers first, then divide.",
+      "Сумма весов — 100; сначала умножь на целые коэффициенты, затем раздели.",
+      "Сума ваг — 100; спочатку помнож на цілі коефіцієнти, потім поділи."
+    ],
+    "entry": "weighted",
+    "source": "function weighted(a,b) { return (40*a+40*b)/100; }",
+    "sample": [
+      50,
+      100
+    ],
+    "block": {
+      "from": "40*a+40*b",
+      "choices": [
+        "40*a+40*b",
+        "40*a+60*b",
+        "60*a+40*b"
+      ]
+    },
+    "tests": [
+      [
+        [
+          50,
+          100
+        ],
+        80
+      ],
+      [
+        [
+          0,
+          100
+        ],
+        60
+      ],
+      [
+        [
+          100,
+          0
+        ],
+        40
+      ],
+      [
+        [
+          100,
+          100
+        ],
+        100
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          25,
+          75
+        ],
+        55
+      ]
+    ],
+    "expectedPrediction": 60,
+    "prediction": [
+      60,
+      80,
+      70
+    ],
+    "why": [
+      "Die Gewichte müssen zusammen 100 ergeben; verwende erst ganze Zahlen und dividiere dann.",
+      "Weights must add to 100; use integers first, then divide.",
+      "Сумма весов — 100; сначала умножь на целые коэффициенты, затем раздели.",
+      "Сума ваг — 100; спочатку помнож на цілі коефіцієнти, потім поділи."
+    ]
+  },
+  {
+    "id": "population-doubling",
+    "title": [
+      "Projekt: Verdopplungsmodell",
+      "Project: doubling model",
+      "Проект: модель удвоения",
+      "Проєкт: модель подвоєння"
+    ],
+    "task": [
+      "Starte mit n Einheiten und verdopple sie in jeder der t Runden (0 ≤ n ≤ 20, 0 ≤ t ≤ 8). Ideales Rechenmodell.",
+      "Start with n units and double them in each of t rounds (0 ≤ n ≤ 20, 0 ≤ t ≤ 8). Idealized arithmetic model.",
+      "Начни с n единиц и удваивай их на каждом из t шагов (0 ≤ n ≤ 20, 0 ≤ t ≤ 8). Идеализированная модель.",
+      "Почни з n одиниць і подвоюй їх на кожному з t кроків (0 ≤ n ≤ 20, 0 ≤ t ≤ 8). Ідеалізована модель."
+    ],
+    "hint": [
+      "Verdoppeln bedeutet mit 2 multiplizieren, nicht 2 addieren.",
+      "Doubling means multiply by 2, not add 2.",
+      "Удвоение — умножение на 2, а не прибавление 2.",
+      "Подвоєння — множення на 2, а не додавання 2."
+    ],
+    "entry": "growth",
+    "source": "function growth(n,t) { let v=n; for (let i=0; i<t; i++) { v=v+2; } return v; }",
+    "sample": [
+      3,
+      3
+    ],
+    "block": {
+      "from": "v=v+2",
+      "choices": [
+        "v=v+2",
+        "v=v*2",
+        "v=v-2"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          3
+        ],
+        24
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        5
+      ],
+      [
+        [
+          0,
+          8
+        ],
+        0
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        2
+      ],
+      [
+        [
+          20,
+          8
+        ],
+        5120
+      ],
+      [
+        [
+          2,
+          4
+        ],
+        32
+      ]
+    ],
+    "expectedPrediction": 9,
+    "prediction": [
+      9,
+      24,
+      27
+    ],
+    "why": [
+      "Verdoppeln bedeutet mit 2 multiplizieren, nicht 2 addieren.",
+      "Doubling means multiply by 2, not add 2.",
+      "Удвоение — умножение на 2, а не прибавление 2.",
+      "Подвоєння — множення на 2, а не додавання 2."
+    ]
+  },
+  {
+    "id": "euclid-gcd",
+    "title": [
+      "Projekt: Euklidischer Algorithmus",
+      "Project: Euclidean algorithm",
+      "Проект: алгоритм Евклида",
+      "Проєкт: алгоритм Евкліда"
+    ],
+    "task": [
+      "Berechne den größten gemeinsamen Teiler von zwei nichtnegativen ganzen Zahlen bis 100, nicht beide 0.",
+      "Find the greatest common divisor of two nonnegative integers up to 100, not both zero.",
+      "Найди наибольший общий делитель двух неотрицательных целых чисел до 100, не равных одновременно нулю.",
+      "Знайди найбільший спільний дільник двох невід’ємних цілих чисел до 100, не рівних одночасно нулю."
+    ],
+    "hint": [
+      "Der Rest a % b wird vor dem Tausch gespeichert. Bei b=0 ist a der ggT.",
+      "Store a % b before swapping. When b=0, a is the GCD.",
+      "Сохрани остаток a % b до перестановки. Когда b=0, a — НОД.",
+      "Збережи остачу a % b до перестановки. Коли b=0, a — НСД."
+    ],
+    "entry": "gcd",
+    "source": "function gcd(a,b) { let r=0; for (let i=0; i<20 && b!==0; i++) { r=0; a=b; b=r; } return a; }",
+    "sample": [
+      48,
+      18
+    ],
+    "block": {
+      "from": "{ r=0; a=b; b=r; }",
+      "choices": [
+        "{ r=0; a=b; b=r; }",
+        "{ r=a%b; a=b; b=r; }",
+        "{ r=b%a; a=b; b=r; }"
+      ]
+    },
+    "tests": [
+      [
+        [
+          48,
+          18
+        ],
+        6
+      ],
+      [
+        [
+          18,
+          48
+        ],
+        6
+      ],
+      [
+        [
+          0,
+          12
+        ],
+        12
+      ],
+      [
+        [
+          12,
+          0
+        ],
+        12
+      ],
+      [
+        [
+          17,
+          13
+        ],
+        1
+      ],
+      [
+        [
+          89,
+          55
+        ],
+        1
+      ],
+      [
+        [
+          100,
+          100
+        ],
+        100
+      ]
+    ],
+    "expectedPrediction": 18,
+    "prediction": [
+      18,
+      6,
+      48
+    ],
+    "why": [
+      "Der Rest a % b wird vor dem Tausch gespeichert. Bei b=0 ist a der ggT.",
+      "Store a % b before swapping. When b=0, a is the GCD.",
+      "Сохрани остаток a % b до перестановки. Когда b=0, a — НОД.",
+      "Збережи остачу a % b до перестановки. Коли b=0, a — НСД."
+    ]
+  }
+]);
