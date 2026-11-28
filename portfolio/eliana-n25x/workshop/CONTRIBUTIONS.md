@@ -126,3 +126,6 @@ Assistant added three bounded agent workflows with editable JSON, dry run, human
 
 ### 28 November — version control practice
 Assistant implemented a guided one-file Git model and separate real-Git local exercise with isolated temporary repository. No remote operations. Creator directed professional curriculum progression; no changes to public release or project permissions.
+
+### 28 November — code review practice
+Assistant added three review scenarios, actual restricted-interpreter checks and a simulated approval/merge gate with revision invalidation. No repository writes by the learner module. Creator requested continued development through professional acceptance.

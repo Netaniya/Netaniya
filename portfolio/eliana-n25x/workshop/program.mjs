@@ -469,3 +469,26 @@ export function createGitLab(){
  }
  return {snapshot,run,reset};
 }
+
+
+// Pull-request training: actual bounded interpreter tests, simulated review and merge.
+export const REVIEW_LESSONS=[
+ {id:'boundary',title:['Grenzwert prüfen','Review a boundary condition','Проверка граничного условия','Перевірка граничної умови'],task:['Ab 18 gilt die Altersgrenze als erfüllt.','The age threshold is satisfied from 18 inclusive.','Возрастной порог выполнен начиная с 18 включительно.','Віковий поріг виконано починаючи з 18 включно.'],entry:'eligible',base:'function eligible(age) { return age>=18; }',source:'function eligible(age) { return age>18; }',solution:'function eligible(age) { return age>=18; }',tests:[[[17],false],[[18],true],[[19],true],[[0],false],[[100],true]]},
+ {id:'division',title:['Division prüfen','Review division','Проверка деления','Перевірка ділення'],task:['Berechne Punkte pro Versuch; bei 0 Versuchen gib 0 zurück.','Compute points per attempt; return 0 for zero attempts.','Вычисли баллы за попытку; при нуле попыток верни 0.','Обчисли бали за спробу; за нуля спроб поверни 0.'],entry:'average',base:'function average(points,n) { if (n===0) { return 0; } return points/n; }',source:'function average(points,n) { return points/n; }',solution:'function average(points,n) { if (n===0) { return 0; } return points/n; }',tests:[[[10,2],5],[[0,0],0],[[10,0],0],[[0,2],0],[[3,2],1.5]]},
+ {id:'reward',title:['Belohnung prüfen','Review reward logic','Проверка начисления баллов','Перевірка нарахування балів'],task:['Vergib bonus nur, wenn correct wahr und alreadyDone falsch ist.','Award bonus only if correct is true and alreadyDone is false.','Начисляй бонус только при correct=true и alreadyDone=false.','Нараховуй бонус лише за correct=true і alreadyDone=false.'],entry:'rewardOnce',base:'function rewardOnce(score,correct,alreadyDone,bonus) { if (correct&&!alreadyDone) { return score+bonus; } return score; }',source:'function rewardOnce(score,correct,alreadyDone,bonus) { if (correct) { return score+bonus; } return score; }',solution:'function rewardOnce(score,correct,alreadyDone,bonus) { if (correct&&!alreadyDone) { return score+bonus; } return score; }',tests:[[[10,true,false,5],15],[[10,true,true,5],10],[[10,false,false,5],10],[[10,false,true,5],10],[[0,true,false,10],10]]}
+];
+export function createReviewLab(index=0){
+ let m,source,revision,checked,decision,merged,notes;
+ function reset(i=index){m=REVIEW_LESSONS[i]||REVIEW_LESSONS[0];source=m.source;revision=1;checked=null;decision='pending';merged=false;notes=[];}
+ reset();
+ const snapshot=()=>({id:m.id,source,base:m.base,revision,checked:checked?{...checked}:null,decision,merged,notes:[...notes]});
+ function edit(value){if(merged||typeof value!=='string'||value.length>4000)return false;if(value!==source){source=value;revision++;checked=null;decision='pending';}return true;}
+ function tests(){if(merged)return checked;const r=reviewProgram(m,source);checked={revision,total:r.total,passed:r.passed,failed:r.failed};decision='pending';return checked;}
+ function review(kind,note){
+  if(merged||!checked||checked.revision!==revision||typeof note!=='string'||!note.trim()||note.length>400||notes.length>=20)return false;
+  if(kind==='approve'&&checked.passed!==checked.total||!['approve','changes'].includes(kind))return false;
+  decision=kind;notes.push({revision,decision,note:note.trim()});return true;
+ }
+ function merge(){if(merged||decision!=='approve'||!checked||checked.revision!==revision||checked.passed!==checked.total)return false;merged=true;return true;}
+ return {snapshot,edit,tests,review,merge,reset};
+}

@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython,WEB_LESSONS,compileWebLab,gradeWebLab,AGENT_GOALS,agentPlan,parseAgentPlan,createAgentLab,proposeAgentPlan,GIT_LESSONS,createGitLab} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython,WEB_LESSONS,compileWebLab,gradeWebLab,AGENT_GOALS,agentPlan,parseAgentPlan,createAgentLab,proposeAgentPlan,GIT_LESSONS,createGitLab,REVIEW_LESSONS,createReviewLab} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -260,4 +260,14 @@ test('Git guided model separates working file, index, commits and branches',()=>
  for(const [i,m] of GIT_LESSONS.entries())if(i>=2)assert(l.run(m.command,m.command==='edit'?'second':'').ok,i);
  const s=l.snapshot();assert.equal(s.step,10);assert.equal(s.branch,'main');assert.equal(s.head,'second');assert.equal(s.branches.main,s.branches.feature);assert.equal(s.commits.length,3);assert.equal(l.run('git log --oneline').log.length,3);assert(!l.run('git push').ok);
  l.reset();assert.deepEqual(l.snapshot(),initial);
+});
+
+test('Pull request lab requires current passing tests and explicit review approval',()=>{
+ for(const [i,m] of REVIEW_LESSONS.entries()){
+  const l=createReviewLab(i);assert(!l.merge());assert(!l.review('approve','ok'));
+  const bad=l.tests();assert(bad.passed<bad.total);assert(!l.review('approve','ok'));assert(l.review('changes','Check edge cases'));assert(!l.merge());
+  assert(l.edit(m.solution));assert(!l.snapshot().checked);assert.equal(l.snapshot().decision,'pending');assert(!l.merge());
+  const good=l.tests();assert.equal(good.passed,good.total);assert(!l.review('approve',''));assert(l.review('approve','Checked tests'));
+  assert(l.edit(m.solution+'\n'));assert(!l.merge());l.tests();assert(l.review('approve','Rechecked'));assert(l.merge());assert(!l.merge());assert(!l.edit(m.source));assert(l.snapshot().merged);
+ }
 });

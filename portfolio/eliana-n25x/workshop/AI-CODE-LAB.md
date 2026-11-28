@@ -19,3 +19,5 @@ Creator direction: Natalie Ragulina (Netaniya), 28 November 2026. Learners under
 28 November: Web Studio adds six HTML/CSS exercises, structural rule checks and actual sandboxed static HTML preview. Strict reconstructed subset, CSP, no scripts, URLs, links, event attributes, forms or network. No full HTML/CSS coverage or persistent drafts. 126 direct checks passed; Chromium acceptance pending.
 
 28 November: Agent Lab — three goals, editable allowlisted JSON tool plans, atomic dry run, explicit human approval, stale/repeated approval rejection, isolated synthetic records, optional ready browser LanguageModel proposes JSON only. 1056 direct workflow assertions passed; adapter checked with mock, real inference and browser CI pending. No external actions, accounts or general-purpose autonomous agent.
+
+28 November: Review Lab adds three code-review exercises and current-revision test/approval gating with simulated merge. 1536 direct assertions passed. Browser CI pending; no external GitHub actions.
