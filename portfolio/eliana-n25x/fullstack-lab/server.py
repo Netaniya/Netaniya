@@ -7,6 +7,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
 import re
+import dashboard_reference
 
 ROOT = Path(__file__).resolve().parent
 MAX_BODY = 4096
@@ -16,8 +17,9 @@ class LabError(Exception):
         self.status, self.code = status, code
 
 class Store:
-    def __init__(self, path):
+    def __init__(self, path, dashboard=dashboard_reference):
         self.path = str(path)
+        self.dashboard = dashboard
         with self.connect() as db:
             db.execute("CREATE TABLE IF NOT EXISTS projects (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL CHECK(length(title) BETWEEN 1 AND 100), done INTEGER NOT NULL DEFAULT 0 CHECK(done IN (0,1)))")
     def connect(self):
@@ -63,6 +65,13 @@ class Store:
             row = db.execute("SELECT id,title,done FROM projects WHERE id=?", (ident,)).fetchone()
             if row is None:
                 raise LabError(404, "not_found")
+            if data == {"done": True}:
+                if self.dashboard.complete(db, ident) is not True:
+                    raise LabError(500, "dashboard_complete_failed")
+                updated = db.execute("SELECT id,title,done FROM projects WHERE id=?", (ident,)).fetchone()
+                if updated is None or not updated["done"]:
+                    raise LabError(500, "dashboard_complete_failed")
+                return self.row(updated)
             title = data.get("title", row["title"]).strip()
             done = data.get("done", bool(row["done"]))
             db.execute("UPDATE projects SET title=?,done=? WHERE id=?", (title, int(done), ident))
@@ -73,11 +82,19 @@ class Store:
                 raise LabError(404, "not_found")
     def stats(self):
         with self.connect() as db:
-            total, done = db.execute("SELECT COUNT(*),COALESCE(SUM(done),0) FROM projects").fetchone()
-            return {"total": total, "done": done, "open": total-done}
+            result = self.dashboard.summary(db)
+            if not isinstance(result, dict) or set(result) != {"total", "done", "open"} or any(type(v) is not int or v < 0 for v in result.values()) or result["total"] != result["done"] + result["open"]:
+                raise LabError(500, "invalid_dashboard_summary")
+            return result
+    def open_projects(self):
+        with self.connect() as db:
+            result = self.dashboard.open_projects(db)
+            if not isinstance(result, list) or any(not isinstance(row, (tuple, list, sqlite3.Row)) or len(row) != 2 or type(row[0]) is not int or not isinstance(row[1], str) for row in result):
+                raise LabError(500, "invalid_dashboard_rows")
+            return [{"id": row[0], "title": row[1]} for row in result]
 
-def make_server(path, port=0):
-    store = Store(path)
+def make_server(path, port=0, dashboard=dashboard_reference):
+    store = Store(path, dashboard)
     class Handler(BaseHTTPRequestHandler):
         server_version = "N25X-Lab"
         def log_message(self, *_):
@@ -128,6 +145,8 @@ def make_server(path, port=0):
                 if method == "GET" and path in static:
                     file, mime = static[path]
                     return self.send(200, (ROOT/file).read_bytes(), mime)
+                if path == "/api/dashboard/open" and method == "GET":
+                    return self.send(200, store.open_projects())
                 if path == "/api/stats" and method == "GET":
                     return self.send(200, store.stats())
                 match = re.fullmatch(r"/api/projects(?:/([1-9]\d{0,8}))?", path)
@@ -148,7 +167,7 @@ def make_server(path, port=0):
                 raise LabError(405, "method_not_allowed")
             except LabError as e:
                 self.send(e.status, {"error": e.code})
-            except (sqlite3.Error, OSError, ValueError):
+            except (sqlite3.Error, OSError, ValueError, NotImplementedError, TypeError):
                 self.send(500, {"error": "local_service_error"})
         do_GET = do_POST = do_PATCH = do_DELETE = do_PUT = do_OPTIONS = dispatch
     return ThreadingHTTPServer(("127.0.0.1", port), Handler)
@@ -157,8 +176,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="N25X local full-stack lab")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--db", type=Path, required=True, help="Local SQLite database path; use synthetic training data only")
+    parser.add_argument('--learner', action='store_true', help='Use your trusted local learner_dashboard.py after passing tests; never use untrusted Python')
     args = parser.parse_args()
-    server = make_server(args.db, args.port)
+    if args.learner:
+        import learner_dashboard as dashboard
+    else:
+        dashboard = dashboard_reference
+    server = make_server(args.db, args.port, dashboard=dashboard)
     print(f"N25X local lab: http://127.0.0.1:{server.server_port}", flush=True)
     try:
         server.serve_forever()

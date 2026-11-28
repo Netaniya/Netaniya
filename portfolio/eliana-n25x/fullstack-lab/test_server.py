@@ -6,6 +6,7 @@ import threading
 import unittest
 from pathlib import Path
 from server import make_server
+import dashboard_reference
 
 class FullStackTests(unittest.TestCase):
     def setUp(self):
@@ -13,7 +14,7 @@ class FullStackTests(unittest.TestCase):
         self.db = Path(self.temp.name)/"lab.sqlite"
         self.start()
     def start(self):
-        self.server = make_server(self.db)
+        self.server = make_server(self.db, dashboard=getattr(self, 'dashboard', dashboard_reference))
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
     def stop(self):
@@ -92,6 +93,46 @@ class FullStackTests(unittest.TestCase):
         self.assertEqual(self.req("GET","/../server.py")[0],404)
         self.assertEqual(self.req("PUT","/api/projects")[0],405)
         self.assertEqual(self.req("GET","/api/projects?x=1")[0],404)
+    def test_dashboard_real_http_data_flow(self):
+        calls = []
+        class Dashboard:
+            @staticmethod
+            def summary(db):
+                calls.append("summary")
+                return dashboard_reference.summary(db)
+            @staticmethod
+            def open_projects(db):
+                calls.append("open")
+                return dashboard_reference.open_projects(db)
+            @staticmethod
+            def complete(db, ident):
+                calls.append(("complete", ident))
+                return dashboard_reference.complete(db, ident)
+        self.stop()
+        self.dashboard = Dashboard
+        self.start()
+        a = self.create("Website")
+        b = self.create("Music")
+        self.assertEqual(self.req("GET","/api/dashboard/open"), (200, [{"id":a["id"],"title":"Website"},{"id":b["id"],"title":"Music"}]))
+        self.assertEqual(self.req("PATCH","/api/projects/"+str(a["id"]),{"done":True})[1]["done"], True)
+        self.assertEqual(self.req("GET","/api/stats"),(200,{"total":2,"done":1,"open":1}))
+        self.assertEqual(self.req("GET","/api/dashboard/open"),(200,[{"id":b["id"],"title":"Music"}]))
+        self.assertEqual(calls,["open",("complete",a["id"]),"summary","open"])
+        self.stop()
+        self.start()
+        self.assertEqual(self.req("GET","/api/stats"),(200,{"total":2,"done":1,"open":1}))
+
+    def test_unfinished_learner_returns_error(self):
+        import learner_dashboard
+        self.stop()
+        self.dashboard = learner_dashboard
+        self.start()
+        row = self.create("Practice")
+        self.assertEqual(self.req("GET","/api/stats")[0],500)
+        self.assertEqual(self.req("GET","/api/dashboard/open")[0],500)
+        self.assertEqual(self.req("PATCH","/api/projects/"+str(row["id"]),{"done":True})[0],500)
+        self.assertEqual(self.req("GET","/api/projects/"+str(row["id"])),(200,row))
+
     def test_capacity(self):
         for i in range(100):
             self.create(str(i))

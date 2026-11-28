@@ -207,3 +207,6 @@ Connected verified local API/SQL/JavaScript output to a learner-authored safe HT
 
 ### 28 November — independent local SQLite dashboard
 Assistant created a deliberately incomplete learner module, a separate reference, real SQLite tests and a Russian course with a new CI verification step. The creator required teaching from zero and self-checking. The learner module is not automatically run in cloud services.
+
+### 28 November — creator-led learning and local full-stack integration
+Natalie Ragulina (Netaniya) reiterated that she actively tests, reviews, reads the implementation and learns throughout development, in addition to directing the product and acceptance criteria. This records her stated participation, not a claim that every test has been independently performed. AI-assisted implementation connected the learner's Python module to the loopback HTTP service by explicit local opt-in, and added real HTTP integration tests. No public execution of learner Python.

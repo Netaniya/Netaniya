@@ -19,3 +19,6 @@ Browser acceptance now includes actual client POST/PATCH/DELETE, safe text rende
 
 ## Independent SQLite dashboard exercise
 Read [the Russian course](DASHBOARD-COURSE.ru.md), implement `learner_dashboard.py`, and run `python3 check_dashboard.py --learner`. The default `python3 check_dashboard.py` verifies the separate reference solution. The starter is intentionally unfinished. This exercise uses real SQLite with isolated synthetic fixtures, not the public cloud or the browser simulator. Compare it with Store in the reference HTTP server after completing the data-layer task.
+
+## Connect your own code to the real application
+After `python3 check_dashboard.py --learner` succeeds, run `python3 server.py --db ./learner-practice.sqlite --port 8765 --learner`. Only run your own trusted local Python; this is not a sandbox or public deployment. The browser's stats and open-project list are returned from your module through real HTTP; completing a project invokes your `complete` function within the caller-owned transaction. The default server still uses the separate reference. Use a separate synthetic database. If a starter function is unfinished, the service returns a local error instead of silently substituting a solution.

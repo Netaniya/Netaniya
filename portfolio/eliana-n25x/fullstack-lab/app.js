@@ -10,8 +10,10 @@ async function call(method,path,data,show=true){
  return body;
 }
 async function refresh(show=true){
- const records=await call('GET','/api/projects',undefined,show),stats=await call('GET','/api/stats',undefined,false);
+ const records=await call('GET','/api/projects',undefined,show),stats=await call('GET','/api/stats',undefined,false),open=await call('GET','/api/dashboard/open',undefined,false);
  $('stats').textContent=stats.total+' total · '+stats.done+' done · '+stats.open+' open';
+ $('open-records').replaceChildren();
+ for(const r of open){const li=document.createElement('li');li.textContent=r.title;$('open-records').append(li);}
  $('records').replaceChildren();
  for(const r of records){
   const li=document.createElement('li'),title=document.createElement('span'),toggle=document.createElement('button'),remove=document.createElement('button');
