@@ -110,3 +110,322 @@ for(const stage of [{"id":"logicLab","title":["Entscheidungen und Daten","Decisi
  const subject=SUBJECTS.find(s=>s.id===stage.id),start=subject.tasks.length;
  subject.tasks.push(...stage.tasks);subject.stages.push({title:stage.title,start,end:subject.tasks.length});
 }
+
+// Worked examples use independent, correct code; executing them never grants mission completion.
+export const PROGRAM_GUIDES=[
+  {
+    "source": "function double(n) {\n  let result = n * 2;\n  return result;\n}",
+    "entry": "double",
+    "examples": [
+      {
+        "args": [
+          3
+        ],
+        "expected": 6
+      },
+      {
+        "args": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          7
+        ],
+        "expected": 14
+      }
+    ],
+    "explanation": [
+      "Ein Programm besteht aus Anweisungen. function benennt eine Funktion, n ist die Eingabe, let speichert einen Wert und return liefert die Ausgabe. Lies die Zeilen von oben nach unten.",
+      "A program is a sequence of instructions. function names a function, n is its input, let stores a value and return produces its output. Read the lines from top to bottom.",
+      "Программа состоит из инструкций. function объявляет функцию, n — входное значение, let сохраняет значение, return возвращает результат. Читай строки сверху вниз.",
+      "Програма складається з інструкцій. function оголошує функцію, n — вхідне значення, let зберігає значення, return повертає результат. Читай рядки згори вниз."
+    ]
+  },
+  {
+    "source": "function fee(age) {\n  if (age < 12) { return 0; }\n  return 5;\n}",
+    "entry": "fee",
+    "examples": [
+      {
+        "args": [
+          11
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          12
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          20
+        ],
+        "expected": 5
+      }
+    ],
+    "explanation": [
+      "if prüft eine Bedingung. Nur wenn sie wahr ist, wird der Block ausgeführt. Vergleiche besonders die Werte direkt an der Grenze.",
+      "if checks a condition. Its block runs only if true. Compare values right at the boundary.",
+      "if проверяет условие. Блок выполняется только при истинном условии. Сравни значения непосредственно на границе.",
+      "if перевіряє умову. Блок виконується лише за істинної умови. Порівняй значення безпосередньо на межі."
+    ]
+  },
+  {
+    "source": "function addOne(n) { return n + 1; }\nfunction repeat(n) {\n  let total = 0;\n  for (let i = 0; i < n; i++) {\n    total = addOne(total);\n  }\n  return total;\n}",
+    "entry": "repeat",
+    "examples": [
+      {
+        "args": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": 5
+      }
+    ],
+    "explanation": [
+      "Eine for-Schleife wiederholt Anweisungen. Der Zähler startet bei 0, die Bedingung wird vor jedem Durchlauf geprüft und i++ erhöht den Zähler. Eine Funktion kann eine andere aufrufen.",
+      "A for loop repeats instructions. The counter starts at 0, the condition is checked before each iteration, and i++ increments the counter. A function can call another function.",
+      "Цикл for повторяет инструкции. Счётчик начинается с 0, условие проверяется перед каждым проходом, i++ увеличивает счётчик. Функция может вызывать другую функцию.",
+      "Цикл for повторює інструкції. Лічильник починається з 0, умова перевіряється перед кожним проходом, i++ збільшує лічильник. Функція може викликати іншу функцію."
+    ]
+  },
+  {
+    "source": "function safeAverage(sum, count) {\n  if (count === 0) { return 0; }\n  return sum / count;\n}",
+    "entry": "safeAverage",
+    "examples": [
+      {
+        "args": [
+          12,
+          3
+        ],
+        "expected": 4
+      },
+      {
+        "args": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          9,
+          2
+        ],
+        "expected": 4.5
+      }
+    ],
+    "explanation": [
+      "Grenzfälle können ein Programm fehlschlagen lassen. Hier ist 0 bei leerer Menge eine vereinbarte Ausgabe; die Division wird vermieden.",
+      "Edge cases can make a program fail. Here zero is a specified output for an empty set; division is avoided.",
+      "Граничные случаи могут вызвать ошибку. Здесь ноль — заранее оговорённый результат для пустого набора; деление не выполняется.",
+      "Граничні випадки можуть спричинити помилку. Тут нуль — заздалегідь визначений результат для порожньої множини; ділення не виконується."
+    ]
+  },
+  {
+    "source": "function isEven(n) {\n  return n % 2 === 0;\n}",
+    "entry": "isEven",
+    "examples": [
+      {
+        "args": [
+          4
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          -2
+        ],
+        "expected": true
+      }
+    ],
+    "explanation": [
+      "Der Operator % liefert den Rest einer Division. Eine ganze Zahl ist gerade, wenn ihr Rest bei Division durch 2 null ist. === vergleicht Werte ohne Typumwandlung.",
+      "The % operator gives a remainder. An integer is even if its remainder on division by 2 is zero. === compares without type conversion.",
+      "Оператор % возвращает остаток. Целое число чётное, если остаток от деления на 2 равен нулю. === сравнивает без преобразования типов.",
+      "Оператор % повертає остачу. Ціле число парне, якщо остача від ділення на 2 дорівнює нулю. === порівнює без перетворення типів."
+    ]
+  },
+  {
+    "source": "function sumTo(n) {\n  let total = 0;\n  for (let i = 1; i <= n; i++) {\n    total = total + i;\n  }\n  return total;\n}",
+    "entry": "sumTo",
+    "examples": [
+      {
+        "args": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": 6
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": 15
+      }
+    ],
+    "explanation": [
+      "Ein Akkumulator speichert Zwischenergebnisse. Prüfe, wann die Schleife endet und ob der letzte Wert einbezogen wird.",
+      "An accumulator stores intermediate results. Check when the loop stops and whether the last value is included.",
+      "Накопитель хранит промежуточные результаты. Проверь, когда заканчивается цикл и включено ли последнее значение.",
+      "Накопичувач зберігає проміжні результати. Перевір, коли завершується цикл і чи враховано останнє значення."
+    ]
+  },
+  {
+    "source": "function total(price, count) {\n  return price * count;\n}",
+    "entry": "total",
+    "examples": [
+      {
+        "args": [
+          250,
+          3
+        ],
+        "expected": 750
+      },
+      {
+        "args": [
+          250,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          99,
+          2
+        ],
+        "expected": 198
+      }
+    ],
+    "explanation": [
+      "Zerlege ein reales Problem in Eingaben, Regel und Ausgabe. Verwende für einfache Geldbeträge ganze Cent statt gerundeter Dezimalwerte.",
+      "Break a real problem into inputs, a rule and an output. Use integer cents for simple money amounts instead of rounded decimals.",
+      "Раздели реальную задачу на входные данные, правило и результат. Для простых денежных расчётов используй целые центы вместо округлённых дробей.",
+      "Розділи реальне завдання на вхідні дані, правило та результат. Для простих грошових обчислень використовуй цілі центи замість округлених дробів."
+    ]
+  },
+  {
+    "source": "function distance(speed, time) {\n  return speed * time;\n}",
+    "entry": "distance",
+    "examples": [
+      {
+        "args": [
+          60,
+          2
+        ],
+        "expected": 120
+      },
+      {
+        "args": [
+          0,
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          30,
+          0.5
+        ],
+        "expected": 15
+      }
+    ],
+    "explanation": [
+      "Formeln werden zu Code, wenn die Einheiten und Annahmen klar sind. Hier km/h mal Stunden ergibt Kilometer; die Geschwindigkeit bleibt konstant.",
+      "Formulas become code when units and assumptions are clear. Here km/h times hours gives kilometres; speed is constant.",
+      "Формулы становятся кодом, когда ясны единицы и допущения. Здесь км/ч × часы дают километры; скорость постоянна.",
+      "Формули стають кодом, коли зрозумілі одиниці й припущення. Тут км/год × години дають кілометри; швидкість стала."
+    ]
+  },
+  {
+    "source": "function accuracy(correct, total) {\n  if (total === 0) { return 0; }\n  return correct / total;\n}",
+    "entry": "accuracy",
+    "examples": [
+      {
+        "args": [
+          8,
+          10
+        ],
+        "expected": 0.8
+      },
+      {
+        "args": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          3,
+          4
+        ],
+        "expected": 0.75
+      }
+    ],
+    "explanation": [
+      "Eine Kennzahl vereinfacht Daten. Accuracy ist hier der Anteil korrekter Vorhersagen; bei null Fällen geben wir vereinbarungsgemäß 0 zurück. Sie beweist keine allgemeine Modellqualität.",
+      "A metric summarizes data. Accuracy here is the fraction of correct predictions; for zero cases we return 0 by convention. It does not establish overall model quality.",
+      "Метрика обобщает данные. Accuracy здесь — доля правильных прогнозов; при нуле примеров по договорённости возвращаем 0. Это не доказывает общее качество модели.",
+      "Метрика узагальнює дані. Accuracy тут — частка правильних прогнозів; за нуля прикладів за домовленістю повертаємо 0. Це не доводить загальну якість моделі."
+    ]
+  },
+  {
+    "source": "function inStock(stock, requested) {\n  return requested > 0 && requested <= stock;\n}",
+    "entry": "inStock",
+    "examples": [
+      {
+        "args": [
+          5,
+          5
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          5,
+          0
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          5,
+          6
+        ],
+        "expected": false
+      }
+    ],
+    "explanation": [
+      "Geschäftsregeln müssen alle Bedingungen erfüllen. && bedeutet UND. Ein Test vergleicht die tatsächliche Ausgabe mit der vorher festgelegten Erwartung.",
+      "Business rules must satisfy every condition. && means AND. A test compares the actual output with an independently specified expectation.",
+      "Бизнес-правило должно учитывать все условия. && означает И. Тест сравнивает фактический результат с заранее заданным ожидаемым.",
+      "Бізнес-правило має враховувати всі умови. && означає І. Тест порівнює фактичний результат із заздалегідь визначеним очікуваним."
+    ]
+  }
+];

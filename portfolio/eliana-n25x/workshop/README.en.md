@@ -98,3 +98,5 @@ Language candidate: 18 units, 168 shared meanings, 1,680 translated texts and 5,
 Music candidate: 38 pitch sequences including all 12 major and 12 natural minor pitch classes, 12 rhythm patterns, 70 stages across six practical groups. Fractional onset gaps are shown legibly; no fingering or physical performance evaluation.
 
 Programming candidate: 48 restricted JavaScript missions including six applied logic exercises. Each has normal and boundary tests, editable code and local execution. These are function exercises rather than full production services.
+
+Beginner-first JavaScript: ten stage guides, 30 independently executable examples with output and traces, followed by prediction, repair/writing, tests and edge cases. Examples do not grant completion or edit drafts. This is an introductory restricted interpreter, not full JavaScript or a certified professional curriculum.

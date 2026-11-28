@@ -495,3 +495,9 @@ for(const [key,values] of Object.entries({
 }))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);
 
 for(const [lang,value] of Object.entries({de:'Aktuell fehlerfrei: Basis {basic}/{total} · Erweitert {extended}/{extraTotal} · Schriftlich {written}/{extraTotal}',en:'Currently error-free: basic {basic}/{total} · extended {extended}/{extraTotal} · written {written}/{extraTotal}',ru:'Сейчас без ошибок: базовые {basic}/{total} · расширенные {extended}/{extraTotal} · письменные {written}/{extraTotal}',uk:'Зараз без помилок: базові {basic}/{total} · розширені {extended}/{extraTotal} · письмові {written}/{extraTotal}'}))TEXT[lang].grammarCoverage=value;
+
+for(const [key,values] of Object.entries({
+ programGuideTitle:['Von Grund auf lernen','Learn from scratch','Обучение с нуля','Навчання з нуля'],
+ programGuideTry:['Sage das Ergebnis voraus und führe dann die Beispiele aus. Diese Übung ändert deinen Code und Fortschritt nicht.','Predict the result, then run the examples. This exercise does not change your code or progress.','Предположи результат, затем запусти примеры. Эта тренировка не изменяет твой код и прогресс.','Припустімо результат, потім запусти приклади. Ця вправа не змінює твій код і прогрес.'],
+ programGuideSequence:['Lernweg: Beispiel verstehen → Ausgabe vorhersagen → Code reparieren oder selbst schreiben → Tests ausführen → Grenzfälle prüfen.','Learning path: understand the example → predict output → repair or write code → run tests → check edge cases.','Путь обучения: понять пример → предсказать результат → исправить или написать код → запустить тесты → проверить граничные случаи.','Шлях навчання: зрозуміти приклад → передбачити результат → виправити або написати код → запустити тести → перевірити граничні випадки.']
+}))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);

@@ -287,3 +287,9 @@ test('Lab drafts and verified progress round-trip without stale or forged pass f
 });
 
  test('Practical project repairs pass normal and boundary tests while both wrong choices fail',async()=>{const {reviewProgram}=await import('../workshop/program.mjs');for(const m of MISSIONS.slice(42)){assert(m.tests.length>=7);assert(reviewProgram(m,m.source).failed);assert.equal(reviewProgram(m,m.source.replace(m.block.from,m.block.choices[1])).passed,m.tests.length);assert(reviewProgram(m,m.source.replace(m.block.from,m.block.choices[2])).failed);}assert.equal(new Set(MISSIONS.map(v=>v.id)).size,48);});
+
+test('Ten beginner guides execute three independent examples each and do not grant points or edit drafts',async()=>{
+ assert.equal(curriculum.PROGRAM_GUIDES.length,curriculum.MISSION_STAGES.length);
+ for(const g of curriculum.PROGRAM_GUIDES){assert.equal(g.explanation.length,4);assert.equal(g.examples.length,3);for(const e of g.examples){const r=runProgram(g.source,g.entry,e.args);assert(r.ok);assert.equal(r.value,e.expected);}}
+ const h=academyDOM();try{for(const [i,stage] of curriculum.MISSION_STAGES.entries()){h.state.academy.mission=stage.start;h.render();const before=JSON.stringify(h.state);for(let j=0;j<3;j++){await h.click('[data-a=guide-run][data-index="'+j+'"]');assert(h.document.querySelector('[data-guide-result]').textContent.includes(String(curriculum.PROGRAM_GUIDES[i].examples[j].expected)));assert.equal(JSON.stringify(h.state),before);}}}finally{h.cleanup();}
+});

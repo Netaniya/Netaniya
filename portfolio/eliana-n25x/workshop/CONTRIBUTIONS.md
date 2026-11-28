@@ -189,3 +189,6 @@ Assistant added 14 scale sequences and four rhythmic patterns (sixteenths, tripl
 
 ### 28 November — applied logic projects and music regression
 Added six localized bounded JavaScript mini-projects with original buggy drafts, predictions, code repair and boundary cases. Corrected old music inventory assertions in academy tests. Role rule is a logic exercise, not production authorization.
+
+### 28 November — beginner-first programming route
+Creator explicitly required instruction from zero, not testing prior knowledge. Assistant added ten localized guided explanations and 30 independent executable examples with expected/actual output and traces, without granting mission points or changing drafts. Full novice usability validation and broader lab tutorials pending.
