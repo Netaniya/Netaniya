@@ -488,3 +488,8 @@ for(const [key,values] of Object.entries({
 for(const [lang,value] of Object.entries({de:'Erweiterter Selbsttest',en:'Extended checkpoint',ru:'Расширенная самопроверка',uk:'Розширена самоперевірка'}))TEXT[lang].grammarExtended=value;
 
 for(const [lang,value] of Object.entries({de:'Langsam anhören',en:'Listen slowly',ru:'Прослушать медленно',uk:'Прослухати повільно'}))TEXT[lang].listenSlow=value;
+
+for(const [key,values] of Object.entries({
+ grammarWritten:['Schriftlicher Abruf','Written recall','Письменное воспроизведение','Письмове відтворення'],
+ grammarWrittenScope:['Ergänze die gelernte Form ohne Auswahl. Großschreibung und Akzente zählen. Bei zwei Lücken trenne die Wörter mit „...“. Andere mögliche Formulierungen werden nicht automatisch bewertet.','Recall the studied form without choices. Case and accents count. For two blanks, separate the words with "...". Other valid formulations are not automatically assessed.','Впиши изученную форму без вариантов. Регистр и диакритика учитываются. Для двух пропусков раздели слова тремя точками. Другие допустимые формулировки автоматически не оцениваются.','Впиши вивчену форму без варіантів. Регістр і діакритика враховуються. Для двох пропусків розділи слова трьома крапками. Інші допустимі формулювання автоматично не оцінюються.']
+}))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);

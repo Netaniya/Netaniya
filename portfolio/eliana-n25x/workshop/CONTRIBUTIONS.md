@@ -171,3 +171,6 @@ At the creator's request, the assistant added a non-deploying CI artifact contai
 
 ### 28 November — revised articulated Eliana armour
 Following the creator's feedback that the published robot still looks old, the assistant revised the actual procedural 3D geometry: machined brow/cheeks/nose/chin, larger blue optics, paired chest plates and core, graphite shoulder/forearm/shin panels, silver foot armour. Preserved rig, configuration, exploded view and animations. Candidate only; visual approval and physical device check pending. No change to public deployment.
+
+### 28 November — written recall for all grammar topics
+Assistant implemented a no-choice typed recall mode using the 352 existing extended grammar prompts, separate score history, corrections and review priority. Under the creator's instruction, continue all educational disciplines and full regression, not only robot presentation. Exact studied forms, not a general free-writing grader; alternative correct formulations may need teacher review.

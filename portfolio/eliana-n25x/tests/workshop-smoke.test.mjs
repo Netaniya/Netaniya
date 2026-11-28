@@ -83,3 +83,10 @@ test('All 88 grammar checkpoints: evidence, missed questions, language isolation
 });
 
 test('Extended grammar bank has 352 original distinct prompts across all languages, scored separately',async()=>{const {GRAMMAR_LESSONS,GRAMMAR_EXTENDED,recordExtendedGrammar,grammarReviewLessons}=await import('../workshop/language-course.mjs');const p=freshLanguageCourse();let questions=0;for(const [id,qs] of Object.entries(GRAMMAR_EXTENDED)){const l=GRAMMAR_LESSONS.find(x=>x.id===id);assert(l);p.language=l.language;assert.equal(qs.length,4);assert.equal(new Set([...l.practice,...l.checkpoint,...qs].map(q=>q.sentence)).size,8);for(const q of qs){assert.equal(new Set(q.options).size,3);assert(q.options.includes(q.answer));questions++;}assert(!recordExtendedGrammar(p,id,[]));assert(recordExtendedGrammar(p,id,qs.map(q=>q.options.find(v=>v!==q.answer))));assert(grammarReviewLessons(p).some(v=>v.id===id));assert(recordExtendedGrammar(p,id,qs.map(q=>q.answer)));assert(!grammarReviewLessons(p).some(v=>v.id===id));}assert.equal(questions,352);assert.deepEqual(parseLanguageCourse(p).grammar,p.grammar);});
+
+test('Written recall across all 88 grammar topics: canonical forms, errors and profile round-trip',async()=>{
+ const {GRAMMAR_LESSONS,extendedGrammarQuestions,recordWrittenGrammar,grammarAnswerMatches,grammarReviewLessons}=await import('../workshop/language-course.mjs');const p=freshLanguageCourse();let prompts=0;
+ for(const l of GRAMMAR_LESSONS){p.language=l.language;const qs=extendedGrammarQuestions(l.id);for(const q of qs){assert(grammarAnswerMatches(q.answer,q.answer));assert(!grammarAnswerMatches(q.options.find(v=>v!==q.answer),q.answer));prompts++;}
+ assert(recordWrittenGrammar(p,l.id,qs.map(q=>q.options.find(v=>v!==q.answer))));assert(grammarReviewLessons(p).some(v=>v.id===l.id));assert(recordWrittenGrammar(p,l.id,qs.map(q=>q.answer)));assert.equal(p.grammar.written[l.id].latest,4);assert(!grammarReviewLessons(p).some(v=>v.id===l.id));}
+ assert.equal(prompts,352);assert.deepEqual(parseLanguageCourse(p).grammar,p.grammar);
+});
