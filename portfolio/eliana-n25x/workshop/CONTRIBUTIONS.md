@@ -174,3 +174,6 @@ Following the creator's feedback that the published robot still looks old, the a
 
 ### 28 November — written recall for all grammar topics
 Assistant implemented a no-choice typed recall mode using the 352 existing extended grammar prompts, separate score history, corrections and review priority. Under the creator's instruction, continue all educational disciplines and full regression, not only robot presentation. Exact studied forms, not a general free-writing grader; alternative correct formulations may need teacher review.
+
+### 28 November — cloud review preparation
+At the creator's request for direct mobile review without ZIP extraction, assistant implemented an allowlisted, hash-verified static preview HTTP server and integration tests. Planned separate free Frankfurt cloud service; workspace selection requires explicit confirmation. No live deployment, repository visibility change or main merge yet.

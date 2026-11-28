@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - run: node --test portfolio/eliana-n25x/tests/workshop-smoke.test.mjs
+      - run: node --test portfolio/eliana-n25x/tests/workshop-smoke.test.mjs portfolio/eliana-n25x/tests/preview-server.test.mjs
   chromium:
     name: Studio Chromium · ${{ matrix.scope }}
     strategy:
