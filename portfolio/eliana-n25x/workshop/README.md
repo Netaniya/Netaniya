@@ -31,3 +31,5 @@ Notenlesen: fünf Stufen, 40 einzelne Noten, Violin- und Bassschlüssel, Hilfsli
 Akkorderkennung: vier Stufen, neun Akkordtypen in Grundstellung, 27 Fragen je Durchgang, hörbare Referenzbeispiele, lokaler Fortschritt. Umkehrungen und Stimmführung werden nicht bewertet. Hör- und Browser-Abnahme offen.
 
 Praktische Harmonielehre: sechs Stufen, 24 Aufgaben zum Akkordaufbau und zu Umkehrungen; Auswahl einzelner Tasten, Prüfung der exakten Tonhöhen und separate Fortschritte. Keine Stimmführungsbewertung; Browser-Abnahme offen.
+
+Grammatik: 88 Themen, 352 Aufgaben, je 20 Themen in Deutsch und Englisch, je sechs in den übrigen acht Sprachen. Sprachprüfung und CI dieser Erweiterung stehen aus.

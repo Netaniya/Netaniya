@@ -78,3 +78,6 @@ The creator asked to continue. Assistant implemented four root-position chord-re
 
 ### 28 November — practical harmony
 At the creator's direction to continue development, the assistant added six guided chord-construction stages, 24 exact-voicing tasks, inversion checking and separate progress. AI-assisted implementation and educational content; no physical performance or browser acceptance claimed.
+
+### 28 November — restored CI and grammar extension
+Owner authorized restoration of GitHub Actions. Assistant enabled a selective official-actions policy, preserved read-only default permissions and dispatched #18. Assistant authored eight additional stage-four grammar topics / 32 questions; AI-assisted content, not native-speaker validation.

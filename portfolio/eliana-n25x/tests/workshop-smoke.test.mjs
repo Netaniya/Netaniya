@@ -23,7 +23,7 @@ test('Every language: word-order roundtrip, guided progression, scheduled review
    assert.equal(gradeGrammar(lesson,lesson.checkpoint.map(q=>q.answer)),lesson.checkpoint.length);
   }
  }
- assert.equal(COURSE_LANGUAGES.length,10);assert.equal(phrases,COURSE_LANGUAGES.length*LANGUAGE_ITEMS.length);assert.equal(skills,phrases*3);assert(questions>=320);
+ assert.equal(COURSE_LANGUAGES.length,10);assert.equal(phrases,COURSE_LANGUAGES.length*LANGUAGE_ITEMS.length);assert.equal(skills,phrases*3);assert(questions>=352);
  console.log(JSON.stringify({skills,phrases,grammarQuestions:questions}));
 });
 

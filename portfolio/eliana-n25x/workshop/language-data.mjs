@@ -13,7 +13,7 @@
 export const LANGUAGE_CONTENT_INFO = Object.freeze({
   author: 'Natalie Ragulina',
   copyright: '© 2026 Natalie Ragulina. All rights reserved.',
-  contentVersion: 3,
+  contentVersion: 4,
   scope: 'introductory-and-connected-sentence-practice',
   aiAssisted: true,
   nativeSpeakerReviewed: false,
@@ -5731,6 +5731,474 @@ GRAMMAR_LESSONS.push(...[
           "飲む"
         ],
         "answer": "飲んで"
+      }
+    ]
+  }
+]);
+
+// AI-assisted fourth-stage grammar practice.
+GRAMMAR_LESSONS.push(...[
+  {
+    "id": "ka-dative",
+    "language": "ka",
+    "stage": 4,
+    "title": {
+      "de": "Dativ bei geben",
+      "en": "Dative with giving",
+      "ru": "Дательный падеж при передаче",
+      "uk": "Давальний відмінок при передачі"
+    },
+    "rule": {
+      "de": "Der Empfänger steht in diesen Beispielen im Dativ mit -ს: დედა → დედას.",
+      "en": "In these examples the recipient takes dative -ს: დედა → დედას.",
+      "ru": "В этих примерах получатель стоит в дательном падеже с -ს: დედა → დედას.",
+      "uk": "У цих прикладах отримувач стоїть у давальному відмінку з -ს: დედა → დედას."
+    },
+    "example": "წიგნს დედას ვაძლევ.",
+    "practice": [
+      {
+        "sentence": "ყვავილს ___ ვაძლევ. (დედა: recipient)",
+        "options": [
+          "დედას",
+          "დედა",
+          "დედის"
+        ],
+        "answer": "დედას"
+      },
+      {
+        "sentence": "წიგნს ___ ვაძლევ. (მამა: recipient)",
+        "options": [
+          "მამას",
+          "მამა",
+          "მამის"
+        ],
+        "answer": "მამას"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "საჩუქარს ___ ვაძლევ. (ბავშვი: recipient)",
+        "options": [
+          "ბავშვს",
+          "ბავშვი",
+          "ბავშვის"
+        ],
+        "answer": "ბავშვს"
+      },
+      {
+        "sentence": "წყალს ___ ვაძლევ. (მეგობარი: recipient)",
+        "options": [
+          "მეგობარს",
+          "მეგობარი",
+          "მეგობრის"
+        ],
+        "answer": "მეგობარს"
+      }
+    ]
+  },
+  {
+    "id": "uk-instrumental",
+    "language": "uk",
+    "stage": 4,
+    "title": {
+      "de": "Instrumental mit з",
+      "en": "Instrumental with з",
+      "ru": "Творительный падеж с «з»",
+      "uk": "Орудний відмінок із «з»"
+    },
+    "rule": {
+      "de": "Bei Begleitung steht nach з der Instrumental: сестра → з сестрою.",
+      "en": "For accompaniment, з takes the instrumental: сестра → з сестрою.",
+      "ru": "При совместном действии после з употребляется творительный: сестра → з сестрою.",
+      "uk": "На позначення спільної дії після з уживаємо орудний: сестра → з сестрою."
+    },
+    "example": "Я йду з сестрою.",
+    "practice": [
+      {
+        "sentence": "Я розмовляю з ___. (мама)",
+        "options": [
+          "мамою",
+          "мами",
+          "маму"
+        ],
+        "answer": "мамою"
+      },
+      {
+        "sentence": "Я гуляю з ___. (брат)",
+        "options": [
+          "братом",
+          "брата",
+          "брату"
+        ],
+        "answer": "братом"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Вона працює з ___. (колега, жінка)",
+        "options": [
+          "колегою",
+          "колеги",
+          "колегу"
+        ],
+        "answer": "колегою"
+      },
+      {
+        "sentence": "Ми йдемо з ___. (друг)",
+        "options": [
+          "другом",
+          "друга",
+          "другу"
+        ],
+        "answer": "другом"
+      }
+    ]
+  },
+  {
+    "id": "ru-participle",
+    "language": "ru",
+    "stage": 4,
+    "title": {
+      "de": "Aktive Partizipien Präsens",
+      "en": "Present active participles",
+      "ru": "Действительные причастия настоящего времени",
+      "uk": "Активні дієприкметники теперішнього часу"
+    },
+    "rule": {
+      "de": "Das aktive Partizip stimmt in Genus und Numerus überein: читающий ученик.",
+      "en": "The active participle agrees in gender and number: читающий ученик.",
+      "ru": "Действительное причастие согласуется с существительным: читающий ученик.",
+      "uk": "Активний дієприкметник узгоджується з іменником: читающий ученик."
+    },
+    "example": "Читающая девочка сидит у окна.",
+    "practice": [
+      {
+        "sentence": "___ ученик отвечает на вопрос. (читать, м. р.)",
+        "options": [
+          "Читающий",
+          "Читающая",
+          "Читающие"
+        ],
+        "answer": "Читающий"
+      },
+      {
+        "sentence": "___ девочка рисует. (петь, ж. р.)",
+        "options": [
+          "Поющая",
+          "Поющий",
+          "Поющие"
+        ],
+        "answer": "Поющая"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ дети идут домой. (играть, мн. ч.)",
+        "options": [
+          "Играющие",
+          "Играющая",
+          "Играющий"
+        ],
+        "answer": "Играющие"
+      },
+      {
+        "sentence": "___ солнце освещает сад. (восходить, ср. р.)",
+        "options": [
+          "Восходящее",
+          "Восходящий",
+          "Восходящая"
+        ],
+        "answer": "Восходящее"
+      }
+    ]
+  },
+  {
+    "id": "zh-experience",
+    "language": "zh",
+    "stage": 4,
+    "title": {
+      "de": "Erfahrung mit 过",
+      "en": "Experience with 过",
+      "ru": "Опыт с частицей 过",
+      "uk": "Досвід із часткою 过"
+    },
+    "rule": {
+      "de": "过 nach dem Verb bezeichnet frühere Erfahrung; bei Verneinung steht 没 vor dem Verb.",
+      "en": "过 after the verb marks past experience; 没 precedes the verb in negation.",
+      "ru": "过 после глагола обозначает опыт; при отрицании 没 ставится перед глаголом.",
+      "uk": "过 після дієслова позначає досвід; при запереченні 没 передує дієслову."
+    },
+    "example": "我去过北京。",
+    "practice": [
+      {
+        "sentence": "我曾经去___北京。 (experience)",
+        "options": [
+          "过",
+          "吗",
+          "的"
+        ],
+        "answer": "过"
+      },
+      {
+        "sentence": "我从来___吃过寿司。 (never)",
+        "options": [
+          "没",
+          "很",
+          "正在"
+        ],
+        "answer": "没"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "你以前看___这部电影吗？ (experience)",
+        "options": [
+          "过",
+          "吗",
+          "的"
+        ],
+        "answer": "过"
+      },
+      {
+        "sentence": "他从来___学过法语。 (never)",
+        "options": [
+          "没",
+          "很",
+          "正在"
+        ],
+        "answer": "没"
+      }
+    ]
+  },
+  {
+    "id": "es-imperfect",
+    "language": "es",
+    "stage": 4,
+    "title": {
+      "de": "Imperfekt: -ar-Verben",
+      "en": "Imperfect: -ar verbs",
+      "ru": "Imperfecto: глаголы на -ar",
+      "uk": "Imperfecto: дієслова на -ar"
+    },
+    "rule": {
+      "de": "Für frühere Gewohnheiten: hablaba, hablabas, hablábamos, hablaban.",
+      "en": "For past habits: hablaba, hablabas, hablábamos, hablaban.",
+      "ru": "Для привычек в прошлом: hablaba, hablabas, hablábamos, hablaban.",
+      "uk": "Для звичок у минулому: hablaba, hablabas, hablábamos, hablaban."
+    },
+    "example": "De niño, yo jugaba cada tarde.",
+    "practice": [
+      {
+        "sentence": "De niña, yo ___ cada tarde. (jugar, imperfecto)",
+        "options": [
+          "jugaba",
+          "jugabas",
+          "jugaban"
+        ],
+        "answer": "jugaba"
+      },
+      {
+        "sentence": "Antes tú ___ mucho. (trabajar, imperfecto)",
+        "options": [
+          "trabajabas",
+          "trabajaba",
+          "trabajábamos"
+        ],
+        "answer": "trabajabas"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Cada verano nosotros ___ juntos. (viajar, imperfecto)",
+        "options": [
+          "viajábamos",
+          "viajaban",
+          "viajabas"
+        ],
+        "answer": "viajábamos"
+      },
+      {
+        "sentence": "Antes ellos ___ español. (estudiar, imperfecto)",
+        "options": [
+          "estudiaban",
+          "estudiaba",
+          "estudiabas"
+        ],
+        "answer": "estudiaban"
+      }
+    ]
+  },
+  {
+    "id": "fr-imparfait",
+    "language": "fr",
+    "stage": 4,
+    "title": {
+      "de": "Imparfait",
+      "en": "Imperfect tense",
+      "ru": "Imparfait: прошедшее время",
+      "uk": "Imparfait: минулий час"
+    },
+    "rule": {
+      "de": "Frühere Gewohnheiten: nous parlons → parl- + ais, ais, ait, ions, iez, aient.",
+      "en": "Past habits: nous parlons → parl- + ais, ais, ait, ions, iez, aient.",
+      "ru": "Привычки в прошлом: nous parlons → parl- + ais, ais, ait, ions, iez, aient.",
+      "uk": "Звички в минулому: nous parlons → parl- + ais, ais, ait, ions, iez, aient."
+    },
+    "example": "Autrefois, je parlais souvent français.",
+    "practice": [
+      {
+        "sentence": "Avant, je ___ chaque jour. (travailler, imparfait)",
+        "options": [
+          "travaillais",
+          "travaillait",
+          "travaillaient"
+        ],
+        "answer": "travaillais"
+      },
+      {
+        "sentence": "Elle ___ souvent à Paris. (habiter, imparfait)",
+        "options": [
+          "habitait",
+          "habitais",
+          "habitions"
+        ],
+        "answer": "habitait"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Nous ___ ensemble. (étudier, imparfait)",
+        "options": [
+          "étudiions",
+          "étudiaient",
+          "étudiais"
+        ],
+        "answer": "étudiions"
+      },
+      {
+        "sentence": "Ils ___ tous les soirs. (jouer, imparfait)",
+        "options": [
+          "jouaient",
+          "jouait",
+          "jouiez"
+        ],
+        "answer": "jouaient"
+      }
+    ]
+  },
+  {
+    "id": "it-imperfetto",
+    "language": "it",
+    "stage": 4,
+    "title": {
+      "de": "Imperfetto: -are-Verben",
+      "en": "Imperfect: -are verbs",
+      "ru": "Imperfetto: глаголы на -are",
+      "uk": "Imperfetto: дієслова на -are"
+    },
+    "rule": {
+      "de": "Frühere Gewohnheiten: parlavo, parlavi, parlava, parlavamo, parlavate, parlavano.",
+      "en": "Past habits: parlavo, parlavi, parlava, parlavamo, parlavate, parlavano.",
+      "ru": "Привычки в прошлом: parlavo, parlavi, parlava, parlavamo, parlavate, parlavano.",
+      "uk": "Звички в минулому: parlavo, parlavi, parlava, parlavamo, parlavate, parlavano."
+    },
+    "example": "Da bambino, giocavo ogni giorno.",
+    "practice": [
+      {
+        "sentence": "Prima io ___ ogni giorno. (lavorare, imperfetto)",
+        "options": [
+          "lavoravo",
+          "lavoravi",
+          "lavoravano"
+        ],
+        "answer": "lavoravo"
+      },
+      {
+        "sentence": "Tu ___ sempre a casa. (studiare, imperfetto)",
+        "options": [
+          "studiavi",
+          "studiava",
+          "studiavamo"
+        ],
+        "answer": "studiavi"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Noi ___ spesso. (viaggiare, imperfetto)",
+        "options": [
+          "viaggiavamo",
+          "viaggiavano",
+          "viaggiavo"
+        ],
+        "answer": "viaggiavamo"
+      },
+      {
+        "sentence": "Loro ___ ogni sera. (cantare, imperfetto)",
+        "options": [
+          "cantavano",
+          "cantava",
+          "cantavate"
+        ],
+        "answer": "cantavano"
+      }
+    ]
+  },
+  {
+    "id": "ja-teiru",
+    "language": "ja",
+    "stage": 4,
+    "title": {
+      "de": "Laufende Handlung mit ています",
+      "en": "Ongoing actions with ています",
+      "ru": "Продолженное действие с ています",
+      "uk": "Тривала дія з ています"
+    },
+    "rule": {
+      "de": "Bei diesen Handlungsverben bezeichnet て + います eine laufende Handlung: 読んでいます.",
+      "en": "With these action verbs, te-form + います marks an ongoing action: 読んでいます.",
+      "ru": "С этими глаголами форма て + います обозначает действие сейчас: 読んでいます.",
+      "uk": "Із цими дієсловами форма て + います позначає дію зараз: 読んでいます."
+    },
+    "example": "今、本を読んでいます。",
+    "practice": [
+      {
+        "sentence": "今、手紙を___います。 (書く)",
+        "options": [
+          "書いて",
+          "書きます",
+          "書く"
+        ],
+        "answer": "書いて"
+      },
+      {
+        "sentence": "今、水を___います。 (飲む)",
+        "options": [
+          "飲んで",
+          "飲みます",
+          "飲む"
+        ],
+        "answer": "飲んで"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "今、ご飯を___います。 (食べる)",
+        "options": [
+          "食べて",
+          "食べます",
+          "食べる"
+        ],
+        "answer": "食べて"
+      },
+      {
+        "sentence": "今、音楽を___います。 (聞く)",
+        "options": [
+          "聞いて",
+          "聞きます",
+          "聞く"
+        ],
+        "answer": "聞いて"
       }
     ]
   }
