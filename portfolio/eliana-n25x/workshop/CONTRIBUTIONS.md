@@ -216,3 +216,6 @@ Assistant added verified project-only source/evidence export and static scenario
 
 ### 28 November — integrated learning route and local mentor
 Assistant connected 67 verified programming steps to the common learning route, added deterministic contextual guidance in four interface languages, and reduced idle mobile rendering frequency. Physical performance and creator visual approval remain outstanding.
+
+### 28 November — release review regression
+Identified the real browser assertion failure in CI 46165450674: after 48 completed JavaScript missions the expected next stage is Python, not JavaScript index 0. Corrected the assertion to verify the intended route and preserved incorrect draft. Added exact-stage controller tests. Prepared owner acceptance and portfolio documents without claiming final release or certification.
