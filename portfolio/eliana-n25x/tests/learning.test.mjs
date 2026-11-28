@@ -147,3 +147,20 @@ test('Language classroom: manual mistake review cannot silently change the chose
  p.language='fr';api.render();assert(button().hasAttribute('disabled'));controller.click({dataset:{l:'review'}});assert.equal(p.language,'fr');
  }finally{globalThis.document=previous;}
 });
+
+test('Ear training: all 13 intervals, varied roots, fair options, correct and incorrect rounds, profile migration',async()=>{
+ const {EAR_LESSONS,INTERVAL_NAMES,makeEarRound,gradeEarRound,parsePiano,freshPiano}=await import('../workshop/piano-score.mjs');
+ const p=freshPiano(),seen=new Set();
+ assert.equal(EAR_LESSONS.length,5);assert.equal(INTERVAL_NAMES.length,13);
+ for(const lesson of EAR_LESSONS){
+  for(const seed of [0,1,42,4294967295]){
+   const round=makeEarRound(lesson.id,seed);
+   assert.deepEqual(round,makeEarRound(lesson.id,seed));assert.deepEqual([...new Set(round.map(q=>q.interval))].sort((a,b)=>a-b),lesson.intervals);
+   for(const q of round){seen.add(q.interval);assert(q.root>=48&&q.root+q.interval<=83);assert(q.options.includes(q.interval));assert.equal(new Set(q.options).size,q.options.length);assert(q.options.every(v=>lesson.intervals.includes(v)));}
+   const answers=round.map(q=>q.interval);assert(gradeEarRound(round,answers).passed);answers[0]=round[0].options.find(v=>v!==answers[0]);assert.equal(gradeEarRound(round,answers).correct,round.length-1);assert(!gradeEarRound(round,answers).passed);assert.equal(gradeEarRound(round,answers.slice(1)),null);
+  }
+  p.practice.earPassed[lesson.id]=true;
+ }
+ assert.equal(seen.size,13);assert.deepEqual(parsePiano(p),p);delete p.practice.earPassed;assert.deepEqual(parsePiano(p).practice.earPassed,{});p.practice.earPassed={unknown:true,'ear-foundations':'true'};assert.deepEqual(parsePiano(p).practice.earPassed,{});
+ assert.equal(makeEarRound('unknown',0),null);assert.equal(makeEarRound(EAR_LESSONS[0].id,-1),null);
+});

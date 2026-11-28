@@ -66,3 +66,6 @@ At the owner's request to resolve the testing blocker, the assistant added a sou
 
 ### 28 November — professional communication and evidence-based language practice
 Following the creator's instruction to continue the project, assistant selected two practical themes and authored 16 shared meanings in all ten languages (160 additional translations). All earlier text and IDs were preserved. Direct source-level checks covered 1,520 phrase reconstructions and 4,560 guided core skills. AI-assisted educational content; native-speaker and browser review pending.
+
+### 28 November — interval ear training
+The creator requested continuing testing and development. Assistant implemented five interval-recognition stages, randomized ascending note pairs, four UI localizations, separate local progress and migration tests. This is AI-assisted technical and instructional work; no human listening test or browser acceptance is claimed.

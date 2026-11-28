@@ -47,3 +47,5 @@ Rhythm candidate: eight original patterns, first-tap-relative onset assessment, 
 
 ## Current development snapshot — 28 November 2026
 The review branch now has 16 language topics, 152 shared meanings per language (1,520 translations, 4,560 core exercise forms), 80 grammar topics/320 questions, 32 programming missions/seven stages, 61 subject tasks/23 stages, 24 piano patterns/six stages and eight rhythm patterns. Earlier figures above describe historical releases. Source-only verification passed; Chromium and publication remain pending. See [curriculum](LEARNING-PLAN.ru.md), [development history](PROGRESS.ru.md) and [contributions](CONTRIBUTIONS.md). The public release is still separately tracked in publication.json.
+
+Music candidate update: five ascending melodic interval-recognition stages covering 13 semitone distances, 39 questions per full five-stage cycle, independent saved completion and four UI localizations. Web Audio scheduling is not proof of audibility; real listening and browser review pending.

@@ -23,3 +23,5 @@ Lokale Wiederholungsplanung pro Sprache und Fertigkeit (1/3/7/14/30 Tage, UTC-Ta
 
 ## Aktueller Entwicklungsstand — 28.11.2026
 Der Entwicklungszweig umfasst 16 Sprachthemen, je 152 Sätze in zehn Sprachen (1.520 Übersetzungen, 4.560 Übungsformen), 80 Grammatikthemen mit 320 Aufgaben, 32 Programmiermissionen in sieben Stufen, 61 Fachaufgaben in 23 Stufen, 24 Klavierübungen in sechs Stufen und acht Rhythmusübungen. Frühere Zahlen beschreiben ältere Versionen. Direkte Quellcodeprüfungen waren erfolgreich; Browser-Abnahme und Veröffentlichung stehen noch aus. Keine CEFR-Zertifizierung.
+
+Musik-Erweiterung: fünf Stufen zur Erkennung aufsteigender melodischer Intervalle, 13 Halbtonabstände, 39 Fragen je vollständigem Durchgang, separat gespeicherter Fortschritt. Hör- und Browser-Abnahme stehen noch aus.

@@ -144,7 +144,12 @@ try{
  for(let i=0;i<5;i++){await page.evaluate(t=>{window.__rhythmTestTime=t;},3000+i*1000);await click('[data-p=rhythm-tap]');}
  assert((await state()).piano.practice.rhythmPassed.steady);assert(await page.locator('[data-p=rhythm-example]').isEnabled());assert.deepEqual((await state()).piano.score,originalPiano);
 }finally{await page.evaluate(()=>{delete performance.now;delete window.__rhythmTestTime;});}
-await click('[data-p=stop]');check('Rhythm UI rejects an early take, accepts a timed take, preserves the composition and permits replay; deterministic clock, not physical latency');}await page.locator('#piano-title').fill('My complete composition');await click('[data-p=record]');
+await click('[data-p=stop]');check('Rhythm UI rejects an early take, accepts a timed take, preserves the composition and permits replay; deterministic clock, not physical latency');
+await page.locator('#ear-lesson').selectOption('ear-foundations');await click('[data-p=ear-start]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);
+await click('[data-p=ear-play]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),3);
+await click('[data-p=ear-answer]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);assert(await page.locator('[data-p=ear-next]').isEnabled());
+await click('[data-p=ear-next]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);await click('[data-p=ear-exit]');assert.deepEqual((await state()).piano.score,originalPiano);
+check('Ear training gates answers behind Web Audio scheduling and preserves score; hearing accuracy not tested');}await page.locator('#piano-title').fill('My complete composition');await click('[data-p=record]');
  if(scope==='touch'){
   await page.locator('#piano-keyboard').scrollIntoViewIfNeeded();const points=[];for(const [id,midi]of [[1,60],[2,64]]){const box=await page.locator('[data-piano-note="'+midi+'"]').boundingBox();assert(box);points.push({id,x:box.x+box.width/2,y:box.y+box.height-25});}
   const cdp=await context.newCDPSession(page);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:points});await page.waitForFunction(()=>document.querySelectorAll('.piano-key.pressed').length===2);await page.waitForTimeout(650);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await waitText('#qa','pianoHeld 0');await cdp.detach();
