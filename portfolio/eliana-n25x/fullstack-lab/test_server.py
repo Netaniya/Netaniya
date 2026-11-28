@@ -50,6 +50,19 @@ class FullStackTests(unittest.TestCase):
         self.assertEqual(self.req("GET","/api/stats"),(200,{"total":1,"done":1,"open":0}))
         self.assertEqual(self.req("DELETE",p),(204,b""))
         self.assertEqual(self.req("GET",p)[0],404)
+    def test_no_content_wire_contract(self):
+        row = self.create("HTTP contract")
+        connection = http.client.HTTPConnection("127.0.0.1", self.server.server_port, timeout=5)
+        try:
+            connection.request("DELETE", "/api/projects/"+str(row["id"]), headers={"X-N25X-Lab":"1"})
+            response = connection.getresponse()
+            self.assertEqual(response.status, 204)
+            self.assertIsNone(response.getheader("Content-Length"))
+            self.assertIsNone(response.getheader("Transfer-Encoding"))
+            self.assertEqual(response.read(), b"")
+        finally:
+            connection.close()
+        self.assertEqual(self.req("GET","/api/projects"), (200, []))
     def test_persistence(self):
         row=self.create("Persistent")
         self.stop()

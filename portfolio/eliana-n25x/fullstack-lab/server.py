@@ -85,8 +85,12 @@ def make_server(path, port=0):
         def send(self, status, data=None, media="application/json; charset=utf-8"):
             raw = b"" if data is None else (json.dumps(data, ensure_ascii=True).encode("utf-8") if media.startswith("application/json") else data)
             self.send_response(status)
-            self.send_header("Content-Type", media)
-            self.send_header("Content-Length", str(len(raw)))
+            # RFC 9110 sections 8.6 and 15.3.5: 204 has no content or Content-Length.
+            if status != 204:
+                self.send_header("Content-Type", media)
+                self.send_header("Content-Length", str(len(raw)))
+            else:
+                raw = b""
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Referrer-Policy", "no-referrer")

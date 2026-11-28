@@ -138,3 +138,6 @@ Assistant added profile-backed Python, Web and SQL drafts, selected lessons and 
 
 ### 28 November — contextual language practice
 Creator requested continued development of all learning areas. Assistant authored six contextual response scenarios across ten languages, separate saved completion and localized UI. Native review pending; no CEFR claim. Automated structural checks passed.
+
+### 28 November — regression review
+Assistant diagnosed the failing full-stack desktop/touch acceptance: CRUD and persistence passed but a DELETE request emitted ERR_ABORTED. Removed the non-compliant Content-Length header on HTTP 204 (RFC 9110), added an explicit wire-contract test and kept strict browser network-error assertions. Re-run pending. No new public release or visibility changes in this commit.
