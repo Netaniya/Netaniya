@@ -141,3 +141,6 @@ Creator requested continued development of all learning areas. Assistant authore
 
 ### 28 November — regression review
 Assistant diagnosed the failing full-stack desktop/touch acceptance: CRUD and persistence passed but a DELETE request emitted ERR_ABORTED. Removed the non-compliant Content-Length header on HTTP 204 (RFC 9110), added an explicit wire-contract test and kept strict browser network-error assertions. Re-run pending. No new public release or visibility changes in this commit.
+
+### 28 November — professional dialogue expansion
+Creator requested continued development before repository visibility and hosting changes. Assistant added four professional dialogue situations in ten languages; existing six situations unchanged. Native review pending. No publication or visibility changes.

@@ -6819,3 +6819,411 @@ export const DIALOGUE_LESSONS=[
     }
   }
 ];
+
+// Professional communication practice; native-speaker review pending.
+DIALOGUE_LESSONS.push(...[
+  {
+    "id": "clarify",
+    "title": {
+      "de": "Anforderungen klären",
+      "en": "Clarify requirements",
+      "ru": "Уточнение требований",
+      "uk": "Уточнення вимог"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Welches Dateiformat brauchen Sie für den Bericht?",
+        "answer": "Bitte senden Sie den Bericht als PDF.",
+        "options": [
+          "Bitte senden Sie den Bericht als PDF.",
+          "Die erste Version muss bis Freitag fertig sein.",
+          "Der Fehler tritt auf, wenn ich das Formular absende."
+        ]
+      },
+      "en": {
+        "prompt": "Which file format do you need for the report?",
+        "answer": "Please send the report as a PDF.",
+        "options": [
+          "Please send the report as a PDF.",
+          "The first version must be ready by Friday.",
+          "The error occurs when I submit the form."
+        ]
+      },
+      "ka": {
+        "prompt": "ანგარიშისთვის ფაილის რომელი ფორმატი გჭირდებათ?",
+        "answer": "გთხოვთ, ანგარიში PDF ფორმატში გამოგზავნოთ.",
+        "options": [
+          "გთხოვთ, ანგარიში PDF ფორმატში გამოგზავნოთ.",
+          "პირველი ვერსია პარასკევისთვის უნდა იყოს მზად.",
+          "შეცდომა ჩნდება, როდესაც ფორმას ვაგზავნი."
+        ]
+      },
+      "uk": {
+        "prompt": "У якому форматі файлу вам потрібен звіт?",
+        "answer": "Будь ласка, надішліть звіт у форматі PDF.",
+        "options": [
+          "Будь ласка, надішліть звіт у форматі PDF.",
+          "Перша версія має бути готова до п’ятниці.",
+          "Помилка виникає, коли я надсилаю форму."
+        ]
+      },
+      "ru": {
+        "prompt": "В каком формате файла вам нужен отчёт?",
+        "answer": "Пожалуйста, пришлите отчёт в формате PDF.",
+        "options": [
+          "Пожалуйста, пришлите отчёт в формате PDF.",
+          "Первая версия должна быть готова к пятнице.",
+          "Ошибка возникает, когда я отправляю форму."
+        ]
+      },
+      "zh": {
+        "prompt": "您需要什么文件格式的报告？",
+        "answer": "请以 PDF 格式发送报告。",
+        "options": [
+          "请以 PDF 格式发送报告。",
+          "第一版需要在星期五之前完成。",
+          "提交表单时会出现错误。"
+        ]
+      },
+      "es": {
+        "prompt": "¿En qué formato necesita el informe?",
+        "answer": "Envíeme el informe en formato PDF, por favor.",
+        "options": [
+          "Envíeme el informe en formato PDF, por favor.",
+          "La primera versión debe estar lista para el viernes.",
+          "El error aparece cuando envío el formulario."
+        ]
+      },
+      "fr": {
+        "prompt": "Dans quel format souhaitez-vous recevoir le rapport ?",
+        "answer": "Envoyez-moi le rapport au format PDF, s'il vous plaît.",
+        "options": [
+          "Envoyez-moi le rapport au format PDF, s'il vous plaît.",
+          "La première version doit être prête pour vendredi.",
+          "L'erreur se produit quand j'envoie le formulaire."
+        ]
+      },
+      "it": {
+        "prompt": "In quale formato desidera ricevere il rapporto?",
+        "answer": "Mi invii il rapporto in formato PDF, per favore.",
+        "options": [
+          "Mi invii il rapporto in formato PDF, per favore.",
+          "La prima versione deve essere pronta entro venerdì.",
+          "L'errore si verifica quando invio il modulo."
+        ]
+      },
+      "ja": {
+        "prompt": "報告書はどのファイル形式がよろしいですか。",
+        "answer": "PDF形式で送ってください。",
+        "options": [
+          "PDF形式で送ってください。",
+          "金曜日までに完成させる必要があります。",
+          "フォームを送信すると発生します。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "deadline",
+    "title": {
+      "de": "Abgabetermin",
+      "en": "Delivery deadline",
+      "ru": "Срок сдачи",
+      "uk": "Термін здачі"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Bis wann muss die erste Version fertig sein?",
+        "answer": "Die erste Version muss bis Freitag fertig sein.",
+        "options": [
+          "Die erste Version muss bis Freitag fertig sein.",
+          "Der Fehler tritt auf, wenn ich das Formular absende.",
+          "Der Text sollte größer und leichter lesbar sein."
+        ]
+      },
+      "en": {
+        "prompt": "When does the first version need to be ready?",
+        "answer": "The first version must be ready by Friday.",
+        "options": [
+          "The first version must be ready by Friday.",
+          "The error occurs when I submit the form.",
+          "The text should be larger and easier to read."
+        ]
+      },
+      "ka": {
+        "prompt": "როდისთვის უნდა იყოს პირველი ვერსია მზად?",
+        "answer": "პირველი ვერსია პარასკევისთვის უნდა იყოს მზად.",
+        "options": [
+          "პირველი ვერსია პარასკევისთვის უნდა იყოს მზად.",
+          "შეცდომა ჩნდება, როდესაც ფორმას ვაგზავნი.",
+          "ტექსტი უფრო დიდი და ადვილად წასაკითხი უნდა იყოს."
+        ]
+      },
+      "uk": {
+        "prompt": "До якого терміну має бути готова перша версія?",
+        "answer": "Перша версія має бути готова до п’ятниці.",
+        "options": [
+          "Перша версія має бути готова до п’ятниці.",
+          "Помилка виникає, коли я надсилаю форму.",
+          "Текст має бути більшим і зручнішим для читання."
+        ]
+      },
+      "ru": {
+        "prompt": "К какому сроку должна быть готова первая версия?",
+        "answer": "Первая версия должна быть готова к пятнице.",
+        "options": [
+          "Первая версия должна быть готова к пятнице.",
+          "Ошибка возникает, когда я отправляю форму.",
+          "Текст должен быть крупнее и удобнее для чтения."
+        ]
+      },
+      "zh": {
+        "prompt": "第一版需要什么时候完成？",
+        "answer": "第一版需要在星期五之前完成。",
+        "options": [
+          "第一版需要在星期五之前完成。",
+          "提交表单时会出现错误。",
+          "文字应该更大，更容易阅读。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Para cuándo tiene que estar lista la primera versión?",
+        "answer": "La primera versión debe estar lista para el viernes.",
+        "options": [
+          "La primera versión debe estar lista para el viernes.",
+          "El error aparece cuando envío el formulario.",
+          "El texto debería ser más grande y fácil de leer."
+        ]
+      },
+      "fr": {
+        "prompt": "Pour quand la première version doit-elle être prête ?",
+        "answer": "La première version doit être prête pour vendredi.",
+        "options": [
+          "La première version doit être prête pour vendredi.",
+          "L'erreur se produit quand j'envoie le formulaire.",
+          "Le texte devrait être plus grand et plus facile à lire."
+        ]
+      },
+      "it": {
+        "prompt": "Entro quando deve essere pronta la prima versione?",
+        "answer": "La prima versione deve essere pronta entro venerdì.",
+        "options": [
+          "La prima versione deve essere pronta entro venerdì.",
+          "L'errore si verifica quando invio il modulo.",
+          "Il testo dovrebbe essere più grande e più facile da leggere."
+        ]
+      },
+      "ja": {
+        "prompt": "初版はいつまでに完成させる必要がありますか。",
+        "answer": "金曜日までに完成させる必要があります。",
+        "options": [
+          "金曜日までに完成させる必要があります。",
+          "フォームを送信すると発生します。",
+          "文字を大きくして読みやすくするとよいです。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "bug-report",
+    "title": {
+      "de": "Fehler beschreiben",
+      "en": "Describe a bug",
+      "ru": "Описание ошибки",
+      "uk": "Опис помилки"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Wann tritt der Fehler auf?",
+        "answer": "Der Fehler tritt auf, wenn ich das Formular absende.",
+        "options": [
+          "Der Fehler tritt auf, wenn ich das Formular absende.",
+          "Der Text sollte größer und leichter lesbar sein.",
+          "Bitte senden Sie den Bericht als PDF."
+        ]
+      },
+      "en": {
+        "prompt": "When does the error occur?",
+        "answer": "The error occurs when I submit the form.",
+        "options": [
+          "The error occurs when I submit the form.",
+          "The text should be larger and easier to read.",
+          "Please send the report as a PDF."
+        ]
+      },
+      "ka": {
+        "prompt": "როდის ჩნდება შეცდომა?",
+        "answer": "შეცდომა ჩნდება, როდესაც ფორმას ვაგზავნი.",
+        "options": [
+          "შეცდომა ჩნდება, როდესაც ფორმას ვაგზავნი.",
+          "ტექსტი უფრო დიდი და ადვილად წასაკითხი უნდა იყოს.",
+          "გთხოვთ, ანგარიში PDF ფორმატში გამოგზავნოთ."
+        ]
+      },
+      "uk": {
+        "prompt": "Коли виникає помилка?",
+        "answer": "Помилка виникає, коли я надсилаю форму.",
+        "options": [
+          "Помилка виникає, коли я надсилаю форму.",
+          "Текст має бути більшим і зручнішим для читання.",
+          "Будь ласка, надішліть звіт у форматі PDF."
+        ]
+      },
+      "ru": {
+        "prompt": "Когда возникает ошибка?",
+        "answer": "Ошибка возникает, когда я отправляю форму.",
+        "options": [
+          "Ошибка возникает, когда я отправляю форму.",
+          "Текст должен быть крупнее и удобнее для чтения.",
+          "Пожалуйста, пришлите отчёт в формате PDF."
+        ]
+      },
+      "zh": {
+        "prompt": "错误什么时候出现？",
+        "answer": "提交表单时会出现错误。",
+        "options": [
+          "提交表单时会出现错误。",
+          "文字应该更大，更容易阅读。",
+          "请以 PDF 格式发送报告。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Cuándo aparece el error?",
+        "answer": "El error aparece cuando envío el formulario.",
+        "options": [
+          "El error aparece cuando envío el formulario.",
+          "El texto debería ser más grande y fácil de leer.",
+          "Envíeme el informe en formato PDF, por favor."
+        ]
+      },
+      "fr": {
+        "prompt": "Quand l'erreur se produit-elle ?",
+        "answer": "L'erreur se produit quand j'envoie le formulaire.",
+        "options": [
+          "L'erreur se produit quand j'envoie le formulaire.",
+          "Le texte devrait être plus grand et plus facile à lire.",
+          "Envoyez-moi le rapport au format PDF, s'il vous plaît."
+        ]
+      },
+      "it": {
+        "prompt": "Quando si verifica l'errore?",
+        "answer": "L'errore si verifica quando invio il modulo.",
+        "options": [
+          "L'errore si verifica quando invio il modulo.",
+          "Il testo dovrebbe essere più grande e più facile da leggere.",
+          "Mi invii il rapporto in formato PDF, per favore."
+        ]
+      },
+      "ja": {
+        "prompt": "エラーはいつ発生しますか。",
+        "answer": "フォームを送信すると発生します。",
+        "options": [
+          "フォームを送信すると発生します。",
+          "文字を大きくして読みやすくするとよいです。",
+          "PDF形式で送ってください。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "feedback",
+    "title": {
+      "de": "Feedback zur Gestaltung",
+      "en": "Design feedback",
+      "ru": "Обратная связь по дизайну",
+      "uk": "Відгук щодо дизайну"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Was sollen wir an der Gestaltung verbessern?",
+        "answer": "Der Text sollte größer und leichter lesbar sein.",
+        "options": [
+          "Der Text sollte größer und leichter lesbar sein.",
+          "Bitte senden Sie den Bericht als PDF.",
+          "Die erste Version muss bis Freitag fertig sein."
+        ]
+      },
+      "en": {
+        "prompt": "What should we improve in the design?",
+        "answer": "The text should be larger and easier to read.",
+        "options": [
+          "The text should be larger and easier to read.",
+          "Please send the report as a PDF.",
+          "The first version must be ready by Friday."
+        ]
+      },
+      "ka": {
+        "prompt": "რა უნდა გავაუმჯობესოთ დიზაინში?",
+        "answer": "ტექსტი უფრო დიდი და ადვილად წასაკითხი უნდა იყოს.",
+        "options": [
+          "ტექსტი უფრო დიდი და ადვილად წასაკითხი უნდა იყოს.",
+          "გთხოვთ, ანგარიში PDF ფორმატში გამოგზავნოთ.",
+          "პირველი ვერსია პარასკევისთვის უნდა იყოს მზად."
+        ]
+      },
+      "uk": {
+        "prompt": "Що варто покращити в дизайні?",
+        "answer": "Текст має бути більшим і зручнішим для читання.",
+        "options": [
+          "Текст має бути більшим і зручнішим для читання.",
+          "Будь ласка, надішліть звіт у форматі PDF.",
+          "Перша версія має бути готова до п’ятниці."
+        ]
+      },
+      "ru": {
+        "prompt": "Что стоит улучшить в дизайне?",
+        "answer": "Текст должен быть крупнее и удобнее для чтения.",
+        "options": [
+          "Текст должен быть крупнее и удобнее для чтения.",
+          "Пожалуйста, пришлите отчёт в формате PDF.",
+          "Первая версия должна быть готова к пятнице."
+        ]
+      },
+      "zh": {
+        "prompt": "设计方面需要改进什么？",
+        "answer": "文字应该更大，更容易阅读。",
+        "options": [
+          "文字应该更大，更容易阅读。",
+          "请以 PDF 格式发送报告。",
+          "第一版需要在星期五之前完成。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Qué deberíamos mejorar en el diseño?",
+        "answer": "El texto debería ser más grande y fácil de leer.",
+        "options": [
+          "El texto debería ser más grande y fácil de leer.",
+          "Envíeme el informe en formato PDF, por favor.",
+          "La primera versión debe estar lista para el viernes."
+        ]
+      },
+      "fr": {
+        "prompt": "Que devrions-nous améliorer dans la conception ?",
+        "answer": "Le texte devrait être plus grand et plus facile à lire.",
+        "options": [
+          "Le texte devrait être plus grand et plus facile à lire.",
+          "Envoyez-moi le rapport au format PDF, s'il vous plaît.",
+          "La première version doit être prête pour vendredi."
+        ]
+      },
+      "it": {
+        "prompt": "Che cosa dovremmo migliorare nel design?",
+        "answer": "Il testo dovrebbe essere più grande e più facile da leggere.",
+        "options": [
+          "Il testo dovrebbe essere più grande e più facile da leggere.",
+          "Mi invii il rapporto in formato PDF, per favore.",
+          "La prima versione deve essere pronta entro venerdì."
+        ]
+      },
+      "ja": {
+        "prompt": "デザインのどこを改善すべきですか。",
+        "answer": "文字を大きくして読みやすくするとよいです。",
+        "options": [
+          "文字を大きくして読みやすくするとよいです。",
+          "PDF形式で送ってください。",
+          "金曜日までに完成させる必要があります。"
+        ]
+      }
+    }
+  }
+]);
