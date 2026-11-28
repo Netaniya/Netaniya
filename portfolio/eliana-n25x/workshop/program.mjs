@@ -914,13 +914,13 @@ export function runWorkflowGuide(kind,index){
 
 export function freshCapstone(){return {plan:'[]',query:'SELECT id FROM projects',source:'function progress(done,total) { return 0; }',html:'<main><h1>Project dashboard</h1></main>',css:'',passed:false};}
 export const CAPSTONE_FIELDS=Object.freeze({plan:1800,query:512,source:4000,html:4000,css:3000});
-export const CAPSTONE_SCENARIOS=['base','all','none'];
+export const CAPSTONE_SCENARIOS=['base','all','none','empty'];
 // Bind data only to text in a reconstructed, allowlisted HTML document.
 // No learner-supplied scripts, attributes, DOM access or external requests.
 export function capstonePreview(d,records,scenario='base'){
  if(!CAPSTONE_SCENARIOS.includes(scenario)||!Array.isArray(records)||records.length>20)return {ok:false};
  const page=compileWebLab(d.html,d.css);if(!page.ok)return {ok:false};
- const rows=records.map(r=>({...r,done:scenario==='base'?Boolean(r.done):scenario==='all'}));
+ const rows=scenario==='empty'?[]:records.map(r=>({...r,done:scenario==='base'?Boolean(r.done):scenario==='all'}));
  const q=queryProjects(d.query,rows),count=q.ok&&q.columns.length===1&&q.columns[0]==='count'&&q.rows.length===1?q.rows[0][0]:null;
  if(count!==rows.filter(r=>r.done).length)return {ok:false};
  const result=runProgram(d.source,'progress',[count,rows.length]);
@@ -937,8 +937,9 @@ export function gradeCapstone(d){
  try{plan=typeof d.plan==='string'&&d.plan.length<=CAPSTONE_FIELDS.plan?JSON.parse(d.plan):null;}catch{plan=null;}
  const valid=Array.isArray(plan)&&plan.length===3&&plan.every(v=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).every(k=>['method','path','body'].includes(k))&&['POST','PATCH'].includes(v.method)&&typeof v.path==='string'&&v.path.length<=64&&v.body&&typeof v.body==='object'&&!Array.isArray(v.body));
  const results=valid?plan.map(v=>lab.request(v.method,v.path,JSON.stringify(v.body))):[];
- const records=lab.snapshot(),added=records.filter(r=>r.id!==1);
- add('capApi',valid&&results.map(r=>r.status).join(',')==='201,201,200'&&records.length===3&&added.some(r=>r.title==='Website'&&r.done===true)&&added.some(r=>r.title==='Music'&&r.done===false)&&records.some(r=>r.id===1&&r.title==='Sample project'&&!r.done));
+ const records=lab.snapshot(),added=records.filter(r=>r.id!==1),website=results.find(r=>r.status===201&&r.body?.title==='Website');
+ const transition=valid&&plan[0].method==='POST'&&plan[1].method==='POST'&&plan[2].method==='PATCH'&&results.slice(0,2).every(r=>r.status===201&&r.body.done===false)&&website&&plan[2].path==='/projects/'+website.body.id&&plan[2].body.done===true&&Object.keys(plan[2].body).length===1;
+ add('capApi',transition&&results.map(r=>r.status).join(',')==='201,201,200'&&records.length===3&&added.some(r=>r.title==='Website'&&r.done===true)&&added.some(r=>r.title==='Music'&&r.done===false)&&records.some(r=>r.id===1&&r.title==='Sample project'&&!r.done));
  const fixtures=[records,[],[{id:11,title:'A',done:true},{id:12,title:'B',done:true}],[{id:7,title:'C',done:false},{id:9,title:'D',done:true},{id:10,title:'E',done:true}]];
  const queries=fixtures.map(rows=>queryProjects(d.query,rows));
  add('capSql',queries.every((r,i)=>r.ok&&r.columns.length===1&&r.columns[0]==='count'&&r.rows.length===1&&r.rows[0][0]===fixtures[i].filter(x=>x.done).length));
@@ -954,3 +955,11 @@ export function gradeCapstone(d){
  return {checks,passed:checks.every(c=>c.passed),records,results,queries,code,integration,page,previews};
 }
 export function parseCapstone(raw){const d=freshCapstone();if(raw&&typeof raw==='object'){for(const [k,max] of Object.entries(CAPSTONE_FIELDS))if(typeof raw[k]==='string'&&raw[k].length<=max)d[k]=raw[k];if(raw.passed===true)d.passed=gradeCapstone(d).passed;}return d;}
+
+ // Independent learner-defined tests: neither alter the draft nor award a pass.
+ export function capstoneCustomTest(source,argsText,expectedText){
+ let args,expected;
+ try{if(typeof argsText!=='string'||argsText.length>80||typeof expectedText!=='string'||expectedText.length>40)return {status:'invalid'};args=JSON.parse(argsText);expected=JSON.parse(expectedText);}catch{return {status:'invalid'};}
+ if(!Array.isArray(args)||args.length!==2||!args.every(n=>Number.isSafeInteger(n)&&n>=0&&n<=1000)||args[0]>args[1]||typeof expected!=='number'||!Number.isFinite(expected)||expected<0||expected>100)return {status:'invalid'};
+ const r=runProgram(source,'progress',args);return {status:r.ok?(typeof r.value==='number'&&Math.abs(r.value-expected)<=1e-8?'pass':'fail'):'error',args,expected,result:r};
+ }
