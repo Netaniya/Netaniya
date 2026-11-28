@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {COURSE_LANGUAGES,LANGUAGE_ITEMS,LANGUAGE_UNITS,freshLanguageCourse,phraseMatches,phraseTokens,recordLanguage,scheduleLanguage,dueLanguageReviews,nextLanguageExercise,grammarRoute,gradeGrammar,languageMistakes} from '../workshop/language-course.mjs';
-import {PIANO_LESSONS,RHYTHM_LESSONS,pianoPracticeStep,gradeRhythm,parsePiano,freshPiano,makeMidi,renderScoreWav,CHORD_TYPES,CHORD_LESSONS,chordNotes,makeChordRound,gradeEarRound} from '../workshop/piano-score.mjs';
+import {PIANO_LESSONS,RHYTHM_LESSONS,pianoPracticeStep,gradeRhythm,parsePiano,freshPiano,makeMidi,renderScoreWav,CHORD_TYPES,CHORD_LESSONS,chordNotes,makeChordRound,gradeEarRound,HARMONY_LESSONS,harmonyNotes,gradeHarmony} from '../workshop/piano-score.mjs';
 
 test('Every language: word-order roundtrip, guided progression, scheduled review and grammar',()=>{
  let skills=0,questions=0,phrases=0;
@@ -57,4 +57,11 @@ test('Chord qualities: independent semitone formulas, transposition, valid distr
  const answers=round.map(q=>q.interval);assert(gradeEarRound(round,answers).passed);answers[0]=round[0].options.find(v=>v!==answers[0]);assert(!gradeEarRound(round,answers).passed);}
  p.practice.chordPassed[l.id]=true;
  }assert.deepEqual(parsePiano(p),p);delete p.practice.chordPassed;assert.deepEqual(parsePiano(p).practice.chordPassed,{});p.practice.chordPassed={unknown:true,'chord-basic':'true'};assert.deepEqual(parsePiano(p).practice.chordPassed,{});
+});
+
+test('Harmony: reference chord voicings, inversions, rejection and profile migration',()=>{
+ const expected=[[[60,64,67],[65,69,72],[67,71,74],[60,64,67]],[[55,59,62],[62,66,69],[64,67,71],[60,64,67]],[[57,60,64],[62,65,69],[52,56,59,62],[57,60,64]],[[60,64,67],[64,67,72],[67,72,76],[60,64,67]],[[62,65,69],[55,58,62],[57,61,64,67],[62,65,69]],[[62,65,69,72],[67,71,74,77],[60,64,67,71],[60,64,67]]];
+ assert.equal(HARMONY_LESSONS.length,6);const p=freshPiano();
+ HARMONY_LESSONS.forEach((l,i)=>{l.steps.forEach((q,j)=>{const notes=harmonyNotes(q);assert.deepEqual(notes,expected[i][j]);assert(notes.every(m=>m>=(l.octave+1)*12&&m<(l.octave+3)*12));assert(gradeHarmony(q,[...notes].reverse()));assert(!gradeHarmony(q,notes.slice(1)));assert(!gradeHarmony(q,[...notes,notes[0]]));assert(!gradeHarmony(q,notes.map(m=>m+12)));});p.practice.harmonyPassed[l.id]=true;});
+ assert.deepEqual(parsePiano(p),p);delete p.practice.harmonyPassed;assert.deepEqual(parsePiano(p).practice.harmonyPassed,{});p.practice.harmonyPassed={unknown:true,'harmony-c':'true'};assert.deepEqual(parsePiano(p).practice.harmonyPassed,{});
 });

@@ -53,3 +53,5 @@ Music candidate update: five ascending melodic interval-recognition stages cover
 Staff-reading candidate: five stages, 40 written single-note exercises, treble and bass clefs, ledger lines and accidentals, validated local progress and four interface languages. Not a score editor. Browser and font rendering acceptance pending.
 
 Chord candidate: four root-position chord recognition stages, nine qualities, 27 questions per cycle, playable reference examples and local progress. Inversions and voice-leading are not assessed. Browser/audio acceptance pending.
+
+Practical harmony candidate: six guided stages and 24 chord-construction tasks including inversions and ii7–V7–Imaj7. Exact MIDI pitch-set checking, sequential keyboard selection and independent progress. No voice-leading or simultaneous performance assessment. Browser acceptance pending.

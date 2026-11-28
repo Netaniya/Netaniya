@@ -75,3 +75,6 @@ At the creator's request to continue, the assistant implemented five stages of s
 
 ### 28 November — chord recognition
 The creator asked to continue. Assistant implemented four root-position chord-recognition stages, nine qualities, 27 questions per cycle, named reference examples and separate saved progress. AI-assisted technical and instructional contribution; no listening or browser acceptance claimed.
+
+### 28 November — practical harmony
+At the creator's direction to continue development, the assistant added six guided chord-construction stages, 24 exact-voicing tasks, inversion checking and separate progress. AI-assisted implementation and educational content; no physical performance or browser acceptance claimed.

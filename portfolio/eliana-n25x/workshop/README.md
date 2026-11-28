@@ -29,3 +29,5 @@ Musik-Erweiterung: fünf Stufen zur Erkennung aufsteigender melodischer Interval
 Notenlesen: fünf Stufen, 40 einzelne Noten, Violin- und Bassschlüssel, Hilfslinien und Vorzeichen; lokale Fortschrittsspeicherung. Kein Partitureditor. Browser- und Schriftprüfung noch offen.
 
 Akkorderkennung: vier Stufen, neun Akkordtypen in Grundstellung, 27 Fragen je Durchgang, hörbare Referenzbeispiele, lokaler Fortschritt. Umkehrungen und Stimmführung werden nicht bewertet. Hör- und Browser-Abnahme offen.
+
+Praktische Harmonielehre: sechs Stufen, 24 Aufgaben zum Akkordaufbau und zu Umkehrungen; Auswahl einzelner Tasten, Prüfung der exakten Tonhöhen und separate Fortschritte. Keine Stimmführungsbewertung; Browser-Abnahme offen.

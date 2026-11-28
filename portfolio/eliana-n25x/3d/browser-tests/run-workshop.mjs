@@ -160,7 +160,12 @@ for(const midi of [64,67,71,74,77,69,72,65])await click('[data-piano-note="'+mid
 assert(!(await state()).piano.practice.staffPassed['staff-treble']);assert(await page.locator('#staff-result').isVisible());
 await click('[data-p=staff-start]');for(const midi of [64,67,71,74,77,69,72,65])await click('[data-piano-note="'+midi+'"]');
 assert((await state()).piano.practice.staffPassed['staff-treble']);assert.deepEqual((await state()).piano.score,originalPiano);await click('[data-p=staff-exit]');
-check('Single-note treble staff reading checks actual piano key input, mistakes and saved completion');}await page.locator('#piano-title').fill('My complete composition');await click('[data-p=record]');
+check('Single-note treble staff reading checks actual piano key input, mistakes and saved completion');
+await page.locator('#harmony-lesson').selectOption('harmony-c');await click('[data-p=harmony-start]');await click('[data-piano-note="60"]');await click('[data-p=harmony-check]');assert.equal(await page.locator('#harmony-count').innerText(),'1 / 4');await click('[data-p=harmony-clear]');
+for(const notes of [[60,64,67],[65,69,72],[67,71,74],[60,64,67]]){for(const midi of notes)await click('[data-piano-note="'+midi+'"]');await click('[data-p=harmony-check]');}
+assert(!(await state()).piano.practice.harmonyPassed['harmony-c']);await click('[data-p=harmony-start]');
+for(const notes of [[60,64,67],[65,69,72],[67,71,74],[60,64,67]]){for(const midi of notes)await click('[data-piano-note="'+midi+'"]');await click('[data-p=harmony-check]');}
+assert((await state()).piano.practice.harmonyPassed['harmony-c']);assert.deepEqual((await state()).piano.score,originalPiano);await click('[data-p=harmony-exit]');check('Harmony progression validates chord construction, rejects incomplete chords and persists error-free completion');}await page.locator('#piano-title').fill('My complete composition');await click('[data-p=record]');
  if(scope==='touch'){
   await page.locator('#piano-keyboard').scrollIntoViewIfNeeded();const points=[];for(const [id,midi]of [[1,60],[2,64]]){const box=await page.locator('[data-piano-note="'+midi+'"]').boundingBox();assert(box);points.push({id,x:box.x+box.width/2,y:box.y+box.height-25});}
   const cdp=await context.newCDPSession(page);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:points});await page.waitForFunction(()=>document.querySelectorAll('.piano-key.pressed').length===2);await page.waitForTimeout(650);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await waitText('#qa','pianoHeld 0');await cdp.detach();
