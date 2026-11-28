@@ -120,3 +120,6 @@ Creator authorized continued development through remaining stages without per-mo
 
 ### 28 November — actual full-stack foundations
 Assistant implemented a separate local Python HTTP / persistent SQLite application with HTML/CSS/JS, parameterized queries and local-only security controls, under the creator's authorization to continue remaining stages. No hosting, credentials, real user data, or billing. New integration CI pending.
+
+### 28 November — controlled agent tools
+Assistant added three bounded agent workflows with editable JSON, dry run, human approval, scope validation and optional browser-model proposal. No external actions; real-model test pending. Creator authorized continued professional curriculum development.

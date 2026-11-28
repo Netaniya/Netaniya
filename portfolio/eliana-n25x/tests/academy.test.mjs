@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython,WEB_LESSONS,compileWebLab,gradeWebLab} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython,WEB_LESSONS,compileWebLab,gradeWebLab,AGENT_GOALS,agentPlan,parseAgentPlan,createAgentLab,proposeAgentPlan} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -233,4 +233,22 @@ test('Web Studio checks six exercises and reconstructs safe static previews',()=
  for(const html of ['<script>alert(1)</script>','<img src="https://example.com">','<p onclick="x()">X</p>','<iframe></iframe>','<a href="https://example.com">X</a>','<meta http-equiv="refresh">','<div><p></div>','<svg></svg>','<p style="color:red">X</p>'])assert(!compileWebLab(html,'').ok,html);
  for(const css of ['@import "https://example.com";','p { background-color: url(https://example.com); }','p { color: red; } </style>','p { position: fixed; }','p { color: var(--x); }'])assert(!compileWebLab('<p>Hi</p>',css).ok,css);
  assert(compileWebLab('<p>5 & 7</p>','p { color: #2455a0; }').document.includes('5 &amp; 7'));
+});
+
+test('Agent Lab enforces goal scope, dry-run approval, atomic effects and stale plan rejection',()=>{
+ for(const goal of AGENT_GOALS){const lab=createAgentLab(),before=lab.snapshot(),text=JSON.stringify(agentPlan(goal.id,before)),r=lab.preview(text,goal.id);assert(r.ok);assert.deepEqual(lab.snapshot(),before);assert(!lab.apply(text+' ',goal.id));assert(lab.apply(text,goal.id));assert(!lab.apply(text,goal.id));assert.deepEqual(lab.snapshot(),r.after);}
+ const lab=createAgentLab(),before=lab.snapshot(),p=JSON.stringify([{tool:'complete',id:1},{tool:'complete',id:999},{tool:'stats'}]);assert(!lab.preview(p,'finish').ok);assert.deepEqual(lab.snapshot(),before);assert(!lab.apply(p,'finish'));
+ assert(!lab.preview(JSON.stringify([{tool:'create',title:'x'},{tool:'stats'}]),'audit').ok);
+ assert(!lab.preview(JSON.stringify([{tool:'complete',id:1},{tool:'stats'}]),'finish').ok);
+ for(const text of ['{}','[]','[{"tool":"delete","id":1}]','[{"tool":"stats","url":"https://example.com"}]','[{"tool":"create","title":""}]','[{"tool":"complete","id":-1}]'])assert.equal(parseAgentPlan(text),null);
+ const good=JSON.stringify(agentPlan('finish',before));assert(lab.preview(good,'finish').ok);lab.invalidate();assert(!lab.apply(good,'finish'));assert.deepEqual(lab.snapshot(),before);
+});
+test('Agent model adapter is opt-in and validates output without execution',async()=>{
+ let created=0,destroyed=0;
+ const model={availability:async()=> 'available',create:async()=>{created++;return {prompt:async()=> '[{"tool":"list"},{"tool":"stats"}]',destroy:()=>destroyed++};}};
+ const lab=createAgentLab(),before=lab.snapshot();
+ assert.equal((await proposeAgentPlan(null,'audit',before)).status,'unavailable');
+ assert.equal((await proposeAgentPlan({...model,availability:async()=> 'downloadable'},'audit',before)).status,'unavailable');assert.equal(created,0);
+ const r=await proposeAgentPlan(model,'audit',before);assert.equal(r.status,'ok');assert.equal(created,1);assert.equal(destroyed,1);assert.deepEqual(lab.snapshot(),before);assert(!lab.apply(r.text,'audit'));
+ const bad={...model,create:async()=>({prompt:async()=> '[{"tool":"delete","id":1}]',destroy(){}})};assert.equal((await proposeAgentPlan(bad,'audit',before)).status,'invalid');
 });
