@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython,WEB_LESSONS,compileWebLab,gradeWebLab,AGENT_GOALS,agentPlan,parseAgentPlan,createAgentLab,proposeAgentPlan} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython,WEB_LESSONS,compileWebLab,gradeWebLab,AGENT_GOALS,agentPlan,parseAgentPlan,createAgentLab,proposeAgentPlan,GIT_LESSONS,createGitLab} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -251,4 +251,13 @@ test('Agent model adapter is opt-in and validates output without execution',asyn
  assert.equal((await proposeAgentPlan({...model,availability:async()=> 'downloadable'},'audit',before)).status,'unavailable');assert.equal(created,0);
  const r=await proposeAgentPlan(model,'audit',before);assert.equal(r.status,'ok');assert.equal(created,1);assert.equal(destroyed,1);assert.deepEqual(lab.snapshot(),before);assert(!lab.apply(r.text,'audit'));
  const bad={...model,create:async()=>({prompt:async()=> '[{"tool":"delete","id":1}]',destroy(){}})};assert.equal((await proposeAgentPlan(bad,'audit',before)).status,'invalid');
+});
+
+test('Git guided model separates working file, index, commits and branches',()=>{
+ const l=createGitLab(),initial=l.snapshot();assert(!l.run('git commit -m "Update README"').ok);
+ assert(l.run('edit','first').ok);assert.equal(l.snapshot().unstagedChange,true);assert.equal(l.snapshot().stagedChange,false);
+ assert(l.run('git add README.md').ok);assert.equal(l.snapshot().unstagedChange,false);assert.equal(l.snapshot().stagedChange,true);
+ for(const [i,m] of GIT_LESSONS.entries())if(i>=2)assert(l.run(m.command,m.command==='edit'?'second':'').ok,i);
+ const s=l.snapshot();assert.equal(s.step,10);assert.equal(s.branch,'main');assert.equal(s.head,'second');assert.equal(s.branches.main,s.branches.feature);assert.equal(s.commits.length,3);assert.equal(l.run('git log --oneline').log.length,3);assert(!l.run('git push').ok);
+ l.reset();assert.deepEqual(l.snapshot(),initial);
 });

@@ -58,3 +58,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: cd portfolio/eliana-n25x/fullstack-lab && python3 -m unittest -v test_server.py
+
+  git-local:
+    name: Git lab · real local repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 portfolio/eliana-n25x/git-lab/practice.py

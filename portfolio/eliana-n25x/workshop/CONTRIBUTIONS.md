@@ -123,3 +123,6 @@ Assistant implemented a separate local Python HTTP / persistent SQLite applicati
 
 ### 28 November — controlled agent tools
 Assistant added three bounded agent workflows with editable JSON, dry run, human approval, scope validation and optional browser-model proposal. No external actions; real-model test pending. Creator authorized continued professional curriculum development.
+
+### 28 November — version control practice
+Assistant implemented a guided one-file Git model and separate real-Git local exercise with isolated temporary repository. No remote operations. Creator directed professional curriculum progression; no changes to public release or project permissions.

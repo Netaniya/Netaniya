@@ -415,3 +415,5 @@ body:not([data-view=home]):not([data-view=assemble]) .stage-tools{display:none}
 #web-lab textarea{min-height:130px;font-family:ui-monospace,monospace;white-space:pre;overflow-x:auto}#web-preview{width:100%;height:260px;border:1px solid #37536e;border-radius:10px;background:#fff}#web-lab [data-web-result]{margin-top:12px}
 
 #agent-lab textarea{min-height:160px;white-space:pre;overflow-x:auto}#agent-lab [data-agent-result]{margin-top:12px}#agent-lab button:disabled{opacity:.55}
+
+#git-lab textarea{min-height:110px}#git-lab pre{max-height:260px;overflow:auto}#git-lab [data-git-result]{margin-top:12px}

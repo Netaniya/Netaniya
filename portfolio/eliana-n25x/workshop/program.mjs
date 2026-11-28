@@ -422,3 +422,50 @@ export async function proposeAgentPlan(model,goal,rows,signal){
  }catch{return {status:signal?.aborted?'cancelled':'error'};}
  finally{try{session?.destroy();}catch{}}
 }
+
+
+// Visual Git training, explicitly a model, not a real Git process.
+export const GIT_LESSONS=[
+ {title:['Arbeitsdatei ändern','Edit working file','Изменить рабочий файл','Змінити робочий файл'],command:'edit'},
+ {title:['Änderung vormerken','Stage a change','Добавить изменение в индекс','Додати зміну до індексу'],command:'git add README.md'},
+ {title:['Commit erstellen','Create a commit','Создать коммит','Створити коміт'],command:'git commit -m "Update README"'},
+ {title:['Feature-Branch erstellen','Create feature branch','Создать ветку feature','Створити гілку feature'],command:'git switch -c feature'},
+ {title:['Feature bearbeiten','Edit feature','Изменить файл в ветке','Змінити файл у гілці'],command:'edit'},
+ {title:['Feature vormerken','Stage feature','Индексировать изменение','Індексувати зміну'],command:'git add README.md'},
+ {title:['Feature committen','Commit feature','Закоммитить изменение','Закомітити зміну'],command:'git commit -m "Update README"'},
+ {title:['Zu main wechseln','Switch to main','Перейти на main','Перейти на main'],command:'git switch main'},
+ {title:['Feature integrieren','Merge feature','Объединить ветки','Об’єднати гілки'],command:'git merge feature'},
+ {title:['Verlauf prüfen','Inspect history','Проверить историю','Перевірити історію'],command:'git log --oneline'}
+];
+export function createGitLab(){
+ const initial='N25X project\n',main='main';let branch,branches,commits,working,staged,next,step;
+ function reset(){branch=main;branches=new Map([[main,1]]);commits=[{id:1,parent:null,message:'Initial commit',content:initial}];working=staged=initial;next=2;step=0;}
+ reset();
+ const head=()=>commits.find(c=>c.id===branches.get(branch)),dirty=()=>working!==head().content||staged!==head().content;
+ function snapshot(){return {branch,branches:Object.fromEntries(branches),commits:commits.map(c=>({...c})),working,staged,head:head().content,step,stagedChange:staged!==head().content,unstagedChange:working!==staged};}
+ function run(command,text=''){
+  if(typeof command!=='string'||command.length>100)return {ok:false,error:'unsupported'};
+  if(command==='git status')return {ok:true,branch,staged:staged!==head().content,unstaged:working!==staged};
+  if(command==='git log --oneline'){const log=[];let c=head();while(c){log.push({id:c.id,message:c.message});c=commits.find(x=>x.id===c.parent);}if(GIT_LESSONS[step]?.command===command)step++;return {ok:true,log};}
+  if(command!==GIT_LESSONS[step]?.command)return {ok:false,error:'lesson_order'};
+  if(command==='edit'){
+   if(typeof text!=='string'||text.length>1000||text===working||!text.trim())return {ok:false,error:'unchanged'};
+   working=text;
+  }else if(command==='git add README.md'){if(working===staged)return {ok:false,error:'unchanged'};staged=working;}
+  else if(command==='git commit -m "Update README"'){
+   if(staged===head().content)return {ok:false,error:'nothing_staged'};
+   const c={id:next++,parent:head().id,message:'Update README',content:staged};commits.push(c);branches.set(branch,c.id);
+  }else if(command==='git switch -c feature'){
+   if(dirty()||branches.has('feature'))return {ok:false,error:'dirty_or_exists'};
+   branches.set('feature',head().id);branch='feature';
+  }else if(command==='git switch main'){if(dirty())return {ok:false,error:'dirty'};branch=main;working=staged=head().content;}
+  else if(command==='git merge feature'){
+   if(dirty()||!branches.has('feature'))return {ok:false,error:'dirty'};
+   let ancestor=commits.find(c=>c.id===branches.get('feature'));while(ancestor&&ancestor.id!==head().id)ancestor=commits.find(c=>c.id===ancestor.parent);
+   if(!ancestor)return {ok:false,error:'not_fast_forward'};
+   branches.set(main,branches.get('feature'));working=staged=head().content;
+  }else return {ok:false,error:'unsupported'};
+  step++;return {ok:true,step};
+ }
+ return {snapshot,run,reset};
+}
