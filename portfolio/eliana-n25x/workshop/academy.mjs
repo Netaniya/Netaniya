@@ -25,7 +25,7 @@ export function createAcademy(api){
  let pyLesson=progress().labs.selected.python,pyResult=null;
  let sqlLesson=progress().labs.selected.sql,sqlText=progress().labs.sql[sqlLesson]?.query??SQL_LESSONS[sqlLesson].sql,sqlResult=null,sqlMode='sample';
  const labs=()=>progress().labs;
- function setLabDraft(kind,key,value,passed=false){labs()[kind][key]={...value,passed};save();}
+ function setLabDraft(kind,key,value,passed=false){labs()[kind][key]={...value,passed};save();const p=labSummary(progress())[kind],el=document.querySelector('[data-lab-progress="'+kind+'"]');if(el)el.textContent=tr('labVerified',{n:p.done,total:p.total});}
  function selectLab(kind,index){labs().selected[kind]=index;save();}
  function labProgress(kind){const p=labSummary(progress())[kind];return '<p class="help" data-lab-progress="'+kind+'">'+esc(tr('labVerified',{n:p.done,total:p.total}))+'</p>';}
  const apiLab=createApiLab();let apiMethod='GET',apiPath='/projects',apiBody='{ "title": "My project" }',apiResult=null;
