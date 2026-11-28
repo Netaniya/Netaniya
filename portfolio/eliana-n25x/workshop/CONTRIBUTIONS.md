@@ -210,3 +210,6 @@ Assistant created a deliberately incomplete learner module, a separate reference
 
 ### 28 November — creator-led learning and local full-stack integration
 Natalie Ragulina (Netaniya) reiterated that she actively tests, reviews, reads the implementation and learns throughout development, in addition to directing the product and acceptance criteria. This records her stated participation, not a claim that every test has been independently performed. AI-assisted implementation connected the learner's Python module to the loopback HTTP service by explicit local opt-in, and added real HTTP integration tests. No public execution of learner Python.
+
+### 28 November — student portfolio export
+Assistant added verified project-only source/evidence export and static scenario HTML snapshot. Explicitly distinguished the snapshot from a live application; no profile data included. Browser download checks added.

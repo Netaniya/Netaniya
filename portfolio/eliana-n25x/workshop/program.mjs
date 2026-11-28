@@ -963,3 +963,14 @@ export function parseCapstone(raw){const d=freshCapstone();if(raw&&typeof raw===
  if(!Array.isArray(args)||args.length!==2||!args.every(n=>Number.isSafeInteger(n)&&n>=0&&n<=1000)||args[0]>args[1]||typeof expected!=='number'||!Number.isFinite(expected)||expected<0||expected>100)return {status:'invalid'};
  const r=runProgram(source,'progress',args);return {status:r.ok?(typeof r.value==='number'&&Math.abs(r.value-expected)<=1e-8?'pass':'fail'):'error',args,expected,result:r};
  }
+
+ // A portable source/evidence file and an explicitly static HTML snapshot.
+ // Re-grade at export time: never trust cached pass flags or imported evidence.
+ export function exportCapstone(d,scenario='base'){
+  if(!CAPSTONE_SCENARIOS.includes(scenario)||!d||typeof d!=='object')return null;
+  if(Object.entries(CAPSTONE_FIELDS).some(([k,max])=>typeof d[k]!=='string'||d[k].length>max))return null;
+  const r=gradeCapstone(d);if(!r.passed)return null;
+  const files={ 'api-plan.json':d.plan,'query.sql':d.query,'progress.js':d.source,'template.html':d.html,'style.css':d.css };
+  const evidence={checks:r.checks.map(v=>({...v})),scenarios:Object.fromEntries(CAPSTONE_SCENARIOS.map(k=>[k,{...r.previews[k].values}]))};
+  return {source:JSON.stringify({schema:'n25x.capstone.v1',kind:'project-dashboard',scope:'local educational interpreter; not production verification',files,evidence},null,2),html:r.previews[scenario].document};
+ }
