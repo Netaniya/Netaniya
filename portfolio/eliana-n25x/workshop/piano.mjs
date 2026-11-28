@@ -1,9 +1,10 @@
-import {freshPiano,validateScore,noteName,quantizeBeat,makeMidi,renderScoreWav,MAX_SCORE_NOTES,INSTRUMENTS,PIANO_LESSONS,pianoLesson,pianoPracticeStep,RHYTHM_LESSONS,gradeRhythm,EAR_LESSONS,INTERVAL_NAMES,makeEarRound,gradeEarRound,STAFF_LESSONS,staffNote,staffPracticeStep} from './piano-score.mjs';
+import {freshPiano,validateScore,noteName,quantizeBeat,makeMidi,renderScoreWav,MAX_SCORE_NOTES,INSTRUMENTS,PIANO_LESSONS,pianoLesson,pianoPracticeStep,RHYTHM_LESSONS,gradeRhythm,EAR_LESSONS,INTERVAL_NAMES,makeEarRound,gradeEarRound,STAFF_LESSONS,staffNote,staffPracticeStep,CHORD_TYPES,CHORD_LESSONS,chordNotes,makeChordRound} from './piano-score.mjs';
 import {createPianoAudio} from './piano-audio.mjs';
 export function createPiano(api){
  const {tr,esc,save,navigate,toast,download}=api,$=id=>document.getElementById(id),state=()=>api.getState(),p=()=>state().piano,score=()=>p().score;
  const audio=createPianoAudio(state),held=new Map(),keyboard={KeyA:0,KeyW:1,KeyS:2,KeyE:3,KeyD:4,KeyF:5,KeyT:6,KeyG:7,KeyY:8,KeyH:9,KeyU:10,KeyJ:11,KeyK:12,KeyO:13,KeyL:14};
  let recording=false,playing=false,origin=0,timer=null,selected=-1,page=0,undo=[],busy=false,lastBeat=-1,metronome=false,practice=null,practiceId=PIANO_LESSONS[0].id,rhythmId=RHYTHM_LESSONS[0].id,rhythm=null,earId=EAR_LESSONS[0].id,ear=null,staffId=STAFF_LESSONS[0].id,staff=null;
+ const chordMode=()=>CHORD_LESSONS.some(v=>v.id===earId),earLessons=()=>chordMode()?CHORD_LESSONS:EAR_LESSONS,earProgress=()=>chordMode()?p().practice.chordPassed:p().practice.earPassed,earName=(v,lang)=>chordMode()?CHORD_TYPES[v].title[lang]:INTERVAL_NAMES[v][lang];
  const earActive=()=>Boolean(ear&&!ear.result),canHear=()=>state().sound&&state().volume>0;
  const active=()=>document.body.dataset.view==='piano'&&$('dialog')?.hidden!==false;
  const b=(action,label,cls='secondary',extra='')=>'<button type="button" data-p="'+action+'" class="'+cls+'" '+extra+'>'+esc(label)+'</button>';
@@ -18,17 +19,17 @@ export function createPiano(api){
  function practiceNote(midi){if(!practice||practice.complete)return;const lesson=pianoLesson(practiceId),result=pianoPracticeStep(lesson,practice.index,midi);practice.index=result.index;practice.complete=result.complete;practice.feedback=tr(result.complete?'pianoPracticePassed':result.correct?'correct':'wrong');if(result.complete){p().practice.passed[lesson.id]=true;save();const total=PIANO_LESSONS.filter(v=>p().practice.passed[v.id]).length;if($('piano-practice-progress'))$('piano-practice-progress').value=total;if($('piano-practice-total'))$('piano-practice-total').textContent=total+' / '+PIANO_LESSONS.length;const opt=$('piano-lesson')?.selectedOptions[0];if(opt&&!opt.textContent.startsWith('✓ '))opt.textContent='✓ '+opt.textContent;}const el=$('piano-practice-feedback'),count=$('piano-practice-count');if(el)el.textContent=practice.feedback;if(count)count.textContent=practice.index+' / '+lesson.notes.length;document.querySelectorAll('#piano-practice .practice-note').forEach((v,i)=>{v.classList.toggle('done',i<practice.index);v.classList.toggle('current',i===practice.index&&!practice.complete);});}
  function rhythmHTML(){const lesson=RHYTHM_LESSONS.find(v=>v.id===rhythmId),total=RHYTHM_LESSONS.filter(v=>p().practice.rhythmPassed[v.id]).length;return '<section class="panel" id="rhythm-course"><h3>'+esc(tr('rhythmCourse'))+'</h3><p class="help">'+esc(tr('rhythmScope'))+'</p><p>'+total+' / '+RHYTHM_LESSONS.length+'</p><label for="rhythm-lesson">'+esc(tr('chooseLesson'))+'</label><select id="rhythm-lesson">'+RHYTHM_LESSONS.map(v=>'<option value="'+v.id+'" '+(v.id===rhythmId?'selected':'')+'>'+(p().practice.rhythmPassed[v.id]?'✓ ':'')+v.stage+' · '+esc(v.title[state().lang])+'</option>').join('')+'</select><p>'+lesson.bpm+' BPM · '+esc(tr('rhythmTolerance',{n:Math.round(Math.min(160,60000/lesson.bpm*.2))}))+'</p><p class="help">'+esc(tr('rhythmGaps'))+': '+lesson.beats.slice(1).map((n,i)=>n-lesson.beats[i]).join(' · ')+'</p><div class="buttons">'+b('rhythm-example',tr('pianoPracticeListen'),'secondary',state().sound&&!recording&&!playing&&!earActive()&&(!rhythm||rhythm.result)?'':'disabled')+b('rhythm-start',tr('pianoPracticeStart'),'primary',recording||playing?'disabled':'')+b('rhythm-tap',tr('rhythmTap'),'primary',rhythm&&!rhythm.result?'':'disabled')+'</div><p role="status" id="rhythm-feedback">'+esc(rhythm?.result?tr(rhythm.result.passed?'rhythmPassed':'rhythmRetry',{n:rhythm.result.correct,total:lesson.beats.length}):rhythm?tr('rhythmCount',{n:rhythm.taps.length,total:lesson.beats.length}):'')+'</p>'+(rhythm?.result?'<p class="help">'+esc(tr('rhythmErrors'))+': '+rhythm.result.errors.slice(1).map(v=>(v>0?'+':'')+v).join(' · ')+' ms</p>':'')+'</section>';}
  function earHTML(){
- const total=EAR_LESSONS.filter(v=>p().practice.earPassed[v.id]).length,q=ear?.round[ear.index],lang=state().lang;
+ const lessons=earLessons(),total=lessons.filter(v=>earProgress()[v.id]).length,q=ear?.round[ear.index],lang=state().lang;
  const blocked=recording||playing||Boolean(rhythm&&!rhythm.result),answered=ear?.answer!==null;
  let body='';
- if(!ear)body='<p class="help">'+esc(tr('earStartHint'))+'</p>';
+ if(!ear){body='<p class="help">'+esc(tr('earStartHint'))+'</p>';if(chordMode()){const lesson=CHORD_LESSONS.find(v=>v.id===earId);body+='<p class="help">'+esc(tr('chordReference'))+'</p><div class="word-options">'+lesson.types.map(v=>b('chord-example',earName(v,lang)+' · '+chordNotes(v,60).map(m=>noteName(m)).join(' – '),'secondary','data-interval="'+v+'" '+(canHear()&&!blocked?'':'disabled'))).join('')+'</div>';}}
  else if(ear.result)body='<p id="ear-result" role="status">'+esc(tr(ear.result.passed?'earPassed':'earRetry',{n:ear.result.correct,total:ear.result.total}))+'</p>';
  else if(q){
-  body='<p id="ear-count">'+(ear.index+1)+' / '+ear.round.length+'</p><div class="buttons">'+b('ear-play',tr('earListen'),'secondary',canHear()&&!answered?'':'disabled')+'</div><div class="word-options">'+q.options.map(v=>b('ear-answer',INTERVAL_NAMES[v][lang],'choice','data-interval="'+v+'" '+(ear.heard&&!answered&&canHear()?'':'disabled'))).join('')+'</div>';
-  body+='<p id="ear-feedback" role="status">'+esc(answered?tr(ear.answer===q.interval?'correct':'wrong')+' · '+INTERVAL_NAMES[q.interval][lang]:ear.error?tr('earUnavailable'):tr(ear.heard?'earChoose':'earListenFirst'))+'</p>';
+  body='<p id="ear-count">'+(ear.index+1)+' / '+ear.round.length+'</p><div class="buttons">'+b('ear-play',tr('earListen'),'secondary',canHear()&&!answered?'':'disabled')+'</div><div class="word-options">'+q.options.map(v=>b('ear-answer',earName(v,lang),'choice','data-interval="'+v+'" '+(ear.heard&&!answered&&canHear()?'':'disabled'))).join('')+'</div>';
+  body+='<p id="ear-feedback" role="status">'+esc(answered?tr(ear.answer===q.interval?'correct':'wrong')+' · '+earName(q.interval,lang):ear.error?tr('earUnavailable'):tr(ear.heard?(chordMode()?'chordChoose':'earChoose'):(chordMode()?'chordListenFirst':'earListenFirst')))+'</p>';
   if(answered)body+=b('ear-next',tr('next'),'primary');
  }
- return '<section class="panel" id="ear-course"><h3>'+esc(tr('earCourse'))+'</h3><p class="help">'+esc(tr('earScope'))+'</p><progress max="'+EAR_LESSONS.length+'" value="'+total+'" aria-label="'+esc(tr('earCourse'))+'"></progress><p>'+total+' / '+EAR_LESSONS.length+'</p><label for="ear-lesson">'+esc(tr('chooseLesson'))+'</label><select id="ear-lesson">'+EAR_LESSONS.map(v=>'<option value="'+v.id+'" '+(v.id===earId?'selected':'')+'>'+(p().practice.earPassed[v.id]?'✓ ':'')+v.stage+' · '+esc(v.title[lang])+'</option>').join('')+'</select><div class="buttons">'+b('ear-start',tr('pianoPracticeStart'),'primary',!blocked&&canHear()?'':'disabled')+(ear?b('ear-exit',tr('pianoPracticeExit'),'outline'):'')+'</div>'+(!canHear()?'<p class="help">'+esc(tr('earUnavailable'))+'</p>':'')+body+'</section>';
+ return '<section class="panel" id="ear-course"><h3>'+esc(tr('earCourse'))+'</h3><p class="help">'+esc(tr(chordMode()?'chordScope':'earScope'))+'</p><progress max="'+lessons.length+'" value="'+total+'" aria-label="'+esc(tr(chordMode()?'chordCourse':'earCourse'))+'"></progress><p>'+total+' / '+lessons.length+'</p><label for="ear-lesson">'+esc(tr('chooseLesson'))+'</label><select id="ear-lesson">'+[[EAR_LESSONS,'earCourse',p().practice.earPassed],[CHORD_LESSONS,'chordCourse',p().practice.chordPassed]].map(([list,key,progress])=>'<optgroup label="'+esc(tr(key))+'">'+list.map(v=>'<option value="'+v.id+'" '+(v.id===earId?'selected':'')+'>'+(progress[v.id]?'✓ ':'')+v.stage+' · '+esc(v.title[lang])+'</option>').join('')+'</optgroup>').join('')+'</select><div class="buttons">'+b('ear-start',tr('pianoPracticeStart'),'primary',!blocked&&canHear()?'':'disabled')+(ear?b('ear-exit',tr('pianoPracticeExit'),'outline'):'')+'</div>'+(!canHear()?'<p class="help">'+esc(tr('earUnavailable'))+'</p>':'')+body+'</section>';
  }
  function staffDiagram(q,clef){
  const y=step=>112-step*8,lines=Array.from({length:5},(_,i)=>'<line x1="16" x2="252" y1="'+y(i*2)+'" y2="'+y(i*2)+'"/>').join('');
@@ -72,14 +73,19 @@ export function createPiano(api){
   else if(a==='staff-exit'){stop(false);api.render();}
   else if(a==='ear-start'){
    if(recording||playing||(rhythm&&!rhythm.result)||!canHear())return true;
-   practice=null;stop(false);ear={round:makeEarRound(earId,Math.floor(Math.random()*4294967296)),index:0,answers:[],answer:null,heard:false,error:false,result:null};api.render();
+   practice=null;stop(false);ear={round:(chordMode()?makeChordRound:makeEarRound)(earId,Math.floor(Math.random()*4294967296)),index:0,answers:[],answer:null,heard:false,error:false,result:null};api.render();
   }
   else if(a==='ear-exit'){stop(false);api.render();}
+  else if(a==='chord-example'){
+   if(ear||!chordMode()||recording||playing||(rhythm&&!rhythm.result)||!canHear()||!/^\d+$/.test(button.dataset.interval||''))return true;
+   const type=Number(button.dataset.interval),lesson=CHORD_LESSONS.find(v=>v.id===earId);if(!lesson.types.includes(type))return true;
+   audio.stop();if(audio.start())for(const midi of chordNotes(type,60))audio.note(midi,'piano',.38,0,.9);
+  }
   else if(a==='ear-play'){
    if(!earActive()||ear.answer!==null||!canHear()||recording||playing)return true;
    audio.stop();const q=ear.round[ear.index];
    ear.heard=false;ear.error=false;
-   try{if(audio.start()){audio.note(q.root,'piano',.65,0,.32);audio.note(q.root+q.interval,'piano',.65,.65,.4);ear.heard=true;}else ear.error=true;}catch{audio.stop();ear.error=true;}
+   try{if(audio.start()){if(chordMode()){for(const midi of chordNotes(q.interval,q.root))audio.note(midi,'piano',.38,0,.9);}else{audio.note(q.root,'piano',.65,0,.32);audio.note(q.root+q.interval,'piano',.65,.65,.4);}ear.heard=true;}else ear.error=true;}catch{audio.stop();ear.error=true;}
    api.render();
   }
   else if(a==='ear-answer'){
@@ -90,7 +96,7 @@ export function createPiano(api){
   else if(a==='ear-next'){
    if(!earActive()||ear.answer===null)return true;
    ear.index++;ear.answer=null;ear.heard=false;ear.error=false;
-   if(ear.index===ear.round.length){ear.result=gradeEarRound(ear.round,ear.answers);if(ear.result?.passed){p().practice.earPassed[earId]=true;save();}}
+   if(ear.index===ear.round.length){ear.result=gradeEarRound(ear.round,ear.answers);if(ear.result?.passed){earProgress()[earId]=true;save();}}
    api.render();
   }
   else if(a==='rhythm-example'){if(recording||playing||earActive()||(rhythm&&!rhythm.result)||!state().sound)return true;audio.stop();const l=RHYTHM_LESSONS.find(v=>v.id===rhythmId);l.beats.forEach(t=>audio.note(76,'bell',.5,t*60/l.bpm,.09));}
@@ -120,7 +126,7 @@ export function createPiano(api){
  function input(e){if(e.id==='piano-title'){p().name=e.value.slice(0,24);save();return true;}return false;}
  async function change(e){
   if(e.id==='staff-lesson'){if(STAFF_LESSONS.some(v=>v.id===e.value)){stop(false);staffId=e.value;api.render();}return true;}
-  if(e.id==='ear-lesson'){if(EAR_LESSONS.some(v=>v.id===e.value)){stop(false);earId=e.value;api.render();}return true;}
+  if(e.id==='ear-lesson'){if([...EAR_LESSONS,...CHORD_LESSONS].some(v=>v.id===e.value)){stop(false);earId=e.value;api.render();}return true;}
   if(e.id==='rhythm-lesson'){if(RHYTHM_LESSONS.some(v=>v.id===e.value)){stop(false);rhythmId=e.value;api.render();}return true;}
   if(e.id==='piano-lesson'){if(pianoLesson(e.value)){practiceId=e.value;practice=null;stop(false);api.render();}return true;}
   if(e.id==='piano-score-file'){try{const file=e.files?.[0];if(!file||file.size>500000)throw Error();const raw=JSON.parse(await file.text()),valid=validateScore(raw.score);if(raw.schema!=='n25x.score.v1'||!valid)throw Error();snapshot();p().score=valid;p().name=String(raw.name||'').slice(0,24);p().track=0;p().editingID=0;selected=-1;refresh();}catch{toast(tr('projectImportError'));}return true;}

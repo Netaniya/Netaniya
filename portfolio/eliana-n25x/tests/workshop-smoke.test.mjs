@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {COURSE_LANGUAGES,LANGUAGE_ITEMS,LANGUAGE_UNITS,freshLanguageCourse,phraseMatches,phraseTokens,recordLanguage,scheduleLanguage,dueLanguageReviews,nextLanguageExercise,grammarRoute,gradeGrammar,languageMistakes} from '../workshop/language-course.mjs';
-import {PIANO_LESSONS,RHYTHM_LESSONS,pianoPracticeStep,gradeRhythm,parsePiano,freshPiano,makeMidi,renderScoreWav} from '../workshop/piano-score.mjs';
+import {PIANO_LESSONS,RHYTHM_LESSONS,pianoPracticeStep,gradeRhythm,parsePiano,freshPiano,makeMidi,renderScoreWav,CHORD_TYPES,CHORD_LESSONS,chordNotes,makeChordRound,gradeEarRound} from '../workshop/piano-score.mjs';
 
 test('Every language: word-order roundtrip, guided progression, scheduled review and grammar',()=>{
  let skills=0,questions=0,phrases=0;
@@ -43,4 +43,18 @@ test('Piano: note sequences, original MIDI/WAV, timing and saved progress',()=>{
  }
  assert.deepEqual(parsePiano(profile),profile);assert(PIANO_LESSONS.length>=24);assert(RHYTHM_LESSONS.length>=8);
  console.log(JSON.stringify({steps,exports,rhythmChecks}));
+});
+
+test('Chord qualities: independent semitone formulas, transposition, valid distractors and progress',()=>{
+ const expected=[[0,4,7],[0,3,7],[0,3,6],[0,4,8],[0,2,7],[0,5,7],[0,4,7,10],[0,4,7,11],[0,3,7,10]];
+ assert.equal(CHORD_TYPES.length,9);assert.equal(CHORD_LESSONS.length,4);
+ for(let i=0;i<expected.length;i++)for(const root of [48,60,71])assert.deepEqual(chordNotes(i,root),expected[i].map(n=>root+n));
+ assert.equal(chordNotes(-1,60),null);assert.equal(chordNotes(6,108),null);
+ const p=freshPiano();for(const l of CHORD_LESSONS){
+ for(const seed of [0,1,42,4294967295]){const round=makeChordRound(l.id,seed);
+ assert.deepEqual(round,makeChordRound(l.id,seed));assert.deepEqual([...new Set(round.map(q=>q.interval))].sort((a,b)=>a-b),l.types);
+ for(const q of round){assert(q.options.includes(q.interval));assert.equal(new Set(q.options).size,q.options.length);assert(q.options.every(v=>l.types.includes(v)));assert(chordNotes(q.interval,q.root).every(m=>m>=21&&m<=108));}
+ const answers=round.map(q=>q.interval);assert(gradeEarRound(round,answers).passed);answers[0]=round[0].options.find(v=>v!==answers[0]);assert(!gradeEarRound(round,answers).passed);}
+ p.practice.chordPassed[l.id]=true;
+ }assert.deepEqual(parsePiano(p),p);delete p.practice.chordPassed;assert.deepEqual(parsePiano(p).practice.chordPassed,{});p.practice.chordPassed={unknown:true,'chord-basic':'true'};assert.deepEqual(parsePiano(p).practice.chordPassed,{});
 });

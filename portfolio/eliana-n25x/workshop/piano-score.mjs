@@ -10,8 +10,8 @@ export function validateScore(raw){
  const events=tracks.flatMap(t=>t.notes.flatMap(n=>[{at:n.beat,delta:1},{at:n.beat+n.duration,delta:-1}])).sort((a,b)=>a.at-b.at||a.delta-b.delta);let voices=0;for(const event of events){voices+=event.delta;if(voices>32)return null;}
  return {tempo:raw.tempo,bars:raw.bars,tracks};
 }
-export function freshPiano(){return {score:freshScore(),name:'',track:0,octave:4,snap:.25,editingID:0,practice:{passed:{},rhythmPassed:{},earPassed:{},staffPassed:{}}};}
-export function parsePiano(raw){const p=freshPiano();if(!raw||typeof raw!=='object')return p;p.score=validateScore(raw.score)||freshScore();if(Number.isInteger(raw.track)&&raw.track>=0&&raw.track<p.score.tracks.length)p.track=raw.track;if(Number.isInteger(raw.octave)&&raw.octave>=0&&raw.octave<=7)p.octave=raw.octave;if([0,.25,.5,1].includes(raw.snap))p.snap=raw.snap;p.name=String(raw.name||'').replace(/[<>\x00-\x1f]/g,'').slice(0,24);if(Number.isSafeInteger(raw.editingID)&&raw.editingID>0)p.editingID=raw.editingID;for(const lesson of PIANO_LESSONS)if(raw.practice?.passed?.[lesson.id]===true)p.practice.passed[lesson.id]=true;for(const lesson of RHYTHM_LESSONS)if(raw.practice?.rhythmPassed?.[lesson.id]===true)p.practice.rhythmPassed[lesson.id]=true;for(const lesson of EAR_LESSONS)if(raw.practice?.earPassed?.[lesson.id]===true)p.practice.earPassed[lesson.id]=true;for(const lesson of STAFF_LESSONS)if(raw.practice?.staffPassed?.[lesson.id]===true)p.practice.staffPassed[lesson.id]=true;return p;}
+export function freshPiano(){return {score:freshScore(),name:'',track:0,octave:4,snap:.25,editingID:0,practice:{passed:{},rhythmPassed:{},earPassed:{},staffPassed:{},chordPassed:{}}};}
+export function parsePiano(raw){const p=freshPiano();if(!raw||typeof raw!=='object')return p;p.score=validateScore(raw.score)||freshScore();if(Number.isInteger(raw.track)&&raw.track>=0&&raw.track<p.score.tracks.length)p.track=raw.track;if(Number.isInteger(raw.octave)&&raw.octave>=0&&raw.octave<=7)p.octave=raw.octave;if([0,.25,.5,1].includes(raw.snap))p.snap=raw.snap;p.name=String(raw.name||'').replace(/[<>\x00-\x1f]/g,'').slice(0,24);if(Number.isSafeInteger(raw.editingID)&&raw.editingID>0)p.editingID=raw.editingID;for(const lesson of PIANO_LESSONS)if(raw.practice?.passed?.[lesson.id]===true)p.practice.passed[lesson.id]=true;for(const lesson of RHYTHM_LESSONS)if(raw.practice?.rhythmPassed?.[lesson.id]===true)p.practice.rhythmPassed[lesson.id]=true;for(const lesson of EAR_LESSONS)if(raw.practice?.earPassed?.[lesson.id]===true)p.practice.earPassed[lesson.id]=true;for(const lesson of STAFF_LESSONS)if(raw.practice?.staffPassed?.[lesson.id]===true)p.practice.staffPassed[lesson.id]=true;for(const lesson of CHORD_LESSONS)if(raw.practice?.chordPassed?.[lesson.id]===true)p.practice.chordPassed[lesson.id]=true;return p;}
 export function quantizeBeat(beat,snap){return snap?Math.round(beat/snap)*snap:Math.round(beat*10000)/10000;}
 export function makeMidi(score){
  const valid=validateScore(score);if(!valid)throw Error('invalid_score');
@@ -76,4 +76,21 @@ export function staffPracticeStep(lesson,index,midi){
  if(!lesson||!Number.isInteger(index)||index<0||index>=lesson.notes.length)return {index,correct:false,complete:false};
  const q=staffNote(lesson.notes[index],lesson.clef),correct=Boolean(q&&q.midi===midi),next=index+Number(correct);
  return {index:next,correct,complete:correct&&next===lesson.notes.length};
+}
+
+// Root-position equal-tempered chord recognition. No inversions or voice-leading assessment.
+export const CHORD_TYPES=[{"offsets":[0,4,7],"title":{"de":"Dur","en":"Major","ru":"Мажорное трезвучие","uk":"Мажорний тризвук"}},{"offsets":[0,3,7],"title":{"de":"Moll","en":"Minor","ru":"Минорное трезвучие","uk":"Мінорний тризвук"}},{"offsets":[0,3,6],"title":{"de":"Vermindert","en":"Diminished","ru":"Уменьшённое трезвучие","uk":"Зменшений тризвук"}},{"offsets":[0,4,8],"title":{"de":"Übermäßig","en":"Augmented","ru":"Увеличенное трезвучие","uk":"Збільшений тризвук"}},{"offsets":[0,2,7],"title":{"de":"Sus2","en":"Suspended second","ru":"Sus2 — с секундой","uk":"Sus2 — із секундою"}},{"offsets":[0,5,7],"title":{"de":"Sus4","en":"Suspended fourth","ru":"Sus4 — с квартой","uk":"Sus4 — із квартою"}},{"offsets":[0,4,7,10],"title":{"de":"Dominantseptakkord","en":"Dominant seventh","ru":"Доминантсептаккорд","uk":"Домінантсептакорд"}},{"offsets":[0,4,7,11],"title":{"de":"Großer Durseptakkord","en":"Major seventh","ru":"Большой мажорный септаккорд","uk":"Великий мажорний септакорд"}},{"offsets":[0,3,7,10],"title":{"de":"Kleiner Mollseptakkord","en":"Minor seventh","ru":"Малый минорный септаккорд","uk":"Малий мінорний септакорд"}}];
+export const CHORD_LESSONS=[{"id":"chord-basic","stage":1,"types":[0,1,2],"title":{"de":"Dur, Moll, vermindert","en":"Major, minor, diminished","ru":"Мажор, минор, уменьшённое","uk":"Мажор, мінор, зменшений"}},{"id":"chord-triads","stage":2,"types":[3,4,5],"title":{"de":"Übermäßig und Sus-Akkorde","en":"Augmented and suspended","ru":"Увеличенное и sus-аккорды","uk":"Збільшений та sus-акорди"}},{"id":"chord-sevenths","stage":3,"types":[6,7,8],"title":{"de":"Septakkorde","en":"Seventh chords","ru":"Септаккорды","uk":"Септакорди"}},{"id":"chord-mixed","stage":4,"types":[0,1,2,3,4,5,6,7,8],"title":{"de":"Alle Akkordtypen","en":"All chord types","ru":"Все типы аккордов","uk":"Усі типи акордів"}}];
+export function chordNotes(type,root){
+ const c=CHORD_TYPES[type];if(!Number.isInteger(type)||!c||!Number.isInteger(root)||root<21||root+c.offsets.at(-1)>108)return null;
+ return c.offsets.map(v=>root+v);
+}
+export function makeChordRound(id,seed){
+ const lesson=CHORD_LESSONS.find(v=>v.id===id);if(!lesson||!Number.isInteger(seed)||seed<0||seed>0xffffffff)return null;
+ let n=seed>>>0;const random=()=>{n=(Math.imul(n,1664525)+1013904223)>>>0;return n/4294967296;};
+ const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+ return shuffle(lesson.types.length<=4?[...lesson.types,...lesson.types]:lesson.types).map(interval=>{
+  const root=48+Math.floor(random()*24);
+  return {root,interval,options:shuffle([interval,...shuffle(lesson.types.filter(v=>v!==interval)).slice(0,3)])};
+ });
 }

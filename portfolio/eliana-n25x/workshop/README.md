@@ -27,3 +27,5 @@ Der Entwicklungszweig umfasst 16 Sprachthemen, je 152 Sätze in zehn Sprachen (1
 Musik-Erweiterung: fünf Stufen zur Erkennung aufsteigender melodischer Intervalle, 13 Halbtonabstände, 39 Fragen je vollständigem Durchgang, separat gespeicherter Fortschritt. Hör- und Browser-Abnahme stehen noch aus.
 
 Notenlesen: fünf Stufen, 40 einzelne Noten, Violin- und Bassschlüssel, Hilfslinien und Vorzeichen; lokale Fortschrittsspeicherung. Kein Partitureditor. Browser- und Schriftprüfung noch offen.
+
+Akkorderkennung: vier Stufen, neun Akkordtypen in Grundstellung, 27 Fragen je Durchgang, hörbare Referenzbeispiele, lokaler Fortschritt. Umkehrungen und Stimmführung werden nicht bewertet. Hör- und Browser-Abnahme offen.

@@ -72,3 +72,6 @@ The creator requested continuing testing and development. Assistant implemented 
 
 ### 28 November — staff reading
 At the creator's request to continue, the assistant implemented five stages of single-note staff reading, 40 exercises, treble/bass clefs, ledger lines and accidentals. AI-assisted instructional and technical implementation; physical/browser review remains pending.
+
+### 28 November — chord recognition
+The creator asked to continue. Assistant implemented four root-position chord-recognition stages, nine qualities, 27 questions per cycle, named reference examples and separate saved progress. AI-assisted technical and instructional contribution; no listening or browser acceptance claimed.

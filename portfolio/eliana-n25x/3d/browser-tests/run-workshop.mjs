@@ -150,6 +150,10 @@ await click('[data-p=ear-play]');assert.equal(await page.locator('[data-p=ear-an
 await click('[data-p=ear-answer]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);assert(await page.locator('[data-p=ear-next]').isEnabled());
 await click('[data-p=ear-next]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);await click('[data-p=ear-exit]');assert.deepEqual((await state()).piano.score,originalPiano);
 check('Ear training gates answers behind Web Audio scheduling and preserves score; hearing accuracy not tested');
+await page.locator('#ear-lesson').selectOption('chord-basic');assert.equal(await page.locator('[data-p=chord-example]').count(),3);await click('[data-p=chord-example]');
+await click('[data-p=ear-start]');assert.equal(await page.locator('[data-p=chord-example]').count(),0);assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);
+await click('[data-p=ear-play]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),3);await click('[data-p=ear-answer]');await click('[data-p=ear-next]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);
+await click('[data-p=ear-exit]');assert.deepEqual((await state()).piano.score,originalPiano);check('Chord reference and recognition flow preserves the composition; audibility not tested');
 await page.locator('#staff-lesson').selectOption('staff-treble');await click('[data-p=staff-start]');assert(await page.locator('.staff-diagram').isVisible());
 await click('[data-piano-note="65"]');assert.equal(await page.locator('#staff-count').innerText(),'1 / 8');
 for(const midi of [64,67,71,74,77,69,72,65])await click('[data-piano-note="'+midi+'"]');

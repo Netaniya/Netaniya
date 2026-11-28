@@ -51,3 +51,5 @@ The review branch now has 16 language topics, 152 shared meanings per language (
 Music candidate update: five ascending melodic interval-recognition stages covering 13 semitone distances, 39 questions per full five-stage cycle, independent saved completion and four UI localizations. Web Audio scheduling is not proof of audibility; real listening and browser review pending.
 
 Staff-reading candidate: five stages, 40 written single-note exercises, treble and bass clefs, ledger lines and accidentals, validated local progress and four interface languages. Not a score editor. Browser and font rendering acceptance pending.
+
+Chord candidate: four root-position chord recognition stages, nine qualities, 27 questions per cycle, playable reference examples and local progress. Inversions and voice-leading are not assessed. Browser/audio acceptance pending.
