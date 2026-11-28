@@ -98,7 +98,7 @@ export const MISSION_STAGES=[
  {title:['Algorithmische Muster','Algorithmic patterns','Алгоритмические шаблоны','Алгоритмічні шаблони'],start:24,end:28},
  {title:['Anwendungsprojekte','Applied projects','Прикладные проекты','Прикладні проєкти'],start:28,end:32},
  {title:['Fächerübergreifende Algorithmen','Cross-disciplinary algorithms','Межпредметные алгоритмы','Міжпредметні алгоритми'],start:32,end:36},
- {title:['KI-Qualität und Bewertung','AI quality and evaluation','Качество и оценка ИИ','Якість та оцінювання ШІ'],start:36,end:38}
+ {title:['KI-Qualität und Bewertung','AI quality and evaluation','Качество и оценка ИИ','Якість та оцінювання ШІ'],start:36,end:42}
 ];
 export function checkMission(mission,source,runner) {
  return mission.tests.map(([args,expected])=>({args,expected,...runner(source,mission.entry,args)}));

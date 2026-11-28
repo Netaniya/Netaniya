@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -29,7 +29,7 @@ test('Academy interpreter: loops, recursion, excessive nesting and host access f
  assert.equal(runProgram('x'.repeat(4001),'x',[]).error,'size');assert(!validScoreProgram(SCORE_PROGRAM.replace('+ points','- points')));assert(validScoreProgram(SCORE_PROGRAM));
 });
 test('Academy missions: initial bugs fail and learner repairs pass every normal and zero/false test case',()=>{
- assert.equal(MISSIONS.length,38);
+ assert.equal(MISSIONS.length,42);
  for(const m of MISSIONS){assert(checkMission(m,m.source,runProgram).some(r=>!r.ok||r.value!==r.expected),m.id);const corrected=m.source.replace(m.block.from,m.block.choices[1]);assert(checkMission(m,corrected,runProgram).every(r=>r.ok&&r.value===r.expected),m.id);assert.equal(runProgram(m.source,m.entry,m.sample).value,m.expectedPrediction);}
 });
 test('Academy content: ten language tracks, sixty cards and all original subject explanations have four UI languages',()=>{
@@ -183,4 +183,14 @@ test('AI Code Lab diagnoses every mission without modifying drafts; model is opt
  assert.deepEqual(await requestCodeMentor(mock,m,m.source,'en'),{status:'ok',text:'<b>untrusted advice</b>'});assert.equal(created,1);assert.equal(destroyed,1);
  const cancel=new AbortController();cancel.abort();assert.equal((await requestCodeMentor(mock,m,m.source,'en',cancel.signal)).status,'cancelled');assert.equal(created,1);
  assert.equal((await requestCodeMentor({...mock,create:async()=>{throw Error('offline');}},m,m.source,'en')).status,'error');
+});
+
+test('Custom test cases accept bounded primitives and never grant completion',()=>{
+ const m=MISSIONS.find(v=>v.id==='ai-f1'),src=m.source.replace(m.block.from,m.block.choices[1]),before=JSON.stringify(m);
+ assert.equal(customProgramTest(m,src,'[3,1,1]','0.75').status,'pass');assert.equal(customProgramTest(m,m.source,'[3,1,1]','0.75').status,'fail');
+ assert.equal(customProgramTest(m,'invalid','[3,1,1]','0.75').status,'error');
+ for(const bad of ['[1,2]','[1,2,3,4]','[1,2,"3"]','[1,2,null]','[1,2,1e99]','alert(1)','{}'])assert.equal(customProgramTest(m,src,bad,'0').status,'invalid');
+ for(const bad of ['{}','"0.75"','NaN','1e99','null'])assert.equal(customProgramTest(m,src,'[3,1,1]',bad).status,'invalid');
+ assert.equal(JSON.stringify(m),before);
+ const b=MISSIONS.find(v=>v.id==='ai-classifier-threshold');assert.equal(customProgramTest(b,b.source.replace(b.block.from,b.block.choices[1]),'[50,50]','true').status,'pass');
 });

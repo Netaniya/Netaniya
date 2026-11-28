@@ -1996,3 +1996,432 @@ EXTRA_MISSIONS.push(...[
     ]
   }
 ]);
+
+// Evaluation fundamentals continued; arithmetic models, not live model inference.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "ai-recall",
+    "title": [
+      "KI: Recall",
+      "AI: recall",
+      "ИИ: полнота (Recall)",
+      "ШІ: повнота (Recall)"
+    ],
+    "task": [
+      "Berechne TP / (TP + FN); bei Nenner 0 gib 0 zurück.",
+      "Compute TP / (TP + FN); return 0 for a zero denominator.",
+      "Вычисли TP / (TP + FN); при нулевом знаменателе верни 0.",
+      "Обчисли TP / (TP + FN); за нульового знаменника поверни 0."
+    ],
+    "hint": [
+      "Der Nenner enthält alle tatsächlichen positiven Fälle.",
+      "The denominator includes every actual positive case.",
+      "В знаменателе все фактически положительные случаи.",
+      "У знаменнику всі фактично позитивні випадки."
+    ],
+    "entry": "recall",
+    "source": "function recall(tp,fn) { if (tp+fn===0) { return 0; } return fn/(tp+fn); }",
+    "sample": [
+      3,
+      1
+    ],
+    "block": {
+      "from": "fn/(tp+fn)",
+      "choices": [
+        "fn/(tp+fn)",
+        "tp/(tp+fn)",
+        "(tp+fn)/tp"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          1
+        ],
+        0.75
+      ],
+      [
+        [
+          1,
+          3
+        ],
+        0.25
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          2,
+          2
+        ],
+        0.5
+      ]
+    ],
+    "expectedPrediction": 0.25,
+    "prediction": [
+      0.25,
+      0.75,
+      1
+    ],
+    "why": [
+      "Der Nenner enthält alle tatsächlichen positiven Fälle.",
+      "The denominator includes every actual positive case.",
+      "В знаменателе все фактически положительные случаи.",
+      "У знаменнику всі фактично позитивні випадки."
+    ]
+  },
+  {
+    "id": "ai-f1",
+    "title": [
+      "KI: F1-Maß",
+      "AI: F1 score",
+      "ИИ: F1-мера",
+      "ШІ: F1-міра"
+    ],
+    "task": [
+      "Berechne 2TP / (2TP + FP + FN); bei Nenner 0 gib 0 zurück.",
+      "Compute 2TP / (2TP + FP + FN); return 0 for a zero denominator.",
+      "Вычисли 2TP / (2TP + FP + FN); при нулевом знаменателе верни 0.",
+      "Обчисли 2TP / (2TP + FP + FN); за нульового знаменника поверни 0."
+    ],
+    "hint": [
+      "F1 verbindet Precision und Recall; TP wird doppelt gezählt.",
+      "F1 combines precision and recall; TP is counted twice.",
+      "F1 объединяет precision и recall; TP учитывается дважды.",
+      "F1 поєднує precision і recall; TP враховується двічі."
+    ],
+    "entry": "f1",
+    "source": "function f1(tp,fp,fn) { if (2*tp+fp+fn===0) { return 0; } return tp/(2*tp+fp+fn); }",
+    "sample": [
+      3,
+      1,
+      1
+    ],
+    "block": {
+      "from": "tp/(2*tp+fp+fn)",
+      "choices": [
+        "tp/(2*tp+fp+fn)",
+        "2*tp/(2*tp+fp+fn)",
+        "2*tp/(2*tp+fp)"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          1,
+          1
+        ],
+        0.75
+      ],
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          0,
+          2,
+          2
+        ],
+        0
+      ],
+      [
+        [
+          2,
+          2,
+          2
+        ],
+        0.5
+      ],
+      [
+        [
+          1,
+          0,
+          2
+        ],
+        0.5
+      ],
+      [
+        [
+          1,
+          2,
+          0
+        ],
+        0.5
+      ]
+    ],
+    "expectedPrediction": 0.375,
+    "prediction": [
+      0.375,
+      0.75,
+      1
+    ],
+    "why": [
+      "F1 verbindet Precision und Recall; TP wird doppelt gezählt.",
+      "F1 combines precision and recall; TP is counted twice.",
+      "F1 объединяет precision и recall; TP учитывается дважды.",
+      "F1 поєднує precision і recall; TP враховується двічі."
+    ]
+  },
+  {
+    "id": "ai-accuracy",
+    "title": [
+      "KI: Accuracy",
+      "AI: accuracy",
+      "ИИ: доля верных прогнозов",
+      "ШІ: частка правильних прогнозів"
+    ],
+    "task": [
+      "Berechne (TP + TN) / (TP + TN + FP + FN); für leere Daten 0.",
+      "Compute (TP + TN) / (TP + TN + FP + FN); return 0 for empty data.",
+      "Вычисли (TP + TN) / (TP + TN + FP + FN); для пустых данных верни 0.",
+      "Обчисли (TP + TN) / (TP + TN + FP + FN); для порожніх даних поверни 0."
+    ],
+    "hint": [
+      "Auch richtig negative Fälle zählen als korrekt.",
+      "Correct negative predictions also count as correct.",
+      "Верные отрицательные прогнозы тоже считаются правильными.",
+      "Правильні негативні прогнози також зараховуються."
+    ],
+    "entry": "accuracy",
+    "source": "function accuracy(tp,tn,fp,fn) { let total=tp+tn+fp+fn; if (total===0) { return 0; } return tp/total; }",
+    "sample": [
+      2,
+      6,
+      1,
+      1
+    ],
+    "block": {
+      "from": "tp/total",
+      "choices": [
+        "tp/total",
+        "(tp+tn)/total",
+        "(fp+fn)/total"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2,
+          6,
+          1,
+          1
+        ],
+        0.8
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          8,
+          0,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          0,
+          0,
+          4,
+          4
+        ],
+        0
+      ],
+      [
+        [
+          4,
+          4,
+          0,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        0.5
+      ],
+      [
+        [
+          0,
+          9,
+          0,
+          1
+        ],
+        0.9
+      ]
+    ],
+    "expectedPrediction": 0.2,
+    "prediction": [
+      0.2,
+      0.8,
+      1
+    ],
+    "why": [
+      "Auch richtig negative Fälle zählen als korrekt.",
+      "Correct negative predictions also count as correct.",
+      "Верные отрицательные прогнозы тоже считаются правильными.",
+      "Правильні негативні прогнози також зараховуються."
+    ]
+  },
+  {
+    "id": "ai-error-cost",
+    "title": [
+      "KI: Fehlerkosten",
+      "AI: error cost",
+      "ИИ: стоимость ошибок",
+      "ШІ: вартість помилок"
+    ],
+    "task": [
+      "Berechne FP × cFP + FN × cFN. Alle Eingaben sind nichtnegative Zahlen. Dies ist ein vereinfachtes Kostenmodell.",
+      "Compute FP × cFP + FN × cFN. All inputs are nonnegative. This is a simplified cost model.",
+      "Вычисли FP × cFP + FN × cFN. Все значения неотрицательны. Это упрощённая модель стоимости.",
+      "Обчисли FP × cFP + FN × cFN. Усі значення невід’ємні. Це спрощена модель вартості."
+    ],
+    "hint": [
+      "Verschiedene Fehlerarten können unterschiedliche Kosten haben.",
+      "Different error types can have different costs.",
+      "Разные виды ошибок могут иметь разную стоимость.",
+      "Різні типи помилок можуть мати різну вартість."
+    ],
+    "entry": "errorCost",
+    "source": "function errorCost(fp,fn,cfp,cfn) { return fp*cfp+fn*cfp; }",
+    "sample": [
+      2,
+      3,
+      1,
+      5
+    ],
+    "block": {
+      "from": "fn*cfp",
+      "choices": [
+        "fn*cfp",
+        "fn*cfn",
+        "fp*cfn"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2,
+          3,
+          1,
+          5
+        ],
+        17
+      ],
+      [
+        [
+          0,
+          0,
+          3,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          4,
+          1,
+          3
+        ],
+        12
+      ],
+      [
+        [
+          3,
+          0,
+          2,
+          7
+        ],
+        6
+      ],
+      [
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          2,
+          2,
+          3,
+          3
+        ],
+        12
+      ],
+      [
+        [
+          4,
+          1,
+          2,
+          0
+        ],
+        8
+      ]
+    ],
+    "expectedPrediction": 5,
+    "prediction": [
+      5,
+      17,
+      10
+    ],
+    "why": [
+      "Verschiedene Fehlerarten können unterschiedliche Kosten haben.",
+      "Different error types can have different costs.",
+      "Разные виды ошибок могут иметь разную стоимость.",
+      "Різні типи помилок можуть мати різну вартість."
+    ]
+  }
+]);

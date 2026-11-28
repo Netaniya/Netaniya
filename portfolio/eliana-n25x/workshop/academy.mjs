@@ -5,7 +5,7 @@ No unauthorized redistribution, commercial reuse or passing off of protected ori
 Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
 */
 import * as curriculum from './curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor} from './program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest} from './program.mjs';
 import {CREATION_TEMPLATES,WRITING_TEMPLATES,PALETTE,blankQuiz,validateCreation,parseCreation,serializeCreation,renderCreationHTML,projectTemplate,MAX_CREATION_BYTES} from './creations.mjs';
 import {addProject,updateProject,cleanName} from './model.mjs';
 const {MISSIONS,LEARNING_LANGUAGES,WORD_MEANINGS,SUBJECTS,MISSION_STAGES,local,wordChoices,checkMission}=curriculum;
@@ -18,8 +18,8 @@ export function createAcademy(api){
  let currentView='',lastLanguage=state().lang,testResults=null,sampleResult=null,prediction=null,help='',flipped=false,languageFeedback='',languageCorrect=false,lab=SUBJECTS[0].id,labIndex=0,labFeedback='',labCorrect=false,labExam=null,showPreview=false;
  const a=(action,label,cls='',attrs='')=>'<button type="button" data-a="'+action+'" class="'+cls+'" '+attrs+'>'+label+'</button>';
  const detailOpen={'program-predict':false,'quiz-scoring':false};
- let aiReview=null,aiResponse=null,aiPending=null;const aiKey=()=>JSON.stringify([mission().id,source(),state().lang]);
- function resetAI(){aiPending?.abort();aiPending=null;aiReview=null;aiResponse=null;}
+ let aiReview=null,aiResponse=null,aiPending=null,customCase=null;const aiKey=()=>JSON.stringify([mission().id,source(),state().lang]);
+ function resetAI(){aiPending?.abort();aiPending=null;aiReview=null;aiResponse=null;customCase=null;}
  function rememberDetails(){for(const id of Object.keys(detailOpen)){const element=$(id);if(element)detailOpen[id]=element.hasAttribute('open');}}
  const back=(target,label)=>a('navigate','← '+esc(tr(label)),'back-link','data-target="'+target+'"');
  const mission=()=>MISSIONS[progress().mission];
@@ -42,9 +42,10 @@ export function createAcademy(api){
   const m=mission(),src=source(),done=MISSIONS.filter(v=>solved('program:'+v.id)).length,group=MISSION_STAGES.find(g=>progress().mission>=g.start&&progress().mission<g.end);
   return back('learn','learn')+'<h2>'+esc(tr('programming'))+'</h2><p class="help">'+esc(tr('missionHelp'))+'</p><section class="panel"><h3>'+esc(l(group.title))+'</h3><progress max="'+MISSIONS.length+'" value="'+done+'" aria-label="'+esc(tr('progress'))+'"></progress><p>'+done+' / '+MISSIONS.length+'</p>'+a('mission-resume',esc(tr('guidedNext')),'secondary',done===MISSIONS.length?'disabled':'')+'</section><label for="mission-select">'+esc(tr('missionSelect'))+'</label><select id="mission-select">'+MISSION_STAGES.map(g=>'<optgroup label="'+esc(l(g.title))+'">'+MISSIONS.slice(g.start,g.end).map((m,j)=>{const i=g.start+j;return '<option value="'+i+'" '+(i===progress().mission?'selected':'')+'>'+(solved('program:'+m.id)?'✓ ':'')+(i+1)+'. '+esc(l(m.title))+'</option>';}).join('')+'</optgroup>').join('')+'</select><section class="panel"><div class="eyebrow">'+esc(l(m.title))+'</div><h3>'+esc(l(m.task))+'</h3><details id="program-predict" '+(detailOpen['program-predict']?'open':'')+'><summary>'+esc(tr('predict'))+'</summary><pre class="source-code">'+esc(m.source)+'\n\n'+esc(m.entry)+'('+esc(m.sample.join(', '))+')</pre><div class="choice-row">'+m.prediction.map((v,i)=>a('predict',esc(v),'choice','data-index="'+i+'"')).join('')+'</div><p class="feedback" role="status">'+(prediction===null?'':esc(tr(prediction?'predictionRight':'predictionWrong')))+'</p></details><label>'+esc(tr('blocks'))+'</label><div class="choice-row code-blocks">'+m.block.choices.map((v,i)=>a('block','<code>'+esc(v)+'</code>','choice','data-index="'+i+'" aria-pressed="'+src.includes(v)+'"')).join('')+'</div>'+textarea('program-source',tr('codeEditor'),src,4000,'spellcheck="false" autocapitalize="off" autocorrect="off" class="source-code"')+'<p class="help">'+esc(tr('codeScope'))+'</p><div class="buttons">'+a('sample',esc(tr('runSample')),'secondary')+a('tests',esc(tr('runTests')),'primary')+'</div>'+a('restore',esc(tr('restoreCode')),'back-link')+'</section>'+resultsView()+tutorView()+aiView()+'<div class="buttons">'+a('next-mission',esc(tr(progress().mission===MISSIONS.length-1?'quiz':'nextMission')),'lime')+'</div><p class="help">'+esc(tr('draftSaved'))+'</p>';
  }
+ function customCaseView(){const x=customCase?.key===aiKey()?customCase:null,r=x?.result;return '<div class="custom-case"><h4>'+esc(tr('customTest'))+'</h4><p class="help">'+esc(tr('customTestScope'))+'</p>'+input('custom-args',tr('customArgs'),x?.args??JSON.stringify(mission().sample),256)+input('custom-expected',tr('expected'),x?.expected??JSON.stringify(mission().tests[0][1]),64)+a('custom-test',esc(tr('customRun')),'secondary')+(r?'<div data-custom-result role="status"><b>'+esc(tr({pass:'customPass',fail:'customFail',error:'programError',invalid:'customInvalid'}[r.status]))+'</b>'+(r.result?.ok?'<p>'+esc(tr('actual'))+': '+esc(r.result.value)+'</p>':'')+'</div>':'')+'</div>';}
  function aiView(){
   const key=aiKey(),report=aiReview?.key===key?aiReview.report:null,response=aiResponse?.key===key?aiResponse.result:null;
-  return '<section class="panel code-ai" id="code-ai"><h3>'+esc(tr('aiCodeLab'))+'</h3><p class="help">'+esc(tr('aiCodeScope'))+'</p><div class="buttons">'+a('ai-review',esc(tr('aiReview')),'secondary')+a('ai-prompt',esc(tr('aiExportPrompt')),'outline')+a(aiPending?'ai-cancel':'ai-generate',esc(tr(aiPending?'aiCancel':'aiGenerate')),'outline')+'</div><p class="help">'+esc(tr('aiModelScope'))+'</p>'+
+  return '<section class="panel code-ai" id="code-ai"><h3>'+esc(tr('aiCodeLab'))+'</h3><p class="help">'+esc(tr('aiCodeScope'))+'</p><div class="buttons">'+a('ai-review',esc(tr('aiReview')),'secondary')+a('ai-prompt',esc(tr('aiExportPrompt')),'outline')+a(aiPending?'ai-cancel':'ai-generate',esc(tr(aiPending?'aiCancel':'aiGenerate')),'outline')+'</div><p class="help">'+esc(tr('aiModelScope'))+'</p>'+customCaseView()+
   (report?'<div data-ai-review role="status"><b>'+esc(tr('checkpointResult',{n:report.passed,total:report.total}))+'</b><p>'+esc(tr(report.failed?'aiFirstFailure':'aiAllPass'))+'</p>'+(report.failed?'<code>'+esc(mission().entry+'('+report.failed.args.join(', ')+')')+'</code><p>'+esc(tr('expected'))+': '+esc(report.failed.expected)+' · '+esc(tr('actual'))+': '+esc(report.failed.ok?report.failed.value:report.failed.error)+'</p>':'')+'</div>':'')+
   (aiPending?'<p role="status">'+esc(tr('aiWorking'))+'</p>':'')+(response?'<div data-ai-response role="status"><b>'+esc(tr(response.status==='ok'?'aiGenerated':response.status==='unavailable'?'aiUnavailable':response.status==='cancelled'?'aiCancelled':'aiError'))+'</b>'+(response.text?'<p class="ai-response-text">'+esc(response.text)+'</p>':'')+'</div>':'')+'</section>';
  }
@@ -108,6 +109,7 @@ export function createAcademy(api){
   else if(action==='sample'){sampleResult=runProgram(source(),mission().entry,mission().sample);refresh();audio.cue(sampleResult.ok);}
   else if(action==='tests'){testResults=checkMission(mission(),source(),runProgram);const passed=testResults.every(r=>r.ok&&r.value===r.expected);if(passed)toast(complete('program:'+mission().id,30));else audio.cue(false);refresh();}
   else if(action==='restore'){setSource(mission().source);prediction=null;refresh();}
+  else if(action==='custom-test'){const args=$('custom-args').value,expected=$('custom-expected').value;customCase={key:aiKey(),args,expected,result:customProgramTest(mission(),source(),args,expected)};refresh();}
   else if(action==='ai-review'){aiReview={key:aiKey(),report:reviewProgram(mission(),source())};refresh();}
   else if(action==='ai-prompt'){download(new Blob([codeReviewPrompt(mission(),source(),state().lang)],{type:'text/plain;charset=utf-8'}),'N25x-code-review.txt');}
   else if(action==='ai-cancel'){aiPending?.abort();aiPending=null;aiResponse={key:aiKey(),result:{status:'cancelled'}};refresh();}
@@ -146,6 +148,7 @@ export function createAcademy(api){
   return true;
  }
  function inputEvent(e){
+  if(e.id==='custom-args'||e.id==='custom-expected'){customCase={key:aiKey(),args:$('custom-args').value,expected:$('custom-expected').value,result:null};$('code-ai')?.querySelector('[data-custom-result]')?.remove();return true;}
   if(e.id==='program-source'){setSource(e.value);$('content').querySelectorAll('[data-program-results]').forEach(el=>el.remove());const ai=$('code-ai');if(ai)ai.outerHTML=aiView();return true;}
   if(e.id==='quiz-name'){ensureQuiz().name=e.value;changed();return true;}
   if(e.id==='quiz-program'){ensureQuiz().program=e.value;changed();return true;}

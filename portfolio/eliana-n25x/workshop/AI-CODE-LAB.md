@@ -7,3 +7,5 @@ Creator direction: Natalie Ragulina (Netaniya), 28 November 2026. Learners under
 - AI lessons: classification threshold and precision with defined zero-denominator convention. Numeric exercises, not training a model.
 - Chrome references: https://developer.chrome.com/docs/ai/prompt-api and https://developer.chrome.com/docs/ai/get-started . Desktop hardware and language restrictions apply.
 - Direct interpreter and mock adapter checks passed; real inference and browser acceptance pending. Future secure opt-in mobile backend and expanded AI curriculum. Not a complete IDE.
+
+28 November: Recall, F1, Accuracy and simplified error cost exercises. Custom tests accept only bounded JSON number/boolean arguments and expected results, execute the existing restricted interpreter, and never alter rewards or mission completion. 5194 direct formula comparisons passed. Previous bfa2e57 passed all three CI jobs, including unavailable-model fallback; real generative inference remains unverified. New UI CI pending.

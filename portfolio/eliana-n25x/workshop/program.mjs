@@ -145,3 +145,16 @@ export async function requestCodeMentor(model,mission,source,language='en',signa
  }catch{return {status:signal?.aborted?'cancelled':'error'};}
  finally{try{session?.destroy();}catch{}}
 }
+
+
+// Custom cases accept bounded JSON primitives only, never expressions or eval.
+export function customProgramTest(mission,source,argsText,expectedText){
+ const valid=v=>typeof v==='boolean'||typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<=1e9;
+ try{
+  if(typeof argsText!=='string'||typeof expectedText!=='string'||argsText.length>256||expectedText.length>64)return {status:'invalid'};
+  const args=JSON.parse(argsText),expected=JSON.parse(expectedText);
+  if(!Array.isArray(args)||args.length!==mission.sample.length||args.length>8||!args.every(valid)||!valid(expected))return {status:'invalid'};
+  const result=runProgram(source,mission.entry,args);
+  return {status:result.ok?(result.value===expected?'pass':'fail'):'error',args,expected,result};
+ }catch{return {status:'invalid'};}
+}

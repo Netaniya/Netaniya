@@ -403,3 +403,5 @@ body:not([data-view=home]):not([data-view=assemble]) .stage-tools{display:none}
 @media(max-width:700px){body[data-view=home] .stage-frame{height:clamp(285px,42vh,350px)}body[data-view=assemble] .stage-frame{height:290px}}
 
 .code-ai .buttons{display:flex;flex-wrap:wrap;gap:8px}.code-ai .buttons button{min-height:44px;max-width:100%;white-space:normal;overflow-wrap:anywhere}.code-ai [data-ai-review],.code-ai [data-ai-response]{margin-top:12px;padding:12px;border:1px solid #37536e;border-radius:10px;background:#111d2a;overflow-wrap:anywhere}.ai-response-text{white-space:pre-wrap;overflow-wrap:anywhere}
+
+.custom-case{margin:16px 0;padding:12px;border:1px solid #37536e;border-radius:10px}.custom-case input{width:100%;min-width:0;font-family:ui-monospace,monospace}.custom-case button{margin-top:10px;min-height:44px}.custom-case [data-custom-result]{margin-top:10px;overflow-wrap:anywhere}

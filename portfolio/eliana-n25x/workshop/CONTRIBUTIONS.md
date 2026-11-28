@@ -102,3 +102,6 @@ Creator requested special emphasis on programming and AI. Assistant implemented 
 
 ### 28 November — intellectual property notice
 Creator requested explicit reserved-rights markings and protection. Assistant added core source and packaged notices, metadata and tests, documented privacy limits. No blanket copyright claim over AI-only or third-party material, no visibility or publication change. Corrected the JSON prompt test to compare decoded source.
+
+### 28 November — independent testing and AI evaluation
+Creator approved deeper programming and deferred private migration. Assistant added four AI quality exercises and user-defined test cases with bounded primitive JSON inputs; no reward or source modification. Previous revision passed full CI; new revision pending.
