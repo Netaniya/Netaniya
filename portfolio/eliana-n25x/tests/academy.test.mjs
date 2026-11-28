@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -193,4 +193,16 @@ test('Custom test cases accept bounded primitives and never grant completion',()
  for(const bad of ['{}','"0.75"','NaN','1e99','null'])assert.equal(customProgramTest(m,src,'[3,1,1]',bad).status,'invalid');
  assert.equal(JSON.stringify(m),before);
  const b=MISSIONS.find(v=>v.id==='ai-classifier-threshold');assert.equal(customProgramTest(b,b.source.replace(b.block.from,b.block.choices[1]),'[50,50]','true').status,'pass');
+});
+
+test('REST lab supports CRUD, correct response codes, validated JSON and isolated sessions',()=>{
+ const lab=createApiLab(),other=createApiLab(),r=(m,p,b)=>lab.request(m,p,b);
+ assert.equal(r('GET','/projects').status,200);assert.equal(r('POST','/projects','{"title":"Test"}').status,201);assert.deepEqual(r('GET','/projects/2').body,{id:2,title:'Test',done:false});
+ assert.equal(r('PATCH','/projects/2','{"done":true}').status,200);assert.equal(r('GET','/projects/2').body.done,true);
+ const before=lab.snapshot();for(const b of ['{}','null','[]','{"id":4}','{"done":1}','{"__proto__":{"polluted":true}}','{"title":""}','broken'])assert.equal(r('PATCH','/projects/2',b).status,400);
+ assert.deepEqual(lab.snapshot(),before);assert.equal(r('POST','/projects/2','{}').status,405);assert.equal(r('DELETE','/projects').status,405);assert.equal(r('PUT','/projects/2','{}').status,405);assert.equal(r('GET','https://example.com').status,404);
+ const exposed=r('GET','/projects').body;exposed[0].title='changed';assert.notEqual(lab.snapshot()[0].title,'changed');
+ assert.deepEqual(r('DELETE','/projects/2'),{status:204,body:null});assert.equal(r('GET','/projects/2').status,404);assert.equal(other.snapshot().length,1);
+ for(let i=0;i<19;i++)assert.equal(r('POST','/projects','{"title":"x"}').status,201);assert.equal(r('POST','/projects','{"title":"x"}').status,409);
+ lab.reset();assert.equal(lab.snapshot().length,1);assert.equal(r('POST','/projects','{"title":"Again"}').body.id,2);
 });

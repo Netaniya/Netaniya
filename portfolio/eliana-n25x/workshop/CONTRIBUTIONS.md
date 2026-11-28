@@ -105,3 +105,6 @@ Creator requested explicit reserved-rights markings and protection. Assistant ad
 
 ### 28 November — independent testing and AI evaluation
 Creator approved deeper programming and deferred private migration. Assistant added four AI quality exercises and user-defined test cases with bounded primitive JSON inputs; no reward or source modification. Previous revision passed full CI; new revision pending.
+
+### 28 November — REST and data practice
+Assistant implemented an offline REST simulation with bounded records and validated JSON under the creator's direction to deepen programming. No external endpoint, account, database or payment. Browser acceptance pending.

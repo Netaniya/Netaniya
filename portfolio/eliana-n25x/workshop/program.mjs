@@ -158,3 +158,33 @@ export function customProgramTest(mission,source,argsText,expectedText){
   return {status:result.ok?(result.value===expected?'pass':'fail'):'error',args,expected,result};
  }catch{return {status:'invalid'};}
 }
+
+
+// Offline REST training: isolated in-memory records, no fetch, credentials or network.
+export function createApiLab(){
+ let records=[{id:1,title:'Sample project',done:false}],next=2;
+ const response=(status,body)=>({status,body});
+ const snapshot=()=>records.map(r=>({...r}));
+ function request(method,path,bodyText=''){
+  if(typeof path!=='string'||path.length>64||typeof bodyText!=='string'||bodyText.length>1024)return response(400,{error:'invalid_request'});
+  const match=/^\/projects(?:\/([1-9]\d{0,5}))?$/.exec(path);
+  if(!match)return response(404,{error:'not_found'});
+  const id=match[1]?Number(match[1]):null,index=records.findIndex(r=>r.id===id);
+  if(!['GET','POST','PATCH','DELETE'].includes(method))return response(405,{error:'method_not_allowed'});
+  if(method==='GET')return id===null?response(200,snapshot()):index<0?response(404,{error:'not_found'}):response(200,{...records[index]});
+  if((method==='POST'&&id!==null)||(method!=='POST'&&id===null))return response(405,{error:'method_not_allowed'});
+  if(method!=='POST'&&index<0)return response(404,{error:'not_found'});
+  if(method==='DELETE'){records.splice(index,1);return response(204,null);}
+  let data;try{data=JSON.parse(bodyText);}catch{return response(400,{error:'invalid_json'});}
+  if(!data||Array.isArray(data)||typeof data!=='object'||Object.keys(data).length===0||Object.keys(data).some(k=>!['title','done'].includes(k)))return response(400,{error:'invalid_fields'});
+  if(Object.hasOwn(data,'title')&&(typeof data.title!=='string'||!data.title.trim()||data.title.length>100)||Object.hasOwn(data,'done')&&typeof data.done!=='boolean')return response(400,{error:'invalid_fields'});
+  if(method==='POST'){
+   if(!Object.hasOwn(data,'title'))return response(400,{error:'title_required'});
+   if(records.length>=20||next>999999)return response(409,{error:'capacity'});
+   const item={id:next++,title:data.title.trim(),done:data.done??false};records.push(item);return response(201,{...item});
+  }
+  const item={...records[index]};if(Object.hasOwn(data,'title'))item.title=data.title.trim();if(Object.hasOwn(data,'done'))item.done=data.done;
+  records[index]=item;return response(200,{...item});
+ }
+ return {request,snapshot,reset(){records=[{id:1,title:'Sample project',done:false}];next=2;}};
+}

@@ -9,3 +9,5 @@ Creator direction: Natalie Ragulina (Netaniya), 28 November 2026. Learners under
 - Direct interpreter and mock adapter checks passed; real inference and browser acceptance pending. Future secure opt-in mobile backend and expanded AI curriculum. Not a complete IDE.
 
 28 November: Recall, F1, Accuracy and simplified error cost exercises. Custom tests accept only bounded JSON number/boolean arguments and expected results, execute the existing restricted interpreter, and never alter rewards or mission completion. 5194 direct formula comparisons passed. Previous bfa2e57 passed all three CI jobs, including unavailable-model fallback; real generative inference remains unverified. New UI CI pending.
+
+28 November: REST API Lab implements an isolated in-memory simulated HTTP service for project records. Supports GET, POST, PATCH, DELETE, JSON validation, status codes 200/201/204/400/404/405/409, reset and capacity limits. No real network or database, no rewards; user practices a six-request workflow. 896 direct response checks passed; new browser CI pending.

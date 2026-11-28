@@ -405,3 +405,5 @@ body:not([data-view=home]):not([data-view=assemble]) .stage-tools{display:none}
 .code-ai .buttons{display:flex;flex-wrap:wrap;gap:8px}.code-ai .buttons button{min-height:44px;max-width:100%;white-space:normal;overflow-wrap:anywhere}.code-ai [data-ai-review],.code-ai [data-ai-response]{margin-top:12px;padding:12px;border:1px solid #37536e;border-radius:10px;background:#111d2a;overflow-wrap:anywhere}.ai-response-text{white-space:pre-wrap;overflow-wrap:anywhere}
 
 .custom-case{margin:16px 0;padding:12px;border:1px solid #37536e;border-radius:10px}.custom-case input{width:100%;min-width:0;font-family:ui-monospace,monospace}.custom-case button{margin-top:10px;min-height:44px}.custom-case [data-custom-result]{margin-top:10px;overflow-wrap:anywhere}
+
+.api-lab summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}.api-lab input,.api-lab textarea,.api-lab select{width:100%;min-width:0}.api-lab pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:280px;overflow:auto}.api-lab [data-api-result]{padding:12px;border:1px solid #37536e;border-radius:10px;margin:12px 0}
