@@ -236,3 +236,6 @@ CI 46134543255: 73 модульных теста, все браузерные с
 
 ## 28.11.2026 — облачная версия для телефона
 Подготовлен сервер предпросмотра с проверкой SHA-256 собранных ресурсов, без доступа к другим файлам репозитория. GET/HEAD, корректные MIME-типы для модулей, отказ при неверных хешах и путях. Добавлены HTTP-тесты в CI. Для реального размещения нужно подтверждение пространства Render; URL ещё не создан. План — отдельный бесплатный сервис, основной сайт не менять.
+
+
+28.11.2026: Render preview service created on the creator-confirmed My Workspace, free plan, Frankfurt, manual deploys from `codex/n25x-learning-review`. URL: https://n25x-learning-preview.onrender.com . Initial deployed candidate requested at `fc08a0289d88212b3dd465d57f6c2e35464c1b13`; build status pending at documentation time. The public preview is not access-controlled. Main and repository visibility unchanged. Other Render services untouched.

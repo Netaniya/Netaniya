@@ -19,3 +19,6 @@
 
 ### Предварительный облачный просмотр
 Подготовлен отдельный сервер на Node.js, который отдаёт только проверенные по SHA-256 файлы собранного Workshop. План: отдельный бесплатный сервис Render во Frankfurt, ручные деплои проверенных кандидатов. Не менять main или видимость репозитория. Для создания сервиса требуется подтверждение пространства My Workspace. Публичная ссылка не является защитой доступа; запрет индексации не делает её приватной. Профили локальны для каждого домена.
+
+
+28.11.2026: Render preview service created on the creator-confirmed My Workspace, free plan, Frankfurt, manual deploys from `codex/n25x-learning-review`. URL: https://n25x-learning-preview.onrender.com . Initial deployed candidate requested at `fc08a0289d88212b3dd465d57f6c2e35464c1b13`; build status pending at documentation time. The public preview is not access-controlled. Main and repository visibility unchanged. Other Render services untouched.
