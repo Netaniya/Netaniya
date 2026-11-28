@@ -914,6 +914,24 @@ export function runWorkflowGuide(kind,index){
 
 export function freshCapstone(){return {plan:'[]',query:'SELECT id FROM projects',source:'function progress(done,total) { return 0; }',html:'<main><h1>Project dashboard</h1></main>',css:'',passed:false};}
 export const CAPSTONE_FIELDS=Object.freeze({plan:1800,query:512,source:4000,html:4000,css:3000});
+export const CAPSTONE_SCENARIOS=['base','all','none'];
+// Bind data only to text in a reconstructed, allowlisted HTML document.
+// No learner-supplied scripts, attributes, DOM access or external requests.
+export function capstonePreview(d,records,scenario='base'){
+ if(!CAPSTONE_SCENARIOS.includes(scenario)||!Array.isArray(records)||records.length>20)return {ok:false};
+ const page=compileWebLab(d.html,d.css);if(!page.ok)return {ok:false};
+ const rows=records.map(r=>({...r,done:scenario==='base'?Boolean(r.done):scenario==='all'}));
+ const q=queryProjects(d.query,rows),count=q.ok&&q.columns.length===1&&q.columns[0]==='count'&&q.rows.length===1?q.rows[0][0]:null;
+ if(count!==rows.filter(r=>r.done).length)return {ok:false};
+ const result=runProgram(d.source,'progress',[count,rows.length]);
+ if(!result.ok||typeof result.value!=='number'||Math.abs(result.value-(rows.length?100*count/rows.length:0))>1e-9)return {ok:false};
+ const values={total:String(rows.length),done:String(count),progress:String(Number(result.value.toFixed(1)))+'%',projects:rows.map(r=>String(r.title)).join(' · ')},fields=new Set();
+ const marker='</head><body>',at=page.document.indexOf(marker);if(at<0)return {ok:false};
+ const start=at+marker.length,head=page.document.slice(0,start),body=page.document.slice(start);
+ // Body begins with text or an element; replace only text spans, never tags.
+ const rendered=body.replace(/(^|>)([^<]+)(?=<|$)/g,(_,prefix,content)=>prefix+content.replace(/\[\[(total|done|progress|projects)\]\]/g,(_token,key)=>{fields.add(key);return webEscape(values[key]);}));
+ return {ok:fields.size===4,fields:[...fields],values,document:head+rendered,scenario};
+}
 export function gradeCapstone(d){
  const checks=[],add=(id,passed)=>checks.push({id,passed:Boolean(passed)}),lab=createApiLab();let plan;
  try{plan=typeof d.plan==='string'&&d.plan.length<=CAPSTONE_FIELDS.plan?JSON.parse(d.plan):null;}catch{plan=null;}
@@ -927,11 +945,12 @@ export function gradeCapstone(d){
  const tests=[[[0,0],0],[[0,3],0],[[1,2],50],[[3,4],75],[[3,3],100],[[2,5],40]];
  const code=tests.map(([args,expected])=>({args,expected,...runProgram(d.source,'progress',args)}));
  add('capCode',code.every(r=>r.ok&&r.value===r.expected));
- const page=compileWebLab(d.html,d.css);
- add('capWeb',page.ok&&['main','h1','p','article'].every(tag=>page.nodes.some(n=>n.tag===tag))&&page.nodes.some(n=>n.tag==='article'&&n.classes.includes('card'))&&page.rules.some(r=>r.selector==='.card'&&r.declarations.some(v=>v.property==='padding')));
+ const page=compileWebLab(d.html,d.css),binding=capstonePreview(d,records);
+ add('capWeb',page.ok&&binding.ok&&['main','h1','p','article'].every(tag=>page.nodes.some(n=>n.tag===tag))&&page.nodes.some(n=>n.tag==='article'&&n.classes.includes('card'))&&page.rules.some(r=>r.selector==='.card'&&r.declarations.some(v=>v.property==='padding')));
  const count=queries[0].ok&&queries[0].columns[0]==='count'&&queries[0].rows.length===1?queries[0].rows[0][0]:null;
  const integration=count===records.filter(x=>x.done).length?runProgram(d.source,'progress',[count,records.length]):{ok:false};
- add('capIntegration',checks.slice(0,3).every(c=>c.passed)&&integration.ok&&Math.abs(integration.value-100*count/records.length)<1e-9);
- return {checks,passed:checks.every(c=>c.passed),records,results,queries,code,integration,page};
+ const previews=Object.fromEntries(CAPSTONE_SCENARIOS.map(s=>[s,capstonePreview(d,records,s)]));
+ add('capIntegration',checks.slice(0,3).every(c=>c.passed)&&integration.ok&&Math.abs(integration.value-100*count/records.length)<1e-9&&CAPSTONE_SCENARIOS.every(s=>previews[s].ok));
+ return {checks,passed:checks.every(c=>c.passed),records,results,queries,code,integration,page,previews};
 }
 export function parseCapstone(raw){const d=freshCapstone();if(raw&&typeof raw==='object'){for(const [k,max] of Object.entries(CAPSTONE_FIELDS))if(typeof raw[k]==='string'&&raw[k].length<=max)d[k]=raw[k];if(raw.passed===true)d.passed=gradeCapstone(d).passed;}return d;}

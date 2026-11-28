@@ -201,3 +201,6 @@ Eight isolated, localized interactive workflow examples for HTTP, Git, pull requ
 
 ### 28 November — independent capstone
 Implemented a saved project dashboard exercise with learner-written JSON, SQL, JavaScript and HTML/CSS. Five checks include actual local data flow, varied fixtures and stale-status invalidation. Static preview is separate from data flow. No external service changes.
+
+### 28 November — dynamic capstone data binding
+Connected verified local API/SQL/JavaScript output to a learner-authored safe HTML/CSS preview using text-only placeholders. Added three independently recalculated scenarios, escaped output, state preservation and regression tests. Old drafts retained; older static passes require new verification.
