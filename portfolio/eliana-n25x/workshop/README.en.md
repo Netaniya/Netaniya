@@ -83,3 +83,5 @@ Extended checkpoint coverage now spans 52/88 topics: all six topics of eight lan
 All 88 existing grammar topics now include four independent extended checkpoint prompts, in addition to two practice and two basic checkpoint prompts (704 total questions). The final 144 prompts cover 36 German/English topics; independent linguistic review and CI pending.
 
 Owner review: CI desktop job packages `n25x-offline-review-candidate` after module tests, before browser tests. Download the ZIP from the Actions run, extract and open `N25x-Studio.html`; commit and SHA-256 metadata included. This is a candidate, not a public site deployment. Retention 14 days. Repository privacy change is deferred until completion with a separate employer-facing deployment; client-side source remains inspectable. Listening adds normal/slow local voices, no speech recognition or pronunciation scoring.
+
+Eliana armour v2: revised 3D face, optics, graphite/silver armour, luminous chest core and limb details; retained articulated rig, customization and exploded mode. Browser screenshot and geometry acceptance added. Visual approval, physical-device testing and deployment remain open.

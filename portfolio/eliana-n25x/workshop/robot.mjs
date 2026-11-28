@@ -29,13 +29,19 @@ export function createRobot(config){
  const alloy=new T.MeshStandardMaterial({color:0x96a9ba,metalness:.92,roughness:.27}),dark=new T.MeshStandardMaterial({color:0x090e17,metalness:.62,roughness:.32});
  const glass=new T.MeshPhysicalMaterial({color:0x03070e,metalness:.36,roughness:.13,clearcoat:1,clearcoatRoughness:.09});
  const accentColor=new T.Color(config.interest==='nature'?0x79cbb7:config.interest==='music'?0x9a9fe8:0x4a9fff),accent=new T.MeshBasicMaterial({color:accentColor,toneMapped:false});
- const sphere=new T.SphereGeometry(1,24,16),cylinder=new T.CylinderGeometry(1,1,1,24);
+ const sphere=new T.SphereGeometry(1,20,12),cylinder=new T.CylinderGeometry(1,1,1,20);
  const box=(p,w,h,d,m,x=0,y=0,z=0,r=.02)=>mesh(p,rounded(w,h,d,r),m,x,y,z);
  const ellipsoid=(p,rx,ry,rz,m,x=0,y=0,z=0)=>{const o=mesh(p,sphere,m,x,y,z);o.scale.set(rx,ry,rz);return o;};
  const cyl=(p,r,h,m,x=0,y=0,z=0)=>{const o=mesh(p,cylinder,m,x,y,z);o.scale.set(r,h,r);return o;};
  const ring=(p,r,t,m,x=0,y=0,z=0)=>mesh(p,new T.TorusGeometry(r,t,6,32),m,x,y,z);
  const line=(p,points,r,m)=>mesh(p,new T.TubeGeometry(new T.CatmullRomCurve3(points.map(v=>new T.Vector3(...v))),32,r,6,false),m);
  const shellPart=(p,profile,m,x=0,y=0,z=0)=>mesh(p,shellGeometry(profile),m,x,y,z);
+ // Bevelled asymmetric armour panels use a compact local shape instead of a flat texture.
+ const plate=(p,name,outline,material,x,y,z,ry=0,rz=0)=>{
+  const s=new T.Shape();outline.forEach(([u,v],i)=>i?s.lineTo(u,v):s.moveTo(u,v));s.closePath();
+  const g=new T.ExtrudeGeometry(s,{depth:.006,bevelEnabled:true,bevelSize:.0018,bevelThickness:.002,bevelSegments:2,steps:1,curveSegments:1});
+  const o=mesh(p,g,material,x,y,z);o.name=name;o.rotation.set(0,ry,rz);return o;
+ };
  const body=group(root,'torso',0,1.12,0),hips=group(root,'pelvis',0,1.035,0);
  shellPart(body,[[-.075,0,0],[-.06,.126*width,.077],[.02,.145*width,.086],[.15,.197*width,.105],[.285,.215*width,.094],[.37,.175*width,.069],[.398,.075,.045],[.4,0,0]],shell);
  shellPart(body,[[-.13,0,0],[-.12,.112,.066],[-.06,.135,.078],[.04,.132,.078],[.08,.11,.063],[.085,0,0]],dark);
@@ -43,7 +49,16 @@ export function createRobot(config){
  // Recessed sternum seam, shoulder insets and a subtle status strip.
  line(body,[[0,.34,.083],[0,.22,.109],[0,.12,.108],[0,.07,.095]],.0018,dark);
  for(const side of [-1,1]){line(body,[[side*.08,.338,.070],[side*.16*width,.30,.081],[side*.194*width,.23,.092]],.0022,alloy);box(body,.036,.004,.003,accent,side*.068,.24,.106,.001);}
- box(body,.053,.012,.004,dark,0,.29,.092,.004);box(body,.034,.002,.004,accent,0,.29,.095,.0007);
+ // Layered chest armour, graphite sternum and unmistakable blue status core.
+ plate(body,'eliana-sternum',[[-.032,.105],[.032,.105],[.043,.045],[.025,-.085],[0,-.105],[-.025,-.085],[-.043,.045]],dark,0,.225,.104);
+ for(const side of [-1,1]){
+  const outline=[[.008,.073],[.073,.096],[.114,.063],[.109,-.016],[.048,-.076],[.014,-.056]].map(([x,y])=>[side*x*width,y]);
+  plate(body,'eliana-pectoral:'+side,outline,shell,side*.039*width,.235,.104,side*.38);
+  line(body,[[side*.044*width,.287,.117],[side*.082*width,.302,.106],[side*.113*width,.288,.092]],.0026,accent).name='eliana-chest-light:'+side;
+ }
+ const core=ellipsoid(body,.022,.028,.009,glass,0,.244,.117);core.name='eliana-core-housing';
+ const coreRim=ring(body,.015,.0024,accent,0,.244,.128);coreRim.name='eliana-core';
+ box(body,.008,.014,.003,accent,0,.244,.129,.002);
  shellPart(hips,[[-.08,0,0],[-.064,.103,.065],[.015,.151*width,.080],[.061,.128*width,.075],[.072,0,0]],dark);
  for(const side of [-1,1]){
   const plate=ellipsoid(hips,.045,.081,.065,shell,side*.133*width,-.012,.006);plate.rotation.z=side*.12;
@@ -56,10 +71,18 @@ export function createRobot(config){
  // Eliana: smooth machined silver mask, separate optical sensors and a recessed jaw seam.
  // The visor and antenna options retain their own visible geometry.
  if(config.head==='arc'){
-  const mask=shellPart(head,[[-.102,0,0],[-.086,.035,.024],[-.043,.056,.031],[.022,.066,.033],[.076,.055,.023],[.098,.025,.011],[.103,0,0]],shell,0,0,.064);mask.name='eliana-metal-mask';
+  const mask=shellPart(head,[[-.108,0,0],[-.089,.039,.024],[-.045,.057,.034],[.025,.070,.034],[.078,.063,.025],[.101,.034,.012],[.110,0,0]],shell,0,0,.064);mask.name='eliana-metal-mask';
+  // Sculpted brow and cheek surfaces, a short metallic nose bridge and tapered chin.
+  const brow=plate(head,'eliana-brow',[[-.061,-.005],[-.036,.017],[0,.010],[.036,.017],[.061,-.005],[.045,-.014],[0,-.006],[-.045,-.014]],dark,0,.047,.096);
+  const bridge=ellipsoid(head,.012,.035,.015,shell,0,-.006,.100);bridge.name='eliana-nose-bridge';
   for(const side of [-1,1]){
-   const socket=ellipsoid(head,.025,.012,.010,dark,side*.030,.026,.092);socket.rotation.z=side*-.10;
-   const iris=ellipsoid(head,.008,.007,.005,accent,side*.030,.026,.101);iris.name='eliana-optic:'+side;
+   plate(head,'eliana-cheek:'+side,[[.012,.026],[.039,.039],[.056,.020],[.043,-.027],[.025,-.042],[.015,-.025]].map(([x,y])=>[side*x,y]),shell,0,-.028,.094,side*.18);
+   line(head,[[side*.025,-.010,.109],[side*.048,-.022,.100],[side*.036,-.064,.096]],.0019,dark).name='eliana-cheek-seam:'+side;
+  }
+  plate(head,'eliana-chin',[[-.027,.012],[.027,.012],[.021,-.012],[0,-.023],[-.021,-.012]],alloy,0,-.077,.091);
+  for(const side of [-1,1]){
+   const socket=ellipsoid(head,.026,.010,.011,dark,side*.030,.026,.099);socket.rotation.z=side*-.10;
+   const iris=ellipsoid(head,.019,.0048,.005,accent,side*.030,.027,.111);iris.name='eliana-optic:'+side;iris.rotation.z=side*-.10;
   }
   line(head,[[-.024,-.055,.089],[0,-.059,.096],[.024,-.055,.089]],.0015,dark);
  }
@@ -101,11 +124,15 @@ export function createRobot(config){
  for(const side of [-1,1]){
   const axle=cyl(body,.029,.11,alloy,side*.213*width,.365,0);axle.rotation.z=Math.PI/2;
   const shoulder=group(body,'shoulder:'+side,side*.258*width,.405,0);ellipsoid(shoulder,.052,.055,.053,dark);
-  const cap=ellipsoid(shoulder,.063,.081,.066,shell,side*.014,-.034,0);cap.rotation.z=side*.16;
+  const cap=ellipsoid(shoulder,.063,.081,.066,dark,side*.014,-.034,0);cap.rotation.z=side*.16;
+  const armour=ellipsoid(shoulder,.054,.071,.036,shell,side*.018,-.032,.040);armour.name='eliana-deltoid:'+side;armour.rotation.z=side*.16;
+  line(shoulder,[[side*.020,.010,.069],[side*.042,-.026,.070],[side*.035,-.061,.063]],.0023,accent).name='eliana-shoulder-light:'+side;
   shellPart(shoulder,[[-.277,0,0],[-.266,.031,.035],[-.21,.040,.043],[-.10,.049,.047],[-.047,.045,.041],[-.040,0,0]],shell);
   const elbow=group(shoulder,'elbow:'+side,0,-.294,0);ellipsoid(elbow,.039,.043,.039,dark);const servo=cyl(elbow,.029,.087,alloy);servo.rotation.z=Math.PI/2;
   shellPart(elbow,[[-.255,0,0],[-.245,.026,.028],[-.17,.038,.039],[-.067,.046,.044],[-.026,.033,.030],[-.020,0,0]],shell);
   line(elbow,[[side*.033,-.053,-.013],[side*.034,-.14,-.017],[side*.022,-.23,-.011]],.003,dark);
+  plate(elbow,'eliana-forearm-inset:'+side,[[-.013,.065],[.013,.065],[.017,.020],[.008,-.075],[-.008,-.075],[-.017,.020]],dark,0,-.14,.040);
+  box(elbow,.004,.071,.004,accent,0,-.13,.050,.001).name='eliana-forearm-light:'+side;
   const wrist=hand(elbow,side);arms.push(shoulder);elbows.push(elbow);wrists.push(wrist);
  }
  const legs=[],knees=[],ankles=[],footMeshes=[],wheels=[];
@@ -113,14 +140,16 @@ export function createRobot(config){
   const leg=group(root,'hip:'+side,side*.103*width,.975,0);ellipsoid(leg,.052,.048,.051,alloy);
   shellPart(leg,[[-.350,0,0],[-.343,.035,.042],[-.26,.056,.060],[-.11,.073,.071],[-.038,.069,.060],[-.026,0,0]],shell);
   const knee=group(leg,'knee:'+side,0,-.370,0);ellipsoid(knee,.043,.046,.045,dark);const motor=cyl(knee,.032,.094,alloy);motor.rotation.z=Math.PI/2;
-  ellipsoid(knee,.040,.060,.022,shell,0,-.010,.041);
+  const guard=ellipsoid(knee,.040,.060,.022,alloy,0,-.010,.041);guard.name='eliana-knee-guard:'+side;
   shellPart(knee,[[-.358,0,0],[-.347,.031,.035],[-.25,.039,.049],[-.10,.056,.057],[-.040,.041,.041],[-.032,0,0]],shell);
   line(knee,[[side*.027,-.07,-.032],[side*.036,-.19,-.038],[side*.022,-.32,-.025]],.0035,alloy);
+  plate(knee,'eliana-shin-inset:'+side,[[-.017,.088],[.017,.088],[.022,.025],[.009,-.112],[-.009,-.112],[-.022,.025]],dark,0,-.192,.050);
+  box(knee,.004,.10,.004,accent,0,-.177,.060,.001).name='eliana-shin-light:'+side;
   const ankle=group(knee,'ankle:'+side,0,-.385,0);ellipsoid(ankle,.031,.037,.033,dark);
   cyl(ankle,.024,.064,dark,0,-.049,-.018);
   const foot=group(ankle,'foot:'+side,0,-.093,.046);
   const sole=box(foot,.106,.027,.248,dark,0,-.033,0,.032);sole.name='sole';footMeshes.push(sole);
-  ellipsoid(foot,.052,.047,.122,dark,0,-.004,.003);box(foot,.061,.012,.048,alloy,0,.026,-.062,.007);
+  ellipsoid(foot,.052,.047,.122,dark,0,-.004,.003);ellipsoid(foot,.046,.024,.087,shell,0,.021,.023).name='eliana-foot-armour:'+side;box(foot,.061,.012,.048,alloy,0,.026,-.062,.007);
   if(config.base==='wheels')for(const edge of [-1,1]){const w=cyl(foot,.034,.018,dark,edge*.057,-.013,-.062);w.rotation.z=Math.PI/2;wheels.push(w);const hub=cyl(foot,.017,.020,alloy,edge*.057,-.013,-.062);hub.rotation.z=Math.PI/2;}
   if(config.base==='hover')for(const edge of [-1,1]){cyl(foot,.017,.035,alloy,edge*.035,-.014,.048);cyl(foot,.013,.007,accent,edge*.035,-.036,.048);}
   legs.push(leg);knees.push(knee);ankles.push(ankle);
@@ -156,7 +185,7 @@ export function createRobot(config){
   if(module.userData.holo)module.userData.holo.rotation.y=time*.65;if(module.userData.orbit)module.userData.orbit.rotation.z=.25+time*.12;
  }
  update(0,0);
- return {root,body,head,arms,elbows,wrists,legs,knees,ankles,fingers,footMeshes,anatomy:{frame,finish,height:1.79,humanoid:true},get phase(){return phase;},get separation(){return separation;},setExploded,update,dispose(){const gs=new Set([sphere,cylinder]),ms=new Set([shell,alloy,dark,glass,accent]);root.traverse(o=>{if(o.geometry)gs.add(o.geometry);if(o.material)ms.add(o.material);});gs.forEach(g=>g.dispose());ms.forEach(m=>m.dispose());}};
+ return {root,body,head,arms,elbows,wrists,legs,knees,ankles,fingers,footMeshes,anatomy:{frame,finish,height:1.79,humanoid:true,revision:'eliana-armour-v2'},get phase(){return phase;},get separation(){return separation;},setExploded,update,dispose(){const gs=new Set([sphere,cylinder]),ms=new Set([shell,alloy,dark,glass,accent]);root.traverse(o=>{if(o.geometry)gs.add(o.geometry);if(o.material)ms.add(o.material);});gs.forEach(g=>g.dispose());ms.forEach(m=>m.dispose());}};
 }
 export function createStage(canvas,onError=()=>{}){
  let renderer;try{renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});}catch{onError();return null;}

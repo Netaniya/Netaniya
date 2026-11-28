@@ -168,3 +168,6 @@ Assistant added 144 original questions for the remaining 36 German and English t
 
 ### 28 November — review candidate and listening controls
 At the creator's request, the assistant added a non-deploying CI artifact containing the standalone review candidate, build metadata and hash, and normal/slow local-device listening. The creator confirmed that repository privacy is to change only after completion, retaining an employer-facing demo; the current public repository and deployment remain unchanged. Browser-distributed frontend code remains inspectable. Real voice quality and physical device tests are not yet verified.
+
+### 28 November — revised articulated Eliana armour
+Following the creator's feedback that the published robot still looks old, the assistant revised the actual procedural 3D geometry: machined brow/cheeks/nose/chin, larger blue optics, paired chest plates and core, graphite shoulder/forearm/shin panels, silver foot armour. Preserved rig, configuration, exploded view and animations. Candidate only; visual approval and physical device check pending. No change to public deployment.

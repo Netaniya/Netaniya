@@ -419,3 +419,7 @@ body:not([data-view=home]):not([data-view=assemble]) .stage-tools{display:none}
 #git-lab textarea{min-height:110px}#git-lab pre{max-height:260px;overflow:auto}#git-lab [data-git-result]{margin-top:12px}
 
 #review-lab textarea{min-height:100px}#review-lab button:disabled{opacity:.55}#review-lab pre{max-height:240px;overflow:auto}#review-lab [data-review-status]{font-weight:700}
+
+/* Larger presentation area for the updated humanoid; compact learning screens remain unchanged. */
+@media(min-width:701px){body[data-view=home] .stage-frame,body[data-view=assemble] .stage-frame{height:clamp(390px,53vh,545px)}}
+@media(max-width:700px){body[data-view=home] .stage-frame{height:clamp(310px,46vh,380px)}}
