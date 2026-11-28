@@ -35,3 +35,5 @@ Praktische Harmonielehre: sechs Stufen, 24 Aufgaben zum Akkordaufbau und zu Umke
 Grammatik: 88 Themen, 352 Aufgaben, je 20 Themen in Deutsch und Englisch, je sechs in den übrigen acht Sprachen. Sprachprüfung und CI dieser Erweiterung stehen aus.
 
 Einheitliche Lernübersicht: sechs getrennte Fortschrittsanzeigen für Mathematik, Sprachübungen, Grammatik, Programmierung, Fachkurse und Musik sowie gespeicherte kreative Projekte. Keine Änderung von Profilen oder Punkten. Der aktive Pull Request vermeidet doppelte CI-Läufe.
+
+Mathematik: 52 Themen mit je 256 Varianten (13.312); Fachkurse: 73 Fragen in 29 Stufen. Bestehende Aufgabenkennungen bleiben stabil. Browser-Abnahme dieser Erweiterung offen.

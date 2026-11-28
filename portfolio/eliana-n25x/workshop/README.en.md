@@ -59,3 +59,5 @@ Practical harmony candidate: six guided stages and 24 chord-construction tasks i
 Current grammar candidate: 88 topics / 352 questions, 20 each in German and English, six in each of the other eight languages. Native-speaker review and this commit's CI pending. Workflow #18 applies to the earlier commit `30e8f57`.
 
 Unified study dashboard: six separate counters (mathematics, active-language skills, active-language grammar, programming, school subjects, music practice stages) plus saved creative projects. Counts do not award points. Review-branch CI uses the open PR trigger and manual dispatch instead of duplicate push and PR triggers.
+
+Mathematics/subject extension: 52 task families × 256 variants = 13,312 variants; 73 localized questions across 29 stages in six subjects. Existing task IDs remain stable. Earlier revision dd965e9 passed desktop, touch and source checks; this candidate awaits CI.

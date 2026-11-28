@@ -54,6 +54,14 @@ const rows=[
  ['root-sum',10,L('Summe der Nullstellen','Sum of roots','Сумма корней','Сума коренів'),L('Lies die Nullstellen aus den Faktoren ab.','Read the roots from the factors.','Найди корни по множителям.','Знайди корені за множниками.'),(a,b)=>out(`(x − ${a})(x − ${b}) = 0`,a+b,[`x₁ = ${a}; x₂ = ${b}`,`x₁ + x₂ = ${a+b}`],L('Summe der beiden Wurzeln, mit Vielfachheit?','Sum of the two roots, counting multiplicity?','Сумма двух корней с учётом кратности?','Сума двох коренів з урахуванням кратності?'))],
  ['derivative',11,L('Ableitung an einer Stelle','Derivative at a point','Производная в точке','Похідна в точці'),L('(axⁿ)′ = a × n × xⁿ⁻¹.','(axⁿ)′ = a × n × xⁿ⁻¹.','(axⁿ)′ = a × n × xⁿ⁻¹.','(axⁿ)′ = a × n × xⁿ⁻¹.'),(a,b)=>{const n=2+b%3;return out(`f(x) = ${a}x^${n}; x = ${b}`,a*n*b**(n-1),[`f′(x) = ${a*n}x^${n-1}`,`f′(${b}) = ${a*n} × ${b}^${n-1} = ${a*n*b**(n-1)}`],L('f′(x) an der angegebenen Stelle?','f′(x) at the given point?','Значение f′(x) в указанной точке?','Значення f′(x) у вказаній точці?'));}]
 ];
+
+rows.push(
+ ['trapezoid-area',7,L('Trapezfläche','Trapezoid area','Площадь трапеции','Площа трапеції'),L('A = (a + c) × h / 2.','A = (a + c) × h / 2.','S = (a + c) × h / 2.','S = (a + c) × h / 2.'),(a,b)=>out('a = '+a+' cm; c = '+(a+2)+' cm; h = '+b+' cm',(a+1)*b,['A = ('+a+' + '+(a+2)+') × '+b+' / 2','A = '+((a+1)*b)+' cm²'],L('Fläche in cm²?','Area in cm²?','Площадь в см²?','Площа в см²?'))],
+ ['pythagoras-square',8,L('Satz des Pythagoras','Pythagorean theorem','Теорема Пифагора','Теорема Піфагора'),L('Im rechtwinkligen Dreieck gilt c² = a² + b².','For a right triangle c² = a² + b².','В прямоугольном треугольнике c² = a² + b².','У прямокутному трикутнику c² = a² + b².'),(a,b)=>out('a = '+a+' cm; b = '+b+' cm; c² = ?',a*a+b*b,['c² = '+a+'² + '+b+'²','c² = '+(a*a+b*b)+' cm²'],L('Quadrat der Hypotenuse in cm²?','Squared hypotenuse in cm²?','Квадрат гипотенузы в см²?','Квадрат гіпотенузи в см²?'))],
+ ['simple-interest',7,L('Einfache Jahreszinsen','Simple annual interest','Простые годовые проценты','Прості річні відсотки'),L('Z = K × p / 100 für ein Jahr.','Interest = principal × rate / 100 for one year.','Проценты за год = капитал × ставка / 100.','Відсотки за рік = капітал × ставка / 100.'),(a,b)=>out('K = '+(a*100)+' €; p = '+b+'%; t = 1 year',a*b,['Z = '+(a*100)+' × '+b+' / 100','Z = '+(a*b)+' €'],L('Zinsen ohne Gebühren in Euro?','Interest in euros, excluding fees?','Проценты в евро без комиссий?','Відсотки в євро без комісій?'))],
+ ['arithmetic-sequence',9,L('Arithmetische Folge','Arithmetic sequence','Арифметическая прогрессия','Арифметична прогресія'),L('aₙ = a₁ + (n − 1)d.','aₙ = a₁ + (n − 1)d.','aₙ = a₁ + (n − 1)d.','aₙ = a₁ + (n − 1)d.'),(a,b)=>out('a₁ = '+a+'; d = '+b+'; a₅ = ?',a+4*b,['a₅ = '+a+' + (5 − 1) × '+b,'a₅ = '+(a+4*b)])]
+);
+
 export const MATH_TOPICS=rows.map(v=>define(...v));
 export const VARIANTS_PER_TOPIC=256;
 export const MATH_VARIANTS=MATH_TOPICS.length*VARIANTS_PER_TOPIC;

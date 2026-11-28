@@ -11,7 +11,7 @@ import {LANGUAGE_UNITS,LANGUAGE_ITEMS,COURSE_LANGUAGES,phraseTokens,phraseMatche
 import {createLanguageClassroom} from '../workshop/language-classroom.mjs';
 import {updateProject} from '../workshop/model.mjs';
 test('Mathematics: all 12,288 parameter variants are finite, uniquely presented within their topic, and accept exact fractions',()=>{
- assert.equal(MATH_TOPICS.length,48);assert.equal(MATH_VARIANTS,12288);
+ assert.equal(MATH_TOPICS.length,52);assert.equal(MATH_VARIANTS,13312);
  for(const topic of MATH_TOPICS){const seen=new Set();for(const lang of ['de','en','ru','uk'])assert(topic.title[lang]&&topic.rule[lang]);for(let i=0;i<256;i++){const t=courseTask(topic.id,i);assert(Number.isFinite(t.answer),t.id);assert(checkCourseAnswer(t,t.display),t.id);assert(!checkCourseAnswer(t,String(t.answer+1)),t.id);assert(!checkCourseAnswer(t,'window.location=1'),t.id);assert(!seen.has(t.expression),t.id);seen.add(t.expression);assert(t.steps.length);}}
  assert.throws(()=>courseTask('add',256));assert.throws(()=>courseTask('missing',0));
 });
@@ -51,7 +51,7 @@ test('Piano controller: two pointers form a recorded chord, cancellation release
  }finally{piano?.stop(false);globalThis.document=previous;globalThis.performance=perf;}
 });
 test('Mathematics: independently specified reference answers cover every family and several boundary variants',()=>{
- const expected=[4,2,7,2,4,2,8,12,1,2/3,2,4/3,.4,.2,.04,2,.4,50,19.6,20.4,0,0,4,-2,3,2,2,2,2,16,2,4,8,2,4,12,4,8,2,4,2,8/3,.5,8,2,2,4,64];
+ const expected=[4,2,7,2,4,2,8,12,1,2/3,2,4/3,.4,.2,.04,2,.4,50,19.6,20.4,0,0,4,-2,3,2,2,2,2,16,2,4,8,2,4,12,4,8,2,4,2,8/3,.5,8,2,2,4,64,6,8,4,10];
  assert.equal(expected.length,MATH_TOPICS.length);for(const [i,t]of MATH_TOPICS.entries())assert(Math.abs(courseTask(t.id,0).answer-expected[i])<1e-8,t.id);
  assert.equal(courseTask('root',255).answer,257);assert.equal(courseTask('linear',255).answer,18);assert.equal(courseTask('rectangle-area',255).answer,289);assert.equal(courseTask('negative-divide',255).answer,-17);
  assert(checkCourseAnswer(courseTask('fraction-subtract',0),'2/3'));assert(checkCourseAnswer(courseTask('linear',0),'x = 3'));assert(!checkCourseAnswer(courseTask('linear',0),'x = 4'));

@@ -87,3 +87,6 @@ CI run #18 passed the documented touch scenarios before a strict locator failure
 
 ### 28 November — cross-module integration and CI efficiency
 At the creator's request to optimize the entire product, assistant implemented six independent progress indicators and creative-project access, removed redundant controls, and selected PR-triggered verification for the active review branch to prevent duplicate push/PR runs. Publication unchanged.
+
+### 28 November — mathematics and subject expansion
+Under the creator's direction to advance all modules, assistant added four original generated math families and six subject stages with twelve localized questions, preserving existing question IDs and indices. Earlier revision dd965e9 passed all three CI jobs. Latest extension awaits its own browser acceptance.
