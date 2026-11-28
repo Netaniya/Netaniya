@@ -60,9 +60,25 @@ export function gradeDialogue(lesson,language,answer){return typeof answer==='st
  export function grammarReviewLessons(course){
  return grammarRoute(course.language).filter(v=>course.grammar.evidence[v.id]?.missed.length>0||course.grammar.extended[v.id]?.missed.length>0||course.grammar.written[v.id]?.missed.length>0);
  }
- export function nextGrammarLesson(course){
- const list=grammarRoute(course.language);
- return grammarReviewLessons(course)[0]||list.find(v=>!course.grammar.passed[v.id])||null;
+ export function nextGrammarActivity(course){
+ const list=grammarRoute(course.language),g=course.grammar;
+ for(const lesson of list)for(const [kind,mode] of [['evidence','checkpoint'],['extended','extended'],['written','written']]){
+  if(g[kind]?.[lesson.id]?.missed.length>0)return {id:lesson.id,mode,review:true};
+ }
+ for(const lesson of list){
+  const id=lesson.id;if(!g.passed[id])return {id,mode:'practice',review:false};
+  if(extendedGrammarQuestions(id).length){
+   if(!g.extended[id])return {id,mode:'extended',review:false};
+   if(!g.written[id])return {id,mode:'written',review:false};
+  }
+ }
+ return null;
+ }
+ export function nextGrammarLesson(course){const next=nextGrammarActivity(course);return next?grammarLesson(next.id):null;}
+ export function grammarCoverage(course){
+ const list=grammarRoute(course.language),g=course.grammar,extra=list.filter(v=>extendedGrammarQuestions(v.id).length);
+ const clean=(kind,id)=>Boolean(g[kind]?.[id]&&g[kind][id].missed.length===0);
+ return {basic:list.filter(v=>g.passed[v.id]&&!g.evidence[v.id]?.missed.length).length,extended:extra.filter(v=>clean('extended',v.id)).length,written:extra.filter(v=>clean('written',v.id)).length,total:list.length,extraTotal:extra.length};
  }
 
 export function extendedGrammarQuestions(id){return GRAMMAR_EXTENDED[id]||[];}

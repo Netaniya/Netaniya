@@ -180,3 +180,6 @@ At the creator's request for direct mobile review without ZIP extraction, assist
 
 ### 28 November — practical language units
 Added 16 original meanings in all ten languages: appointment communication and housing/services. These are fictional practice sentences, not medical or tenancy advice. Existing IDs unchanged. Native review pending.
+
+### 28 November — guided three-mode grammar progression
+Assistant fixed recommendation routing so basic, extended and written mistakes reopen the corresponding assessment. Unattempted modes remain in the guided route after basic pass; separate currently error-free coverage is displayed. Historical passes remain intact. Browser tests exercise actual transitions.

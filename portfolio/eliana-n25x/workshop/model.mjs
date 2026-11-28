@@ -4,7 +4,7 @@ N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
 No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
 Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
 */
-import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,grammarReviewLessons,languageMistakes,dueLanguageReviews,nextLanguageExercise,studyDay,DIALOGUE_LESSONS} from './language-course.mjs';
+import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,grammarReviewLessons,nextGrammarActivity,languageMistakes,dueLanguageReviews,nextLanguageExercise,studyDay,DIALOGUE_LESSONS} from './language-course.mjs';
 import {freshPiano,parsePiano,validateScore,PIANO_LESSONS,RHYTHM_LESSONS,EAR_LESSONS,STAFF_LESSONS,CHORD_LESSONS,HARMONY_LESSONS} from './piano-score.mjs';
 import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS,VARIANTS_PER_TOPIC} from './math-course.mjs';
 import {validateCreation,CREATION_TEMPLATES} from './creations.mjs';
@@ -141,7 +141,7 @@ export function studyPlan(state,day=studyDay()){
  const shift=((day%extras.length)+extras.length)%extras.length;
  for(let i=0;i<extras.length&&items.length<3;i++){
   const kind=extras[(shift+i)%extras.length];
-  if(!items.some(v=>v.kind===kind)&&summary[kind].done<summary[kind].total)items.push({kind,reason:'planExtra'});
+  if(!items.some(v=>v.kind===kind)&&(kind==='grammar'?Boolean(nextGrammarActivity(l)):summary[kind].done<summary[kind].total))items.push({kind,reason:'planExtra'});
  }
  return items.map(v=>v.kind==='math'?{...v,title:topicById(v.topic).title}:v);
 }

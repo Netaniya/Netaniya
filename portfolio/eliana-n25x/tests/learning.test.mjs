@@ -215,7 +215,7 @@ test('Personal study plan balances selected difficulty, prioritizes reviews, rot
  m.assessment={topic:m.topic,indices:Array.from({length:10},(_,i)=>i),answers:[false],answered:true};assert.equal(studyPlan(s,day)[0].reason,'planResume');
  const item=LANGUAGE_ITEMS[0];l.review=['en|write|'+item.id];const lang=studyPlan(s,day)[1];assert.equal(lang.reason,'planLanguageReview');assert.equal(lang.mode,'write');
  assert.deepEqual(Array.from({length:5},(_,i)=>studyPlan(s,day+i)[2].kind),['grammar','dialogues','programming','school','music']);
- for(const lesson of grammarRoute(l.language))l.grammar.passed[lesson.id]=true;assert.equal(studyPlan(s,day)[2].kind,'dialogues');
+ for(const lesson of grammarRoute(l.language))l.grammar.passed[lesson.id]=true;assert.equal(studyPlan(s,day)[2].kind,'grammar');for(const lesson of grammarRoute(l.language)){l.grammar.extended[lesson.id]={latest:4,best:4,rounds:1,missed:[]};l.grammar.written[lesson.id]={latest:4,best:4,rounds:1,missed:[]};}assert.equal(studyPlan(s,day)[2].kind,'dialogues');
  const before=JSON.stringify(s);studyPlan(s,day);assert.equal(JSON.stringify(s),before);
  for(const lang of ['de','en','ru','uk'])for(const key of ['planTitle','planScope','planResume','planMathReview','planMathNew','planLanguageReview','planLanguageNew','planExtra','planDone'])assert.notEqual(translate(lang,key),key);
 });
@@ -274,4 +274,14 @@ test('Written grammar recall is scored separately, preserves case and accents, r
  assert(!recordWrittenGrammar(p,l.id,good.slice(1)));assert(!recordWrittenGrammar(p,l.id,[' ',...good.slice(1)]));assert(recordWrittenGrammar(p,l.id,bad));assert.equal(p.grammar.written[l.id].latest,0);assert(grammarReviewLessons(p).some(v=>v.id===l.id));assert(recordWrittenGrammar(p,l.id,good));assert.equal(p.grammar.written[l.id].best,4);assert(!grammarReviewLessons(p).some(v=>v.id===l.id));assert(!p.grammar.passed[l.id]);assert(!p.grammar.extended[l.id]);}}
  assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);
  const id=grammarRoute(p.language)[0].id;assert.deepEqual(parseLanguageCourse({grammar:{written:{[id]:{latest:5,best:5,rounds:1,missed:[]},bad:{latest:4,best:4,rounds:1,missed:[]}}}}).grammar.written,{});assert.deepEqual(parseLanguageCourse({}).grammar.written,{});
+});
+
+test('Guided grammar opens actual missed mode and covers all three assessments',async()=>{
+ const {nextGrammarActivity,grammarCoverage,recordGrammarCheckpoint,recordExtendedGrammar,recordWrittenGrammar,extendedGrammarQuestions}=await import('../workshop/language-course.mjs');const s=fresh(),p=s.learning.languages;
+ for(const lang of COURSE_LANGUAGES){p.language=lang;const list=grammarRoute(lang);
+ for(const lesson of list){const id=lesson.id,base=lesson.checkpoint.map(q=>q.answer),qs=extendedGrammarQuestions(id),good=qs.map(q=>q.answer),bad=qs.map(q=>q.options.find(v=>v!==q.answer));
+ assert.deepEqual(nextGrammarActivity(p),{id,mode:'practice',review:false});assert(recordGrammarCheckpoint(p,lesson,base));assert.deepEqual(nextGrammarActivity(p),{id,mode:'extended',review:false});assert(recordExtendedGrammar(p,id,bad));assert.deepEqual(nextGrammarActivity(p),{id,mode:'extended',review:true});assert(recordExtendedGrammar(p,id,good));assert.deepEqual(nextGrammarActivity(p),{id,mode:'written',review:false});assert(recordWrittenGrammar(p,id,bad));assert.deepEqual(nextGrammarActivity(p),{id,mode:'written',review:true});assert(recordWrittenGrammar(p,id,good));}
+ assert.equal(nextGrammarActivity(p),null);assert.deepEqual(grammarCoverage(p),{basic:list.length,extended:list.length,written:list.length,total:list.length,extraTotal:list.length});
+ const l=list[0];assert(recordGrammarCheckpoint(p,l,l.checkpoint.map(q=>q.options.find(v=>v!==q.answer))));assert.deepEqual(nextGrammarActivity(p),{id:l.id,mode:'checkpoint',review:true});assert.equal(grammarCoverage(p).basic,list.length-1);assert(recordGrammarCheckpoint(p,l,l.checkpoint.map(q=>q.answer)));assert.equal(nextGrammarActivity(p),null);}
+ assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);
 });
