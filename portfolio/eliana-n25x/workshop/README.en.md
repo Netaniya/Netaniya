@@ -73,3 +73,5 @@ Sentence classroom: all ten study languages can now serve as translation sources
 Personal study plan: up to three local recommendations based on saved progress, with unfinished math self-tests and mistakes prioritized, guided language review and rotating unfinished supplementary courses. Not a placement test or AI-generated assessment. All courses remain selectable; CI pending.
 
 Math self-test evidence: latest/best score and completed round count by topic, with validated profile migration. After unresolved mistakes are reviewed, a low latest score can prompt a new ten-question round at the chosen difficulty. Not a standardized proficiency diagnosis; CI pending.
+
+Grammar evidence: latest/best completed checkpoint, missed question indices, corrections and targeted review across all ten languages/88 topics. Historical passes remain valid; two-question repeated checkpoints do not establish proficiency. CI and linguistic review pending.

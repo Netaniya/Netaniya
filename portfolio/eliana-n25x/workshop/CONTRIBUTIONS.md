@@ -153,3 +153,6 @@ Creator requested progression toward a comprehensive learning platform. Assistan
 
 ### 28 November — persistent math self-test evidence
 Assistant implemented per-topic latest/best completed ten-question result and completed-round count, validated profile migration and retest recommendations at selected difficulty after unresolved mistakes are cleared. The creator directed ongoing education, development and testing. No formal proficiency assessment, points changes or release. Source and browser coverage added.
+
+### 28 November — grammar evidence and targeted review
+Assistant implemented per-lesson completed checkpoint scores, missed question indices, correction display and review priority across ten languages, retaining historical passed flags. The creator directed continued development and tests. Existing checkpoints are short and reused, not independent proficiency assessments. No publication or external data changes.

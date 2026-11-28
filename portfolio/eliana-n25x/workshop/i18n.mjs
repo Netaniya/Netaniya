@@ -477,3 +477,10 @@ for(const [key,values] of Object.entries({
  mathEvidenceUntested:['Noch kein abgeschlossener Selbsttest.','No completed self-test yet.','Самопроверка ещё не завершена.','Самоперевірка ще не завершена.'],
  planMathRetest:['Prüfe das Thema erneut mit anderen Aufgaben; zuletzt weniger als 8 von 10 richtig.','Retest this topic with different tasks; fewer than 8 of 10 correct last time.','Повтори самопроверку с другими задачами: прошлый результат ниже 8 из 10.','Повтори самоперевірку з іншими завданнями: минулий результат нижче 8 із 10.']
 }))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);
+
+for(const [key,values] of Object.entries({
+ grammarReviewCount:['Themen zur Wiederholung: {n}','Topics to review: {n}','Тем для повторения: {n}','Тем для повторення: {n}'],
+ grammarEvidenceResult:['Zuletzt {n}/{total} · Bestwert {best}/{total} · Durchgänge {rounds}','Latest {n}/{total} · Best {best}/{total} · Rounds {rounds}','Последний {n}/{total} · Лучший {best}/{total} · Попыток {rounds}','Останній {n}/{total} · Найкращий {best}/{total} · Спроб {rounds}'],
+ grammarEvidenceUntested:['Noch keine abgeschlossene Kontrolle.','No completed checkpoint recorded yet.','Завершённая самопроверка ещё не сохранена.','Завершену самоперевірку ще не збережено.'],
+ planGrammarReview:['Wiederhole ein Grammatikthema mit Fehlern in der letzten Kontrolle.','Review a grammar topic with mistakes in its last checkpoint.','Повтори грамматическую тему с ошибками в последней самопроверке.','Повтори граматичну тему з помилками в останній самоперевірці.']
+}))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);

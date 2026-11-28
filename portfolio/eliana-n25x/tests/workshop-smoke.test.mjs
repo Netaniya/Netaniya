@@ -75,3 +75,9 @@ test('Math evidence across every topic and ten-question retest seeds',async()=>{
  assert.deepEqual(p.evidence[t.id],{latest:8,best:8,rounds:2,seed:16});}
  assert.equal(mathEvidence(p).filter(t=>t.result).length,MATH_TOPICS.length);assert.deepEqual(parseMathCourse(p).evidence,p.evidence);console.log(JSON.stringify({answers,topics:MATH_TOPICS.length}));
 });
+
+test('All 88 grammar checkpoints: evidence, missed questions, language isolation and migration',async()=>{
+ const {GRAMMAR_LESSONS,recordGrammarCheckpoint,grammarReviewLessons,nextGrammarLesson}=await import('../workshop/language-course.mjs');const p=freshLanguageCourse();
+ for(const l of GRAMMAR_LESSONS){p.language=l.language;const good=l.checkpoint.map(q=>q.answer),bad=l.checkpoint.map(q=>q.options.find(v=>v!==q.answer));assert(!recordGrammarCheckpoint(p,l,[]));assert(recordGrammarCheckpoint(p,l,bad));assert.equal(p.grammar.evidence[l.id].latest,0);assert(grammarReviewLessons(p).some(v=>v.id===l.id));assert(recordGrammarCheckpoint(p,l,good));assert.equal(p.grammar.evidence[l.id].best,l.checkpoint.length);assert(!grammarReviewLessons(p).some(v=>v.id===l.id));}
+ assert.deepEqual(parseLanguageCourse(p).grammar,p.grammar);assert.equal(Object.keys(p.grammar.evidence).length,88);assert.deepEqual(parseLanguageCourse({grammar:{passed:p.grammar.passed}}).grammar.evidence,{});
+});
