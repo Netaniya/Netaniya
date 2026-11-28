@@ -113,7 +113,7 @@ async function standaloneAppCheck(){
  check('downloaded full app starts from an actual local HTML file without network, renders the humanoid, changes language and completes programming practice',{bytes:bytes.length});
 }
 async function expandedLearningCheck(){
- await click('#navigation [data-do=learn]');assert.equal(await page.locator('#study-progress progress').count(),7);
+ await click('#navigation [data-do=learn]');assert.equal(await page.locator('#study-progress progress').count(),7);assert(await page.locator('#engineering-route').isVisible());assert(await page.locator('#mentor-context').isVisible());await click('[data-do=engineering-next]');assert(await page.locator('#mission-select').isVisible());assert.equal(await page.locator('#mission-select').inputValue(),'0');await click('#navigation [data-do=learn]');
  for(const action of ['study-math','study-language','study-grammar','study-dialogue','programming','study-subjects','study-music','study-create'])assert.equal(await page.locator('#study-progress [data-do="'+action+'"]').count(),1);
  const beforePlan=await state();assert.equal(await page.locator('#study-plan button').count(),3);assert(await page.locator('#study-plan [data-do=plan-math]').isVisible());assert(await page.locator('#study-plan [data-do=plan-language]').isVisible());
  await click('#study-plan [data-do=plan-math]');assert(await page.locator('#math-topic').isVisible());assert.equal((await state()).points,beforePlan.points);

@@ -423,3 +423,6 @@ body:not([data-view=home]):not([data-view=assemble]) .stage-tools{display:none}
 /* Larger presentation area for the updated humanoid; compact learning screens remain unchanged. */
 @media(min-width:701px){body[data-view=home] .stage-frame,body[data-view=assemble] .stage-frame{height:clamp(390px,53vh,545px)}}
 @media(max-width:700px){body[data-view=home] .stage-frame{height:clamp(310px,46vh,380px)}}
+
+/* Compact, text-first mentor remains usable without WebGL. */
+.mentor-context{margin-bottom:12px;padding:12px 16px;border-left:3px solid var(--accent,#6aa9ff)}.mentor-context p{margin:4px 0;overflow-wrap:anywhere}.mentor-context .eyebrow{font-size:12px}#engineering-route .study-grid section{min-width:0}#engineering-route h4{overflow-wrap:anywhere}

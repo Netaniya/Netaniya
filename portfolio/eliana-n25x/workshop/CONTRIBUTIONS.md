@@ -213,3 +213,6 @@ Natalie Ragulina (Netaniya) reiterated that she actively tests, reviews, reads t
 
 ### 28 November — student portfolio export
 Assistant added verified project-only source/evidence export and static scenario HTML snapshot. Explicitly distinguished the snapshot from a live application; no profile data included. Browser download checks added.
+
+### 28 November — integrated learning route and local mentor
+Assistant connected 67 verified programming steps to the common learning route, added deterministic contextual guidance in four interface languages, and reduced idle mobile rendering frequency. Physical performance and creator visual approval remain outstanding.

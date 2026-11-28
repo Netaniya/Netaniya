@@ -141,7 +141,24 @@ export function studyPlan(state,day=studyDay()){
  const shift=((day%extras.length)+extras.length)%extras.length;
  for(let i=0;i<extras.length&&items.length<3;i++){
   const kind=extras[(shift+i)%extras.length];
-  if(!items.some(v=>v.kind===kind)&&(kind==='grammar'?Boolean(nextGrammarActivity(l)):summary[kind].done<summary[kind].total))items.push({kind,reason:'planExtra'});
+  if(!items.some(v=>v.kind===kind)&&(kind==='grammar'?Boolean(nextGrammarActivity(l)):kind==='programming'?Boolean(engineeringRoute(state).next):summary[kind].done<summary[kind].total))items.push({kind,reason:'planExtra'});
  }
  return items.map(v=>v.kind==='math'?{...v,title:topicById(v.topic).title}:v);
 }
+
+ // A deterministic engineering route: preserve independent evidence and never count simulations as certificates.
+ export function engineeringRoute(state){
+  const solved=new Set(state.solved),labs=state.academy.labs;
+  const groups=[{kind:'javascript',items:MISSIONS.map((v,i)=>({index:i,done:solved.has('program:'+v.id)}))},...Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS}).map(([kind,lessons])=>({kind,items:lessons.map((v,i)=>({index:i,done:labs[kind]?.[kind==='python'?v.id:String(i)]?.passed===true}))})),{kind:'capstone',items:[{index:0,done:state.academy.capstone?.passed===true}]}];
+  const stages=groups.map(g=>({kind:g.kind,done:g.items.filter(v=>v.done).length,total:g.items.length}));
+  const next=groups.flatMap(g=>g.items.filter(v=>!v.done).map(v=>({kind:g.kind,index:v.index})))[0]??null;
+  return {stages,next,done:stages.reduce((n,g)=>n+g.done,0),total:stages.reduce((n,g)=>n+g.total,0)};
+ }
+ export function mentorContext(state,view){
+  if(view==='learn'||view==='programming'){const route=engineeringRoute(state);return view==='learn'?{key:'mentorLearn'}:route.next?{key:'mentorEngineering_'+route.next.kind,params:{n:route.next.index+1}}:{key:'mentorEngineeringDone'};}
+  if(view==='mathCourse'||view==='math')return {key:state.learning.math.assessment&&state.learning.math.assessment.answers.length<10?'mentorMathExam':state.learning.math.mistakes.length?'mentorMathReview':'mentorMath'};
+  if(view==='languageCourse'||view==='languages')return {key:grammarReviewLessons(state.learning.languages).length?'mentorGrammarReview':'mentorLanguage'};
+  if(view==='piano')return {key:'mentorMusic'};
+  if(view==='schoolLabs'||view==='subjectLab')return {key:'mentorSchool'};
+  return null;
+ }

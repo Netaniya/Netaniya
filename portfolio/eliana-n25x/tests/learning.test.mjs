@@ -293,3 +293,13 @@ test('Music: all twelve major and natural minor pitch classes, playable keys and
  const p=freshPiano();for(const [list,pattern] of [[major,[0,2,4,5,7,9,11,12]],[minor,[0,2,3,5,7,8,10,12]]])for(const l of list){assert.deepEqual(l.notes.slice(0,8).map(n=>n-l.notes[0]),pattern);assert.deepEqual(l.notes,l.notes.slice().reverse());assert(l.notes.every(n=>n>=(l.octave+1)*12&&n<(l.octave+3)*12));let i=0;for(const n of l.notes){const result=pianoPracticeStep(l,i,n);assert(result.correct);i=result.index;}assert.equal(i,l.notes.length);p.practice.passed[l.id]=true;}
  assert.equal(PIANO_LESSONS.length,38);assert.equal(RHYTHM_LESSONS.length,12);assert.equal(rhythmGapLabel(2/3-1/3),'⅓');assert.equal(rhythmGapLabel(.75),'¾');assert.equal(rhythmGapLabel(1),'1');assert.deepEqual(parsePiano(p),p);
 });
+
+test('Engineering route covers all 67 verified steps, resumes the exact next task and mentor is contextual',async()=>{
+ const {engineeringRoute,mentorContext}=await import('../workshop/model.mjs');const {MISSIONS}=await import('../workshop/curriculum.mjs');const {PYTHON_LESSONS,WEB_LESSONS,SQL_LESSONS}=await import('../workshop/program.mjs');const s=fresh();
+ assert.equal(engineeringRoute(s).total,67);assert.deepEqual(engineeringRoute(s).next,{kind:'javascript',index:0});
+ for(const [i,m] of MISSIONS.entries()){assert.deepEqual(engineeringRoute(s).next,{kind:'javascript',index:i});s.solved.push('program:'+m.id);}
+ for(const [kind,ls] of Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS}))for(const [i,v] of ls.entries()){assert.deepEqual(engineeringRoute(s).next,{kind,index:i});s.academy.labs[kind][kind==='python'?v.id:String(i)]={passed:true};}
+ assert.deepEqual(engineeringRoute(s).next,{kind:'capstone',index:0});s.academy.capstone.passed=true;assert.equal(engineeringRoute(s).next,null);assert.equal(engineeringRoute(s).done,67);
+ s.academy.labs.python[PYTHON_LESSONS[1].id].passed=false;assert.deepEqual(engineeringRoute(s).next,{kind:'python',index:1});assert.equal(mentorContext(s,'programming').key,'mentorEngineering_python');assert.equal(mentorContext(s,'piano').key,'mentorMusic');assert.equal(mentorContext(s,'home'),null);
+ const before=JSON.stringify(s);engineeringRoute(s);mentorContext(s,'learn');assert.equal(JSON.stringify(s),before);for(const lang of ['de','en','ru','uk'])assert(!translate(lang,'mentorEngineering_python',{n:2}).includes('{n}'));
+});

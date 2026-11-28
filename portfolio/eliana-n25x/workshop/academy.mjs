@@ -280,5 +280,14 @@ export function createAcademy(api){
   return false;
  }
  function submit(event){if(event.target.id!=='language-form')return false;event.preventDefault();const course=LEARNING_LANGUAGES.find(v=>v.id===progress().learningLanguage);const normalize=s=>s.normalize('NFC').toLocaleLowerCase().replace(/\s+/g,' ').trim();answerLanguage(normalize($('language-input').value)===normalize(course.words[progress().languageIndex]));return true;}
- return {render,mount,click,input:inputEvent,change:changeEvent,submit,catalogue,openProject,selectTemplate};
+ function openEngineering(next){
+ if(!next||currentView!=='programming')return false;
+ if(next.kind==='javascript'){if(!MISSIONS[next.index])return false;progress().mission=next.index;resetAI();testResults=sampleResult=prediction=null;help='';save();refresh();return true;}
+ const key={python:'python-lab',web:'web-lab',sql:'sql-lab',capstone:'capstone-lab'}[next.kind];if(!key)return false;
+ if(next.kind==='python'){if(!PYTHON_LESSONS[next.index])return false;pyLesson=next.index;selectLab('python',pyLesson);pyResult=null;}
+ if(next.kind==='web'){if(!WEB_LESSONS[next.index])return false;webLesson=next.index;selectLab('web',webLesson);webResult=null;}
+ if(next.kind==='sql'){if(!SQL_LESSONS[next.index])return false;sqlLesson=next.index;selectLab('sql',sqlLesson);sqlMode='sample';sqlText=labs().sql[sqlLesson]?.query??SQL_LESSONS[sqlLesson].sql;sqlResult=null;}
+ const detail=$(key);if(detail)detail.setAttribute('open','');detailOpen[key]=true;refresh();$(key)?.scrollIntoView?.({block:'start'});return true;
+ }
+ return {render,mount,click,input:inputEvent,change:changeEvent,submit,catalogue,openProject,selectTemplate,openEngineering};
 }
