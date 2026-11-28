@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 /**
  * Original N25x introductory programming exercises.
  * © 2026 Natalie Ragulina. All rights reserved.
@@ -402,3 +408,2644 @@ export const EXTRA_MISSIONS = [
     tests: [[[-2, 10], 0], [[0, 0], 0], [[6, 10], 6], [[10, 10], 10], [[12, 10], 10]],
   },
 ];
+
+// Academy extension: preserve legacy IDs and order.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "range-sum",
+    "title": [
+      "Intervallsumme",
+      "Range sum",
+      "Сумма диапазона",
+      "Сума діапазону"
+    ],
+    "task": [
+      "Addiere ganze Zahlen von a bis b einschließlich (0 ≤ a ≤ b ≤ 20).",
+      "Add integers from a through b inclusive (0 ≤ a ≤ b ≤ 20).",
+      "Сложи целые числа от a до b включительно (0 ≤ a ≤ b ≤ 20).",
+      "Додай цілі числа від a до b включно (0 ≤ a ≤ b ≤ 20)."
+    ],
+    "hint": [
+      "<= schließt b ein.",
+      "<= includes b.",
+      "<= включает b.",
+      "<= включає b."
+    ],
+    "why": [
+      "<= schließt b ein.",
+      "<= includes b.",
+      "<= включает b.",
+      "<= включає b."
+    ],
+    "entry": "rangeSum",
+    "source": "function rangeSum(a,b) { let sum=0; for (let i=a; i<b; i++) { sum=sum+i; } return sum; }",
+    "sample": [
+      2,
+      4
+    ],
+    "block": {
+      "from": "i<b",
+      "choices": [
+        "i<b",
+        "i<=b",
+        "i>b"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2,
+          4
+        ],
+        9
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        5
+      ],
+      [
+        [
+          0,
+          3
+        ],
+        6
+      ],
+      [
+        [
+          10,
+          12
+        ],
+        33
+      ]
+    ],
+    "expectedPrediction": 5,
+    "prediction": [
+      5,
+      9,
+      6
+    ]
+  },
+  {
+    "id": "count-multiples",
+    "title": [
+      "Vielfache zählen",
+      "Count multiples",
+      "Подсчёт кратных",
+      "Підрахунок кратних"
+    ],
+    "task": [
+      "Zähle positive Vielfache von k bis n (1 ≤ k ≤ 20, 0 ≤ n ≤ 40).",
+      "Count positive multiples of k up to n (1 ≤ k ≤ 20, 0 ≤ n ≤ 40).",
+      "Посчитай положительные кратные k до n (1 ≤ k ≤ 20, 0 ≤ n ≤ 40).",
+      "Порахуй додатні кратні k до n (1 ≤ k ≤ 20, 0 ≤ n ≤ 40)."
+    ],
+    "hint": [
+      "Ein Vielfaches hat Rest null.",
+      "A multiple has zero remainder.",
+      "У кратного остаток равен нулю.",
+      "Кратне має нульову остачу."
+    ],
+    "why": [
+      "Ein Vielfaches hat Rest null.",
+      "A multiple has zero remainder.",
+      "У кратного остаток равен нулю.",
+      "Кратне має нульову остачу."
+    ],
+    "entry": "countMultiples",
+    "source": "function countMultiples(n,k) { let count=0; for (let i=1; i<=n; i++) { if (i%k!==0) { count++; } } return count; }",
+    "sample": [
+      7,
+      2
+    ],
+    "block": {
+      "from": "i%k!==0",
+      "choices": [
+        "i%k!==0",
+        "i%k===0",
+        "i%k===1"
+      ]
+    },
+    "tests": [
+      [
+        [
+          7,
+          2
+        ],
+        3
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          1
+        ],
+        5
+      ],
+      [
+        [
+          12,
+          3
+        ],
+        4
+      ],
+      [
+        [
+          3,
+          5
+        ],
+        0
+      ]
+    ],
+    "expectedPrediction": 4,
+    "prediction": [
+      4,
+      3,
+      5
+    ]
+  },
+  {
+    "id": "digit-sum",
+    "title": [
+      "Quersumme",
+      "Digit sum",
+      "Сумма цифр",
+      "Сума цифр"
+    ],
+    "task": [
+      "Addiere die Ziffern h,t,o (je 0 bis 9).",
+      "Add digits h,t,o (each 0 to 9).",
+      "Сложи цифры h,t,o (каждая от 0 до 9).",
+      "Додай цифри h,t,o (кожна від 0 до 9)."
+    ],
+    "hint": [
+      "Die Quersumme von 307 ist 3+0+7.",
+      "The digit sum of 307 is 3+0+7.",
+      "Сумма цифр 307 — 3+0+7.",
+      "Сума цифр 307 — 3+0+7."
+    ],
+    "why": [
+      "Die Quersumme von 307 ist 3+0+7.",
+      "The digit sum of 307 is 3+0+7.",
+      "Сумма цифр 307 — 3+0+7.",
+      "Сума цифр 307 — 3+0+7."
+    ],
+    "entry": "digits",
+    "source": "function digits(h,t,o) { return h*100+t+o; }",
+    "sample": [
+      3,
+      0,
+      7
+    ],
+    "block": {
+      "from": "h*100+t+o",
+      "choices": [
+        "h*100+t+o",
+        "h+t+o",
+        "h*t*o"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          0,
+          7
+        ],
+        10
+      ],
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          9,
+          9,
+          9
+        ],
+        27
+      ],
+      [
+        [
+          1,
+          2,
+          3
+        ],
+        6
+      ],
+      [
+        [
+          0,
+          4,
+          9
+        ],
+        13
+      ]
+    ],
+    "expectedPrediction": 307,
+    "prediction": [
+      307,
+      10,
+      308
+    ]
+  },
+  {
+    "id": "triangle-check",
+    "title": [
+      "Dreiecksungleichung",
+      "Triangle inequality",
+      "Неравенство треугольника",
+      "Нерівність трикутника"
+    ],
+    "task": [
+      "Prüfe, ob positive Seiten a,b,c ein nicht entartetes Dreieck bilden.",
+      "Check whether positive sides a,b,c form a non-degenerate triangle.",
+      "Проверь, образуют ли положительные стороны a,b,c невырожденный треугольник.",
+      "Перевір, чи утворюють додатні сторони a,b,c невироджений трикутник."
+    ],
+    "hint": [
+      "Jede Seite muss kleiner als die Summe der anderen sein.",
+      "Each side must be smaller than the sum of the others.",
+      "Каждая сторона меньше суммы двух других.",
+      "Кожна сторона менша за суму двох інших."
+    ],
+    "why": [
+      "Jede Seite muss kleiner als die Summe der anderen sein.",
+      "Each side must be smaller than the sum of the others.",
+      "Каждая сторона меньше суммы двух других.",
+      "Кожна сторона менша за суму двох інших."
+    ],
+    "entry": "triangle",
+    "source": "function triangle(a,b,c) { return a+b>c || a+c>b || b+c>a; }",
+    "sample": [
+      1,
+      2,
+      3
+    ],
+    "block": {
+      "from": "a+b>c || a+c>b || b+c>a",
+      "choices": [
+        "a+b>c || a+c>b || b+c>a",
+        "a+b>c && a+c>b && b+c>a",
+        "a+b>=c && a+c>=b && b+c>=a"
+      ]
+    },
+    "tests": [
+      [
+        [
+          1,
+          2,
+          3
+        ],
+        false
+      ],
+      [
+        [
+          3,
+          4,
+          5
+        ],
+        true
+      ],
+      [
+        [
+          9,
+          1,
+          2
+        ],
+        false
+      ],
+      [
+        [
+          2,
+          9,
+          2
+        ],
+        false
+      ],
+      [
+        [
+          1,
+          1,
+          1
+        ],
+        true
+      ]
+    ],
+    "expectedPrediction": true,
+    "prediction": [
+      true,
+      false
+    ]
+  },
+  {
+    "id": "prime-check",
+    "title": [
+      "Primzahlen",
+      "Prime numbers",
+      "Простые числа",
+      "Прості числа"
+    ],
+    "task": [
+      "Ist n prim? 0 ≤ n ≤ 40, ganzzahlig.",
+      "Is n prime? 0 ≤ n ≤ 40, integer.",
+      "Является ли n простым? Целое 0 ≤ n ≤ 40.",
+      "Чи є n простим? Ціле 0 ≤ n ≤ 40."
+    ],
+    "hint": [
+      "Teste mögliche Teiler von 2 bis n-1; n muss größer als 1 sein.",
+      "Test divisors from 2 to n-1; n must exceed 1.",
+      "Проверяй делители от 2 до n−1; n больше 1.",
+      "Перевіряй дільники від 2 до n−1; n більше 1."
+    ],
+    "why": [
+      "Teste mögliche Teiler von 2 bis n-1; n muss größer als 1 sein.",
+      "Test divisors from 2 to n-1; n must exceed 1.",
+      "Проверяй делители от 2 до n−1; n больше 1.",
+      "Перевіряй дільники від 2 до n−1; n більше 1."
+    ],
+    "entry": "prime",
+    "source": "function prime(n) { if (n<2) { return false; } for (let i=2; i<=n; i++) { if (n%i===0) { return false; } } return true; }",
+    "sample": [
+      7
+    ],
+    "block": {
+      "from": "i<=n",
+      "choices": [
+        "i<=n",
+        "i<n",
+        "i>n"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2
+        ],
+        true
+      ],
+      [
+        [
+          7
+        ],
+        true
+      ],
+      [
+        [
+          1
+        ],
+        false
+      ],
+      [
+        [
+          9
+        ],
+        false
+      ],
+      [
+        [
+          0
+        ],
+        false
+      ],
+      [
+        [
+          37
+        ],
+        true
+      ]
+    ],
+    "expectedPrediction": false,
+    "prediction": [
+      false,
+      true
+    ]
+  },
+  {
+    "id": "common-divisor",
+    "title": [
+      "Größter gemeinsamer Teiler",
+      "Greatest common divisor",
+      "НОД",
+      "НСД"
+    ],
+    "task": [
+      "Finde den ggT positiver ganzer a,b bis 30.",
+      "Find GCD of positive integers a,b up to 30.",
+      "Найди НОД положительных целых a,b до 30.",
+      "Знайди НСД додатних цілих a,b до 30."
+    ],
+    "hint": [
+      "Beide Reste müssen null sein; speichere den größten gemeinsamen Teiler.",
+      "Both remainders must be zero; keep the largest common divisor.",
+      "Оба остатка нулевые; сохраняй наибольший общий делитель.",
+      "Обидві остачі нульові; зберігай найбільший спільний дільник."
+    ],
+    "why": [
+      "Beide Reste müssen null sein; speichere den größten gemeinsamen Teiler.",
+      "Both remainders must be zero; keep the largest common divisor.",
+      "Оба остатка нулевые; сохраняй наибольший общий делитель.",
+      "Обидві остачі нульові; зберігай найбільший спільний дільник."
+    ],
+    "entry": "gcd",
+    "source": "function gcd(a,b) { let best=1; for (let i=1; i<=a; i++) { if (a%i===0 || b%i===0) { best=i; } } return best; }",
+    "sample": [
+      12,
+      8
+    ],
+    "block": {
+      "from": "a%i===0 || b%i===0",
+      "choices": [
+        "a%i===0 || b%i===0",
+        "a%i===0 && b%i===0",
+        "a%i!==0 && b%i!==0"
+      ]
+    },
+    "tests": [
+      [
+        [
+          12,
+          8
+        ],
+        4
+      ],
+      [
+        [
+          7,
+          5
+        ],
+        1
+      ],
+      [
+        [
+          6,
+          6
+        ],
+        6
+      ],
+      [
+        [
+          1,
+          10
+        ],
+        1
+      ],
+      [
+        [
+          18,
+          24
+        ],
+        6
+      ]
+    ],
+    "expectedPrediction": 12,
+    "prediction": [
+      12,
+      4,
+      13
+    ]
+  },
+  {
+    "id": "fibonacci-step",
+    "title": [
+      "Fibonacci-Folge",
+      "Fibonacci sequence",
+      "Последовательность Фибоначчи",
+      "Послідовність Фібоначчі"
+    ],
+    "task": [
+      "Berechne F(n), 0 ≤ n ≤ 15, F(0)=0, F(1)=1.",
+      "Compute F(n), 0 ≤ n ≤ 15, F(0)=0, F(1)=1.",
+      "Вычисли F(n), 0 ≤ n ≤ 15, F(0)=0, F(1)=1.",
+      "Обчисли F(n), 0 ≤ n ≤ 15, F(0)=0, F(1)=1."
+    ],
+    "hint": [
+      "Speichere a+b vor der Aktualisierung beider Werte.",
+      "Store a+b before updating both values.",
+      "Сохрани a+b до обновления обоих значений.",
+      "Збережи a+b до оновлення обох значень."
+    ],
+    "why": [
+      "Speichere a+b vor der Aktualisierung beider Werte.",
+      "Store a+b before updating both values.",
+      "Сохрани a+b до обновления обоих значений.",
+      "Збережи a+b до оновлення обох значень."
+    ],
+    "entry": "fib",
+    "source": "function fib(n) { let a=0; let b=1; let t=0; for (let i=0; i<n; i++) { t=a*b; a=b; b=t; } return a; }",
+    "sample": [
+      5
+    ],
+    "block": {
+      "from": "t=a*b",
+      "choices": [
+        "t=a*b",
+        "t=a+b",
+        "t=a-b"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0
+        ],
+        0
+      ],
+      [
+        [
+          1
+        ],
+        1
+      ],
+      [
+        [
+          2
+        ],
+        1
+      ],
+      [
+        [
+          5
+        ],
+        5
+      ],
+      [
+        [
+          10
+        ],
+        55
+      ],
+      [
+        [
+          15
+        ],
+        610
+      ]
+    ],
+    "expectedPrediction": 0,
+    "prediction": [
+      0,
+      5,
+      1
+    ]
+  },
+  {
+    "id": "nested-grid",
+    "title": [
+      "Verschachtelte Schleifen",
+      "Nested loops",
+      "Вложенные циклы",
+      "Вкладені цикли"
+    ],
+    "task": [
+      "Zähle Zellen eines Rasters mit r Zeilen und c Spalten (0 ≤ r,c ≤ 8).",
+      "Count cells in a grid with r rows and c columns (0 ≤ r,c ≤ 8).",
+      "Посчитай клетки сетки с r строками и c столбцами (0 ≤ r,c ≤ 8).",
+      "Порахуй клітинки сітки з r рядками та c стовпцями (0 ≤ r,c ≤ 8)."
+    ],
+    "hint": [
+      "Die innere Schleife zählt c Spalten pro Zeile.",
+      "The inner loop counts c columns per row.",
+      "Внутренний цикл считает c столбцов в строке.",
+      "Внутрішній цикл рахує c стовпців у рядку."
+    ],
+    "why": [
+      "Die innere Schleife zählt c Spalten pro Zeile.",
+      "The inner loop counts c columns per row.",
+      "Внутренний цикл считает c столбцов в строке.",
+      "Внутрішній цикл рахує c стовпців у рядку."
+    ],
+    "entry": "gridCells",
+    "source": "function gridCells(r,c) { let n=0; for (let i=0; i<r; i++) { for (let j=0; j<r; j++) { n++; } } return n; }",
+    "sample": [
+      2,
+      3
+    ],
+    "block": {
+      "from": "j<r",
+      "choices": [
+        "j<r",
+        "j<c",
+        "j<=c"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2,
+          3
+        ],
+        6
+      ],
+      [
+        [
+          0,
+          4
+        ],
+        0
+      ],
+      [
+        [
+          4,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          1,
+          5
+        ],
+        5
+      ],
+      [
+        [
+          8,
+          8
+        ],
+        64
+      ]
+    ],
+    "expectedPrediction": 4,
+    "prediction": [
+      4,
+      6,
+      5
+    ]
+  },
+  {
+    "id": "shipping-cost",
+    "title": [
+      "Projekt: Versand",
+      "Project: shipping",
+      "Проект: доставка",
+      "Проєкт: доставка"
+    ],
+    "task": [
+      "3 Grundeinheiten plus 2 pro kg; ab 10 kg entfällt der Grundpreis. 1–20 kg.",
+      "3 base units plus 2 per kg; at 10 kg or above, no base charge. 1–20 kg.",
+      "3 базовые единицы плюс 2 за кг; от 10 кг базовая плата отменяется. 1–20 кг.",
+      "3 базові одиниці плюс 2 за кг; від 10 кг базова плата скасовується. 1–20 кг."
+    ],
+    "hint": [
+      "10 kg gehört zum zweiten Tarif.",
+      "10 kg belongs to the second rate.",
+      "10 кг относится ко второму тарифу.",
+      "10 кг належить до другого тарифу."
+    ],
+    "why": [
+      "10 kg gehört zum zweiten Tarif.",
+      "10 kg belongs to the second rate.",
+      "10 кг относится ко второму тарифу.",
+      "10 кг належить до другого тарифу."
+    ],
+    "entry": "shipping",
+    "source": "function shipping(kg) { if (kg>10) { return 2*kg; } return 3+2*kg; }",
+    "sample": [
+      10
+    ],
+    "block": {
+      "from": "kg>10",
+      "choices": [
+        "kg>10",
+        "kg>=10",
+        "kg<10"
+      ]
+    },
+    "tests": [
+      [
+        [
+          1
+        ],
+        5
+      ],
+      [
+        [
+          9
+        ],
+        21
+      ],
+      [
+        [
+          10
+        ],
+        20
+      ],
+      [
+        [
+          11
+        ],
+        22
+      ],
+      [
+        [
+          20
+        ],
+        40
+      ]
+    ],
+    "expectedPrediction": 23,
+    "prediction": [
+      23,
+      20,
+      24
+    ]
+  },
+  {
+    "id": "budget-balance",
+    "title": [
+      "Projekt: Budget",
+      "Project: budget",
+      "Проект: бюджет",
+      "Проєкт: бюджет"
+    ],
+    "task": [
+      "Berechne den Rest nach zwei Ausgaben; negative Werte sind erlaubt.",
+      "Compute the remaining budget after two expenses; negative values allowed.",
+      "Вычисли остаток бюджета после двух расходов; отрицательные значения допустимы.",
+      "Обчисли залишок бюджету після двох витрат; від’ємні значення допустимі."
+    ],
+    "hint": [
+      "Beide Ausgaben abziehen.",
+      "Subtract both expenses.",
+      "Вычти оба расхода.",
+      "Відніми обидві витрати."
+    ],
+    "why": [
+      "Beide Ausgaben abziehen.",
+      "Subtract both expenses.",
+      "Вычти оба расхода.",
+      "Відніми обидві витрати."
+    ],
+    "entry": "remaining",
+    "source": "function remaining(budget,a,b) { return budget-a+b; }",
+    "sample": [
+      100,
+      30,
+      20
+    ],
+    "block": {
+      "from": "budget-a+b",
+      "choices": [
+        "budget-a+b",
+        "budget-a-b",
+        "budget+a+b"
+      ]
+    },
+    "tests": [
+      [
+        [
+          100,
+          30,
+          20
+        ],
+        50
+      ],
+      [
+        [
+          10,
+          8,
+          5
+        ],
+        -3
+      ],
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          10,
+          5,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          50,
+          0,
+          10
+        ],
+        40
+      ]
+    ],
+    "expectedPrediction": 90,
+    "prediction": [
+      90,
+      50,
+      91
+    ]
+  },
+  {
+    "id": "sensor-window",
+    "title": [
+      "Projekt: Sensor",
+      "Project: sensor",
+      "Проект: датчик",
+      "Проєкт: датчик"
+    ],
+    "task": [
+      "Prüfe min ≤ value ≤ max; min ≤ max.",
+      "Check min ≤ value ≤ max; min ≤ max.",
+      "Проверь min ≤ value ≤ max; min ≤ max.",
+      "Перевір min ≤ value ≤ max; min ≤ max."
+    ],
+    "hint": [
+      "Beide Grenzen müssen gelten.",
+      "Both bounds must hold.",
+      "Обе границы должны соблюдаться.",
+      "Обидві межі мають виконуватися."
+    ],
+    "why": [
+      "Beide Grenzen müssen gelten.",
+      "Both bounds must hold.",
+      "Обе границы должны соблюдаться.",
+      "Обидві межі мають виконуватися."
+    ],
+    "entry": "validReading",
+    "source": "function validReading(value,min,max) { return value>=min || value<=max; }",
+    "sample": [
+      12,
+      0,
+      10
+    ],
+    "block": {
+      "from": "value>=min || value<=max",
+      "choices": [
+        "value>=min || value<=max",
+        "value>=min && value<=max",
+        "value>min && value<max"
+      ]
+    },
+    "tests": [
+      [
+        [
+          12,
+          0,
+          10
+        ],
+        false
+      ],
+      [
+        [
+          0,
+          0,
+          10
+        ],
+        true
+      ],
+      [
+        [
+          10,
+          0,
+          10
+        ],
+        true
+      ],
+      [
+        [
+          -1,
+          0,
+          10
+        ],
+        false
+      ],
+      [
+        [
+          5,
+          5,
+          5
+        ],
+        true
+      ]
+    ],
+    "expectedPrediction": true,
+    "prediction": [
+      true,
+      false
+    ]
+  },
+  {
+    "id": "tier-discount",
+    "title": [
+      "Projekt: Mengenrabatt",
+      "Project: quantity discount",
+      "Проект: скидка",
+      "Проєкт: знижка"
+    ],
+    "task": [
+      "Ein Stück kostet 10; ab 5 Stück kostet jedes 8. Gesamtpreis für 0–20 Stück.",
+      "Each item costs 10; from 5 items each costs 8. Total for 0–20 items.",
+      "Цена штуки 10; от 5 штук каждая стоит 8. Общая цена для 0–20 штук.",
+      "Ціна штуки 10; від 5 штук кожна коштує 8. Загальна ціна для 0–20 штук."
+    ],
+    "hint": [
+      "Wähle zuerst den Stückpreis, dann multipliziere.",
+      "Choose the unit price, then multiply.",
+      "Выбери цену единицы, затем умножь.",
+      "Обери ціну одиниці, потім помнож."
+    ],
+    "why": [
+      "Wähle zuerst den Stückpreis, dann multipliziere.",
+      "Choose the unit price, then multiply.",
+      "Выбери цену единицы, затем умножь.",
+      "Обери ціну одиниці, потім помнож."
+    ],
+    "entry": "totalPrice",
+    "source": "function totalPrice(n) { if (n>=5) { return n*10-2; } return n*10; }",
+    "sample": [
+      5
+    ],
+    "block": {
+      "from": "n*10-2",
+      "choices": [
+        "n*10-2",
+        "n*8",
+        "n*10"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0
+        ],
+        0
+      ],
+      [
+        [
+          4
+        ],
+        40
+      ],
+      [
+        [
+          5
+        ],
+        40
+      ],
+      [
+        [
+          6
+        ],
+        48
+      ],
+      [
+        [
+          20
+        ],
+        160
+      ]
+    ],
+    "expectedPrediction": 48,
+    "prediction": [
+      48,
+      40,
+      49
+    ]
+  }
+]);
+
+// Cross-disciplinary debugging projects, appended to preserve saved mission indices.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "bounded-sensor",
+    "title": [
+      "Projekt: Messwert begrenzen",
+      "Project: clamp sensor reading",
+      "Проект: ограничение показаний датчика",
+      "Проєкт: обмеження показань датчика"
+    ],
+    "task": [
+      "Begrenze x auf [lo, hi], lo ≤ hi. Werte im Intervall bleiben unverändert.",
+      "Clamp x to [lo, hi], lo ≤ hi. Values inside remain unchanged.",
+      "Ограничь x диапазоном [lo, hi], lo ≤ hi. Внутри диапазона значение не меняется.",
+      "Обмеж x діапазоном [lo, hi], lo ≤ hi. Усередині діапазону значення не змінюється."
+    ],
+    "hint": [
+      "Unterhalb der Untergrenze gib lo zurück, oberhalb hi.",
+      "Return lo below the lower bound and hi above the upper bound.",
+      "Ниже нижней границы верни lo, выше верхней — hi.",
+      "Нижче нижньої межі поверни lo, вище верхньої — hi."
+    ],
+    "entry": "clamp",
+    "source": "function clamp(x,lo,hi) { if (x<lo) { return hi; } if (x>hi) { return hi; } return x; }",
+    "sample": [
+      -3,
+      0,
+      10
+    ],
+    "block": {
+      "from": "if (x<lo) { return hi; }",
+      "choices": [
+        "if (x<lo) { return hi; }",
+        "if (x<lo) { return lo; }",
+        "if (x<lo) { return x; }"
+      ]
+    },
+    "tests": [
+      [
+        [
+          -3,
+          0,
+          10
+        ],
+        0
+      ],
+      [
+        [
+          12,
+          0,
+          10
+        ],
+        10
+      ],
+      [
+        [
+          5,
+          0,
+          10
+        ],
+        5
+      ],
+      [
+        [
+          0,
+          0,
+          10
+        ],
+        0
+      ],
+      [
+        [
+          10,
+          0,
+          10
+        ],
+        10
+      ],
+      [
+        [
+          2,
+          5,
+          5
+        ],
+        5
+      ]
+    ],
+    "expectedPrediction": 10,
+    "prediction": [
+      10,
+      0,
+      -3
+    ],
+    "why": [
+      "Unterhalb der Untergrenze gib lo zurück, oberhalb hi.",
+      "Return lo below the lower bound and hi above the upper bound.",
+      "Ниже нижней границы верни lo, выше верхней — hi.",
+      "Нижче нижньої межі поверни lo, вище верхньої — hi."
+    ]
+  },
+  {
+    "id": "weighted-score",
+    "title": [
+      "Projekt: gewichteter Lernwert",
+      "Project: weighted learning score",
+      "Проект: взвешенный учебный балл",
+      "Проєкт: зважений навчальний бал"
+    ],
+    "task": [
+      "Berechne 40% von a plus 60% von b (0–100). Nur ein Übungsmodell, keine Schulnote.",
+      "Compute 40% of a plus 60% of b (0–100). Practice model, not a school grade.",
+      "Вычисли 40% от a плюс 60% от b (0–100). Учебная модель, не школьная оценка.",
+      "Обчисли 40% від a плюс 60% від b (0–100). Навчальна модель, не шкільна оцінка."
+    ],
+    "hint": [
+      "Die Gewichte müssen zusammen 100 ergeben; verwende erst ganze Zahlen und dividiere dann.",
+      "Weights must add to 100; use integers first, then divide.",
+      "Сумма весов — 100; сначала умножь на целые коэффициенты, затем раздели.",
+      "Сума ваг — 100; спочатку помнож на цілі коефіцієнти, потім поділи."
+    ],
+    "entry": "weighted",
+    "source": "function weighted(a,b) { return (40*a+40*b)/100; }",
+    "sample": [
+      50,
+      100
+    ],
+    "block": {
+      "from": "40*a+40*b",
+      "choices": [
+        "40*a+40*b",
+        "40*a+60*b",
+        "60*a+40*b"
+      ]
+    },
+    "tests": [
+      [
+        [
+          50,
+          100
+        ],
+        80
+      ],
+      [
+        [
+          0,
+          100
+        ],
+        60
+      ],
+      [
+        [
+          100,
+          0
+        ],
+        40
+      ],
+      [
+        [
+          100,
+          100
+        ],
+        100
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          25,
+          75
+        ],
+        55
+      ]
+    ],
+    "expectedPrediction": 60,
+    "prediction": [
+      60,
+      80,
+      70
+    ],
+    "why": [
+      "Die Gewichte müssen zusammen 100 ergeben; verwende erst ganze Zahlen und dividiere dann.",
+      "Weights must add to 100; use integers first, then divide.",
+      "Сумма весов — 100; сначала умножь на целые коэффициенты, затем раздели.",
+      "Сума ваг — 100; спочатку помнож на цілі коефіцієнти, потім поділи."
+    ]
+  },
+  {
+    "id": "population-doubling",
+    "title": [
+      "Projekt: Verdopplungsmodell",
+      "Project: doubling model",
+      "Проект: модель удвоения",
+      "Проєкт: модель подвоєння"
+    ],
+    "task": [
+      "Starte mit n Einheiten und verdopple sie in jeder der t Runden (0 ≤ n ≤ 20, 0 ≤ t ≤ 8). Ideales Rechenmodell.",
+      "Start with n units and double them in each of t rounds (0 ≤ n ≤ 20, 0 ≤ t ≤ 8). Idealized arithmetic model.",
+      "Начни с n единиц и удваивай их на каждом из t шагов (0 ≤ n ≤ 20, 0 ≤ t ≤ 8). Идеализированная модель.",
+      "Почни з n одиниць і подвоюй їх на кожному з t кроків (0 ≤ n ≤ 20, 0 ≤ t ≤ 8). Ідеалізована модель."
+    ],
+    "hint": [
+      "Verdoppeln bedeutet mit 2 multiplizieren, nicht 2 addieren.",
+      "Doubling means multiply by 2, not add 2.",
+      "Удвоение — умножение на 2, а не прибавление 2.",
+      "Подвоєння — множення на 2, а не додавання 2."
+    ],
+    "entry": "growth",
+    "source": "function growth(n,t) { let v=n; for (let i=0; i<t; i++) { v=v+2; } return v; }",
+    "sample": [
+      3,
+      3
+    ],
+    "block": {
+      "from": "v=v+2",
+      "choices": [
+        "v=v+2",
+        "v=v*2",
+        "v=v-2"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          3
+        ],
+        24
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        5
+      ],
+      [
+        [
+          0,
+          8
+        ],
+        0
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        2
+      ],
+      [
+        [
+          20,
+          8
+        ],
+        5120
+      ],
+      [
+        [
+          2,
+          4
+        ],
+        32
+      ]
+    ],
+    "expectedPrediction": 9,
+    "prediction": [
+      9,
+      24,
+      27
+    ],
+    "why": [
+      "Verdoppeln bedeutet mit 2 multiplizieren, nicht 2 addieren.",
+      "Doubling means multiply by 2, not add 2.",
+      "Удвоение — умножение на 2, а не прибавление 2.",
+      "Подвоєння — множення на 2, а не додавання 2."
+    ]
+  },
+  {
+    "id": "euclid-gcd",
+    "title": [
+      "Projekt: Euklidischer Algorithmus",
+      "Project: Euclidean algorithm",
+      "Проект: алгоритм Евклида",
+      "Проєкт: алгоритм Евкліда"
+    ],
+    "task": [
+      "Berechne den größten gemeinsamen Teiler von zwei nichtnegativen ganzen Zahlen bis 100, nicht beide 0.",
+      "Find the greatest common divisor of two nonnegative integers up to 100, not both zero.",
+      "Найди наибольший общий делитель двух неотрицательных целых чисел до 100, не равных одновременно нулю.",
+      "Знайди найбільший спільний дільник двох невід’ємних цілих чисел до 100, не рівних одночасно нулю."
+    ],
+    "hint": [
+      "Der Rest a % b wird vor dem Tausch gespeichert. Bei b=0 ist a der ggT.",
+      "Store a % b before swapping. When b=0, a is the GCD.",
+      "Сохрани остаток a % b до перестановки. Когда b=0, a — НОД.",
+      "Збережи остачу a % b до перестановки. Коли b=0, a — НСД."
+    ],
+    "entry": "gcd",
+    "source": "function gcd(a,b) { let r=0; for (let i=0; i<20 && b!==0; i++) { r=0; a=b; b=r; } return a; }",
+    "sample": [
+      48,
+      18
+    ],
+    "block": {
+      "from": "{ r=0; a=b; b=r; }",
+      "choices": [
+        "{ r=0; a=b; b=r; }",
+        "{ r=a%b; a=b; b=r; }",
+        "{ r=b%a; a=b; b=r; }"
+      ]
+    },
+    "tests": [
+      [
+        [
+          48,
+          18
+        ],
+        6
+      ],
+      [
+        [
+          18,
+          48
+        ],
+        6
+      ],
+      [
+        [
+          0,
+          12
+        ],
+        12
+      ],
+      [
+        [
+          12,
+          0
+        ],
+        12
+      ],
+      [
+        [
+          17,
+          13
+        ],
+        1
+      ],
+      [
+        [
+          89,
+          55
+        ],
+        1
+      ],
+      [
+        [
+          100,
+          100
+        ],
+        100
+      ]
+    ],
+    "expectedPrediction": 18,
+    "prediction": [
+      18,
+      6,
+      48
+    ],
+    "why": [
+      "Der Rest a % b wird vor dem Tausch gespeichert. Bei b=0 ist a der ggT.",
+      "Store a % b before swapping. When b=0, a is the GCD.",
+      "Сохрани остаток a % b до перестановки. Когда b=0, a — НОД.",
+      "Збережи остачу a % b до перестановки. Коли b=0, a — НСД."
+    ]
+  }
+]);
+
+// AI evaluation fundamentals; numeric exercises, not a trained classifier.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "ai-classifier-threshold",
+    "title": [
+      "KI: Klassifikationsschwelle",
+      "AI: classification threshold",
+      "ИИ: порог классификации",
+      "ШІ: поріг класифікації"
+    ],
+    "task": [
+      "Ein Modell meldet einen Treffer bei score ≥ threshold, beide 0–100.",
+      "A model predicts positive when score ≥ threshold, both 0–100.",
+      "Модель выдаёт положительный класс при score ≥ threshold; оба 0–100.",
+      "Модель прогнозує позитивний клас за score ≥ threshold; обидва 0–100."
+    ],
+    "hint": [
+      "Der Schwellenwert selbst gehört zum positiven Bereich.",
+      "The threshold itself belongs to the positive range.",
+      "Сам порог входит в положительный диапазон.",
+      "Сам поріг належить до позитивного діапазону."
+    ],
+    "entry": "predictClass",
+    "source": "function predictClass(score,threshold) { return score>threshold; }",
+    "sample": [
+      50,
+      50
+    ],
+    "block": {
+      "from": "score>threshold",
+      "choices": [
+        "score>threshold",
+        "score>=threshold",
+        "score<threshold"
+      ]
+    },
+    "tests": [
+      [
+        [
+          50,
+          50
+        ],
+        true
+      ],
+      [
+        [
+          49,
+          50
+        ],
+        false
+      ],
+      [
+        [
+          51,
+          50
+        ],
+        true
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        true
+      ],
+      [
+        [
+          100,
+          100
+        ],
+        true
+      ],
+      [
+        [
+          0,
+          100
+        ],
+        false
+      ]
+    ],
+    "expectedPrediction": false,
+    "prediction": [
+      false,
+      true
+    ],
+    "why": [
+      "Der Schwellenwert selbst gehört zum positiven Bereich.",
+      "The threshold itself belongs to the positive range.",
+      "Сам порог входит в положительный диапазон.",
+      "Сам поріг належить до позитивного діапазону."
+    ]
+  },
+  {
+    "id": "ai-precision",
+    "title": [
+      "KI: Precision messen",
+      "AI: measure precision",
+      "ИИ: точность положительных прогнозов (Precision)",
+      "ШІ: точність позитивних прогнозів (Precision)"
+    ],
+    "task": [
+      "Berechne TP / (TP + FP); gib 0 zurück, wenn keine positiven Vorhersagen vorliegen (Konvention in dieser Aufgabe).",
+      "Compute TP / (TP + FP); return 0 if there are no positive predictions (convention for this task).",
+      "Вычисли TP / (TP + FP); если положительных прогнозов нет, верни 0 (условие этой задачи).",
+      "Обчисли TP / (TP + FP); якщо позитивних прогнозів немає, поверни 0 (умова цієї задачі)."
+    ],
+    "hint": [
+      "Der Nenner zählt alle positiv vorhergesagten Fälle.",
+      "The denominator counts all predicted positives.",
+      "В знаменателе — все положительные прогнозы.",
+      "У знаменнику — усі позитивні прогнози."
+    ],
+    "entry": "precision",
+    "source": "function precision(tp,fp) { if (tp+fp===0) { return 0; } return fp/(tp+fp); }",
+    "sample": [
+      3,
+      1
+    ],
+    "block": {
+      "from": "fp/(tp+fp)",
+      "choices": [
+        "fp/(tp+fp)",
+        "tp/(tp+fp)",
+        "(tp+fp)/tp"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          1
+        ],
+        0.75
+      ],
+      [
+        [
+          1,
+          3
+        ],
+        0.25
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          2,
+          2
+        ],
+        0.5
+      ]
+    ],
+    "expectedPrediction": 0.25,
+    "prediction": [
+      0.25,
+      0.75,
+      1
+    ],
+    "why": [
+      "Der Nenner zählt alle positiv vorhergesagten Fälle.",
+      "The denominator counts all predicted positives.",
+      "В знаменателе — все положительные прогнозы.",
+      "У знаменнику — усі позитивні прогнози."
+    ]
+  }
+]);
+
+// Evaluation fundamentals continued; arithmetic models, not live model inference.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "ai-recall",
+    "title": [
+      "KI: Recall",
+      "AI: recall",
+      "ИИ: полнота (Recall)",
+      "ШІ: повнота (Recall)"
+    ],
+    "task": [
+      "Berechne TP / (TP + FN); bei Nenner 0 gib 0 zurück.",
+      "Compute TP / (TP + FN); return 0 for a zero denominator.",
+      "Вычисли TP / (TP + FN); при нулевом знаменателе верни 0.",
+      "Обчисли TP / (TP + FN); за нульового знаменника поверни 0."
+    ],
+    "hint": [
+      "Der Nenner enthält alle tatsächlichen positiven Fälle.",
+      "The denominator includes every actual positive case.",
+      "В знаменателе все фактически положительные случаи.",
+      "У знаменнику всі фактично позитивні випадки."
+    ],
+    "entry": "recall",
+    "source": "function recall(tp,fn) { if (tp+fn===0) { return 0; } return fn/(tp+fn); }",
+    "sample": [
+      3,
+      1
+    ],
+    "block": {
+      "from": "fn/(tp+fn)",
+      "choices": [
+        "fn/(tp+fn)",
+        "tp/(tp+fn)",
+        "(tp+fn)/tp"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          1
+        ],
+        0.75
+      ],
+      [
+        [
+          1,
+          3
+        ],
+        0.25
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          2,
+          2
+        ],
+        0.5
+      ]
+    ],
+    "expectedPrediction": 0.25,
+    "prediction": [
+      0.25,
+      0.75,
+      1
+    ],
+    "why": [
+      "Der Nenner enthält alle tatsächlichen positiven Fälle.",
+      "The denominator includes every actual positive case.",
+      "В знаменателе все фактически положительные случаи.",
+      "У знаменнику всі фактично позитивні випадки."
+    ]
+  },
+  {
+    "id": "ai-f1",
+    "title": [
+      "KI: F1-Maß",
+      "AI: F1 score",
+      "ИИ: F1-мера",
+      "ШІ: F1-міра"
+    ],
+    "task": [
+      "Berechne 2TP / (2TP + FP + FN); bei Nenner 0 gib 0 zurück.",
+      "Compute 2TP / (2TP + FP + FN); return 0 for a zero denominator.",
+      "Вычисли 2TP / (2TP + FP + FN); при нулевом знаменателе верни 0.",
+      "Обчисли 2TP / (2TP + FP + FN); за нульового знаменника поверни 0."
+    ],
+    "hint": [
+      "F1 verbindet Precision und Recall; TP wird doppelt gezählt.",
+      "F1 combines precision and recall; TP is counted twice.",
+      "F1 объединяет precision и recall; TP учитывается дважды.",
+      "F1 поєднує precision і recall; TP враховується двічі."
+    ],
+    "entry": "f1",
+    "source": "function f1(tp,fp,fn) { if (2*tp+fp+fn===0) { return 0; } return tp/(2*tp+fp+fn); }",
+    "sample": [
+      3,
+      1,
+      1
+    ],
+    "block": {
+      "from": "tp/(2*tp+fp+fn)",
+      "choices": [
+        "tp/(2*tp+fp+fn)",
+        "2*tp/(2*tp+fp+fn)",
+        "2*tp/(2*tp+fp)"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          1,
+          1
+        ],
+        0.75
+      ],
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          0,
+          2,
+          2
+        ],
+        0
+      ],
+      [
+        [
+          2,
+          2,
+          2
+        ],
+        0.5
+      ],
+      [
+        [
+          1,
+          0,
+          2
+        ],
+        0.5
+      ],
+      [
+        [
+          1,
+          2,
+          0
+        ],
+        0.5
+      ]
+    ],
+    "expectedPrediction": 0.375,
+    "prediction": [
+      0.375,
+      0.75,
+      1
+    ],
+    "why": [
+      "F1 verbindet Precision und Recall; TP wird doppelt gezählt.",
+      "F1 combines precision and recall; TP is counted twice.",
+      "F1 объединяет precision и recall; TP учитывается дважды.",
+      "F1 поєднує precision і recall; TP враховується двічі."
+    ]
+  },
+  {
+    "id": "ai-accuracy",
+    "title": [
+      "KI: Accuracy",
+      "AI: accuracy",
+      "ИИ: доля верных прогнозов",
+      "ШІ: частка правильних прогнозів"
+    ],
+    "task": [
+      "Berechne (TP + TN) / (TP + TN + FP + FN); für leere Daten 0.",
+      "Compute (TP + TN) / (TP + TN + FP + FN); return 0 for empty data.",
+      "Вычисли (TP + TN) / (TP + TN + FP + FN); для пустых данных верни 0.",
+      "Обчисли (TP + TN) / (TP + TN + FP + FN); для порожніх даних поверни 0."
+    ],
+    "hint": [
+      "Auch richtig negative Fälle zählen als korrekt.",
+      "Correct negative predictions also count as correct.",
+      "Верные отрицательные прогнозы тоже считаются правильными.",
+      "Правильні негативні прогнози також зараховуються."
+    ],
+    "entry": "accuracy",
+    "source": "function accuracy(tp,tn,fp,fn) { let total=tp+tn+fp+fn; if (total===0) { return 0; } return tp/total; }",
+    "sample": [
+      2,
+      6,
+      1,
+      1
+    ],
+    "block": {
+      "from": "tp/total",
+      "choices": [
+        "tp/total",
+        "(tp+tn)/total",
+        "(fp+fn)/total"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2,
+          6,
+          1,
+          1
+        ],
+        0.8
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          8,
+          0,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          0,
+          0,
+          4,
+          4
+        ],
+        0
+      ],
+      [
+        [
+          4,
+          4,
+          0,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        0.5
+      ],
+      [
+        [
+          0,
+          9,
+          0,
+          1
+        ],
+        0.9
+      ]
+    ],
+    "expectedPrediction": 0.2,
+    "prediction": [
+      0.2,
+      0.8,
+      1
+    ],
+    "why": [
+      "Auch richtig negative Fälle zählen als korrekt.",
+      "Correct negative predictions also count as correct.",
+      "Верные отрицательные прогнозы тоже считаются правильными.",
+      "Правильні негативні прогнози також зараховуються."
+    ]
+  },
+  {
+    "id": "ai-error-cost",
+    "title": [
+      "KI: Fehlerkosten",
+      "AI: error cost",
+      "ИИ: стоимость ошибок",
+      "ШІ: вартість помилок"
+    ],
+    "task": [
+      "Berechne FP × cFP + FN × cFN. Alle Eingaben sind nichtnegative Zahlen. Dies ist ein vereinfachtes Kostenmodell.",
+      "Compute FP × cFP + FN × cFN. All inputs are nonnegative. This is a simplified cost model.",
+      "Вычисли FP × cFP + FN × cFN. Все значения неотрицательны. Это упрощённая модель стоимости.",
+      "Обчисли FP × cFP + FN × cFN. Усі значення невід’ємні. Це спрощена модель вартості."
+    ],
+    "hint": [
+      "Verschiedene Fehlerarten können unterschiedliche Kosten haben.",
+      "Different error types can have different costs.",
+      "Разные виды ошибок могут иметь разную стоимость.",
+      "Різні типи помилок можуть мати різну вартість."
+    ],
+    "entry": "errorCost",
+    "source": "function errorCost(fp,fn,cfp,cfn) { return fp*cfp+fn*cfp; }",
+    "sample": [
+      2,
+      3,
+      1,
+      5
+    ],
+    "block": {
+      "from": "fn*cfp",
+      "choices": [
+        "fn*cfp",
+        "fn*cfn",
+        "fp*cfn"
+      ]
+    },
+    "tests": [
+      [
+        [
+          2,
+          3,
+          1,
+          5
+        ],
+        17
+      ],
+      [
+        [
+          0,
+          0,
+          3,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          4,
+          1,
+          3
+        ],
+        12
+      ],
+      [
+        [
+          3,
+          0,
+          2,
+          7
+        ],
+        6
+      ],
+      [
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          2,
+          2,
+          3,
+          3
+        ],
+        12
+      ],
+      [
+        [
+          4,
+          1,
+          2,
+          0
+        ],
+        8
+      ]
+    ],
+    "expectedPrediction": 5,
+    "prediction": [
+      5,
+      17,
+      10
+    ],
+    "why": [
+      "Verschiedene Fehlerarten können unterschiedliche Kosten haben.",
+      "Different error types can have different costs.",
+      "Разные виды ошибок могут иметь разную стоимость.",
+      "Різні типи помилок можуть мати різну вартість."
+    ]
+  }
+]);
+
+// Applied software logic exercises with boundary cases.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "project-page-count",
+    "entry": "pageCount",
+    "title": [
+      "Seitenzahl",
+      "Pagination",
+      "Пагинация",
+      "Пагінація"
+    ],
+    "task": [
+      "Berechne Seiten für count Datensätze bei size pro Seite. count: 0–100, size: 1–20, ganze Zahlen. Eine Restseite zählt.",
+      "Return page count for count records, size per page. Integers: count 0–100, size 1–20. Include a partial page.",
+      "Вычисли число страниц для count записей по size на странице. Целые: count 0–100, size 1–20. Неполная страница учитывается.",
+      "Обчисли кількість сторінок для count записів по size на сторінці. Цілі: count 0–100, size 1–20. Неповна сторінка враховується."
+    ],
+    "hint": [
+      "Zähle jede Seite mit mindestens einem Datensatz.",
+      "Count every page with at least one record.",
+      "Считай каждую страницу хотя бы с одной записью.",
+      "Рахуй кожну сторінку хоча б з одним записом."
+    ],
+    "why": [
+      "Zähle jede Seite mit mindestens einem Datensatz.",
+      "Count every page with at least one record.",
+      "Считай каждую страницу хотя бы с одной записью.",
+      "Рахуй кожну сторінку хоча б з одним записом."
+    ],
+    "source": "function pageCount(count,size) { let pages=0; for (let i=0; i+size<=count; i=i+size) { pages=pages+1; } return pages; }",
+    "sample": [
+      11,
+      5
+    ],
+    "prediction": [
+      2,
+      3,
+      4
+    ],
+    "expectedPrediction": 2,
+    "block": {
+      "from": "i+size<=count",
+      "choices": [
+        "i+size<=count",
+        "i<count",
+        "i<=count"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          1,
+          5
+        ],
+        1
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        1
+      ],
+      [
+        [
+          6,
+          5
+        ],
+        2
+      ],
+      [
+        [
+          11,
+          5
+        ],
+        3
+      ],
+      [
+        [
+          100,
+          1
+        ],
+        100
+      ],
+      [
+        [
+          100,
+          20
+        ],
+        5
+      ]
+    ]
+  },
+  {
+    "id": "project-stock",
+    "entry": "remainingStock",
+    "title": [
+      "Lagerbestand",
+      "Remaining stock",
+      "Остаток на складе",
+      "Залишок на складі"
+    ],
+    "task": [
+      "Gib stock minus sold zurück, mindestens null. Beide Werte sind nichtnegative ganze Zahlen.",
+      "Return stock minus sold, but never below zero. Both inputs are nonnegative integers.",
+      "Верни stock минус sold, но не ниже нуля. Оба аргумента — неотрицательные целые.",
+      "Поверни stock мінус sold, але не нижче нуля. Обидва аргументи — невід’ємні цілі."
+    ],
+    "hint": [
+      "Prüfe, ob sold mindestens stock erreicht.",
+      "Check whether sold reaches or exceeds stock.",
+      "Проверь, достигло ли sold значения stock.",
+      "Перевір, чи досягло sold значення stock."
+    ],
+    "why": [
+      "Prüfe, ob sold mindestens stock erreicht.",
+      "Check whether sold reaches or exceeds stock.",
+      "Проверь, достигло ли sold значения stock.",
+      "Перевір, чи досягло sold значення stock."
+    ],
+    "source": "function remainingStock(stock,sold) { if (sold<stock) { return 0; } return stock-sold; }",
+    "sample": [
+      10,
+      3
+    ],
+    "prediction": [
+      0,
+      7,
+      8
+    ],
+    "expectedPrediction": 0,
+    "block": {
+      "from": "sold<stock",
+      "choices": [
+        "sold<stock",
+        "sold>=stock",
+        "sold===stock"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        5
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          6
+        ],
+        0
+      ],
+      [
+        [
+          10,
+          3
+        ],
+        7
+      ],
+      [
+        [
+          100,
+          1
+        ],
+        99
+      ]
+    ]
+  },
+  {
+    "id": "project-duration",
+    "entry": "minutesLeft",
+    "title": [
+      "Restzeit",
+      "Remaining time",
+      "Оставшееся время",
+      "Залишок часу"
+    ],
+    "task": [
+      "Berechne budget minus used, mindestens null. Beide Werte sind nichtnegative ganze Minuten.",
+      "Return budget minus used, at least zero. Both inputs are nonnegative whole minutes.",
+      "Вычисли budget минус used, не меньше нуля. Оба аргумента — неотрицательные целые минуты.",
+      "Обчисли budget мінус used, не менше нуля. Обидва аргументи — невід’ємні цілі хвилини."
+    ],
+    "hint": [
+      "Die Restzeit ist null, wenn das Budget aufgebraucht ist.",
+      "Remaining time is zero when the budget is exhausted.",
+      "Остаток равен нулю, если лимит исчерпан.",
+      "Залишок дорівнює нулю, якщо ліміт вичерпано."
+    ],
+    "why": [
+      "Die Restzeit ist null, wenn das Budget aufgebraucht ist.",
+      "Remaining time is zero when the budget is exhausted.",
+      "Остаток равен нулю, если лимит исчерпан.",
+      "Залишок дорівнює нулю, якщо ліміт вичерпано."
+    ],
+    "source": "function minutesLeft(budget,used) { if (used>=budget) { return 0; } return budget+used; }",
+    "sample": [
+      60,
+      45
+    ],
+    "prediction": [
+      105,
+      15,
+      106
+    ],
+    "expectedPrediction": 105,
+    "block": {
+      "from": "budget+used",
+      "choices": [
+        "budget+used",
+        "budget-used",
+        "used-budget"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        0
+      ],
+      [
+        [
+          60,
+          45
+        ],
+        15
+      ],
+      [
+        [
+          60,
+          60
+        ],
+        0
+      ],
+      [
+        [
+          60,
+          61
+        ],
+        0
+      ],
+      [
+        [
+          10,
+          0
+        ],
+        10
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        1
+      ]
+    ]
+  },
+  {
+    "id": "project-order-total",
+    "entry": "orderTotal",
+    "title": [
+      "Bestellsumme",
+      "Order total",
+      "Сумма заказа",
+      "Сума замовлення"
+    ],
+    "task": [
+      "Berechne quantity mal unit plus delivery in Cent. Nichtnegative ganze Eingaben. Bei quantity=0 ist die Summe null.",
+      "Compute quantity times unit plus delivery in cents. Nonnegative integer inputs. If quantity is zero, return zero.",
+      "Вычисли quantity × unit + delivery в центах. Неотрицательные целые аргументы. Если quantity=0, сумма нулевая.",
+      "Обчисли quantity × unit + delivery у центах. Невід’ємні цілі аргументи. Якщо quantity=0, сума нульова."
+    ],
+    "hint": [
+      "Addiere die Lieferung nur einmal.",
+      "Add delivery only once.",
+      "Прибавь доставку только один раз.",
+      "Додай доставку лише один раз."
+    ],
+    "why": [
+      "Addiere die Lieferung nur einmal.",
+      "Add delivery only once.",
+      "Прибавь доставку только один раз.",
+      "Додай доставку лише один раз."
+    ],
+    "source": "function orderTotal(quantity,unit,delivery) { if (quantity===0) { return 0; } return quantity*(unit+delivery); }",
+    "sample": [
+      3,
+      250,
+      100
+    ],
+    "prediction": [
+      1050,
+      850,
+      1051
+    ],
+    "expectedPrediction": 1050,
+    "block": {
+      "from": "quantity*(unit+delivery)",
+      "choices": [
+        "quantity*(unit+delivery)",
+        "quantity*unit+delivery",
+        "quantity*unit-delivery"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          250,
+          100
+        ],
+        0
+      ],
+      [
+        [
+          1,
+          250,
+          100
+        ],
+        350
+      ],
+      [
+        [
+          3,
+          250,
+          100
+        ],
+        850
+      ],
+      [
+        [
+          4,
+          0,
+          100
+        ],
+        100
+      ],
+      [
+        [
+          4,
+          250,
+          0
+        ],
+        1000
+      ],
+      [
+        [
+          2,
+          1,
+          1
+        ],
+        3
+      ],
+      [
+        [
+          10,
+          1000,
+          500
+        ],
+        10500
+      ]
+    ]
+  },
+  {
+    "id": "project-role-rule",
+    "entry": "editFlag",
+    "title": [
+      "Rollenregel",
+      "Role rule",
+      "Правило ролей",
+      "Правило ролей"
+    ],
+    "task": [
+      "Gib 1 zurück, wenn active wahr ist und owner oder editor wahr ist; sonst 0. Boolesche Eingaben. Nur lokale Logikübung.",
+      "Return 1 when active is true and owner or editor is true; otherwise 0. Boolean inputs. Local logic exercise only.",
+      "Верни 1, если active истинно и owner или editor истинно; иначе 0. Булевы аргументы. Только локальная логическая модель.",
+      "Поверни 1, якщо active істинне й owner або editor істинне; інакше 0. Булеві аргументи. Лише локальна логічна модель."
+    ],
+    "hint": [
+      "Inaktive Konten erhalten immer 0.",
+      "Inactive accounts always receive 0.",
+      "Неактивные учётные записи всегда получают 0.",
+      "Неактивні облікові записи завжди отримують 0."
+    ],
+    "why": [
+      "Inaktive Konten erhalten immer 0.",
+      "Inactive accounts always receive 0.",
+      "Неактивные учётные записи всегда получают 0.",
+      "Неактивні облікові записи завжди отримують 0."
+    ],
+    "source": "function editFlag(active,owner,editor) { if (active && owner || editor) { return 1; } return 0; }",
+    "sample": [
+      false,
+      false,
+      true
+    ],
+    "prediction": [
+      1,
+      0,
+      2
+    ],
+    "expectedPrediction": 1,
+    "block": {
+      "from": "active && owner || editor",
+      "choices": [
+        "active && owner || editor",
+        "active && (owner || editor)",
+        "active || owner || editor"
+      ]
+    },
+    "tests": [
+      [
+        [
+          false,
+          false,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          false,
+          false,
+          true
+        ],
+        0
+      ],
+      [
+        [
+          false,
+          true,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          false,
+          true,
+          true
+        ],
+        0
+      ],
+      [
+        [
+          true,
+          false,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          true,
+          false,
+          true
+        ],
+        1
+      ],
+      [
+        [
+          true,
+          true,
+          false
+        ],
+        1
+      ],
+      [
+        [
+          true,
+          true,
+          true
+        ],
+        1
+      ]
+    ]
+  },
+  {
+    "id": "project-retry-limit",
+    "entry": "retryFlag",
+    "title": [
+      "Wiederholungsgrenze",
+      "Retry limit",
+      "Лимит попыток",
+      "Ліміт спроб"
+    ],
+    "task": [
+      "Gib 1 zurück, wenn attempts kleiner als limit und success falsch ist, sonst 0. attempts und limit sind nichtnegative ganze Zahlen; success ist boolesch.",
+      "Return 1 if attempts is less than limit and success is false, otherwise 0. Nonnegative integers attempts and limit; boolean success.",
+      "Верни 1, если attempts меньше limit и success ложно, иначе 0. attempts и limit — неотрицательные целые; success — булево.",
+      "Поверни 1, якщо attempts менше limit і success хибне, інакше 0. attempts і limit — невід’ємні цілі; success — булеве."
+    ],
+    "hint": [
+      "Bei Erfolg oder am Limit keine Wiederholung.",
+      "No retry after success or at the limit.",
+      "Не повторяй после успеха или на границе лимита.",
+      "Не повторюй після успіху або на межі ліміту."
+    ],
+    "why": [
+      "Bei Erfolg oder am Limit keine Wiederholung.",
+      "No retry after success or at the limit.",
+      "Не повторяй после успеха или на границе лимита.",
+      "Не повторюй після успіху або на межі ліміту."
+    ],
+    "source": "function retryFlag(attempts,limit,success) { if (attempts<=limit && !success) { return 1; } return 0; }",
+    "sample": [
+      3,
+      3,
+      false
+    ],
+    "prediction": [
+      1,
+      0,
+      2
+    ],
+    "expectedPrediction": 1,
+    "block": {
+      "from": "attempts<=limit",
+      "choices": [
+        "attempts<=limit",
+        "attempts<limit",
+        "attempts>limit"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          0,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          1,
+          false
+        ],
+        1
+      ],
+      [
+        [
+          2,
+          3,
+          false
+        ],
+        1
+      ],
+      [
+        [
+          3,
+          3,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          4,
+          3,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          3,
+          true
+        ],
+        0
+      ],
+      [
+        [
+          2,
+          3,
+          true
+        ],
+        0
+      ]
+    ]
+  }
+]);

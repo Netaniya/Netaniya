@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 // A self-contained offline copy. It neither pushes code nor changes hosting.
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -19,7 +25,7 @@ let html=await fs.readFile(path.join(dist,'index.html'),'utf8');
 html=html.replace(/<link rel="manifest"[^>]*>/,'').replace('<link rel="stylesheet" href="./studio.css">','<style>'+css+'</style>');
 html=html.replace(/\b(src|href)="\.\/((?:assets|vendor)\/[^"]+)"/g,(_m,attribute,name)=>attribute+'="'+assets[name]+'"');
 html=html.replace('class="brand" href="./"','class="brand" href="#"');
-const boot='<script>globalThis.EN25X_STUDIO_PORTABLE=true;globalThis.EN25X_STUDIO_ASSETS='+JSON.stringify(assets)+';</script><script type="importmap">'+JSON.stringify({imports})+'</script><script type="application/json" id="portable-build-info">'+JSON.stringify({version:info.version,author:'Natalie Ragulina',copyright:'© 2026 Natalie Ragulina. All rights reserved.',mode:'standalone-offline',hashes})+'</script><script type="module">import "studio/app.mjs";</script>';
+const boot='<script>globalThis.EN25X_STUDIO_PORTABLE=true;globalThis.EN25X_STUDIO_ASSETS='+JSON.stringify(assets)+';</script><script type="importmap">'+JSON.stringify({imports})+'</script><script type="application/json" id="portable-build-info">'+JSON.stringify({version:info.version,author:'Natalie Ragulina (Netaniya)',copyright:'© 2026 Natalie Ragulina (Netaniya). All rights reserved.',rightsNotice:'assets/N25X-NOTICE.txt',mode:'standalone-offline',hashes})+'</script><script type="module">import "studio/app.mjs";</script>';
 html=html.replace('<script type="module" src="./app.mjs"></script>',boot);
 if(/(?:src|href)="\.\/(?:assets|vendor)|src="\.\/app\.mjs|url\(['"]?\.\//.test(html))throw Error('Unembedded runtime asset');
 await fs.mkdir(path.dirname(out),{recursive:true});await fs.writeFile(out,html);console.log(JSON.stringify({file:out,version:info.version,bytes:Buffer.byteLength(html),modules:Object.keys(imports).length,assets:Object.keys(assets).length}));

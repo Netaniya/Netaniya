@@ -1,25 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {parseHTML} from 'linkedom';
-import {MATH_TOPICS,MATH_VARIANTS,courseTask,checkCourseAnswer,freshMathCourse,parseMathCourse,recordMath} from '../workshop/math-course.mjs';
+import {MATH_TOPICS,MATH_VARIANTS,courseTask,checkCourseAnswer,freshMathCourse,parseMathCourse,recordMath,recordMathAssessmentAnswer,startMathAssessment,mathEvidence} from '../workshop/math-course.mjs';
 import {createMathClassroom} from '../workshop/math-classroom.mjs';
 import {fresh,parseProfile,reward} from '../workshop/model.mjs';
 import {translate} from '../workshop/i18n.mjs';
-import {freshScore,validateScore,noteName,midiFrequency,makeMidi,renderScoreWav} from '../workshop/piano-score.mjs';
+import {freshScore,validateScore,noteName,midiFrequency,makeMidi,renderScoreWav,RHYTHM_LESSONS,gradeRhythm} from '../workshop/piano-score.mjs';
 import {createPiano} from '../workshop/piano.mjs';
-import {LANGUAGE_UNITS,LANGUAGE_ITEMS,COURSE_LANGUAGES,phraseTokens,phraseMatches,meaningChoices,parseLanguageCourse} from '../workshop/language-course.mjs';
+import {LANGUAGE_UNITS,LANGUAGE_ITEMS,COURSE_LANGUAGES,phraseTokens,phraseMatches,meaningChoices,parseLanguageCourse,meaningSource,wordOrder,nextLanguageExercise,languageMistakes,scheduleLanguage,dueLanguageReviews,REVIEW_INTERVALS,GRAMMAR_LESSONS,grammarOptions,gradeGrammar,grammarRoute} from '../workshop/language-course.mjs';
 import {createLanguageClassroom} from '../workshop/language-classroom.mjs';
 import {updateProject} from '../workshop/model.mjs';
 test('Mathematics: all 12,288 parameter variants are finite, uniquely presented within their topic, and accept exact fractions',()=>{
- assert.equal(MATH_TOPICS.length,48);assert.equal(MATH_VARIANTS,12288);
+ assert.equal(MATH_TOPICS.length,52);assert.equal(MATH_VARIANTS,13312);
  for(const topic of MATH_TOPICS){const seen=new Set();for(const lang of ['de','en','ru','uk'])assert(topic.title[lang]&&topic.rule[lang]);for(let i=0;i<256;i++){const t=courseTask(topic.id,i);assert(Number.isFinite(t.answer),t.id);assert(checkCourseAnswer(t,t.display),t.id);assert(!checkCourseAnswer(t,String(t.answer+1)),t.id);assert(!checkCourseAnswer(t,'window.location=1'),t.id);assert(!seen.has(t.expression),t.id);seen.add(t.expression);assert(t.steps.length);}}
  assert.throws(()=>courseTask('add',256));assert.throws(()=>courseTask('missing',0));
 });
-test('Language lessons: 120 distinct meanings have all ten scripts, four explanations and usable reading/writing/order exercises',()=>{
- assert.equal(LANGUAGE_UNITS.length,12);assert.equal(LANGUAGE_ITEMS.length,120);assert.equal(new Set(LANGUAGE_ITEMS.map(i=>i.id)).size,120);
+test('Language lessons: 168 distinct meanings have all ten scripts, four explanations and usable reading/writing/order exercises',()=>{
+ assert.equal(LANGUAGE_UNITS.length,18);assert.equal(LANGUAGE_ITEMS.length,168);assert.equal(new Set(LANGUAGE_ITEMS.map(i=>i.id)).size,168);
  for(const u of LANGUAGE_UNITS)for(const lang of ['de','en','ru','uk'])assert(u.title[lang]&&u.note[lang]);
  for(const item of LANGUAGE_ITEMS)for(const lang of COURSE_LANGUAGES){assert(item.text[lang]?.length>2,item.id+':'+lang);assert(phraseMatches(item.text[lang],item.text[lang],lang));const tokens=phraseTokens(item.text[lang],lang);assert(tokens.length);assert(phraseMatches(tokens.join(' '),item.text[lang],lang),item.id+':'+lang);}
- for(const item of LANGUAGE_ITEMS)for(const lang of ['de','en','ru','uk']){const choices=meaningChoices(item,lang);assert.equal(choices.length,3);assert.equal(new Set(choices.map(v=>v.text[lang])).size,3);assert(choices.some(v=>v.id===item.id));}
+ for(const item of LANGUAGE_ITEMS)for(const lang of COURSE_LANGUAGES){const choices=meaningChoices(item,lang);assert.equal(choices.length,3);assert.equal(new Set(choices.map(v=>v.text[lang])).size,3);assert(choices.some(v=>v.id===item.id));}
  assert(LANGUAGE_ITEMS.every(i=>/[\u10a0-\u10ff]/u.test(i.text.ka)));assert(LANGUAGE_ITEMS.every(i=>/[\u4e00-\u9fff]/u.test(i.text.zh)));assert(LANGUAGE_ITEMS.every(i=>/[\u3040-\u30ff\u4e00-\u9fff]/u.test(i.text.ja)));
  assert(phraseMatches('HELLO!', 'Hello.', 'en'));assert(!phraseMatches('water','friend','en'));
 });
@@ -51,7 +51,7 @@ test('Piano controller: two pointers form a recorded chord, cancellation release
  }finally{piano?.stop(false);globalThis.document=previous;globalThis.performance=perf;}
 });
 test('Mathematics: independently specified reference answers cover every family and several boundary variants',()=>{
- const expected=[4,2,7,2,4,2,8,12,1,2/3,2,4/3,.4,.2,.04,2,.4,50,19.6,20.4,0,0,4,-2,3,2,2,2,2,16,2,4,8,2,4,12,4,8,2,4,2,8/3,.5,8,2,2,4,64];
+ const expected=[4,2,7,2,4,2,8,12,1,2/3,2,4/3,.4,.2,.04,2,.4,50,19.6,20.4,0,0,4,-2,3,2,2,2,2,16,2,4,8,2,4,12,4,8,2,4,2,8/3,.5,8,2,2,4,64,6,8,4,10];
  assert.equal(expected.length,MATH_TOPICS.length);for(const [i,t]of MATH_TOPICS.entries())assert(Math.abs(courseTask(t.id,0).answer-expected[i])<1e-8,t.id);
  assert.equal(courseTask('root',255).answer,257);assert.equal(courseTask('linear',255).answer,18);assert.equal(courseTask('rectangle-area',255).answer,289);assert.equal(courseTask('negative-divide',255).answer,-17);
  assert(checkCourseAnswer(courseTask('fraction-subtract',0),'2/3'));assert(checkCourseAnswer(courseTask('linear',0),'x = 3'));assert(!checkCourseAnswer(courseTask('linear',0),'x = 4'));
@@ -66,7 +66,240 @@ test('Mathematics classroom: real DOM forms reward once, review errors and compl
  try{const s=fresh();s.lang='ru';let controller,saves=0;const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const api={getState:()=>s,tr:(k,p)=>translate(s.lang,k,p),esc,save:()=>saves++,award:(id,n)=>reward(s,id,n),navigate:()=>{},toast:()=>{},audio:{cue(){}},render:()=>{document.getElementById('content').innerHTML=controller.render();}};controller=createMathClassroom(api);api.render();
  const answer=value=>{document.getElementById('course-answer').value=String(value);controller.submit({target:document.getElementById('course-answer-form'),preventDefault(){}});};
  answer(999);assert.equal(s.learning.math.mistakes.length,1);answer(4);assert.equal(s.points,85);answer(4);assert.equal(s.points,85);assert.equal(s.learning.math.mistakes.length,0);
- controller.click({dataset:{m:'assessment'}});for(let i=0;i<10;i++){answer(courseTask(s.learning.math.topic,s.learning.math.index).display);if(i<9)controller.click({dataset:{m:'next'}});}assert.equal(s.learning.math.assessment.answers.filter(Boolean).length,10);assert(document.getElementById('content').textContent.includes('10 / 10'));assert.equal(s.points,160);assert.equal(document.getElementById('course-answer-form'),null);assert.equal(reward(s,'course-assess:add',30),0);
+ controller.click({dataset:{m:'assessment'}});for(let i=0;i<10;i++){answer(courseTask(s.learning.math.topic,s.learning.math.index).display);if(i<9)controller.click({dataset:{m:'next'}});}assert.equal(s.learning.math.assessment.answers.filter(Boolean).length,10);assert.equal(s.learning.math.evidence.add.latest,10);assert.equal(s.learning.math.evidence.add.rounds,1);assert(document.getElementById('content').textContent.includes('10 / 10'));assert.equal(s.points,160);assert.equal(document.getElementById('course-answer-form'),null);assert.equal(reward(s,'course-assess:add',30),0);
  for(const lang of ['de','en','ru','uk']){s.lang=lang;api.render();assert(document.getElementById('content').textContent.includes(translate(lang,'mathCourse')));assert(!document.getElementById('content').textContent.includes('undefined'));}assert(saves>10);
  }finally{globalThis.document=previous;}
+});
+
+test('Language exercise source cannot reveal the target answer; deterministic word shuffle varies by item',()=>{for(const target of COURSE_LANGUAGES)for(const ui of ['de','en','ru','uk'])for(const selected of ['auto',...COURSE_LANGUAGES])assert.notEqual(meaningSource(target,selected,ui),target);const samples=LANGUAGE_ITEMS.map(q=>wordOrder(['a','b','c','d'],q.id+'|en').map(v=>v.i).join(','));assert(new Set(samples).size>10);assert(samples.every(v=>v!=='0,1,2,3'));assert.deepEqual(wordOrder(['a','b','c'],'test'),wordOrder(['a','b','c'],'test'));for(const lang of ['de','en','ru','uk'])assert(translate(lang,'studyProgress'));});
+test('Imported math assessment restores the expected exercise and clamps impossible accuracy',()=>{const p=freshMathCourse();p.attempts=2;p.correct=99;p.index=255;p.assessment={topic:'add',indices:Array.from({length:10},(_,i)=>i*5),answers:[true,false],answered:false};let r=parseMathCourse(p);assert.equal(r.correct,2);assert.equal(r.index,10);p.assessment.answered=true;r=parseMathCourse(p);assert.equal(r.index,5);});
+
+test('Guided language path prioritizes selected-language mistakes, covers all core skills and stops at completion',()=>{const s=fresh().learning.languages,item=LANGUAGE_ITEMS[0];assert.equal(nextLanguageExercise(s).mode,'read');s.done['en/'+item.id]=1;assert.equal(nextLanguageExercise(s).mode,'order');s.review=['de|write|'+item.id,'en|write|'+item.id];assert.equal(nextLanguageExercise(s).mode,'write');assert(nextLanguageExercise(s).review);s.review=[];for(const x of LANGUAGE_ITEMS)s.done['en/'+x.id]=7;assert.equal(nextLanguageExercise(s),null);s.language='de';assert.equal(nextLanguageExercise(s).mode,'read');});
+
+test('Spaced review: 1/3/7/14/30 day ladder, no early promotion, assisted reset, per-language filtering and profile roundtrip',()=>{const s=fresh(),p=s.learning.languages,item=LANGUAGE_ITEMS[0],key='en|read|'+item.id;p.mode='read';let day=20000;scheduleLanguage(p,item,true,{day});assert.deepEqual(p.schedule[key],{step:0,due:day+1,reset:false});scheduleLanguage(p,item,true,{day});assert.equal(p.schedule[key].due,day+1);for(let step=1;step<5;step++){day=p.schedule[key].due;assert(dueLanguageReviews(p,day).includes(key));scheduleLanguage(p,item,true,{day});assert.equal(p.schedule[key].step,step);assert.equal(p.schedule[key].due,day+REVIEW_INTERVALS[step]);}scheduleLanguage(p,item,false,{day});assert(p.schedule[key].reset);scheduleLanguage(p,item,true,{day,assisted:true});assert.equal(p.schedule[key].due,day);assert.equal(nextLanguageExercise(p,day).review,true);scheduleLanguage(p,item,true,{day});assert.equal(p.schedule[key].due,day+1);p.language='de';assert.equal(dueLanguageReviews(p,day+1).length,0);assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages,p);const old={...p};delete old.schedule;assert.deepEqual(parseLanguageCourse(old).schedule,{});assert.deepEqual(parseLanguageCourse({schedule:{'en|read|missing':{step:0,due:1},[key]:{step:99,due:1}}}).schedule,{});});
+
+test('Grammar has separate practice and checkpoint examples; scoring and profile validation',()=>{assert.equal(GRAMMAR_LESSONS.length,88);const s=fresh();for(const v of GRAMMAR_LESSONS){assert.equal(v.practice.length,2);assert.equal(v.checkpoint.length,2);assert.equal(new Set([...v.practice,...v.checkpoint].map(q=>q.sentence)).size,4);assert.equal(gradeGrammar(v,v.checkpoint.map(q=>q.answer)),2);assert.equal(gradeGrammar(v,v.checkpoint.map(q=>q.options[1])),0);assert.equal(gradeGrammar(v,[]),null);for(const q of [...v.practice,...v.checkpoint])assert.equal(new Set(grammarOptions(q,v.id)).size,3);s.learning.languages.grammar.passed[v.id]=true;}s.learning.languages.grammar.passed.invalid=true;assert.equal(Object.keys(parseProfile(JSON.stringify(s)).learning.languages.grammar.passed).length,88);assert.deepEqual(parseLanguageCourse({}).grammar,{passed:{},evidence:{},extended:{},written:{}});});
+
+test('Grammar controller: wrong answers, separate checkpoint examples, local persistence and all UI languages',()=>{
+ const previous=globalThis.document,{document}=parseHTML('<html><body data-view="languageCourse"><section id="content"></section></body></html>');globalThis.document=document;
+ try{const s=fresh(),p=s.learning.languages;let controller;const api={getState:()=>s,tr:(k,v)=>translate(s.lang,k,v),esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;'),save(){},award:(id,n)=>reward(s,id,n),navigate(){},toast(){},audio:{cue(){}},render(){document.getElementById('content').innerHTML=controller.render();}};controller=createLanguageClassroom(api);const click=(l,value)=>controller.click({dataset:{l,value}});
+ for(const language of COURSE_LANGUAGES){p.language=language;click('grammar-open');for(const lesson of GRAMMAR_LESSONS.filter(v=>v.language===language)){controller.change({id:'grammar-lesson',value:lesson.id});assert(document.getElementById('content').textContent.includes(lesson.example));click('grammar-answer',lesson.practice[0].options[1]);click('grammar-next');assert(document.getElementById('content').textContent.includes(lesson.practice[0].sentence));for(const q of lesson.practice){click('grammar-answer',q.answer);click('grammar-next');}click('grammar-test');assert(!document.getElementById('content').textContent.includes(lesson.example));for(const q of lesson.checkpoint)click('grammar-answer',q.options[1]);assert(!p.grammar.passed[lesson.id]);assert.equal(p.grammar.evidence[lesson.id].latest,0);assert.equal(document.querySelectorAll('[data-grammar-corrections] li').length,2);assert(document.getElementById('content').textContent.includes('0 / 2'));click('grammar-test');for(const q of lesson.checkpoint)click('grammar-answer',q.answer);assert(p.grammar.passed[lesson.id]);assert.equal(p.grammar.evidence[lesson.id].rounds,2);assert.equal(p.grammar.evidence[lesson.id].missed.length,0);assert(document.getElementById('content').textContent.includes('2 / 2'));}for(const lang of ['de','en','ru','uk']){s.lang=lang;api.render();assert(document.getElementById('content').textContent.includes(translate(lang,'grammarCourse')));}click('grammar-close');}
+ assert.equal(Object.keys(parseProfile(JSON.stringify(s)).learning.languages.grammar.passed).length,88);assert.equal(s.points,80);
+ }finally{globalThis.document=previous;}
+});
+
+test('Grammar progression: both languages have 20 lessons across five ordered stages',()=>{for(const language of ['de','en']){const route=grammarRoute(language);assert.equal(route.length,20);assert.deepEqual([...new Set(route.map(v=>v.stage))],[1,2,3,4,5]);assert.equal(new Set(route.map(v=>v.id)).size,20);}});
+
+test('All ten languages have their own grammar routes and original lesson IDs',()=>{for(const language of COURSE_LANGUAGES){const route=grammarRoute(language);assert.equal(route.length,['de','en'].includes(language)?20:6);assert.deepEqual([...new Set(route.map(v=>v.stage))],['de','en'].includes(language)?[1,2,3,4,5]:[1,2,3,4]);}assert.equal(new Set(GRAMMAR_LESSONS.map(v=>v.id)).size,88);});
+
+
+test('Rhythm grading: all twelve patterns accept exact and bounded jitter, reject drift and invalid input',()=>{
+ for(const lesson of RHYTHM_LESSONS){
+  const beat=60000/lesson.bpm,origin=2000,ideal=lesson.beats.map(b=>origin+b*beat);
+  assert(gradeRhythm(lesson,ideal).passed,lesson.id);
+  assert(gradeRhythm(lesson,ideal.map((t,i)=>t+(i%2?40:0))).passed,lesson.id);
+  const bad=gradeRhythm(lesson,ideal.map((t,i)=>t+(i===ideal.length-1?250:0)));
+  assert.equal(bad.passed,false);assert.equal(bad.correct,ideal.length-1);
+  assert.equal(gradeRhythm(lesson,ideal.slice(1)),null);
+  assert.equal(gradeRhythm(lesson,ideal.map(()=>origin)),null);
+  assert.equal(gradeRhythm(lesson,ideal.map((t,i)=>i===1?NaN:t)),null);
+ }
+});
+
+test('Rhythm controller: failed and successful takes, replay, mute guards and profile round-trip',async()=>{
+ const previous=globalThis.document,perf=globalThis.performance,{document}=parseHTML('<html><body data-view="piano"><section id="content"></section></body></html>');
+ globalThis.document=document;let now=0;globalThis.performance={now:()=>now};let piano;
+ try{
+  const s=fresh();s.lang='en';s.sound=true;
+  const api={getState:()=>s,tr:(k,p)=>translate(s.lang,k,p),esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;'),save(){},navigate(){},toast(){},download(){},audio:{tone(){}},render(){document.getElementById('content').innerHTML=piano.render();piano.mount();}};
+  piano=createPiano(api);api.render();
+  const click=async p=>piano.click({dataset:{p}});
+  const disabled=p=>document.querySelector('[data-p="'+p+'"]').hasAttribute('disabled');
+  const original=structuredClone(s.piano.score),points=s.points;
+  assert(!disabled('rhythm-example'));await click('rhythm-start');
+  assert(disabled('rhythm-example'));assert(disabled('practice-example'));
+  for(let i=0;i<5;i++){now=1000+i*100;await click('rhythm-tap');}
+  assert(!s.piano.practice.rhythmPassed.steady);assert(disabled('rhythm-tap'));assert(!disabled('rhythm-example'));assert(!disabled('practice-example'));
+  await click('rhythm-start');
+  for(let i=0;i<5;i++){now=3000+i*1000;await click('rhythm-tap');}
+  assert(s.piano.practice.rhythmPassed.steady);assert(!disabled('rhythm-example'));assert(disabled('rhythm-tap'));
+  assert.deepEqual(s.piano.score,original);assert.equal(s.points,points);
+  assert(parseProfile(JSON.stringify(s)).piano.practice.rhythmPassed.steady);
+  s.sound=false;api.render();assert(disabled('rhythm-example'));assert(disabled('practice-example'));
+  await click('stop');assert(disabled('rhythm-tap'));
+ }finally{piano?.stop(false);globalThis.document=previous;globalThis.performance=perf;}
+});
+
+
+test('Language mistakes: queue is isolated per selected language and imported keys are validated',()=>{
+ const item=LANGUAGE_ITEMS[0],en='en|write|'+item.id,de='de|read|'+item.id,ja='ja|listen|'+item.id;
+ const p=parseLanguageCourse({language:'en',review:[de,en,en,ja,en+'|junk','en|bogus|'+item.id,'en|read|missing',42]});
+ assert.deepEqual(p.review,[de,en,ja]);assert.deepEqual(languageMistakes(p),[en]);
+ p.language='de';assert.deepEqual(languageMistakes(p),[de]);p.language='ja';assert.deepEqual(languageMistakes(p),[ja]);p.language='fr';assert.deepEqual(languageMistakes(p),[]);
+});
+
+test('Language classroom: manual mistake review cannot silently change the chosen language',()=>{
+ const previous=globalThis.document,{document}=parseHTML('<html><body><section id="content"></section></body></html>');globalThis.document=document;
+ try{const s=fresh(),p=s.learning.languages,item=LANGUAGE_ITEMS[0],de='de|read|'+item.id,en='en|write|'+item.id;p.language='en';p.review=[de,en];let controller;
+ const api={getState:()=>s,tr:(k,v)=>translate(s.lang,k,v),esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;'),save(){},award:(id,n)=>reward(s,id,n),navigate(){},toast(){},audio:{cue(){}},render(){document.getElementById('content').innerHTML=controller.render();}};
+ controller=createLanguageClassroom(api);api.render();const button=()=>document.querySelector('[data-l="review"]');
+ assert(!button().hasAttribute('disabled'));controller.click({dataset:{l:'review'}});assert.equal(p.language,'en');assert.equal(p.mode,'write');assert.deepEqual(p.review,[de,en]);
+ p.language='fr';api.render();assert(button().hasAttribute('disabled'));controller.click({dataset:{l:'review'}});assert.equal(p.language,'fr');
+ }finally{globalThis.document=previous;}
+});
+
+test('Ear training: all 13 intervals, varied roots, fair options, correct and incorrect rounds, profile migration',async()=>{
+ const {EAR_LESSONS,INTERVAL_NAMES,makeEarRound,gradeEarRound,parsePiano,freshPiano}=await import('../workshop/piano-score.mjs');
+ const p=freshPiano(),seen=new Set();
+ assert.equal(EAR_LESSONS.length,5);assert.equal(INTERVAL_NAMES.length,13);
+ for(const lesson of EAR_LESSONS){
+  for(const seed of [0,1,42,4294967295]){
+   const round=makeEarRound(lesson.id,seed);
+   assert.deepEqual(round,makeEarRound(lesson.id,seed));assert.deepEqual([...new Set(round.map(q=>q.interval))].sort((a,b)=>a-b),lesson.intervals);
+   for(const q of round){seen.add(q.interval);assert(q.root>=48&&q.root+q.interval<=83);assert(q.options.includes(q.interval));assert.equal(new Set(q.options).size,q.options.length);assert(q.options.every(v=>lesson.intervals.includes(v)));}
+   const answers=round.map(q=>q.interval);assert(gradeEarRound(round,answers).passed);answers[0]=round[0].options.find(v=>v!==answers[0]);assert.equal(gradeEarRound(round,answers).correct,round.length-1);assert(!gradeEarRound(round,answers).passed);assert.equal(gradeEarRound(round,answers.slice(1)),null);
+  }
+  p.practice.earPassed[lesson.id]=true;
+ }
+ assert.equal(seen.size,13);assert.deepEqual(parsePiano(p),p);delete p.practice.earPassed;assert.deepEqual(parsePiano(p).practice.earPassed,{});p.practice.earPassed={unknown:true,'ear-foundations':'true'};assert.deepEqual(parsePiano(p).practice.earPassed,{});
+ assert.equal(makeEarRound('unknown',0),null);assert.equal(makeEarRound(EAR_LESSONS[0].id,-1),null);
+});
+
+test('Staff notation: reference positions, enharmonic spelling, ledger lines, all notes within keyboard and migration',async()=>{
+ const {STAFF_LESSONS,staffNote,staffPracticeStep,parsePiano,freshPiano}=await import('../workshop/piano-score.mjs');
+ assert.deepEqual(staffNote('E4','treble'),{midi:64,step:0,accidental:'',ledger:[]});
+ assert.deepEqual(staffNote('C4','treble'),{midi:60,step:-2,accidental:'',ledger:[-2]});
+ assert.deepEqual(staffNote('A5','treble'),{midi:81,step:10,accidental:'',ledger:[10]});
+ assert.deepEqual(staffNote('G2','bass'),{midi:43,step:0,accidental:'',ledger:[]});
+ assert.deepEqual(staffNote('C4','bass'),{midi:60,step:10,accidental:'',ledger:[10]});
+ assert.equal(staffNote('C#5','treble').midi,staffNote('Db5','treble').midi);assert.notEqual(staffNote('C#5','treble').step,staffNote('Db5','treble').step);
+ assert.equal(staffNote('X4','treble'),null);assert.equal(staffNote('C4','unknown'),null);
+ const p=freshPiano();for(const lesson of STAFF_LESSONS){let i=0;for(const spelling of lesson.notes){const q=staffNote(spelling,lesson.clef);assert(q.midi>=(lesson.octave+1)*12&&q.midi<(lesson.octave+3)*12);assert.equal(staffPracticeStep(lesson,i,q.midi+1).index,i);const r=staffPracticeStep(lesson,i,q.midi);assert(r.correct);assert.equal(r.index,++i);assert.equal(r.complete,i===lesson.notes.length);}p.practice.staffPassed[lesson.id]=true;}
+ assert.deepEqual(parsePiano(p),p);delete p.practice.staffPassed;assert.deepEqual(parsePiano(p).practice.staffPassed,{});p.practice.staffPassed={unknown:true,'staff-treble':'true'};assert.deepEqual(parsePiano(p).practice.staffPassed,{});
+});
+
+test('Unified study dashboard: six independent progress measures, due reviews and non-mutating counts',async()=>{
+ const {fresh,studySummary,parseProfile}=await import('../workshop/model.mjs');
+ const {MATH_TOPICS,MATH_VARIANTS}=await import('../workshop/math-course.mjs');
+ const {LANGUAGE_ITEMS,grammarRoute,scheduleLanguage}=await import('../workshop/language-course.mjs');
+ const {MISSIONS,SUBJECTS}=await import('../workshop/curriculum.mjs');
+ const s=fresh(),l=s.learning.languages,day=20000;const zero=studySummary(s,day);
+ assert.equal(zero.math.total,MATH_VARIANTS);assert.equal(zero.language.total,LANGUAGE_ITEMS.length*3);assert.equal(zero.grammar.total,grammarRoute(l.language).length);assert.equal(zero.dialogues.total,10);assert.equal(zero.programming.total,MISSIONS.length);assert.equal(zero.school.total,SUBJECTS.reduce((n,v)=>n+v.tasks.length,0));assert.equal(zero.music.total,70);assert.equal(zero.projects,0);
+ for(const key of ['math','language','grammar','dialogues','programming','school','music'])assert.equal(zero[key].done,0);
+ s.learning.math.done[MATH_TOPICS[0].id]=[0,1];s.learning.math.mistakes=[MATH_TOPICS[0].id+':2'];
+ const item=LANGUAGE_ITEMS[0];l.done[l.language+'/'+item.id]=15;l.done['de/'+item.id]=7;l.mode='read';scheduleLanguage(l,item,true,{day:day-1});l.review=[l.language+'|read|'+item.id,'de|read|'+item.id];l.grammar.passed[grammarRoute(l.language)[0].id]=true;l.grammar.passed[grammarRoute('de')[0].id]=true;l.dialogues.passed['en/greeting']=true;l.dialogues.passed['de/greeting']=true;l.dialogues.passed['de/shop']=true;
+ s.solved=['program:'+MISSIONS[0].id,'lab:'+SUBJECTS[0].id+':0','lab:'+SUBJECTS[0].id+':0'];s.piano.practice.harmonyPassed['harmony-c']=true;
+ const before=JSON.stringify(s),v=studySummary(s,day);assert.equal(JSON.stringify(s),before);
+ assert.equal(v.math.done,2);assert.equal(v.math.review,1);assert.equal(v.language.done,3);assert.equal(v.language.review,1);assert.equal(v.grammar.done,1);assert.equal(v.dialogues.done,1);assert.equal(v.programming.done,1);assert.equal(v.school.done,1);assert.equal(v.music.done,1);
+ assert.deepEqual(studySummary(parseProfile(JSON.stringify(s)),day),v);
+});
+
+test('Contextual dialogue practice covers every language and persists independent completion',async()=>{
+ const {DIALOGUE_LESSONS,COURSE_LANGUAGES,dialogueOptions,gradeDialogue,freshLanguageCourse,parseLanguageCourse}=await import('../workshop/language-course.mjs');
+ const p=freshLanguageCourse();assert.equal(DIALOGUE_LESSONS.length,10);assert.equal(new Set(DIALOGUE_LESSONS.map(m=>m.id)).size,10);
+ for(const lang of COURSE_LANGUAGES)for(const m of DIALOGUE_LESSONS){const t=m.turns[lang],opts=dialogueOptions(m,lang);assert(t.prompt.trim());assert.equal(new Set(opts).size,3);assert.equal(opts.filter(v=>gradeDialogue(m,lang,v)).length,1);assert(gradeDialogue(m,lang,t.answer));p.dialogues.passed[lang+'/'+m.id]=true;}
+ assert.deepEqual(parseLanguageCourse(p),p);p.dialogues.passed['xx/greeting']=true;assert(!parseLanguageCourse(p).dialogues.passed['xx/greeting']);delete p.dialogues;assert.deepEqual(parseLanguageCourse(p).dialogues,{passed:{}});
+});
+
+test('Every supported source language survives profile roundtrip; target collision uses a different language',()=>{for(const target of COURSE_LANGUAGES)for(const source of ['auto',...COURSE_LANGUAGES]){const p=fresh();p.learning.languages.language=target;p.learning.languages.source=source;const restored=parseProfile(JSON.stringify(p)).learning.languages;assert.equal(restored.source,source);const actual=meaningSource(target,source,'ru');assert.equal(actual,source==='auto'?(target==='ru'?'de':'ru'):source===target?(target==='de'?'en':'de'):source);}assert.equal(parseLanguageCourse({source:'invalid'}).source,'auto');});
+
+test('Personal study plan balances selected difficulty, prioritizes reviews, rotates extras and never changes state',async()=>{
+ const {studyPlan}=await import('../workshop/model.mjs');
+ const s=fresh(),m=s.learning.math,l=s.learning.languages,day=20000;
+ for(let grade=1;grade<=11;grade++){
+  s.grade=grade;const before=JSON.stringify(s),p=studyPlan(s,day);
+  assert.equal(p.length,3);assert.equal(p[0].kind,'math');assert.equal(MATH_TOPICS.find(t=>t.id===p[0].topic).grade,grade);assert.equal(p[0].index,0);assert.equal(p[1].kind,'language');assert.equal(p[2].kind,'grammar');assert.equal(JSON.stringify(s),before);
+ }
+ s.grade=5;const first=studyPlan(s,day)[0];m.done[first.topic]=[0];assert.notEqual(studyPlan(s,day)[0].topic,first.topic);
+ m.mistakes=['add:7'];assert.deepEqual(studyPlan(s,day)[0],{kind:'math',reason:'planMathReview',topic:'add',index:7,title:MATH_TOPICS.find(t=>t.id==='add').title});
+ m.assessment={topic:m.topic,indices:Array.from({length:10},(_,i)=>i),answers:[false],answered:true};assert.equal(studyPlan(s,day)[0].reason,'planResume');
+ const item=LANGUAGE_ITEMS[0];l.review=['en|write|'+item.id];const lang=studyPlan(s,day)[1];assert.equal(lang.reason,'planLanguageReview');assert.equal(lang.mode,'write');
+ assert.deepEqual(Array.from({length:5},(_,i)=>studyPlan(s,day+i)[2].kind),['grammar','dialogues','programming','school','music']);
+ for(const lesson of grammarRoute(l.language))l.grammar.passed[lesson.id]=true;assert.equal(studyPlan(s,day)[2].kind,'grammar');for(const lesson of grammarRoute(l.language)){l.grammar.extended[lesson.id]={latest:4,best:4,rounds:1,missed:[]};l.grammar.written[lesson.id]={latest:4,best:4,rounds:1,missed:[]};}assert.equal(studyPlan(s,day)[2].kind,'dialogues');
+ const before=JSON.stringify(s);studyPlan(s,day);assert.equal(JSON.stringify(s),before);
+ for(const lang of ['de','en','ru','uk'])for(const key of ['planTitle','planScope','planResume','planMathReview','planMathNew','planLanguageReview','planLanguageNew','planExtra','planDone'])assert.notEqual(translate(lang,key),key);
+});
+
+test('Math self-test evidence survives topic changes, supports retesting, and distinguishes incomplete rounds',async()=>{
+ const {studyPlan}=await import('../workshop/model.mjs');const s=fresh(),m=s.learning.math;
+ m.topic=MATH_TOPICS.find(t=>t.grade===s.grade).id;
+ assert.equal(mathEvidence(m).length,MATH_TOPICS.length);assert(mathEvidence(m).every(t=>t.result===null));
+ assert(startMathAssessment(m,31));const original=[...m.assessment.indices];
+ for(let i=0;i<10;i++){assert(recordMathAssessmentAnswer(m,i<6));assert(!recordMathAssessmentAnswer(m,true));if(i<9)m.assessment.answered=false;}
+ assert.deepEqual(m.evidence[m.topic],{latest:6,best:6,rounds:1,seed:31});
+ const plan=studyPlan(s,20000)[0];assert.equal(plan.reason,'planMathRetest');assert.equal(plan.index,47);assert(startMathAssessment(m,plan.index));assert(m.assessment.indices.every(i=>!original.includes(i)));
+ assert(recordMathAssessmentAnswer(m,true));assert.equal(m.evidence[m.topic].rounds,1);
+ assert.deepEqual(parseProfile(JSON.stringify(s)).learning.math.evidence,m.evidence);
+ m.assessment.answered=false;for(let i=1;i<10;i++){assert(recordMathAssessmentAnswer(m,true));if(i<9)m.assessment.answered=false;}
+ assert.deepEqual(m.evidence[m.topic],{latest:10,best:10,rounds:2,seed:47});
+ assert.notEqual(studyPlan(s,20000)[0].reason,'planMathRetest');
+ const legacy=JSON.parse(JSON.stringify(m));delete legacy.evidence;assert.equal(parseMathCourse(legacy).evidence[m.topic].latest,10);
+ const invalid={...m,assessment:null,evidence:{[m.topic]:{latest:11,best:11,rounds:1,seed:0},invalid:{latest:1,best:1,rounds:1,seed:0}}};assert.deepEqual(parseMathCourse(invalid).evidence,{});
+});
+
+test('Grammar review recommendations remain independent per language, even after an earlier pass',async()=>{
+ const {recordGrammarCheckpoint,grammarReviewLessons,nextGrammarLesson}=await import('../workshop/language-course.mjs');const {studyPlan}=await import('../workshop/model.mjs');
+ const s=fresh(),p=s.learning.languages;
+ for(const lang of COURSE_LANGUAGES){p.language=lang;const l=grammarRoute(lang)[0],good=l.checkpoint.map(q=>q.answer),bad=l.checkpoint.map(q=>q.options.find(v=>v!==q.answer));
+ assert(!recordGrammarCheckpoint(p,l,good.slice(1)));assert(!p.grammar.evidence[l.id]);
+ assert(recordGrammarCheckpoint(p,l,good));assert(recordGrammarCheckpoint(p,l,bad));assert(p.grammar.passed[l.id]);assert.equal(p.grammar.evidence[l.id].best,2);
+ assert.deepEqual(grammarReviewLessons(p).map(v=>v.id),[l.id]);assert.equal(nextGrammarLesson(p).id,l.id);
+ assert.equal(studyPlan(s,20001).find(v=>v.kind==='grammar').reason,'planGrammarReview');assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);
+ assert(recordGrammarCheckpoint(p,l,good));assert.equal(grammarReviewLessons(p).length,0);assert.equal(p.grammar.evidence[l.id].rounds,3);
+ }
+ const l=grammarRoute(p.language)[0];assert(!recordGrammarCheckpoint(p,grammarRoute('en')[0],['x','x']));const broken={...p,grammar:{passed:{},evidence:{[l.id]:{latest:1,best:2,rounds:1,missed:[0,0]},unknown:{latest:2,best:2,rounds:1,missed:[]}}}};assert.deepEqual(parseLanguageCourse(broken).grammar.evidence,{});
+});
+
+test('Extended grammar checkpoints: independent results, correction priority and old profile compatibility',async()=>{
+ const {GRAMMAR_EXTENDED,extendedGrammarQuestions,recordExtendedGrammar,grammarReviewLessons}=await import('../workshop/language-course.mjs');const s=fresh(),p=s.learning.languages;
+ assert.equal(Object.keys(GRAMMAR_EXTENDED).length,88);
+ for(const lang of COURSE_LANGUAGES){p.language=lang;const lessons=grammarRoute(lang).filter(l=>extendedGrammarQuestions(l.id).length);assert.equal(lessons.length,grammarRoute(lang).length);for(const l of lessons){const qs=extendedGrammarQuestions(l.id);assert.equal(qs.length,4);assert.equal(new Set([...l.practice,...l.checkpoint,...qs].map(q=>q.sentence)).size,8);
+ assert(recordExtendedGrammar(p,l.id,qs.map(q=>q.options.find(v=>v!==q.answer))));assert(grammarReviewLessons(p).some(v=>v.id===l.id));assert(!p.grammar.passed[l.id]);assert(!p.grammar.evidence[l.id]);assert(recordExtendedGrammar(p,l.id,qs.map(q=>q.answer)));assert(!grammarReviewLessons(p).some(v=>v.id===l.id));assert.equal(p.grammar.extended[l.id].best,4);}}
+ assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);assert.deepEqual(parseLanguageCourse({grammar:{passed:{'en-be':true}}}).grammar.extended,{});
+});
+
+test('Listening: normal and slow playback choose only a matching local voice, respect mute and retain profile',()=>{
+ const prevSynth=globalThis.speechSynthesis,prevUtterance=globalThis.SpeechSynthesisUtterance;const calls=[],s=fresh(),p=s.learning.languages;p.mode='listen';p.language='en';s.sound=true;
+ const local={lang:'en-US',localService:true},remote={lang:'en-GB',localService:false},other={lang:'de-DE',localService:true};let voices=[remote,other,local];
+ try{globalThis.speechSynthesis={getVoices:()=>voices,cancel(){},speak:u=>calls.push(u),addEventListener(){}};globalThis.SpeechSynthesisUtterance=class{constructor(text){this.text=text;}};
+ const controller=createLanguageClassroom({getState:()=>s,tr:(k,v)=>translate(s.lang,k,v),esc:String,save(){},award(){},navigate(){},toast(){},render(){}});
+ const before=JSON.stringify(p);assert(controller.render().includes('data-l="speak-slow"'));controller.click({dataset:{l:'speak'}});controller.click({dataset:{l:'speak-slow'}});assert.deepEqual(calls.map(v=>v.rate),[1,.65]);assert(calls.every(v=>v.voice===local&&v.lang===local.lang&&v.text===LANGUAGE_UNITS[0].items[0].text.en));s.sound=false;controller.click({dataset:{l:'speak-slow'}});assert.equal(calls.length,2);s.sound=true;voices=[remote,other];controller.click({dataset:{l:'speak'}});assert.equal(calls.length,2);assert.equal(JSON.stringify(p),before);
+ }finally{if(prevSynth===undefined)delete globalThis.speechSynthesis;else globalThis.speechSynthesis=prevSynth;if(prevUtterance===undefined)delete globalThis.SpeechSynthesisUtterance;else globalThis.SpeechSynthesisUtterance=prevUtterance;}
+});
+
+test('Written grammar recall is scored separately, preserves case and accents, rejects malformed imports',async()=>{
+ const {recordWrittenGrammar,grammarAnswerMatches,extendedGrammarQuestions,grammarReviewLessons}=await import('../workshop/language-course.mjs');const s=fresh(),p=s.learning.languages;
+ assert(grammarAnswerMatches('  l’  ', "l'"));assert(grammarAnswerMatches('rufe…an','rufe ... an'));assert(grammarAnswerMatches('e\u0301','é'));assert(!grammarAnswerMatches('e','é'));assert(!grammarAnswerMatches('der','Der'));assert(!grammarAnswerMatches('x'.repeat(161),'x'.repeat(161)));
+ for(const lang of COURSE_LANGUAGES){p.language=lang;for(const l of grammarRoute(lang)){const qs=extendedGrammarQuestions(l.id),good=qs.map(q=>q.answer),bad=qs.map(q=>q.options.find(v=>v!==q.answer));
+ assert(!recordWrittenGrammar(p,l.id,good.slice(1)));assert(!recordWrittenGrammar(p,l.id,[' ',...good.slice(1)]));assert(recordWrittenGrammar(p,l.id,bad));assert.equal(p.grammar.written[l.id].latest,0);assert(grammarReviewLessons(p).some(v=>v.id===l.id));assert(recordWrittenGrammar(p,l.id,good));assert.equal(p.grammar.written[l.id].best,4);assert(!grammarReviewLessons(p).some(v=>v.id===l.id));assert(!p.grammar.passed[l.id]);assert(!p.grammar.extended[l.id]);}}
+ assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);
+ const id=grammarRoute(p.language)[0].id;assert.deepEqual(parseLanguageCourse({grammar:{written:{[id]:{latest:5,best:5,rounds:1,missed:[]},bad:{latest:4,best:4,rounds:1,missed:[]}}}}).grammar.written,{});assert.deepEqual(parseLanguageCourse({}).grammar.written,{});
+});
+
+test('Guided grammar opens actual missed mode and covers all three assessments',async()=>{
+ const {nextGrammarActivity,grammarCoverage,recordGrammarCheckpoint,recordExtendedGrammar,recordWrittenGrammar,extendedGrammarQuestions}=await import('../workshop/language-course.mjs');const s=fresh(),p=s.learning.languages;
+ for(const lang of COURSE_LANGUAGES){p.language=lang;const list=grammarRoute(lang);
+ for(const lesson of list){const id=lesson.id,base=lesson.checkpoint.map(q=>q.answer),qs=extendedGrammarQuestions(id),good=qs.map(q=>q.answer),bad=qs.map(q=>q.options.find(v=>v!==q.answer));
+ assert.deepEqual(nextGrammarActivity(p),{id,mode:'practice',review:false});assert(recordGrammarCheckpoint(p,lesson,base));assert.deepEqual(nextGrammarActivity(p),{id,mode:'extended',review:false});assert(recordExtendedGrammar(p,id,bad));assert.deepEqual(nextGrammarActivity(p),{id,mode:'extended',review:true});assert(recordExtendedGrammar(p,id,good));assert.deepEqual(nextGrammarActivity(p),{id,mode:'written',review:false});assert(recordWrittenGrammar(p,id,bad));assert.deepEqual(nextGrammarActivity(p),{id,mode:'written',review:true});assert(recordWrittenGrammar(p,id,good));}
+ assert.equal(nextGrammarActivity(p),null);assert.deepEqual(grammarCoverage(p),{basic:list.length,extended:list.length,written:list.length,total:list.length,extraTotal:list.length});
+ const l=list[0];assert(recordGrammarCheckpoint(p,l,l.checkpoint.map(q=>q.options.find(v=>v!==q.answer))));assert.deepEqual(nextGrammarActivity(p),{id:l.id,mode:'checkpoint',review:true});assert.equal(grammarCoverage(p).basic,list.length-1);assert(recordGrammarCheckpoint(p,l,l.checkpoint.map(q=>q.answer)));assert.equal(nextGrammarActivity(p),null);}
+ assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);
+});
+
+test('Music: all twelve major and natural minor pitch classes, playable keys and fraction labels',async()=>{
+ const {PIANO_LESSONS,RHYTHM_LESSONS,rhythmGapLabel,pianoPracticeStep,parsePiano,freshPiano}=await import('../workshop/piano-score.mjs');
+ const major=PIANO_LESSONS.filter(v=>v.id.endsWith('-major')),minor=PIANO_LESSONS.filter(v=>v.id.endsWith('-minor')&&!v.id.includes('harmonic'));
+ assert.equal(major.length,12);assert.equal(minor.length,12);assert.equal(new Set(major.map(v=>v.notes[0]%12)).size,12);assert.equal(new Set(minor.map(v=>v.notes[0]%12)).size,12);
+ const p=freshPiano();for(const [list,pattern] of [[major,[0,2,4,5,7,9,11,12]],[minor,[0,2,3,5,7,8,10,12]]])for(const l of list){assert.deepEqual(l.notes.slice(0,8).map(n=>n-l.notes[0]),pattern);assert.deepEqual(l.notes,l.notes.slice().reverse());assert(l.notes.every(n=>n>=(l.octave+1)*12&&n<(l.octave+3)*12));let i=0;for(const n of l.notes){const result=pianoPracticeStep(l,i,n);assert(result.correct);i=result.index;}assert.equal(i,l.notes.length);p.practice.passed[l.id]=true;}
+ assert.equal(PIANO_LESSONS.length,38);assert.equal(RHYTHM_LESSONS.length,12);assert.equal(rhythmGapLabel(2/3-1/3),'⅓');assert.equal(rhythmGapLabel(.75),'¾');assert.equal(rhythmGapLabel(1),'1');assert.deepEqual(parsePiano(p),p);
+});
+
+test('Engineering route covers all 67 verified steps, resumes the exact next task and mentor is contextual',async()=>{
+ const {engineeringRoute,mentorContext}=await import('../workshop/model.mjs');const {MISSIONS}=await import('../workshop/curriculum.mjs');const {PYTHON_LESSONS,WEB_LESSONS,SQL_LESSONS}=await import('../workshop/program.mjs');const s=fresh();
+ assert.equal(engineeringRoute(s).total,67);assert.deepEqual(engineeringRoute(s).next,{kind:'javascript',index:0});
+ for(const [i,m] of MISSIONS.entries()){assert.deepEqual(engineeringRoute(s).next,{kind:'javascript',index:i});s.solved.push('program:'+m.id);}
+ for(const [kind,ls] of Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS}))for(const [i,v] of ls.entries()){assert.deepEqual(engineeringRoute(s).next,{kind,index:i});s.academy.labs[kind][kind==='python'?v.id:String(i)]={passed:true};}
+ assert.deepEqual(engineeringRoute(s).next,{kind:'capstone',index:0});s.academy.capstone.passed=true;assert.equal(engineeringRoute(s).next,null);assert.equal(engineeringRoute(s).done,67);
+ s.academy.labs.python[PYTHON_LESSONS[1].id].passed=false;assert.deepEqual(engineeringRoute(s).next,{kind:'python',index:1});assert.equal(mentorContext(s,'programming').key,'mentorEngineering_python');assert.equal(mentorContext(s,'piano').key,'mentorMusic');assert.equal(mentorContext(s,'home'),null);
+ const before=JSON.stringify(s);engineeringRoute(s);mentorContext(s,'learn');assert.equal(JSON.stringify(s),before);for(const lang of ['de','en','ru','uk'])assert(!translate(lang,'mentorEngineering_python',{n:2}).includes('{n}'));
 });

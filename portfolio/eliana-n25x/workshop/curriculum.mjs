@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 import {EXTRA_MISSIONS} from './program-lessons.mjs';
 export const UI_LANGUAGES = ['de','en','ru','uk'];
 export const local = (values,lang) => values[UI_LANGUAGES.indexOf(lang) < 0 ? 0 : UI_LANGUAGES.indexOf(lang)];
@@ -75,6 +81,351 @@ export const SUBJECTS = [
  {id:'digitalLab',symbol:'⌁',title:['Digitale Fähigkeiten','Digital skills','Цифровые навыки','Цифрові навички'],tasks:[
   {q:['Jemand fragt im Spiel nach deinem Passwort. Was tust du?','Someone in a game asks for your password. What do you do?','Кто-то в игре просит твой пароль. Что делать?','Хтось у грі просить твій пароль. Що робити?'],options:[['Nicht weitergeben; Hilfe holen','Keep it private; get help','Не передавать, обратиться за помощью','Не передавати, звернутися по допомогу'],['An alle senden','Send it to everyone','Отправить всем','Надіслати всім'],['Im Profil veröffentlichen','Post it in the profile','Опубликовать в профиле','Опублікувати в профілі']],answer:0,why:['Ein Passwort schützt dein Konto. Teile es nicht in Chats oder öffentlichen Profilen.','A password protects your account. Do not share it in chats or public profiles.','Пароль защищает аккаунт. Его не публикуют в переписке или открытом профиле.','Пароль захищає акаунт. Його не публікують у листуванні чи відкритому профілі.']}]}
 ];
+// Original staged practice expansion; legacy task indices remain unchanged.
+const GUIDED_STAGES={"logicLab":[{"title":["Muster und Regeln","Patterns and rules","Закономерности","Закономірності"],"tasks":[{"q":["3, 7, 11, 15: nächste Zahl?","3, 7, 11, 15: next number?","3, 7, 11, 15: следующее число?","3, 7, 11, 15: наступне число?"],"options":[["19","19","19","19"],["18","18","18","18"],["21","21","21","21"]],"answer":0,"why":["Die Differenz ist immer 4.","The difference is always 4.","Разность всегда равна 4.","Різниця завжди дорівнює 4."]},{"q":["1, 4, 9, 16: nächste Quadratzahl?","1, 4, 9, 16: next square?","1, 4, 9, 16: следующий квадрат?","1, 4, 9, 16: наступний квадрат?"],"options":[["25","25","25","25"],["20","20","20","20"],["24","24","24","24"]],"answer":0,"why":["Die Folge ist 1², 2², 3², 4², 5².","The sequence is 1², 2², 3², 4², 5².","Это квадраты 1², 2², 3², 4², 5².","Це квадрати 1², 2², 3², 4², 5²."]},{"q":["Rot, blau, blau, rot, blau, …?","Red, blue, blue, red, blue, …?","Красный, синий, синий, красный, синий, …?","Червоний, синій, синій, червоний, синій, …?"],"options":[["Blau","Blue","Синий","Синій"],["Rot","Red","Красный","Червоний"],["Grün","Green","Зелёный","Зелений"]],"answer":0,"why":["Der Dreierblock wiederholt sich.","The block of three repeats.","Повторяется блок из трёх.","Повторюється блок із трьох."]}]},{"title":["Aussagen und Schlüsse","Statements and inference","Высказывания и выводы","Твердження та висновки"],"tasks":[{"q":["Alle A sind B. X ist A. Was folgt?","All A are B. X is A. What follows?","Все A относятся к B. X относится к A. Что следует?","Усі A належать до B. X належить до A. Що випливає?"],"options":[["X ist B","X is B","X относится к B","X належить до B"],["Alle B sind A","All B are A","Все B относятся к A","Усі B належать до A"],["X ist nicht B","X is not B","X не относится к B","X не належить до B"]],"answer":0,"why":["Eine Teilmengenregel gilt in einer Richtung.","A subset rule holds in one direction.","Включение множества действует в одном направлении.","Включення множини діє в одному напрямку."]},{"q":["Wenn es regnet, ist der Boden nass. Er ist nass. Regnet es sicher?","If it rains, the ground is wet. It is wet. Is it certainly raining?","Если идёт дождь, земля мокрая. Она мокрая. Точно ли идёт дождь?","Якщо йде дощ, земля мокра. Вона мокра. Чи точно йде дощ?"],"options":[["Nicht sicher","Not certain","Не обязательно","Не обов’язково"],["Ja, sicher","Yes, certainly","Да, точно","Так, точно"],["Nein, unmöglich","No, impossible","Нет, невозможно","Ні, неможливо"]],"answer":0,"why":["Eine andere Ursache, etwa Gießen, ist möglich.","Another cause, such as watering, is possible.","Возможна другая причина, например полив.","Можлива інша причина, наприклад полив."]},{"q":["A ist wahr, B ist falsch. Wann ist A UND B wahr?","A is true, B is false. Is A AND B true?","A истинно, B ложно. Истинно ли A И B?","A істинне, B хибне. Чи істинне A І B?"],"options":[["Nein","No","Нет","Ні"],["Ja","Yes","Да","Так"],["Immer","Always","Всегда","Завжди"]],"answer":0,"why":["UND verlangt zwei wahre Aussagen.","AND requires two true statements.","Для И нужны два истинных высказывания.","Для І потрібні два істинні твердження."]}]},{"title":["Beweise und Gegenbeispiele","Proof and counterexamples","Доказательства и контрпримеры","Доведення та контрприклади"],"tasks":[{"q":["Behauptung: Alle geraden Zahlen sind durch 4 teilbar. Gegenbeispiel?","Claim: every even number is divisible by 4. Counterexample?","Утверждение: все чётные числа делятся на 4. Контрпример?","Твердження: усі парні числа діляться на 4. Контрприклад?"],"options":[["6","6","6","6"],["8","8","8","8"],["12","12","12","12"]],"answer":0,"why":["6 ist gerade, aber nicht durch 4 teilbar.","6 is even but not divisible by 4.","6 — чётное, но на 4 не делится.","6 — парне, але на 4 не ділиться."]},{"q":["Drei Schalter, je an oder aus. Wie viele Zustände?","Three switches, each on or off. How many states?","Три переключателя, каждый включён или выключен. Сколько состояний?","Три перемикачі, кожен увімкнений або вимкнений. Скільки станів?"],"options":[["8","8","8","8"],["6","6","6","6"],["9","9","9","9"]],"answer":0,"why":["2 × 2 × 2 = 8 unabhängige Kombinationen.","2 × 2 × 2 = 8 independent combinations.","2 × 2 × 2 = 8 независимых комбинаций.","2 × 2 × 2 = 8 незалежних комбінацій."]},{"q":["Zwei Quellen widersprechen sich. Was ist zuerst sinnvoll?","Two sources disagree. What should you do first?","Два источника противоречат друг другу. Что сначала?","Два джерела суперечать одне одному. Що спочатку?"],"options":[["Belege und Bedingungen vergleichen","Compare evidence and conditions","Сравнить доказательства и условия","Порівняти докази й умови"],["Die lautere wählen","Choose the louder one","Выбрать более громкий","Обрати гучніше"],["Beide verwerfen","Reject both","Отбросить оба","Відкинути обидва"]],"answer":0,"why":["Ein Widerspruch zeigt Prüfbedarf; er entscheidet nicht, welche Quelle stimmt.","A contradiction calls for verification; it does not identify the correct source.","Противоречие требует проверки, но не определяет верный источник.","Суперечність потребує перевірки, але не визначає правильне джерело."]}]}],"physicsLab":[{"title":["Bewegung und Kräfte","Motion and forces","Движение и силы","Рух і сили"],"tasks":[{"q":["Ein Rad fährt 120 m in 20 s. Mittlere Geschwindigkeit in m/s?","A bike travels 120 m in 20 s. Average speed in m/s?","Велосипед проехал 120 м за 20 с. Средняя скорость в м/с?","Велосипед проїхав 120 м за 20 с. Середня швидкість у м/с?"],"options":[["6","6","6","6"],["24","24","24","24"],["2400","2400","2400","2400"]],"answer":0,"why":["v = s/t = 120/20 = 6 m/s.","v = d/t = 120/20 = 6 m/s.","v = s/t = 120/20 = 6 м/с.","v = s/t = 120/20 = 6 м/с."]},{"q":["Masse 2 kg, Beschleunigung 3 m/s². Kraft in N?","Mass 2 kg, acceleration 3 m/s². Force in N?","Масса 2 кг, ускорение 3 м/с². Сила в Н?","Маса 2 кг, прискорення 3 м/с². Сила в Н?"],"options":[["6","6","6","6"],["5","5","5","5"],["1.5","1.5","1.5","1.5"]],"answer":0,"why":["F = m·a. 2 × 3 = 6 N.","F = m·a. 2 × 3 = 6 N.","F = m·a. 2 × 3 = 6 Н.","F = m·a. 2 × 3 = 6 Н."]},{"q":["Zwei gleich große Gegenkräfte wirken auf einen Körper. Resultierende?","Two equal opposite forces act on an object. Net force?","Две равные противоположные силы действуют на тело. Результирующая?","Дві рівні протилежні сили діють на тіло. Рівнодійна?"],"options":[["0 N","0 N","0 Н","0 Н"],["Doppelte Kraft","Double force","Двойная сила","Подвійна сила"],["Unendlich","Infinite","Бесконечная","Нескінченна"]],"answer":0,"why":["Kräfte werden als Vektoren addiert; entgegengesetzte gleiche Kräfte heben sich auf.","Forces add as vectors; equal opposites cancel.","Силы складываются как векторы; равные противоположные компенсируются.","Сили додаються як вектори; рівні протилежні компенсуються."]}]},{"title":["Energie und Wärme","Energy and heat","Энергия и тепло","Енергія і тепло"],"tasks":[{"q":["Eine Kraft von 10 N wirkt 3 m in Bewegungsrichtung. Arbeit in J?","A 10 N force acts for 3 m along motion. Work in J?","Сила 10 Н действует на пути 3 м по движению. Работа в Дж?","Сила 10 Н діє на шляху 3 м уздовж руху. Робота в Дж?"],"options":[["30","30","30","30"],["13","13","13","13"],["3","3","3","3"]],"answer":0,"why":["W = F·s = 30 J bei gleicher Richtung.","W = F·d = 30 J for aligned directions.","W = F·s = 30 Дж при совпадении направлений.","W = F·s = 30 Дж за збігу напрямків."]},{"q":["60 J in 3 s. Leistung in W?","60 J in 3 s. Power in W?","60 Дж за 3 с. Мощность в Вт?","60 Дж за 3 с. Потужність у Вт?"],"options":[["20","20","20","20"],["180","180","180","180"],["63","63","63","63"]],"answer":0,"why":["P = W/t = 20 W.","P = work/time = 20 W.","P = W/t = 20 Вт.","P = W/t = 20 Вт."]},{"q":["Wärme fließt spontan wohin?","Which way does heat flow spontaneously?","Куда самопроизвольно передаётся тепло?","Куди самочинно передається тепло?"],"options":[["Von warm nach kalt","From hot to cold","От тёплого к холодному","Від теплого до холодного"],["Von kalt nach warm","From cold to hot","От холодного к тёплому","Від холодного до теплого"],["Nur nach oben","Only upwards","Только вверх","Лише вгору"]],"answer":0,"why":["Wärmeübertragung vermindert ohne äußere Arbeit Temperaturunterschiede.","Without external work, heat transfer reduces temperature differences.","Без внешней работы теплопередача уменьшает разность температур.","Без зовнішньої роботи теплопередача зменшує різницю температур."]}]},{"title":["Elektrizität und Wellen","Electricity and waves","Электричество и волны","Електрика й хвилі"],"tasks":[{"q":["U = 6 V, R = 3 Ω. Stromstärke in A?","U = 6 V, R = 3 Ω. Current in A?","U = 6 В, R = 3 Ом. Сила тока в А?","U = 6 В, R = 3 Ом. Сила струму в А?"],"options":[["2","2","2","2"],["18","18","18","18"],["0.5","0.5","0.5","0.5"]],"answer":0,"why":["Ohmsches Gesetz: I = U/R.","Ohm's law: I = U/R.","Закон Ома: I = U/R.","Закон Ома: I = U/R."]},{"q":["Eine Lampe nutzt 2 A bei 6 V. Leistung in W?","A lamp uses 2 A at 6 V. Power in W?","Лампа потребляет 2 А при 6 В. Мощность в Вт?","Лампа споживає 2 А за 6 В. Потужність у Вт?"],"options":[["12","12","12","12"],["3","3","3","3"],["8","8","8","8"]],"answer":0,"why":["P = U·I = 12 W.","P = U·I = 12 W.","P = U·I = 12 Вт.","P = U·I = 12 Вт."]},{"q":["10 Schwingungen pro Sekunde. Frequenz in Hz?","10 oscillations per second. Frequency in Hz?","10 колебаний в секунду. Частота в Гц?","10 коливань за секунду. Частота у Гц?"],"options":[["10","10","10","10"],["0.1","0.1","0.1","0.1"],["100","100","100","100"]],"answer":0,"why":["1 Hz ist eine Schwingung pro Sekunde.","1 Hz is one oscillation per second.","1 Гц — одно колебание в секунду.","1 Гц — одне коливання за секунду."]}]}],"biologyLab":[{"title":["Zellen und Organismen","Cells and organisms","Клетки и организмы","Клітини й організми"],"tasks":[{"q":["Welche Struktur umgibt eine Tierzelle?","What surrounds an animal cell?","Что окружает животную клетку?","Що оточує тваринну клітину?"],"options":[["Zellmembran","Cell membrane","Клеточная мембрана","Клітинна мембрана"],["Zellwand aus Cellulose","Cellulose cell wall","Целлюлозная стенка","Целюлозна стінка"],["Schale aus Knochen","Bone shell","Костная оболочка","Кісткова оболонка"]],"answer":0,"why":["Die Membran grenzt die Zelle ab und reguliert Stofftransport.","The membrane bounds the cell and regulates transport.","Мембрана отделяет клетку и регулирует перенос веществ.","Мембрана відділяє клітину й регулює транспорт."]},{"q":["Wo findet die Fotosynthese in Pflanzenzellen hauptsächlich statt?","Where does photosynthesis mainly occur in plant cells?","Где в клетках растений преимущественно идёт фотосинтез?","Де в клітинах рослин переважно відбувається фотосинтез?"],"options":[["Chloroplasten","Chloroplasts","Хлоропласты","Хлоропласти"],["Zellkern","Nucleus","Ядро","Ядро"],["Zellmembran","Cell membrane","Мембрана","Мембрана"]],"answer":0,"why":["Chloroplasten enthalten Pigmente, die Lichtenergie aufnehmen.","Chloroplasts contain pigments that absorb light energy.","Хлоропласты содержат пигменты, поглощающие свет.","Хлоропласти містять пігменти, що поглинають світло."]},{"q":["Was ist ein Gewebe?","What is a tissue?","Что такое ткань?","Що таке тканина?"],"options":[["Gruppe spezialisierter Zellen","Group of specialized cells","Группа специализированных клеток","Група спеціалізованих клітин"],["Ein einzelnes Atom","A single atom","Один атом","Один атом"],["Eine ganze Population","An entire population","Целая популяция","Ціла популяція"]],"answer":0,"why":["Zellen arbeiten in Geweben gemeinsam an einer Funktion.","Cells cooperate in tissues for a function.","Клетки ткани совместно выполняют функцию.","Клітини тканини спільно виконують функцію."]}]},{"title":["Körper und Stoffwechsel","Body and metabolism","Организм и обмен веществ","Організм і обмін речовин"],"tasks":[{"q":["Welches Organ pumpt Blut durch den Körper?","Which organ pumps blood around the body?","Какой орган перекачивает кровь?","Який орган перекачує кров?"],"options":[["Herz","Heart","Сердце","Серце"],["Magen","Stomach","Желудок","Шлунок"],["Leber","Liver","Печень","Печінка"]],"answer":0,"why":["Das Herz erzeugt den Blutfluss im Kreislauf.","The heart drives blood flow in circulation.","Сердце обеспечивает движение крови.","Серце забезпечує рух крові."]},{"q":["Wo wird Sauerstoff ins Blut aufgenommen?","Where does oxygen enter the blood?","Где кислород поступает в кровь?","Де кисень потрапляє в кров?"],"options":[["Lungenbläschen","Alveoli","Альвеолы лёгких","Альвеоли легень"],["Magen","Stomach","Желудок","Шлунок"],["Hautoberfläche","Skin surface","Поверхность кожи","Поверхня шкіри"]],"answer":0,"why":["In den Alveolen diffundiert Sauerstoff in Kapillaren.","In alveoli, oxygen diffuses into capillaries.","В альвеолах кислород диффундирует в капилляры.","В альвеолах кисень дифундує в капіляри."]},{"q":["Welchen Stoff nutzen Zellen als wichtigen Energielieferanten?","Which substance is a major cellular energy source?","Какое вещество является важным источником энергии клеток?","Яка речовина є важливим джерелом енергії клітин?"],"options":[["Glucose","Glucose","Глюкоза","Глюкоза"],["Sand","Sand","Песок","Пісок"],["Kochsalz allein","Table salt alone","Только соль","Лише сіль"]],"answer":0,"why":["Bei der Zellatmung wird chemische Energie aus Glucose nutzbar gemacht.","Cellular respiration makes chemical energy from glucose available.","Клеточное дыхание делает энергию глюкозы доступной.","Клітинне дихання робить енергію глюкози доступною."]}]},{"title":["Ökosysteme und Vererbung","Ecosystems and inheritance","Экосистемы и наследственность","Екосистеми та спадковість"],"tasks":[{"q":["Gras → Hase → Fuchs. Wer ist Produzent?","Grass → rabbit → fox. Which is the producer?","Трава → заяц → лиса. Кто продуцент?","Трава → заєць → лисиця. Хто продуцент?"],"options":[["Gras","Grass","Трава","Трава"],["Hase","Rabbit","Заяц","Заєць"],["Fuchs","Fox","Лиса","Лисиця"]],"answer":0,"why":["Pflanzen produzieren organische Stoffe durch Fotosynthese.","Plants produce organic matter through photosynthesis.","Растения образуют органические вещества при фотосинтезе.","Рослини утворюють органічні речовини під час фотосинтезу."]},{"q":["Welche Substanz trägt die Erbinformation?","Which substance carries genetic information?","Какое вещество несёт наследственную информацию?","Яка речовина несе спадкову інформацію?"],"options":[["DNA","DNA","ДНК","ДНК"],["Wasser","Water","Вода","Вода"],["Stärke","Starch","Крахмал","Крохмаль"]],"answer":0,"why":["Die Abfolge der DNA-Basen speichert genetische Information.","The sequence of DNA bases stores genetic information.","Последовательность оснований ДНК хранит генетическую информацию.","Послідовність основ ДНК зберігає генетичну інформацію."]},{"q":["Was fördert biologische Vielfalt in einem Garten?","What supports biodiversity in a garden?","Что поддерживает биоразнообразие в саду?","Що підтримує біорізноманіття в саду?"],"options":[["Verschiedene heimische Pflanzen","Diverse native plants","Разные местные растения","Різні місцеві рослини"],["Nur eine Pflanzenart","Only one plant species","Один вид растений","Один вид рослин"],["Alle Pflanzen entfernen","Remove every plant","Удалить все растения","Видалити всі рослини"]],"answer":0,"why":["Unterschiedliche Pflanzen schaffen verschiedene Nahrungsquellen und Lebensräume.","Different plants create varied food sources and habitats.","Разные растения создают разные источники пищи и места обитания.","Різні рослини створюють різні джерела їжі й оселища."]}]}],"geographyLab":[{"title":["Karten und Maßstab","Maps and scale","Карты и масштаб","Карти й масштаб"],"tasks":[{"q":["Maßstab 1:100 000. 1 cm auf der Karte entspricht wie vielen km?","Scale 1:100,000. 1 cm on the map equals how many km?","Масштаб 1:100 000. Сколько км соответствует 1 см?","Масштаб 1:100 000. Скільки км відповідає 1 см?"],"options":[["1","1","1","1"],["10","10","10","10"],["100","100","100","100"]],"answer":0,"why":["100 000 cm = 1 000 m = 1 km.","100,000 cm = 1,000 m = 1 km.","100 000 см = 1 000 м = 1 км.","100 000 см = 1 000 м = 1 км."]},{"q":["Welche Linie hat 0° geografische Breite?","Which line has 0° latitude?","Какая линия имеет широту 0°?","Яка лінія має широту 0°?"],"options":[["Äquator","Equator","Экватор","Екватор"],["Nullmeridian","Prime meridian","Нулевой меридиан","Нульовий меридіан"],["Nordpol","North Pole","Северный полюс","Північний полюс"]],"answer":0,"why":["Der Äquator trennt die Nord- und Südhalbkugel.","The equator divides the Northern and Southern hemispheres.","Экватор разделяет Северное и Южное полушария.","Екватор розділяє Північну й Південну півкулі."]},{"q":["Eng beieinanderliegende Höhenlinien zeigen meist …","Closely spaced contour lines usually show …","Близкие горизонтали обычно показывают …","Близькі горизонталі зазвичай показують …"],"options":[["Steilen Hang","Steep slope","Крутой склон","Крутий схил"],["Flache Ebene","Flat plain","Равнину","Рівнину"],["Tiefes Meer ohne Höhenangaben","Deep sea without elevations","Глубокое море без отметок","Глибоке море без позначок"]],"answer":0,"why":["Auf kurzer horizontaler Strecke ändert sich die Höhe stark.","Elevation changes greatly over a short horizontal distance.","Высота сильно меняется на коротком расстоянии.","Висота сильно змінюється на короткій відстані."]}]},{"title":["Erde, Wetter und Klima","Earth, weather and climate","Земля, погода и климат","Земля, погода й клімат"],"tasks":[{"q":["Was verursacht hauptsächlich die Jahreszeiten?","What mainly causes the seasons?","Что главным образом вызывает смену сезонов?","Що головно спричиняє зміну пір року?"],"options":[["Neigung der Erdachse","Tilt of Earth's axis","Наклон земной оси","Нахил земної осі"],["Mondphasen","Moon phases","Фазы Луны","Фази Місяця"],["Tägliche Erdrotation allein","Daily rotation alone","Только суточное вращение","Лише добове обертання"]],"answer":0,"why":["Die Neigung verändert Sonnenstand und Tageslänge im Jahreslauf.","The tilt changes sun angle and day length through the year.","Наклон меняет высоту Солнца и длину дня в течение года.","Нахил змінює висоту Сонця й тривалість дня протягом року."]},{"q":["Wetter und Klima unterscheiden sich wodurch?","How do weather and climate differ?","Чем различаются погода и климат?","Чим відрізняються погода й клімат?"],"options":[["Zeitraum","Timescale","Периодом наблюдения","Періодом спостереження"],["Nur durch Temperatur","Only temperature","Только температурой","Лише температурою"],["Gar nicht","Not at all","Ничем","Нічим"]],"answer":0,"why":["Wetter beschreibt aktuelle Bedingungen; Klima langfristige Muster.","Weather describes current conditions; climate describes long-term patterns.","Погода — текущие условия, климат — многолетние закономерности.","Погода — поточні умови, клімат — багаторічні закономірності."]},{"q":["Wie gelangen Wolken in den Wasserkreislauf?","How do clouds form in the water cycle?","Как образуются облака в круговороте воды?","Як утворюються хмари в кругообігу води?"],"options":[["Wasserdampf kondensiert","Water vapor condenses","Водяной пар конденсируется","Водяна пара конденсується"],["Wasser verschwindet","Water disappears","Вода исчезает","Вода зникає"],["Gestein verdampft","Rock evaporates","Камни испаряются","Каміння випаровується"]],"answer":0,"why":["Abkühlender Wasserdampf bildet Tröpfchen oder Eiskristalle.","Cooling water vapor forms droplets or ice crystals.","Охлаждающийся пар образует капли или кристаллы льда.","Охолоджена пара утворює краплі або кристали льоду."]}]},{"title":["Bevölkerung und Ressourcen","Population and resources","Население и ресурсы","Населення й ресурси"],"tasks":[{"q":["1 000 Menschen auf 20 km². Dichte pro km²?","1,000 people over 20 km². Density per km²?","1 000 человек на 20 км². Плотность на км²?","1 000 людей на 20 км². Щільність на км²?"],"options":[["50","50","50","50"],["20","20","20","20"],["20000","20000","20000","20000"]],"answer":0,"why":["Bevölkerungsdichte = Einwohner / Fläche.","Population density = inhabitants / area.","Плотность = число жителей / площадь.","Щільність = кількість мешканців / площа."]},{"q":["Welche Energiequelle ist erneuerbar?","Which energy source is renewable?","Какой источник энергии возобновляемый?","Яке джерело енергії відновлюване?"],"options":[["Wind","Wind","Ветер","Вітер"],["Kohle","Coal","Уголь","Вугілля"],["Erdöl","Oil","Нефть","Нафта"]],"answer":0,"why":["Wind entsteht fortlaufend durch atmosphärische Prozesse.","Wind is continually generated by atmospheric processes.","Ветер постоянно образуется атмосферными процессами.","Вітер постійно виникає через атмосферні процеси."]},{"q":["Was bedeutet eine Überschwemmungs-Risikokarte?","What does a flood-risk map mean?","Что означает карта риска наводнений?","Що означає карта ризику повеней?"],"options":[["Zeigt mögliche Gefährdung","Shows potential exposure","Показывает возможную опасность","Показує можливу небезпеку"],["Garantiert ein Ereignis morgen","Guarantees an event tomorrow","Гарантирует событие завтра","Гарантує подію завтра"],["Zeigt nur Straßen","Shows only roads","Показывает только дороги","Показує лише дороги"]],"answer":0,"why":["Risiko ist keine genaue Vorhersage des Zeitpunkts.","Risk is not an exact prediction of timing.","Риск не является точным прогнозом времени.","Ризик не є точним прогнозом часу."]}]}],"digitalLab":[{"title":["Konten und Datenschutz","Accounts and privacy","Аккаунты и приватность","Облікові записи й приватність"],"tasks":[{"q":["Welche Passwörter sind sinnvoll?","Which passwords are sensible?","Какие пароли разумно использовать?","Які паролі розумно використовувати?"],"options":[["Lange, einzigartige Passwörter","Long, unique passwords","Длинные уникальные пароли","Довгі унікальні паролі"],["Überall dasselbe Passwort","Same password everywhere","Один пароль везде","Один пароль усюди"],["Geburtsdatum allein","Birth date alone","Только дата рождения","Лише дата народження"]],"answer":0,"why":["Einzigartige Passwörter begrenzen Folgen eines Datenlecks.","Unique passwords limit the impact of a breach.","Уникальные пароли ограничивают последствия утечки.","Унікальні паролі обмежують наслідки витоку."]},{"q":["Was ergänzt ein Passwort sinnvoll?","What is a useful addition to a password?","Что полезно дополнительно к паролю?","Що корисно додатково до пароля?"],"options":[["Mehrfaktor-Anmeldung","Multi-factor authentication","Многофакторная аутентификация","Багатофакторна автентифікація"],["Öffentliches Passwort","Public password","Публичный пароль","Публічний пароль"],["Passwort im Chat","Password in chat","Пароль в чате","Пароль у чаті"]],"answer":0,"why":["Ein zusätzlicher Faktor erschwert unbefugten Zugriff.","An additional factor makes unauthorized access harder.","Дополнительный фактор усложняет несанкционированный доступ.","Додатковий фактор ускладнює несанкціонований доступ."]},{"q":["Eine App verlangt Standort ohne erkennbaren Zweck. Was tun?","An app requests location without a clear purpose. What should you do?","Приложение просит геолокацию без ясной цели. Что делать?","Застосунок просить геолокацію без чіткої мети. Що робити?"],"options":[["Berechtigung prüfen oder ablehnen","Review or deny permission","Проверить или отклонить разрешение","Перевірити або відхилити дозвіл"],["Immer erlauben","Always allow","Всегда разрешать","Завжди дозволяти"],["Standort öffentlich posten","Post location publicly","Опубликовать местоположение","Опублікувати місцеперебування"]],"answer":0,"why":["Gib nur Daten frei, die für den Zweck nötig sind.","Share only data necessary for the purpose.","Предоставляй только необходимые для цели данные.","Надавай лише необхідні для мети дані."]}]},{"title":["Informationen und Dateien","Information and files","Информация и файлы","Інформація й файли"],"tasks":[{"q":["Eine unerwartete Nachricht fordert Anmeldung über einen Link. Was tun?","An unexpected message requests login via a link. What should you do?","Неожиданное письмо требует входа по ссылке. Что делать?","Неочікуваний лист вимагає входу за посиланням. Що робити?"],"options":[["Dienst über bekannte Adresse öffnen","Open service via known address","Открыть сервис по известному адресу","Відкрити сервіс за відомою адресою"],["Link sofort öffnen","Open the link immediately","Сразу открыть ссылку","Одразу відкрити посилання"],["Passwort zurückmailen","Email back the password","Отправить пароль в ответ","Надіслати пароль у відповідь"]],"answer":0,"why":["Eine unabhängige bekannte Adresse hilft Phishing zu vermeiden.","An independently known address helps avoid phishing.","Самостоятельно известный адрес помогает избежать фишинга.","Самостійно відома адреса допомагає уникнути фішингу."]},{"q":["Wie schützt man wichtige Dateien gegen Geräteausfall?","How can important files be protected against device failure?","Как защитить важные файлы от поломки устройства?","Як захистити важливі файли від поломки пристрою?"],"options":[["Getrennte Sicherungskopie","Separate backup","Отдельная резервная копия","Окрема резервна копія"],["Nur ein Exemplar","Only one copy","Только один экземпляр","Лише один примірник"],["Dateien umbenennen","Rename files","Переименовать файлы","Перейменувати файли"]],"answer":0,"why":["Eine unabhängige, überprüfte Sicherung ermöglicht Wiederherstellung.","An independent, verified backup allows recovery.","Независимая проверенная копия позволяет восстановить данные.","Незалежна перевірена копія дозволяє відновити дані."]},{"q":["Was erhöht die Verlässlichkeit einer Nachricht?","What increases a news item's reliability?","Что повышает надёжность сообщения?","Що підвищує надійність повідомлення?"],"options":[["Nachprüfbare Quellen","Verifiable sources","Проверяемые источники","Перевірні джерела"],["Viele Ausrufezeichen","Many exclamation marks","Много восклицаний","Багато знаків оклику"],["Ein schönes Bild","A pretty image","Красивое изображение","Гарне зображення"]],"answer":0,"why":["Überprüfbare Belege und unabhängige Bestätigung sind wichtiger als Gestaltung.","Verifiable evidence and independent confirmation matter more than styling.","Проверяемые доказательства и независимое подтверждение важнее оформления.","Перевірні докази й незалежне підтвердження важливіші за оформлення."]}]},{"title":["KI und Datenkompetenz","AI and data literacy","ИИ и работа с данными","ШІ й робота з даними"],"tasks":[{"q":["Eine KI nennt eine Quelle. Was folgt daraus?","An AI gives a citation. What does that establish?","ИИ указал источник. Что это доказывает?","ШІ вказав джерело. Що це доводить?"],"options":[["Quelle muss geprüft werden","The source must be checked","Источник нужно проверить","Джерело треба перевірити"],["Aussage ist sicher wahr","Claim is certainly true","Утверждение точно верно","Твердження точно правдиве"],["Kein Fehler möglich","No error possible","Ошибка невозможна","Помилка неможлива"]],"answer":0,"why":["Auch eine vorhandene Quelle kann falsch interpretiert sein.","Even a real source can be misinterpreted.","Даже реальный источник может быть неверно истолкован.","Навіть справжнє джерело може бути неправильно витлумачене."]},{"q":["Ein Trainingsdatensatz enthält nur eine kleine Gruppe. Was ist ein Risiko?","Training data contains only one small group. What is a risk?","Данные обучения содержат только одну небольшую группу. Каков риск?","Дані навчання містять лише одну невелику групу. Який ризик?"],"options":[["Schlechte Übertragbarkeit","Poor generalization","Плохое обобщение","Погане узагальнення"],["Garantierte Fairness","Guaranteed fairness","Гарантированная справедливость","Гарантована справедливість"],["Perfekte Genauigkeit","Perfect accuracy","Идеальная точность","Ідеальна точність"]],"answer":0,"why":["Einseitige Daten können zu Fehlern bei anderen Gruppen führen.","Unrepresentative data can produce errors for other groups.","Нерепрезентативные данные могут приводить к ошибкам на других группах.","Нерепрезентативні дані можуть спричиняти помилки для інших груп."]},{"q":["Welche Daten gehören nicht in eine öffentliche KI-Demo?","Which data should not go into a public AI demo?","Какие данные нельзя вводить в публичную демоверсию ИИ?","Які дані не варто вводити в публічну демонстрацію ШІ?"],"options":[["Vertrauliche persönliche Daten","Confidential personal data","Конфиденциальные личные данные","Конфіденційні особисті дані"],["Erfundene Testdaten","Fictional test data","Вымышленные тестовые данные","Вигадані тестові дані"],["Öffentliche Beispieldaten","Public sample data","Публичные примеры","Публічні приклади"]],"answer":0,"why":["Verwende fiktive oder ausdrücklich freigegebene Daten.","Use fictional or explicitly approved data.","Используй вымышленные или явно разрешённые данные.","Використовуй вигадані або явно дозволені дані."]}]}],"musicLab":[{"title":["Rhythmus und Takt","Rhythm and meter","Ритм и размер","Ритм і метр"],"tasks":[{"q":["Wie viele Viertelschläge hat ein 4/4-Takt?","How many quarter-note beats in a 4/4 bar?","Сколько четвертных долей в такте 4/4?","Скільки четвертних долей у такті 4/4?"],"options":[["4","4","4","4"],["3","3","3","3"],["8","8","8","8"]],"answer":0,"why":["Die obere 4 zählt vier Schläge; die untere 4 steht für die Viertelnote.","The top 4 counts four beats; the bottom 4 denotes quarter notes.","Верхняя 4 — четыре доли, нижняя 4 — четвертные ноты.","Верхня 4 — чотири долі, нижня 4 — четвертні ноти."]},{"q":["Wie viele Achtelnoten dauern so lange wie eine Viertelnote?","How many eighth notes equal a quarter note?","Сколько восьмых равны одной четверти?","Скільки восьмих дорівнюють одній чверті?"],"options":[["2","2","2","2"],["4","4","4","4"],["8","8","8","8"]],"answer":0,"why":["Zwei Achtel ergeben eine Viertelnote.","Two eighth notes equal one quarter note.","Две восьмые равны одной четверти.","Дві восьмі дорівнюють одній чверті."]},{"q":["120 BPM, Viertelnote als Schlag. Sekunden pro Schlag?","120 BPM, quarter-note beat. Seconds per beat?","120 BPM, доля — четверть. Секунд на долю?","120 BPM, доля — чверть. Секунд на долю?"],"options":[["0.5","0.5","0.5","0.5"],["2","2","2","2"],["1","1","1","1"]],"answer":0,"why":["60 Sekunden / 120 Schläge = 0,5 Sekunden.","60 seconds / 120 beats = 0.5 seconds.","60 секунд / 120 долей = 0,5 секунды.","60 секунд / 120 долей = 0,5 секунди."]}]},{"title":["Tonhöhe und Intervalle","Pitch and intervals","Высота и интервалы","Висота й інтервали"],"tasks":[{"q":["Wie viele Halbtöne umfasst eine Oktave?","How many semitones are in an octave?","Сколько полутонов в октаве?","Скільки півтонів в октаві?"],"options":[["12","12","12","12"],["7","7","7","7"],["8","8","8","8"]],"answer":0,"why":["Eine Oktave entspricht zwölf Halbtönen; die Frequenz verdoppelt sich.","An octave is twelve semitones; frequency doubles.","Октава — 12 полутонов, частота удваивается.","Октава — 12 півтонів, частота подвоюється."]},{"q":["A4 = 440 Hz. Frequenz eine Oktave höher?","A4 = 440 Hz. Frequency one octave higher?","A4 = 440 Гц. Частота на октаву выше?","A4 = 440 Гц. Частота на октаву вище?"],"options":[["880","880","880","880"],["660","660","660","660"],["220","220","220","220"]],"answer":0,"why":["Eine Oktave höher bedeutet doppelte Frequenz.","One octave higher means double frequency.","На октаву выше — вдвое больше частота.","На октаву вище — удвічі більша частота."]},{"q":["Welcher Abstand liegt zwischen C und E (gleichstufig)?","What interval is C to E (equal temperament)?","Какой интервал C–E (равномерная темперация)?","Який інтервал C–E (рівномірна темперація)?"],"options":[["Große Terz","Major third","Большая терция","Велика терція"],["Kleine Terz","Minor third","Малая терция","Мала терція"],["Oktave","Octave","Октава","Октава"]],"answer":0,"why":["C nach E umfasst vier Halbtöne, also eine große Terz.","C to E is four semitones, a major third.","От C до E четыре полутона — большая терция.","Від C до E чотири півтони — велика терція."]}]},{"title":["Akkorde und Komposition","Chords and composition","Аккорды и композиция","Акорди й композиція"],"tasks":[{"q":["Welche Töne bilden C-Dur?","Which notes form C major?","Какие ноты составляют C-dur?","Які ноти утворюють C-dur?"],"options":[["C – E – G","C – E – G","C – E – G","C – E – G"],["C – E♭ – G","C – E♭ – G","C – E♭ – G","C – E♭ – G"],["C – D – F","C – D – F","C – D – F","C – D – F"]],"answer":0,"why":["Dur-Dreiklang: Grundton, große Terz und reine Quinte.","Major triad: root, major third and perfect fifth.","Мажорное трезвучие: прима, большая терция и чистая квинта.","Мажорний тризвук: прима, велика терція й чиста квінта."]},{"q":["Welche Töne bilden a-Moll?","Which notes form A minor?","Какие ноты составляют a-moll?","Які ноти утворюють a-moll?"],"options":[["A – C – E","A – C – E","A – C – E","A – C – E"],["A – C♯ – E","A – C♯ – E","A – C♯ – E","A – C♯ – E"],["A – B – D","A – B – D","A – B – D","A – B – D"]],"answer":0,"why":["Moll-Dreiklang: Grundton, kleine Terz und reine Quinte.","Minor triad: root, minor third and perfect fifth.","Минорное трезвучие: прима, малая терция и чистая квинта.","Мінорний тризвук: прима, мала терція й чиста квінта."]},{"q":["Was speichert MIDI typischerweise?","What does MIDI typically store?","Что обычно сохраняет MIDI?","Що зазвичай зберігає MIDI?"],"options":[["Noten- und Steuerereignisse","Note and control events","Нотные и управляющие события","Нотні та керувальні події"],["Aufgenommene Schallwellen","Recorded sound waves","Записанные звуковые волны","Записані звукові хвилі"],["Nur Bilder","Only images","Только изображения","Лише зображення"]],"answer":0,"why":["MIDI beschreibt Spielereignisse; WAV kann Audiosamples enthalten.","MIDI describes performance events; WAV can contain audio samples.","MIDI описывает события исполнения; WAV может содержать аудиосэмплы.","MIDI описує події виконання; WAV може містити аудіосемпли."]}]}]};
+SUBJECTS.push({id:'musicLab',symbol:'♫',title:['Musiktheorie','Music theory','Теория музыки','Теорія музики'],tasks:[]});
+for(const subject of SUBJECTS){
+ const stages=[];if(subject.tasks.length)stages.push({title:['Einstieg','Introduction','Введение','Вступ'],start:0,end:subject.tasks.length});
+ for(const stage of GUIDED_STAGES[subject.id]||[]){const start=subject.tasks.length;subject.tasks.push(...stage.tasks);stages.push({title:stage.title,start,end:subject.tasks.length});}
+ subject.stages=stages;
+}
+export const MISSION_STAGES=[
+ {title:['Grundlagen','Foundations','Основы','Основи'],start:0,end:5},
+ {title:['Rechnen und Bedingungen','Arithmetic and conditions','Вычисления и условия','Обчислення й умови'],start:5,end:10},
+ {title:['Schleifen und Funktionen','Loops and functions','Циклы и функции','Цикли й функції'],start:10,end:15},
+ {title:['Algorithmen und Grenzfälle','Algorithms and edge cases','Алгоритмы и граничные случаи','Алгоритми й крайові випадки'],start:15,end:20},
+ {title:['Zahlen und Beweise','Numbers and reasoning','Числа и рассуждения','Числа й міркування'],start:20,end:24},
+ {title:['Algorithmische Muster','Algorithmic patterns','Алгоритмические шаблоны','Алгоритмічні шаблони'],start:24,end:28},
+ {title:['Anwendungsprojekte','Applied projects','Прикладные проекты','Прикладні проєкти'],start:28,end:32},
+ {title:['Fächerübergreifende Algorithmen','Cross-disciplinary algorithms','Межпредметные алгоритмы','Міжпредметні алгоритми'],start:32,end:36},
+ {title:['KI-Qualität und Bewertung','AI quality and evaluation','Качество и оценка ИИ','Якість та оцінювання ШІ'],start:36,end:42},
+ {title:['Praxisprojekte: Geschäftslogik','Practical projects: business logic','Практические проекты: бизнес-логика','Практичні проєкти: бізнес-логіка'],start:42,end:48}
+];
 export function checkMission(mission,source,runner) {
  return mission.tests.map(([args,expected])=>({args,expected,...runner(source,mission.entry,args)}));
 }
+
+// Append-only extension: existing question indices and achievements remain valid.
+for(const stage of [{"id":"logicLab","title":["Entscheidungen und Daten","Decisions and data","Решения и данные","Рішення й дані"],"tasks":[{"q":["A oder B ist wahr (inklusives Oder). A und B sind beide wahr. Ist A ODER B wahr?","A OR B uses inclusive OR. Both A and B are true. Is A OR B true?","A ИЛИ B — включающее ИЛИ. A и B истинны. Истинно ли A ИЛИ B?","A АБО B — включне АБО. A і B істинні. Чи істинне A АБО B?"],"options":[["Ja","Yes","Да","Так"],["Nein","No","Нет","Ні"],["Unbestimmt","Undetermined","Не определено","Не визначено"]],"answer":0,"why":["Inklusives Oder ist wahr, wenn mindestens ein Operand wahr ist.","Inclusive OR is true when at least one operand is true.","Включающее ИЛИ истинно, если хотя бы один операнд истинен.","Включне АБО істинне, якщо хоча б один операнд істинний."]},{"q":["Welche Zahl ist der Median von 2, 5, 9?","What is the median of 2, 5, 9?","Какова медиана чисел 2, 5, 9?","Яка медіана чисел 2, 5, 9?"],"options":[["5","5","5","5"],["2","2","2","2"],["9","9","9","9"]],"answer":0,"why":["Der Median ist der mittlere Wert der sortierten Liste.","The median is the middle value in the sorted list.","Медиана — средний по позиции элемент упорядоченного ряда.","Медіана — середній за позицією елемент упорядкованого ряду."]}]},{"id":"physicsLab","title":["Dichte und Druck","Density and pressure","Плотность и давление","Густина й тиск"],"tasks":[{"q":["Masse 200 g, Volumen 100 cm³. Dichte in g/cm³?","Mass 200 g, volume 100 cm³. Density in g/cm³?","Масса 200 г, объём 100 см³. Плотность в г/см³?","Маса 200 г, об’єм 100 см³. Густина в г/см³?"],"options":[["2","2","2","2"],["0.5","0.5","0,5","0,5"],["20","20","20","20"]],"answer":0,"why":["ρ = m/V = 200/100 = 2 g/cm³.","ρ = m/V = 200/100 = 2 g/cm³.","ρ = m/V = 200/100 = 2 г/см³.","ρ = m/V = 200/100 = 2 г/см³."]},{"q":["Eine senkrechte Kraft von 12 N wirkt auf 3 m². Druck in Pa?","A normal force of 12 N acts on 3 m². Pressure in Pa?","Сила 12 Н действует перпендикулярно площади 3 м². Давление в Па?","Сила 12 Н діє перпендикулярно площі 3 м². Тиск у Па?"],"options":[["4","4","4","4"],["36","36","36","36"],["9","9","9","9"]],"answer":0,"why":["p = F/A = 12/3 = 4 Pa.","p = F/A = 12/3 = 4 Pa.","p = F/A = 12/3 = 4 Па.","p = F/A = 12/3 = 4 Па."]}]},{"id":"biologyLab","title":["Zellteilung und Anpassung","Cell division and adaptation","Деление клеток и адаптация","Поділ клітин і адаптація"],"tasks":[{"q":["Wie viele Tochterzellen entstehen normalerweise bei Mitose mit anschließender Zellteilung?","How many daughter cells normally result from mitosis followed by cytokinesis?","Сколько дочерних клеток обычно получается после митоза и цитокинеза?","Скільки дочірніх клітин зазвичай утворюється після мітозу й цитокінезу?"],"options":[["2","2","2","2"],["4","4","4","4"],["8","8","8","8"]],"answer":0,"why":["Mitose und Cytokinese ergeben normalerweise zwei Tochterzellen.","Mitosis and cytokinesis normally yield two daughter cells.","Митоз и цитокинез обычно дают две дочерние клетки.","Мітоз і цитокінез зазвичай дають дві дочірні клітини."]},{"q":["Welche Struktur vermindert bei vielen Kakteen Wasserverlust?","Which structure reduces water loss in many cacti?","Какая структура уменьшает потерю воды у многих кактусов?","Яка структура зменшує втрату води у багатьох кактусів?"],"options":[["Wachsartige Kutikula","Waxy cuticle","Восковая кутикула","Воскова кутикула"],["Dünne offene Haut","Thin exposed skin","Тонкая открытая кожица","Тонка відкрита шкірка"],["Zusätzliche große Blätter","Extra large leaves","Дополнительные крупные листья","Додаткові великі листки"]],"answer":0,"why":["Eine wachsartige Kutikula kann Verdunstung verringern.","A waxy cuticle can reduce evaporation.","Восковая кутикула уменьшает испарение.","Воскова кутикула зменшує випаровування."]}]},{"id":"geographyLab","title":["Koordinaten und Umwelt","Coordinates and environment","Координаты и окружающая среда","Координати й довкілля"],"tasks":[{"q":["Ein Ort liegt bei 30° S. Auf welcher Halbkugel?","A place lies at 30° S. Which hemisphere?","Место находится на 30° ю. ш. В каком полушарии?","Місце розташоване на 30° пд. ш. У якій півкулі?"],"options":[["Südhalbkugel","Southern hemisphere","Южное","Південна"],["Nordhalbkugel","Northern hemisphere","Северное","Північна"],["Genau am Äquator","Exactly on the equator","На экваторе","На екваторі"]],"answer":0,"why":["Südliche Breite liegt südlich des Äquators.","Southern latitude is south of the equator.","Южная широта находится к югу от экватора.","Південна широта розташована на південь від екватора."]},{"q":["Maßstab 1:50 000; Kartenstrecke 4 cm. Reale Strecke in km?","Scale 1:50,000; map distance 4 cm. Real distance in km?","Масштаб 1:50 000; на карте 4 см. Расстояние в км?","Масштаб 1:50 000; на карті 4 см. Відстань у км?"],"options":[["2","2","2","2"],["20","20","20","20"],["0.2","0.2","0,2","0,2"]],"answer":0,"why":["4 × 50 000 cm = 200 000 cm = 2 km.","4 × 50,000 cm = 200,000 cm = 2 km.","4 × 50 000 см = 200 000 см = 2 км.","4 × 50 000 см = 200 000 см = 2 км."]}]},{"id":"digitalLab","title":["Datenqualität und Barrierefreiheit","Data quality and accessibility","Качество данных и доступность","Якість даних і доступність"],"tasks":[{"q":["Eine Tabelle enthält doppelte Kundennummern. Was zuerst?","A table contains duplicate customer IDs. What first?","В таблице повторяются идентификаторы клиентов. Что сначала?","У таблиці повторюються ідентифікатори клієнтів. Що спочатку?"],"options":[["Duplikate prüfen und Ursache klären","Inspect duplicates and determine the cause","Проверить дубликаты и выяснить причину","Перевірити дублікати й з’ясувати причину"],["Alle Daten löschen","Delete all data","Удалить все данные","Видалити всі дані"],["Zahlen zufällig ändern","Randomly change numbers","Случайно изменить числа","Випадково змінити числа"]],"answer":0,"why":["Duplikate können Fehler oder legitime Mehrfacheinträge sein; erst prüfen.","Duplicates may be errors or legitimate repeated records; inspect first.","Повторы могут быть ошибками или допустимыми записями; сначала проверяют.","Повтори можуть бути помилками або допустимими записами; спочатку перевіряють."]},{"q":["Was hilft bei einem informativen Bild für Screenreader-Nutzer?","What helps screen-reader users with an informative image?","Что помогает пользователям экранных дикторов понять информативное изображение?","Що допомагає користувачам екранних читачів зрозуміти інформативне зображення?"],"options":[["Aussagekräftiger Alternativtext","Meaningful alternative text","Содержательный альтернативный текст","Змістовний альтернативний текст"],["Dateiname allein","Filename alone","Только имя файла","Лише назва файла"],["Mehr Farben ohne Text","More colours without text","Больше цветов без текста","Більше кольорів без тексту"]],"answer":0,"why":["Alternativtext vermittelt relevante Bildinformationen.","Alternative text conveys relevant image information.","Альтернативный текст передаёт значимую информацию изображения.","Альтернативний текст передає важливу інформацію зображення."]}]},{"id":"musicLab","title":["Tonleitern und Umkehrungen","Scales and inversions","Гаммы и обращения","Гами й обернення"],"tasks":[{"q":["Welche Töne enthält C-Dur ohne Wiederholung der Oktave?","Which notes are in C major without repeating the octave?","Какие ноты содержит до-мажорная гамма без повторения октавы?","Які ноти містить до-мажорна гама без повторення октави?"],"options":[["C D E F G A H","C D E F G A B","C D E F G A B","C D E F G A B"],["C D Es F G As B","C D E♭ F G A♭ B♭","C D E♭ F G A♭ B♭","C D E♭ F G A♭ B♭"],["C D E Fis G A H","C D E F♯ G A B","C D E F♯ G A B","C D E F♯ G A B"]],"answer":0,"why":["C-Dur enthält keine Vorzeichen.","C major has no sharps or flats in its key signature.","В до мажоре нет ключевых знаков.","У до мажорі немає ключових знаків."]},{"q":["Welcher Ton liegt im Bass der ersten Umkehrung von C-Dur?","Which note is in the bass of the first inversion of a C major triad?","Какая нота в басу первого обращения до-мажорного трезвучия?","Яка нота в басу першого обернення до-мажорного тризвуку?"],"options":[["E","E","E","E"],["C","C","C","C"],["G","G","G","G"]],"answer":0,"why":["Bei der ersten Umkehrung liegt die Terz im Bass: E–G–C.","The third is in the bass in first inversion: E–G–C.","В первом обращении терция в басу: E–G–C.","У першому оберненні терція в басу: E–G–C."]}]}]){
+ const subject=SUBJECTS.find(s=>s.id===stage.id),start=subject.tasks.length;
+ subject.tasks.push(...stage.tasks);subject.stages.push({title:stage.title,start,end:subject.tasks.length});
+}
+
+// Worked examples use independent, correct code; executing them never grants mission completion.
+export const PROGRAM_GUIDES=[
+  {
+    "source": "function double(n) {\n  let result = n * 2;\n  return result;\n}",
+    "entry": "double",
+    "examples": [
+      {
+        "args": [
+          3
+        ],
+        "expected": 6
+      },
+      {
+        "args": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          7
+        ],
+        "expected": 14
+      }
+    ],
+    "explanation": [
+      "Ein Programm besteht aus Anweisungen. function benennt eine Funktion, n ist die Eingabe, let speichert einen Wert und return liefert die Ausgabe. Lies die Zeilen von oben nach unten.",
+      "A program is a sequence of instructions. function names a function, n is its input, let stores a value and return produces its output. Read the lines from top to bottom.",
+      "Программа состоит из инструкций. function объявляет функцию, n — входное значение, let сохраняет значение, return возвращает результат. Читай строки сверху вниз.",
+      "Програма складається з інструкцій. function оголошує функцію, n — вхідне значення, let зберігає значення, return повертає результат. Читай рядки згори вниз."
+    ]
+  },
+  {
+    "source": "function fee(age) {\n  if (age < 12) { return 0; }\n  return 5;\n}",
+    "entry": "fee",
+    "examples": [
+      {
+        "args": [
+          11
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          12
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          20
+        ],
+        "expected": 5
+      }
+    ],
+    "explanation": [
+      "if prüft eine Bedingung. Nur wenn sie wahr ist, wird der Block ausgeführt. Vergleiche besonders die Werte direkt an der Grenze.",
+      "if checks a condition. Its block runs only if true. Compare values right at the boundary.",
+      "if проверяет условие. Блок выполняется только при истинном условии. Сравни значения непосредственно на границе.",
+      "if перевіряє умову. Блок виконується лише за істинної умови. Порівняй значення безпосередньо на межі."
+    ]
+  },
+  {
+    "source": "function addOne(n) { return n + 1; }\nfunction repeat(n) {\n  let total = 0;\n  for (let i = 0; i < n; i++) {\n    total = addOne(total);\n  }\n  return total;\n}",
+    "entry": "repeat",
+    "examples": [
+      {
+        "args": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": 5
+      }
+    ],
+    "explanation": [
+      "Eine for-Schleife wiederholt Anweisungen. Der Zähler startet bei 0, die Bedingung wird vor jedem Durchlauf geprüft und i++ erhöht den Zähler. Eine Funktion kann eine andere aufrufen.",
+      "A for loop repeats instructions. The counter starts at 0, the condition is checked before each iteration, and i++ increments the counter. A function can call another function.",
+      "Цикл for повторяет инструкции. Счётчик начинается с 0, условие проверяется перед каждым проходом, i++ увеличивает счётчик. Функция может вызывать другую функцию.",
+      "Цикл for повторює інструкції. Лічильник починається з 0, умова перевіряється перед кожним проходом, i++ збільшує лічильник. Функція може викликати іншу функцію."
+    ]
+  },
+  {
+    "source": "function safeAverage(sum, count) {\n  if (count === 0) { return 0; }\n  return sum / count;\n}",
+    "entry": "safeAverage",
+    "examples": [
+      {
+        "args": [
+          12,
+          3
+        ],
+        "expected": 4
+      },
+      {
+        "args": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          9,
+          2
+        ],
+        "expected": 4.5
+      }
+    ],
+    "explanation": [
+      "Grenzfälle können ein Programm fehlschlagen lassen. Hier ist 0 bei leerer Menge eine vereinbarte Ausgabe; die Division wird vermieden.",
+      "Edge cases can make a program fail. Here zero is a specified output for an empty set; division is avoided.",
+      "Граничные случаи могут вызвать ошибку. Здесь ноль — заранее оговорённый результат для пустого набора; деление не выполняется.",
+      "Граничні випадки можуть спричинити помилку. Тут нуль — заздалегідь визначений результат для порожньої множини; ділення не виконується."
+    ]
+  },
+  {
+    "source": "function isEven(n) {\n  return n % 2 === 0;\n}",
+    "entry": "isEven",
+    "examples": [
+      {
+        "args": [
+          4
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          -2
+        ],
+        "expected": true
+      }
+    ],
+    "explanation": [
+      "Der Operator % liefert den Rest einer Division. Eine ganze Zahl ist gerade, wenn ihr Rest bei Division durch 2 null ist. === vergleicht Werte ohne Typumwandlung.",
+      "The % operator gives a remainder. An integer is even if its remainder on division by 2 is zero. === compares without type conversion.",
+      "Оператор % возвращает остаток. Целое число чётное, если остаток от деления на 2 равен нулю. === сравнивает без преобразования типов.",
+      "Оператор % повертає остачу. Ціле число парне, якщо остача від ділення на 2 дорівнює нулю. === порівнює без перетворення типів."
+    ]
+  },
+  {
+    "source": "function sumTo(n) {\n  let total = 0;\n  for (let i = 1; i <= n; i++) {\n    total = total + i;\n  }\n  return total;\n}",
+    "entry": "sumTo",
+    "examples": [
+      {
+        "args": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": 6
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": 15
+      }
+    ],
+    "explanation": [
+      "Ein Akkumulator speichert Zwischenergebnisse. Prüfe, wann die Schleife endet und ob der letzte Wert einbezogen wird.",
+      "An accumulator stores intermediate results. Check when the loop stops and whether the last value is included.",
+      "Накопитель хранит промежуточные результаты. Проверь, когда заканчивается цикл и включено ли последнее значение.",
+      "Накопичувач зберігає проміжні результати. Перевір, коли завершується цикл і чи враховано останнє значення."
+    ]
+  },
+  {
+    "source": "function total(price, count) {\n  return price * count;\n}",
+    "entry": "total",
+    "examples": [
+      {
+        "args": [
+          250,
+          3
+        ],
+        "expected": 750
+      },
+      {
+        "args": [
+          250,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          99,
+          2
+        ],
+        "expected": 198
+      }
+    ],
+    "explanation": [
+      "Zerlege ein reales Problem in Eingaben, Regel und Ausgabe. Verwende für einfache Geldbeträge ganze Cent statt gerundeter Dezimalwerte.",
+      "Break a real problem into inputs, a rule and an output. Use integer cents for simple money amounts instead of rounded decimals.",
+      "Раздели реальную задачу на входные данные, правило и результат. Для простых денежных расчётов используй целые центы вместо округлённых дробей.",
+      "Розділи реальне завдання на вхідні дані, правило та результат. Для простих грошових обчислень використовуй цілі центи замість округлених дробів."
+    ]
+  },
+  {
+    "source": "function distance(speed, time) {\n  return speed * time;\n}",
+    "entry": "distance",
+    "examples": [
+      {
+        "args": [
+          60,
+          2
+        ],
+        "expected": 120
+      },
+      {
+        "args": [
+          0,
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          30,
+          0.5
+        ],
+        "expected": 15
+      }
+    ],
+    "explanation": [
+      "Formeln werden zu Code, wenn die Einheiten und Annahmen klar sind. Hier km/h mal Stunden ergibt Kilometer; die Geschwindigkeit bleibt konstant.",
+      "Formulas become code when units and assumptions are clear. Here km/h times hours gives kilometres; speed is constant.",
+      "Формулы становятся кодом, когда ясны единицы и допущения. Здесь км/ч × часы дают километры; скорость постоянна.",
+      "Формули стають кодом, коли зрозумілі одиниці й припущення. Тут км/год × години дають кілометри; швидкість стала."
+    ]
+  },
+  {
+    "source": "function accuracy(correct, total) {\n  if (total === 0) { return 0; }\n  return correct / total;\n}",
+    "entry": "accuracy",
+    "examples": [
+      {
+        "args": [
+          8,
+          10
+        ],
+        "expected": 0.8
+      },
+      {
+        "args": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          3,
+          4
+        ],
+        "expected": 0.75
+      }
+    ],
+    "explanation": [
+      "Eine Kennzahl vereinfacht Daten. Accuracy ist hier der Anteil korrekter Vorhersagen; bei null Fällen geben wir vereinbarungsgemäß 0 zurück. Sie beweist keine allgemeine Modellqualität.",
+      "A metric summarizes data. Accuracy here is the fraction of correct predictions; for zero cases we return 0 by convention. It does not establish overall model quality.",
+      "Метрика обобщает данные. Accuracy здесь — доля правильных прогнозов; при нуле примеров по договорённости возвращаем 0. Это не доказывает общее качество модели.",
+      "Метрика узагальнює дані. Accuracy тут — частка правильних прогнозів; за нуля прикладів за домовленістю повертаємо 0. Це не доводить загальну якість моделі."
+    ]
+  },
+  {
+    "source": "function inStock(stock, requested) {\n  return requested > 0 && requested <= stock;\n}",
+    "entry": "inStock",
+    "examples": [
+      {
+        "args": [
+          5,
+          5
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          5,
+          0
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          5,
+          6
+        ],
+        "expected": false
+      }
+    ],
+    "explanation": [
+      "Geschäftsregeln müssen alle Bedingungen erfüllen. && bedeutet UND. Ein Test vergleicht die tatsächliche Ausgabe mit der vorher festgelegten Erwartung.",
+      "Business rules must satisfy every condition. && means AND. A test compares the actual output with an independently specified expectation.",
+      "Бизнес-правило должно учитывать все условия. && означает И. Тест сравнивает фактический результат с заранее заданным ожидаемым.",
+      "Бізнес-правило має враховувати всі умови. && означає І. Тест порівнює фактичний результат із заздалегідь визначеним очікуваним."
+    ]
+  }
+];

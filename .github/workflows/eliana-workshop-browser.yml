@@ -1,8 +1,9 @@
 name: Robot Studio browser verification
 on:
   push:
-    branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice, codex/n25x-learning-platform, codex/n25x-learning-review]
-    paths: ['portfolio/eliana-n25x/workshop/**', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', 'portfolio/eliana-n25x/tests/academy.test.mjs', 'portfolio/eliana-n25x/tests/learning.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
+    branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice, codex/n25x-learning-platform]
+    paths: ['portfolio/eliana-n25x/workshop/**', 'portfolio/eliana-n25x/fullstack-lab/**', 'portfolio/eliana-n25x/git-lab/**', 'portfolio/eliana-n25x/3d/browser-tests/run-fullstack.mjs', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', 'portfolio/eliana-n25x/tests/academy.test.mjs', 'portfolio/eliana-n25x/tests/learning.test.mjs', 'portfolio/eliana-n25x/tests/workshop-smoke.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
+  # Review branch is verified by its open PR; avoid identical push + PR runs.
   pull_request:
     branches: [main]
     paths: ['portfolio/eliana-n25x/**', '.github/workflows/eliana-workshop-browser.yml']
@@ -10,6 +11,16 @@ on:
 permissions:
   contents: read
 jobs:
+  source-smoke:
+    name: Workshop source smoke (no npm dependencies)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node --test portfolio/eliana-n25x/tests/workshop-smoke.test.mjs portfolio/eliana-n25x/tests/preview-server.test.mjs
   chromium:
     name: Studio Chromium · ${{ matrix.scope }}
     strategy:
@@ -19,7 +30,7 @@ jobs:
     env:
       ELIANA_BROWSER_SCOPE: ${{ matrix.scope }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -31,11 +42,47 @@ jobs:
       - run: node portfolio/eliana-n25x/workshop/build.mjs
       - name: Verify all workshop modules, math, audio and offline cache
         run: node --test portfolio/eliana-n25x/tests/workshop.test.mjs portfolio/eliana-n25x/tests/academy.test.mjs portfolio/eliana-n25x/tests/learning.test.mjs
+      - name: Package owner review candidate (not a site deployment)
+        if: matrix.scope == 'desktop'
+        run: |
+          mkdir -p preview
+          cp portfolio/eliana-n25x/workshop/dist/download/N25x-Studio.html preview/
+          cp portfolio/eliana-n25x/workshop/dist/build-info.json preview/
+          printf '%s\n' "${GITHUB_SHA}" > preview/BUILD-COMMIT.txt
+          (cd preview && sha256sum N25x-Studio.html > SHA256SUMS.txt)
+      - name: Upload offline review candidate
+        if: matrix.scope == 'desktop'
+        uses: actions/upload-artifact@v4
+        with:
+          name: n25x-offline-review-candidate
+          path: preview/
+          if-no-files-found: error
+          retention-days: 14
       - name: Exercise rendered studio through real input
         run: node portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs
+      - name: Exercise actual full-stack client against local Python and SQLite
+        run: node portfolio/eliana-n25x/3d/browser-tests/run-fullstack.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: robot-studio-${{ matrix.scope }}-evidence
           path: portfolio/eliana-n25x/3d/browser-tests/workshop-results/
           retention-days: 14
+
+  fullstack-local:
+    name: Full-stack lab · Python HTTP and SQLite
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: cd portfolio/eliana-n25x/fullstack-lab && python3 -m unittest -v test_server.py
+      - name: Verify independent SQLite dashboard reference
+        run: cd portfolio/eliana-n25x/fullstack-lab && python3 check_dashboard.py
+
+  git-local:
+    name: Git lab · real local repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 portfolio/eliana-n25x/git-lab/practice.py

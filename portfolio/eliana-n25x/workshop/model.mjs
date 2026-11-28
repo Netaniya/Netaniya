@@ -1,8 +1,15 @@
-import {freshLanguageCourse,parseLanguageCourse} from './language-course.mjs';
-import {freshPiano,parsePiano,validateScore} from './piano-score.mjs';
-import {freshMathCourse,parseMathCourse} from './math-course.mjs';
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
+import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,grammarReviewLessons,nextGrammarActivity,languageMistakes,dueLanguageReviews,nextLanguageExercise,studyDay,DIALOGUE_LESSONS} from './language-course.mjs';
+import {freshPiano,parsePiano,validateScore,PIANO_LESSONS,RHYTHM_LESSONS,EAR_LESSONS,STAFF_LESSONS,CHORD_LESSONS,HARMONY_LESSONS} from './piano-score.mjs';
+import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS,VARIANTS_PER_TOPIC} from './math-course.mjs';
 import {validateCreation,CREATION_TEMPLATES} from './creations.mjs';
-import {LEARNING_LANGUAGES,MISSIONS} from './curriculum.mjs';
+import {LEARNING_LANGUAGES,MISSIONS,SUBJECTS} from './curriculum.mjs';
+import {PYTHON_LESSONS,WEB_LESSONS,SQL_LESSONS,gradePython,gradeWebLab,gradeSQL,freshCapstone,parseCapstone} from './program.mjs';
 export const MAX_PROFILE_BYTES=8*1024*1024;
 export const SAVE_KEY='eliana-n25x.workshop.v1';
 export const LANGUAGES=['de','en','ru','uk'];
@@ -13,9 +20,30 @@ export const SHOP=[
  {id:'projector',kind:'module',cost:100},{id:'speaker',kind:'module',cost:110},{id:'orbit',kind:'module',cost:130}
 ];
 export const ACTIONS=['wave','turn','step','glow','nod','rest'];
-export function cleanName(value){return String(value??'').normalize('NFC').replace(/[<>\x00-\x1f]/g,'').trim().slice(0,24)||'Nova';}
-export function freshAcademy(){return {mission:0,drafts:{},learningLanguage:'en',languageIndex:0,languageMode:'cards',quiz:null,creator:null,creators:{}};}
-export function fresh(){return {schema:SAVE_KEY,lang:'de',started:false,robot:{name:'Nova',color:'pearl',head:'arc',base:'feet',hands:'round',frame:'balanced',finish:'ceramic',personality:'calm',interest:'space',style:'steps',module:'none'},grade:5,points:80,owned:['pearl','ocean'],earned:{},solved:[],projects:[],academy:freshAcademy(),learning:{math:freshMathCourse(),languages:freshLanguageCourse()},piano:freshPiano(),sound:true,volume:.35,visits:0};}
+export function cleanName(value){return String(value??'').normalize('NFC').replace(/[<>\x00-\x1f]/g,'').trim().slice(0,24)||'Eliana';}
+export function freshLabProgress(){return {python:{},web:{},sql:{},selected:{python:0,web:0,sql:0}};}
+export function parseLabProgress(input){
+ const out=freshLabProgress();
+ if(!input||typeof input!=='object')return out;
+ const bounded=(s,n)=>typeof s==='string'&&s.length<=n;
+ for(const [kind,lessons] of Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS})){
+  const selected=input.selected?.[kind];if(Number.isInteger(selected)&&selected>=0&&selected<lessons.length)out.selected[kind]=selected;
+  for(const [i,m] of lessons.entries()){
+   const key=kind==='python'?m.id:String(i),d=input[kind]?.[key];if(!d||typeof d!=='object')continue;
+   if(kind==='python'&&bounded(d.source,4000))out.python[key]={source:d.source,passed:d.passed===true&&gradePython(i,d.source).every(r=>r.passed)};
+   if(kind==='web'&&bounded(d.html,4000)&&bounded(d.css,3000))out.web[key]={html:d.html,css:d.css,passed:d.passed===true&&gradeWebLab(i,d.html,d.css).passed===true};
+   if(kind==='sql'&&bounded(d.query,512))out.sql[key]={query:d.query,passed:d.passed===true&&gradeSQL(i,d.query).passed===true};
+  }
+ }
+ return out;
+}
+export function labSummary(progress){
+ const labs=progress.labs||freshLabProgress(),result={};
+ for(const [kind,lessons] of Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS}))result[kind]={done:lessons.filter((m,i)=>labs[kind]?.[kind==='python'?m.id:String(i)]?.passed===true).length,total:lessons.length};
+ return result;
+}
+export function freshAcademy(){return {mission:0,drafts:{},labs:freshLabProgress(),capstone:freshCapstone(),learningLanguage:'en',languageIndex:0,languageMode:'cards',quiz:null,creator:null,creators:{}};}
+export function fresh(){return {schema:SAVE_KEY,lang:'de',started:false,robot:{name:'Eliana',color:'pearl',head:'arc',base:'feet',hands:'round',frame:'balanced',finish:'titanium',personality:'calm',interest:'space',style:'steps',module:'none'},grade:5,points:80,owned:['pearl','ocean'],earned:{},solved:[],projects:[],academy:freshAcademy(),learning:{math:freshMathCourse(),languages:freshLanguageCourse()},piano:freshPiano(),sound:true,volume:.35,visits:0};}
 export function configure(state,key,value){
  const choices={color:Object.keys(COLORS).filter(v=>state.owned.includes(v)),head:['arc','visor','antenna'],base:['feet','wheels','hover'],hands:['round','clamp'],frame:['balanced','athletic','slender'],finish:['ceramic','titanium','satin'],personality:['calm','cheerful','focused'],interest:['space','nature','music'],style:['steps','visual','challenge'],module:['none',...SHOP.filter(v=>v.kind==='module'&&state.owned.includes(v.id)).map(v=>v.id)]};
  if(key==='name')state.robot.name=cleanName(value);else if(choices[key]?.includes(value))state.robot[key]=value;else return false;return true;
@@ -44,6 +72,7 @@ export function updateProject(state,id,kind,data,name){
 }
 export function parseAcademy(input){
  const a=freshAcademy();if(!input||typeof input!=='object')return a;
+ a.labs=parseLabProgress(input.labs);a.capstone=parseCapstone(input.capstone);
  if(Number.isInteger(input.mission)&&input.mission>=0&&input.mission<MISSIONS.length)a.mission=input.mission;
  if(LEARNING_LANGUAGES.some(v=>v.id===input.learningLanguage))a.learningLanguage=input.learningLanguage;
  if(Number.isInteger(input.languageIndex)&&input.languageIndex>=0&&input.languageIndex<6)a.languageIndex=input.languageIndex;
@@ -57,7 +86,7 @@ export function parseAcademy(input){
 }
 export function parseProfile(raw){
  try{if(typeof raw!=='string'||raw.length>MAX_PROFILE_BYTES)return null;const p=JSON.parse(raw);if(p.schema!==SAVE_KEY||!LANGUAGES.includes(p.lang)||!p.robot||!Array.isArray(p.owned)||!Array.isArray(p.projects)||!Array.isArray(p.solved)||typeof p.earned!=='object'||!p.earned)return null;
- const s=fresh();s.started=Boolean(p.started);s.lang=p.lang;s.grade=Number.isInteger(p.grade)&&p.grade>=1&&p.grade<=11?p.grade:5;
+ const s=fresh();s.robot.finish='ceramic';s.started=Boolean(p.started);s.lang=p.lang;s.grade=Number.isInteger(p.grade)&&p.grade>=1&&p.grade<=11?p.grade:5;
  s.owned=[...new Set(['pearl','ocean',...p.owned.filter(v=>SHOP.some(i=>i.id===v))])];for(const [key,value]of Object.entries(p.robot))configure(s,key,value);
  if(!Number.isSafeInteger(p.points)||p.points<0||p.points>1000000000)return null;s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,100000));s.solved=p.solved.filter(v=>typeof v==='string'&&v.length<100).slice(0,100000);
  s.projects=[];for(const item of p.projects.slice(0,24).reverse()){if(!item||!item.data)continue;const result=addProject(s,item.kind,item.data,item.name);if(result)result.project.id=Number.isSafeInteger(item.id)&&item.id>0?item.id:result.project.id;}
@@ -65,3 +94,71 @@ export function parseProfile(raw){
  s.academy=parseAcademy(p.academy);s.learning.math=parseMathCourse(p.learning?.math);s.learning.languages=parseLanguageCourse(p.learning?.languages);s.piano=parsePiano(p.piano);s.sound=p.sound!==false;s.volume=Math.max(0,Math.min(1,Number.isFinite(p.volume)?p.volume:.35));s.visits=Math.max(0,Math.min(100000,Number(p.visits)||0));return s;
  }catch{return null;}
 }
+
+// Derived dashboard counts only; never changes profile or points.
+export function studySummary(state,day){
+ const m=state.learning.math,l=state.learning.languages,solved=new Set(state.solved),grammar=grammarRoute(l.language),practice=state.piano.practice;
+ const mathDone=MATH_TOPICS.reduce((n,t)=>n+(m.done[t.id]?.length||0),0);
+ const langDone=LANGUAGE_ITEMS.reduce((n,i)=>{const v=l.done[l.language+'/'+i.id]||0;return n+Number(Boolean(v&1))+Number(Boolean(v&2))+Number(Boolean(v&4));},0);
+ const schoolDone=SUBJECTS.reduce((n,s)=>n+s.tasks.reduce((a,_,i)=>a+Number(solved.has('lab:'+s.id+':'+i)),0),0);
+ const musicGroups=[[PIANO_LESSONS,practice.passed],[RHYTHM_LESSONS,practice.rhythmPassed],[EAR_LESSONS,practice.earPassed],[STAFF_LESSONS,practice.staffPassed],[CHORD_LESSONS,practice.chordPassed],[HARMONY_LESSONS,practice.harmonyPassed]];
+ return {
+  math:{done:mathDone,total:MATH_VARIANTS,topics:MATH_TOPICS.filter(t=>m.done[t.id]?.length).length,review:m.mistakes.length},
+  language:{done:langDone,total:LANGUAGE_ITEMS.length*3,language:l.language,review:new Set([...languageMistakes(l),...dueLanguageReviews(l,day)]).size},
+  dialogues:{done:DIALOGUE_LESSONS.filter(v=>l.dialogues.passed[l.language+'/'+v.id]===true).length,total:DIALOGUE_LESSONS.length},
+  grammar:{done:grammar.filter(v=>l.grammar.passed[v.id]===true).length,total:grammar.length},
+  programming:{done:MISSIONS.filter(v=>solved.has('program:'+v.id)).length,total:MISSIONS.length},
+  school:{done:schoolDone,total:SUBJECTS.reduce((n,s)=>n+s.tasks.length,0),subjects:SUBJECTS.length},
+  music:{done:musicGroups.reduce((n,[lessons,passed])=>n+lessons.filter(v=>passed[v.id]===true).length,0),total:musicGroups.reduce((n,[lessons])=>n+lessons.length,0)},projects:state.projects.length
+ };
+}
+
+// Local, explainable recommendations, not a placement test or proficiency score.
+// Never mutate state when producing the plan. Keep an active assessment intact.
+export function studyPlan(state,day=studyDay()){
+ const m=state.learning.math,l=state.learning.languages,summary=studySummary(state,day),items=[];
+ const topicById=id=>MATH_TOPICS.find(t=>t.id===id);
+ const addMath=(reason,topic,index)=>items.push({kind:'math',reason,topic,index});
+ if(m.assessment&&m.assessment.answers.length<10)addMath('planResume',m.topic,m.index);
+ else if(m.mistakes.length){
+  const [id,index]=m.mistakes[0].split(':');addMath('planMathReview',id,Number(index));
+ }else{
+  const weak=MATH_TOPICS.filter(t=>t.grade===state.grade&&m.evidence[t.id]?.latest<8).sort((a,b)=>m.evidence[a.id].latest-m.evidence[b.id].latest)[0];
+  if(weak)addMath('planMathRetest',weak.id,(m.evidence[weak.id].seed+16)%256);
+  // Balance exposure across the chosen difficulty's topics before repeating.
+  const candidates=MATH_TOPICS.filter(t=>t.grade===state.grade&&
+    (m.done[t.id]?.length||0)<VARIANTS_PER_TOPIC);
+  candidates.sort((a,b)=>(m.done[a.id]?.length||0)-(m.done[b.id]?.length||0));
+  const t=candidates[0];
+  if(t&&!weak){const done=new Set(m.done[t.id]||[]);let index=0;while(done.has(index))index++;addMath('planMathNew',t.id,index);}
+ }
+ const next=nextLanguageExercise(l,day);
+ if(next)items.push({kind:'language',reason:next.review?'planLanguageReview':'planLanguageNew',...next});
+ // Rotate supplementary courses by UTC day; skip completed courses and fill
+ // any vacant slots, never compare unlike exercise counts as ability scores.
+ const extras=['grammar','dialogues','programming','school','music'];
+ if(items.length<3&&grammarReviewLessons(l).length)items.push({kind:'grammar',reason:'planGrammarReview'});
+ const shift=((day%extras.length)+extras.length)%extras.length;
+ for(let i=0;i<extras.length&&items.length<3;i++){
+  const kind=extras[(shift+i)%extras.length];
+  if(!items.some(v=>v.kind===kind)&&(kind==='grammar'?Boolean(nextGrammarActivity(l)):kind==='programming'?Boolean(engineeringRoute(state).next):summary[kind].done<summary[kind].total))items.push({kind,reason:'planExtra'});
+ }
+ return items.map(v=>v.kind==='math'?{...v,title:topicById(v.topic).title}:v);
+}
+
+ // A deterministic engineering route: preserve independent evidence and never count simulations as certificates.
+ export function engineeringRoute(state){
+  const solved=new Set(state.solved),labs=state.academy.labs;
+  const groups=[{kind:'javascript',items:MISSIONS.map((v,i)=>({index:i,done:solved.has('program:'+v.id)}))},...Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS}).map(([kind,lessons])=>({kind,items:lessons.map((v,i)=>({index:i,done:labs[kind]?.[kind==='python'?v.id:String(i)]?.passed===true}))})),{kind:'capstone',items:[{index:0,done:state.academy.capstone?.passed===true}]}];
+  const stages=groups.map(g=>({kind:g.kind,done:g.items.filter(v=>v.done).length,total:g.items.length}));
+  const next=groups.flatMap(g=>g.items.filter(v=>!v.done).map(v=>({kind:g.kind,index:v.index})))[0]??null;
+  return {stages,next,done:stages.reduce((n,g)=>n+g.done,0),total:stages.reduce((n,g)=>n+g.total,0)};
+ }
+ export function mentorContext(state,view){
+  if(view==='learn'||view==='programming'){const route=engineeringRoute(state);return view==='learn'?{key:'mentorLearn'}:route.next?{key:'mentorEngineering_'+route.next.kind,params:{n:route.next.index+1}}:{key:'mentorEngineeringDone'};}
+  if(view==='mathCourse'||view==='math')return {key:state.learning.math.assessment&&state.learning.math.assessment.answers.length<10?'mentorMathExam':state.learning.math.mistakes.length?'mentorMathReview':'mentorMath'};
+  if(view==='languageCourse'||view==='languages')return {key:grammarReviewLessons(state.learning.languages).length?'mentorGrammarReview':'mentorLanguage'};
+  if(view==='piano')return {key:'mentorMusic'};
+  if(view==='schoolLabs'||view==='subjectLab')return {key:'mentorSchool'};
+  return null;
+ }

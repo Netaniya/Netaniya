@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 /**
  * Original N25x language practice material.
  * © 2026 Natalie Ragulina. All rights reserved.
@@ -13,8 +19,8 @@
 export const LANGUAGE_CONTENT_INFO = Object.freeze({
   author: 'Natalie Ragulina',
   copyright: '© 2026 Natalie Ragulina. All rights reserved.',
-  contentVersion: 1,
-  scope: 'introductory-practice',
+  contentVersion: 5,
+  scope: 'introductory-and-connected-sentence-practice',
   aiAssisted: true,
   nativeSpeakerReviewed: false,
   completeCEFRPath: false,
@@ -527,3 +533,10323 @@ export const LANGUAGE_UNITS = [
     ],
   },
 ];
+
+// New original connected-sentence practice; all previous item IDs preserved.
+LANGUAGE_UNITS.push(...[
+  {
+    "id": "problem-solving",
+    "title": {
+      "de": "13 · Probleme erklären",
+      "en": "13 · Explaining problems",
+      "ru": "13 · Объяснение проблем",
+      "uk": "13 · Пояснення проблем"
+    },
+    "note": {
+      "de": "Beschreibe ein Problem, seine Ursache und die nächsten Schritte. Vergleiche Zeitformen und Verknüpfungen in deiner Zielsprache. Dies ist Satztraining, keine Einstufung.",
+      "en": "Describe a problem, its cause and the next steps. Compare tenses and linking expressions in your target language. This is sentence practice, not a placement test.",
+      "ru": "Опиши проблему, её причину и следующие действия. Сравни времена и связующие выражения изучаемого языка. Это практика фраз, а не определение уровня.",
+      "uk": "Опиши проблему, її причину й наступні дії. Порівняй часи та сполучні вирази мови, яку вивчаєш. Це практика фраз, а не визначення рівня."
+    },
+    "items": [
+      {
+        "id": "problem.delay",
+        "text": {
+          "de": "Der Zug hat Verspätung, deshalb komme ich später.",
+          "en": "The train is delayed, so I will arrive later.",
+          "ka": "მატარებელი აგვიანებს, ამიტომ მოგვიანებით მოვალ.",
+          "uk": "Потяг запізнюється, тому я приїду пізніше.",
+          "ru": "Поезд задерживается, поэтому я приеду позже.",
+          "zh": "火车晚点了，所以我会晚一点到。",
+          "es": "El tren lleva retraso, así que llegaré más tarde.",
+          "fr": "Le train est en retard, donc j’arriverai plus tard.",
+          "it": "Il treno è in ritardo, quindi arriverò più tardi.",
+          "ja": "電車が遅れているので、到着が遅くなります。"
+        }
+      },
+      {
+        "id": "problem.describe",
+        "text": {
+          "de": "Kannst du genauer erklären, was passiert ist?",
+          "en": "Can you explain exactly what happened?",
+          "ka": "შეგიძლია უფრო ზუსტად ახსნა, რა მოხდა?",
+          "uk": "Можеш точніше пояснити, що сталося?",
+          "ru": "Можешь точнее объяснить, что произошло?",
+          "zh": "你能更详细地解释发生了什么吗？",
+          "es": "¿Puedes explicar con más detalle lo que pasó?",
+          "fr": "Peux-tu expliquer plus précisément ce qui s’est passé ?",
+          "it": "Puoi spiegare più precisamente che cosa è successo?",
+          "ja": "何が起きたのか、もう少し詳しく説明できますか。"
+        }
+      },
+      {
+        "id": "problem.internet",
+        "text": {
+          "de": "Die Internetverbindung funktioniert seit gestern nicht.",
+          "en": "The internet connection has not worked since yesterday.",
+          "ka": "ინტერნეტკავშირი გუშინდელი დღიდან არ მუშაობს.",
+          "uk": "Інтернет-з’єднання не працює з учорашнього дня.",
+          "ru": "Интернет-соединение не работает со вчерашнего дня.",
+          "zh": "网络连接从昨天起就不能用了。",
+          "es": "La conexión a internet no funciona desde ayer.",
+          "fr": "La connexion Internet ne fonctionne plus depuis hier.",
+          "it": "La connessione a Internet non funziona da ieri.",
+          "ja": "昨日からインターネット接続が使えません。"
+        }
+      },
+      {
+        "id": "problem.tried",
+        "text": {
+          "de": "Ich habe das Gerät neu gestartet, aber das Problem bleibt.",
+          "en": "I restarted the device, but the problem remains.",
+          "ka": "მოწყობილობა გადავტვირთე, მაგრამ პრობლემა ისევ არსებობს.",
+          "uk": "Я перезапустив пристрій, але проблема залишилася.",
+          "ru": "Я перезапустил устройство, но проблема осталась.",
+          "zh": "我重启了设备，但问题仍然存在。",
+          "es": "Reinicié el dispositivo, pero el problema persiste.",
+          "fr": "J’ai redémarré l’appareil, mais le problème persiste.",
+          "it": "Ho riavviato il dispositivo, ma il problema rimane.",
+          "ja": "機器を再起動しましたが、問題は解決していません。"
+        }
+      },
+      {
+        "id": "problem.instructions",
+        "text": {
+          "de": "Bevor wir anfangen, lesen wir die Anleitung.",
+          "en": "Before we begin, we will read the instructions.",
+          "ka": "სანამ დავიწყებთ, ინსტრუქციას წავიკითხავთ.",
+          "uk": "Перш ніж почати, прочитаємо інструкцію.",
+          "ru": "Прежде чем начать, мы прочитаем инструкцию.",
+          "zh": "开始之前，我们先阅读说明。",
+          "es": "Antes de empezar, leeremos las instrucciones.",
+          "fr": "Avant de commencer, nous lirons les instructions.",
+          "it": "Prima di iniziare, leggeremo le istruzioni.",
+          "ja": "始める前に、説明書を読みましょう。"
+        }
+      },
+      {
+        "id": "problem.missing",
+        "text": {
+          "de": "Uns fehlt eine wichtige Information.",
+          "en": "We are missing an important piece of information.",
+          "ka": "ერთი მნიშვნელოვანი ინფორმაცია გვაკლია.",
+          "uk": "Нам бракує важливої інформації.",
+          "ru": "Нам не хватает важной информации.",
+          "zh": "我们还缺少一条重要信息。",
+          "es": "Nos falta una información importante.",
+          "fr": "Il nous manque une information importante.",
+          "it": "Ci manca un’informazione importante.",
+          "ja": "重要な情報が一つ不足しています。"
+        }
+      },
+      {
+        "id": "problem.alternative",
+        "text": {
+          "de": "Falls das nicht funktioniert, versuchen wir eine andere Lösung.",
+          "en": "If that does not work, we will try another solution.",
+          "ka": "თუ ეს არ იმუშავებს, სხვა გამოსავალს ვცდით.",
+          "uk": "Якщо це не спрацює, спробуємо інше рішення.",
+          "ru": "Если это не сработает, попробуем другое решение.",
+          "zh": "如果这个办法不行，我们就试试另一种解决方案。",
+          "es": "Si eso no funciona, probaremos otra solución.",
+          "fr": "Si cela ne fonctionne pas, nous essaierons une autre solution.",
+          "it": "Se non funziona, proveremo un’altra soluzione.",
+          "ja": "それがうまくいかなければ、別の解決策を試します。"
+        }
+      },
+      {
+        "id": "problem.confirm",
+        "text": {
+          "de": "Bitte bestätige, dass du die Nachricht erhalten hast.",
+          "en": "Please confirm that you received the message.",
+          "ka": "გთხოვ, დაადასტურე, რომ შეტყობინება მიიღე.",
+          "uk": "Будь ласка, підтвердь, що отримав повідомлення.",
+          "ru": "Пожалуйста, подтверди, что получил сообщение.",
+          "zh": "请确认你已收到消息。",
+          "es": "Por favor, confirma que has recibido el mensaje.",
+          "fr": "Merci de confirmer que tu as reçu le message.",
+          "it": "Per favore, conferma di aver ricevuto il messaggio.",
+          "ja": "メッセージを受け取ったことを確認してください。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "compare-decide",
+    "title": {
+      "de": "14 · Vergleichen und entscheiden",
+      "en": "14 · Comparing and deciding",
+      "ru": "14 · Сравнение и выбор",
+      "uk": "14 · Порівняння й вибір"
+    },
+    "note": {
+      "de": "Vergleiche Möglichkeiten, begründe deine Wahl und unterscheide Fakten von Meinungen. Übe Begründungen und Bedingungen als ganze Sätze.",
+      "en": "Compare options, justify a choice and distinguish facts from opinions. Practise reasons and conditions as whole sentences.",
+      "ru": "Сравни варианты, обоснуй выбор и различай факты и мнения. Тренируй причинные и условные конструкции целыми предложениями.",
+      "uk": "Порівняй варіанти, обґрунтуй вибір і розрізняй факти та думки. Тренуй причинні й умовні конструкції цілими реченнями."
+    },
+    "items": [
+      {
+        "id": "compare.cost",
+        "text": {
+          "de": "Die erste Möglichkeit ist günstiger, aber sie dauert länger.",
+          "en": "The first option is cheaper, but it takes longer.",
+          "ka": "პირველი ვარიანტი უფრო იაფია, მაგრამ მეტ დროს მოითხოვს.",
+          "uk": "Перший варіант дешевший, але потребує більше часу.",
+          "ru": "Первый вариант дешевле, но занимает больше времени.",
+          "zh": "第一种方案更便宜，但需要更长时间。",
+          "es": "La primera opción es más barata, pero tarda más.",
+          "fr": "La première option coûte moins cher, mais prend plus de temps.",
+          "it": "La prima opzione costa meno, ma richiede più tempo.",
+          "ja": "最初の選択肢は安いですが、時間がかかります。"
+        }
+      },
+      {
+        "id": "compare.priority",
+        "text": {
+          "de": "Für mich ist die Qualität wichtiger als der Preis.",
+          "en": "Quality is more important to me than price.",
+          "ka": "ჩემთვის ხარისხი ფასზე მნიშვნელოვანია.",
+          "uk": "Для мене якість важливіша за ціну.",
+          "ru": "Для меня качество важнее цены.",
+          "zh": "对我来说，质量比价格更重要。",
+          "es": "Para mí, la calidad es más importante que el precio.",
+          "fr": "Pour moi, la qualité est plus importante que le prix.",
+          "it": "Per me la qualità è più importante del prezzo.",
+          "ja": "私にとって、価格より品質のほうが重要です。"
+        }
+      },
+      {
+        "id": "compare.evidence",
+        "text": {
+          "de": "Welche Belege stützen diese Behauptung?",
+          "en": "What evidence supports this claim?",
+          "ka": "რა მტკიცებულებები ამყარებს ამ მტკიცებას?",
+          "uk": "Які докази підтверджують це твердження?",
+          "ru": "Какие доказательства подтверждают это утверждение?",
+          "zh": "有什么证据支持这一说法？",
+          "es": "¿Qué pruebas respaldan esta afirmación?",
+          "fr": "Quelles preuves étayent cette affirmation ?",
+          "it": "Quali prove sostengono questa affermazione?",
+          "ja": "この主張を裏付ける証拠は何ですか。"
+        }
+      },
+      {
+        "id": "compare.unsure",
+        "text": {
+          "de": "Ich bin nicht sicher, ob diese Zahlen stimmen.",
+          "en": "I am not sure whether these numbers are correct.",
+          "ka": "არ ვარ დარწმუნებული, რომ ეს რიცხვები სწორია.",
+          "uk": "Я не впевнений, чи ці числа правильні.",
+          "ru": "Я не уверен, верны ли эти числа.",
+          "zh": "我不确定这些数字是否正确。",
+          "es": "No estoy seguro de que estas cifras sean correctas.",
+          "fr": "Je ne suis pas sûr que ces chiffres soient exacts.",
+          "it": "Non sono sicuro che questi numeri siano corretti.",
+          "ja": "これらの数字が正しいかどうか分かりません。"
+        }
+      },
+      {
+        "id": "compare.question",
+        "text": {
+          "de": "Was würde sich ändern, wenn wir weniger Zeit hätten?",
+          "en": "What would change if we had less time?",
+          "ka": "რა შეიცვლებოდა, ნაკლები დრო რომ გვქონდეს?",
+          "uk": "Що змінилося б, якби в нас було менше часу?",
+          "ru": "Что изменилось бы, если бы у нас было меньше времени?",
+          "zh": "如果我们的时间更少，会有什么变化？",
+          "es": "¿Qué cambiaría si tuviéramos menos tiempo?",
+          "fr": "Qu’est-ce qui changerait si nous avions moins de temps ?",
+          "it": "Che cosa cambierebbe se avessimo meno tempo?",
+          "ja": "もし時間が少なかったら、何が変わるでしょうか。"
+        }
+      },
+      {
+        "id": "compare.agree",
+        "text": {
+          "de": "Ich stimme dir teilweise zu, sehe aber ein Risiko.",
+          "en": "I partly agree with you, but I see a risk.",
+          "ka": "ნაწილობრივ გეთანხმები, მაგრამ ერთ რისკს ვხედავ.",
+          "uk": "Я частково з тобою погоджуюся, але бачу ризик.",
+          "ru": "Я частично с тобой согласен, но вижу риск.",
+          "zh": "我部分同意你的看法，但我看到了一个风险。",
+          "es": "Estoy parcialmente de acuerdo contigo, pero veo un riesgo.",
+          "fr": "Je suis en partie d’accord avec toi, mais je vois un risque.",
+          "it": "Sono in parte d’accordo con te, ma vedo un rischio.",
+          "ja": "一部は同意しますが、リスクもあると思います。"
+        }
+      },
+      {
+        "id": "compare.summary",
+        "text": {
+          "de": "Fassen wir zuerst die wichtigsten Punkte zusammen.",
+          "en": "Let us summarize the most important points first.",
+          "ka": "ჯერ ყველაზე მნიშვნელოვანი საკითხები შევაჯამოთ.",
+          "uk": "Спочатку підсумуймо найважливіші пункти.",
+          "ru": "Сначала подведём итог по самым важным пунктам.",
+          "zh": "我们先总结最重要的几点。",
+          "es": "Resumamos primero los puntos más importantes.",
+          "fr": "Résumons d’abord les points les plus importants.",
+          "it": "Riassumiamo prima i punti più importanti.",
+          "ja": "まず最も重要な点をまとめましょう。"
+        }
+      },
+      {
+        "id": "compare.decision",
+        "text": {
+          "de": "Wir entscheiden erst, nachdem wir beide Möglichkeiten geprüft haben.",
+          "en": "We will decide only after checking both options.",
+          "ka": "გადაწყვეტილებას მხოლოდ ორივე ვარიანტის შემოწმების შემდეგ მივიღებთ.",
+          "uk": "Ми ухвалимо рішення лише після перевірки обох варіантів.",
+          "ru": "Мы примем решение только после проверки обоих вариантов.",
+          "zh": "我们核实两种方案后再作决定。",
+          "es": "Decidiremos solo después de comprobar ambas opciones.",
+          "fr": "Nous déciderons seulement après avoir examiné les deux possibilités.",
+          "it": "Decideremo solo dopo aver verificato entrambe le opzioni.",
+          "ja": "両方の選択肢を確認してから決めます。"
+        }
+      }
+    ]
+  }
+]);
+
+// Additional original multilingual professional and evidence-oriented practice.
+LANGUAGE_UNITS.push(...[
+  {
+    "id": "professional-communication",
+    "title": {
+      "de": "15 · Berufliche Kommunikation",
+      "en": "15 · Professional communication",
+      "ru": "15 · Профессиональное общение",
+      "uk": "15 · Професійне спілкування"
+    },
+    "note": {
+      "de": "Übe höfliche Fragen, Terminabsprachen und klare Aussagen über deine Arbeit. Achte auf die passende Anrede.",
+      "en": "Practise polite questions, scheduling and clear statements about your work. Notice appropriate forms of address.",
+      "ru": "Тренируй вежливые вопросы, согласование встреч и ясные высказывания о своей работе. Обращай внимание на форму обращения.",
+      "uk": "Тренуй ввічливі запитання, узгодження зустрічей та чіткі висловлювання про свою роботу. Звертай увагу на форму звертання."
+    },
+    "items": [
+      {
+        "id": "professional-communication.experience",
+        "text": {
+          "de": "Ich habe Erfahrung mit der Entwicklung von Webseiten.",
+          "en": "I have experience developing websites.",
+          "ka": "ვებსაიტების შექმნის გამოცდილება მაქვს.",
+          "uk": "Я маю досвід розробки вебсайтів.",
+          "ru": "У меня есть опыт разработки сайтов.",
+          "zh": "我有开发网站的经验。",
+          "es": "Tengo experiencia desarrollando sitios web.",
+          "fr": "J’ai de l’expérience dans la création de sites web.",
+          "it": "Ho esperienza nello sviluppo di siti web.",
+          "ja": "ウェブサイト開発の経験があります。"
+        }
+      },
+      {
+        "id": "professional-communication.responsibilities",
+        "text": {
+          "de": "Welche Aufgaben gehören zu dieser Stelle?",
+          "en": "What responsibilities does this position involve?",
+          "ka": "რა მოვალეობებს მოიცავს ეს პოზიცია?",
+          "uk": "Які обов’язки передбачає ця посада?",
+          "ru": "Какие обязанности предусматривает эта должность?",
+          "zh": "这个职位有哪些职责？",
+          "es": "¿Qué responsabilidades implica este puesto?",
+          "fr": "Quelles sont les responsabilités liées à ce poste ?",
+          "it": "Quali responsabilità comporta questa posizione?",
+          "ja": "この職種にはどのような業務がありますか。"
+        }
+      },
+      {
+        "id": "professional-communication.meeting",
+        "text": {
+          "de": "Könnten wir einen Termin für nächste Woche vereinbaren?",
+          "en": "Could we arrange a meeting for next week?",
+          "ka": "შეგვიძლია შეხვედრა მომავალი კვირისთვის დავნიშნოთ?",
+          "uk": "Чи могли б ми домовитися про зустріч наступного тижня?",
+          "ru": "Можем ли мы договориться о встрече на следующей неделе?",
+          "zh": "我们可以约在下周见面吗？",
+          "es": "¿Podríamos concertar una reunión para la próxima semana?",
+          "fr": "Pourrions-nous convenir d’un rendez-vous pour la semaine prochaine ?",
+          "it": "Potremmo fissare un incontro per la prossima settimana?",
+          "ja": "来週の打ち合わせを設定できますか。"
+        }
+      },
+      {
+        "id": "professional-communication.portfolio",
+        "text": {
+          "de": "Ich kann Ihnen Beispiele meiner Arbeit zeigen.",
+          "en": "I can show you examples of my work.",
+          "ka": "შემიძლია ჩემი ნამუშევრების მაგალითები გაჩვენოთ.",
+          "uk": "Я можу показати вам приклади моєї роботи.",
+          "ru": "Я могу показать вам примеры своей работы.",
+          "zh": "我可以给您看一些我的作品。",
+          "es": "Puedo mostrarle ejemplos de mi trabajo.",
+          "fr": "Je peux vous montrer des exemples de mon travail.",
+          "it": "Posso mostrarle alcuni esempi del mio lavoro.",
+          "ja": "これまでの仕事の例をお見せできます。"
+        }
+      },
+      {
+        "id": "professional-communication.deadline",
+        "text": {
+          "de": "Bis wann soll das Projekt fertig sein?",
+          "en": "By when should the project be completed?",
+          "ka": "როდისთვის უნდა დასრულდეს პროექტი?",
+          "uk": "До якого терміну потрібно завершити проєкт?",
+          "ru": "К какому сроку нужно закончить проект?",
+          "zh": "这个项目需要在什么时候完成？",
+          "es": "¿Para cuándo debe estar terminado el proyecto?",
+          "fr": "Pour quand le projet doit-il être terminé ?",
+          "it": "Entro quando deve essere completato il progetto?",
+          "ja": "プロジェクトはいつまでに完成させる必要がありますか。"
+        }
+      },
+      {
+        "id": "professional-communication.clarify",
+        "text": {
+          "de": "Könnten Sie die Anforderungen genauer erklären?",
+          "en": "Could you explain the requirements in more detail?",
+          "ka": "შეგიძლიათ მოთხოვნები უფრო დეტალურად განმარტოთ?",
+          "uk": "Чи могли б ви детальніше пояснити вимоги?",
+          "ru": "Не могли бы вы объяснить требования подробнее?",
+          "zh": "您能更详细地解释一下要求吗？",
+          "es": "¿Podría explicar los requisitos con más detalle?",
+          "fr": "Pourriez-vous expliquer les exigences plus en détail ?",
+          "it": "Potrebbe spiegare i requisiti più dettagliatamente?",
+          "ja": "要件をもう少し詳しく説明していただけますか。"
+        }
+      },
+      {
+        "id": "professional-communication.feedback",
+        "text": {
+          "de": "Vielen Dank für Ihre Rückmeldung.",
+          "en": "Thank you for your feedback.",
+          "ka": "გმადლობთ გამოხმაურებისთვის.",
+          "uk": "Дякую за ваш відгук.",
+          "ru": "Спасибо за вашу обратную связь.",
+          "zh": "感谢您的反馈。",
+          "es": "Muchas gracias por sus comentarios.",
+          "fr": "Merci beaucoup pour votre retour.",
+          "it": "La ringrazio per il suo riscontro.",
+          "ja": "ご意見をいただき、ありがとうございます。"
+        }
+      },
+      {
+        "id": "professional-communication.followup",
+        "text": {
+          "de": "Ich schicke Ihnen die Unterlagen morgen.",
+          "en": "I will send you the documents tomorrow.",
+          "ka": "ხვალ დოკუმენტებს გამოგიგზავნით.",
+          "uk": "Я надішлю вам документи завтра.",
+          "ru": "Я отправлю вам документы завтра.",
+          "zh": "我明天会把文件发给您。",
+          "es": "Le enviaré los documentos mañana.",
+          "fr": "Je vous enverrai les documents demain.",
+          "it": "Le invierò i documenti domani.",
+          "ja": "明日、書類をお送りします。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "evidence-arguments",
+    "title": {
+      "de": "16 · Argumente und Belege",
+      "en": "16 · Arguments and evidence",
+      "ru": "16 · Аргументы и доказательства",
+      "uk": "16 · Аргументи та докази"
+    },
+    "note": {
+      "de": "Unterscheide Beobachtung, Schlussfolgerung und Vermutung. Begründe Aussagen und benenne Unsicherheit.",
+      "en": "Distinguish observations, conclusions and assumptions. Support statements and express uncertainty.",
+      "ru": "Различай наблюдения, выводы и предположения. Обосновывай утверждения и обозначай неопределённость.",
+      "uk": "Розрізняй спостереження, висновки та припущення. Обґрунтовуй твердження й позначай невизначеність."
+    },
+    "items": [
+      {
+        "id": "evidence-arguments.source",
+        "text": {
+          "de": "Woher stammen diese Informationen?",
+          "en": "Where does this information come from?",
+          "ka": "საიდან არის ეს ინფორმაცია?",
+          "uk": "Звідки походить ця інформація?",
+          "ru": "Откуда получена эта информация?",
+          "zh": "这些信息来自哪里？",
+          "es": "¿De dónde procede esta información?",
+          "fr": "D’où viennent ces informations ?",
+          "it": "Da dove provengono queste informazioni?",
+          "ja": "この情報はどこから得られたものですか。"
+        }
+      },
+      {
+        "id": "evidence-arguments.evidence",
+        "text": {
+          "de": "Wir brauchen Belege für diese Behauptung.",
+          "en": "We need evidence for this claim.",
+          "ka": "ამ მტკიცებისთვის მტკიცებულებები გვჭირდება.",
+          "uk": "Нам потрібні докази цього твердження.",
+          "ru": "Нам нужны доказательства этого утверждения.",
+          "zh": "我们需要证据来支持这一说法。",
+          "es": "Necesitamos pruebas que respalden esta afirmación.",
+          "fr": "Nous avons besoin de preuves à l’appui de cette affirmation.",
+          "it": "Abbiamo bisogno di prove a sostegno di questa affermazione.",
+          "ja": "この主張を裏付ける証拠が必要です。"
+        }
+      },
+      {
+        "id": "evidence-arguments.uncertainty",
+        "text": {
+          "de": "Das Ergebnis ist noch nicht eindeutig.",
+          "en": "The result is not yet conclusive.",
+          "ka": "შედეგი ჯერ ერთმნიშვნელოვანი არ არის.",
+          "uk": "Результат поки не є однозначним.",
+          "ru": "Результат пока неоднозначен.",
+          "zh": "目前的结果还不明确。",
+          "es": "El resultado todavía no es concluyente.",
+          "fr": "Le résultat n’est pas encore concluant.",
+          "it": "Il risultato non è ancora conclusivo.",
+          "ja": "結果はまだ明確ではありません。"
+        }
+      },
+      {
+        "id": "evidence-arguments.alternative",
+        "text": {
+          "de": "Es könnte auch eine andere Erklärung geben.",
+          "en": "There could also be another explanation.",
+          "ka": "შესაძლოა სხვა ახსნაც არსებობდეს.",
+          "uk": "Може бути й інше пояснення.",
+          "ru": "Возможно, существует и другое объяснение.",
+          "zh": "也可能有另一种解释。",
+          "es": "También podría haber otra explicación.",
+          "fr": "Il pourrait aussi y avoir une autre explication.",
+          "it": "Potrebbe esserci anche un’altra spiegazione.",
+          "ja": "別の説明もあり得ます。"
+        }
+      },
+      {
+        "id": "evidence-arguments.contrast",
+        "text": {
+          "de": "Die Ergebnisse widersprechen unserer ursprünglichen Annahme.",
+          "en": "The results contradict our original assumption.",
+          "ka": "შედეგები ჩვენს თავდაპირველ ვარაუდს ეწინააღმდეგება.",
+          "uk": "Результати суперечать нашому початковому припущенню.",
+          "ru": "Результаты противоречат нашему первоначальному предположению.",
+          "zh": "结果与我们最初的假设相矛盾。",
+          "es": "Los resultados contradicen nuestra hipótesis inicial.",
+          "fr": "Les résultats contredisent notre hypothèse initiale.",
+          "it": "I risultati contraddicono la nostra ipotesi iniziale.",
+          "ja": "結果は当初の仮説と矛盾しています。"
+        }
+      },
+      {
+        "id": "evidence-arguments.limit",
+        "text": {
+          "de": "Aus einem einzigen Beispiel können wir keine allgemeine Regel ableiten.",
+          "en": "We cannot infer a general rule from a single example.",
+          "ka": "ერთი მაგალითიდან ზოგად წესს ვერ გამოვიტანთ.",
+          "uk": "З одного прикладу не можна вивести загальне правило.",
+          "ru": "Из одного примера нельзя вывести общее правило.",
+          "zh": "我们不能从一个例子推导出普遍规律。",
+          "es": "No podemos deducir una regla general a partir de un solo ejemplo.",
+          "fr": "On ne peut pas déduire une règle générale d’un seul exemple.",
+          "it": "Non possiamo dedurre una regola generale da un solo esempio.",
+          "ja": "一つの例だけから一般的な規則を導くことはできません。"
+        }
+      },
+      {
+        "id": "evidence-arguments.test",
+        "text": {
+          "de": "Wie können wir diese Vermutung überprüfen?",
+          "en": "How can we test this assumption?",
+          "ka": "როგორ შეგვიძლია ამ ვარაუდის შემოწმება?",
+          "uk": "Як ми можемо перевірити це припущення?",
+          "ru": "Как мы можем проверить это предположение?",
+          "zh": "我们怎样验证这个假设？",
+          "es": "¿Cómo podemos comprobar esta hipótesis?",
+          "fr": "Comment pouvons-nous vérifier cette hypothèse ?",
+          "it": "Come possiamo verificare questa ipotesi?",
+          "ja": "この仮説をどのように検証できますか。"
+        }
+      },
+      {
+        "id": "evidence-arguments.revise",
+        "text": {
+          "de": "Wenn neue Belege auftauchen, müssen wir unsere Schlussfolgerung überdenken.",
+          "en": "If new evidence emerges, we must reconsider our conclusion.",
+          "ka": "თუ ახალი მტკიცებულებები გამოჩნდება, ჩვენს დასკვნას უნდა გადავხედოთ.",
+          "uk": "Якщо з’являться нові докази, ми маємо переглянути наш висновок.",
+          "ru": "Если появятся новые доказательства, мы должны пересмотреть наш вывод.",
+          "zh": "如果出现新的证据，我们就必须重新审视结论。",
+          "es": "Si aparecen nuevas pruebas, debemos reconsiderar nuestra conclusión.",
+          "fr": "Si de nouvelles preuves apparaissent, nous devons revoir notre conclusion.",
+          "it": "Se emergono nuove prove, dobbiamo riconsiderare la nostra conclusione.",
+          "ja": "新たな証拠が出てきたら、結論を見直す必要があります。"
+        }
+      }
+    ]
+  }
+]);
+
+// Original AI-assisted grammar material, not a certified CEFR curriculum.
+export const GRAMMAR_LESSONS=[
+  {
+    "id": "de-present",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Präsens",
+      "en": "Present tense",
+      "ru": "Настоящее время",
+      "uk": "Теперішній час"
+    },
+    "rule": {
+      "de": "Regelmäßige Verben: ich -e, du -st, er -t, wir -en, ihr -t, sie -en.",
+      "en": "Regular verbs: ich -e, du -st, er -t, wir -en, ihr -t, sie -en.",
+      "ru": "Правильные глаголы: ich -e, du -st, er -t, wir -en, ihr -t, sie -en.",
+      "uk": "Правильні дієслова: ich -e, du -st, er -t, wir -en, ihr -t, sie -en."
+    },
+    "example": "Ich lerne. Du lernst.",
+    "practice": [
+      {
+        "sentence": "Du ___ Deutsch. (lernen)",
+        "options": [
+          "lernst",
+          "lerne",
+          "lernen"
+        ],
+        "answer": "lernst"
+      },
+      {
+        "sentence": "Wir ___ in München. (wohnen)",
+        "options": [
+          "wohnen",
+          "wohnt",
+          "wohnst"
+        ],
+        "answer": "wohnen"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Er ___ Musik. (hören)",
+        "options": [
+          "hört",
+          "höre",
+          "hören"
+        ],
+        "answer": "hört"
+      },
+      {
+        "sentence": "Ihr ___ Fußball. (spielen)",
+        "options": [
+          "spielt",
+          "spielen",
+          "spielst"
+        ],
+        "answer": "spielt"
+      }
+    ]
+  },
+  {
+    "id": "de-sein",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Sein und haben",
+      "en": "Sein and haben",
+      "ru": "Sein и haben",
+      "uk": "Sein і haben"
+    },
+    "rule": {
+      "de": "Sein: bin, bist, ist, sind, seid, sind. Haben: habe, hast, hat, haben, habt, haben (ich bis sie).",
+      "en": "Sein: bin, bist, ist, sind, seid, sind. Haben: habe, hast, hat, haben, habt, haben (ich through sie).",
+      "ru": "Sein: bin, bist, ist, sind, seid, sind. Haben: habe, hast, hat, haben, habt, haben (от ich до sie).",
+      "uk": "Sein: bin, bist, ist, sind, seid, sind. Haben: habe, hast, hat, haben, habt, haben (від ich до sie)."
+    },
+    "example": "Ich bin müde. Du hast Zeit.",
+    "practice": [
+      {
+        "sentence": "Ich ___ zu Hause.",
+        "options": [
+          "bin",
+          "bist",
+          "ist"
+        ],
+        "answer": "bin"
+      },
+      {
+        "sentence": "Du ___ ein Buch.",
+        "options": [
+          "hast",
+          "hat",
+          "haben"
+        ],
+        "answer": "hast"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ihr ___ bereit.",
+        "options": [
+          "seid",
+          "sind",
+          "ist"
+        ],
+        "answer": "seid"
+      },
+      {
+        "sentence": "Sie (Plural) ___ zwei Fahrräder.",
+        "options": [
+          "haben",
+          "hat",
+          "habt"
+        ],
+        "answer": "haben"
+      }
+    ]
+  },
+  {
+    "id": "de-articles",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Artikel",
+      "en": "Articles",
+      "ru": "Артикли",
+      "uk": "Артиклі"
+    },
+    "rule": {
+      "de": "Lerne das Genus mit dem Nomen: der Tisch, die Lampe, das Buch; Plural die Bücher.",
+      "en": "Learn noun gender: der Tisch, die Lampe, das Buch; plural die Bücher.",
+      "ru": "Запоминай род: der Tisch, die Lampe, das Buch; множественное die Bücher.",
+      "uk": "Запам'ятовуй рід: der Tisch, die Lampe, das Buch; множина die Bücher."
+    },
+    "example": "Der Tisch ist neu.",
+    "practice": [
+      {
+        "sentence": "___ Tisch ist groß.",
+        "options": [
+          "Der",
+          "Die",
+          "Das"
+        ],
+        "answer": "Der"
+      },
+      {
+        "sentence": "___ Buch ist interessant.",
+        "options": [
+          "Das",
+          "Der",
+          "Die"
+        ],
+        "answer": "Das"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ Lampe ist an.",
+        "options": [
+          "Die",
+          "Der",
+          "Das"
+        ],
+        "answer": "Die"
+      },
+      {
+        "sentence": "___ Bücher liegen hier.",
+        "options": [
+          "Die",
+          "Der",
+          "Das"
+        ],
+        "answer": "Die"
+      }
+    ]
+  },
+  {
+    "id": "de-accusative",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Akkusativ",
+      "en": "Accusative",
+      "ru": "Винительный падеж",
+      "uk": "Знахідний відмінок"
+    },
+    "rule": {
+      "de": "Beim direkten Objekt: der → den, ein → einen; die/das bleiben gleich.",
+      "en": "Direct object: der → den, ein → einen; die/das unchanged.",
+      "ru": "Прямое дополнение: der → den, ein → einen; die/das без изменений.",
+      "uk": "Прямий додаток: der → den, ein → einen; die/das без змін."
+    },
+    "example": "Ich sehe den Hund.",
+    "practice": [
+      {
+        "sentence": "Ich sehe ___ Hund. (der)",
+        "options": [
+          "den",
+          "der",
+          "dem"
+        ],
+        "answer": "den"
+      },
+      {
+        "sentence": "Sie kauft ___ Apfel. (ein)",
+        "options": [
+          "einen",
+          "ein",
+          "einem"
+        ],
+        "answer": "einen"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir lesen ___ Buch. (das)",
+        "options": [
+          "das",
+          "dem",
+          "den"
+        ],
+        "answer": "das"
+      },
+      {
+        "sentence": "Er öffnet ___ Tür. (die)",
+        "options": [
+          "die",
+          "der",
+          "den"
+        ],
+        "answer": "die"
+      }
+    ]
+  },
+  {
+    "id": "de-dative",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Dativ mit mit",
+      "en": "Dative with mit",
+      "ru": "Дательный после mit",
+      "uk": "Давальний після mit"
+    },
+    "rule": {
+      "de": "Mit verlangt Dativ: dem (m/n), der (f), den (Plural).",
+      "en": "Mit requires dative: dem (m/n), der (f), den (plural).",
+      "ru": "После mit — дательный: dem (м/ср), der (ж), den (мн).",
+      "uk": "Після mit — давальний: dem (ч/с), der (ж), den (мн)."
+    },
+    "example": "Mit dem Bus, mit der Bahn.",
+    "practice": [
+      {
+        "sentence": "Ich fahre mit ___ Bus. (der)",
+        "options": [
+          "dem",
+          "den",
+          "der"
+        ],
+        "answer": "dem"
+      },
+      {
+        "sentence": "Er spricht mit ___ Lehrerin. (die)",
+        "options": [
+          "der",
+          "die",
+          "dem"
+        ],
+        "answer": "der"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Sie spielt mit ___ Kind. (das)",
+        "options": [
+          "dem",
+          "das",
+          "den"
+        ],
+        "answer": "dem"
+      },
+      {
+        "sentence": "Wir reisen mit ___ Freunden. (Plural)",
+        "options": [
+          "den",
+          "die",
+          "dem"
+        ],
+        "answer": "den"
+      }
+    ]
+  },
+  {
+    "id": "de-modal",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Modalverben",
+      "en": "Modal verbs",
+      "ru": "Модальные глаголы",
+      "uk": "Модальні дієслова"
+    },
+    "rule": {
+      "de": "Konjugiertes Modalverb und Infinitiv ohne zu: können, müssen, wollen.",
+      "en": "Finite modal and bare infinitive: können, müssen, wollen.",
+      "ru": "Модальный глагол и инфинитив без zu: können, müssen, wollen.",
+      "uk": "Модальне дієслово та інфінітив без zu: können, müssen, wollen."
+    },
+    "example": "Ich kann heute kommen.",
+    "practice": [
+      {
+        "sentence": "Ich muss morgen ___.",
+        "options": [
+          "arbeiten",
+          "arbeite",
+          "zu arbeiten"
+        ],
+        "answer": "arbeiten"
+      },
+      {
+        "sentence": "Du kannst gut ___.",
+        "options": [
+          "schwimmen",
+          "schwimmst",
+          "zu schwimmen"
+        ],
+        "answer": "schwimmen"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir wollen zusammen ___.",
+        "options": [
+          "lernen",
+          "lernen zu",
+          "lernt"
+        ],
+        "answer": "lernen"
+      },
+      {
+        "sentence": "Sie (Singular) ___ heute gehen.",
+        "options": [
+          "muss",
+          "müssen",
+          "musst"
+        ],
+        "answer": "muss"
+      }
+    ]
+  },
+  {
+    "id": "de-perfect",
+    "language": "de",
+    "stage": 3,
+    "title": {
+      "de": "Perfekt",
+      "en": "Perfect tense",
+      "ru": "Perfekt",
+      "uk": "Perfekt"
+    },
+    "rule": {
+      "de": "Viele Verben: haben + Partizip. Gehen/kommen bei Bewegung: sein + Partizip.",
+      "en": "Many verbs: haben + participle. Motion gehen/kommen: sein + participle.",
+      "ru": "Многие глаголы: haben + причастие. Gehen/kommen при движении: sein + причастие.",
+      "uk": "Багато дієслів: haben + дієприкметник. Gehen/kommen при русі: sein + дієприкметник."
+    },
+    "example": "Ich habe gelernt. Ich bin gegangen.",
+    "practice": [
+      {
+        "sentence": "Ich ___ gestern gearbeitet.",
+        "options": [
+          "habe",
+          "bin",
+          "hat"
+        ],
+        "answer": "habe"
+      },
+      {
+        "sentence": "Er ___ nach Hause gegangen.",
+        "options": [
+          "ist",
+          "hat",
+          "bist"
+        ],
+        "answer": "ist"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir ___ Musik gehört.",
+        "options": [
+          "haben",
+          "sind",
+          "hat"
+        ],
+        "answer": "haben"
+      },
+      {
+        "sentence": "Sie (Plural) ___ angekommen.",
+        "options": [
+          "sind",
+          "haben",
+          "seid"
+        ],
+        "answer": "sind"
+      }
+    ]
+  },
+  {
+    "id": "de-weil",
+    "language": "de",
+    "stage": 3,
+    "title": {
+      "de": "Nebensatz mit weil",
+      "en": "Weil clauses",
+      "ru": "Придаточное с weil",
+      "uk": "Підрядне з weil"
+    },
+    "rule": {
+      "de": "Im schriftlichen Standarddeutsch steht das finite Verb im weil-Satz am Ende.",
+      "en": "In standard written German the finite verb ends a weil clause.",
+      "ru": "В письменном немецком спрягаемый глагол с weil стоит в конце.",
+      "uk": "У письмовій німецькій відмінюване дієслово з weil стоїть у кінці."
+    },
+    "example": "Ich bleibe zu Hause, weil ich krank bin.",
+    "practice": [
+      {
+        "sentence": "Ich lerne, weil ich die Prüfung ___.",
+        "options": [
+          "bestehen möchte",
+          "möchte bestehen",
+          "möchte ich bestehen"
+        ],
+        "answer": "bestehen möchte"
+      },
+      {
+        "sentence": "Er kommt später, weil er noch ___.",
+        "options": [
+          "arbeitet",
+          "arbeitet er",
+          "er arbeitet"
+        ],
+        "answer": "arbeitet"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir bleiben drinnen, weil es ___.",
+        "options": [
+          "regnet",
+          "regnen",
+          "es regnet"
+        ],
+        "answer": "regnet"
+      },
+      {
+        "sentence": "Sie nimmt den Bus, weil sie kein Auto ___.",
+        "options": [
+          "hat",
+          "haben",
+          "hat sie"
+        ],
+        "answer": "hat"
+      }
+    ]
+  },
+  {
+    "id": "en-be",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "To be",
+      "en": "To be",
+      "ru": "Глагол to be",
+      "uk": "Дієслово to be"
+    },
+    "rule": {
+      "de": "I am, you/we/they are, he/she/it is. In Fragen vor das Subjekt stellen.",
+      "en": "I am, you/we/they are, he/she/it is. In questions invert with the subject.",
+      "ru": "I am, you/we/they are, he/she/it is. В вопросе перед подлежащим.",
+      "uk": "I am, you/we/they are, he/she/it is. У питанні перед підметом."
+    },
+    "example": "She is ready. Are you ready?",
+    "practice": [
+      {
+        "sentence": "I ___ a student.",
+        "options": [
+          "am",
+          "is",
+          "are"
+        ],
+        "answer": "am"
+      },
+      {
+        "sentence": "They ___ at home.",
+        "options": [
+          "are",
+          "is",
+          "am"
+        ],
+        "answer": "are"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ he your friend?",
+        "options": [
+          "Is",
+          "Are",
+          "Am"
+        ],
+        "answer": "Is"
+      },
+      {
+        "sentence": "We ___ ready.",
+        "options": [
+          "are",
+          "am",
+          "is"
+        ],
+        "answer": "are"
+      }
+    ]
+  },
+  {
+    "id": "en-present",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "Simple Present",
+      "en": "Simple present",
+      "ru": "Простое настоящее",
+      "uk": "Простий теперішній"
+    },
+    "rule": {
+      "de": "Gewohnheiten: Grundform; he/she/it meist -s. Nach does Grundform.",
+      "en": "Habits: base form; he/she/it usually -s. After does use base form.",
+      "ru": "Привычки: начальная форма; he/she/it обычно -s. После does начальная форма.",
+      "uk": "Звички: початкова форма; he/she/it зазвичай -s. Після does початкова форма."
+    },
+    "example": "She reads every day.",
+    "practice": [
+      {
+        "sentence": "He ___ books every day. (read)",
+        "options": [
+          "reads",
+          "read",
+          "reading"
+        ],
+        "answer": "reads"
+      },
+      {
+        "sentence": "We ___ football on Mondays. (play)",
+        "options": [
+          "play",
+          "plays",
+          "playing"
+        ],
+        "answer": "play"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Does she ___ here? (live)",
+        "options": [
+          "live",
+          "lives",
+          "living"
+        ],
+        "answer": "live"
+      },
+      {
+        "sentence": "Tom doesn't ___ coffee. (drink)",
+        "options": [
+          "drink",
+          "drinks",
+          "drinking"
+        ],
+        "answer": "drink"
+      }
+    ]
+  },
+  {
+    "id": "en-progressive",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Present Continuous",
+      "en": "Present continuous",
+      "ru": "Настоящее длительное",
+      "uk": "Теперішній тривалий"
+    },
+    "rule": {
+      "de": "Gerade stattfindende Handlung: am/is/are + Verb-ing.",
+      "en": "Action happening now: am/is/are + verb-ing.",
+      "ru": "Действие сейчас: am/is/are + глагол-ing.",
+      "uk": "Дія зараз: am/is/are + дієслово-ing."
+    },
+    "example": "They are playing now.",
+    "practice": [
+      {
+        "sentence": "Look! She ___ a picture.",
+        "options": [
+          "is drawing",
+          "draw",
+          "are drawing"
+        ],
+        "answer": "is drawing"
+      },
+      {
+        "sentence": "I ___ dinner right now.",
+        "options": [
+          "am cooking",
+          "is cooking",
+          "cook"
+        ],
+        "answer": "am cooking"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Listen! The children ___.",
+        "options": [
+          "are singing",
+          "is singing",
+          "sings"
+        ],
+        "answer": "are singing"
+      },
+      {
+        "sentence": "He is ___ a book now.",
+        "options": [
+          "reading",
+          "read",
+          "reads"
+        ],
+        "answer": "reading"
+      }
+    ]
+  },
+  {
+    "id": "en-past",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Simple Past",
+      "en": "Simple past",
+      "ru": "Простое прошедшее",
+      "uk": "Простий минулий"
+    },
+    "rule": {
+      "de": "Abgeschlossene Vergangenheit: meist -ed oder unregelmäßige Form; nach did Grundform.",
+      "en": "Finished past: usually -ed or irregular form; after did use base form.",
+      "ru": "Завершённое прошлое: обычно -ed или неправильная форма; после did начальная форма.",
+      "uk": "Завершене минуле: зазвичай -ed або неправильна форма; після did початкова форма."
+    },
+    "example": "I visited my friend. She went home.",
+    "practice": [
+      {
+        "sentence": "Yesterday we ___ the museum. (visit)",
+        "options": [
+          "visited",
+          "visit",
+          "visits"
+        ],
+        "answer": "visited"
+      },
+      {
+        "sentence": "Last night he ___ home. (go)",
+        "options": [
+          "went",
+          "go",
+          "goed"
+        ],
+        "answer": "went"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Did you ___ the film? (watch)",
+        "options": [
+          "watch",
+          "watched",
+          "watches"
+        ],
+        "answer": "watch"
+      },
+      {
+        "sentence": "I didn't ___ the bus. (take)",
+        "options": [
+          "take",
+          "took",
+          "takes"
+        ],
+        "answer": "take"
+      }
+    ]
+  },
+  {
+    "id": "en-comparative",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Vergleiche",
+      "en": "Comparatives",
+      "ru": "Сравнения",
+      "uk": "Порівняння"
+    },
+    "rule": {
+      "de": "Kurze Adjektive oft -er, längere oft more. Good → better. Vergleich mit than.",
+      "en": "Short adjectives often -er, longer ones often more. Good → better. Compare with than.",
+      "ru": "Короткие прилагательные часто -er, длинные — more. Good → better. Сравнение с than.",
+      "uk": "Короткі прикметники часто -er, довгі — more. Good → better. Порівняння з than."
+    },
+    "example": "This book is cheaper than that one.",
+    "practice": [
+      {
+        "sentence": "A mouse is ___ than an elephant. (small)",
+        "options": [
+          "smaller",
+          "smallest",
+          "more small"
+        ],
+        "answer": "smaller"
+      },
+      {
+        "sentence": "This task is ___ than that one. (difficult)",
+        "options": [
+          "more difficult",
+          "difficultest",
+          "most difficult"
+        ],
+        "answer": "more difficult"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Her result is ___ than mine. (good)",
+        "options": [
+          "better",
+          "gooder",
+          "best"
+        ],
+        "answer": "better"
+      },
+      {
+        "sentence": "Today is ___ than yesterday. (cold)",
+        "options": [
+          "colder",
+          "coldest",
+          "more colder"
+        ],
+        "answer": "colder"
+      }
+    ]
+  },
+  {
+    "id": "en-perfect",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "Present Perfect",
+      "en": "Present perfect",
+      "ru": "Present Perfect",
+      "uk": "Present Perfect"
+    },
+    "rule": {
+      "de": "Have/has + Partizip, etwa bei Erfahrung ohne abgeschlossene Zeitangabe. Mit last year meist Simple Past.",
+      "en": "Have/has + participle, e.g. experience without a finished time. With last year normally simple past.",
+      "ru": "Have/has + третья форма, например опыт без завершённого времени. С last year обычно Simple Past.",
+      "uk": "Have/has + третя форма, наприклад досвід без завершеного часу. З last year зазвичай Simple Past."
+    },
+    "example": "I have never visited London.",
+    "practice": [
+      {
+        "sentence": "She ___ never been to London.",
+        "options": [
+          "has",
+          "have",
+          "is"
+        ],
+        "answer": "has"
+      },
+      {
+        "sentence": "We have already ___ our homework. (finish)",
+        "options": [
+          "finished",
+          "finish",
+          "finishing"
+        ],
+        "answer": "finished"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "I ___ Rome last year. (visit)",
+        "options": [
+          "visited",
+          "have visited",
+          "visit"
+        ],
+        "answer": "visited"
+      },
+      {
+        "sentence": "He has ___ his keys. (lose)",
+        "options": [
+          "lost",
+          "lose",
+          "losing"
+        ],
+        "answer": "lost"
+      }
+    ]
+  },
+  {
+    "id": "en-conditional",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "First Conditional",
+      "en": "First conditional",
+      "ru": "Первый тип условных",
+      "uk": "Перший тип умовних"
+    },
+    "rule": {
+      "de": "Mögliche Zukunft: if + Simple Present, Hauptsatz will + Grundform.",
+      "en": "Possible future: if + simple present, main clause will + base form.",
+      "ru": "Возможное будущее: if + Simple Present, главное will + начальная форма.",
+      "uk": "Можливе майбутнє: if + Simple Present, головне will + початкова форма."
+    },
+    "example": "If it rains, we will stay home.",
+    "practice": [
+      {
+        "sentence": "If it ___, we will stay inside. (rain)",
+        "options": [
+          "rains",
+          "will rain",
+          "raining"
+        ],
+        "answer": "rains"
+      },
+      {
+        "sentence": "If you study, you ___ pass.",
+        "options": [
+          "will",
+          "are",
+          "did"
+        ],
+        "answer": "will"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "If she ___ early, we will meet. (arrive)",
+        "options": [
+          "arrives",
+          "will arrive",
+          "arriving"
+        ],
+        "answer": "arrives"
+      },
+      {
+        "sentence": "If we miss the bus, we will ___. (walk)",
+        "options": [
+          "walk",
+          "walked",
+          "walking"
+        ],
+        "answer": "walk"
+      }
+    ]
+  },
+  {
+    "id": "en-passive",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "Passiv",
+      "en": "Passive voice",
+      "ru": "Пассивный залог",
+      "uk": "Пасивний стан"
+    },
+    "rule": {
+      "de": "Passiv: passende Form von be + Partizip. Be trägt die Zeitform.",
+      "en": "Passive: appropriate be + past participle. Be carries tense.",
+      "ru": "Пассив: форма be + третья форма. Be выражает время.",
+      "uk": "Пасив: форма be + третя форма. Be виражає час."
+    },
+    "example": "The room is cleaned daily.",
+    "practice": [
+      {
+        "sentence": "The letters ___ delivered every day.",
+        "options": [
+          "are",
+          "is",
+          "were"
+        ],
+        "answer": "are"
+      },
+      {
+        "sentence": "The bridge was ___ in 1990. (build)",
+        "options": [
+          "built",
+          "build",
+          "building"
+        ],
+        "answer": "built"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "These windows ___ cleaned yesterday.",
+        "options": [
+          "were",
+          "was",
+          "are"
+        ],
+        "answer": "were"
+      },
+      {
+        "sentence": "English is ___ in many countries. (speak)",
+        "options": [
+          "spoken",
+          "speaking",
+          "speak"
+        ],
+        "answer": "spoken"
+      }
+    ]
+  }
+];
+
+// Second grammar expansion: preserve every existing lesson ID.
+GRAMMAR_LESSONS.push(...[
+  {
+    "id": "de-pronouns",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Personalpronomen",
+      "en": "Personal pronouns",
+      "ru": "Личные местоимения",
+      "uk": "Особові займенники"
+    },
+    "rule": {
+      "de": "Er ersetzt ein maskulines Nomen, sie ein feminines, es ein neutrales. Im Plural steht sie.",
+      "en": "Er replaces a masculine noun, sie a feminine one, es a neuter one. Plural: sie.",
+      "ru": "Er заменяет существительное мужского рода, sie женского, es среднего. Во множественном sie.",
+      "uk": "Er замінює іменник чоловічого роду, sie жіночого, es середнього. У множині sie."
+    },
+    "example": "Der Stuhl ist alt. Er ist alt.",
+    "practice": [
+      {
+        "sentence": "Die Tasche ist neu. ___ ist neu.",
+        "options": [
+          "Sie",
+          "Er",
+          "Es"
+        ],
+        "answer": "Sie"
+      },
+      {
+        "sentence": "Das Fenster ist offen. ___ ist offen.",
+        "options": [
+          "Es",
+          "Er",
+          "Sie"
+        ],
+        "answer": "Es"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Der Hund schläft. ___ schläft.",
+        "options": [
+          "Er",
+          "Es",
+          "Sie"
+        ],
+        "answer": "Er"
+      },
+      {
+        "sentence": "Die Kinder spielen. ___ spielen.",
+        "options": [
+          "Sie",
+          "Er",
+          "Es"
+        ],
+        "answer": "Sie"
+      }
+    ]
+  },
+  {
+    "id": "de-negation",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Nicht und kein",
+      "en": "Nicht and kein",
+      "ru": "Отрицания nicht и kein",
+      "uk": "Заперечення nicht і kein"
+    },
+    "rule": {
+      "de": "Kein verneint Nomen mit unbestimmtem oder ohne Artikel; nicht verneint z. B. Adjektive.",
+      "en": "Kein negates nouns with an indefinite or no article; nicht negates, for example, adjectives.",
+      "ru": "Kein отрицает существительные с неопределённым артиклем или без него; nicht — например, прилагательные.",
+      "uk": "Kein заперечує іменники з неозначеним артиклем або без нього; nicht — наприклад, прикметники."
+    },
+    "example": "Das ist kein Hund. Das ist nicht teuer.",
+    "practice": [
+      {
+        "sentence": "Das ist ___ Auto.",
+        "options": [
+          "kein",
+          "nicht",
+          "keine"
+        ],
+        "answer": "kein"
+      },
+      {
+        "sentence": "Der Kaffee ist ___ heiß.",
+        "options": [
+          "nicht",
+          "kein",
+          "keine"
+        ],
+        "answer": "nicht"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ich habe ___ Zeit.",
+        "options": [
+          "keine",
+          "kein",
+          "nicht"
+        ],
+        "answer": "keine"
+      },
+      {
+        "sentence": "Das Wetter ist ___ schön.",
+        "options": [
+          "nicht",
+          "keine",
+          "kein"
+        ],
+        "answer": "nicht"
+      }
+    ]
+  },
+  {
+    "id": "de-v2",
+    "language": "de",
+    "stage": 1,
+    "title": {
+      "de": "Verb an Position zwei",
+      "en": "Verb-second order",
+      "ru": "Глагол на втором месте",
+      "uk": "Дієслово на другому місці"
+    },
+    "rule": {
+      "de": "Im Aussagesatz steht das finite Verb an zweiter Satzgliedposition, auch nach einer Zeitangabe.",
+      "en": "In statements the finite verb is the second constituent, including after a time expression.",
+      "ru": "В повествовательном предложении спрягаемый глагол занимает вторую позицию, в том числе после обстоятельства времени.",
+      "uk": "У розповідному реченні відмінюване дієслово займає другу позицію, зокрема після обставини часу."
+    },
+    "example": "Heute gehe ich zur Schule.",
+    "practice": [
+      {
+        "sentence": "Morgen ___ zur Arbeit. (ich / fahren)",
+        "options": [
+          "fahre ich",
+          "ich fahre",
+          "fahren ich"
+        ],
+        "answer": "fahre ich"
+      },
+      {
+        "sentence": "Am Abend ___ Musik. (wir / hören)",
+        "options": [
+          "hören wir",
+          "wir hören",
+          "hört wir"
+        ],
+        "answer": "hören wir"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Jetzt ___ ein Buch. (er / lesen)",
+        "options": [
+          "liest er",
+          "er liest",
+          "lesen er"
+        ],
+        "answer": "liest er"
+      },
+      {
+        "sentence": "Im Sommer ___ oft. (sie, Plural / schwimmen)",
+        "options": [
+          "schwimmen sie",
+          "sie schwimmen",
+          "schwimmt sie"
+        ],
+        "answer": "schwimmen sie"
+      }
+    ]
+  },
+  {
+    "id": "de-separable",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Trennbare Verben",
+      "en": "Separable verbs",
+      "ru": "Отделяемые приставки",
+      "uk": "Відокремлювані префікси"
+    },
+    "rule": {
+      "de": "Im Hauptsatz steht die betonte trennbare Vorsilbe oft am Ende: aufstehen → stehe ... auf.",
+      "en": "In main clauses the stressed separable prefix often comes last: aufstehen → stehe ... auf.",
+      "ru": "В главном предложении отделяемая приставка часто в конце: aufstehen → stehe ... auf.",
+      "uk": "У головному реченні відокремлюваний префікс часто в кінці: aufstehen → stehe ... auf."
+    },
+    "example": "Ich stehe um sieben Uhr auf.",
+    "practice": [
+      {
+        "sentence": "Ich ___ dich später ___. (anrufen)",
+        "options": [
+          "rufe ... an",
+          "anrufe ... an",
+          "rufe ... auf"
+        ],
+        "answer": "rufe ... an"
+      },
+      {
+        "sentence": "Wir ___ heute ___. (einkaufen)",
+        "options": [
+          "kaufen ... ein",
+          "einkaufen ... ein",
+          "kaufen ... aus"
+        ],
+        "answer": "kaufen ... ein"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Der Zug ___ um acht Uhr ___. (abfahren)",
+        "options": [
+          "fährt ... ab",
+          "abfährt ... ab",
+          "fährt ... an"
+        ],
+        "answer": "fährt ... ab"
+      },
+      {
+        "sentence": "Du ___ das Licht ___. (ausmachen)",
+        "options": [
+          "machst ... aus",
+          "ausmachst ... aus",
+          "machst ... ein"
+        ],
+        "answer": "machst ... aus"
+      }
+    ]
+  },
+  {
+    "id": "de-possessive",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Possessivartikel",
+      "en": "Possessive determiners",
+      "ru": "Притяжательные артикли",
+      "uk": "Присвійні артиклі"
+    },
+    "rule": {
+      "de": "Mein/dein/sein/ihr/unser/euer richten sich nach dem Besitzer; die Endung nach Genus, Numerus und Kasus des Nomens.",
+      "en": "Mein/dein/sein/ihr/unser/euer depend on the possessor; endings depend on noun gender, number and case.",
+      "ru": "Mein/dein/sein/ihr/unser/euer зависят от владельца, окончания — от рода, числа и падежа существительного.",
+      "uk": "Mein/dein/sein/ihr/unser/euer залежать від власника, закінчення — від роду, числа й відмінка іменника."
+    },
+    "example": "Ich habe einen Bruder. Das ist mein Bruder.",
+    "practice": [
+      {
+        "sentence": "Ich habe eine Schwester. Das ist ___ Schwester.",
+        "options": [
+          "meine",
+          "mein",
+          "meinen"
+        ],
+        "answer": "meine"
+      },
+      {
+        "sentence": "Du hast ein Fahrrad. Das ist ___ Fahrrad.",
+        "options": [
+          "dein",
+          "deine",
+          "deinen"
+        ],
+        "answer": "dein"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Wir haben einen Hund. Das ist ___ Hund.",
+        "options": [
+          "unser",
+          "unsere",
+          "unseren"
+        ],
+        "answer": "unser"
+      },
+      {
+        "sentence": "Er hat zwei Bücher. Das sind ___ Bücher.",
+        "options": [
+          "seine",
+          "sein",
+          "seinen"
+        ],
+        "answer": "seine"
+      }
+    ]
+  },
+  {
+    "id": "de-two-way",
+    "language": "de",
+    "stage": 2,
+    "title": {
+      "de": "Wechselpräpositionen",
+      "en": "Two-way prepositions",
+      "ru": "Предлоги места и направления",
+      "uk": "Прийменники місця й напрямку"
+    },
+    "rule": {
+      "de": "Bei in, auf usw. steht Dativ für den Ort (wo?), Akkusativ für das Ziel einer Ortsveränderung (wohin?).",
+      "en": "With in, auf, etc., dative marks location (where?), accusative destination (where to?).",
+      "ru": "С in, auf и др. дательный обозначает место (где?), винительный — направление к цели (куда?).",
+      "uk": "З in, auf та ін. давальний позначає місце (де?), знахідний — напрямок до цілі (куди?)."
+    },
+    "example": "Das Buch liegt auf dem Tisch. Ich lege es auf den Tisch.",
+    "practice": [
+      {
+        "sentence": "Das Bild hängt an ___ Wand. (die)",
+        "options": [
+          "der",
+          "die",
+          "den"
+        ],
+        "answer": "der"
+      },
+      {
+        "sentence": "Ich hänge das Bild an ___ Wand. (die)",
+        "options": [
+          "die",
+          "der",
+          "dem"
+        ],
+        "answer": "die"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Die Katze sitzt auf ___ Sofa. (das)",
+        "options": [
+          "dem",
+          "das",
+          "den"
+        ],
+        "answer": "dem"
+      },
+      {
+        "sentence": "Die Katze springt auf ___ Sofa. (das, Ziel)",
+        "options": [
+          "das",
+          "dem",
+          "den"
+        ],
+        "answer": "das"
+      }
+    ]
+  },
+  {
+    "id": "de-prateritum",
+    "language": "de",
+    "stage": 3,
+    "title": {
+      "de": "Präteritum von sein und haben",
+      "en": "Past of sein and haben",
+      "ru": "Präteritum sein и haben",
+      "uk": "Präteritum sein і haben"
+    },
+    "rule": {
+      "de": "Sein: ich/er war, du warst, wir/sie waren, ihr wart. Haben: hatte, hattest, hatte, hatten, hattet, hatten.",
+      "en": "Sein: ich/er war, du warst, wir/sie waren, ihr wart. Haben: hatte, hattest, hatte, hatten, hattet, hatten.",
+      "ru": "Sein: ich/er war, du warst, wir/sie waren, ihr wart. Haben: hatte, hattest, hatte, hatten, hattet, hatten.",
+      "uk": "Sein: ich/er war, du warst, wir/sie waren, ihr wart. Haben: hatte, hattest, hatte, hatten, hattet, hatten."
+    },
+    "example": "Gestern war ich krank. Wir hatten Zeit.",
+    "practice": [
+      {
+        "sentence": "Gestern ___ du müde. (sein)",
+        "options": [
+          "warst",
+          "war",
+          "waren"
+        ],
+        "answer": "warst"
+      },
+      {
+        "sentence": "Wir ___ gestern frei. (haben)",
+        "options": [
+          "hatten",
+          "hatte",
+          "hattet"
+        ],
+        "answer": "hatten"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Er ___ damals Lehrer. (sein)",
+        "options": [
+          "war",
+          "waren",
+          "wart"
+        ],
+        "answer": "war"
+      },
+      {
+        "sentence": "Ihr ___ viel Glück. (haben)",
+        "options": [
+          "hattet",
+          "hatten",
+          "hatte"
+        ],
+        "answer": "hattet"
+      }
+    ]
+  },
+  {
+    "id": "de-relative",
+    "language": "de",
+    "stage": 3,
+    "title": {
+      "de": "Relativsätze",
+      "en": "Relative clauses",
+      "ru": "Относительные предложения",
+      "uk": "Відносні речення"
+    },
+    "rule": {
+      "de": "Das Relativpronomen richtet sich im Genus/Numerus nach dem Bezugswort, im Kasus nach seiner Funktion im Relativsatz.",
+      "en": "Relative pronouns match the antecedent in gender/number; case depends on their role in the relative clause.",
+      "ru": "Относительное местоимение согласуется с определяемым словом по роду и числу, падеж зависит от роли в придаточном.",
+      "uk": "Відносний займенник узгоджується за родом і числом, відмінок залежить від ролі у підрядному."
+    },
+    "example": "Der Mann, der dort steht, ist mein Nachbar.",
+    "practice": [
+      {
+        "sentence": "Das ist der Mann, ___ dort arbeitet.",
+        "options": [
+          "der",
+          "den",
+          "dem"
+        ],
+        "answer": "der"
+      },
+      {
+        "sentence": "Das ist die Frau, ___ hier wohnt.",
+        "options": [
+          "die",
+          "der",
+          "den"
+        ],
+        "answer": "die"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Das ist der Film, ___ ich gesehen habe.",
+        "options": [
+          "den",
+          "der",
+          "dem"
+        ],
+        "answer": "den"
+      },
+      {
+        "sentence": "Das sind die Bücher, ___ ich gekauft habe.",
+        "options": [
+          "die",
+          "der",
+          "den"
+        ],
+        "answer": "die"
+      }
+    ]
+  },
+  {
+    "id": "de-adjective",
+    "language": "de",
+    "stage": 4,
+    "title": {
+      "de": "Adjektive nach bestimmtem Artikel",
+      "en": "Adjectives after definite articles",
+      "ru": "Прилагательные после определённого артикля",
+      "uk": "Прикметники після означеного артикля"
+    },
+    "rule": {
+      "de": "Nach der/die/das steht im Nominativ Singular -e; im Akkusativ Maskulinum -en; im Dativ -en.",
+      "en": "After der/die/das use -e in nominative singular, -en in masculine accusative and dative.",
+      "ru": "После der/die/das в именительном ед. числа -e; в винительном мужского рода и дательном -en.",
+      "uk": "Після der/die/das у називному однини -e; у знахідному чоловічого роду й давальному -en."
+    },
+    "example": "Der kleine Hund. Ich sehe den kleinen Hund.",
+    "practice": [
+      {
+        "sentence": "Der ___ Tisch ist neu. (alt)",
+        "options": [
+          "alte",
+          "alten",
+          "altes"
+        ],
+        "answer": "alte"
+      },
+      {
+        "sentence": "Ich sehe den ___ Hund. (klein)",
+        "options": [
+          "kleinen",
+          "kleine",
+          "kleiner"
+        ],
+        "answer": "kleinen"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Die ___ Tasche ist schön. (rot)",
+        "options": [
+          "rote",
+          "roten",
+          "roter"
+        ],
+        "answer": "rote"
+      },
+      {
+        "sentence": "Mit dem ___ Bus. (neu)",
+        "options": [
+          "neuen",
+          "neue",
+          "neuer"
+        ],
+        "answer": "neuen"
+      }
+    ]
+  },
+  {
+    "id": "de-passive",
+    "language": "de",
+    "stage": 4,
+    "title": {
+      "de": "Vorgangspassiv",
+      "en": "Process passive",
+      "ru": "Пассив действия",
+      "uk": "Пасив дії"
+    },
+    "rule": {
+      "de": "Vorgangspassiv: werden + Partizip II. Werden trägt die Zeitform, z. B. wird/wurde.",
+      "en": "Process passive: werden + past participle. Werden carries tense, e.g. wird/wurde.",
+      "ru": "Пассив действия: werden + Partizip II. Werden выражает время, например wird/wurde.",
+      "uk": "Пасив дії: werden + Partizip II. Werden виражає час, наприклад wird/wurde."
+    },
+    "example": "Die Tür wird geöffnet. Die Tür wurde geöffnet.",
+    "practice": [
+      {
+        "sentence": "Die Briefe ___ gerade geschrieben. (Präsens)",
+        "options": [
+          "werden",
+          "wird",
+          "wurden"
+        ],
+        "answer": "werden"
+      },
+      {
+        "sentence": "Das Haus ___ 1990 gebaut. (Präteritum)",
+        "options": [
+          "wurde",
+          "wird",
+          "wurden"
+        ],
+        "answer": "wurde"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Der Computer wird ___. (reparieren)",
+        "options": [
+          "repariert",
+          "reparieren",
+          "reparierte"
+        ],
+        "answer": "repariert"
+      },
+      {
+        "sentence": "Die Fenster ___ gestern geputzt. (Präteritum)",
+        "options": [
+          "wurden",
+          "wurde",
+          "werden"
+        ],
+        "answer": "wurden"
+      }
+    ]
+  },
+  {
+    "id": "de-konjunktiv2",
+    "language": "de",
+    "stage": 5,
+    "title": {
+      "de": "Konjunktiv II: Wünsche und Irreales",
+      "en": "Subjunctive II: wishes and unreal situations",
+      "ru": "Konjunktiv II: желания и нереальное",
+      "uk": "Konjunktiv II: бажання й нереальне"
+    },
+    "rule": {
+      "de": "Für hypothetische Situationen: wäre, hätte, könnte oder würde + Infinitiv.",
+      "en": "For hypothetical situations: wäre, hätte, könnte or würde + infinitive.",
+      "ru": "Для гипотетических ситуаций: wäre, hätte, könnte или würde + инфинитив.",
+      "uk": "Для гіпотетичних ситуацій: wäre, hätte, könnte або würde + інфінітив."
+    },
+    "example": "Wenn ich Zeit hätte, würde ich reisen.",
+    "practice": [
+      {
+        "sentence": "Wenn ich reich ___, würde ich reisen. (sein)",
+        "options": [
+          "wäre",
+          "war",
+          "bin"
+        ],
+        "answer": "wäre"
+      },
+      {
+        "sentence": "Wenn du mehr Zeit ___, könntest du lesen. (haben)",
+        "options": [
+          "hättest",
+          "hast",
+          "hatte"
+        ],
+        "answer": "hättest"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ich ___ gern mitkommen, wenn ich frei wäre. (können)",
+        "options": [
+          "könnte",
+          "kannst",
+          "konnte"
+        ],
+        "answer": "könnte"
+      },
+      {
+        "sentence": "Wenn es möglich wäre, ___ wir bleiben. (würde)",
+        "options": [
+          "würden",
+          "werden",
+          "würde"
+        ],
+        "answer": "würden"
+      }
+    ]
+  },
+  {
+    "id": "de-indirect",
+    "language": "de",
+    "stage": 5,
+    "title": {
+      "de": "Indirekte Rede: Konjunktiv I",
+      "en": "Reported speech: subjunctive I",
+      "ru": "Косвенная речь: Konjunktiv I",
+      "uk": "Непряма мова: Konjunktiv I"
+    },
+    "rule": {
+      "de": "In formeller indirekter Rede kann Konjunktiv I Distanz zur Aussage zeigen. Bei er/sie: sei, habe, komme, gehe.",
+      "en": "In formal reported speech, subjunctive I can signal attribution. With er/sie: sei, habe, komme, gehe.",
+      "ru": "В формальной косвенной речи Konjunktiv I передаёт чужое высказывание: er/sie sei, habe, komme, gehe.",
+      "uk": "У формальній непрямій мові Konjunktiv I передає чуже висловлювання: er/sie sei, habe, komme, gehe."
+    },
+    "example": "Er sagt, er sei müde.",
+    "practice": [
+      {
+        "sentence": "Sie sagt, sie ___ krank. (sein, Konjunktiv I)",
+        "options": [
+          "sei",
+          "ist",
+          "war"
+        ],
+        "answer": "sei"
+      },
+      {
+        "sentence": "Er erklärt, er ___ keine Zeit. (haben, Konjunktiv I)",
+        "options": [
+          "habe",
+          "hat",
+          "hatte"
+        ],
+        "answer": "habe"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Sie sagt, sie ___ morgen. (kommen, Konjunktiv I)",
+        "options": [
+          "komme",
+          "kommt",
+          "kam"
+        ],
+        "answer": "komme"
+      },
+      {
+        "sentence": "Er berichtet, er ___ nach Hause. (gehen, Konjunktiv I)",
+        "options": [
+          "gehe",
+          "geht",
+          "ging"
+        ],
+        "answer": "gehe"
+      }
+    ]
+  },
+  {
+    "id": "en-articles",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "Artikel a, an, the",
+      "en": "Articles a, an, the",
+      "ru": "Артикли a, an, the",
+      "uk": "Артиклі a, an, the"
+    },
+    "rule": {
+      "de": "A/an bei einem nicht bestimmten zählbaren Nomen im Singular. An vor Vokallaut, a vor Konsonantenlaut.",
+      "en": "A/an for a nonspecific singular count noun. An before a vowel sound, a before a consonant sound.",
+      "ru": "A/an — неопределённое исчисляемое существительное в ед. числе. An перед гласным звуком, a перед согласным.",
+      "uk": "A/an — неозначений злічуваний іменник в однині. An перед голосним звуком, a перед приголосним."
+    },
+    "example": "A book, an apple, an hour, a university.",
+    "practice": [
+      {
+        "sentence": "I would like ___ apple. (any apple)",
+        "options": [
+          "an",
+          "a",
+          "the"
+        ],
+        "answer": "an"
+      },
+      {
+        "sentence": "She has ___ dog. (a nonspecific dog)",
+        "options": [
+          "a",
+          "an",
+          "some"
+        ],
+        "answer": "a"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "We waited for ___ hour. (one hour)",
+        "options": [
+          "an",
+          "a",
+          "some"
+        ],
+        "answer": "an"
+      },
+      {
+        "sentence": "He studies at ___ university. (nonspecific)",
+        "options": [
+          "a",
+          "an",
+          "some"
+        ],
+        "answer": "a"
+      }
+    ]
+  },
+  {
+    "id": "en-pronouns",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "Objektpronomen",
+      "en": "Object pronouns",
+      "ru": "Объектные местоимения",
+      "uk": "Об'єктні займенники"
+    },
+    "rule": {
+      "de": "Nach Verben und Präpositionen: me, you, him, her, it, us, them.",
+      "en": "After verbs and prepositions: me, you, him, her, it, us, them.",
+      "ru": "После глаголов и предлогов: me, you, him, her, it, us, them.",
+      "uk": "Після дієслів і прийменників: me, you, him, her, it, us, them."
+    },
+    "example": "I know Anna. I know her.",
+    "practice": [
+      {
+        "sentence": "I know Tom. I know ___.",
+        "options": [
+          "him",
+          "he",
+          "his"
+        ],
+        "answer": "him"
+      },
+      {
+        "sentence": "She helps Anna. She helps ___.",
+        "options": [
+          "her",
+          "she",
+          "hers"
+        ],
+        "answer": "her"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "They see the children. They see ___.",
+        "options": [
+          "them",
+          "they",
+          "their"
+        ],
+        "answer": "them"
+      },
+      {
+        "sentence": "Come with my sister and me. Come with ___.",
+        "options": [
+          "us",
+          "we",
+          "our"
+        ],
+        "answer": "us"
+      }
+    ]
+  },
+  {
+    "id": "en-there",
+    "language": "en",
+    "stage": 1,
+    "title": {
+      "de": "There is / there are",
+      "en": "There is / there are",
+      "ru": "Конструкция there is / there are",
+      "uk": "Конструкція there is / there are"
+    },
+    "rule": {
+      "de": "There is + Singular, there are + Plural. Fragen: Is there...? Are there...?",
+      "en": "There is + singular, there are + plural. Questions: Is there...? Are there...?",
+      "ru": "There is + единственное, there are + множественное. Вопрос: Is there...? Are there...?",
+      "uk": "There is + однина, there are + множина. Питання: Is there...? Are there...?"
+    },
+    "example": "There is a book. There are two chairs.",
+    "practice": [
+      {
+        "sentence": "There ___ a cat in the garden.",
+        "options": [
+          "is",
+          "are",
+          "am"
+        ],
+        "answer": "is"
+      },
+      {
+        "sentence": "There ___ three books on the table.",
+        "options": [
+          "are",
+          "is",
+          "am"
+        ],
+        "answer": "are"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ there a bus stop nearby?",
+        "options": [
+          "Is",
+          "Are",
+          "Am"
+        ],
+        "answer": "Is"
+      },
+      {
+        "sentence": "___ there any chairs in the room?",
+        "options": [
+          "Are",
+          "Is",
+          "Am"
+        ],
+        "answer": "Are"
+      }
+    ]
+  },
+  {
+    "id": "en-quantifiers",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Much, many, a lot of",
+      "en": "Much, many, a lot of",
+      "ru": "Much, many, a lot of",
+      "uk": "Much, many, a lot of"
+    },
+    "rule": {
+      "de": "Many bei zählbaren Pluralnomen, much bei nicht zählbaren Nomen; a lot of bei beiden.",
+      "en": "Many with plural count nouns, much with uncountable nouns; a lot of with both.",
+      "ru": "Many с исчисляемыми во множественном, much с неисчисляемыми; a lot of с обоими.",
+      "uk": "Many зі злічуваними у множині, much з незлічуваними; a lot of з обома."
+    },
+    "example": "How many books? How much water?",
+    "practice": [
+      {
+        "sentence": "How ___ apples do you need?",
+        "options": [
+          "many",
+          "much",
+          "a lot"
+        ],
+        "answer": "many"
+      },
+      {
+        "sentence": "How ___ water is left?",
+        "options": [
+          "much",
+          "many",
+          "a lot"
+        ],
+        "answer": "much"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "We don't have ___ time.",
+        "options": [
+          "much",
+          "many",
+          "a lot"
+        ],
+        "answer": "much"
+      },
+      {
+        "sentence": "How ___ people came?",
+        "options": [
+          "many",
+          "much",
+          "a lot"
+        ],
+        "answer": "many"
+      }
+    ]
+  },
+  {
+    "id": "en-future",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Will: spontane Entscheidungen",
+      "en": "Will: spontaneous decisions",
+      "ru": "Will: спонтанные решения",
+      "uk": "Will: спонтанні рішення"
+    },
+    "rule": {
+      "de": "Will + Grundform, z. B. für ein spontanes Angebot; nach will kein to und kein -s.",
+      "en": "Will + base form, e.g. for a spontaneous offer; no to or -s after will.",
+      "ru": "Will + начальная форма, например для спонтанного предложения помощи; без to и -s.",
+      "uk": "Will + початкова форма, наприклад для спонтанної пропозиції допомоги; без to та -s."
+    },
+    "example": "The phone is ringing. I will answer it.",
+    "practice": [
+      {
+        "sentence": "I will ___ the door. (open)",
+        "options": [
+          "open",
+          "opens",
+          "to open"
+        ],
+        "answer": "open"
+      },
+      {
+        "sentence": "She will ___ you tomorrow. (call)",
+        "options": [
+          "call",
+          "calls",
+          "called"
+        ],
+        "answer": "call"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Will you ___ me? (help)",
+        "options": [
+          "help",
+          "helps",
+          "to help"
+        ],
+        "answer": "help"
+      },
+      {
+        "sentence": "They won't ___ late. (arrive)",
+        "options": [
+          "arrive",
+          "arrives",
+          "arriving"
+        ],
+        "answer": "arrive"
+      }
+    ]
+  },
+  {
+    "id": "en-modal",
+    "language": "en",
+    "stage": 2,
+    "title": {
+      "de": "Modalverben",
+      "en": "Modal verbs",
+      "ru": "Модальные глаголы",
+      "uk": "Модальні дієслова"
+    },
+    "rule": {
+      "de": "Can, must und should stehen vor der Grundform ohne to; kein -s in der 3. Person.",
+      "en": "Can, must and should take the bare infinitive; no third-person -s.",
+      "ru": "Can, must и should требуют начальной формы без to; нет окончания -s в третьем лице.",
+      "uk": "Can, must і should вимагають початкової форми без to; немає -s у третій особі."
+    },
+    "example": "She can swim. You should rest.",
+    "practice": [
+      {
+        "sentence": "He can ___ very fast. (run)",
+        "options": [
+          "run",
+          "runs",
+          "to run"
+        ],
+        "answer": "run"
+      },
+      {
+        "sentence": "You must ___ here. (wait)",
+        "options": [
+          "wait",
+          "waits",
+          "to wait"
+        ],
+        "answer": "wait"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "She should ___ more water. (drink)",
+        "options": [
+          "drink",
+          "drinks",
+          "drinking"
+        ],
+        "answer": "drink"
+      },
+      {
+        "sentence": "Can they ___ with us? (come)",
+        "options": [
+          "come",
+          "comes",
+          "to come"
+        ],
+        "answer": "come"
+      }
+    ]
+  },
+  {
+    "id": "en-past-cont",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "Past Continuous",
+      "en": "Past continuous",
+      "ru": "Прошедшее длительное",
+      "uk": "Минулий тривалий"
+    },
+    "rule": {
+      "de": "Was/were + Verb-ing für eine Handlung, die zu einem vergangenen Zeitpunkt im Gang war.",
+      "en": "Was/were + verb-ing for an action in progress at a past time.",
+      "ru": "Was/were + глагол-ing для действия, продолжавшегося в момент прошлого.",
+      "uk": "Was/were + дієслово-ing для дії, що тривала в момент минулого."
+    },
+    "example": "I was reading when the phone rang.",
+    "practice": [
+      {
+        "sentence": "At eight I ___ breakfast. (eat)",
+        "options": [
+          "was eating",
+          "were eating",
+          "was eat"
+        ],
+        "answer": "was eating"
+      },
+      {
+        "sentence": "They ___ when I arrived. (sleep)",
+        "options": [
+          "were sleeping",
+          "was sleeping",
+          "were sleep"
+        ],
+        "answer": "were sleeping"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "She was ___ when I called. (work)",
+        "options": [
+          "working",
+          "worked",
+          "work"
+        ],
+        "answer": "working"
+      },
+      {
+        "sentence": "We ___ when it began to rain. (walk)",
+        "options": [
+          "were walking",
+          "was walking",
+          "were walk"
+        ],
+        "answer": "were walking"
+      }
+    ]
+  },
+  {
+    "id": "en-relative",
+    "language": "en",
+    "stage": 3,
+    "title": {
+      "de": "Relativsätze",
+      "en": "Relative clauses",
+      "ru": "Относительные предложения",
+      "uk": "Відносні речення"
+    },
+    "rule": {
+      "de": "Who bezieht sich auf Personen, which auf Dinge; that kann in bestimmenden Relativsätzen oft beide ersetzen.",
+      "en": "Who refers to people, which to things; that can often replace both in defining relative clauses.",
+      "ru": "Who относится к людям, which к вещам; that часто заменяет оба в определительных придаточных.",
+      "uk": "Who стосується людей, which речей; that часто замінює обидва у означальних підрядних."
+    },
+    "example": "The person who called is my friend.",
+    "practice": [
+      {
+        "sentence": "The teacher, ___ lives nearby, is here.",
+        "options": [
+          "who",
+          "which",
+          "what"
+        ],
+        "answer": "who"
+      },
+      {
+        "sentence": "This phone, ___ is new, works well.",
+        "options": [
+          "which",
+          "who",
+          "what"
+        ],
+        "answer": "which"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "My sister, ___ is a doctor, lives in Berlin.",
+        "options": [
+          "who",
+          "which",
+          "what"
+        ],
+        "answer": "who"
+      },
+      {
+        "sentence": "The book, ___ has ten chapters, is interesting.",
+        "options": [
+          "which",
+          "who",
+          "what"
+        ],
+        "answer": "which"
+      }
+    ]
+  },
+  {
+    "id": "en-past-perfect",
+    "language": "en",
+    "stage": 4,
+    "title": {
+      "de": "Past Perfect",
+      "en": "Past perfect",
+      "ru": "Past Perfect",
+      "uk": "Past Perfect"
+    },
+    "rule": {
+      "de": "Had + past participle zeigt eine Handlung vor einem anderen vergangenen Zeitpunkt.",
+      "en": "Had + past participle marks an action before another past point.",
+      "ru": "Had + третья форма обозначает действие до другого момента прошлого.",
+      "uk": "Had + третя форма позначає дію до іншого моменту минулого."
+    },
+    "example": "When we arrived, the film had started.",
+    "practice": [
+      {
+        "sentence": "When I arrived, she had already ___. (leave)",
+        "options": [
+          "left",
+          "leave",
+          "leaving"
+        ],
+        "answer": "left"
+      },
+      {
+        "sentence": "He had ___ before the lesson began. (finish)",
+        "options": [
+          "finished",
+          "finish",
+          "finishing"
+        ],
+        "answer": "finished"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "We had ___ the news before they called. (hear)",
+        "options": [
+          "heard",
+          "hear",
+          "hearing"
+        ],
+        "answer": "heard"
+      },
+      {
+        "sentence": "They had ___ home before sunset. (go)",
+        "options": [
+          "gone",
+          "went",
+          "going"
+        ],
+        "answer": "gone"
+      }
+    ]
+  },
+  {
+    "id": "en-second-conditional",
+    "language": "en",
+    "stage": 4,
+    "title": {
+      "de": "Second Conditional",
+      "en": "Second conditional",
+      "ru": "Второй тип условных",
+      "uk": "Другий тип умовних"
+    },
+    "rule": {
+      "de": "Hypothetische Gegenwart/Zukunft: if + Simple Past, would + Grundform.",
+      "en": "Hypothetical present/future: if + simple past, would + base form.",
+      "ru": "Гипотетическое настоящее/будущее: if + Simple Past, would + начальная форма.",
+      "uk": "Гіпотетичне теперішнє/майбутнє: if + Simple Past, would + початкова форма."
+    },
+    "example": "If I had more time, I would travel.",
+    "practice": [
+      {
+        "sentence": "If I ___ more money, I would buy a bike. (have)",
+        "options": [
+          "had",
+          "have",
+          "will have"
+        ],
+        "answer": "had"
+      },
+      {
+        "sentence": "If she lived here, we would ___ often. (meet)",
+        "options": [
+          "meet",
+          "met",
+          "meeting"
+        ],
+        "answer": "meet"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "If we ___ the answer, we would tell you. (know)",
+        "options": [
+          "knew",
+          "know",
+          "will know"
+        ],
+        "answer": "knew"
+      },
+      {
+        "sentence": "If he were free, he ___ join us.",
+        "options": [
+          "would",
+          "will",
+          "has"
+        ],
+        "answer": "would"
+      }
+    ]
+  },
+  {
+    "id": "en-third-conditional",
+    "language": "en",
+    "stage": 5,
+    "title": {
+      "de": "Third Conditional",
+      "en": "Third conditional",
+      "ru": "Третий тип условных",
+      "uk": "Третій тип умовних"
+    },
+    "rule": {
+      "de": "Irreale Vergangenheit: if + had + Partizip, would have + Partizip.",
+      "en": "Unreal past: if + had + past participle, would have + past participle.",
+      "ru": "Нереальное прошлое: if + had + третья форма, would have + третья форма.",
+      "uk": "Нереальне минуле: if + had + третя форма, would have + третя форма."
+    },
+    "example": "If I had left earlier, I would have caught the train.",
+    "practice": [
+      {
+        "sentence": "If I had ___ harder, I would have passed. (study)",
+        "options": [
+          "studied",
+          "study",
+          "studying"
+        ],
+        "answer": "studied"
+      },
+      {
+        "sentence": "If she had called, I would have ___. (answer)",
+        "options": [
+          "answered",
+          "answer",
+          "answering"
+        ],
+        "answer": "answered"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "If they had ___ the map, they would not have got lost. (read)",
+        "options": [
+          "read",
+          "reading",
+          "reads"
+        ],
+        "answer": "read"
+      },
+      {
+        "sentence": "If we had left early, we ___ have arrived on time.",
+        "options": [
+          "would",
+          "will",
+          "had"
+        ],
+        "answer": "would"
+      }
+    ]
+  },
+  {
+    "id": "en-inversion",
+    "language": "en",
+    "stage": 5,
+    "title": {
+      "de": "Inversion nach negativen Adverbien",
+      "en": "Negative-adverb inversion",
+      "ru": "Инверсия после отрицательных наречий",
+      "uk": "Інверсія після заперечних прислівників"
+    },
+    "rule": {
+      "de": "In formeller Betonung am Satzanfang, z. B. never oder rarely, steht das Hilfsverb vor dem Subjekt.",
+      "en": "In formal emphasis with initial never or rarely, the auxiliary precedes the subject.",
+      "ru": "При формальном усилении с never или rarely в начале вспомогательный глагол перед подлежащим.",
+      "uk": "За формального підсилення з never або rarely на початку допоміжне дієслово перед підметом."
+    },
+    "example": "Never have I seen such a view.",
+    "practice": [
+      {
+        "sentence": "Never ___ such a thing. (I / have / seen)",
+        "options": [
+          "have I seen",
+          "I have seen",
+          "I seen have"
+        ],
+        "answer": "have I seen"
+      },
+      {
+        "sentence": "Rarely ___ such results. (we / do / see)",
+        "options": [
+          "do we see",
+          "we do see",
+          "we see do"
+        ],
+        "answer": "do we see"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Seldom ___ so happy. (she / is)",
+        "options": [
+          "is she",
+          "she is",
+          "she be"
+        ],
+        "answer": "is she"
+      },
+      {
+        "sentence": "Never before ___ this method. (they / have / tried)",
+        "options": [
+          "have they tried",
+          "they have tried",
+          "they tried have"
+        ],
+        "answer": "have they tried"
+      }
+    ]
+  }
+]);
+
+// First dedicated grammar routes for the other eight languages.
+GRAMMAR_LESSONS.push(...[
+  {
+    "id": "ka-copula",
+    "language": "ka",
+    "stage": 1,
+    "title": {
+      "de": "Kopula",
+      "en": "Copula",
+      "ru": "Глагол-связка",
+      "uk": "Дієслово-зв'язка"
+    },
+    "rule": {
+      "de": "Ich bin: ვარ; du bist: ხარ; er/sie ist: არის; wir sind: ვართ; ihr seid: ხართ; sie sind: არიან.",
+      "en": "I am: ვარ; you are: ხარ; he/she is: არის; we are: ვართ; you plural: ხართ; they are: არიან.",
+      "ru": "Я есть: ვარ; ты: ხარ; он/она: არის; мы: ვართ; вы: ხართ; они: არიან.",
+      "uk": "Я є: ვარ; ти: ხარ; він/вона: არის; ми: ვართ; ви: ხართ; вони: არიან."
+    },
+    "example": "მე სტუდენტი ვარ.",
+    "practice": [
+      {
+        "sentence": "მე მასწავლებელი ___.",
+        "options": [
+          "ვარ",
+          "ხარ",
+          "არის"
+        ],
+        "answer": "ვარ"
+      },
+      {
+        "sentence": "შენ სტუდენტი ___.",
+        "options": [
+          "ხარ",
+          "ვარ",
+          "ვართ"
+        ],
+        "answer": "ხარ"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ჩვენ მეგობრები ___.",
+        "options": [
+          "ვართ",
+          "ხართ",
+          "არიან"
+        ],
+        "answer": "ვართ"
+      },
+      {
+        "sentence": "ისინი სახლში ___.",
+        "options": [
+          "არიან",
+          "არის",
+          "ვარ"
+        ],
+        "answer": "არიან"
+      }
+    ]
+  },
+  {
+    "id": "ka-plural",
+    "language": "ka",
+    "stage": 1,
+    "title": {
+      "de": "Plural -ები",
+      "en": "Plural -ები",
+      "ru": "Множественное -ები",
+      "uk": "Множина -ები"
+    },
+    "rule": {
+      "de": "Viele konsonantische Nomen verlieren nominatives -ი vor -ები: წიგნი → წიგნები.",
+      "en": "Many consonant-stem nouns drop nominative -ი before -ები: წიგნი → წიგნები.",
+      "ru": "Многие существительные с основой на согласный теряют -ი перед -ები: წიგნი → წიგნები.",
+      "uk": "Багато іменників з основою на приголосний втрачають -ი перед -ები: წიგნი → წიგნები."
+    },
+    "example": "წიგნი → წიგნები",
+    "practice": [
+      {
+        "sentence": "ძაღლი → ___ (Plural)",
+        "options": [
+          "ძაღლები",
+          "ძაღლი",
+          "ძაღლებს"
+        ],
+        "answer": "ძაღლები"
+      },
+      {
+        "sentence": "სახლი → ___ (Plural)",
+        "options": [
+          "სახლები",
+          "სახლი",
+          "სახლებს"
+        ],
+        "answer": "სახლები"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ბავშვი → ___ (Plural)",
+        "options": [
+          "ბავშვები",
+          "ბავშვი",
+          "ბავშვებს"
+        ],
+        "answer": "ბავშვები"
+      },
+      {
+        "sentence": "მეგობარი → ___ (Plural)",
+        "options": [
+          "მეგობრები",
+          "მეგობარი",
+          "მეგობრებს"
+        ],
+        "answer": "მეგობრები"
+      }
+    ]
+  },
+  {
+    "id": "ka-negation",
+    "language": "ka",
+    "stage": 2,
+    "title": {
+      "de": "Verneinung mit არ",
+      "en": "Negation with არ",
+      "ru": "Отрицание არ",
+      "uk": "Заперечення არ"
+    },
+    "rule": {
+      "de": "არ steht zur einfachen Verneinung vor dem Verb; ვერ bezeichnet häufig fehlende Möglichkeit.",
+      "en": "არ precedes the verb for ordinary negation; ვერ often indicates inability.",
+      "ru": "არ стоит перед глаголом при обычном отрицании; ვერ часто означает невозможность.",
+      "uk": "არ стоїть перед дієсловом при звичайному запереченні; ვერ часто означає неможливість."
+    },
+    "example": "მე არ ვიცი.",
+    "practice": [
+      {
+        "sentence": "მე ___ ვიცი. (not know)",
+        "options": [
+          "არ",
+          "და",
+          "თუ"
+        ],
+        "answer": "არ"
+      },
+      {
+        "sentence": "ის ___ მოდის. (not coming)",
+        "options": [
+          "არ",
+          "და",
+          "თუ"
+        ],
+        "answer": "არ"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ჩვენ ___ ვართ სახლში. (not at home)",
+        "options": [
+          "არ",
+          "და",
+          "თუ"
+        ],
+        "answer": "არ"
+      },
+      {
+        "sentence": "შენ ___ ხარ მარტო. (not alone)",
+        "options": [
+          "არ",
+          "და",
+          "თუ"
+        ],
+        "answer": "არ"
+      }
+    ]
+  },
+  {
+    "id": "ka-location",
+    "language": "ka",
+    "stage": 2,
+    "title": {
+      "de": "Ort mit -ში",
+      "en": "Location with -ში",
+      "ru": "Место с -ში",
+      "uk": "Місце з -ში"
+    },
+    "rule": {
+      "de": "-ში bezeichnet in vielen Ortsangaben das Innere eines Ortes: სახლი → სახლში, სკოლა → სკოლაში.",
+      "en": "-ში marks inside a place: სახლი → სახლში, სკოლა → სკოლაში.",
+      "ru": "-ში обозначает нахождение внутри места: სახლი → სახლში, სკოლა → სკოლაში.",
+      "uk": "-ში позначає перебування всередині місця: სახლი → სახლში, სკოლა → სკოლაში."
+    },
+    "example": "ის სკოლაშია.",
+    "practice": [
+      {
+        "sentence": "სახლი → ___ (in the house)",
+        "options": [
+          "სახლში",
+          "სახლიდან",
+          "სახლთან"
+        ],
+        "answer": "სახლში"
+      },
+      {
+        "sentence": "სკოლა → ___ (in the school)",
+        "options": [
+          "სკოლაში",
+          "სკოლიდან",
+          "სკოლასთან"
+        ],
+        "answer": "სკოლაში"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ქალაქი → ___ (in the city)",
+        "options": [
+          "ქალაქში",
+          "ქალაქიდან",
+          "ქალაქთან"
+        ],
+        "answer": "ქალაქში"
+      },
+      {
+        "sentence": "ოთახი → ___ (in the room)",
+        "options": [
+          "ოთახში",
+          "ოთახიდან",
+          "ოთახთან"
+        ],
+        "answer": "ოთახში"
+      }
+    ]
+  },
+  {
+    "id": "ka-genitive",
+    "language": "ka",
+    "stage": 3,
+    "title": {
+      "de": "Genitiv -ის",
+      "en": "Genitive -ის",
+      "ru": "Родительный -ის",
+      "uk": "Родовий -ის"
+    },
+    "rule": {
+      "de": "Bei vielen konsonantischen Nomen markiert -ის Zugehörigkeit: სახლი → სახლის.",
+      "en": "For many consonant-stem nouns, -ის marks possession: სახლი → სახლის.",
+      "ru": "У многих существительных на согласный -ის обозначает принадлежность: სახლი → სახლის.",
+      "uk": "У багатьох іменників на приголосний -ის позначає належність: სახლი → სახლის."
+    },
+    "example": "სახლის კარი",
+    "practice": [
+      {
+        "sentence": "წიგნი → ___ (of the book)",
+        "options": [
+          "წიგნის",
+          "წიგნში",
+          "წიგნიდან"
+        ],
+        "answer": "წიგნის"
+      },
+      {
+        "sentence": "სახლი → ___ (of the house)",
+        "options": [
+          "სახლის",
+          "სახლში",
+          "სახლიდან"
+        ],
+        "answer": "სახლის"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ქალაქი → ___ (of the city)",
+        "options": [
+          "ქალაქის",
+          "ქალაქში",
+          "ქალაქიდან"
+        ],
+        "answer": "ქალაქის"
+      },
+      {
+        "sentence": "ოთახი → ___ (of the room)",
+        "options": [
+          "ოთახის",
+          "ოთახში",
+          "ოთახიდან"
+        ],
+        "answer": "ოთახის"
+      }
+    ]
+  },
+  {
+    "id": "uk-gender",
+    "language": "uk",
+    "stage": 1,
+    "title": {
+      "de": "Genus",
+      "en": "Gender",
+      "ru": "Род",
+      "uk": "Рід"
+    },
+    "rule": {
+      "de": "Im Ukrainischen stimmen Adjektive in Genus und Numerus mit dem Nomen überein: новий, нова, нове.",
+      "en": "Ukrainian adjectives agree in gender and number: новий, нова, нове.",
+      "ru": "Прилагательные согласуются в роде и числе: новий, нова, нове.",
+      "uk": "Прикметники узгоджуються в роді й числі: новий, нова, нове."
+    },
+    "example": "новий стіл, нова книга, нове вікно",
+    "practice": [
+      {
+        "sentence": "___ стіл (new)",
+        "options": [
+          "новий",
+          "нова",
+          "нове"
+        ],
+        "answer": "новий"
+      },
+      {
+        "sentence": "___ книга (new)",
+        "options": [
+          "нова",
+          "новий",
+          "нове"
+        ],
+        "answer": "нова"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ вікно (new)",
+        "options": [
+          "нове",
+          "новий",
+          "нова"
+        ],
+        "answer": "нове"
+      },
+      {
+        "sentence": "___ будинок (new)",
+        "options": [
+          "новий",
+          "нова",
+          "нове"
+        ],
+        "answer": "новий"
+      }
+    ]
+  },
+  {
+    "id": "uk-vocative",
+    "language": "uk",
+    "stage": 1,
+    "title": {
+      "de": "Vokativ",
+      "en": "Vocative",
+      "ru": "Звательный падеж",
+      "uk": "Кличний відмінок"
+    },
+    "rule": {
+      "de": "Bei direkter Anrede wird der Vokativ verwendet: Олена → Олено, Петро → Петре.",
+      "en": "Direct address uses the vocative: Олена → Олено, Петро → Петре.",
+      "ru": "В прямом обращении используется звательный: Олена → Олено, Петро → Петре.",
+      "uk": "У прямому звертанні вживається кличний: Олена → Олено, Петро → Петре."
+    },
+    "example": "Олено, добрий день!",
+    "practice": [
+      {
+        "sentence": "___, привіт! (Олена)",
+        "options": [
+          "Олено",
+          "Олену",
+          "Олени"
+        ],
+        "answer": "Олено"
+      },
+      {
+        "sentence": "___, добрий день! (Петро)",
+        "options": [
+          "Петре",
+          "Петра",
+          "Петру"
+        ],
+        "answer": "Петре"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___, дякую! (мама)",
+        "options": [
+          "Мамо",
+          "Маму",
+          "Мами"
+        ],
+        "answer": "Мамо"
+      },
+      {
+        "sentence": "___, заходь! (брат)",
+        "options": [
+          "Брате",
+          "Брата",
+          "Братом"
+        ],
+        "answer": "Брате"
+      }
+    ]
+  },
+  {
+    "id": "uk-present",
+    "language": "uk",
+    "stage": 2,
+    "title": {
+      "de": "Präsens",
+      "en": "Present",
+      "ru": "Настоящее время",
+      "uk": "Теперішній час"
+    },
+    "rule": {
+      "de": "Читати: я читаю, ти читаєш, він читає, ми читаємо, ви читаєте, вони читають.",
+      "en": "Читати: я читаю, ти читаєш, він читає, ми читаємо, ви читаєте, вони читають.",
+      "ru": "Спряжение читати: я читаю, ти читаєш, він читає, ми читаємо, ви читаєте, вони читають.",
+      "uk": "Дієвідміна читати: я читаю, ти читаєш, він читає, ми читаємо, ви читаєте, вони читають."
+    },
+    "example": "Я читаю книжку.",
+    "practice": [
+      {
+        "sentence": "Ти ___ газету. (читати)",
+        "options": [
+          "читаєш",
+          "читаю",
+          "читають"
+        ],
+        "answer": "читаєш"
+      },
+      {
+        "sentence": "Ми ___ книжку. (читати)",
+        "options": [
+          "читаємо",
+          "читаєте",
+          "читає"
+        ],
+        "answer": "читаємо"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Вона ___ лист. (читати)",
+        "options": [
+          "читає",
+          "читаю",
+          "читаєш"
+        ],
+        "answer": "читає"
+      },
+      {
+        "sentence": "Вони ___ журнал. (читати)",
+        "options": [
+          "читають",
+          "читаємо",
+          "читаєте"
+        ],
+        "answer": "читають"
+      }
+    ]
+  },
+  {
+    "id": "uk-past",
+    "language": "uk",
+    "stage": 2,
+    "title": {
+      "de": "Vergangenheit und Genus",
+      "en": "Past and gender",
+      "ru": "Прошедшее и род",
+      "uk": "Минулий час і рід"
+    },
+    "rule": {
+      "de": "In der Vergangenheit stimmt das Verb mit Genus und Numerus überein: читав, читала, читало, читали.",
+      "en": "Past verbs agree with gender and number: читав, читала, читало, читали.",
+      "ru": "Прошедшее время согласуется по роду и числу: читав, читала, читало, читали.",
+      "uk": "Минулий час узгоджується за родом і числом: читав, читала, читало, читали."
+    },
+    "example": "Вона читала.",
+    "practice": [
+      {
+        "sentence": "Він ___ книжку. (мин.)",
+        "options": [
+          "читав",
+          "читала",
+          "читали"
+        ],
+        "answer": "читав"
+      },
+      {
+        "sentence": "Вона ___ газету. (мин.)",
+        "options": [
+          "читала",
+          "читав",
+          "читали"
+        ],
+        "answer": "читала"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Діти ___ листи. (мин.)",
+        "options": [
+          "читали",
+          "читало",
+          "читала"
+        ],
+        "answer": "читали"
+      },
+      {
+        "sentence": "Ми ___ журнал. (мин.)",
+        "options": [
+          "читали",
+          "читав",
+          "читала"
+        ],
+        "answer": "читали"
+      }
+    ]
+  },
+  {
+    "id": "uk-future",
+    "language": "uk",
+    "stage": 3,
+    "title": {
+      "de": "Zusammengesetztes Futur",
+      "en": "Compound future",
+      "ru": "Составное будущее",
+      "uk": "Складене майбутнє"
+    },
+    "rule": {
+      "de": "Unvollendete Verben können Futur mit буду/будеш/буде/будемо/будете/будуть + Infinitiv bilden.",
+      "en": "Imperfective verbs can form the future with буду/будеш/буде/будемо/будете/будуть + infinitive.",
+      "ru": "Несовершенный вид может образовывать будущее с буду/будеш/буде/будемо/будете/будуть + инфинитив.",
+      "uk": "Недоконаний вид може утворювати майбутнє з буду/будеш/буде/будемо/будете/будуть + інфінітив."
+    },
+    "example": "Я буду читати.",
+    "practice": [
+      {
+        "sentence": "Ти ___ працювати. (future)",
+        "options": [
+          "будеш",
+          "буду",
+          "будуть"
+        ],
+        "answer": "будеш"
+      },
+      {
+        "sentence": "Ми ___ навчатися. (future)",
+        "options": [
+          "будемо",
+          "будете",
+          "буде"
+        ],
+        "answer": "будемо"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Вона ___ читати. (future)",
+        "options": [
+          "буде",
+          "буду",
+          "будеш"
+        ],
+        "answer": "буде"
+      },
+      {
+        "sentence": "Вони ___ грати. (future)",
+        "options": [
+          "будуть",
+          "будемо",
+          "будете"
+        ],
+        "answer": "будуть"
+      }
+    ]
+  },
+  {
+    "id": "ru-gender",
+    "language": "ru",
+    "stage": 1,
+    "title": {
+      "de": "Genus und Adjektive",
+      "en": "Gender and adjectives",
+      "ru": "Род и прилагательные",
+      "uk": "Рід і прикметники"
+    },
+    "rule": {
+      "de": "Adjektive stimmen mit dem Nomen überein: новый, новая, новое; Plural новые.",
+      "en": "Adjectives agree with nouns: новый, новая, новое; plural новые.",
+      "ru": "Прилагательное согласуется с существительным: новый, новая, новое; множественное новые.",
+      "uk": "Прикметник узгоджується з іменником: новый, новая, новое; множина новые."
+    },
+    "example": "новый дом, новая книга",
+    "practice": [
+      {
+        "sentence": "___ дом (new)",
+        "options": [
+          "новый",
+          "новая",
+          "новое"
+        ],
+        "answer": "новый"
+      },
+      {
+        "sentence": "___ книга (new)",
+        "options": [
+          "новая",
+          "новый",
+          "новое"
+        ],
+        "answer": "новая"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ окно (new)",
+        "options": [
+          "новое",
+          "новый",
+          "новая"
+        ],
+        "answer": "новое"
+      },
+      {
+        "sentence": "___ дома (new)",
+        "options": [
+          "новые",
+          "новый",
+          "новая"
+        ],
+        "answer": "новые"
+      }
+    ]
+  },
+  {
+    "id": "ru-prepositional",
+    "language": "ru",
+    "stage": 1,
+    "title": {
+      "de": "Präpositiv mit о",
+      "en": "Prepositional with о",
+      "ru": "Предложный с о",
+      "uk": "Прийменниковий з о"
+    },
+    "rule": {
+      "de": "О/об bei einem Gesprächsthema verlangt den Präpositiv: о книге, о доме, об окне.",
+      "en": "О/об for a topic of discussion takes the prepositional: о книге, о доме, об окне.",
+      "ru": "О/об в значении темы разговора требует предложного падежа.",
+      "uk": "О/об у значенні теми розмови вимагає прийменникового відмінка."
+    },
+    "example": "Мы говорим о книге.",
+    "practice": [
+      {
+        "sentence": "Мы говорим о ___. (дом)",
+        "options": [
+          "доме",
+          "дом",
+          "дома"
+        ],
+        "answer": "доме"
+      },
+      {
+        "sentence": "Она думает о ___. (работа)",
+        "options": [
+          "работе",
+          "работу",
+          "работой"
+        ],
+        "answer": "работе"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Он рассказывает о ___. (город)",
+        "options": [
+          "городе",
+          "города",
+          "городом"
+        ],
+        "answer": "городе"
+      },
+      {
+        "sentence": "Мы говорим об ___. (окно)",
+        "options": [
+          "окне",
+          "окно",
+          "окна"
+        ],
+        "answer": "окне"
+      }
+    ]
+  },
+  {
+    "id": "ru-accusative",
+    "language": "ru",
+    "stage": 2,
+    "title": {
+      "de": "Akkusativ belebt/unbelebt",
+      "en": "Animate accusative",
+      "ru": "Винительный одушевлённых",
+      "uk": "Знахідний істот"
+    },
+    "rule": {
+      "de": "Bei maskulinen Nomen im Singular entspricht der Akkusativ bei Belebten häufig dem Genitiv, bei Unbelebten dem Nominativ.",
+      "en": "Masculine singular animate accusative generally matches genitive; inanimate matches nominative.",
+      "ru": "У существительных мужского рода ед. числа винительный одушевлённых совпадает с родительным, неодушевлённых — с именительным.",
+      "uk": "В іменників чоловічого роду однини знахідний істот збігається з родовим, неістот — з називним."
+    },
+    "example": "Я вижу брата. Я вижу стол.",
+    "practice": [
+      {
+        "sentence": "Я вижу ___. (брат)",
+        "options": [
+          "брата",
+          "брат",
+          "братом"
+        ],
+        "answer": "брата"
+      },
+      {
+        "sentence": "Я вижу ___. (стол)",
+        "options": [
+          "стол",
+          "стола",
+          "столом"
+        ],
+        "answer": "стол"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Она встретила ___. (друг)",
+        "options": [
+          "друга",
+          "друг",
+          "другом"
+        ],
+        "answer": "друга"
+      },
+      {
+        "sentence": "Он купил ___. (телефон)",
+        "options": [
+          "телефон",
+          "телефона",
+          "телефоном"
+        ],
+        "answer": "телефон"
+      }
+    ]
+  },
+  {
+    "id": "ru-aspect",
+    "language": "ru",
+    "stage": 2,
+    "title": {
+      "de": "Verbalaspekt",
+      "en": "Verb aspect",
+      "ru": "Вид глагола",
+      "uk": "Вид дієслова"
+    },
+    "rule": {
+      "de": "Несовершенный вид beschreibt Verlauf oder Wiederholung; совершенный вид ein begrenztes Ereignis/Resultat.",
+      "en": "Imperfective describes ongoing or repeated actions; perfective a bounded event/result.",
+      "ru": "Несовершенный вид обозначает процесс или повторение, совершенный — целостное действие или результат.",
+      "uk": "Недоконаний вид позначає процес або повторення, доконаний — цілісну дію чи результат."
+    },
+    "example": "Я читал письмо. Я прочитал письмо до конца.",
+    "practice": [
+      {
+        "sentence": "Каждый день он ___ газету. (habit)",
+        "options": [
+          "читал",
+          "прочитал",
+          "прочитает"
+        ],
+        "answer": "читал"
+      },
+      {
+        "sentence": "Он ___ книгу до конца вчера. (completion)",
+        "options": [
+          "прочитал",
+          "читает",
+          "прочитает"
+        ],
+        "answer": "прочитал"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Она обычно ___ письма утром. (habit)",
+        "options": [
+          "писала",
+          "написала",
+          "напишет"
+        ],
+        "answer": "писала"
+      },
+      {
+        "sentence": "Он наконец ___ письмо и отправил его. (completion)",
+        "options": [
+          "написал",
+          "пишет",
+          "напишет"
+        ],
+        "answer": "написал"
+      }
+    ]
+  },
+  {
+    "id": "ru-conditional",
+    "language": "ru",
+    "stage": 3,
+    "title": {
+      "de": "Irrealis mit бы",
+      "en": "Conditional with бы",
+      "ru": "Условное с бы",
+      "uk": "Умовне з бы"
+    },
+    "rule": {
+      "de": "Бы kombiniert sich mit der Vergangenheitsform für hypothetische Situationen; die Form stimmt in Genus/Numerus überein.",
+      "en": "Бы combines with past forms for hypothetical situations; gender/number agreement remains.",
+      "ru": "Бы образует условное наклонение с формой прошедшего времени, согласование по роду и числу сохраняется.",
+      "uk": "Бы утворює умовний спосіб з минулою формою; узгодження за родом і числом зберігається."
+    },
+    "example": "Если бы я знал, я бы помог.",
+    "practice": [
+      {
+        "sentence": "Если бы он знал, он бы ___. (помочь)",
+        "options": [
+          "помог",
+          "помогла",
+          "помогли"
+        ],
+        "answer": "помог"
+      },
+      {
+        "sentence": "Если бы она знала, она бы ___. (помочь)",
+        "options": [
+          "помогла",
+          "помог",
+          "помогли"
+        ],
+        "answer": "помогла"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Если бы мы знали, мы бы ___. (помочь)",
+        "options": [
+          "помогли",
+          "помог",
+          "помогла"
+        ],
+        "answer": "помогли"
+      },
+      {
+        "sentence": "Если бы они знали, они бы ___. (прийти)",
+        "options": [
+          "пришли",
+          "пришёл",
+          "пришла"
+        ],
+        "answer": "пришли"
+      }
+    ]
+  },
+  {
+    "id": "zh-wordorder",
+    "language": "zh",
+    "stage": 1,
+    "title": {
+      "de": "Subjekt–Verb–Objekt",
+      "en": "Subject–verb–object",
+      "ru": "Подлежащее–глагол–объект",
+      "uk": "Підмет–дієслово–додаток"
+    },
+    "rule": {
+      "de": "Ein einfacher Aussagesatz hat oft Subjekt + Verb + Objekt. Verben werden nicht nach Person konjugiert.",
+      "en": "A simple statement often uses subject + verb + object. Verbs do not conjugate by person.",
+      "ru": "Простое предложение часто строится подлежащее + глагол + объект. Глаголы не спрягаются по лицам.",
+      "uk": "Просте речення часто має підмет + дієслово + додаток. Дієслова не відмінюються за особами."
+    },
+    "example": "我喝水。",
+    "practice": [
+      {
+        "sentence": "我___水。 (drink)",
+        "options": [
+          "喝",
+          "水",
+          "我"
+        ],
+        "answer": "喝"
+      },
+      {
+        "sentence": "她___书。 (read)",
+        "options": [
+          "看",
+          "书",
+          "她"
+        ],
+        "answer": "看"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "他___中文。 (study)",
+        "options": [
+          "学",
+          "中文",
+          "他"
+        ],
+        "answer": "学"
+      },
+      {
+        "sentence": "我们___米饭。 (eat)",
+        "options": [
+          "吃",
+          "米饭",
+          "我们"
+        ],
+        "answer": "吃"
+      }
+    ]
+  },
+  {
+    "id": "zh-ma",
+    "language": "zh",
+    "stage": 1,
+    "title": {
+      "de": "Ja/Nein-Frage mit 吗",
+      "en": "Yes/no question with 吗",
+      "ru": "Вопрос с 吗",
+      "uk": "Питання з 吗"
+    },
+    "rule": {
+      "de": "吗 am Satzende macht aus vielen Aussagesätzen eine Ja/Nein-Frage, ohne die Satzstellung zu ändern.",
+      "en": "Sentence-final 吗 turns many statements into yes/no questions without changing word order.",
+      "ru": "吗 в конце превращает многие утверждения в общий вопрос без изменения порядка слов.",
+      "uk": "吗 у кінці перетворює багато тверджень на загальне питання без зміни порядку слів."
+    },
+    "example": "你是学生吗？",
+    "practice": [
+      {
+        "sentence": "你喝茶___？ (yes/no)",
+        "options": [
+          "吗",
+          "的",
+          "很"
+        ],
+        "answer": "吗"
+      },
+      {
+        "sentence": "他是老师___？ (yes/no)",
+        "options": [
+          "吗",
+          "的",
+          "很"
+        ],
+        "answer": "吗"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "你喜欢音乐___？ (yes/no)",
+        "options": [
+          "吗",
+          "的",
+          "很"
+        ],
+        "answer": "吗"
+      },
+      {
+        "sentence": "她会游泳___？ (yes/no)",
+        "options": [
+          "吗",
+          "的",
+          "很"
+        ],
+        "answer": "吗"
+      }
+    ]
+  },
+  {
+    "id": "zh-classifier",
+    "language": "zh",
+    "stage": 2,
+    "title": {
+      "de": "Zählwörter",
+      "en": "Classifiers",
+      "ru": "Счётные слова",
+      "uk": "Лічильні слова"
+    },
+    "rule": {
+      "de": "Zwischen Zahl und Nomen steht häufig ein Zählwort: 一本书, 三个人, 一杯水, 一张纸.",
+      "en": "A classifier often occurs between number and noun: 一本书, 三个人, 一杯水, 一张纸.",
+      "ru": "Между числом и существительным часто стоит счётное слово: 一本书, 三个人, 一杯水, 一张纸.",
+      "uk": "Між числом та іменником часто стоїть лічильне слово: 一本书, 三个人, 一杯水, 一张纸."
+    },
+    "example": "两本书。",
+    "practice": [
+      {
+        "sentence": "三___书。",
+        "options": [
+          "本",
+          "杯",
+          "张"
+        ],
+        "answer": "本"
+      },
+      {
+        "sentence": "两___人。",
+        "options": [
+          "个",
+          "本",
+          "杯"
+        ],
+        "answer": "个"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "一___水。",
+        "options": [
+          "杯",
+          "本",
+          "张"
+        ],
+        "answer": "杯"
+      },
+      {
+        "sentence": "一___纸。",
+        "options": [
+          "张",
+          "本",
+          "杯"
+        ],
+        "answer": "张"
+      }
+    ]
+  },
+  {
+    "id": "zh-negation",
+    "language": "zh",
+    "stage": 2,
+    "title": {
+      "de": "不 und 没有",
+      "en": "不 and 没有",
+      "ru": "Отрицания 不 и 没有",
+      "uk": "Заперечення 不 і 没有"
+    },
+    "rule": {
+      "de": "不 verneint oft Gewohnheiten oder Zustände; 没有 verneint Besitz. Vor 有 steht 没, nicht 不.",
+      "en": "不 often negates habits or states; 没有 negates possession. Negate 有 with 没, not 不.",
+      "ru": "不 часто отрицает привычки и состояния; 没有 — наличие. Перед 有 отрицание 没, не 不.",
+      "uk": "不 часто заперечує звички й стани; 没有 — наявність. Перед 有 заперечення 没, не 不."
+    },
+    "example": "我不喝咖啡。我没有车。",
+    "practice": [
+      {
+        "sentence": "我___有车。",
+        "options": [
+          "没",
+          "不",
+          "很"
+        ],
+        "answer": "没"
+      },
+      {
+        "sentence": "他___是老师。",
+        "options": [
+          "不",
+          "有",
+          "很"
+        ],
+        "answer": "不"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "她___有钱。",
+        "options": [
+          "没",
+          "不",
+          "很"
+        ],
+        "answer": "没"
+      },
+      {
+        "sentence": "我___喜欢咖啡。",
+        "options": [
+          "不",
+          "有",
+          "很"
+        ],
+        "answer": "不"
+      }
+    ]
+  },
+  {
+    "id": "zh-comparison",
+    "language": "zh",
+    "stage": 3,
+    "title": {
+      "de": "Vergleich mit 比",
+      "en": "Comparison with 比",
+      "ru": "Сравнение с 比",
+      "uk": "Порівняння з 比"
+    },
+    "rule": {
+      "de": "A 比 B + Adjektiv: A ist im betreffenden Merkmal stärker als B.",
+      "en": "A 比 B + adjective: A has more of that quality than B.",
+      "ru": "A 比 B + прилагательное: у A признак выражен сильнее, чем у B.",
+      "uk": "A 比 B + прикметник: у A ознака виражена сильніше, ніж у B."
+    },
+    "example": "今天比昨天热。",
+    "practice": [
+      {
+        "sentence": "他___我高。 (taller than)",
+        "options": [
+          "比",
+          "在",
+          "和"
+        ],
+        "answer": "比"
+      },
+      {
+        "sentence": "今天___昨天冷。 (colder than)",
+        "options": [
+          "比",
+          "在",
+          "和"
+        ],
+        "answer": "比"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "这个___那个贵。 (more expensive than)",
+        "options": [
+          "比",
+          "在",
+          "和"
+        ],
+        "answer": "比"
+      },
+      {
+        "sentence": "姐姐___妹妹大。 (older than)",
+        "options": [
+          "比",
+          "在",
+          "和"
+        ],
+        "answer": "比"
+      }
+    ]
+  },
+  {
+    "id": "es-gender",
+    "language": "es",
+    "stage": 1,
+    "title": {
+      "de": "Genus und Artikel",
+      "en": "Gender and articles",
+      "ru": "Род и артикли",
+      "uk": "Рід і артиклі"
+    },
+    "rule": {
+      "de": "Bestimmte Artikel: el/la im Singular, los/las im Plural. Genus mit Nomen lernen.",
+      "en": "Definite articles: el/la singular, los/las plural. Learn gender with nouns.",
+      "ru": "Определённые артикли: el/la в ед. числе, los/las во множественном. Род учим со словом.",
+      "uk": "Означені артиклі: el/la в однині, los/las у множині. Рід вчимо зі словом."
+    },
+    "example": "el libro, la mesa",
+    "practice": [
+      {
+        "sentence": "___ libro (definite)",
+        "options": [
+          "el",
+          "la",
+          "las"
+        ],
+        "answer": "el"
+      },
+      {
+        "sentence": "___ mesa (definite)",
+        "options": [
+          "la",
+          "el",
+          "los"
+        ],
+        "answer": "la"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ libros (definite)",
+        "options": [
+          "los",
+          "las",
+          "el"
+        ],
+        "answer": "los"
+      },
+      {
+        "sentence": "___ mesas (definite)",
+        "options": [
+          "las",
+          "los",
+          "la"
+        ],
+        "answer": "las"
+      }
+    ]
+  },
+  {
+    "id": "es-present",
+    "language": "es",
+    "stage": 1,
+    "title": {
+      "de": "Präsens -ar",
+      "en": "Present -ar",
+      "ru": "Настоящее -ar",
+      "uk": "Теперішній -ar"
+    },
+    "rule": {
+      "de": "Hablar: hablo, hablas, habla, hablamos, habláis, hablan.",
+      "en": "Hablar: hablo, hablas, habla, hablamos, habláis, hablan.",
+      "ru": "Спряжение hablar: hablo, hablas, habla, hablamos, habláis, hablan.",
+      "uk": "Дієвідміна hablar: hablo, hablas, habla, hablamos, habláis, hablan."
+    },
+    "example": "Yo hablo español.",
+    "practice": [
+      {
+        "sentence": "Tú ___ español. (hablar)",
+        "options": [
+          "hablas",
+          "hablo",
+          "hablan"
+        ],
+        "answer": "hablas"
+      },
+      {
+        "sentence": "Nosotros ___ español. (hablar)",
+        "options": [
+          "hablamos",
+          "hablan",
+          "habláis"
+        ],
+        "answer": "hablamos"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ella ___ español. (hablar)",
+        "options": [
+          "habla",
+          "hablas",
+          "hablo"
+        ],
+        "answer": "habla"
+      },
+      {
+        "sentence": "Ellos ___ español. (hablar)",
+        "options": [
+          "hablan",
+          "habla",
+          "hablamos"
+        ],
+        "answer": "hablan"
+      }
+    ]
+  },
+  {
+    "id": "es-ser-estar",
+    "language": "es",
+    "stage": 2,
+    "title": {
+      "de": "Ser und estar",
+      "en": "Ser and estar",
+      "ru": "Глаголы ser и estar",
+      "uk": "Дієслова ser і estar"
+    },
+    "rule": {
+      "de": "Ser dient u. a. Identität/Beruf; estar u. a. Zustand und Ort von Personen oder Dingen.",
+      "en": "Ser for identity/profession; estar for states and location of people/things, among other uses.",
+      "ru": "Ser — в частности личность и профессия; estar — состояние и место людей/предметов.",
+      "uk": "Ser — зокрема особа й професія; estar — стан і місце людей/предметів."
+    },
+    "example": "Soy médico. Estoy en casa.",
+    "practice": [
+      {
+        "sentence": "Yo ___ profesora. (profession)",
+        "options": [
+          "soy",
+          "estoy",
+          "eres"
+        ],
+        "answer": "soy"
+      },
+      {
+        "sentence": "Ella ___ en casa. (location)",
+        "options": [
+          "está",
+          "es",
+          "soy"
+        ],
+        "answer": "está"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Nosotros ___ estudiantes. (identity)",
+        "options": [
+          "somos",
+          "estamos",
+          "son"
+        ],
+        "answer": "somos"
+      },
+      {
+        "sentence": "Tú ___ cansado ahora. (state)",
+        "options": [
+          "estás",
+          "eres",
+          "soy"
+        ],
+        "answer": "estás"
+      }
+    ]
+  },
+  {
+    "id": "es-preterite",
+    "language": "es",
+    "stage": 2,
+    "title": {
+      "de": "Pretérito indefinido -ar",
+      "en": "Preterite -ar",
+      "ru": "Прошедшее indefinido -ar",
+      "uk": "Минулий indefinido -ar"
+    },
+    "rule": {
+      "de": "Abgeschlossene Ereignisse: hablé, hablaste, habló, hablamos, hablasteis, hablaron.",
+      "en": "Completed events: hablé, hablaste, habló, hablamos, hablasteis, hablaron.",
+      "ru": "Завершённые события: hablé, hablaste, habló, hablamos, hablasteis, hablaron.",
+      "uk": "Завершені події: hablé, hablaste, habló, hablamos, hablasteis, hablaron."
+    },
+    "example": "Ayer hablé con Ana.",
+    "practice": [
+      {
+        "sentence": "Ayer yo ___ con Ana. (hablar, preterite)",
+        "options": [
+          "hablé",
+          "hablo",
+          "habló"
+        ],
+        "answer": "hablé"
+      },
+      {
+        "sentence": "Ayer ella ___ con Ana. (hablar, preterite)",
+        "options": [
+          "habló",
+          "hablé",
+          "hablas"
+        ],
+        "answer": "habló"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Ayer tú ___ con Ana. (hablar, preterite)",
+        "options": [
+          "hablaste",
+          "habló",
+          "hablan"
+        ],
+        "answer": "hablaste"
+      },
+      {
+        "sentence": "Ayer ellos ___ con Ana. (hablar, preterite)",
+        "options": [
+          "hablaron",
+          "habló",
+          "hablamos"
+        ],
+        "answer": "hablaron"
+      }
+    ]
+  },
+  {
+    "id": "es-subjunctive",
+    "language": "es",
+    "stage": 3,
+    "title": {
+      "de": "Subjuntivo nach querer que",
+      "en": "Subjunctive after querer que",
+      "ru": "Subjuntivo после querer que",
+      "uk": "Subjuntivo після querer que"
+    },
+    "rule": {
+      "de": "Bei Wunsch mit verschiedenem Subjekt: quiero que + Subjuntivo, z. B. hables, vengas.",
+      "en": "A wish with a different subject: quiero que + subjunctive, e.g. hables, vengas.",
+      "ru": "Желание с другим подлежащим: quiero que + subjuntivo, например hables, vengas.",
+      "uk": "Бажання з іншим підметом: quiero que + subjuntivo, наприклад hables, vengas."
+    },
+    "example": "Quiero que vengas.",
+    "practice": [
+      {
+        "sentence": "Quiero que tú ___ conmigo. (hablar)",
+        "options": [
+          "hables",
+          "hablas",
+          "hablar"
+        ],
+        "answer": "hables"
+      },
+      {
+        "sentence": "Quiero que ella ___ aquí. (venir)",
+        "options": [
+          "venga",
+          "viene",
+          "venir"
+        ],
+        "answer": "venga"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Quiero que ellos ___ más. (estudiar)",
+        "options": [
+          "estudien",
+          "estudian",
+          "estudiar"
+        ],
+        "answer": "estudien"
+      },
+      {
+        "sentence": "Quiero que nosotros ___ juntos. (trabajar)",
+        "options": [
+          "trabajemos",
+          "trabajamos",
+          "trabajar"
+        ],
+        "answer": "trabajemos"
+      }
+    ]
+  },
+  {
+    "id": "fr-articles",
+    "language": "fr",
+    "stage": 1,
+    "title": {
+      "de": "Bestimmte Artikel",
+      "en": "Definite articles",
+      "ru": "Определённые артикли",
+      "uk": "Означені артиклі"
+    },
+    "rule": {
+      "de": "Le (m), la (f), l’ vor Vokal oder stummem h, les im Plural.",
+      "en": "Le (m), la (f), l’ before a vowel or mute h, les plural.",
+      "ru": "Le (м), la (ж), l’ перед гласным или немым h, les во множественном.",
+      "uk": "Le (ч), la (ж), l’ перед голосним або німим h, les у множині."
+    },
+    "example": "le livre, la table, l’école",
+    "practice": [
+      {
+        "sentence": "___ livre (definite)",
+        "options": [
+          "le",
+          "la",
+          "les"
+        ],
+        "answer": "le"
+      },
+      {
+        "sentence": "___ table (definite)",
+        "options": [
+          "la",
+          "le",
+          "les"
+        ],
+        "answer": "la"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ école (definite)",
+        "options": [
+          "l’",
+          "le",
+          "la"
+        ],
+        "answer": "l’"
+      },
+      {
+        "sentence": "___ livres (definite)",
+        "options": [
+          "les",
+          "le",
+          "la"
+        ],
+        "answer": "les"
+      }
+    ]
+  },
+  {
+    "id": "fr-present",
+    "language": "fr",
+    "stage": 1,
+    "title": {
+      "de": "Präsens -er",
+      "en": "Present -er",
+      "ru": "Настоящее -er",
+      "uk": "Теперішній -er"
+    },
+    "rule": {
+      "de": "Parler: parle, parles, parle, parlons, parlez, parlent.",
+      "en": "Parler: parle, parles, parle, parlons, parlez, parlent.",
+      "ru": "Спряжение parler: parle, parles, parle, parlons, parlez, parlent.",
+      "uk": "Дієвідміна parler: parle, parles, parle, parlons, parlez, parlent."
+    },
+    "example": "Je parle français.",
+    "practice": [
+      {
+        "sentence": "Tu ___ français. (parler)",
+        "options": [
+          "parles",
+          "parle",
+          "parlez"
+        ],
+        "answer": "parles"
+      },
+      {
+        "sentence": "Nous ___ français. (parler)",
+        "options": [
+          "parlons",
+          "parlez",
+          "parlent"
+        ],
+        "answer": "parlons"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Vous ___ français. (parler)",
+        "options": [
+          "parlez",
+          "parlons",
+          "parle"
+        ],
+        "answer": "parlez"
+      },
+      {
+        "sentence": "Elles ___ français. (parler)",
+        "options": [
+          "parlent",
+          "parle",
+          "parles"
+        ],
+        "answer": "parlent"
+      }
+    ]
+  },
+  {
+    "id": "fr-negation",
+    "language": "fr",
+    "stage": 2,
+    "title": {
+      "de": "Ne ... pas",
+      "en": "Ne ... pas",
+      "ru": "Отрицание ne ... pas",
+      "uk": "Заперечення ne ... pas"
+    },
+    "rule": {
+      "de": "In der Standardschriftsprache umschließt ne/n’ ... pas das finite Verb im einfachen Satz.",
+      "en": "In standard writing ne/n’ ... pas surrounds the finite verb in simple clauses.",
+      "ru": "В стандартной письменной речи ne/n’ ... pas окружает спрягаемый глагол.",
+      "uk": "У стандартному письмі ne/n’ ... pas оточує відмінюване дієслово."
+    },
+    "example": "Je ne parle pas.",
+    "practice": [
+      {
+        "sentence": "Je ne mange ___. (not)",
+        "options": [
+          "pas",
+          "très",
+          "oui"
+        ],
+        "answer": "pas"
+      },
+      {
+        "sentence": "Il n’est ___ ici. (not)",
+        "options": [
+          "pas",
+          "très",
+          "oui"
+        ],
+        "answer": "pas"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Nous ne savons ___. (not)",
+        "options": [
+          "pas",
+          "très",
+          "oui"
+        ],
+        "answer": "pas"
+      },
+      {
+        "sentence": "Elle ne vient ___. (not)",
+        "options": [
+          "pas",
+          "très",
+          "oui"
+        ],
+        "answer": "pas"
+      }
+    ]
+  },
+  {
+    "id": "fr-perfect",
+    "language": "fr",
+    "stage": 2,
+    "title": {
+      "de": "Passé composé avec avoir",
+      "en": "Passé composé with avoir",
+      "ru": "Passé composé с avoir",
+      "uk": "Passé composé з avoir"
+    },
+    "rule": {
+      "de": "Viele Verben: avoir im Präsens + participe passé; -er → -é.",
+      "en": "Many verbs: present avoir + past participle; -er → -é.",
+      "ru": "Многие глаголы: avoir в настоящем + причастие; -er → -é.",
+      "uk": "Багато дієслів: avoir у теперішньому + дієприкметник; -er → -é."
+    },
+    "example": "J’ai parlé.",
+    "practice": [
+      {
+        "sentence": "Tu ___ mangé. (avoir)",
+        "options": [
+          "as",
+          "a",
+          "ai"
+        ],
+        "answer": "as"
+      },
+      {
+        "sentence": "Nous avons ___. (parler)",
+        "options": [
+          "parlé",
+          "parler",
+          "parle"
+        ],
+        "answer": "parlé"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Elle ___ travaillé. (avoir)",
+        "options": [
+          "a",
+          "as",
+          "avons"
+        ],
+        "answer": "a"
+      },
+      {
+        "sentence": "Ils ont ___. (visiter)",
+        "options": [
+          "visité",
+          "visiter",
+          "visitent"
+        ],
+        "answer": "visité"
+      }
+    ]
+  },
+  {
+    "id": "fr-relative",
+    "language": "fr",
+    "stage": 3,
+    "title": {
+      "de": "Qui und que",
+      "en": "Qui and que",
+      "ru": "Относительные qui и que",
+      "uk": "Відносні qui й que"
+    },
+    "rule": {
+      "de": "Qui ist Subjekt des Relativsatzes, que/qu’ direktes Objekt.",
+      "en": "Qui is the subject of a relative clause, que/qu’ the direct object.",
+      "ru": "Qui — подлежащее придаточного, que/qu’ — прямое дополнение.",
+      "uk": "Qui — підмет підрядного, que/qu’ — прямий додаток."
+    },
+    "example": "Le livre que je lis. La personne qui parle.",
+    "practice": [
+      {
+        "sentence": "La femme ___ parle est ici.",
+        "options": [
+          "qui",
+          "que",
+          "où"
+        ],
+        "answer": "qui"
+      },
+      {
+        "sentence": "Le livre ___ tu lis est neuf.",
+        "options": [
+          "que",
+          "qui",
+          "où"
+        ],
+        "answer": "que"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Le train ___ arrive est rapide.",
+        "options": [
+          "qui",
+          "que",
+          "où"
+        ],
+        "answer": "qui"
+      },
+      {
+        "sentence": "Le film ___ nous regardons est long.",
+        "options": [
+          "que",
+          "qui",
+          "où"
+        ],
+        "answer": "que"
+      }
+    ]
+  },
+  {
+    "id": "it-articles",
+    "language": "it",
+    "stage": 1,
+    "title": {
+      "de": "Bestimmte Artikel",
+      "en": "Definite articles",
+      "ru": "Определённые артикли",
+      "uk": "Означені артиклі"
+    },
+    "rule": {
+      "de": "Il vor vielen maskulinen Konsonanten, lo vor z oder s+Konsonant, la feminin, l’ vor Vokal im Singular.",
+      "en": "Il before many masculine consonants, lo before z or s+consonant, la feminine, l’ before vowels in singular.",
+      "ru": "Il перед многими мужскими согласными, lo перед z или s+согласной, la женский, l’ перед гласным в ед. числе.",
+      "uk": "Il перед багатьма чоловічими приголосними, lo перед z або s+приголосною, la жіночий, l’ перед голосним в однині."
+    },
+    "example": "il libro, lo studente, la casa",
+    "practice": [
+      {
+        "sentence": "___ libro (definite)",
+        "options": [
+          "il",
+          "lo",
+          "la"
+        ],
+        "answer": "il"
+      },
+      {
+        "sentence": "___ studente (definite)",
+        "options": [
+          "lo",
+          "il",
+          "la"
+        ],
+        "answer": "lo"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ casa (definite)",
+        "options": [
+          "la",
+          "il",
+          "lo"
+        ],
+        "answer": "la"
+      },
+      {
+        "sentence": "___ amico (definite)",
+        "options": [
+          "l’",
+          "il",
+          "la"
+        ],
+        "answer": "l’"
+      }
+    ]
+  },
+  {
+    "id": "it-present",
+    "language": "it",
+    "stage": 1,
+    "title": {
+      "de": "Präsens -are",
+      "en": "Present -are",
+      "ru": "Настоящее -are",
+      "uk": "Теперішній -are"
+    },
+    "rule": {
+      "de": "Parlare: parlo, parli, parla, parliamo, parlate, parlano.",
+      "en": "Parlare: parlo, parli, parla, parliamo, parlate, parlano.",
+      "ru": "Спряжение parlare: parlo, parli, parla, parliamo, parlate, parlano.",
+      "uk": "Дієвідміна parlare: parlo, parli, parla, parliamo, parlate, parlano."
+    },
+    "example": "Io parlo italiano.",
+    "practice": [
+      {
+        "sentence": "Tu ___ italiano. (parlare)",
+        "options": [
+          "parli",
+          "parlo",
+          "parlano"
+        ],
+        "answer": "parli"
+      },
+      {
+        "sentence": "Noi ___ italiano. (parlare)",
+        "options": [
+          "parliamo",
+          "parlate",
+          "parla"
+        ],
+        "answer": "parliamo"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Voi ___ italiano. (parlare)",
+        "options": [
+          "parlate",
+          "parliamo",
+          "parli"
+        ],
+        "answer": "parlate"
+      },
+      {
+        "sentence": "Loro ___ italiano. (parlare)",
+        "options": [
+          "parlano",
+          "parla",
+          "parli"
+        ],
+        "answer": "parlano"
+      }
+    ]
+  },
+  {
+    "id": "it-essere",
+    "language": "it",
+    "stage": 2,
+    "title": {
+      "de": "Essere und avere",
+      "en": "Essere and avere",
+      "ru": "Essere и avere",
+      "uk": "Essere і avere"
+    },
+    "rule": {
+      "de": "Essere: sono, sei, è, siamo, siete, sono; avere: ho, hai, ha, abbiamo, avete, hanno. Alter mit avere.",
+      "en": "Essere: sono, sei, è, siamo, siete, sono; avere: ho, hai, ha, abbiamo, avete, hanno. Age uses avere.",
+      "ru": "Essere: sono, sei, è, siamo, siete, sono; avere: ho, hai, ha, abbiamo, avete, hanno. Возраст с avere.",
+      "uk": "Essere: sono, sei, è, siamo, siete, sono; avere: ho, hai, ha, abbiamo, avete, hanno. Вік з avere."
+    },
+    "example": "Sono studente. Ho vent’anni.",
+    "practice": [
+      {
+        "sentence": "Io ___ vent’anni.",
+        "options": [
+          "ho",
+          "sono",
+          "ha"
+        ],
+        "answer": "ho"
+      },
+      {
+        "sentence": "Tu ___ a casa. (essere)",
+        "options": [
+          "sei",
+          "hai",
+          "sono"
+        ],
+        "answer": "sei"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Noi ___ una macchina. (avere)",
+        "options": [
+          "abbiamo",
+          "siamo",
+          "avete"
+        ],
+        "answer": "abbiamo"
+      },
+      {
+        "sentence": "Loro ___ italiani. (essere)",
+        "options": [
+          "sono",
+          "hanno",
+          "siamo"
+        ],
+        "answer": "sono"
+      }
+    ]
+  },
+  {
+    "id": "it-perfect",
+    "language": "it",
+    "stage": 2,
+    "title": {
+      "de": "Passato prossimo",
+      "en": "Passato prossimo",
+      "ru": "Passato prossimo",
+      "uk": "Passato prossimo"
+    },
+    "rule": {
+      "de": "Viele Verben: avere + participio passato. Andare benutzt essere; das Partizip stimmt dann mit dem Subjekt überein.",
+      "en": "Many verbs: avere + past participle. Andare uses essere; its participle agrees with the subject.",
+      "ru": "Многие глаголы: avere + причастие. Andare требует essere; причастие согласуется с подлежащим.",
+      "uk": "Багато дієслів: avere + дієприкметник. Andare вимагає essere; дієприкметник узгоджується з підметом."
+    },
+    "example": "Ho mangiato. Maria è andata.",
+    "practice": [
+      {
+        "sentence": "Io ho ___. (mangiare)",
+        "options": [
+          "mangiato",
+          "mangiare",
+          "mangiando"
+        ],
+        "answer": "mangiato"
+      },
+      {
+        "sentence": "Maria ___ andata a casa.",
+        "options": [
+          "è",
+          "ha",
+          "sono"
+        ],
+        "answer": "è"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Loro hanno ___. (parlare)",
+        "options": [
+          "parlato",
+          "parlare",
+          "parlano"
+        ],
+        "answer": "parlato"
+      },
+      {
+        "sentence": "Marco è ___ a scuola. (andare)",
+        "options": [
+          "andato",
+          "andata",
+          "andare"
+        ],
+        "answer": "andato"
+      }
+    ]
+  },
+  {
+    "id": "it-subjunctive",
+    "language": "it",
+    "stage": 3,
+    "title": {
+      "de": "Congiuntivo nach penso che",
+      "en": "Subjunctive after penso che",
+      "ru": "Congiuntivo после penso che",
+      "uk": "Congiuntivo після penso che"
+    },
+    "rule": {
+      "de": "In der Standardsprache folgt nach penso che oft Congiuntivo: sia, abbia, venga.",
+      "en": "In standard usage penso che often takes the subjunctive: sia, abbia, venga.",
+      "ru": "В стандартной речи после penso che часто congiuntivo: sia, abbia, venga.",
+      "uk": "У стандартному мовленні після penso che часто congiuntivo: sia, abbia, venga."
+    },
+    "example": "Penso che sia vero.",
+    "practice": [
+      {
+        "sentence": "Penso che lui ___ stanco. (congiuntivo)",
+        "options": [
+          "sia",
+          "è",
+          "sono"
+        ],
+        "answer": "sia"
+      },
+      {
+        "sentence": "Penso che lei ___ ragione. (congiuntivo)",
+        "options": [
+          "abbia",
+          "ha",
+          "avere"
+        ],
+        "answer": "abbia"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Penso che lui ___ domani. (congiuntivo)",
+        "options": [
+          "venga",
+          "viene",
+          "venire"
+        ],
+        "answer": "venga"
+      },
+      {
+        "sentence": "Penso che loro ___ pronti. (congiuntivo)",
+        "options": [
+          "siano",
+          "sono",
+          "siamo"
+        ],
+        "answer": "siano"
+      }
+    ]
+  },
+  {
+    "id": "ja-copula",
+    "language": "ja",
+    "stage": 1,
+    "title": {
+      "de": "Höfliche Kopula です",
+      "en": "Polite copula です",
+      "ru": "Вежливая связка です",
+      "uk": "Ввічлива зв'язка です"
+    },
+    "rule": {
+      "de": "Nomen + です bildet höfliche Aussagen. です wird nicht nach Person verändert.",
+      "en": "Noun + です makes polite statements. です does not change by person.",
+      "ru": "Существительное + です образует вежливое утверждение. です не меняется по лицам.",
+      "uk": "Іменник + です утворює ввічливе твердження. です не змінюється за особами."
+    },
+    "example": "私は学生です。",
+    "practice": [
+      {
+        "sentence": "私は先生___。 (polite statement)",
+        "options": [
+          "です",
+          "を",
+          "に"
+        ],
+        "answer": "です"
+      },
+      {
+        "sentence": "これは本___。 (polite statement)",
+        "options": [
+          "です",
+          "を",
+          "に"
+        ],
+        "answer": "です"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "彼は医者___。 (polite statement)",
+        "options": [
+          "です",
+          "を",
+          "に"
+        ],
+        "answer": "です"
+      },
+      {
+        "sentence": "ここは学校___。 (polite statement)",
+        "options": [
+          "です",
+          "を",
+          "に"
+        ],
+        "answer": "です"
+      }
+    ]
+  },
+  {
+    "id": "ja-object",
+    "language": "ja",
+    "stage": 1,
+    "title": {
+      "de": "Objektpartikel を",
+      "en": "Object particle を",
+      "ru": "Частица объекта を",
+      "uk": "Частка додатка を"
+    },
+    "rule": {
+      "de": "を markiert häufig das direkte Objekt eines transitiven Verbs. Es wird gewöhnlich o ausgesprochen.",
+      "en": "を often marks the direct object of a transitive verb; usually pronounced o.",
+      "ru": "を часто обозначает прямое дополнение переходного глагола; обычно произносится o.",
+      "uk": "を часто позначає прямий додаток перехідного дієслова; зазвичай вимовляється o."
+    },
+    "example": "水を飲みます。",
+    "practice": [
+      {
+        "sentence": "本___読みます。",
+        "options": [
+          "を",
+          "に",
+          "で"
+        ],
+        "answer": "を"
+      },
+      {
+        "sentence": "水___飲みます。",
+        "options": [
+          "を",
+          "に",
+          "で"
+        ],
+        "answer": "を"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "ご飯___食べます。",
+        "options": [
+          "を",
+          "に",
+          "で"
+        ],
+        "answer": "を"
+      },
+      {
+        "sentence": "手紙___書きます。",
+        "options": [
+          "を",
+          "に",
+          "で"
+        ],
+        "answer": "を"
+      }
+    ]
+  },
+  {
+    "id": "ja-masu",
+    "language": "ja",
+    "stage": 2,
+    "title": {
+      "de": "Höfliche Verbformen",
+      "en": "Polite verb forms",
+      "ru": "Вежливые формы глаголов",
+      "uk": "Ввічливі форми дієслів"
+    },
+    "rule": {
+      "de": "ます: höflich nichtvergangen; ません: negativ; ました: vergangen; ませんでした: negativ vergangen.",
+      "en": "ます: polite nonpast; ません: negative; ました: past; ませんでした: negative past.",
+      "ru": "ます: вежливое непрошедшее; ません: отрицание; ました: прошедшее; ませんでした: отрицательное прошедшее.",
+      "uk": "ます: ввічливе неминуле; ません: заперечення; ました: минуле; ませんでした: заперечне минуле."
+    },
+    "example": "食べます。食べません。",
+    "practice": [
+      {
+        "sentence": "昨日パンを食べ___。 (past affirmative)",
+        "options": [
+          "ました",
+          "ます",
+          "ません"
+        ],
+        "answer": "ました"
+      },
+      {
+        "sentence": "明日は行き___。 (nonpast negative)",
+        "options": [
+          "ません",
+          "ました",
+          "ます"
+        ],
+        "answer": "ません"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "昨日は働き___。 (past negative)",
+        "options": [
+          "ませんでした",
+          "ます",
+          "ました"
+        ],
+        "answer": "ませんでした"
+      },
+      {
+        "sentence": "毎日本を読み___。 (habit affirmative)",
+        "options": [
+          "ます",
+          "ました",
+          "ません"
+        ],
+        "answer": "ます"
+      }
+    ]
+  },
+  {
+    "id": "ja-location",
+    "language": "ja",
+    "stage": 2,
+    "title": {
+      "de": "Ort der Handlung mit で",
+      "en": "Action location with で",
+      "ru": "Место действия с で",
+      "uk": "Місце дії з で"
+    },
+    "rule": {
+      "de": "で markiert oft den Ort einer Handlung; に kann Ziel oder Existenzort markieren.",
+      "en": "で often marks the location of an action; に can mark destination or location of existence.",
+      "ru": "で часто обозначает место действия; に может обозначать цель движения или место существования.",
+      "uk": "で часто позначає місце дії; に може позначати ціль руху або місце існування."
+    },
+    "example": "図書館で勉強します。",
+    "practice": [
+      {
+        "sentence": "学校___勉強します。 (action location)",
+        "options": [
+          "で",
+          "を",
+          "の"
+        ],
+        "answer": "で"
+      },
+      {
+        "sentence": "家___ご飯を食べます。 (action location)",
+        "options": [
+          "で",
+          "を",
+          "の"
+        ],
+        "answer": "で"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "公園___走ります。 (action location)",
+        "options": [
+          "で",
+          "を",
+          "の"
+        ],
+        "answer": "で"
+      },
+      {
+        "sentence": "駅___友達に会います。 (action location)",
+        "options": [
+          "で",
+          "を",
+          "の"
+        ],
+        "answer": "で"
+      }
+    ]
+  },
+  {
+    "id": "ja-te",
+    "language": "ja",
+    "stage": 3,
+    "title": {
+      "de": "て-Form + ください",
+      "en": "Te-form + ください",
+      "ru": "Форма て + ください",
+      "uk": "Форма て + ください"
+    },
+    "rule": {
+      "de": "Die て-Form mit ください bildet eine höfliche Bitte: 読む → 読んでください.",
+      "en": "Te-form + ください forms a polite request: 読む → 読んでください.",
+      "ru": "Форма て с ください образует вежливую просьбу: 読む → 読んでください.",
+      "uk": "Форма て з ください утворює ввічливе прохання: 読む → 読んでください."
+    },
+    "example": "ここに座ってください。",
+    "practice": [
+      {
+        "sentence": "本を___ください。 (読む)",
+        "options": [
+          "読んで",
+          "読みます",
+          "読む"
+        ],
+        "answer": "読んで"
+      },
+      {
+        "sentence": "ここに___ください。 (座る)",
+        "options": [
+          "座って",
+          "座ります",
+          "座る"
+        ],
+        "answer": "座って"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "名前を___ください。 (書く)",
+        "options": [
+          "書いて",
+          "書きます",
+          "書く"
+        ],
+        "answer": "書いて"
+      },
+      {
+        "sentence": "水を___ください。 (飲む)",
+        "options": [
+          "飲んで",
+          "飲みます",
+          "飲む"
+        ],
+        "answer": "飲んで"
+      }
+    ]
+  }
+]);
+
+// AI-assisted fourth-stage grammar practice.
+GRAMMAR_LESSONS.push(...[
+  {
+    "id": "ka-dative",
+    "language": "ka",
+    "stage": 4,
+    "title": {
+      "de": "Dativ bei geben",
+      "en": "Dative with giving",
+      "ru": "Дательный падеж при передаче",
+      "uk": "Давальний відмінок при передачі"
+    },
+    "rule": {
+      "de": "Der Empfänger steht in diesen Beispielen im Dativ mit -ს: დედა → დედას.",
+      "en": "In these examples the recipient takes dative -ს: დედა → დედას.",
+      "ru": "В этих примерах получатель стоит в дательном падеже с -ს: დედა → დედას.",
+      "uk": "У цих прикладах отримувач стоїть у давальному відмінку з -ს: დედა → დედას."
+    },
+    "example": "წიგნს დედას ვაძლევ.",
+    "practice": [
+      {
+        "sentence": "ყვავილს ___ ვაძლევ. (დედა: recipient)",
+        "options": [
+          "დედას",
+          "დედა",
+          "დედის"
+        ],
+        "answer": "დედას"
+      },
+      {
+        "sentence": "წიგნს ___ ვაძლევ. (მამა: recipient)",
+        "options": [
+          "მამას",
+          "მამა",
+          "მამის"
+        ],
+        "answer": "მამას"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "საჩუქარს ___ ვაძლევ. (ბავშვი: recipient)",
+        "options": [
+          "ბავშვს",
+          "ბავშვი",
+          "ბავშვის"
+        ],
+        "answer": "ბავშვს"
+      },
+      {
+        "sentence": "წყალს ___ ვაძლევ. (მეგობარი: recipient)",
+        "options": [
+          "მეგობარს",
+          "მეგობარი",
+          "მეგობრის"
+        ],
+        "answer": "მეგობარს"
+      }
+    ]
+  },
+  {
+    "id": "uk-instrumental",
+    "language": "uk",
+    "stage": 4,
+    "title": {
+      "de": "Instrumental mit з",
+      "en": "Instrumental with з",
+      "ru": "Творительный падеж с «з»",
+      "uk": "Орудний відмінок із «з»"
+    },
+    "rule": {
+      "de": "Bei Begleitung steht nach з der Instrumental: сестра → з сестрою.",
+      "en": "For accompaniment, з takes the instrumental: сестра → з сестрою.",
+      "ru": "При совместном действии после з употребляется творительный: сестра → з сестрою.",
+      "uk": "На позначення спільної дії після з уживаємо орудний: сестра → з сестрою."
+    },
+    "example": "Я йду з сестрою.",
+    "practice": [
+      {
+        "sentence": "Я розмовляю з ___. (мама)",
+        "options": [
+          "мамою",
+          "мами",
+          "маму"
+        ],
+        "answer": "мамою"
+      },
+      {
+        "sentence": "Я гуляю з ___. (брат)",
+        "options": [
+          "братом",
+          "брата",
+          "брату"
+        ],
+        "answer": "братом"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Вона працює з ___. (колега, жінка)",
+        "options": [
+          "колегою",
+          "колеги",
+          "колегу"
+        ],
+        "answer": "колегою"
+      },
+      {
+        "sentence": "Ми йдемо з ___. (друг)",
+        "options": [
+          "другом",
+          "друга",
+          "другу"
+        ],
+        "answer": "другом"
+      }
+    ]
+  },
+  {
+    "id": "ru-participle",
+    "language": "ru",
+    "stage": 4,
+    "title": {
+      "de": "Aktive Partizipien Präsens",
+      "en": "Present active participles",
+      "ru": "Действительные причастия настоящего времени",
+      "uk": "Активні дієприкметники теперішнього часу"
+    },
+    "rule": {
+      "de": "Das aktive Partizip stimmt in Genus und Numerus überein: читающий ученик.",
+      "en": "The active participle agrees in gender and number: читающий ученик.",
+      "ru": "Действительное причастие согласуется с существительным: читающий ученик.",
+      "uk": "Активний дієприкметник узгоджується з іменником: читающий ученик."
+    },
+    "example": "Читающая девочка сидит у окна.",
+    "practice": [
+      {
+        "sentence": "___ ученик отвечает на вопрос. (читать, м. р.)",
+        "options": [
+          "Читающий",
+          "Читающая",
+          "Читающие"
+        ],
+        "answer": "Читающий"
+      },
+      {
+        "sentence": "___ девочка рисует. (петь, ж. р.)",
+        "options": [
+          "Поющая",
+          "Поющий",
+          "Поющие"
+        ],
+        "answer": "Поющая"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "___ дети идут домой. (играть, мн. ч.)",
+        "options": [
+          "Играющие",
+          "Играющая",
+          "Играющий"
+        ],
+        "answer": "Играющие"
+      },
+      {
+        "sentence": "___ солнце освещает сад. (восходить, ср. р.)",
+        "options": [
+          "Восходящее",
+          "Восходящий",
+          "Восходящая"
+        ],
+        "answer": "Восходящее"
+      }
+    ]
+  },
+  {
+    "id": "zh-experience",
+    "language": "zh",
+    "stage": 4,
+    "title": {
+      "de": "Erfahrung mit 过",
+      "en": "Experience with 过",
+      "ru": "Опыт с частицей 过",
+      "uk": "Досвід із часткою 过"
+    },
+    "rule": {
+      "de": "过 nach dem Verb bezeichnet frühere Erfahrung; bei Verneinung steht 没 vor dem Verb.",
+      "en": "过 after the verb marks past experience; 没 precedes the verb in negation.",
+      "ru": "过 после глагола обозначает опыт; при отрицании 没 ставится перед глаголом.",
+      "uk": "过 після дієслова позначає досвід; при запереченні 没 передує дієслову."
+    },
+    "example": "我去过北京。",
+    "practice": [
+      {
+        "sentence": "我曾经去___北京。 (experience)",
+        "options": [
+          "过",
+          "吗",
+          "的"
+        ],
+        "answer": "过"
+      },
+      {
+        "sentence": "我从来___吃过寿司。 (never)",
+        "options": [
+          "没",
+          "很",
+          "正在"
+        ],
+        "answer": "没"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "你以前看___这部电影吗？ (experience)",
+        "options": [
+          "过",
+          "吗",
+          "的"
+        ],
+        "answer": "过"
+      },
+      {
+        "sentence": "他从来___学过法语。 (never)",
+        "options": [
+          "没",
+          "很",
+          "正在"
+        ],
+        "answer": "没"
+      }
+    ]
+  },
+  {
+    "id": "es-imperfect",
+    "language": "es",
+    "stage": 4,
+    "title": {
+      "de": "Imperfekt: -ar-Verben",
+      "en": "Imperfect: -ar verbs",
+      "ru": "Imperfecto: глаголы на -ar",
+      "uk": "Imperfecto: дієслова на -ar"
+    },
+    "rule": {
+      "de": "Für frühere Gewohnheiten: hablaba, hablabas, hablábamos, hablaban.",
+      "en": "For past habits: hablaba, hablabas, hablábamos, hablaban.",
+      "ru": "Для привычек в прошлом: hablaba, hablabas, hablábamos, hablaban.",
+      "uk": "Для звичок у минулому: hablaba, hablabas, hablábamos, hablaban."
+    },
+    "example": "De niño, yo jugaba cada tarde.",
+    "practice": [
+      {
+        "sentence": "De niña, yo ___ cada tarde. (jugar, imperfecto)",
+        "options": [
+          "jugaba",
+          "jugabas",
+          "jugaban"
+        ],
+        "answer": "jugaba"
+      },
+      {
+        "sentence": "Antes tú ___ mucho. (trabajar, imperfecto)",
+        "options": [
+          "trabajabas",
+          "trabajaba",
+          "trabajábamos"
+        ],
+        "answer": "trabajabas"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Cada verano nosotros ___ juntos. (viajar, imperfecto)",
+        "options": [
+          "viajábamos",
+          "viajaban",
+          "viajabas"
+        ],
+        "answer": "viajábamos"
+      },
+      {
+        "sentence": "Antes ellos ___ español. (estudiar, imperfecto)",
+        "options": [
+          "estudiaban",
+          "estudiaba",
+          "estudiabas"
+        ],
+        "answer": "estudiaban"
+      }
+    ]
+  },
+  {
+    "id": "fr-imparfait",
+    "language": "fr",
+    "stage": 4,
+    "title": {
+      "de": "Imparfait",
+      "en": "Imperfect tense",
+      "ru": "Imparfait: прошедшее время",
+      "uk": "Imparfait: минулий час"
+    },
+    "rule": {
+      "de": "Frühere Gewohnheiten: nous parlons → parl- + ais, ais, ait, ions, iez, aient.",
+      "en": "Past habits: nous parlons → parl- + ais, ais, ait, ions, iez, aient.",
+      "ru": "Привычки в прошлом: nous parlons → parl- + ais, ais, ait, ions, iez, aient.",
+      "uk": "Звички в минулому: nous parlons → parl- + ais, ais, ait, ions, iez, aient."
+    },
+    "example": "Autrefois, je parlais souvent français.",
+    "practice": [
+      {
+        "sentence": "Avant, je ___ chaque jour. (travailler, imparfait)",
+        "options": [
+          "travaillais",
+          "travaillait",
+          "travaillaient"
+        ],
+        "answer": "travaillais"
+      },
+      {
+        "sentence": "Elle ___ souvent à Paris. (habiter, imparfait)",
+        "options": [
+          "habitait",
+          "habitais",
+          "habitions"
+        ],
+        "answer": "habitait"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Nous ___ ensemble. (étudier, imparfait)",
+        "options": [
+          "étudiions",
+          "étudiaient",
+          "étudiais"
+        ],
+        "answer": "étudiions"
+      },
+      {
+        "sentence": "Ils ___ tous les soirs. (jouer, imparfait)",
+        "options": [
+          "jouaient",
+          "jouait",
+          "jouiez"
+        ],
+        "answer": "jouaient"
+      }
+    ]
+  },
+  {
+    "id": "it-imperfetto",
+    "language": "it",
+    "stage": 4,
+    "title": {
+      "de": "Imperfetto: -are-Verben",
+      "en": "Imperfect: -are verbs",
+      "ru": "Imperfetto: глаголы на -are",
+      "uk": "Imperfetto: дієслова на -are"
+    },
+    "rule": {
+      "de": "Frühere Gewohnheiten: parlavo, parlavi, parlava, parlavamo, parlavate, parlavano.",
+      "en": "Past habits: parlavo, parlavi, parlava, parlavamo, parlavate, parlavano.",
+      "ru": "Привычки в прошлом: parlavo, parlavi, parlava, parlavamo, parlavate, parlavano.",
+      "uk": "Звички в минулому: parlavo, parlavi, parlava, parlavamo, parlavate, parlavano."
+    },
+    "example": "Da bambino, giocavo ogni giorno.",
+    "practice": [
+      {
+        "sentence": "Prima io ___ ogni giorno. (lavorare, imperfetto)",
+        "options": [
+          "lavoravo",
+          "lavoravi",
+          "lavoravano"
+        ],
+        "answer": "lavoravo"
+      },
+      {
+        "sentence": "Tu ___ sempre a casa. (studiare, imperfetto)",
+        "options": [
+          "studiavi",
+          "studiava",
+          "studiavamo"
+        ],
+        "answer": "studiavi"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "Noi ___ spesso. (viaggiare, imperfetto)",
+        "options": [
+          "viaggiavamo",
+          "viaggiavano",
+          "viaggiavo"
+        ],
+        "answer": "viaggiavamo"
+      },
+      {
+        "sentence": "Loro ___ ogni sera. (cantare, imperfetto)",
+        "options": [
+          "cantavano",
+          "cantava",
+          "cantavate"
+        ],
+        "answer": "cantavano"
+      }
+    ]
+  },
+  {
+    "id": "ja-teiru",
+    "language": "ja",
+    "stage": 4,
+    "title": {
+      "de": "Laufende Handlung mit ています",
+      "en": "Ongoing actions with ています",
+      "ru": "Продолженное действие с ています",
+      "uk": "Тривала дія з ています"
+    },
+    "rule": {
+      "de": "Bei diesen Handlungsverben bezeichnet て + います eine laufende Handlung: 読んでいます.",
+      "en": "With these action verbs, te-form + います marks an ongoing action: 読んでいます.",
+      "ru": "С этими глаголами форма て + います обозначает действие сейчас: 読んでいます.",
+      "uk": "Із цими дієсловами форма て + います позначає дію зараз: 読んでいます."
+    },
+    "example": "今、本を読んでいます。",
+    "practice": [
+      {
+        "sentence": "今、手紙を___います。 (書く)",
+        "options": [
+          "書いて",
+          "書きます",
+          "書く"
+        ],
+        "answer": "書いて"
+      },
+      {
+        "sentence": "今、水を___います。 (飲む)",
+        "options": [
+          "飲んで",
+          "飲みます",
+          "飲む"
+        ],
+        "answer": "飲んで"
+      }
+    ],
+    "checkpoint": [
+      {
+        "sentence": "今、ご飯を___います。 (食べる)",
+        "options": [
+          "食べて",
+          "食べます",
+          "食べる"
+        ],
+        "answer": "食べて"
+      },
+      {
+        "sentence": "今、音楽を___います。 (聞く)",
+        "options": [
+          "聞いて",
+          "聞きます",
+          "聞く"
+        ],
+        "answer": "聞いて"
+      }
+    ]
+  }
+]);
+
+// AI-assisted contextual response practice, native-speaker review pending.
+export const DIALOGUE_LESSONS=[
+  {
+    "id": "greeting",
+    "title": {
+      "de": "Begrüßung",
+      "en": "Greeting",
+      "ru": "Приветствие",
+      "uk": "Привітання"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Guten Morgen! Wie geht es dir?",
+        "answer": "Danke, gut. Und dir?",
+        "options": [
+          "Danke, gut. Und dir?",
+          "Das kostet fünf Euro.",
+          "Gehen Sie geradeaus."
+        ]
+      },
+      "en": {
+        "prompt": "Good morning! How are you?",
+        "answer": "I'm fine, thanks. And you?",
+        "options": [
+          "I'm fine, thanks. And you?",
+          "It's five euros.",
+          "Go straight ahead."
+        ]
+      },
+      "ka": {
+        "prompt": "დილა მშვიდობისა! როგორ ხარ?",
+        "answer": "კარგად, მადლობა. შენ?",
+        "options": [
+          "კარგად, მადლობა. შენ?",
+          "ხუთი ევრო ღირს.",
+          "პირდაპირ წადით."
+        ]
+      },
+      "uk": {
+        "prompt": "Доброго ранку! Як справи?",
+        "answer": "Добре, дякую. А в тебе?",
+        "options": [
+          "Добре, дякую. А в тебе?",
+          "П’ять євро.",
+          "Ідіть прямо."
+        ]
+      },
+      "ru": {
+        "prompt": "Доброе утро! Как дела?",
+        "answer": "Хорошо, спасибо. А у тебя?",
+        "options": [
+          "Хорошо, спасибо. А у тебя?",
+          "Пять евро.",
+          "Идите прямо."
+        ]
+      },
+      "zh": {
+        "prompt": "早上好！你好吗？",
+        "answer": "我很好，谢谢。你呢？",
+        "options": [
+          "我很好，谢谢。你呢？",
+          "五欧元。",
+          "请一直往前走。"
+        ]
+      },
+      "es": {
+        "prompt": "¡Buenos días! ¿Cómo estás?",
+        "answer": "Bien, gracias. ¿Y tú?",
+        "options": [
+          "Bien, gracias. ¿Y tú?",
+          "Cuesta cinco euros.",
+          "Siga recto."
+        ]
+      },
+      "fr": {
+        "prompt": "Bonjour ! Comment vas-tu ?",
+        "answer": "Bien, merci. Et toi ?",
+        "options": [
+          "Bien, merci. Et toi ?",
+          "Ça coûte cinq euros.",
+          "Allez tout droit."
+        ]
+      },
+      "it": {
+        "prompt": "Buongiorno! Come stai?",
+        "answer": "Bene, grazie. E tu?",
+        "options": [
+          "Bene, grazie. E tu?",
+          "Costa cinque euro.",
+          "Vada sempre dritto."
+        ]
+      },
+      "ja": {
+        "prompt": "おはようございます。お元気ですか。",
+        "answer": "元気です。ありがとうございます。",
+        "options": [
+          "元気です。ありがとうございます。",
+          "5ユーロです。",
+          "まっすぐ行ってください。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "shop",
+    "title": {
+      "de": "Im Geschäft",
+      "en": "In a shop",
+      "ru": "В магазине",
+      "uk": "У магазині"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Was kostet das?",
+        "answer": "Das kostet fünf Euro.",
+        "options": [
+          "Das kostet fünf Euro.",
+          "Gehen Sie geradeaus.",
+          "Ein Glas Wasser, bitte."
+        ]
+      },
+      "en": {
+        "prompt": "How much is this?",
+        "answer": "It's five euros.",
+        "options": [
+          "It's five euros.",
+          "Go straight ahead.",
+          "A glass of water, please."
+        ]
+      },
+      "ka": {
+        "prompt": "რა ღირს ეს?",
+        "answer": "ხუთი ევრო ღირს.",
+        "options": [
+          "ხუთი ევრო ღირს.",
+          "პირდაპირ წადით.",
+          "ერთი ჭიქა წყალი, თუ შეიძლება."
+        ]
+      },
+      "uk": {
+        "prompt": "Скільки це коштує?",
+        "answer": "П’ять євро.",
+        "options": [
+          "П’ять євро.",
+          "Ідіть прямо.",
+          "Склянку води, будь ласка."
+        ]
+      },
+      "ru": {
+        "prompt": "Сколько это стоит?",
+        "answer": "Пять евро.",
+        "options": [
+          "Пять евро.",
+          "Идите прямо.",
+          "Стакан воды, пожалуйста."
+        ]
+      },
+      "zh": {
+        "prompt": "这个多少钱？",
+        "answer": "五欧元。",
+        "options": [
+          "五欧元。",
+          "请一直往前走。",
+          "请给我一杯水。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Cuánto cuesta esto?",
+        "answer": "Cuesta cinco euros.",
+        "options": [
+          "Cuesta cinco euros.",
+          "Siga recto.",
+          "Un vaso de agua, por favor."
+        ]
+      },
+      "fr": {
+        "prompt": "Combien ça coûte ?",
+        "answer": "Ça coûte cinq euros.",
+        "options": [
+          "Ça coûte cinq euros.",
+          "Allez tout droit.",
+          "Un verre d'eau, s'il vous plaît."
+        ]
+      },
+      "it": {
+        "prompt": "Quanto costa questo?",
+        "answer": "Costa cinque euro.",
+        "options": [
+          "Costa cinque euro.",
+          "Vada sempre dritto.",
+          "Un bicchiere d'acqua, per favore."
+        ]
+      },
+      "ja": {
+        "prompt": "これはいくらですか。",
+        "answer": "5ユーロです。",
+        "options": [
+          "5ユーロです。",
+          "まっすぐ行ってください。",
+          "お水を一杯お願いします。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "directions",
+    "title": {
+      "de": "Nach dem Weg fragen",
+      "en": "Asking directions",
+      "ru": "Как пройти",
+      "uk": "Як пройти"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Wo ist der Bahnhof?",
+        "answer": "Gehen Sie geradeaus.",
+        "options": [
+          "Gehen Sie geradeaus.",
+          "Das kostet fünf Euro.",
+          "Ein Glas Wasser, bitte."
+        ]
+      },
+      "en": {
+        "prompt": "Where is the station?",
+        "answer": "Go straight ahead.",
+        "options": [
+          "Go straight ahead.",
+          "It's five euros.",
+          "A glass of water, please."
+        ]
+      },
+      "ka": {
+        "prompt": "სად არის სადგური?",
+        "answer": "პირდაპირ წადით.",
+        "options": [
+          "პირდაპირ წადით.",
+          "ხუთი ევრო ღირს.",
+          "ერთი ჭიქა წყალი, თუ შეიძლება."
+        ]
+      },
+      "uk": {
+        "prompt": "Де вокзал?",
+        "answer": "Ідіть прямо.",
+        "options": [
+          "Ідіть прямо.",
+          "П’ять євро.",
+          "Склянку води, будь ласка."
+        ]
+      },
+      "ru": {
+        "prompt": "Где вокзал?",
+        "answer": "Идите прямо.",
+        "options": [
+          "Идите прямо.",
+          "Пять евро.",
+          "Стакан воды, пожалуйста."
+        ]
+      },
+      "zh": {
+        "prompt": "车站在哪里？",
+        "answer": "请一直往前走。",
+        "options": [
+          "请一直往前走。",
+          "五欧元。",
+          "请给我一杯水。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Dónde está la estación?",
+        "answer": "Siga recto.",
+        "options": [
+          "Siga recto.",
+          "Cuesta cinco euros.",
+          "Un vaso de agua, por favor."
+        ]
+      },
+      "fr": {
+        "prompt": "Où est la gare ?",
+        "answer": "Allez tout droit.",
+        "options": [
+          "Allez tout droit.",
+          "Ça coûte cinq euros.",
+          "Un verre d'eau, s'il vous plaît."
+        ]
+      },
+      "it": {
+        "prompt": "Dov'è la stazione?",
+        "answer": "Vada sempre dritto.",
+        "options": [
+          "Vada sempre dritto.",
+          "Costa cinque euro.",
+          "Un bicchiere d'acqua, per favore."
+        ]
+      },
+      "ja": {
+        "prompt": "駅はどこですか。",
+        "answer": "まっすぐ行ってください。",
+        "options": [
+          "まっすぐ行ってください。",
+          "5ユーロです。",
+          "お水を一杯お願いします。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "cafe",
+    "title": {
+      "de": "Im Café",
+      "en": "At a café",
+      "ru": "В кафе",
+      "uk": "У кафе"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Was möchten Sie trinken?",
+        "answer": "Ein Glas Wasser, bitte.",
+        "options": [
+          "Ein Glas Wasser, bitte.",
+          "Das kostet fünf Euro.",
+          "Gehen Sie geradeaus."
+        ]
+      },
+      "en": {
+        "prompt": "What would you like to drink?",
+        "answer": "A glass of water, please.",
+        "options": [
+          "A glass of water, please.",
+          "It's five euros.",
+          "Go straight ahead."
+        ]
+      },
+      "ka": {
+        "prompt": "რას დალევთ?",
+        "answer": "ერთი ჭიქა წყალი, თუ შეიძლება.",
+        "options": [
+          "ერთი ჭიქა წყალი, თუ შეიძლება.",
+          "ხუთი ევრო ღირს.",
+          "პირდაპირ წადით."
+        ]
+      },
+      "uk": {
+        "prompt": "Що бажаєте випити?",
+        "answer": "Склянку води, будь ласка.",
+        "options": [
+          "Склянку води, будь ласка.",
+          "П’ять євро.",
+          "Ідіть прямо."
+        ]
+      },
+      "ru": {
+        "prompt": "Что будете пить?",
+        "answer": "Стакан воды, пожалуйста.",
+        "options": [
+          "Стакан воды, пожалуйста.",
+          "Пять евро.",
+          "Идите прямо."
+        ]
+      },
+      "zh": {
+        "prompt": "您想喝什么？",
+        "answer": "请给我一杯水。",
+        "options": [
+          "请给我一杯水。",
+          "五欧元。",
+          "请一直往前走。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Qué desea beber?",
+        "answer": "Un vaso de agua, por favor.",
+        "options": [
+          "Un vaso de agua, por favor.",
+          "Cuesta cinco euros.",
+          "Siga recto."
+        ]
+      },
+      "fr": {
+        "prompt": "Qu'est-ce que vous voulez boire ?",
+        "answer": "Un verre d'eau, s'il vous plaît.",
+        "options": [
+          "Un verre d'eau, s'il vous plaît.",
+          "Ça coûte cinq euros.",
+          "Allez tout droit."
+        ]
+      },
+      "it": {
+        "prompt": "Che cosa desidera bere?",
+        "answer": "Un bicchiere d'acqua, per favore.",
+        "options": [
+          "Un bicchiere d'acqua, per favore.",
+          "Costa cinque euro.",
+          "Vada sempre dritto."
+        ]
+      },
+      "ja": {
+        "prompt": "お飲み物は何にしますか。",
+        "answer": "お水を一杯お願いします。",
+        "options": [
+          "お水を一杯お願いします。",
+          "5ユーロです。",
+          "まっすぐ行ってください。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "help",
+    "title": {
+      "de": "Um Hilfe bitten",
+      "en": "Asking for help",
+      "ru": "Просьба о помощи",
+      "uk": "Прохання про допомогу"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Können Sie mir helfen?",
+        "answer": "Ja, natürlich. Was brauchen Sie?",
+        "options": [
+          "Ja, natürlich. Was brauchen Sie?",
+          "Das kostet fünf Euro.",
+          "Ein Glas Wasser, bitte."
+        ]
+      },
+      "en": {
+        "prompt": "Can you help me?",
+        "answer": "Of course. What do you need?",
+        "options": [
+          "Of course. What do you need?",
+          "It's five euros.",
+          "A glass of water, please."
+        ]
+      },
+      "ka": {
+        "prompt": "შეგიძლიათ დამეხმაროთ?",
+        "answer": "რა თქმა უნდა. რა გჭირდებათ?",
+        "options": [
+          "რა თქმა უნდა. რა გჭირდებათ?",
+          "ხუთი ევრო ღირს.",
+          "ერთი ჭიქა წყალი, თუ შეიძლება."
+        ]
+      },
+      "uk": {
+        "prompt": "Можете мені допомогти?",
+        "answer": "Звісно. Що вам потрібно?",
+        "options": [
+          "Звісно. Що вам потрібно?",
+          "П’ять євро.",
+          "Склянку води, будь ласка."
+        ]
+      },
+      "ru": {
+        "prompt": "Можете мне помочь?",
+        "answer": "Конечно. Что вам нужно?",
+        "options": [
+          "Конечно. Что вам нужно?",
+          "Пять евро.",
+          "Стакан воды, пожалуйста."
+        ]
+      },
+      "zh": {
+        "prompt": "您能帮我吗？",
+        "answer": "当然。您需要什么？",
+        "options": [
+          "当然。您需要什么？",
+          "五欧元。",
+          "请给我一杯水。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Puede ayudarme?",
+        "answer": "Claro. ¿Qué necesita?",
+        "options": [
+          "Claro. ¿Qué necesita?",
+          "Cuesta cinco euros.",
+          "Un vaso de agua, por favor."
+        ]
+      },
+      "fr": {
+        "prompt": "Pouvez-vous m'aider ?",
+        "answer": "Bien sûr. De quoi avez-vous besoin ?",
+        "options": [
+          "Bien sûr. De quoi avez-vous besoin ?",
+          "Ça coûte cinq euros.",
+          "Un verre d'eau, s'il vous plaît."
+        ]
+      },
+      "it": {
+        "prompt": "Può aiutarmi?",
+        "answer": "Certo. Di cosa ha bisogno?",
+        "options": [
+          "Certo. Di cosa ha bisogno?",
+          "Costa cinque euro.",
+          "Un bicchiere d'acqua, per favore."
+        ]
+      },
+      "ja": {
+        "prompt": "手伝っていただけますか。",
+        "answer": "もちろんです。何が必要ですか。",
+        "options": [
+          "もちろんです。何が必要ですか。",
+          "5ユーロです。",
+          "お水を一杯お願いします。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "meeting",
+    "title": {
+      "de": "Einen Termin vereinbaren",
+      "en": "Arranging a meeting",
+      "ru": "Договориться о встрече",
+      "uk": "Домовитися про зустріч"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Hast du morgen um zehn Zeit?",
+        "answer": "Ja, das passt mir.",
+        "options": [
+          "Ja, das passt mir.",
+          "Das kostet fünf Euro.",
+          "Gehen Sie geradeaus."
+        ]
+      },
+      "en": {
+        "prompt": "Are you free tomorrow at ten?",
+        "answer": "Yes, that works for me.",
+        "options": [
+          "Yes, that works for me.",
+          "It's five euros.",
+          "Go straight ahead."
+        ]
+      },
+      "ka": {
+        "prompt": "ხვალ ათ საათზე გცალია?",
+        "answer": "კი, მაწყობს.",
+        "options": [
+          "კი, მაწყობს.",
+          "ხუთი ევრო ღირს.",
+          "პირდაპირ წადით."
+        ]
+      },
+      "uk": {
+        "prompt": "Ти маєш час завтра о десятій?",
+        "answer": "Так, мені підходить.",
+        "options": [
+          "Так, мені підходить.",
+          "П’ять євро.",
+          "Ідіть прямо."
+        ]
+      },
+      "ru": {
+        "prompt": "У тебя есть время завтра в десять?",
+        "answer": "Да, мне подходит.",
+        "options": [
+          "Да, мне подходит.",
+          "Пять евро.",
+          "Идите прямо."
+        ]
+      },
+      "zh": {
+        "prompt": "你明天十点有空吗？",
+        "answer": "有空，这个时间可以。",
+        "options": [
+          "有空，这个时间可以。",
+          "五欧元。",
+          "请一直往前走。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Tienes tiempo mañana a las diez?",
+        "answer": "Sí, me viene bien.",
+        "options": [
+          "Sí, me viene bien.",
+          "Cuesta cinco euros.",
+          "Siga recto."
+        ]
+      },
+      "fr": {
+        "prompt": "Tu es libre demain à dix heures ?",
+        "answer": "Oui, ça me convient.",
+        "options": [
+          "Oui, ça me convient.",
+          "Ça coûte cinq euros.",
+          "Allez tout droit."
+        ]
+      },
+      "it": {
+        "prompt": "Hai tempo domani alle dieci?",
+        "answer": "Sì, mi va bene.",
+        "options": [
+          "Sì, mi va bene.",
+          "Costa cinque euro.",
+          "Vada sempre dritto."
+        ]
+      },
+      "ja": {
+        "prompt": "明日の10時は空いていますか。",
+        "answer": "はい、その時間で大丈夫です。",
+        "options": [
+          "はい、その時間で大丈夫です。",
+          "5ユーロです。",
+          "まっすぐ行ってください。"
+        ]
+      }
+    }
+  }
+];
+
+// Professional communication practice; native-speaker review pending.
+DIALOGUE_LESSONS.push(...[
+  {
+    "id": "clarify",
+    "title": {
+      "de": "Anforderungen klären",
+      "en": "Clarify requirements",
+      "ru": "Уточнение требований",
+      "uk": "Уточнення вимог"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Welches Dateiformat brauchen Sie für den Bericht?",
+        "answer": "Bitte senden Sie den Bericht als PDF.",
+        "options": [
+          "Bitte senden Sie den Bericht als PDF.",
+          "Die erste Version muss bis Freitag fertig sein.",
+          "Der Fehler tritt auf, wenn ich das Formular absende."
+        ]
+      },
+      "en": {
+        "prompt": "Which file format do you need for the report?",
+        "answer": "Please send the report as a PDF.",
+        "options": [
+          "Please send the report as a PDF.",
+          "The first version must be ready by Friday.",
+          "The error occurs when I submit the form."
+        ]
+      },
+      "ka": {
+        "prompt": "ანგარიშისთვის ფაილის რომელი ფორმატი გჭირდებათ?",
+        "answer": "გთხოვთ, ანგარიში PDF ფორმატში გამოგზავნოთ.",
+        "options": [
+          "გთხოვთ, ანგარიში PDF ფორმატში გამოგზავნოთ.",
+          "პირველი ვერსია პარასკევისთვის უნდა იყოს მზად.",
+          "შეცდომა ჩნდება, როდესაც ფორმას ვაგზავნი."
+        ]
+      },
+      "uk": {
+        "prompt": "У якому форматі файлу вам потрібен звіт?",
+        "answer": "Будь ласка, надішліть звіт у форматі PDF.",
+        "options": [
+          "Будь ласка, надішліть звіт у форматі PDF.",
+          "Перша версія має бути готова до п’ятниці.",
+          "Помилка виникає, коли я надсилаю форму."
+        ]
+      },
+      "ru": {
+        "prompt": "В каком формате файла вам нужен отчёт?",
+        "answer": "Пожалуйста, пришлите отчёт в формате PDF.",
+        "options": [
+          "Пожалуйста, пришлите отчёт в формате PDF.",
+          "Первая версия должна быть готова к пятнице.",
+          "Ошибка возникает, когда я отправляю форму."
+        ]
+      },
+      "zh": {
+        "prompt": "您需要什么文件格式的报告？",
+        "answer": "请以 PDF 格式发送报告。",
+        "options": [
+          "请以 PDF 格式发送报告。",
+          "第一版需要在星期五之前完成。",
+          "提交表单时会出现错误。"
+        ]
+      },
+      "es": {
+        "prompt": "¿En qué formato necesita el informe?",
+        "answer": "Envíeme el informe en formato PDF, por favor.",
+        "options": [
+          "Envíeme el informe en formato PDF, por favor.",
+          "La primera versión debe estar lista para el viernes.",
+          "El error aparece cuando envío el formulario."
+        ]
+      },
+      "fr": {
+        "prompt": "Dans quel format souhaitez-vous recevoir le rapport ?",
+        "answer": "Envoyez-moi le rapport au format PDF, s'il vous plaît.",
+        "options": [
+          "Envoyez-moi le rapport au format PDF, s'il vous plaît.",
+          "La première version doit être prête pour vendredi.",
+          "L'erreur se produit quand j'envoie le formulaire."
+        ]
+      },
+      "it": {
+        "prompt": "In quale formato desidera ricevere il rapporto?",
+        "answer": "Mi invii il rapporto in formato PDF, per favore.",
+        "options": [
+          "Mi invii il rapporto in formato PDF, per favore.",
+          "La prima versione deve essere pronta entro venerdì.",
+          "L'errore si verifica quando invio il modulo."
+        ]
+      },
+      "ja": {
+        "prompt": "報告書はどのファイル形式がよろしいですか。",
+        "answer": "PDF形式で送ってください。",
+        "options": [
+          "PDF形式で送ってください。",
+          "金曜日までに完成させる必要があります。",
+          "フォームを送信すると発生します。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "deadline",
+    "title": {
+      "de": "Abgabetermin",
+      "en": "Delivery deadline",
+      "ru": "Срок сдачи",
+      "uk": "Термін здачі"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Bis wann muss die erste Version fertig sein?",
+        "answer": "Die erste Version muss bis Freitag fertig sein.",
+        "options": [
+          "Die erste Version muss bis Freitag fertig sein.",
+          "Der Fehler tritt auf, wenn ich das Formular absende.",
+          "Der Text sollte größer und leichter lesbar sein."
+        ]
+      },
+      "en": {
+        "prompt": "When does the first version need to be ready?",
+        "answer": "The first version must be ready by Friday.",
+        "options": [
+          "The first version must be ready by Friday.",
+          "The error occurs when I submit the form.",
+          "The text should be larger and easier to read."
+        ]
+      },
+      "ka": {
+        "prompt": "როდისთვის უნდა იყოს პირველი ვერსია მზად?",
+        "answer": "პირველი ვერსია პარასკევისთვის უნდა იყოს მზად.",
+        "options": [
+          "პირველი ვერსია პარასკევისთვის უნდა იყოს მზად.",
+          "შეცდომა ჩნდება, როდესაც ფორმას ვაგზავნი.",
+          "ტექსტი უფრო დიდი და ადვილად წასაკითხი უნდა იყოს."
+        ]
+      },
+      "uk": {
+        "prompt": "До якого терміну має бути готова перша версія?",
+        "answer": "Перша версія має бути готова до п’ятниці.",
+        "options": [
+          "Перша версія має бути готова до п’ятниці.",
+          "Помилка виникає, коли я надсилаю форму.",
+          "Текст має бути більшим і зручнішим для читання."
+        ]
+      },
+      "ru": {
+        "prompt": "К какому сроку должна быть готова первая версия?",
+        "answer": "Первая версия должна быть готова к пятнице.",
+        "options": [
+          "Первая версия должна быть готова к пятнице.",
+          "Ошибка возникает, когда я отправляю форму.",
+          "Текст должен быть крупнее и удобнее для чтения."
+        ]
+      },
+      "zh": {
+        "prompt": "第一版需要什么时候完成？",
+        "answer": "第一版需要在星期五之前完成。",
+        "options": [
+          "第一版需要在星期五之前完成。",
+          "提交表单时会出现错误。",
+          "文字应该更大，更容易阅读。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Para cuándo tiene que estar lista la primera versión?",
+        "answer": "La primera versión debe estar lista para el viernes.",
+        "options": [
+          "La primera versión debe estar lista para el viernes.",
+          "El error aparece cuando envío el formulario.",
+          "El texto debería ser más grande y fácil de leer."
+        ]
+      },
+      "fr": {
+        "prompt": "Pour quand la première version doit-elle être prête ?",
+        "answer": "La première version doit être prête pour vendredi.",
+        "options": [
+          "La première version doit être prête pour vendredi.",
+          "L'erreur se produit quand j'envoie le formulaire.",
+          "Le texte devrait être plus grand et plus facile à lire."
+        ]
+      },
+      "it": {
+        "prompt": "Entro quando deve essere pronta la prima versione?",
+        "answer": "La prima versione deve essere pronta entro venerdì.",
+        "options": [
+          "La prima versione deve essere pronta entro venerdì.",
+          "L'errore si verifica quando invio il modulo.",
+          "Il testo dovrebbe essere più grande e più facile da leggere."
+        ]
+      },
+      "ja": {
+        "prompt": "初版はいつまでに完成させる必要がありますか。",
+        "answer": "金曜日までに完成させる必要があります。",
+        "options": [
+          "金曜日までに完成させる必要があります。",
+          "フォームを送信すると発生します。",
+          "文字を大きくして読みやすくするとよいです。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "bug-report",
+    "title": {
+      "de": "Fehler beschreiben",
+      "en": "Describe a bug",
+      "ru": "Описание ошибки",
+      "uk": "Опис помилки"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Wann tritt der Fehler auf?",
+        "answer": "Der Fehler tritt auf, wenn ich das Formular absende.",
+        "options": [
+          "Der Fehler tritt auf, wenn ich das Formular absende.",
+          "Der Text sollte größer und leichter lesbar sein.",
+          "Bitte senden Sie den Bericht als PDF."
+        ]
+      },
+      "en": {
+        "prompt": "When does the error occur?",
+        "answer": "The error occurs when I submit the form.",
+        "options": [
+          "The error occurs when I submit the form.",
+          "The text should be larger and easier to read.",
+          "Please send the report as a PDF."
+        ]
+      },
+      "ka": {
+        "prompt": "როდის ჩნდება შეცდომა?",
+        "answer": "შეცდომა ჩნდება, როდესაც ფორმას ვაგზავნი.",
+        "options": [
+          "შეცდომა ჩნდება, როდესაც ფორმას ვაგზავნი.",
+          "ტექსტი უფრო დიდი და ადვილად წასაკითხი უნდა იყოს.",
+          "გთხოვთ, ანგარიში PDF ფორმატში გამოგზავნოთ."
+        ]
+      },
+      "uk": {
+        "prompt": "Коли виникає помилка?",
+        "answer": "Помилка виникає, коли я надсилаю форму.",
+        "options": [
+          "Помилка виникає, коли я надсилаю форму.",
+          "Текст має бути більшим і зручнішим для читання.",
+          "Будь ласка, надішліть звіт у форматі PDF."
+        ]
+      },
+      "ru": {
+        "prompt": "Когда возникает ошибка?",
+        "answer": "Ошибка возникает, когда я отправляю форму.",
+        "options": [
+          "Ошибка возникает, когда я отправляю форму.",
+          "Текст должен быть крупнее и удобнее для чтения.",
+          "Пожалуйста, пришлите отчёт в формате PDF."
+        ]
+      },
+      "zh": {
+        "prompt": "错误什么时候出现？",
+        "answer": "提交表单时会出现错误。",
+        "options": [
+          "提交表单时会出现错误。",
+          "文字应该更大，更容易阅读。",
+          "请以 PDF 格式发送报告。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Cuándo aparece el error?",
+        "answer": "El error aparece cuando envío el formulario.",
+        "options": [
+          "El error aparece cuando envío el formulario.",
+          "El texto debería ser más grande y fácil de leer.",
+          "Envíeme el informe en formato PDF, por favor."
+        ]
+      },
+      "fr": {
+        "prompt": "Quand l'erreur se produit-elle ?",
+        "answer": "L'erreur se produit quand j'envoie le formulaire.",
+        "options": [
+          "L'erreur se produit quand j'envoie le formulaire.",
+          "Le texte devrait être plus grand et plus facile à lire.",
+          "Envoyez-moi le rapport au format PDF, s'il vous plaît."
+        ]
+      },
+      "it": {
+        "prompt": "Quando si verifica l'errore?",
+        "answer": "L'errore si verifica quando invio il modulo.",
+        "options": [
+          "L'errore si verifica quando invio il modulo.",
+          "Il testo dovrebbe essere più grande e più facile da leggere.",
+          "Mi invii il rapporto in formato PDF, per favore."
+        ]
+      },
+      "ja": {
+        "prompt": "エラーはいつ発生しますか。",
+        "answer": "フォームを送信すると発生します。",
+        "options": [
+          "フォームを送信すると発生します。",
+          "文字を大きくして読みやすくするとよいです。",
+          "PDF形式で送ってください。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "feedback",
+    "title": {
+      "de": "Feedback zur Gestaltung",
+      "en": "Design feedback",
+      "ru": "Обратная связь по дизайну",
+      "uk": "Відгук щодо дизайну"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Was sollen wir an der Gestaltung verbessern?",
+        "answer": "Der Text sollte größer und leichter lesbar sein.",
+        "options": [
+          "Der Text sollte größer und leichter lesbar sein.",
+          "Bitte senden Sie den Bericht als PDF.",
+          "Die erste Version muss bis Freitag fertig sein."
+        ]
+      },
+      "en": {
+        "prompt": "What should we improve in the design?",
+        "answer": "The text should be larger and easier to read.",
+        "options": [
+          "The text should be larger and easier to read.",
+          "Please send the report as a PDF.",
+          "The first version must be ready by Friday."
+        ]
+      },
+      "ka": {
+        "prompt": "რა უნდა გავაუმჯობესოთ დიზაინში?",
+        "answer": "ტექსტი უფრო დიდი და ადვილად წასაკითხი უნდა იყოს.",
+        "options": [
+          "ტექსტი უფრო დიდი და ადვილად წასაკითხი უნდა იყოს.",
+          "გთხოვთ, ანგარიში PDF ფორმატში გამოგზავნოთ.",
+          "პირველი ვერსია პარასკევისთვის უნდა იყოს მზად."
+        ]
+      },
+      "uk": {
+        "prompt": "Що варто покращити в дизайні?",
+        "answer": "Текст має бути більшим і зручнішим для читання.",
+        "options": [
+          "Текст має бути більшим і зручнішим для читання.",
+          "Будь ласка, надішліть звіт у форматі PDF.",
+          "Перша версія має бути готова до п’ятниці."
+        ]
+      },
+      "ru": {
+        "prompt": "Что стоит улучшить в дизайне?",
+        "answer": "Текст должен быть крупнее и удобнее для чтения.",
+        "options": [
+          "Текст должен быть крупнее и удобнее для чтения.",
+          "Пожалуйста, пришлите отчёт в формате PDF.",
+          "Первая версия должна быть готова к пятнице."
+        ]
+      },
+      "zh": {
+        "prompt": "设计方面需要改进什么？",
+        "answer": "文字应该更大，更容易阅读。",
+        "options": [
+          "文字应该更大，更容易阅读。",
+          "请以 PDF 格式发送报告。",
+          "第一版需要在星期五之前完成。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Qué deberíamos mejorar en el diseño?",
+        "answer": "El texto debería ser más grande y fácil de leer.",
+        "options": [
+          "El texto debería ser más grande y fácil de leer.",
+          "Envíeme el informe en formato PDF, por favor.",
+          "La primera versión debe estar lista para el viernes."
+        ]
+      },
+      "fr": {
+        "prompt": "Que devrions-nous améliorer dans la conception ?",
+        "answer": "Le texte devrait être plus grand et plus facile à lire.",
+        "options": [
+          "Le texte devrait être plus grand et plus facile à lire.",
+          "Envoyez-moi le rapport au format PDF, s'il vous plaît.",
+          "La première version doit être prête pour vendredi."
+        ]
+      },
+      "it": {
+        "prompt": "Che cosa dovremmo migliorare nel design?",
+        "answer": "Il testo dovrebbe essere più grande e più facile da leggere.",
+        "options": [
+          "Il testo dovrebbe essere più grande e più facile da leggere.",
+          "Mi invii il rapporto in formato PDF, per favore.",
+          "La prima versione deve essere pronta entro venerdì."
+        ]
+      },
+      "ja": {
+        "prompt": "デザインのどこを改善すべきですか。",
+        "answer": "文字を大きくして読みやすくするとよいです。",
+        "options": [
+          "文字を大きくして読みやすくするとよいです。",
+          "PDF形式で送ってください。",
+          "金曜日までに完成させる必要があります。"
+        ]
+      }
+    }
+  }
+]);
+
+// Independent extended checkpoints, original AI-assisted examples, pending native review.
+export const GRAMMAR_EXTENDED=Object.freeze({
+  "de-present": [
+    {
+      "sentence": "Ich ___ jeden Abend. (kochen)",
+      "answer": "koche",
+      "options": [
+        "koche",
+        "kochst",
+        "kochen"
+      ]
+    },
+    {
+      "sentence": "Die Kinder ___ im Garten. (spielen)",
+      "answer": "spielen",
+      "options": [
+        "spielen",
+        "spielt",
+        "spielst"
+      ]
+    },
+    {
+      "sentence": "Du ___ ein Bild. (malen)",
+      "answer": "malst",
+      "options": [
+        "malst",
+        "male",
+        "malen"
+      ]
+    },
+    {
+      "sentence": "Meine Schwester ___ in Berlin. (wohnen)",
+      "answer": "wohnt",
+      "options": [
+        "wohnt",
+        "wohnst",
+        "wohnen"
+      ]
+    }
+  ],
+  "de-sein": [
+    {
+      "sentence": "Wir ___ heute müde. (sein)",
+      "answer": "sind",
+      "options": [
+        "sind",
+        "seid",
+        "ist"
+      ]
+    },
+    {
+      "sentence": "Er ___ einen Hund. (haben)",
+      "answer": "hat",
+      "options": [
+        "hat",
+        "hast",
+        "habt"
+      ]
+    },
+    {
+      "sentence": "Du ___ sehr freundlich. (sein)",
+      "answer": "bist",
+      "options": [
+        "bist",
+        "bin",
+        "seid"
+      ]
+    },
+    {
+      "sentence": "Ich ___ morgen Zeit. (haben)",
+      "answer": "habe",
+      "options": [
+        "habe",
+        "hat",
+        "haben"
+      ]
+    }
+  ],
+  "en-be": [
+    {
+      "sentence": "My sister ___ a doctor.",
+      "answer": "is",
+      "options": [
+        "is",
+        "am",
+        "are"
+      ]
+    },
+    {
+      "sentence": "___ you hungry?",
+      "answer": "Are",
+      "options": [
+        "Are",
+        "Is",
+        "Am"
+      ]
+    },
+    {
+      "sentence": "I ___ not late.",
+      "answer": "am",
+      "options": [
+        "am",
+        "are",
+        "is"
+      ]
+    },
+    {
+      "sentence": "The windows ___ open.",
+      "answer": "are",
+      "options": [
+        "are",
+        "is",
+        "am"
+      ]
+    }
+  ],
+  "en-present": [
+    {
+      "sentence": "Maya ___ to work by bus. (go)",
+      "answer": "goes",
+      "options": [
+        "goes",
+        "go",
+        "going"
+      ]
+    },
+    {
+      "sentence": "They ___ breakfast at seven. (eat)",
+      "answer": "eat",
+      "options": [
+        "eat",
+        "eats",
+        "eating"
+      ]
+    },
+    {
+      "sentence": "Does your brother ___ French? (speak)",
+      "answer": "speak",
+      "options": [
+        "speak",
+        "speaks",
+        "speaking"
+      ]
+    },
+    {
+      "sentence": "She doesn't ___ on Sundays. (work)",
+      "answer": "work",
+      "options": [
+        "work",
+        "works",
+        "working"
+      ]
+    }
+  ],
+  "ka-copula": [
+    {
+      "sentence": "მე ექიმი ___.",
+      "answer": "ვარ",
+      "options": [
+        "ვარ",
+        "ხარ",
+        "ვართ"
+      ]
+    },
+    {
+      "sentence": "თქვენ მზად ___.",
+      "answer": "ხართ",
+      "options": [
+        "ხართ",
+        "ვართ",
+        "არიან"
+      ]
+    },
+    {
+      "sentence": "ის ექიმი ___.",
+      "answer": "არის",
+      "options": [
+        "არის",
+        "ვარ",
+        "ხარ"
+      ]
+    },
+    {
+      "sentence": "ჩვენ სახლში ___.",
+      "answer": "ვართ",
+      "options": [
+        "ვართ",
+        "ხართ",
+        "არის"
+      ]
+    }
+  ],
+  "ka-plural": [
+    {
+      "sentence": "კაცი → ___ (Plural)",
+      "answer": "კაცები",
+      "options": [
+        "კაცები",
+        "კაცი",
+        "კაცებს"
+      ]
+    },
+    {
+      "sentence": "კარი → ___ (Plural)",
+      "answer": "კარები",
+      "options": [
+        "კარები",
+        "კარი",
+        "კარებს"
+      ]
+    },
+    {
+      "sentence": "ქალი → ___ (Plural)",
+      "answer": "ქალები",
+      "options": [
+        "ქალები",
+        "ქალი",
+        "ქალებს"
+      ]
+    },
+    {
+      "sentence": "მაგიდა → ___ (Plural)",
+      "answer": "მაგიდები",
+      "options": [
+        "მაგიდები",
+        "მაგიდა",
+        "მაგიდებს"
+      ]
+    }
+  ],
+  "uk-gender": [
+    {
+      "sentence": "___ олівець (new)",
+      "answer": "новий",
+      "options": [
+        "новий",
+        "нова",
+        "нове"
+      ]
+    },
+    {
+      "sentence": "___ школа (new)",
+      "answer": "нова",
+      "options": [
+        "нова",
+        "нове",
+        "новий"
+      ]
+    },
+    {
+      "sentence": "___ місто (new)",
+      "answer": "нове",
+      "options": [
+        "нове",
+        "новий",
+        "нова"
+      ]
+    },
+    {
+      "sentence": "___ зошити (new)",
+      "answer": "нові",
+      "options": [
+        "нові",
+        "новий",
+        "нова"
+      ]
+    }
+  ],
+  "uk-vocative": [
+    {
+      "sentence": "___, допоможи мені! (сестра)",
+      "answer": "Сестро",
+      "options": [
+        "Сестро",
+        "Сестру",
+        "Сестри"
+      ]
+    },
+    {
+      "sentence": "___, привіт! (Іван)",
+      "answer": "Іване",
+      "options": [
+        "Іване",
+        "Івана",
+        "Іваном"
+      ]
+    },
+    {
+      "sentence": "___, добрий вечір! (Марія)",
+      "answer": "Маріє",
+      "options": [
+        "Маріє",
+        "Марію",
+        "Марії"
+      ]
+    },
+    {
+      "sentence": "___, заходь! (друг)",
+      "answer": "Друже",
+      "options": [
+        "Друже",
+        "Друга",
+        "Другом"
+      ]
+    }
+  ],
+  "ru-gender": [
+    {
+      "sentence": "___ карандаш (new)",
+      "answer": "новый",
+      "options": [
+        "новый",
+        "новая",
+        "новое"
+      ]
+    },
+    {
+      "sentence": "___ школа (new)",
+      "answer": "новая",
+      "options": [
+        "новая",
+        "новое",
+        "новый"
+      ]
+    },
+    {
+      "sentence": "___ письмо (new)",
+      "answer": "новое",
+      "options": [
+        "новое",
+        "новый",
+        "новая"
+      ]
+    },
+    {
+      "sentence": "___ книги (new)",
+      "answer": "новые",
+      "options": [
+        "новые",
+        "новое",
+        "новый"
+      ]
+    }
+  ],
+  "ru-prepositional": [
+    {
+      "sentence": "Мы читаем о ___. (музей)",
+      "answer": "музее",
+      "options": [
+        "музее",
+        "музей",
+        "музея"
+      ]
+    },
+    {
+      "sentence": "Она рассказывает о ___. (сестра)",
+      "answer": "сестре",
+      "options": [
+        "сестре",
+        "сестру",
+        "сестрой"
+      ]
+    },
+    {
+      "sentence": "Он думает об ___. (экзамен)",
+      "answer": "экзамене",
+      "options": [
+        "экзамене",
+        "экзамен",
+        "экзаменом"
+      ]
+    },
+    {
+      "sentence": "Я мечтаю о ___. (море)",
+      "answer": "море",
+      "options": [
+        "море",
+        "моря",
+        "морем"
+      ]
+    }
+  ],
+  "zh-wordorder": [
+    {
+      "sentence": "他们___电影。 (watch)",
+      "answer": "看",
+      "options": [
+        "看",
+        "电影",
+        "他们"
+      ]
+    },
+    {
+      "sentence": "我___汉语。 (speak)",
+      "answer": "说",
+      "options": [
+        "说",
+        "汉语",
+        "我"
+      ]
+    },
+    {
+      "sentence": "你___苹果。 (eat)",
+      "answer": "吃",
+      "options": [
+        "吃",
+        "苹果",
+        "你"
+      ]
+    },
+    {
+      "sentence": "她___咖啡。 (drink)",
+      "answer": "喝",
+      "options": [
+        "喝",
+        "咖啡",
+        "她"
+      ]
+    }
+  ],
+  "zh-ma": [
+    {
+      "sentence": "你是医生___？ (yes/no)",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "的",
+        "很"
+      ]
+    },
+    {
+      "sentence": "他们喜欢中国菜___？ (yes/no)",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "的",
+        "很"
+      ]
+    },
+    {
+      "sentence": "她有猫___？ (yes/no)",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "的",
+        "很"
+      ]
+    },
+    {
+      "sentence": "你会说汉语___？ (yes/no)",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "的",
+        "很"
+      ]
+    }
+  ],
+  "es-gender": [
+    {
+      "sentence": "___ coche (definite)",
+      "answer": "el",
+      "options": [
+        "el",
+        "la",
+        "los"
+      ]
+    },
+    {
+      "sentence": "___ ventana (definite)",
+      "answer": "la",
+      "options": [
+        "la",
+        "el",
+        "las"
+      ]
+    },
+    {
+      "sentence": "___ zapatos (definite)",
+      "answer": "los",
+      "options": [
+        "los",
+        "las",
+        "el"
+      ]
+    },
+    {
+      "sentence": "___ sillas (definite)",
+      "answer": "las",
+      "options": [
+        "las",
+        "los",
+        "la"
+      ]
+    }
+  ],
+  "es-present": [
+    {
+      "sentence": "Yo ___ en Madrid. (trabajar)",
+      "answer": "trabajo",
+      "options": [
+        "trabajo",
+        "trabajas",
+        "trabajan"
+      ]
+    },
+    {
+      "sentence": "Tú ___ en casa. (estudiar)",
+      "answer": "estudias",
+      "options": [
+        "estudias",
+        "estudio",
+        "estudian"
+      ]
+    },
+    {
+      "sentence": "Nosotras ___ música. (escuchar)",
+      "answer": "escuchamos",
+      "options": [
+        "escuchamos",
+        "escuchan",
+        "escucháis"
+      ]
+    },
+    {
+      "sentence": "Vosotros ___ mucho. (caminar)",
+      "answer": "camináis",
+      "options": [
+        "camináis",
+        "caminan",
+        "caminamos"
+      ]
+    }
+  ],
+  "fr-articles": [
+    {
+      "sentence": "___ jardin (definite)",
+      "answer": "le",
+      "options": [
+        "le",
+        "la",
+        "les"
+      ]
+    },
+    {
+      "sentence": "___ fenêtre (definite)",
+      "answer": "la",
+      "options": [
+        "la",
+        "le",
+        "les"
+      ]
+    },
+    {
+      "sentence": "___ hôtel (definite)",
+      "answer": "l’",
+      "options": [
+        "l’",
+        "le",
+        "la"
+      ]
+    },
+    {
+      "sentence": "___ chaises (definite)",
+      "answer": "les",
+      "options": [
+        "les",
+        "le",
+        "la"
+      ]
+    }
+  ],
+  "fr-present": [
+    {
+      "sentence": "Je ___ à Paris. (habiter)",
+      "answer": "habite",
+      "options": [
+        "habite",
+        "habites",
+        "habitons"
+      ]
+    },
+    {
+      "sentence": "Tu ___ la musique. (écouter)",
+      "answer": "écoutes",
+      "options": [
+        "écoutes",
+        "écoute",
+        "écoutez"
+      ]
+    },
+    {
+      "sentence": "Nous ___ le soir. (travailler)",
+      "answer": "travaillons",
+      "options": [
+        "travaillons",
+        "travaillez",
+        "travaillent"
+      ]
+    },
+    {
+      "sentence": "Ils ___ au parc. (jouer)",
+      "answer": "jouent",
+      "options": [
+        "jouent",
+        "jouons",
+        "jouez"
+      ]
+    }
+  ],
+  "it-articles": [
+    {
+      "sentence": "___ cane (definite)",
+      "answer": "il",
+      "options": [
+        "il",
+        "lo",
+        "la"
+      ]
+    },
+    {
+      "sentence": "___ zaino (definite)",
+      "answer": "lo",
+      "options": [
+        "lo",
+        "il",
+        "la"
+      ]
+    },
+    {
+      "sentence": "___ porta (definite)",
+      "answer": "la",
+      "options": [
+        "la",
+        "il",
+        "lo"
+      ]
+    },
+    {
+      "sentence": "___ orologio (definite)",
+      "answer": "l’",
+      "options": [
+        "l’",
+        "il",
+        "lo"
+      ]
+    }
+  ],
+  "it-present": [
+    {
+      "sentence": "Io ___ a Roma. (abitare)",
+      "answer": "abito",
+      "options": [
+        "abito",
+        "abiti",
+        "abitano"
+      ]
+    },
+    {
+      "sentence": "Tu ___ la musica. (ascoltare)",
+      "answer": "ascolti",
+      "options": [
+        "ascolti",
+        "ascolta",
+        "ascoltate"
+      ]
+    },
+    {
+      "sentence": "Noi ___ a scuola. (studiare)",
+      "answer": "studiamo",
+      "options": [
+        "studiamo",
+        "studiate",
+        "studiano"
+      ]
+    },
+    {
+      "sentence": "Loro ___ ogni giorno. (camminare)",
+      "answer": "camminano",
+      "options": [
+        "camminano",
+        "camminiamo",
+        "camminate"
+      ]
+    }
+  ],
+  "ja-copula": [
+    {
+      "sentence": "これは辞書___。 (polite statement)",
+      "answer": "です",
+      "options": [
+        "です",
+        "を",
+        "に"
+      ]
+    },
+    {
+      "sentence": "私は会社員___。 (polite statement)",
+      "answer": "です",
+      "options": [
+        "です",
+        "を",
+        "で"
+      ]
+    },
+    {
+      "sentence": "あそこは駅___。 (polite statement)",
+      "answer": "です",
+      "options": [
+        "です",
+        "に",
+        "を"
+      ]
+    },
+    {
+      "sentence": "今日は月曜日___。 (polite statement)",
+      "answer": "です",
+      "options": [
+        "です",
+        "で",
+        "を"
+      ]
+    }
+  ],
+  "ja-object": [
+    {
+      "sentence": "音楽___聞きます。",
+      "answer": "を",
+      "options": [
+        "を",
+        "に",
+        "で"
+      ]
+    },
+    {
+      "sentence": "映画___見ます。",
+      "answer": "を",
+      "options": [
+        "を",
+        "に",
+        "で"
+      ]
+    },
+    {
+      "sentence": "パン___食べます。",
+      "answer": "を",
+      "options": [
+        "を",
+        "に",
+        "で"
+      ]
+    },
+    {
+      "sentence": "写真___撮ります。",
+      "answer": "を",
+      "options": [
+        "を",
+        "に",
+        "で"
+      ]
+    }
+  ],
+  "ka-negation": [
+    {
+      "sentence": "მე ___ ვმუშაობ. (not working)",
+      "answer": "არ",
+      "options": [
+        "არ",
+        "და",
+        "თუ"
+      ]
+    },
+    {
+      "sentence": "ის ___ კითხულობს. (not reading)",
+      "answer": "არ",
+      "options": [
+        "არ",
+        "და",
+        "თუ"
+      ]
+    },
+    {
+      "sentence": "ჩვენ ___ ვსწავლობთ. (not studying)",
+      "answer": "არ",
+      "options": [
+        "არ",
+        "და",
+        "თუ"
+      ]
+    },
+    {
+      "sentence": "შენ ___ გძინავს. (not sleeping)",
+      "answer": "არ",
+      "options": [
+        "არ",
+        "და",
+        "თუ"
+      ]
+    }
+  ],
+  "ka-location": [
+    {
+      "sentence": "ბაღი → ___ (in the garden)",
+      "answer": "ბაღში",
+      "options": [
+        "ბაღში",
+        "ბაღიდან",
+        "ბაღთან"
+      ]
+    },
+    {
+      "sentence": "პარკი → ___ (in the park)",
+      "answer": "პარკში",
+      "options": [
+        "პარკში",
+        "პარკიდან",
+        "პარკთან"
+      ]
+    },
+    {
+      "sentence": "მაღაზია → ___ (in the shop)",
+      "answer": "მაღაზიაში",
+      "options": [
+        "მაღაზიაში",
+        "მაღაზიიდან",
+        "მაღაზიასთან"
+      ]
+    },
+    {
+      "sentence": "მუზეუმი → ___ (in the museum)",
+      "answer": "მუზეუმში",
+      "options": [
+        "მუზეუმში",
+        "მუზეუმიდან",
+        "მუზეუმთან"
+      ]
+    }
+  ],
+  "ka-genitive": [
+    {
+      "sentence": "ბაღი → ___ (of the garden)",
+      "answer": "ბაღის",
+      "options": [
+        "ბაღის",
+        "ბაღში",
+        "ბაღიდან"
+      ]
+    },
+    {
+      "sentence": "პარკი → ___ (of the park)",
+      "answer": "პარკის",
+      "options": [
+        "პარკის",
+        "პარკში",
+        "პარკიდან"
+      ]
+    },
+    {
+      "sentence": "მუზეუმი → ___ (of the museum)",
+      "answer": "მუზეუმის",
+      "options": [
+        "მუზეუმის",
+        "მუზეუმში",
+        "მუზეუმიდან"
+      ]
+    },
+    {
+      "sentence": "კაცი → ___ (of the man)",
+      "answer": "კაცის",
+      "options": [
+        "კაცის",
+        "კაცში",
+        "კაციდან"
+      ]
+    }
+  ],
+  "ka-dative": [
+    {
+      "sentence": "წერილს ___ ვაძლევ. (და: recipient)",
+      "answer": "დას",
+      "options": [
+        "დას",
+        "და",
+        "დის"
+      ]
+    },
+    {
+      "sentence": "ვაშლს ___ ვაძლევ. (ძმა: recipient)",
+      "answer": "ძმას",
+      "options": [
+        "ძმას",
+        "ძმა",
+        "ძმის"
+      ]
+    },
+    {
+      "sentence": "წიგნს ___ ვაძლევ. (მასწავლებელი: recipient)",
+      "answer": "მასწავლებელს",
+      "options": [
+        "მასწავლებელს",
+        "მასწავლებელი",
+        "მასწავლებლის"
+      ]
+    },
+    {
+      "sentence": "საჩუქარს ___ ვაძლევ. (ბებია: recipient)",
+      "answer": "ბებიას",
+      "options": [
+        "ბებიას",
+        "ბებია",
+        "ბებიის"
+      ]
+    }
+  ],
+  "uk-present": [
+    {
+      "sentence": "Я ___ вірш. (читати)",
+      "answer": "читаю",
+      "options": [
+        "читаю",
+        "читаєш",
+        "читає"
+      ]
+    },
+    {
+      "sentence": "Ви ___ статтю. (читати)",
+      "answer": "читаєте",
+      "options": [
+        "читаєте",
+        "читаємо",
+        "читають"
+      ]
+    },
+    {
+      "sentence": "Ми ___ казку. (читати)",
+      "answer": "читаємо",
+      "options": [
+        "читаємо",
+        "читаю",
+        "читаєте"
+      ]
+    },
+    {
+      "sentence": "Він ___ повідомлення. (читати)",
+      "answer": "читає",
+      "options": [
+        "читає",
+        "читаєш",
+        "читають"
+      ]
+    }
+  ],
+  "uk-past": [
+    {
+      "sentence": "Мама ___ обід. (готувати, мин.)",
+      "answer": "готувала",
+      "options": [
+        "готувала",
+        "готував",
+        "готували"
+      ]
+    },
+    {
+      "sentence": "Тато ___ вчора. (працювати, мин.)",
+      "answer": "працював",
+      "options": [
+        "працював",
+        "працювала",
+        "працювали"
+      ]
+    },
+    {
+      "sentence": "Ми ___ музику. (слухати, мин.)",
+      "answer": "слухали",
+      "options": [
+        "слухали",
+        "слухав",
+        "слухала"
+      ]
+    },
+    {
+      "sentence": "Сонце ___ весь день. (світити, мин.)",
+      "answer": "світило",
+      "options": [
+        "світило",
+        "світила",
+        "світили"
+      ]
+    }
+  ],
+  "uk-future": [
+    {
+      "sentence": "Я ___ малювати. (compound future)",
+      "answer": "буду",
+      "options": [
+        "буду",
+        "будеш",
+        "буде"
+      ]
+    },
+    {
+      "sentence": "Ви ___ писати. (compound future)",
+      "answer": "будете",
+      "options": [
+        "будете",
+        "будемо",
+        "будуть"
+      ]
+    },
+    {
+      "sentence": "Він ___ готувати. (compound future)",
+      "answer": "буде",
+      "options": [
+        "буде",
+        "буду",
+        "будуть"
+      ]
+    },
+    {
+      "sentence": "Ми ___ співати. (compound future)",
+      "answer": "будемо",
+      "options": [
+        "будемо",
+        "будете",
+        "будеш"
+      ]
+    }
+  ],
+  "uk-instrumental": [
+    {
+      "sentence": "Я їду з ___. (сестра)",
+      "answer": "сестрою",
+      "options": [
+        "сестрою",
+        "сестри",
+        "сестру"
+      ]
+    },
+    {
+      "sentence": "Він розмовляє з ___. (тато)",
+      "answer": "татом",
+      "options": [
+        "татом",
+        "тата",
+        "татові"
+      ]
+    },
+    {
+      "sentence": "Ми гуляємо з ___. (подруга)",
+      "answer": "подругою",
+      "options": [
+        "подругою",
+        "подругу",
+        "подруги"
+      ]
+    },
+    {
+      "sentence": "Вона грається з ___. (дитина)",
+      "answer": "дитиною",
+      "options": [
+        "дитиною",
+        "дитину",
+        "дитини"
+      ]
+    }
+  ],
+  "ru-accusative": [
+    {
+      "sentence": "Я встретил ___. (учитель)",
+      "answer": "учителя",
+      "options": [
+        "учителя",
+        "учитель",
+        "учителем"
+      ]
+    },
+    {
+      "sentence": "Мы купили ___. (компьютер)",
+      "answer": "компьютер",
+      "options": [
+        "компьютер",
+        "компьютера",
+        "компьютером"
+      ]
+    },
+    {
+      "sentence": "Она увидела ___. (кот)",
+      "answer": "кота",
+      "options": [
+        "кота",
+        "кот",
+        "котом"
+      ]
+    },
+    {
+      "sentence": "Он открыл ___. (шкаф)",
+      "answer": "шкаф",
+      "options": [
+        "шкаф",
+        "шкафа",
+        "шкафом"
+      ]
+    }
+  ],
+  "ru-aspect": [
+    {
+      "sentence": "В детстве я каждый вечер ___ сказки. (habit)",
+      "answer": "читал",
+      "options": [
+        "читал",
+        "прочитал",
+        "прочитаю"
+      ]
+    },
+    {
+      "sentence": "Вчера она наконец ___ задачу до конца. (completion)",
+      "answer": "решила",
+      "options": [
+        "решила",
+        "решает",
+        "решит"
+      ]
+    },
+    {
+      "sentence": "Раньше мы часто ___ здесь. (habit)",
+      "answer": "гуляли",
+      "options": [
+        "гуляли",
+        "погуляли",
+        "погуляем"
+      ]
+    },
+    {
+      "sentence": "Он уже ___ окно и вышел. (completion)",
+      "answer": "закрыл",
+      "options": [
+        "закрыл",
+        "закрывает",
+        "закроет"
+      ]
+    }
+  ],
+  "ru-conditional": [
+    {
+      "sentence": "Если бы я (м. р.) мог, я бы ___. (приехать)",
+      "answer": "приехал",
+      "options": [
+        "приехал",
+        "приехала",
+        "приехали"
+      ]
+    },
+    {
+      "sentence": "Если бы она захотела, она бы ___. (позвонить)",
+      "answer": "позвонила",
+      "options": [
+        "позвонила",
+        "позвонил",
+        "позвонили"
+      ]
+    },
+    {
+      "sentence": "Если бы мы успели, мы бы ___. (посмотреть)",
+      "answer": "посмотрели",
+      "options": [
+        "посмотрели",
+        "посмотрел",
+        "посмотрела"
+      ]
+    },
+    {
+      "sentence": "Если бы окно было открыто, оно бы ___. (захлопнуться)",
+      "answer": "захлопнулось",
+      "options": [
+        "захлопнулось",
+        "захлопнулась",
+        "захлопнулись"
+      ]
+    }
+  ],
+  "ru-participle": [
+    {
+      "sentence": "___ мальчик слышит звонок. (бежать, м. р.)",
+      "answer": "Бегущий",
+      "options": [
+        "Бегущий",
+        "Бегущая",
+        "Бегущие"
+      ]
+    },
+    {
+      "sentence": "___ женщина держит микрофон. (говорить, ж. р.)",
+      "answer": "Говорящая",
+      "options": [
+        "Говорящая",
+        "Говорящий",
+        "Говорящие"
+      ]
+    },
+    {
+      "sentence": "___ птицы видны вдали. (лететь, мн. ч.)",
+      "answer": "Летящие",
+      "options": [
+        "Летящие",
+        "Летящий",
+        "Летящая"
+      ]
+    },
+    {
+      "sentence": "___ море шумит. (кипеть, ср. р.)",
+      "answer": "Кипящее",
+      "options": [
+        "Кипящее",
+        "Кипящая",
+        "Кипящие"
+      ]
+    }
+  ],
+  "zh-classifier": [
+    {
+      "sentence": "两___茶。 (cups)",
+      "answer": "杯",
+      "options": [
+        "杯",
+        "本",
+        "张"
+      ]
+    },
+    {
+      "sentence": "五___照片。 (photos)",
+      "answer": "张",
+      "options": [
+        "张",
+        "本",
+        "杯"
+      ]
+    },
+    {
+      "sentence": "四___词典。 (dictionaries)",
+      "answer": "本",
+      "options": [
+        "本",
+        "杯",
+        "张"
+      ]
+    },
+    {
+      "sentence": "三___学生。 (students)",
+      "answer": "个",
+      "options": [
+        "个",
+        "本",
+        "杯"
+      ]
+    }
+  ],
+  "zh-negation": [
+    {
+      "sentence": "他___有自行车。 (does not have)",
+      "answer": "没",
+      "options": [
+        "没",
+        "不",
+        "很"
+      ]
+    },
+    {
+      "sentence": "我___想去。 (do not want)",
+      "answer": "不",
+      "options": [
+        "不",
+        "有",
+        "很"
+      ]
+    },
+    {
+      "sentence": "我们___有时间。 (do not have)",
+      "answer": "没",
+      "options": [
+        "没",
+        "不",
+        "很"
+      ]
+    },
+    {
+      "sentence": "她___喝酒。 (does not drink)",
+      "answer": "不",
+      "options": [
+        "不",
+        "有",
+        "很"
+      ]
+    }
+  ],
+  "zh-comparison": [
+    {
+      "sentence": "这本书___那本书厚。 (thicker than)",
+      "answer": "比",
+      "options": [
+        "比",
+        "在",
+        "和"
+      ]
+    },
+    {
+      "sentence": "爸爸___我高。 (taller than)",
+      "answer": "比",
+      "options": [
+        "比",
+        "在",
+        "和"
+      ]
+    },
+    {
+      "sentence": "夏天___冬天热。 (hotter than)",
+      "answer": "比",
+      "options": [
+        "比",
+        "在",
+        "和"
+      ]
+    },
+    {
+      "sentence": "这个苹果___那个苹果大。 (bigger than)",
+      "answer": "比",
+      "options": [
+        "比",
+        "在",
+        "和"
+      ]
+    }
+  ],
+  "zh-experience": [
+    {
+      "sentence": "我以前学___日语。 (experience)",
+      "answer": "过",
+      "options": [
+        "过",
+        "吗",
+        "的"
+      ]
+    },
+    {
+      "sentence": "她从来___去过上海。 (never)",
+      "answer": "没",
+      "options": [
+        "没",
+        "很",
+        "正在"
+      ]
+    },
+    {
+      "sentence": "你吃___北京烤鸭吗？ (experience)",
+      "answer": "过",
+      "options": [
+        "过",
+        "吗",
+        "的"
+      ]
+    },
+    {
+      "sentence": "我们从来___看过这部电影。 (never)",
+      "answer": "没",
+      "options": [
+        "没",
+        "很",
+        "正在"
+      ]
+    }
+  ],
+  "es-ser-estar": [
+    {
+      "sentence": "Mi hermano ___ médico. (profession)",
+      "answer": "es",
+      "options": [
+        "es",
+        "está",
+        "soy"
+      ]
+    },
+    {
+      "sentence": "Nosotros ___ en la biblioteca. (location)",
+      "answer": "estamos",
+      "options": [
+        "estamos",
+        "somos",
+        "están"
+      ]
+    },
+    {
+      "sentence": "Ellas ___ profesoras. (profession)",
+      "answer": "son",
+      "options": [
+        "son",
+        "están",
+        "somos"
+      ]
+    },
+    {
+      "sentence": "Yo ___ enfermo hoy. (state)",
+      "answer": "estoy",
+      "options": [
+        "estoy",
+        "soy",
+        "estás"
+      ]
+    }
+  ],
+  "es-preterite": [
+    {
+      "sentence": "Ayer yo ___ una carta. (enviar, preterite)",
+      "answer": "envié",
+      "options": [
+        "envié",
+        "envío",
+        "envió"
+      ]
+    },
+    {
+      "sentence": "Ayer tú ___ el coche. (lavar, preterite)",
+      "answer": "lavaste",
+      "options": [
+        "lavaste",
+        "lavó",
+        "lavas"
+      ]
+    },
+    {
+      "sentence": "Anoche ella ___ la cena. (preparar, preterite)",
+      "answer": "preparó",
+      "options": [
+        "preparó",
+        "preparé",
+        "prepara"
+      ]
+    },
+    {
+      "sentence": "El lunes ellos ___ la puerta. (pintar, preterite)",
+      "answer": "pintaron",
+      "options": [
+        "pintaron",
+        "pintamos",
+        "pintan"
+      ]
+    }
+  ],
+  "es-subjunctive": [
+    {
+      "sentence": "Quiero que tú ___ temprano. (llegar, subjuntivo)",
+      "answer": "llegues",
+      "options": [
+        "llegues",
+        "llegas",
+        "llegar"
+      ]
+    },
+    {
+      "sentence": "Quiero que ella ___ la verdad. (decir, subjuntivo)",
+      "answer": "diga",
+      "options": [
+        "diga",
+        "dice",
+        "decir"
+      ]
+    },
+    {
+      "sentence": "Quiero que vosotros ___ bien. (descansar, subjuntivo)",
+      "answer": "descanséis",
+      "options": [
+        "descanséis",
+        "descansáis",
+        "descansar"
+      ]
+    },
+    {
+      "sentence": "Quiero que ellos ___ el ejercicio. (terminar, subjuntivo)",
+      "answer": "terminen",
+      "options": [
+        "terminen",
+        "terminan",
+        "terminar"
+      ]
+    }
+  ],
+  "es-imperfect": [
+    {
+      "sentence": "De niño, él ___ en el parque. (jugar, imperfecto)",
+      "answer": "jugaba",
+      "options": [
+        "jugaba",
+        "jugabas",
+        "jugaban"
+      ]
+    },
+    {
+      "sentence": "Antes vosotros ___ aquí. (trabajar, imperfecto)",
+      "answer": "trabajabais",
+      "options": [
+        "trabajabais",
+        "trabajaban",
+        "trabajábamos"
+      ]
+    },
+    {
+      "sentence": "De pequeñas, nosotras ___ mucho. (bailar, imperfecto)",
+      "answer": "bailábamos",
+      "options": [
+        "bailábamos",
+        "bailaban",
+        "bailabas"
+      ]
+    },
+    {
+      "sentence": "Antes ellas ___ en una tienda. (trabajar, imperfecto)",
+      "answer": "trabajaban",
+      "options": [
+        "trabajaban",
+        "trabajaba",
+        "trabajabas"
+      ]
+    }
+  ],
+  "fr-negation": [
+    {
+      "sentence": "Tu ne joues ___. (not)",
+      "answer": "pas",
+      "options": [
+        "pas",
+        "très",
+        "oui"
+      ]
+    },
+    {
+      "sentence": "Je n’aime ___ le café. (not)",
+      "answer": "pas",
+      "options": [
+        "pas",
+        "très",
+        "oui"
+      ]
+    },
+    {
+      "sentence": "Vous ne travaillez ___ ici. (not)",
+      "answer": "pas",
+      "options": [
+        "pas",
+        "très",
+        "oui"
+      ]
+    },
+    {
+      "sentence": "Ils ne parlent ___ anglais. (not)",
+      "answer": "pas",
+      "options": [
+        "pas",
+        "très",
+        "oui"
+      ]
+    }
+  ],
+  "fr-perfect": [
+    {
+      "sentence": "J’ai ___ la porte. (fermer)",
+      "answer": "fermé",
+      "options": [
+        "fermé",
+        "fermer",
+        "ferme"
+      ]
+    },
+    {
+      "sentence": "Vous ___ préparé le repas. (avoir)",
+      "answer": "avez",
+      "options": [
+        "avez",
+        "avons",
+        "ont"
+      ]
+    },
+    {
+      "sentence": "Nous avons ___ le musée. (visiter)",
+      "answer": "visité",
+      "options": [
+        "visité",
+        "visiter",
+        "visite"
+      ]
+    },
+    {
+      "sentence": "Elles ___ regardé le film. (avoir)",
+      "answer": "ont",
+      "options": [
+        "ont",
+        "a",
+        "avons"
+      ]
+    }
+  ],
+  "fr-relative": [
+    {
+      "sentence": "Le garçon ___ chante est mon frère.",
+      "answer": "qui",
+      "options": [
+        "qui",
+        "que",
+        "où"
+      ]
+    },
+    {
+      "sentence": "La lettre ___ tu écris est longue.",
+      "answer": "que",
+      "options": [
+        "que",
+        "qui",
+        "où"
+      ]
+    },
+    {
+      "sentence": "Le chien ___ court est petit.",
+      "answer": "qui",
+      "options": [
+        "qui",
+        "que",
+        "où"
+      ]
+    },
+    {
+      "sentence": "La chanson ___ j’écoute est belle.",
+      "answer": "que",
+      "options": [
+        "que",
+        "qui",
+        "où"
+      ]
+    }
+  ],
+  "fr-imparfait": [
+    {
+      "sentence": "Avant, tu ___ souvent. (danser, imparfait)",
+      "answer": "dansais",
+      "options": [
+        "dansais",
+        "dansait",
+        "dansions"
+      ]
+    },
+    {
+      "sentence": "Il ___ tous les jours. (marcher, imparfait)",
+      "answer": "marchait",
+      "options": [
+        "marchait",
+        "marchais",
+        "marchaient"
+      ]
+    },
+    {
+      "sentence": "Vous ___ à Lyon. (habiter, imparfait)",
+      "answer": "habitiez",
+      "options": [
+        "habitiez",
+        "habitions",
+        "habitaient"
+      ]
+    },
+    {
+      "sentence": "Elles ___ chaque matin. (chanter, imparfait)",
+      "answer": "chantaient",
+      "options": [
+        "chantaient",
+        "chantait",
+        "chantions"
+      ]
+    }
+  ],
+  "it-essere": [
+    {
+      "sentence": "Lei ___ una bicicletta. (avere)",
+      "answer": "ha",
+      "options": [
+        "ha",
+        "è",
+        "hanno"
+      ]
+    },
+    {
+      "sentence": "Voi ___ a Roma. (essere)",
+      "answer": "siete",
+      "options": [
+        "siete",
+        "avete",
+        "siamo"
+      ]
+    },
+    {
+      "sentence": "Io ___ stanco. (essere)",
+      "answer": "sono",
+      "options": [
+        "sono",
+        "ho",
+        "sei"
+      ]
+    },
+    {
+      "sentence": "Tu ___ diciotto anni. (avere)",
+      "answer": "hai",
+      "options": [
+        "hai",
+        "sei",
+        "ha"
+      ]
+    }
+  ],
+  "it-perfect": [
+    {
+      "sentence": "Abbiamo ___ la cena. (preparare)",
+      "answer": "preparato",
+      "options": [
+        "preparato",
+        "preparare",
+        "preparando"
+      ]
+    },
+    {
+      "sentence": "Giulia ___ andata al cinema.",
+      "answer": "è",
+      "options": [
+        "è",
+        "ha",
+        "sono"
+      ]
+    },
+    {
+      "sentence": "Hai ___ la musica. (ascoltare)",
+      "answer": "ascoltato",
+      "options": [
+        "ascoltato",
+        "ascoltare",
+        "ascolti"
+      ]
+    },
+    {
+      "sentence": "Le ragazze sono ___ a casa. (andare)",
+      "answer": "andate",
+      "options": [
+        "andate",
+        "andati",
+        "andato"
+      ]
+    }
+  ],
+  "it-subjunctive": [
+    {
+      "sentence": "Penso che tu ___ ragione. (avere, congiuntivo)",
+      "answer": "abbia",
+      "options": [
+        "abbia",
+        "hai",
+        "avere"
+      ]
+    },
+    {
+      "sentence": "Penso che noi ___ pronti. (essere, congiuntivo)",
+      "answer": "siamo",
+      "options": [
+        "siamo",
+        "siete",
+        "sono"
+      ]
+    },
+    {
+      "sentence": "Penso che loro ___ domani. (venire, congiuntivo)",
+      "answer": "vengano",
+      "options": [
+        "vengano",
+        "vengono",
+        "venire"
+      ]
+    },
+    {
+      "sentence": "Penso che voi ___ tempo. (avere, congiuntivo)",
+      "answer": "abbiate",
+      "options": [
+        "abbiate",
+        "avete",
+        "hanno"
+      ]
+    }
+  ],
+  "it-imperfetto": [
+    {
+      "sentence": "Da piccolo, lui ___ in giardino. (giocare, imperfetto)",
+      "answer": "giocava",
+      "options": [
+        "giocava",
+        "giocavi",
+        "giocavano"
+      ]
+    },
+    {
+      "sentence": "Prima voi ___ molto. (camminare, imperfetto)",
+      "answer": "camminavate",
+      "options": [
+        "camminavate",
+        "camminavamo",
+        "camminavano"
+      ]
+    },
+    {
+      "sentence": "Ogni sera noi ___ insieme. (cenare, imperfetto)",
+      "answer": "cenavamo",
+      "options": [
+        "cenavamo",
+        "cenavano",
+        "cenavi"
+      ]
+    },
+    {
+      "sentence": "Da ragazza, io ___ spesso. (disegnare, imperfetto)",
+      "answer": "disegnavo",
+      "options": [
+        "disegnavo",
+        "disegnavi",
+        "disegnava"
+      ]
+    }
+  ],
+  "ja-masu": [
+    {
+      "sentence": "昨日映画を見___。 (past affirmative)",
+      "answer": "ました",
+      "options": [
+        "ました",
+        "ます",
+        "ません"
+      ]
+    },
+    {
+      "sentence": "明日は泳ぎ___。 (nonpast negative)",
+      "answer": "ません",
+      "options": [
+        "ません",
+        "ました",
+        "ます"
+      ]
+    },
+    {
+      "sentence": "昨日は勉強し___。 (past negative)",
+      "answer": "ませんでした",
+      "options": [
+        "ませんでした",
+        "ます",
+        "ました"
+      ]
+    },
+    {
+      "sentence": "毎朝お茶を飲み___。 (habit affirmative)",
+      "answer": "ます",
+      "options": [
+        "ます",
+        "ました",
+        "ません"
+      ]
+    }
+  ],
+  "ja-location": [
+    {
+      "sentence": "図書館___本を読みます。 (action location)",
+      "answer": "で",
+      "options": [
+        "で",
+        "を",
+        "の"
+      ]
+    },
+    {
+      "sentence": "レストラン___食べます。 (action location)",
+      "answer": "で",
+      "options": [
+        "で",
+        "を",
+        "の"
+      ]
+    },
+    {
+      "sentence": "台所___料理します。 (action location)",
+      "answer": "で",
+      "options": [
+        "で",
+        "を",
+        "の"
+      ]
+    },
+    {
+      "sentence": "教室___日本語を話します。 (action location)",
+      "answer": "で",
+      "options": [
+        "で",
+        "を",
+        "の"
+      ]
+    }
+  ],
+  "ja-te": [
+    {
+      "sentence": "ドアを___ください。 (開ける)",
+      "answer": "開けて",
+      "options": [
+        "開けて",
+        "開けます",
+        "開ける"
+      ]
+    },
+    {
+      "sentence": "少し___ください。 (待つ)",
+      "answer": "待って",
+      "options": [
+        "待って",
+        "待ちます",
+        "待つ"
+      ]
+    },
+    {
+      "sentence": "これを___ください。 (見る)",
+      "answer": "見て",
+      "options": [
+        "見て",
+        "見ます",
+        "見る"
+      ]
+    },
+    {
+      "sentence": "ゆっくり___ください。 (話す)",
+      "answer": "話して",
+      "options": [
+        "話して",
+        "話します",
+        "話す"
+      ]
+    }
+  ],
+  "ja-teiru": [
+    {
+      "sentence": "今、テレビを___います。 (見る)",
+      "answer": "見て",
+      "options": [
+        "見て",
+        "見ます",
+        "見る"
+      ]
+    },
+    {
+      "sentence": "今、電話で___います。 (話す)",
+      "answer": "話して",
+      "options": [
+        "話して",
+        "話します",
+        "話す"
+      ]
+    },
+    {
+      "sentence": "今、道を___います。 (歩く)",
+      "answer": "歩いて",
+      "options": [
+        "歩いて",
+        "歩きます",
+        "歩く"
+      ]
+    },
+    {
+      "sentence": "今、料理を___います。 (作る)",
+      "answer": "作って",
+      "options": [
+        "作って",
+        "作ります",
+        "作る"
+      ]
+    }
+  ],
+  "de-articles": [
+    {
+      "sentence": "___ Schlüssel liegt hier.",
+      "answer": "Der",
+      "options": [
+        "Der",
+        "Die",
+        "Das"
+      ]
+    },
+    {
+      "sentence": "___ Uhr ist kaputt.",
+      "answer": "Die",
+      "options": [
+        "Die",
+        "Der",
+        "Das"
+      ]
+    },
+    {
+      "sentence": "___ Fahrrad ist blau.",
+      "answer": "Das",
+      "options": [
+        "Das",
+        "Der",
+        "Die"
+      ]
+    },
+    {
+      "sentence": "___ Schuhe sind nass.",
+      "answer": "Die",
+      "options": [
+        "Die",
+        "Der",
+        "Das"
+      ]
+    }
+  ],
+  "de-accusative": [
+    {
+      "sentence": "Ich brauche ___ Stift. (der)",
+      "answer": "den",
+      "options": [
+        "den",
+        "der",
+        "dem"
+      ]
+    },
+    {
+      "sentence": "Sie hat ___ Bruder. (ein)",
+      "answer": "einen",
+      "options": [
+        "einen",
+        "ein",
+        "einem"
+      ]
+    },
+    {
+      "sentence": "Wir kaufen ___ Brot. (das)",
+      "answer": "das",
+      "options": [
+        "das",
+        "dem",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Er sucht ___ Brille. (die)",
+      "answer": "die",
+      "options": [
+        "die",
+        "der",
+        "den"
+      ]
+    }
+  ],
+  "de-dative": [
+    {
+      "sentence": "Wir fahren mit ___ Zug. (der)",
+      "answer": "dem",
+      "options": [
+        "dem",
+        "den",
+        "der"
+      ]
+    },
+    {
+      "sentence": "Ich rede mit ___ Nachbarin. (die)",
+      "answer": "der",
+      "options": [
+        "der",
+        "die",
+        "dem"
+      ]
+    },
+    {
+      "sentence": "Er schreibt mit ___ Handy. (das)",
+      "answer": "dem",
+      "options": [
+        "dem",
+        "das",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Sie spielt mit ___ Kindern. (Plural)",
+      "answer": "den",
+      "options": [
+        "den",
+        "die",
+        "dem"
+      ]
+    }
+  ],
+  "de-modal": [
+    {
+      "sentence": "Er kann gut ___. (tanzen)",
+      "answer": "tanzen",
+      "options": [
+        "tanzen",
+        "tanzt",
+        "zu tanzen"
+      ]
+    },
+    {
+      "sentence": "Ihr müsst jetzt ___. (gehen)",
+      "answer": "gehen",
+      "options": [
+        "gehen",
+        "geht",
+        "zu gehen"
+      ]
+    },
+    {
+      "sentence": "Ich will morgen ___. (reisen)",
+      "answer": "reisen",
+      "options": [
+        "reisen",
+        "reise",
+        "zu reisen"
+      ]
+    },
+    {
+      "sentence": "Wir ___ heute arbeiten. (müssen)",
+      "answer": "müssen",
+      "options": [
+        "müssen",
+        "muss",
+        "müsst"
+      ]
+    }
+  ],
+  "de-perfect": [
+    {
+      "sentence": "Du ___ gestern gekocht.",
+      "answer": "hast",
+      "options": [
+        "hast",
+        "bist",
+        "hat"
+      ]
+    },
+    {
+      "sentence": "Wir ___ nach Berlin gefahren. (reisen)",
+      "answer": "sind",
+      "options": [
+        "sind",
+        "haben",
+        "seid"
+      ]
+    },
+    {
+      "sentence": "Ich ___ einen Brief geschrieben.",
+      "answer": "habe",
+      "options": [
+        "habe",
+        "bin",
+        "hat"
+      ]
+    },
+    {
+      "sentence": "Ihr ___ spät gekommen.",
+      "answer": "seid",
+      "options": [
+        "seid",
+        "habt",
+        "sind"
+      ]
+    }
+  ],
+  "de-weil": [
+    {
+      "sentence": "Ich trinke Wasser, weil ich Durst ___.",
+      "answer": "habe",
+      "options": [
+        "habe",
+        "haben",
+        "habe ich"
+      ]
+    },
+    {
+      "sentence": "Wir gehen früher, weil wir den Zug ___.",
+      "answer": "erreichen wollen",
+      "options": [
+        "erreichen wollen",
+        "wollen erreichen",
+        "wollen wir erreichen"
+      ]
+    },
+    {
+      "sentence": "Er bleibt zu Hause, weil er krank ___.",
+      "answer": "ist",
+      "options": [
+        "ist",
+        "sind",
+        "ist er"
+      ]
+    },
+    {
+      "sentence": "Sie öffnet das Fenster, weil es warm ___.",
+      "answer": "ist",
+      "options": [
+        "ist",
+        "sein",
+        "ist es"
+      ]
+    }
+  ],
+  "de-pronouns": [
+    {
+      "sentence": "Der Schlüssel ist weg. ___ ist weg.",
+      "answer": "Er",
+      "options": [
+        "Er",
+        "Sie",
+        "Es"
+      ]
+    },
+    {
+      "sentence": "Die Uhr ist teuer. ___ ist teuer.",
+      "answer": "Sie",
+      "options": [
+        "Sie",
+        "Er",
+        "Es"
+      ]
+    },
+    {
+      "sentence": "Das Glas ist leer. ___ ist leer.",
+      "answer": "Es",
+      "options": [
+        "Es",
+        "Sie",
+        "Er"
+      ]
+    },
+    {
+      "sentence": "Die Blumen blühen. ___ blühen.",
+      "answer": "Sie",
+      "options": [
+        "Sie",
+        "Er",
+        "Es"
+      ]
+    }
+  ],
+  "de-negation": [
+    {
+      "sentence": "Ich habe ___ Geld.",
+      "answer": "kein",
+      "options": [
+        "kein",
+        "keine",
+        "nicht"
+      ]
+    },
+    {
+      "sentence": "Die Suppe ist ___ kalt.",
+      "answer": "nicht",
+      "options": [
+        "nicht",
+        "kein",
+        "keine"
+      ]
+    },
+    {
+      "sentence": "Er hat ___ Schwester.",
+      "answer": "keine",
+      "options": [
+        "keine",
+        "kein",
+        "nicht"
+      ]
+    },
+    {
+      "sentence": "Das Zimmer ist ___ groß.",
+      "answer": "nicht",
+      "options": [
+        "nicht",
+        "kein",
+        "keine"
+      ]
+    }
+  ],
+  "de-v2": [
+    {
+      "sentence": "Nach dem Essen ___ spazieren. (wir / gehen)",
+      "answer": "gehen wir",
+      "options": [
+        "gehen wir",
+        "wir gehen",
+        "geht wir"
+      ]
+    },
+    {
+      "sentence": "Heute ___ länger. (ich / schlafen)",
+      "answer": "schlafe ich",
+      "options": [
+        "schlafe ich",
+        "ich schlafe",
+        "schlafen ich"
+      ]
+    },
+    {
+      "sentence": "Am Montag ___ Deutsch. (sie, Singular / lernen)",
+      "answer": "lernt sie",
+      "options": [
+        "lernt sie",
+        "sie lernt",
+        "lernen sie"
+      ]
+    },
+    {
+      "sentence": "Dort ___ meine Eltern. (wohnen)",
+      "answer": "wohnen meine Eltern",
+      "options": [
+        "wohnen meine Eltern",
+        "meine Eltern wohnen",
+        "wohnt meine Eltern"
+      ]
+    }
+  ],
+  "de-separable": [
+    {
+      "sentence": "Er ___ die Tür ___. (zumachen)",
+      "answer": "macht ... zu",
+      "options": [
+        "macht ... zu",
+        "zumacht ... zu",
+        "macht ... auf"
+      ]
+    },
+    {
+      "sentence": "Ihr ___ um sechs Uhr ___. (aufstehen)",
+      "answer": "steht ... auf",
+      "options": [
+        "steht ... auf",
+        "aufsteht ... auf",
+        "stehen ... auf"
+      ]
+    },
+    {
+      "sentence": "Wir ___ morgen ___. (mitkommen)",
+      "answer": "kommen ... mit",
+      "options": [
+        "kommen ... mit",
+        "mitkommen ... mit",
+        "kommt ... mit"
+      ]
+    },
+    {
+      "sentence": "Du ___ den Fernseher ___. (einschalten)",
+      "answer": "schaltest ... ein",
+      "options": [
+        "schaltest ... ein",
+        "einschaltest ... ein",
+        "schaltest ... aus"
+      ]
+    }
+  ],
+  "de-possessive": [
+    {
+      "sentence": "Sie hat einen Sohn. Das ist ___ Sohn.",
+      "answer": "ihr",
+      "options": [
+        "ihr",
+        "ihre",
+        "ihren"
+      ]
+    },
+    {
+      "sentence": "Ihr habt ein Haus. Das ist ___ Haus.",
+      "answer": "euer",
+      "options": [
+        "euer",
+        "eure",
+        "euren"
+      ]
+    },
+    {
+      "sentence": "Ich habe zwei Katzen. Das sind ___ Katzen.",
+      "answer": "meine",
+      "options": [
+        "meine",
+        "mein",
+        "meinen"
+      ]
+    },
+    {
+      "sentence": "Du hast einen Ball. Das ist ___ Ball.",
+      "answer": "dein",
+      "options": [
+        "dein",
+        "deine",
+        "deinen"
+      ]
+    }
+  ],
+  "de-two-way": [
+    {
+      "sentence": "Die Schuhe stehen unter ___ Bett. (das)",
+      "answer": "dem",
+      "options": [
+        "dem",
+        "das",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Ich stelle die Schuhe unter ___ Bett. (das, Ziel)",
+      "answer": "das",
+      "options": [
+        "das",
+        "dem",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Wir sitzen in ___ Küche. (die)",
+      "answer": "der",
+      "options": [
+        "der",
+        "die",
+        "dem"
+      ]
+    },
+    {
+      "sentence": "Wir gehen in ___ Küche. (die, Ziel)",
+      "answer": "die",
+      "options": [
+        "die",
+        "der",
+        "dem"
+      ]
+    }
+  ],
+  "de-prateritum": [
+    {
+      "sentence": "Ich ___ gestern krank. (sein)",
+      "answer": "war",
+      "options": [
+        "war",
+        "warst",
+        "waren"
+      ]
+    },
+    {
+      "sentence": "Du ___ viel Arbeit. (haben)",
+      "answer": "hattest",
+      "options": [
+        "hattest",
+        "hatte",
+        "hatten"
+      ]
+    },
+    {
+      "sentence": "Die Kinder ___ zu Hause. (sein)",
+      "answer": "waren",
+      "options": [
+        "waren",
+        "war",
+        "wart"
+      ]
+    },
+    {
+      "sentence": "Sie (Singular) ___ Hunger. (haben)",
+      "answer": "hatte",
+      "options": [
+        "hatte",
+        "hattest",
+        "hatten"
+      ]
+    }
+  ],
+  "de-relative": [
+    {
+      "sentence": "Der Hund, ___ laut bellt, gehört mir.",
+      "answer": "der",
+      "options": [
+        "der",
+        "den",
+        "dem"
+      ]
+    },
+    {
+      "sentence": "Das ist der Nachbar, ___ ich helfe.",
+      "answer": "dem",
+      "options": [
+        "dem",
+        "der",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Die Tasche, ___ ich trage, ist rot.",
+      "answer": "die",
+      "options": [
+        "die",
+        "der",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Das Kind, ___ dort spielt, ist mein Sohn.",
+      "answer": "das",
+      "options": [
+        "das",
+        "dem",
+        "den"
+      ]
+    }
+  ],
+  "de-adjective": [
+    {
+      "sentence": "Das ___ Haus ist groß. (weiß)",
+      "answer": "weiße",
+      "options": [
+        "weiße",
+        "weißen",
+        "weißer"
+      ]
+    },
+    {
+      "sentence": "Wir besuchen den ___ Park. (schön)",
+      "answer": "schönen",
+      "options": [
+        "schönen",
+        "schöne",
+        "schönes"
+      ]
+    },
+    {
+      "sentence": "Ich helfe der ___ Frau. (alt)",
+      "answer": "alten",
+      "options": [
+        "alten",
+        "alte",
+        "altes"
+      ]
+    },
+    {
+      "sentence": "Der ___ Mantel ist warm. (dick)",
+      "answer": "dicke",
+      "options": [
+        "dicke",
+        "dicken",
+        "dickes"
+      ]
+    }
+  ],
+  "de-passive": [
+    {
+      "sentence": "Das Essen ___ gerade gekocht. (Präsens)",
+      "answer": "wird",
+      "options": [
+        "wird",
+        "werden",
+        "wurde"
+      ]
+    },
+    {
+      "sentence": "Die Straße ___ gestern gesperrt. (Präteritum)",
+      "answer": "wurde",
+      "options": [
+        "wurde",
+        "wurden",
+        "wird"
+      ]
+    },
+    {
+      "sentence": "Die Bücher werden ___. (verkaufen)",
+      "answer": "verkauft",
+      "options": [
+        "verkauft",
+        "verkaufen",
+        "verkaufte"
+      ]
+    },
+    {
+      "sentence": "Die Pakete ___ gestern verschickt. (Präteritum)",
+      "answer": "wurden",
+      "options": [
+        "wurden",
+        "wurde",
+        "werden"
+      ]
+    }
+  ],
+  "de-konjunktiv2": [
+    {
+      "sentence": "Wenn ich Urlaub ___, würde ich ans Meer fahren. (haben)",
+      "answer": "hätte",
+      "options": [
+        "hätte",
+        "habe",
+        "hatte"
+      ]
+    },
+    {
+      "sentence": "Wenn du hier ___, könnten wir reden. (sein)",
+      "answer": "wärst",
+      "options": [
+        "wärst",
+        "bist",
+        "warst"
+      ]
+    },
+    {
+      "sentence": "Sie ___ dir helfen, wenn sie Zeit hätte. (können)",
+      "answer": "könnte",
+      "options": [
+        "könnte",
+        "kann",
+        "konnte"
+      ]
+    },
+    {
+      "sentence": "Wenn ihr wolltet, ___ ihr länger bleiben. (würde)",
+      "answer": "würdet",
+      "options": [
+        "würdet",
+        "werdet",
+        "würden"
+      ]
+    }
+  ],
+  "de-indirect": [
+    {
+      "sentence": "Er behauptet, er ___ gesund. (sein, Konjunktiv I)",
+      "answer": "sei",
+      "options": [
+        "sei",
+        "ist",
+        "war"
+      ]
+    },
+    {
+      "sentence": "Sie erklärt, sie ___ ein Auto. (haben, Konjunktiv I)",
+      "answer": "habe",
+      "options": [
+        "habe",
+        "hat",
+        "hatte"
+      ]
+    },
+    {
+      "sentence": "Er sagt, er ___ in Köln. (wohnen, Konjunktiv I)",
+      "answer": "wohne",
+      "options": [
+        "wohne",
+        "wohnt",
+        "wohnte"
+      ]
+    },
+    {
+      "sentence": "Sie berichtet, sie ___ morgen. (reisen, Konjunktiv I)",
+      "answer": "reise",
+      "options": [
+        "reise",
+        "reist",
+        "reiste"
+      ]
+    }
+  ],
+  "en-progressive": [
+    {
+      "sentence": "Look! The dog ___ in the garden. (run)",
+      "answer": "is running",
+      "options": [
+        "is running",
+        "are running",
+        "runs"
+      ]
+    },
+    {
+      "sentence": "We ___ lunch right now. (have)",
+      "answer": "are having",
+      "options": [
+        "are having",
+        "is having",
+        "have"
+      ]
+    },
+    {
+      "sentence": "I ___ a letter at the moment. (write)",
+      "answer": "am writing",
+      "options": [
+        "am writing",
+        "is writing",
+        "write"
+      ]
+    },
+    {
+      "sentence": "They are ___ for the bus now. (wait)",
+      "answer": "waiting",
+      "options": [
+        "waiting",
+        "wait",
+        "waits"
+      ]
+    }
+  ],
+  "en-past": [
+    {
+      "sentence": "Yesterday she ___ a letter. (write)",
+      "answer": "wrote",
+      "options": [
+        "wrote",
+        "write",
+        "writes"
+      ]
+    },
+    {
+      "sentence": "Last week I ___ my aunt. (visit)",
+      "answer": "visited",
+      "options": [
+        "visited",
+        "visit",
+        "visits"
+      ]
+    },
+    {
+      "sentence": "Did he ___ the door? (open)",
+      "answer": "open",
+      "options": [
+        "open",
+        "opened",
+        "opens"
+      ]
+    },
+    {
+      "sentence": "They didn't ___ breakfast. (eat)",
+      "answer": "eat",
+      "options": [
+        "eat",
+        "ate",
+        "eats"
+      ]
+    }
+  ],
+  "en-comparative": [
+    {
+      "sentence": "A train is ___ than a bicycle. (fast)",
+      "answer": "faster",
+      "options": [
+        "faster",
+        "fastest",
+        "more fast"
+      ]
+    },
+    {
+      "sentence": "This bag is ___ than that bag. (expensive)",
+      "answer": "more expensive",
+      "options": [
+        "more expensive",
+        "most expensive",
+        "expensiver"
+      ]
+    },
+    {
+      "sentence": "His score is ___ than mine. (bad)",
+      "answer": "worse",
+      "options": [
+        "worse",
+        "worst",
+        "badder"
+      ]
+    },
+    {
+      "sentence": "The blue box is ___ than the red one. (heavy)",
+      "answer": "heavier",
+      "options": [
+        "heavier",
+        "heaviest",
+        "more heavier"
+      ]
+    }
+  ],
+  "en-perfect": [
+    {
+      "sentence": "I have never ___ sushi. (eat)",
+      "answer": "eaten",
+      "options": [
+        "eaten",
+        "ate",
+        "eating"
+      ]
+    },
+    {
+      "sentence": "They ___ already arrived.",
+      "answer": "have",
+      "options": [
+        "have",
+        "has",
+        "are"
+      ]
+    },
+    {
+      "sentence": "She has just ___ the door. (close)",
+      "answer": "closed",
+      "options": [
+        "closed",
+        "close",
+        "closing"
+      ]
+    },
+    {
+      "sentence": "We have ___ this film before. (see)",
+      "answer": "seen",
+      "options": [
+        "seen",
+        "saw",
+        "seeing"
+      ]
+    }
+  ],
+  "en-conditional": [
+    {
+      "sentence": "If he ___ the train, he will call us. (miss)",
+      "answer": "misses",
+      "options": [
+        "misses",
+        "will miss",
+        "missing"
+      ]
+    },
+    {
+      "sentence": "If you help me, we will ___ earlier. (finish)",
+      "answer": "finish",
+      "options": [
+        "finish",
+        "finished",
+        "finishing"
+      ]
+    },
+    {
+      "sentence": "If the weather ___ good, we will go outside. (be)",
+      "answer": "is",
+      "options": [
+        "is",
+        "will be",
+        "being"
+      ]
+    },
+    {
+      "sentence": "If she studies, she will ___ the test. (pass)",
+      "answer": "pass",
+      "options": [
+        "pass",
+        "passed",
+        "passes"
+      ]
+    }
+  ],
+  "en-passive": [
+    {
+      "sentence": "The cake was ___ this morning. (make)",
+      "answer": "made",
+      "options": [
+        "made",
+        "make",
+        "making"
+      ]
+    },
+    {
+      "sentence": "The rooms ___ cleaned every morning. (present)",
+      "answer": "are",
+      "options": [
+        "are",
+        "is",
+        "were"
+      ]
+    },
+    {
+      "sentence": "The letter was ___ yesterday. (send)",
+      "answer": "sent",
+      "options": [
+        "sent",
+        "send",
+        "sending"
+      ]
+    },
+    {
+      "sentence": "The trees ___ planted last year. (past)",
+      "answer": "were",
+      "options": [
+        "were",
+        "was",
+        "are"
+      ]
+    }
+  ],
+  "en-articles": [
+    {
+      "sentence": "She needs ___ umbrella. (any one)",
+      "answer": "an",
+      "options": [
+        "an",
+        "a",
+        "some"
+      ]
+    },
+    {
+      "sentence": "He bought ___ bicycle. (a nonspecific one)",
+      "answer": "a",
+      "options": [
+        "a",
+        "an",
+        "some"
+      ]
+    },
+    {
+      "sentence": "I saw ___ elephant. (a nonspecific one)",
+      "answer": "an",
+      "options": [
+        "an",
+        "a",
+        "some"
+      ]
+    },
+    {
+      "sentence": "She wears ___ uniform. (a nonspecific one)",
+      "answer": "a",
+      "options": [
+        "a",
+        "an",
+        "some"
+      ]
+    }
+  ],
+  "en-pronouns": [
+    {
+      "sentence": "The teacher sees me and Tom. She sees ___.",
+      "answer": "us",
+      "options": [
+        "us",
+        "we",
+        "our"
+      ]
+    },
+    {
+      "sentence": "I like this book. I like ___.",
+      "answer": "it",
+      "options": [
+        "it",
+        "its",
+        "they"
+      ]
+    },
+    {
+      "sentence": "He called my parents. He called ___.",
+      "answer": "them",
+      "options": [
+        "them",
+        "they",
+        "their"
+      ]
+    },
+    {
+      "sentence": "Anna spoke to Peter. Anna spoke to ___.",
+      "answer": "him",
+      "options": [
+        "him",
+        "he",
+        "his"
+      ]
+    }
+  ],
+  "en-there": [
+    {
+      "sentence": "There ___ two dogs outside.",
+      "answer": "are",
+      "options": [
+        "are",
+        "is",
+        "am"
+      ]
+    },
+    {
+      "sentence": "There ___ a pencil on the desk.",
+      "answer": "is",
+      "options": [
+        "is",
+        "are",
+        "am"
+      ]
+    },
+    {
+      "sentence": "___ there a bank near here?",
+      "answer": "Is",
+      "options": [
+        "Is",
+        "Are",
+        "Am"
+      ]
+    },
+    {
+      "sentence": "___ there any apples left?",
+      "answer": "Are",
+      "options": [
+        "Are",
+        "Is",
+        "Am"
+      ]
+    }
+  ],
+  "en-quantifiers": [
+    {
+      "sentence": "How ___ milk do we need?",
+      "answer": "much",
+      "options": [
+        "much",
+        "many",
+        "a lot"
+      ]
+    },
+    {
+      "sentence": "How ___ windows are open?",
+      "answer": "many",
+      "options": [
+        "many",
+        "much",
+        "a lot"
+      ]
+    },
+    {
+      "sentence": "How ___ money did you spend?",
+      "answer": "much",
+      "options": [
+        "much",
+        "many",
+        "a lot"
+      ]
+    },
+    {
+      "sentence": "How ___ books did she buy?",
+      "answer": "many",
+      "options": [
+        "many",
+        "much",
+        "a lot"
+      ]
+    }
+  ],
+  "en-future": [
+    {
+      "sentence": "I will ___ the bags for you. (carry)",
+      "answer": "carry",
+      "options": [
+        "carry",
+        "carries",
+        "to carry"
+      ]
+    },
+    {
+      "sentence": "They will ___ tomorrow. (leave)",
+      "answer": "leave",
+      "options": [
+        "leave",
+        "leaves",
+        "left"
+      ]
+    },
+    {
+      "sentence": "Will she ___ with us? (come)",
+      "answer": "come",
+      "options": [
+        "come",
+        "comes",
+        "to come"
+      ]
+    },
+    {
+      "sentence": "He won't ___ the answer. (forget)",
+      "answer": "forget",
+      "options": [
+        "forget",
+        "forgets",
+        "forgetting"
+      ]
+    }
+  ],
+  "en-modal": [
+    {
+      "sentence": "She can ___ the piano. (play)",
+      "answer": "play",
+      "options": [
+        "play",
+        "plays",
+        "to play"
+      ]
+    },
+    {
+      "sentence": "We must ___ quiet. (be)",
+      "answer": "be",
+      "options": [
+        "be",
+        "are",
+        "to be"
+      ]
+    },
+    {
+      "sentence": "You should ___ a doctor. (see)",
+      "answer": "see",
+      "options": [
+        "see",
+        "sees",
+        "seeing"
+      ]
+    },
+    {
+      "sentence": "Can he ___ French? (speak)",
+      "answer": "speak",
+      "options": [
+        "speak",
+        "speaks",
+        "to speak"
+      ]
+    }
+  ],
+  "en-past-cont": [
+    {
+      "sentence": "At noon yesterday she ___ lunch. (cook)",
+      "answer": "was cooking",
+      "options": [
+        "was cooking",
+        "were cooking",
+        "was cook"
+      ]
+    },
+    {
+      "sentence": "They ___ when the lights went out. (read)",
+      "answer": "were reading",
+      "options": [
+        "were reading",
+        "was reading",
+        "were read"
+      ]
+    },
+    {
+      "sentence": "I was ___ when the bell rang. (sleep)",
+      "answer": "sleeping",
+      "options": [
+        "sleeping",
+        "slept",
+        "sleep"
+      ]
+    },
+    {
+      "sentence": "We ___ at nine last night. (study)",
+      "answer": "were studying",
+      "options": [
+        "were studying",
+        "was studying",
+        "were study"
+      ]
+    }
+  ],
+  "en-relative": [
+    {
+      "sentence": "My uncle, ___ lives in Rome, is visiting.",
+      "answer": "who",
+      "options": [
+        "who",
+        "which",
+        "what"
+      ]
+    },
+    {
+      "sentence": "The car, ___ is blue, belongs to her.",
+      "answer": "which",
+      "options": [
+        "which",
+        "who",
+        "what"
+      ]
+    },
+    {
+      "sentence": "Maria, ___ teaches English, is my friend.",
+      "answer": "who",
+      "options": [
+        "who",
+        "which",
+        "what"
+      ]
+    },
+    {
+      "sentence": "This computer, ___ has a new screen, works well.",
+      "answer": "which",
+      "options": [
+        "which",
+        "who",
+        "what"
+      ]
+    }
+  ],
+  "en-past-perfect": [
+    {
+      "sentence": "By the time we arrived, he had already ___. (eat)",
+      "answer": "eaten",
+      "options": [
+        "eaten",
+        "ate",
+        "eating"
+      ]
+    },
+    {
+      "sentence": "She had ___ her bag before leaving. (pack)",
+      "answer": "packed",
+      "options": [
+        "packed",
+        "pack",
+        "packing"
+      ]
+    },
+    {
+      "sentence": "They had ___ the letter before the meeting. (read)",
+      "answer": "read",
+      "options": [
+        "read",
+        "reads",
+        "reading"
+      ]
+    },
+    {
+      "sentence": "I had ___ my keys before the trip. (find)",
+      "answer": "found",
+      "options": [
+        "found",
+        "find",
+        "finding"
+      ]
+    }
+  ],
+  "en-second-conditional": [
+    {
+      "sentence": "If I ___ taller, I would play basketball. (be)",
+      "answer": "were",
+      "options": [
+        "were",
+        "am",
+        "will be"
+      ]
+    },
+    {
+      "sentence": "If he had a car, he would ___ to work. (drive)",
+      "answer": "drive",
+      "options": [
+        "drive",
+        "drove",
+        "driving"
+      ]
+    },
+    {
+      "sentence": "If they ___ more time, they would visit us. (have)",
+      "answer": "had",
+      "options": [
+        "had",
+        "have",
+        "will have"
+      ]
+    },
+    {
+      "sentence": "If she knew the answer, she ___ tell you.",
+      "answer": "would",
+      "options": [
+        "would",
+        "will",
+        "has"
+      ]
+    }
+  ],
+  "en-third-conditional": [
+    {
+      "sentence": "If I had ___ the bus, I would have arrived earlier. (catch)",
+      "answer": "caught",
+      "options": [
+        "caught",
+        "catch",
+        "catching"
+      ]
+    },
+    {
+      "sentence": "If you had asked, I would have ___. (help)",
+      "answer": "helped",
+      "options": [
+        "helped",
+        "help",
+        "helping"
+      ]
+    },
+    {
+      "sentence": "If she had ___ the alarm, she would have woken up. (hear)",
+      "answer": "heard",
+      "options": [
+        "heard",
+        "hear",
+        "hearing"
+      ]
+    },
+    {
+      "sentence": "If we had known, we ___ have stayed home.",
+      "answer": "would",
+      "options": [
+        "would",
+        "will",
+        "had"
+      ]
+    }
+  ],
+  "en-inversion": [
+    {
+      "sentence": "Never ___ so much rain. (we / have / seen)",
+      "answer": "have we seen",
+      "options": [
+        "have we seen",
+        "we have seen",
+        "we seen have"
+      ]
+    },
+    {
+      "sentence": "Rarely ___ so early. (he / does / arrive)",
+      "answer": "does he arrive",
+      "options": [
+        "does he arrive",
+        "he does arrive",
+        "he arrive does"
+      ]
+    },
+    {
+      "sentence": "Seldom ___ such a chance. (they / do / get)",
+      "answer": "do they get",
+      "options": [
+        "do they get",
+        "they do get",
+        "they get do"
+      ]
+    },
+    {
+      "sentence": "Never before ___ this city. (she / had / visited)",
+      "answer": "had she visited",
+      "options": [
+        "had she visited",
+        "she had visited",
+        "she visited had"
+      ]
+    }
+  ]
+});
+
+// Additional original practical-language units; AI-assisted, independent review pending.
+LANGUAGE_UNITS.push(...[
+  {
+    "id": "health-appointments",
+    "title": {
+      "de": "17 · Gesundheit und Termine",
+      "en": "17 · Health and appointments",
+      "ru": "17 · Здоровье и запись на приём",
+      "uk": "17 · Здоров’я та запис на прийом"
+    },
+    "note": {
+      "de": "Übe Terminvereinbarungen und einfache Beschreibungen von Beschwerden. Das sind Sprachübungen, keine medizinischen Empfehlungen.",
+      "en": "Practise arranging appointments and describing simple symptoms. These are language exercises, not medical recommendations.",
+      "ru": "Тренируй запись на приём и простое описание самочувствия. Это языковые упражнения, не медицинские рекомендации.",
+      "uk": "Тренуй запис на прийом і простий опис самопочуття. Це мовні вправи, а не медичні рекомендації."
+    },
+    "items": [
+      {
+        "id": "health-appointments.appointment",
+        "text": {
+          "de": "Ich möchte einen Termin vereinbaren.",
+          "en": "I would like to make an appointment.",
+          "ka": "მსურს ვიზიტზე ჩაწერა.",
+          "uk": "Я хотів би записатися на прийом.",
+          "ru": "Я хочу записаться на приём.",
+          "zh": "我想预约。",
+          "es": "Quisiera pedir una cita.",
+          "fr": "Je voudrais prendre rendez-vous.",
+          "it": "Vorrei fissare un appuntamento.",
+          "ja": "予約を取りたいです。"
+        }
+      },
+      {
+        "id": "health-appointments.morning",
+        "text": {
+          "de": "Ist am Montagvormittag ein Termin frei?",
+          "en": "Is there an appointment available on Monday morning?",
+          "ka": "ორშაბათს დილით თავისუფალი დრო გაქვთ?",
+          "uk": "Чи є вільний час для прийому в понеділок уранці?",
+          "ru": "Есть ли свободное время для приёма в понедельник утром?",
+          "zh": "星期一上午有空的预约时段吗？",
+          "es": "¿Hay una cita disponible el lunes por la mañana?",
+          "fr": "Y a-t-il un créneau disponible lundi matin ?",
+          "it": "C’è un appuntamento disponibile lunedì mattina?",
+          "ja": "月曜日の午前中に予約の空きはありますか。"
+        }
+      },
+      {
+        "id": "health-appointments.headache",
+        "text": {
+          "de": "Seit gestern habe ich Kopfschmerzen.",
+          "en": "I have had a headache since yesterday.",
+          "ka": "გუშინდლიდან თავი მტკივა.",
+          "uk": "З учора в мене болить голова.",
+          "ru": "У меня со вчерашнего дня болит голова.",
+          "zh": "我从昨天开始就头疼。",
+          "es": "Me duele la cabeza desde ayer.",
+          "fr": "J’ai mal à la tête depuis hier.",
+          "it": "Ho mal di testa da ieri.",
+          "ja": "昨日から頭が痛いです。"
+        }
+      },
+      {
+        "id": "health-appointments.documents",
+        "text": {
+          "de": "Welche Unterlagen soll ich mitbringen?",
+          "en": "What documents should I bring?",
+          "ka": "რომელი დოკუმენტები უნდა მოვიტანო?",
+          "uk": "Які документи мені потрібно принести?",
+          "ru": "Какие документы мне нужно принести?",
+          "zh": "我需要带哪些材料？",
+          "es": "¿Qué documentos debo llevar?",
+          "fr": "Quels documents dois-je apporter ?",
+          "it": "Quali documenti devo portare?",
+          "ja": "どの書類を持っていけばいいですか。"
+        }
+      },
+      {
+        "id": "health-appointments.explain",
+        "text": {
+          "de": "Könnten Sie mir das bitte einfacher erklären?",
+          "en": "Could you please explain that in simpler terms?",
+          "ka": "შეგიძლიათ ეს უფრო მარტივად ამიხსნათ?",
+          "uk": "Чи могли б ви пояснити це простіше?",
+          "ru": "Не могли бы вы объяснить это проще?",
+          "zh": "您能解释得简单一点吗？",
+          "es": "¿Podría explicármelo de forma más sencilla?",
+          "fr": "Pourriez-vous me l’expliquer plus simplement ?",
+          "it": "Potrebbe spiegarmelo in modo più semplice?",
+          "ja": "もう少し分かりやすく説明していただけますか。"
+        }
+      },
+      {
+        "id": "health-appointments.reschedule",
+        "text": {
+          "de": "Ich muss meinen Termin verschieben.",
+          "en": "I need to reschedule my appointment.",
+          "ka": "ვიზიტის გადატანა მჭირდება.",
+          "uk": "Мені потрібно перенести свій прийом.",
+          "ru": "Мне нужно перенести свой приём.",
+          "zh": "我需要改约。",
+          "es": "Necesito cambiar mi cita.",
+          "fr": "Je dois déplacer mon rendez-vous.",
+          "it": "Devo spostare il mio appuntamento.",
+          "ja": "予約の日時を変更する必要があります。"
+        }
+      },
+      {
+        "id": "health-appointments.insurance",
+        "text": {
+          "de": "Hier ist meine Versicherungskarte.",
+          "en": "Here is my health insurance card.",
+          "ka": "აი, ჩემი ჯანმრთელობის დაზღვევის ბარათი.",
+          "uk": "Ось моя картка медичного страхування.",
+          "ru": "Вот моя карточка медицинского страхования.",
+          "zh": "这是我的医保卡。",
+          "es": "Aquí está mi tarjeta sanitaria.",
+          "fr": "Voici ma carte d’assurance maladie.",
+          "it": "Ecco la mia tessera sanitaria.",
+          "ja": "こちらが私の健康保険証です。"
+        }
+      },
+      {
+        "id": "health-appointments.written",
+        "text": {
+          "de": "Könnten Sie mir das bitte aufschreiben?",
+          "en": "Could you please write that down for me?",
+          "ka": "შეგიძლიათ ეს დამიწეროთ?",
+          "uk": "Чи могли б ви записати це для мене?",
+          "ru": "Не могли бы вы записать это для меня?",
+          "zh": "您能帮我把这个写下来吗？",
+          "es": "¿Podría anotármelo, por favor?",
+          "fr": "Pourriez-vous me l’écrire, s’il vous plaît ?",
+          "it": "Potrebbe scrivermelo, per favore?",
+          "ja": "それを書いていただけますか。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "housing-services",
+    "title": {
+      "de": "18 · Wohnen und Dienstleistungen",
+      "en": "18 · Housing and services",
+      "ru": "18 · Жильё и бытовые услуги",
+      "uk": "18 · Житло та побутові послуги"
+    },
+    "note": {
+      "de": "Übe sachliche Nachrichten über Wohnung, Reparaturen und Absprachen. Beschreibe das Problem und frage nach dem nächsten Schritt.",
+      "en": "Practise clear messages about housing, repairs and arrangements. Describe the problem and ask about the next step.",
+      "ru": "Тренируй ясные сообщения о жилье, ремонте и договорённостях. Опиши проблему и уточни следующий шаг.",
+      "uk": "Тренуй чіткі повідомлення про житло, ремонт і домовленості. Опиши проблему та уточни наступний крок."
+    },
+    "items": [
+      {
+        "id": "housing-services.heating",
+        "text": {
+          "de": "Die Heizung funktioniert seit gestern nicht.",
+          "en": "The heating has not worked since yesterday.",
+          "ka": "გუშინდლიდან გათბობა არ მუშაობს.",
+          "uk": "Опалення не працює з учора.",
+          "ru": "Отопление не работает со вчерашнего дня.",
+          "zh": "暖气从昨天起就不工作了。",
+          "es": "La calefacción no funciona desde ayer.",
+          "fr": "Le chauffage ne fonctionne plus depuis hier.",
+          "it": "Il riscaldamento non funziona da ieri.",
+          "ja": "昨日から暖房が動きません。"
+        }
+      },
+      {
+        "id": "housing-services.repair",
+        "text": {
+          "de": "Wann kann jemand die Waschmaschine reparieren?",
+          "en": "When can someone repair the washing machine?",
+          "ka": "როდის შეუძლია ვინმეს სარეცხი მანქანის შეკეთება?",
+          "uk": "Коли хтось зможе полагодити пральну машину?",
+          "ru": "Когда кто-нибудь сможет починить стиральную машину?",
+          "zh": "什么时候有人能来修洗衣机？",
+          "es": "¿Cuándo puede venir alguien a reparar la lavadora?",
+          "fr": "Quand quelqu’un pourra-t-il réparer le lave-linge ?",
+          "it": "Quando può venire qualcuno a riparare la lavatrice?",
+          "ja": "いつ洗濯機を修理してもらえますか。"
+        }
+      },
+      {
+        "id": "housing-services.rent",
+        "text": {
+          "de": "Sind die Nebenkosten in der Miete enthalten?",
+          "en": "Are the additional charges included in the rent?",
+          "ka": "დამატებითი ხარჯები ქირაში შედის?",
+          "uk": "Чи включені додаткові витрати в орендну плату?",
+          "ru": "Включены ли дополнительные расходы в арендную плату?",
+          "zh": "附加费用包含在房租里吗？",
+          "es": "¿Están incluidos los gastos adicionales en el alquiler?",
+          "fr": "Les charges sont-elles comprises dans le loyer ?",
+          "it": "Le spese accessorie sono incluse nell’affitto?",
+          "ja": "共益費などの追加費用は家賃に含まれていますか。"
+        }
+      },
+      {
+        "id": "housing-services.keys",
+        "text": {
+          "de": "Ich habe meinen Schlüssel verloren.",
+          "en": "I have lost my key.",
+          "ka": "გასაღები დავკარგე.",
+          "uk": "Я загубив свій ключ.",
+          "ru": "Я потерял ключ.",
+          "zh": "我把钥匙弄丢了。",
+          "es": "He perdido mi llave.",
+          "fr": "J’ai perdu ma clé.",
+          "it": "Ho perso la mia chiave.",
+          "ja": "鍵をなくしました。"
+        }
+      },
+      {
+        "id": "housing-services.availability",
+        "text": {
+          "de": "Ich bin morgen nach fünf Uhr zu Hause.",
+          "en": "I will be home tomorrow after five o’clock.",
+          "ka": "ხვალ ხუთი საათის შემდეგ სახლში ვიქნები.",
+          "uk": "Завтра після п’ятої я буду вдома.",
+          "ru": "Завтра после пяти я буду дома.",
+          "zh": "我明天五点以后在家。",
+          "es": "Mañana estaré en casa después de las cinco.",
+          "fr": "Demain, je serai chez moi après cinq heures.",
+          "it": "Domani sarò a casa dopo le cinque.",
+          "ja": "明日は5時以降、家にいます。"
+        }
+      },
+      {
+        "id": "housing-services.cost",
+        "text": {
+          "de": "Wie viel kostet die Reparatur insgesamt?",
+          "en": "How much will the repair cost in total?",
+          "ka": "სულ რამდენი დაჯდება შეკეთება?",
+          "uk": "Скільки загалом коштуватиме ремонт?",
+          "ru": "Сколько всего будет стоить ремонт?",
+          "zh": "维修总共要花多少钱？",
+          "es": "¿Cuánto costará la reparación en total?",
+          "fr": "Combien coûtera la réparation au total ?",
+          "it": "Quanto costerà in totale la riparazione?",
+          "ja": "修理には全部でいくらかかりますか。"
+        }
+      },
+      {
+        "id": "housing-services.confirmation",
+        "text": {
+          "de": "Bitte bestätigen Sie den vereinbarten Termin.",
+          "en": "Please confirm the agreed appointment.",
+          "ka": "გთხოვთ, დაადასტუროთ შეთანხმებული დრო.",
+          "uk": "Будь ласка, підтвердьте узгоджений час.",
+          "ru": "Пожалуйста, подтвердите согласованное время.",
+          "zh": "请确认约定的时间。",
+          "es": "Por favor, confirme la cita acordada.",
+          "fr": "Veuillez confirmer le rendez-vous convenu.",
+          "it": "La prego di confermare l’appuntamento concordato.",
+          "ja": "約束した日時をご確認ください。"
+        }
+      },
+      {
+        "id": "housing-services.thanks",
+        "text": {
+          "de": "Vielen Dank für Ihre schnelle Hilfe.",
+          "en": "Thank you very much for your prompt help.",
+          "ka": "დიდი მადლობა სწრაფი დახმარებისთვის.",
+          "uk": "Щиро дякую за швидку допомогу.",
+          "ru": "Большое спасибо за быструю помощь.",
+          "zh": "非常感谢您的及时帮助。",
+          "es": "Muchas gracias por su rápida ayuda.",
+          "fr": "Merci beaucoup pour votre aide rapide.",
+          "it": "Grazie mille per il Suo rapido aiuto.",
+          "ja": "迅速にご対応いただき、ありがとうございます。"
+        }
+      }
+    ]
+  }
+]);

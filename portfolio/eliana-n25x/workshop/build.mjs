@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -10,6 +16,7 @@ const files=['index.html','studio.css','app.mjs','model.mjs','math.mjs','math-co
 for(const file of files)await fs.copyFile(path.join(root,file),path.join(out,file));
 await fs.mkdir(path.join(out,'vendor'));for(const file of ['three.module.js','LICENSE.three.txt']){await fs.copyFile(path.join(root,'../3d/vendor',file),path.join(out,'vendor',file));files.push('vendor/'+file);}
 await fs.mkdir(path.join(out,'assets'));for(const file of ['Manrope.ttf','OFL.txt','icon-192.png','icon-512.png','n25x-portrait.webp']){await fs.copyFile(path.join(root,'../assets',file),path.join(out,'assets',file));files.push('assets/'+file);}
+await fs.copyFile(path.join(root,'../LICENSE.md'),path.join(out,'assets/N25X-NOTICE.txt'));files.push('assets/N25X-NOTICE.txt');
 const hashes={};for(const file of files)hashes['./'+file]=createHash('sha256').update(await fs.readFile(path.join(out,file))).digest('hex');
 const source=await fs.readFile(path.join(root,'sw-template.js'),'utf8'),portableSource=await fs.readFile(path.join(root,'portable.mjs'),'utf8'),version='en25xstudio-'+createHash('sha256').update(JSON.stringify(hashes)+source+portableSource).digest('hex').slice(0,14);
 // Inject the expected worker version, then hash the final app bytes. The version

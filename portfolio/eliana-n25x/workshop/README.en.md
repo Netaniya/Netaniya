@@ -31,3 +31,76 @@ The standalone HTML embeds the robot portrait, font, icons, licenses and module 
 `.github/workflows/eliana-workshop-browser.yml` runs actual Chromium with SwiftShader on desktop and emulated phone dimensions. It uses real input for lessons, tests, MIDI/WAV downloads, two simultaneous touch contacts, offline reload and a real local standalone file. Results are only claimed after successful jobs. Current publication evidence is [recorded separately](../../../docs/eliana-n25x-workshop/publication.json).
 
 Physical Android/iOS testing and actual installation are separate. The ten-language material is introductory, AI-assisted and awaiting native-speaker review. The complete C1 path is not implemented. There is no unrestricted cloud AI conversation, live messaging, account system, cloud sync or payment service.
+
+## Academy candidate: spaced practice
+`language-course.mjs` adds a validated per-language/per-skill review schedule. UTC-day intervals 1/3/7/14/30, early practice does not promote, mistakes/assisted answers reset, legacy completions remain intact. Local only. [Provenance](CONTRIBUTIONS.md). Full browser regression pending.
+
+Grammar candidate: 16 DE/EN lessons, 64 original questions, separate practice/checkpoint examples, local passed-topic state, rules in four UI languages. Not a certified curriculum. Full browser acceptance pending.
+
+Grammar expansion candidate: 40 lessons total, 20 per DE/EN, 160 tasks, five thematic groups, progress bar and next unfinished lesson. Legacy lesson IDs preserved. Controller checks passed; browser/teacher acceptance pending.
+
+Grammar candidate update: 80 topics across all ten target languages, 320 exercises; 20 topics each DE/EN and five each for KA/UK/RU/ZH/ES/FR/IT/JA. Separate practice and checkpoints. Browser and native-speaker acceptance pending.
+
+Piano learning candidate: twelve original note-order patterns with local saved completion, optional synthesized example playback, no score changes from practice input, no rhythm/fingering assessment. Deterministic note and MIDI/WAV buffer checks passed. Browser regression added but not run.
+
+Rhythm candidate: eight original patterns, first-tap-relative onset assessment, bounded tolerance, signed timing deviations and independent local completion. Deterministic checks passed; real-device latency and browser acceptance pending.
+
+## Current development snapshot — 28 November 2026
+The review branch now has 16 language topics, 152 shared meanings per language (1,520 translations, 4,560 core exercise forms), 80 grammar topics/320 questions, 32 programming missions/seven stages, 61 subject tasks/23 stages, 24 piano patterns/six stages and eight rhythm patterns. Earlier figures above describe historical releases. Source-only verification passed; Chromium and publication remain pending. See [curriculum](LEARNING-PLAN.ru.md), [development history](PROGRESS.ru.md) and [contributions](CONTRIBUTIONS.md). The public release is still separately tracked in publication.json.
+
+Music candidate update: five ascending melodic interval-recognition stages covering 13 semitone distances, 39 questions per full five-stage cycle, independent saved completion and four UI localizations. Web Audio scheduling is not proof of audibility; real listening and browser review pending.
+
+Staff-reading candidate: five stages, 40 written single-note exercises, treble and bass clefs, ledger lines and accidentals, validated local progress and four interface languages. Not a score editor. Browser and font rendering acceptance pending.
+
+Chord candidate: four root-position chord recognition stages, nine qualities, 27 questions per cycle, playable reference examples and local progress. Inversions and voice-leading are not assessed. Browser/audio acceptance pending.
+
+Practical harmony candidate: six guided stages and 24 chord-construction tasks including inversions and ii7–V7–Imaj7. Exact MIDI pitch-set checking, sequential keyboard selection and independent progress. No voice-leading or simultaneous performance assessment. Browser acceptance pending.
+
+Current grammar candidate: 88 topics / 352 questions, 20 each in German and English, six in each of the other eight languages. Native-speaker review and this commit's CI pending. Workflow #18 applies to the earlier commit `30e8f57`.
+
+Unified study dashboard: six separate counters (mathematics, active-language skills, active-language grammar, programming, school subjects, music practice stages) plus saved creative projects. Counts do not award points. Review-branch CI uses the open PR trigger and manual dispatch instead of duplicate push and PR triggers.
+
+Mathematics/subject extension: 52 task families × 256 variants = 13,312 variants; 73 localized questions across 29 stages in six subjects. Existing task IDs remain stable. Earlier revision dd965e9 passed desktop, touch and source checks; this candidate awaits CI.
+
+Programming now has 36 missions, eight stages and 182 test cases, including four cross-disciplinary projects. Restricted educational interpreter; not a complete JavaScript runtime. Latest CI pending.
+
+ELIANA visual direction: initial procedural silver-titanium humanoid with restrained blue optics and reversible exploded view. Original logo and existing saved profiles preserved. Film-quality reference art is not yet a rigged model; new CI pending. See DESIGN-ELIANA.md.
+
+AI Code Lab: 38 missions, nine stages, 194 test cases. Read-only diagnostics, prompt export, optional ready browser LanguageModel (EN/DE). Real-model and browser verification pending; see AI-CODE-LAB.md.
+
+Sentence classroom: all ten study languages can now serve as translation sources (90 distinct directed pairs), with automatic interface-language mode, safe same-language fallback and saved source selection. Four UI localizations remain unchanged; native-speaker review and CI pending.
+
+Personal study plan: up to three local recommendations based on saved progress, with unfinished math self-tests and mistakes prioritized, guided language review and rotating unfinished supplementary courses. Not a placement test or AI-generated assessment. All courses remain selectable; CI pending.
+
+Math self-test evidence: latest/best score and completed round count by topic, with validated profile migration. After unresolved mistakes are reviewed, a low latest score can prompt a new ten-question round at the chosen difficulty. Not a standardized proficiency diagnosis; CI pending.
+
+Grammar evidence: latest/best completed checkpoint, missed question indices, corrections and targeted review across all ten languages/88 topics. Historical passes remain valid; two-question repeated checkpoints do not establish proficiency. CI and linguistic review pending.
+
+Extended grammar checkpoints: 80 additional authored questions in 20 existing topics across ten languages (432 total grammar exercises). Separate results and review priority preserve previous basic checkpoints. The remaining 68 topics retain their original checkpoints; native review and CI pending.
+
+Extended checkpoint coverage now spans 52/88 topics: all six topics of eight languages plus two each in German and English. 128 additional prompts bring the total grammar exercise count to 560. Remaining: 36 German/English topics. Native review pending.
+
+All 88 existing grammar topics now include four independent extended checkpoint prompts, in addition to two practice and two basic checkpoint prompts (704 total questions). The final 144 prompts cover 36 German/English topics; independent linguistic review and CI pending.
+
+Owner review: CI desktop job packages `n25x-offline-review-candidate` after module tests, before browser tests. Download the ZIP from the Actions run, extract and open `N25x-Studio.html`; commit and SHA-256 metadata included. This is a candidate, not a public site deployment. Retention 14 days. Repository privacy change is deferred until completion with a separate employer-facing deployment; client-side source remains inspectable. Listening adds normal/slow local voices, no speech recognition or pronunciation scoring.
+
+Eliana armour v2: revised 3D face, optics, graphite/silver armour, luminous chest core and limb details; retained articulated rig, customization and exploded mode. Browser screenshot and geometry acceptance added. Visual approval, physical-device testing and deployment remain open.
+
+Written recall mode reuses all 352 extended grammar prompts without answer choices, with separate scores and review priority. Exact studied-form matching preserves case and accents and tolerates typographic apostrophes/ellipsis/spacing. Not free-writing evaluation; valid alternatives require teacher review. No additional unique prompts claimed.
+
+Cloud review server: `node portfolio/eliana-n25x/workshop/build.mjs` followed by `node portfolio/eliana-n25x/workshop/preview-server.mjs` from repo root. Uses PORT, validates build hashes at startup, serves allowlisted generated assets only, no directory listing or source repository access. Public preview has no authentication; noindex is not privacy. Intended separate free Render service, manual deploys, workspace confirmation pending. CI tests actual HTTP and rejects altered/symlinked assets.
+
+
+28.11.2026: Render preview service created on the creator-confirmed My Workspace, free plan, Frankfurt, manual deploys from `codex/n25x-learning-review`. URL: https://n25x-learning-preview.onrender.com . Initial deployed candidate requested at `fc08a0289d88212b3dd465d57f6c2e35464c1b13`; build status pending at documentation time. The public preview is not access-controlled. Main and repository visibility unchanged. Other Render services untouched.
+
+Language candidate: 18 units, 168 shared meanings, 1,680 translated texts and 5,040 core exercise forms. New units cover appointments and housing/services; no medical or legal advice. Native review pending.
+
+Music candidate: 38 pitch sequences including all 12 major and 12 natural minor pitch classes, 12 rhythm patterns, 70 stages across six practical groups. Fractional onset gaps are shown legibly; no fingering or physical performance evaluation.
+
+Programming candidate: 48 restricted JavaScript missions including six applied logic exercises. Each has normal and boundary tests, editable code and local execution. These are function exercises rather than full production services.
+
+Beginner-first JavaScript: ten stage guides, 30 independently executable examples with output and traces, followed by prediction, repair/writing, tests and edge cases. Examples do not grant completion or edit drafts. This is an introductory restricted interpreter, not full JavaScript or a certified professional curriculum.
+
+Python, SQL and HTML/CSS beginner guides: six runnable examples per lab (18 total), fixed SQL sample data and sandboxed Web preview. They do not modify drafts or award points. Limited educational subsets.
+
+Independent real SQLite practice is available in ../fullstack-lab: learner_dashboard.py, separate dashboard_reference.py, check_dashboard.py and DASHBOARD-COURSE.ru.md. Run the tests locally with --learner; the CI validates only the reference. The browser capstone is separate.

@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 // Original task families. Counts describe generated parameter variants, not
 // independently authored word problems or a certified national curriculum.
 import {matchesAnswer,number} from './math.mjs';
@@ -54,6 +60,14 @@ const rows=[
  ['root-sum',10,L('Summe der Nullstellen','Sum of roots','Сумма корней','Сума коренів'),L('Lies die Nullstellen aus den Faktoren ab.','Read the roots from the factors.','Найди корни по множителям.','Знайди корені за множниками.'),(a,b)=>out(`(x − ${a})(x − ${b}) = 0`,a+b,[`x₁ = ${a}; x₂ = ${b}`,`x₁ + x₂ = ${a+b}`],L('Summe der beiden Wurzeln, mit Vielfachheit?','Sum of the two roots, counting multiplicity?','Сумма двух корней с учётом кратности?','Сума двох коренів з урахуванням кратності?'))],
  ['derivative',11,L('Ableitung an einer Stelle','Derivative at a point','Производная в точке','Похідна в точці'),L('(axⁿ)′ = a × n × xⁿ⁻¹.','(axⁿ)′ = a × n × xⁿ⁻¹.','(axⁿ)′ = a × n × xⁿ⁻¹.','(axⁿ)′ = a × n × xⁿ⁻¹.'),(a,b)=>{const n=2+b%3;return out(`f(x) = ${a}x^${n}; x = ${b}`,a*n*b**(n-1),[`f′(x) = ${a*n}x^${n-1}`,`f′(${b}) = ${a*n} × ${b}^${n-1} = ${a*n*b**(n-1)}`],L('f′(x) an der angegebenen Stelle?','f′(x) at the given point?','Значение f′(x) в указанной точке?','Значення f′(x) у вказаній точці?'));}]
 ];
+
+rows.push(
+ ['trapezoid-area',7,L('Trapezfläche','Trapezoid area','Площадь трапеции','Площа трапеції'),L('A = (a + c) × h / 2.','A = (a + c) × h / 2.','S = (a + c) × h / 2.','S = (a + c) × h / 2.'),(a,b)=>out('a = '+a+' cm; c = '+(a+2)+' cm; h = '+b+' cm',(a+1)*b,['A = ('+a+' + '+(a+2)+') × '+b+' / 2','A = '+((a+1)*b)+' cm²'],L('Fläche in cm²?','Area in cm²?','Площадь в см²?','Площа в см²?'))],
+ ['pythagoras-square',8,L('Satz des Pythagoras','Pythagorean theorem','Теорема Пифагора','Теорема Піфагора'),L('Im rechtwinkligen Dreieck gilt c² = a² + b².','For a right triangle c² = a² + b².','В прямоугольном треугольнике c² = a² + b².','У прямокутному трикутнику c² = a² + b².'),(a,b)=>out('a = '+a+' cm; b = '+b+' cm; c² = ?',a*a+b*b,['c² = '+a+'² + '+b+'²','c² = '+(a*a+b*b)+' cm²'],L('Quadrat der Hypotenuse in cm²?','Squared hypotenuse in cm²?','Квадрат гипотенузы в см²?','Квадрат гіпотенузи в см²?'))],
+ ['simple-interest',7,L('Einfache Jahreszinsen','Simple annual interest','Простые годовые проценты','Прості річні відсотки'),L('Z = K × p / 100 für ein Jahr.','Interest = principal × rate / 100 for one year.','Проценты за год = капитал × ставка / 100.','Відсотки за рік = капітал × ставка / 100.'),(a,b)=>out('K = '+(a*100)+' €; p = '+b+'%; t = 1 year',a*b,['Z = '+(a*100)+' × '+b+' / 100','Z = '+(a*b)+' €'],L('Zinsen ohne Gebühren in Euro?','Interest in euros, excluding fees?','Проценты в евро без комиссий?','Відсотки в євро без комісій?'))],
+ ['arithmetic-sequence',9,L('Arithmetische Folge','Arithmetic sequence','Арифметическая прогрессия','Арифметична прогресія'),L('aₙ = a₁ + (n − 1)d.','aₙ = a₁ + (n − 1)d.','aₙ = a₁ + (n − 1)d.','aₙ = a₁ + (n − 1)d.'),(a,b)=>out('a₁ = '+a+'; d = '+b+'; a₅ = ?',a+4*b,['a₅ = '+a+' + (5 − 1) × '+b,'a₅ = '+(a+4*b)])]
+);
+
 export const MATH_TOPICS=rows.map(v=>define(...v));
 export const VARIANTS_PER_TOPIC=256;
 export const MATH_VARIANTS=MATH_TOPICS.length*VARIANTS_PER_TOPIC;
@@ -63,6 +77,30 @@ export function courseTask(topicID,index=0){
  return {id:'course-math:'+t.id+':'+index,topic:t.id,index,...task};
 }
 export function checkCourseAnswer(task,value){return matchesAnswer(String(value).replace(/^x\s*=\s*/i,''),task.answer);}
-export function freshMathCourse(){return {topic:'add',index:0,done:{},mistakes:[],attempts:0,correct:0,assessment:null};}
-export function parseMathCourse(raw){const c=freshMathCourse();if(!raw||typeof raw!=='object')return c;if(MATH_TOPICS.some(t=>t.id===raw.topic))c.topic=raw.topic;if(Number.isInteger(raw.index)&&raw.index>=0&&raw.index<256)c.index=raw.index;for(const t of MATH_TOPICS){const values=raw.done?.[t.id];if(Array.isArray(values))c.done[t.id]=[...new Set(values.filter(v=>Number.isInteger(v)&&v>=0&&v<256))];}if(Array.isArray(raw.mistakes))c.mistakes=raw.mistakes.filter(v=>typeof v==='string'&&/^[-a-z]+:\d+$/.test(v)&&MATH_TOPICS.some(t=>v.startsWith(t.id+':'))&&+v.split(':')[1]<256).slice(-200);const exam=raw.assessment;if(exam&&exam.topic===c.topic&&Array.isArray(exam.indices)&&exam.indices.length===10&&new Set(exam.indices).size===10&&exam.indices.every(i=>Number.isInteger(i)&&i>=0&&i<256)&&Array.isArray(exam.answers)&&exam.answers.length<=10&&exam.answers.every(v=>typeof v==='boolean'))c.assessment={topic:c.topic,indices:[...exam.indices],answers:[...exam.answers],answered:Boolean(exam.answered)&&exam.answers.length>0};for(const k of ['attempts','correct'])if(Number.isSafeInteger(raw[k])&&raw[k]>=0)c[k]=Math.min(raw[k],10000000);return c;}
+export function freshMathCourse(){return {topic:'add',index:0,done:{},mistakes:[],attempts:0,correct:0,assessment:null,evidence:{}};}
+export function parseMathCourse(raw){const c=freshMathCourse();if(!raw||typeof raw!=='object')return c;if(MATH_TOPICS.some(t=>t.id===raw.topic))c.topic=raw.topic;if(Number.isInteger(raw.index)&&raw.index>=0&&raw.index<256)c.index=raw.index;for(const t of MATH_TOPICS){const values=raw.done?.[t.id];if(Array.isArray(values))c.done[t.id]=[...new Set(values.filter(v=>Number.isInteger(v)&&v>=0&&v<256))];}if(Array.isArray(raw.mistakes))c.mistakes=raw.mistakes.filter(v=>typeof v==='string'&&/^[-a-z]+:\d+$/.test(v)&&MATH_TOPICS.some(t=>v.startsWith(t.id+':'))&&+v.split(':')[1]<256).slice(-200);const exam=raw.assessment;if(exam&&exam.topic===c.topic&&Array.isArray(exam.indices)&&exam.indices.length===10&&new Set(exam.indices).size===10&&exam.indices.every(i=>Number.isInteger(i)&&i>=0&&i<256)&&Array.isArray(exam.answers)&&exam.answers.length<=10&&exam.answers.every(v=>typeof v==='boolean'))c.assessment={topic:c.topic,indices:[...exam.indices],answers:[...exam.answers],answered:Boolean(exam.answered)&&exam.answers.length>0};for(const t of MATH_TOPICS){const v=raw.evidence?.[t.id];if(v&&Number.isInteger(v.latest)&&v.latest>=0&&v.latest<=10&&Number.isInteger(v.best)&&v.best>=v.latest&&v.best<=10&&Number.isSafeInteger(v.rounds)&&v.rounds>=1&&v.rounds<=1000000&&Number.isInteger(v.seed)&&v.seed>=0&&v.seed<256)c.evidence[t.id]={latest:v.latest,best:v.best,rounds:v.rounds,seed:v.seed};}
+ if(c.assessment?.answers.length===10&&!c.evidence[c.topic])saveMathEvidence(c,c.assessment);
+ for(const k of ['attempts','correct'])if(Number.isSafeInteger(raw[k])&&raw[k]>=0)c[k]=Math.min(raw[k],10000000);c.correct=Math.min(c.correct,c.attempts);if(c.assessment){const e=c.assessment;if(e.answers.length===10)e.answered=true;c.index=e.indices[Math.max(0,Math.min(9,e.answers.length-(e.answered?1:0)))];}return c;}
 export function recordMath(course,task,correct){course.attempts++;const key=task.topic+':'+task.index;if(correct){course.correct++;const list=course.done[task.topic]??=[];if(!list.includes(task.index))list.push(task.index);course.mistakes=course.mistakes.filter(v=>v!==key);}else if(!course.mistakes.includes(key))course.mistakes.push(key);course.mistakes=course.mistakes.slice(-200);}
+
+ // Completed ten-question self-tests are retained per topic, not inferred from practice.
+ function saveMathEvidence(course,exam){
+ const score=exam.answers.filter(Boolean).length,previous=course.evidence[exam.topic];
+ course.evidence[exam.topic]={latest:score,best:Math.max(score,previous?.best??0),rounds:Math.min((previous?.rounds??0)+1,1000000),seed:exam.indices[0]};
+ }
+ export function recordMathAssessmentAnswer(course,correct){
+ const exam=course.assessment;
+ if(!exam||exam.answered||exam.answers.length>=10||typeof correct!=='boolean')return false;
+ exam.answers.push(correct);exam.answered=true;
+ if(exam.answers.length===10)saveMathEvidence(course,exam);
+ return true;
+ }
+ export function mathEvidence(course){
+ return MATH_TOPICS.map(t=>({id:t.id,grade:t.grade,title:t.title,result:course.evidence[t.id]??null}));
+ }
+ export function startMathAssessment(course,seed=course.index){
+ if(!Number.isInteger(seed)||seed<0||seed>=256||!MATH_TOPICS.some(t=>t.id===course.topic))return false;
+ course.index=seed;
+ course.assessment={topic:course.topic,indices:Array.from({length:10},(_,i)=>(seed+i*73)%256),answers:[],answered:false};
+ return true;
+ }
