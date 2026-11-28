@@ -21,3 +21,5 @@ Creator direction: Natalie Ragulina (Netaniya), 28 November 2026. Learners under
 28 November: Agent Lab — three goals, editable allowlisted JSON tool plans, atomic dry run, explicit human approval, stale/repeated approval rejection, isolated synthetic records, optional ready browser LanguageModel proposes JSON only. 1056 direct workflow assertions passed; adapter checked with mock, real inference and browser CI pending. No external actions, accounts or general-purpose autonomous agent.
 
 28 November: Review Lab adds three code-review exercises and current-revision test/approval gating with simulated merge. 1536 direct assertions passed. Browser CI pending; no external GitHub actions.
+
+28 November: Python, static Web and SQL practice drafts/verified passes are now profile-backed; imported passed flags re-run actual graders and edits invalidate pass. Other sandbox sessions remain transient. Prior session-only notes for these three draft types are superseded. New CI pending.

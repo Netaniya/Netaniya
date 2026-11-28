@@ -132,3 +132,6 @@ Assistant added three review scenarios, actual restricted-interpreter checks and
 
 ### 28 November — full-stack browser acceptance
 Assistant added actual desktop/touch browser scenarios against the real local Python HTTP service and SQLite, fixed response display after CRUD, and extended CI path coverage. No remote deployment, real data or billing. New tests awaiting CI.
+
+### 28 November — durable learning progress
+Assistant added profile-backed Python, Web and SQL drafts, selected lessons and verified pass status, with old-profile migration and validation on import. Editing invalidates previous pass; no rewards added. Other sandbox state remains session-only. New CI pending.

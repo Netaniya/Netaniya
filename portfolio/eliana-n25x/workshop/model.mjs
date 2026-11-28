@@ -9,6 +9,7 @@ import {freshPiano,parsePiano,validateScore,PIANO_LESSONS,RHYTHM_LESSONS,EAR_LES
 import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS} from './math-course.mjs';
 import {validateCreation,CREATION_TEMPLATES} from './creations.mjs';
 import {LEARNING_LANGUAGES,MISSIONS,SUBJECTS} from './curriculum.mjs';
+import {PYTHON_LESSONS,WEB_LESSONS,SQL_LESSONS,gradePython,gradeWebLab,gradeSQL} from './program.mjs';
 export const MAX_PROFILE_BYTES=8*1024*1024;
 export const SAVE_KEY='eliana-n25x.workshop.v1';
 export const LANGUAGES=['de','en','ru','uk'];
@@ -20,7 +21,28 @@ export const SHOP=[
 ];
 export const ACTIONS=['wave','turn','step','glow','nod','rest'];
 export function cleanName(value){return String(value??'').normalize('NFC').replace(/[<>\x00-\x1f]/g,'').trim().slice(0,24)||'Eliana';}
-export function freshAcademy(){return {mission:0,drafts:{},learningLanguage:'en',languageIndex:0,languageMode:'cards',quiz:null,creator:null,creators:{}};}
+export function freshLabProgress(){return {python:{},web:{},sql:{},selected:{python:0,web:0,sql:0}};}
+export function parseLabProgress(input){
+ const out=freshLabProgress();
+ if(!input||typeof input!=='object')return out;
+ const bounded=(s,n)=>typeof s==='string'&&s.length<=n;
+ for(const [kind,lessons] of Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS})){
+  const selected=input.selected?.[kind];if(Number.isInteger(selected)&&selected>=0&&selected<lessons.length)out.selected[kind]=selected;
+  for(const [i,m] of lessons.entries()){
+   const key=kind==='python'?m.id:String(i),d=input[kind]?.[key];if(!d||typeof d!=='object')continue;
+   if(kind==='python'&&bounded(d.source,4000))out.python[key]={source:d.source,passed:d.passed===true&&gradePython(i,d.source).every(r=>r.passed)};
+   if(kind==='web'&&bounded(d.html,4000)&&bounded(d.css,3000))out.web[key]={html:d.html,css:d.css,passed:d.passed===true&&gradeWebLab(i,d.html,d.css).passed===true};
+   if(kind==='sql'&&bounded(d.query,512))out.sql[key]={query:d.query,passed:d.passed===true&&gradeSQL(i,d.query).passed===true};
+  }
+ }
+ return out;
+}
+export function labSummary(progress){
+ const labs=progress.labs||freshLabProgress(),result={};
+ for(const [kind,lessons] of Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS}))result[kind]={done:lessons.filter((m,i)=>labs[kind]?.[kind==='python'?m.id:String(i)]?.passed===true).length,total:lessons.length};
+ return result;
+}
+export function freshAcademy(){return {mission:0,drafts:{},labs:freshLabProgress(),learningLanguage:'en',languageIndex:0,languageMode:'cards',quiz:null,creator:null,creators:{}};}
 export function fresh(){return {schema:SAVE_KEY,lang:'de',started:false,robot:{name:'Eliana',color:'pearl',head:'arc',base:'feet',hands:'round',frame:'balanced',finish:'titanium',personality:'calm',interest:'space',style:'steps',module:'none'},grade:5,points:80,owned:['pearl','ocean'],earned:{},solved:[],projects:[],academy:freshAcademy(),learning:{math:freshMathCourse(),languages:freshLanguageCourse()},piano:freshPiano(),sound:true,volume:.35,visits:0};}
 export function configure(state,key,value){
  const choices={color:Object.keys(COLORS).filter(v=>state.owned.includes(v)),head:['arc','visor','antenna'],base:['feet','wheels','hover'],hands:['round','clamp'],frame:['balanced','athletic','slender'],finish:['ceramic','titanium','satin'],personality:['calm','cheerful','focused'],interest:['space','nature','music'],style:['steps','visual','challenge'],module:['none',...SHOP.filter(v=>v.kind==='module'&&state.owned.includes(v.id)).map(v=>v.id)]};
@@ -50,6 +72,7 @@ export function updateProject(state,id,kind,data,name){
 }
 export function parseAcademy(input){
  const a=freshAcademy();if(!input||typeof input!=='object')return a;
+ a.labs=parseLabProgress(input.labs);
  if(Number.isInteger(input.mission)&&input.mission>=0&&input.mission<MISSIONS.length)a.mission=input.mission;
  if(LEARNING_LANGUAGES.some(v=>v.id===input.learningLanguage))a.learningLanguage=input.learningLanguage;
  if(Number.isInteger(input.languageIndex)&&input.languageIndex>=0&&input.languageIndex<6)a.languageIndex=input.languageIndex;

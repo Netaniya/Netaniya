@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
-import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
+import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY,parseLabProgress,labSummary} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
 import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython,WEB_LESSONS,compileWebLab,gradeWebLab,AGENT_GOALS,agentPlan,parseAgentPlan,createAgentLab,proposeAgentPlan,GIT_LESSONS,createGitLab,REVIEW_LESSONS,createReviewLab} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
@@ -270,4 +270,18 @@ test('Pull request lab requires current passing tests and explicit review approv
   const good=l.tests();assert.equal(good.passed,good.total);assert(!l.review('approve',''));assert(l.review('approve','Checked tests'));
   assert(l.edit(m.solution+'\n'));assert(!l.merge());l.tests();assert(l.review('approve','Rechecked'));assert(l.merge());assert(!l.merge());assert(!l.edit(m.source));assert(l.snapshot().merged);
  }
+});
+
+test('Lab drafts and verified progress round-trip without stale or forged pass flags',()=>{
+ const s=fresh(),p=PYTHON_LESSONS[0],w=WEB_LESSONS[0],q=SQL_LESSONS[0];
+ s.academy.labs.python[p.id]={source:p.solution,passed:true};
+ s.academy.labs.web[0]={html:w.solutionHTML,css:w.solutionCSS,passed:true};
+ s.academy.labs.sql[0]={query:q.sql,passed:true};
+ s.academy.labs.selected={python:2,web:3,sql:4};
+ const copy=parseProfile(JSON.stringify(s));assert.deepEqual(copy.academy.labs,s.academy.labs);assert.deepEqual(labSummary(copy.academy),{python:{done:1,total:6},web:{done:1,total:6},sql:{done:1,total:6}});
+ s.academy.labs.python[p.id].source=p.source;s.academy.labs.web[0].html='<script>x</script>';s.academy.labs.sql[0].query='DROP TABLE projects';s.academy.labs.selected.sql=999;
+ const bad=parseLabProgress(s.academy.labs);assert(!bad.python[p.id].passed);assert(!bad.web[0].passed);assert(!bad.sql[0].passed);assert.equal(bad.selected.sql,0);
+ assert.deepEqual(parseLabProgress({python:{fake:{source:'x',passed:true}},web:{0:{html:'x'.repeat(4001),css:'',passed:true}},sql:{0:{query:'x'.repeat(513),passed:true}}}),fresh().academy.labs);
+ const old=JSON.parse(JSON.stringify(fresh()));delete old.academy.labs;assert.deepEqual(parseProfile(JSON.stringify(old)).academy.labs,fresh().academy.labs);
+ assert.equal(copy.points,s.points);
 });
