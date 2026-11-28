@@ -129,3 +129,6 @@ Assistant implemented a guided one-file Git model and separate real-Git local ex
 
 ### 28 November — code review practice
 Assistant added three review scenarios, actual restricted-interpreter checks and a simulated approval/merge gate with revision invalidation. No repository writes by the learner module. Creator requested continued development through professional acceptance.
+
+### 28 November — full-stack browser acceptance
+Assistant added actual desktop/touch browser scenarios against the real local Python HTTP service and SQLite, fixed response display after CRUD, and extended CI path coverage. No remote deployment, real data or billing. New tests awaiting CI.

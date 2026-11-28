@@ -2,7 +2,7 @@ name: Robot Studio browser verification
 on:
   push:
     branches: [main, codex/eliana-n25x-robot-workshop, codex/eliana-n25x-dark-humanoid, codex/eliana-n25x-practice, codex/n25x-learning-platform]
-    paths: ['portfolio/eliana-n25x/workshop/**', 'portfolio/eliana-n25x/fullstack-lab/**', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', 'portfolio/eliana-n25x/tests/academy.test.mjs', 'portfolio/eliana-n25x/tests/learning.test.mjs', 'portfolio/eliana-n25x/tests/workshop-smoke.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
+    paths: ['portfolio/eliana-n25x/workshop/**', 'portfolio/eliana-n25x/fullstack-lab/**', 'portfolio/eliana-n25x/git-lab/**', 'portfolio/eliana-n25x/3d/browser-tests/run-fullstack.mjs', '!portfolio/eliana-n25x/workshop/**/*.md', 'portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs', 'portfolio/eliana-n25x/tests/workshop.test.mjs', 'portfolio/eliana-n25x/tests/academy.test.mjs', 'portfolio/eliana-n25x/tests/learning.test.mjs', 'portfolio/eliana-n25x/tests/workshop-smoke.test.mjs', '.github/workflows/eliana-workshop-browser.yml']
   # Review branch is verified by its open PR; avoid identical push + PR runs.
   pull_request:
     branches: [main]
@@ -44,6 +44,8 @@ jobs:
         run: node --test portfolio/eliana-n25x/tests/workshop.test.mjs portfolio/eliana-n25x/tests/academy.test.mjs portfolio/eliana-n25x/tests/learning.test.mjs
       - name: Exercise rendered studio through real input
         run: node portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs
+      - name: Exercise actual full-stack client against local Python and SQLite
+        run: node portfolio/eliana-n25x/3d/browser-tests/run-fullstack.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
