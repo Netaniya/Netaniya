@@ -81,3 +81,6 @@ At the creator's direction to continue development, the assistant added six guid
 
 ### 28 November — restored CI and grammar extension
 Owner authorized restoration of GitHub Actions. Assistant enabled a selective official-actions policy, preserved read-only default permissions and dispatched #18. Assistant authored eight additional stage-four grammar topics / 32 questions; AI-assisted content, not native-speaker validation.
+
+### 28 November — first live browser regression
+CI run #18 passed the documented touch scenarios before a strict locator failure in the standalone check. Assistant narrowed the locator to the study-progress card, preserving both legitimate controls and asserting the destination heading. Final rerun and publication remain pending.
