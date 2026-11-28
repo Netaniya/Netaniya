@@ -1,7 +1,7 @@
 // Fast source-only smoke suite: no browser, WebGL, npm packages or build artifacts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {COURSE_LANGUAGES,LANGUAGE_ITEMS,LANGUAGE_UNITS,freshLanguageCourse,phraseMatches,phraseTokens,recordLanguage,scheduleLanguage,dueLanguageReviews,nextLanguageExercise,grammarRoute,gradeGrammar,languageMistakes} from '../workshop/language-course.mjs';
+import {COURSE_LANGUAGES,LANGUAGE_ITEMS,LANGUAGE_UNITS,freshLanguageCourse,parseLanguageCourse,meaningSource,meaningChoices,phraseMatches,phraseTokens,recordLanguage,scheduleLanguage,dueLanguageReviews,nextLanguageExercise,grammarRoute,gradeGrammar,languageMistakes} from '../workshop/language-course.mjs';
 import {PIANO_LESSONS,RHYTHM_LESSONS,pianoPracticeStep,gradeRhythm,parsePiano,freshPiano,makeMidi,renderScoreWav,CHORD_TYPES,CHORD_LESSONS,chordNotes,makeChordRound,gradeEarRound,HARMONY_LESSONS,harmonyNotes,gradeHarmony} from '../workshop/piano-score.mjs';
 
 test('Every language: word-order roundtrip, guided progression, scheduled review and grammar',()=>{
@@ -65,3 +65,5 @@ test('Harmony: reference chord voicings, inversions, rejection and profile migra
  HARMONY_LESSONS.forEach((l,i)=>{l.steps.forEach((q,j)=>{const notes=harmonyNotes(q);assert.deepEqual(notes,expected[i][j]);assert(notes.every(m=>m>=(l.octave+1)*12&&m<(l.octave+3)*12));assert(gradeHarmony(q,[...notes].reverse()));assert(!gradeHarmony(q,notes.slice(1)));assert(!gradeHarmony(q,[...notes,notes[0]]));assert(!gradeHarmony(q,notes.map(m=>m+12)));});p.practice.harmonyPassed[l.id]=true;});
  assert.deepEqual(parsePiano(p),p);delete p.practice.harmonyPassed;assert.deepEqual(parsePiano(p).practice.harmonyPassed,{});p.practice.harmonyPassed={unknown:true,'harmony-c':'true'};assert.deepEqual(parsePiano(p).practice.harmonyPassed,{});
 });
+
+test('All ten translation-source languages: distinct choices, persistence and collision safety',()=>{let choiceSets=0,pairs=0;for(const target of COURSE_LANGUAGES)for(const source of COURSE_LANGUAGES){const p=freshLanguageCourse();p.language=target;p.source=source;assert.equal(parseLanguageCourse(p).source,source);assert.equal(meaningSource(target,source,'de'),source===target?(target==='de'?'en':'de'):source);pairs++;}for(const source of COURSE_LANGUAGES)for(const item of LANGUAGE_ITEMS){const choices=meaningChoices(item,source);assert.equal(choices.length,3);assert.equal(new Set(choices.map(q=>q.text[source])).size,3);assert(choices.some(q=>q.id===item.id));choiceSets++;}console.log(JSON.stringify({pairs,choiceSets}));});

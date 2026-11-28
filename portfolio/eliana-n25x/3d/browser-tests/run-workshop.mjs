@@ -131,7 +131,16 @@ async function expandedLearningCheck(){
   if(['en','ka','zh','ja'].includes(language.id)){await click('[data-l=mode][data-mode=order]');for(const [i]of phraseTokens(first.text[language.id],language.id).entries())await click('[data-l=word][data-index="'+i+'"]');await click('[data-l=check-order]');assert.equal((await state()).points,before+15);}
   await noOverflow();
  }
- await page.locator('#course-language').selectOption('en');await page.locator('#course-language-unit').selectOption('problem-solving');await click('[data-l=mode][data-mode=read]');let added=LANGUAGE_UNITS.find(u=>u.id==='problem-solving').items[0];await click('[data-l=meaning][data-id="'+added.id+'"]');assert((await state()).learning.languages.done['en/'+added.id]&1);
+ await page.locator('#course-language').selectOption('en');
+ for(const source of LEARNING_LANGUAGES.filter(v=>v.id!=='en')){
+  await page.locator('#course-source-language').selectOption(source.id);assert.equal((await state()).learning.languages.source,source.id);
+  await click('[data-l=mode][data-mode=read]');const option=page.locator('[data-l=meaning][data-id="'+first.id+'"]');assert.equal(await option.innerText(),first.text[source.id]);assert.equal(await option.getAttribute('lang'),source.id);
+  await click('[data-l=mode][data-mode=write]');assert.equal(await page.locator('.language-sentence').innerText(),first.text[source.id]);assert.equal(await page.locator('.language-sentence').getAttribute('lang'),source.id);await noOverflow();
+ }
+ await page.locator('#course-source-language').selectOption('ja');await page.locator('#course-language').selectOption('ja');assert(await page.locator('#course-source-language option[value=ja]').isDisabled());assert.equal(await page.locator('#course-source-language').inputValue(),'de');assert.equal(await page.locator('.language-sentence').innerText(),first.text.de);
+ await page.locator('#course-language').selectOption('en');assert.equal(await page.locator('#course-source-language').inputValue(),'ja');await page.locator('#course-source-language').selectOption('auto');
+ check('Translation source can use every other studied language, with profile persistence and safe target collision fallback');
+ await page.locator('#course-language-unit').selectOption('problem-solving');await click('[data-l=mode][data-mode=read]');let added=LANGUAGE_UNITS.find(u=>u.id==='problem-solving').items[0];await click('[data-l=meaning][data-id="'+added.id+'"]');assert((await state()).learning.languages.done['en/'+added.id]&1);
  await page.locator('#course-language-unit').selectOption('compare-decide');await click('[data-l=mode][data-mode=write]');added=LANGUAGE_UNITS.find(u=>u.id==='compare-decide').items[0];await page.locator('#course-language-answer').fill(added.text.en);await click('#course-language-form button[type=submit]');assert((await state()).learning.languages.done['en/'+added.id]&2);
  for(const language of LEARNING_LANGUAGES.map(v=>v.id)){
   await page.locator('#course-language').selectOption(language);

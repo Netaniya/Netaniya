@@ -67,3 +67,5 @@ Programming now has 36 missions, eight stages and 182 test cases, including four
 ELIANA visual direction: initial procedural silver-titanium humanoid with restrained blue optics and reversible exploded view. Original logo and existing saved profiles preserved. Film-quality reference art is not yet a rigged model; new CI pending. See DESIGN-ELIANA.md.
 
 AI Code Lab: 38 missions, nine stages, 194 test cases. Read-only diagnostics, prompt export, optional ready browser LanguageModel (EN/DE). Real-model and browser verification pending; see AI-CODE-LAB.md.
+
+Sentence classroom: all ten study languages can now serve as translation sources (90 distinct directed pairs), with automatic interface-language mode, safe same-language fallback and saved source selection. Four UI localizations remain unchanged; native-speaker review and CI pending.

@@ -144,3 +144,6 @@ Assistant diagnosed the failing full-stack desktop/touch acceptance: CRUD and pe
 
 ### 28 November — professional dialogue expansion
 Creator requested continued development before repository visibility and hosting changes. Assistant added four professional dialogue situations in ten languages; existing six situations unchanged. Native review pending. No publication or visibility changes.
+
+### 28 November — multilingual translation sources
+Under the creator's direction to develop all ten language courses, the assistant expanded the sentence classroom's source-language choices from four to all ten studied languages, retaining the four interface localizations and prior profile compatibility. Added model/smoke and browser regression coverage; pending CI and independent linguistic review. No publication or visibility change.
