@@ -7989,5 +7989,1221 @@ export const GRAMMAR_EXTENDED=Object.freeze({
         "で"
       ]
     }
+  ],
+  "ka-negation": [
+    {
+      "sentence": "მე ___ ვმუშაობ. (not working)",
+      "answer": "არ",
+      "options": [
+        "არ",
+        "და",
+        "თუ"
+      ]
+    },
+    {
+      "sentence": "ის ___ კითხულობს. (not reading)",
+      "answer": "არ",
+      "options": [
+        "არ",
+        "და",
+        "თუ"
+      ]
+    },
+    {
+      "sentence": "ჩვენ ___ ვსწავლობთ. (not studying)",
+      "answer": "არ",
+      "options": [
+        "არ",
+        "და",
+        "თუ"
+      ]
+    },
+    {
+      "sentence": "შენ ___ გძინავს. (not sleeping)",
+      "answer": "არ",
+      "options": [
+        "არ",
+        "და",
+        "თუ"
+      ]
+    }
+  ],
+  "ka-location": [
+    {
+      "sentence": "ბაღი → ___ (in the garden)",
+      "answer": "ბაღში",
+      "options": [
+        "ბაღში",
+        "ბაღიდან",
+        "ბაღთან"
+      ]
+    },
+    {
+      "sentence": "პარკი → ___ (in the park)",
+      "answer": "პარკში",
+      "options": [
+        "პარკში",
+        "პარკიდან",
+        "პარკთან"
+      ]
+    },
+    {
+      "sentence": "მაღაზია → ___ (in the shop)",
+      "answer": "მაღაზიაში",
+      "options": [
+        "მაღაზიაში",
+        "მაღაზიიდან",
+        "მაღაზიასთან"
+      ]
+    },
+    {
+      "sentence": "მუზეუმი → ___ (in the museum)",
+      "answer": "მუზეუმში",
+      "options": [
+        "მუზეუმში",
+        "მუზეუმიდან",
+        "მუზეუმთან"
+      ]
+    }
+  ],
+  "ka-genitive": [
+    {
+      "sentence": "ბაღი → ___ (of the garden)",
+      "answer": "ბაღის",
+      "options": [
+        "ბაღის",
+        "ბაღში",
+        "ბაღიდან"
+      ]
+    },
+    {
+      "sentence": "პარკი → ___ (of the park)",
+      "answer": "პარკის",
+      "options": [
+        "პარკის",
+        "პარკში",
+        "პარკიდან"
+      ]
+    },
+    {
+      "sentence": "მუზეუმი → ___ (of the museum)",
+      "answer": "მუზეუმის",
+      "options": [
+        "მუზეუმის",
+        "მუზეუმში",
+        "მუზეუმიდან"
+      ]
+    },
+    {
+      "sentence": "კაცი → ___ (of the man)",
+      "answer": "კაცის",
+      "options": [
+        "კაცის",
+        "კაცში",
+        "კაციდან"
+      ]
+    }
+  ],
+  "ka-dative": [
+    {
+      "sentence": "წერილს ___ ვაძლევ. (და: recipient)",
+      "answer": "დას",
+      "options": [
+        "დას",
+        "და",
+        "დის"
+      ]
+    },
+    {
+      "sentence": "ვაშლს ___ ვაძლევ. (ძმა: recipient)",
+      "answer": "ძმას",
+      "options": [
+        "ძმას",
+        "ძმა",
+        "ძმის"
+      ]
+    },
+    {
+      "sentence": "წიგნს ___ ვაძლევ. (მასწავლებელი: recipient)",
+      "answer": "მასწავლებელს",
+      "options": [
+        "მასწავლებელს",
+        "მასწავლებელი",
+        "მასწავლებლის"
+      ]
+    },
+    {
+      "sentence": "საჩუქარს ___ ვაძლევ. (ბებია: recipient)",
+      "answer": "ბებიას",
+      "options": [
+        "ბებიას",
+        "ბებია",
+        "ბებიის"
+      ]
+    }
+  ],
+  "uk-present": [
+    {
+      "sentence": "Я ___ вірш. (читати)",
+      "answer": "читаю",
+      "options": [
+        "читаю",
+        "читаєш",
+        "читає"
+      ]
+    },
+    {
+      "sentence": "Ви ___ статтю. (читати)",
+      "answer": "читаєте",
+      "options": [
+        "читаєте",
+        "читаємо",
+        "читають"
+      ]
+    },
+    {
+      "sentence": "Ми ___ казку. (читати)",
+      "answer": "читаємо",
+      "options": [
+        "читаємо",
+        "читаю",
+        "читаєте"
+      ]
+    },
+    {
+      "sentence": "Він ___ повідомлення. (читати)",
+      "answer": "читає",
+      "options": [
+        "читає",
+        "читаєш",
+        "читають"
+      ]
+    }
+  ],
+  "uk-past": [
+    {
+      "sentence": "Мама ___ обід. (готувати, мин.)",
+      "answer": "готувала",
+      "options": [
+        "готувала",
+        "готував",
+        "готували"
+      ]
+    },
+    {
+      "sentence": "Тато ___ вчора. (працювати, мин.)",
+      "answer": "працював",
+      "options": [
+        "працював",
+        "працювала",
+        "працювали"
+      ]
+    },
+    {
+      "sentence": "Ми ___ музику. (слухати, мин.)",
+      "answer": "слухали",
+      "options": [
+        "слухали",
+        "слухав",
+        "слухала"
+      ]
+    },
+    {
+      "sentence": "Сонце ___ весь день. (світити, мин.)",
+      "answer": "світило",
+      "options": [
+        "світило",
+        "світила",
+        "світили"
+      ]
+    }
+  ],
+  "uk-future": [
+    {
+      "sentence": "Я ___ малювати. (compound future)",
+      "answer": "буду",
+      "options": [
+        "буду",
+        "будеш",
+        "буде"
+      ]
+    },
+    {
+      "sentence": "Ви ___ писати. (compound future)",
+      "answer": "будете",
+      "options": [
+        "будете",
+        "будемо",
+        "будуть"
+      ]
+    },
+    {
+      "sentence": "Він ___ готувати. (compound future)",
+      "answer": "буде",
+      "options": [
+        "буде",
+        "буду",
+        "будуть"
+      ]
+    },
+    {
+      "sentence": "Ми ___ співати. (compound future)",
+      "answer": "будемо",
+      "options": [
+        "будемо",
+        "будете",
+        "будеш"
+      ]
+    }
+  ],
+  "uk-instrumental": [
+    {
+      "sentence": "Я їду з ___. (сестра)",
+      "answer": "сестрою",
+      "options": [
+        "сестрою",
+        "сестри",
+        "сестру"
+      ]
+    },
+    {
+      "sentence": "Він розмовляє з ___. (тато)",
+      "answer": "татом",
+      "options": [
+        "татом",
+        "тата",
+        "татові"
+      ]
+    },
+    {
+      "sentence": "Ми гуляємо з ___. (подруга)",
+      "answer": "подругою",
+      "options": [
+        "подругою",
+        "подругу",
+        "подруги"
+      ]
+    },
+    {
+      "sentence": "Вона грається з ___. (дитина)",
+      "answer": "дитиною",
+      "options": [
+        "дитиною",
+        "дитину",
+        "дитини"
+      ]
+    }
+  ],
+  "ru-accusative": [
+    {
+      "sentence": "Я встретил ___. (учитель)",
+      "answer": "учителя",
+      "options": [
+        "учителя",
+        "учитель",
+        "учителем"
+      ]
+    },
+    {
+      "sentence": "Мы купили ___. (компьютер)",
+      "answer": "компьютер",
+      "options": [
+        "компьютер",
+        "компьютера",
+        "компьютером"
+      ]
+    },
+    {
+      "sentence": "Она увидела ___. (кот)",
+      "answer": "кота",
+      "options": [
+        "кота",
+        "кот",
+        "котом"
+      ]
+    },
+    {
+      "sentence": "Он открыл ___. (шкаф)",
+      "answer": "шкаф",
+      "options": [
+        "шкаф",
+        "шкафа",
+        "шкафом"
+      ]
+    }
+  ],
+  "ru-aspect": [
+    {
+      "sentence": "В детстве я каждый вечер ___ сказки. (habit)",
+      "answer": "читал",
+      "options": [
+        "читал",
+        "прочитал",
+        "прочитаю"
+      ]
+    },
+    {
+      "sentence": "Вчера она наконец ___ задачу до конца. (completion)",
+      "answer": "решила",
+      "options": [
+        "решила",
+        "решает",
+        "решит"
+      ]
+    },
+    {
+      "sentence": "Раньше мы часто ___ здесь. (habit)",
+      "answer": "гуляли",
+      "options": [
+        "гуляли",
+        "погуляли",
+        "погуляем"
+      ]
+    },
+    {
+      "sentence": "Он уже ___ окно и вышел. (completion)",
+      "answer": "закрыл",
+      "options": [
+        "закрыл",
+        "закрывает",
+        "закроет"
+      ]
+    }
+  ],
+  "ru-conditional": [
+    {
+      "sentence": "Если бы я (м. р.) мог, я бы ___. (приехать)",
+      "answer": "приехал",
+      "options": [
+        "приехал",
+        "приехала",
+        "приехали"
+      ]
+    },
+    {
+      "sentence": "Если бы она захотела, она бы ___. (позвонить)",
+      "answer": "позвонила",
+      "options": [
+        "позвонила",
+        "позвонил",
+        "позвонили"
+      ]
+    },
+    {
+      "sentence": "Если бы мы успели, мы бы ___. (посмотреть)",
+      "answer": "посмотрели",
+      "options": [
+        "посмотрели",
+        "посмотрел",
+        "посмотрела"
+      ]
+    },
+    {
+      "sentence": "Если бы окно было открыто, оно бы ___. (захлопнуться)",
+      "answer": "захлопнулось",
+      "options": [
+        "захлопнулось",
+        "захлопнулась",
+        "захлопнулись"
+      ]
+    }
+  ],
+  "ru-participle": [
+    {
+      "sentence": "___ мальчик слышит звонок. (бежать, м. р.)",
+      "answer": "Бегущий",
+      "options": [
+        "Бегущий",
+        "Бегущая",
+        "Бегущие"
+      ]
+    },
+    {
+      "sentence": "___ женщина держит микрофон. (говорить, ж. р.)",
+      "answer": "Говорящая",
+      "options": [
+        "Говорящая",
+        "Говорящий",
+        "Говорящие"
+      ]
+    },
+    {
+      "sentence": "___ птицы видны вдали. (лететь, мн. ч.)",
+      "answer": "Летящие",
+      "options": [
+        "Летящие",
+        "Летящий",
+        "Летящая"
+      ]
+    },
+    {
+      "sentence": "___ море шумит. (кипеть, ср. р.)",
+      "answer": "Кипящее",
+      "options": [
+        "Кипящее",
+        "Кипящая",
+        "Кипящие"
+      ]
+    }
+  ],
+  "zh-classifier": [
+    {
+      "sentence": "两___茶。 (cups)",
+      "answer": "杯",
+      "options": [
+        "杯",
+        "本",
+        "张"
+      ]
+    },
+    {
+      "sentence": "五___照片。 (photos)",
+      "answer": "张",
+      "options": [
+        "张",
+        "本",
+        "杯"
+      ]
+    },
+    {
+      "sentence": "四___词典。 (dictionaries)",
+      "answer": "本",
+      "options": [
+        "本",
+        "杯",
+        "张"
+      ]
+    },
+    {
+      "sentence": "三___学生。 (students)",
+      "answer": "个",
+      "options": [
+        "个",
+        "本",
+        "杯"
+      ]
+    }
+  ],
+  "zh-negation": [
+    {
+      "sentence": "他___有自行车。 (does not have)",
+      "answer": "没",
+      "options": [
+        "没",
+        "不",
+        "很"
+      ]
+    },
+    {
+      "sentence": "我___想去。 (do not want)",
+      "answer": "不",
+      "options": [
+        "不",
+        "有",
+        "很"
+      ]
+    },
+    {
+      "sentence": "我们___有时间。 (do not have)",
+      "answer": "没",
+      "options": [
+        "没",
+        "不",
+        "很"
+      ]
+    },
+    {
+      "sentence": "她___喝酒。 (does not drink)",
+      "answer": "不",
+      "options": [
+        "不",
+        "有",
+        "很"
+      ]
+    }
+  ],
+  "zh-comparison": [
+    {
+      "sentence": "这本书___那本书厚。 (thicker than)",
+      "answer": "比",
+      "options": [
+        "比",
+        "在",
+        "和"
+      ]
+    },
+    {
+      "sentence": "爸爸___我高。 (taller than)",
+      "answer": "比",
+      "options": [
+        "比",
+        "在",
+        "和"
+      ]
+    },
+    {
+      "sentence": "夏天___冬天热。 (hotter than)",
+      "answer": "比",
+      "options": [
+        "比",
+        "在",
+        "和"
+      ]
+    },
+    {
+      "sentence": "这个苹果___那个苹果大。 (bigger than)",
+      "answer": "比",
+      "options": [
+        "比",
+        "在",
+        "和"
+      ]
+    }
+  ],
+  "zh-experience": [
+    {
+      "sentence": "我以前学___日语。 (experience)",
+      "answer": "过",
+      "options": [
+        "过",
+        "吗",
+        "的"
+      ]
+    },
+    {
+      "sentence": "她从来___去过上海。 (never)",
+      "answer": "没",
+      "options": [
+        "没",
+        "很",
+        "正在"
+      ]
+    },
+    {
+      "sentence": "你吃___北京烤鸭吗？ (experience)",
+      "answer": "过",
+      "options": [
+        "过",
+        "吗",
+        "的"
+      ]
+    },
+    {
+      "sentence": "我们从来___看过这部电影。 (never)",
+      "answer": "没",
+      "options": [
+        "没",
+        "很",
+        "正在"
+      ]
+    }
+  ],
+  "es-ser-estar": [
+    {
+      "sentence": "Mi hermano ___ médico. (profession)",
+      "answer": "es",
+      "options": [
+        "es",
+        "está",
+        "soy"
+      ]
+    },
+    {
+      "sentence": "Nosotros ___ en la biblioteca. (location)",
+      "answer": "estamos",
+      "options": [
+        "estamos",
+        "somos",
+        "están"
+      ]
+    },
+    {
+      "sentence": "Ellas ___ profesoras. (profession)",
+      "answer": "son",
+      "options": [
+        "son",
+        "están",
+        "somos"
+      ]
+    },
+    {
+      "sentence": "Yo ___ enfermo hoy. (state)",
+      "answer": "estoy",
+      "options": [
+        "estoy",
+        "soy",
+        "estás"
+      ]
+    }
+  ],
+  "es-preterite": [
+    {
+      "sentence": "Ayer yo ___ una carta. (enviar, preterite)",
+      "answer": "envié",
+      "options": [
+        "envié",
+        "envío",
+        "envió"
+      ]
+    },
+    {
+      "sentence": "Ayer tú ___ el coche. (lavar, preterite)",
+      "answer": "lavaste",
+      "options": [
+        "lavaste",
+        "lavó",
+        "lavas"
+      ]
+    },
+    {
+      "sentence": "Anoche ella ___ la cena. (preparar, preterite)",
+      "answer": "preparó",
+      "options": [
+        "preparó",
+        "preparé",
+        "prepara"
+      ]
+    },
+    {
+      "sentence": "El lunes ellos ___ la puerta. (pintar, preterite)",
+      "answer": "pintaron",
+      "options": [
+        "pintaron",
+        "pintamos",
+        "pintan"
+      ]
+    }
+  ],
+  "es-subjunctive": [
+    {
+      "sentence": "Quiero que tú ___ temprano. (llegar, subjuntivo)",
+      "answer": "llegues",
+      "options": [
+        "llegues",
+        "llegas",
+        "llegar"
+      ]
+    },
+    {
+      "sentence": "Quiero que ella ___ la verdad. (decir, subjuntivo)",
+      "answer": "diga",
+      "options": [
+        "diga",
+        "dice",
+        "decir"
+      ]
+    },
+    {
+      "sentence": "Quiero que vosotros ___ bien. (descansar, subjuntivo)",
+      "answer": "descanséis",
+      "options": [
+        "descanséis",
+        "descansáis",
+        "descansar"
+      ]
+    },
+    {
+      "sentence": "Quiero que ellos ___ el ejercicio. (terminar, subjuntivo)",
+      "answer": "terminen",
+      "options": [
+        "terminen",
+        "terminan",
+        "terminar"
+      ]
+    }
+  ],
+  "es-imperfect": [
+    {
+      "sentence": "De niño, él ___ en el parque. (jugar, imperfecto)",
+      "answer": "jugaba",
+      "options": [
+        "jugaba",
+        "jugabas",
+        "jugaban"
+      ]
+    },
+    {
+      "sentence": "Antes vosotros ___ aquí. (trabajar, imperfecto)",
+      "answer": "trabajabais",
+      "options": [
+        "trabajabais",
+        "trabajaban",
+        "trabajábamos"
+      ]
+    },
+    {
+      "sentence": "De pequeñas, nosotras ___ mucho. (bailar, imperfecto)",
+      "answer": "bailábamos",
+      "options": [
+        "bailábamos",
+        "bailaban",
+        "bailabas"
+      ]
+    },
+    {
+      "sentence": "Antes ellas ___ en una tienda. (trabajar, imperfecto)",
+      "answer": "trabajaban",
+      "options": [
+        "trabajaban",
+        "trabajaba",
+        "trabajabas"
+      ]
+    }
+  ],
+  "fr-negation": [
+    {
+      "sentence": "Tu ne joues ___. (not)",
+      "answer": "pas",
+      "options": [
+        "pas",
+        "très",
+        "oui"
+      ]
+    },
+    {
+      "sentence": "Je n’aime ___ le café. (not)",
+      "answer": "pas",
+      "options": [
+        "pas",
+        "très",
+        "oui"
+      ]
+    },
+    {
+      "sentence": "Vous ne travaillez ___ ici. (not)",
+      "answer": "pas",
+      "options": [
+        "pas",
+        "très",
+        "oui"
+      ]
+    },
+    {
+      "sentence": "Ils ne parlent ___ anglais. (not)",
+      "answer": "pas",
+      "options": [
+        "pas",
+        "très",
+        "oui"
+      ]
+    }
+  ],
+  "fr-perfect": [
+    {
+      "sentence": "J’ai ___ la porte. (fermer)",
+      "answer": "fermé",
+      "options": [
+        "fermé",
+        "fermer",
+        "ferme"
+      ]
+    },
+    {
+      "sentence": "Vous ___ préparé le repas. (avoir)",
+      "answer": "avez",
+      "options": [
+        "avez",
+        "avons",
+        "ont"
+      ]
+    },
+    {
+      "sentence": "Nous avons ___ le musée. (visiter)",
+      "answer": "visité",
+      "options": [
+        "visité",
+        "visiter",
+        "visite"
+      ]
+    },
+    {
+      "sentence": "Elles ___ regardé le film. (avoir)",
+      "answer": "ont",
+      "options": [
+        "ont",
+        "a",
+        "avons"
+      ]
+    }
+  ],
+  "fr-relative": [
+    {
+      "sentence": "Le garçon ___ chante est mon frère.",
+      "answer": "qui",
+      "options": [
+        "qui",
+        "que",
+        "où"
+      ]
+    },
+    {
+      "sentence": "La lettre ___ tu écris est longue.",
+      "answer": "que",
+      "options": [
+        "que",
+        "qui",
+        "où"
+      ]
+    },
+    {
+      "sentence": "Le chien ___ court est petit.",
+      "answer": "qui",
+      "options": [
+        "qui",
+        "que",
+        "où"
+      ]
+    },
+    {
+      "sentence": "La chanson ___ j’écoute est belle.",
+      "answer": "que",
+      "options": [
+        "que",
+        "qui",
+        "où"
+      ]
+    }
+  ],
+  "fr-imparfait": [
+    {
+      "sentence": "Avant, tu ___ souvent. (danser, imparfait)",
+      "answer": "dansais",
+      "options": [
+        "dansais",
+        "dansait",
+        "dansions"
+      ]
+    },
+    {
+      "sentence": "Il ___ tous les jours. (marcher, imparfait)",
+      "answer": "marchait",
+      "options": [
+        "marchait",
+        "marchais",
+        "marchaient"
+      ]
+    },
+    {
+      "sentence": "Vous ___ à Lyon. (habiter, imparfait)",
+      "answer": "habitiez",
+      "options": [
+        "habitiez",
+        "habitions",
+        "habitaient"
+      ]
+    },
+    {
+      "sentence": "Elles ___ chaque matin. (chanter, imparfait)",
+      "answer": "chantaient",
+      "options": [
+        "chantaient",
+        "chantait",
+        "chantions"
+      ]
+    }
+  ],
+  "it-essere": [
+    {
+      "sentence": "Lei ___ una bicicletta. (avere)",
+      "answer": "ha",
+      "options": [
+        "ha",
+        "è",
+        "hanno"
+      ]
+    },
+    {
+      "sentence": "Voi ___ a Roma. (essere)",
+      "answer": "siete",
+      "options": [
+        "siete",
+        "avete",
+        "siamo"
+      ]
+    },
+    {
+      "sentence": "Io ___ stanco. (essere)",
+      "answer": "sono",
+      "options": [
+        "sono",
+        "ho",
+        "sei"
+      ]
+    },
+    {
+      "sentence": "Tu ___ diciotto anni. (avere)",
+      "answer": "hai",
+      "options": [
+        "hai",
+        "sei",
+        "ha"
+      ]
+    }
+  ],
+  "it-perfect": [
+    {
+      "sentence": "Abbiamo ___ la cena. (preparare)",
+      "answer": "preparato",
+      "options": [
+        "preparato",
+        "preparare",
+        "preparando"
+      ]
+    },
+    {
+      "sentence": "Giulia ___ andata al cinema.",
+      "answer": "è",
+      "options": [
+        "è",
+        "ha",
+        "sono"
+      ]
+    },
+    {
+      "sentence": "Hai ___ la musica. (ascoltare)",
+      "answer": "ascoltato",
+      "options": [
+        "ascoltato",
+        "ascoltare",
+        "ascolti"
+      ]
+    },
+    {
+      "sentence": "Le ragazze sono ___ a casa. (andare)",
+      "answer": "andate",
+      "options": [
+        "andate",
+        "andati",
+        "andato"
+      ]
+    }
+  ],
+  "it-subjunctive": [
+    {
+      "sentence": "Penso che tu ___ ragione. (avere, congiuntivo)",
+      "answer": "abbia",
+      "options": [
+        "abbia",
+        "hai",
+        "avere"
+      ]
+    },
+    {
+      "sentence": "Penso che noi ___ pronti. (essere, congiuntivo)",
+      "answer": "siamo",
+      "options": [
+        "siamo",
+        "siete",
+        "sono"
+      ]
+    },
+    {
+      "sentence": "Penso che loro ___ domani. (venire, congiuntivo)",
+      "answer": "vengano",
+      "options": [
+        "vengano",
+        "vengono",
+        "venire"
+      ]
+    },
+    {
+      "sentence": "Penso che voi ___ tempo. (avere, congiuntivo)",
+      "answer": "abbiate",
+      "options": [
+        "abbiate",
+        "avete",
+        "hanno"
+      ]
+    }
+  ],
+  "it-imperfetto": [
+    {
+      "sentence": "Da piccolo, lui ___ in giardino. (giocare, imperfetto)",
+      "answer": "giocava",
+      "options": [
+        "giocava",
+        "giocavi",
+        "giocavano"
+      ]
+    },
+    {
+      "sentence": "Prima voi ___ molto. (camminare, imperfetto)",
+      "answer": "camminavate",
+      "options": [
+        "camminavate",
+        "camminavamo",
+        "camminavano"
+      ]
+    },
+    {
+      "sentence": "Ogni sera noi ___ insieme. (cenare, imperfetto)",
+      "answer": "cenavamo",
+      "options": [
+        "cenavamo",
+        "cenavano",
+        "cenavi"
+      ]
+    },
+    {
+      "sentence": "Da ragazza, io ___ spesso. (disegnare, imperfetto)",
+      "answer": "disegnavo",
+      "options": [
+        "disegnavo",
+        "disegnavi",
+        "disegnava"
+      ]
+    }
+  ],
+  "ja-masu": [
+    {
+      "sentence": "昨日映画を見___。 (past affirmative)",
+      "answer": "ました",
+      "options": [
+        "ました",
+        "ます",
+        "ません"
+      ]
+    },
+    {
+      "sentence": "明日は泳ぎ___。 (nonpast negative)",
+      "answer": "ません",
+      "options": [
+        "ません",
+        "ました",
+        "ます"
+      ]
+    },
+    {
+      "sentence": "昨日は勉強し___。 (past negative)",
+      "answer": "ませんでした",
+      "options": [
+        "ませんでした",
+        "ます",
+        "ました"
+      ]
+    },
+    {
+      "sentence": "毎朝お茶を飲み___。 (habit affirmative)",
+      "answer": "ます",
+      "options": [
+        "ます",
+        "ました",
+        "ません"
+      ]
+    }
+  ],
+  "ja-location": [
+    {
+      "sentence": "図書館___本を読みます。 (action location)",
+      "answer": "で",
+      "options": [
+        "で",
+        "を",
+        "の"
+      ]
+    },
+    {
+      "sentence": "レストラン___食べます。 (action location)",
+      "answer": "で",
+      "options": [
+        "で",
+        "を",
+        "の"
+      ]
+    },
+    {
+      "sentence": "台所___料理します。 (action location)",
+      "answer": "で",
+      "options": [
+        "で",
+        "を",
+        "の"
+      ]
+    },
+    {
+      "sentence": "教室___日本語を話します。 (action location)",
+      "answer": "で",
+      "options": [
+        "で",
+        "を",
+        "の"
+      ]
+    }
+  ],
+  "ja-te": [
+    {
+      "sentence": "ドアを___ください。 (開ける)",
+      "answer": "開けて",
+      "options": [
+        "開けて",
+        "開けます",
+        "開ける"
+      ]
+    },
+    {
+      "sentence": "少し___ください。 (待つ)",
+      "answer": "待って",
+      "options": [
+        "待って",
+        "待ちます",
+        "待つ"
+      ]
+    },
+    {
+      "sentence": "これを___ください。 (見る)",
+      "answer": "見て",
+      "options": [
+        "見て",
+        "見ます",
+        "見る"
+      ]
+    },
+    {
+      "sentence": "ゆっくり___ください。 (話す)",
+      "answer": "話して",
+      "options": [
+        "話して",
+        "話します",
+        "話す"
+      ]
+    }
+  ],
+  "ja-teiru": [
+    {
+      "sentence": "今、テレビを___います。 (見る)",
+      "answer": "見て",
+      "options": [
+        "見て",
+        "見ます",
+        "見る"
+      ]
+    },
+    {
+      "sentence": "今、電話で___います。 (話す)",
+      "answer": "話して",
+      "options": [
+        "話して",
+        "話します",
+        "話す"
+      ]
+    },
+    {
+      "sentence": "今、道を___います。 (歩く)",
+      "answer": "歩いて",
+      "options": [
+        "歩いて",
+        "歩きます",
+        "歩く"
+      ]
+    },
+    {
+      "sentence": "今、料理を___います。 (作る)",
+      "answer": "作って",
+      "options": [
+        "作って",
+        "作ります",
+        "作る"
+      ]
+    }
   ]
 });

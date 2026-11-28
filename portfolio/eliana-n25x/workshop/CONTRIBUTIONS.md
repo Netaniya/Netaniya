@@ -159,3 +159,6 @@ Assistant implemented per-lesson completed checkpoint scores, missed question in
 
 ### 28 November — extended grammar bank
 Under the creator's instruction to broaden assessments, the assistant authored 80 additional cloze questions across two existing topics in each of ten languages. Separate four-question checkpoint results preserve prior two-question scores. Structural validation only, native review pending; no change to publication.
+
+### 28 November — extended assessments for eight complete grammar routes
+Assistant added 128 original questions to 32 remaining topics of Georgian, Ukrainian, Russian, Chinese, Spanish, French, Italian and Japanese, under the creator's direction. All six topics of each of these routes now have four additional questions. Existing IDs and previous results are unchanged. Native-language review pending.

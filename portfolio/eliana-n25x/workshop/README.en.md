@@ -77,3 +77,5 @@ Math self-test evidence: latest/best score and completed round count by topic, w
 Grammar evidence: latest/best completed checkpoint, missed question indices, corrections and targeted review across all ten languages/88 topics. Historical passes remain valid; two-question repeated checkpoints do not establish proficiency. CI and linguistic review pending.
 
 Extended grammar checkpoints: 80 additional authored questions in 20 existing topics across ten languages (432 total grammar exercises). Separate results and review priority preserve previous basic checkpoints. The remaining 68 topics retain their original checkpoints; native review and CI pending.
+
+Extended checkpoint coverage now spans 52/88 topics: all six topics of eight languages plus two each in German and English. 128 additional prompts bring the total grammar exercise count to 560. Remaining: 36 German/English topics. Native review pending.
