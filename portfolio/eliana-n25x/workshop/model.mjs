@@ -9,7 +9,7 @@ import {freshPiano,parsePiano,validateScore,PIANO_LESSONS,RHYTHM_LESSONS,EAR_LES
 import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS,VARIANTS_PER_TOPIC} from './math-course.mjs';
 import {validateCreation,CREATION_TEMPLATES} from './creations.mjs';
 import {LEARNING_LANGUAGES,MISSIONS,SUBJECTS} from './curriculum.mjs';
-import {PYTHON_LESSONS,WEB_LESSONS,SQL_LESSONS,gradePython,gradeWebLab,gradeSQL} from './program.mjs';
+import {PYTHON_LESSONS,WEB_LESSONS,SQL_LESSONS,gradePython,gradeWebLab,gradeSQL,freshCapstone,parseCapstone} from './program.mjs';
 export const MAX_PROFILE_BYTES=8*1024*1024;
 export const SAVE_KEY='eliana-n25x.workshop.v1';
 export const LANGUAGES=['de','en','ru','uk'];
@@ -42,7 +42,7 @@ export function labSummary(progress){
  for(const [kind,lessons] of Object.entries({python:PYTHON_LESSONS,web:WEB_LESSONS,sql:SQL_LESSONS}))result[kind]={done:lessons.filter((m,i)=>labs[kind]?.[kind==='python'?m.id:String(i)]?.passed===true).length,total:lessons.length};
  return result;
 }
-export function freshAcademy(){return {mission:0,drafts:{},labs:freshLabProgress(),learningLanguage:'en',languageIndex:0,languageMode:'cards',quiz:null,creator:null,creators:{}};}
+export function freshAcademy(){return {mission:0,drafts:{},labs:freshLabProgress(),capstone:freshCapstone(),learningLanguage:'en',languageIndex:0,languageMode:'cards',quiz:null,creator:null,creators:{}};}
 export function fresh(){return {schema:SAVE_KEY,lang:'de',started:false,robot:{name:'Eliana',color:'pearl',head:'arc',base:'feet',hands:'round',frame:'balanced',finish:'titanium',personality:'calm',interest:'space',style:'steps',module:'none'},grade:5,points:80,owned:['pearl','ocean'],earned:{},solved:[],projects:[],academy:freshAcademy(),learning:{math:freshMathCourse(),languages:freshLanguageCourse()},piano:freshPiano(),sound:true,volume:.35,visits:0};}
 export function configure(state,key,value){
  const choices={color:Object.keys(COLORS).filter(v=>state.owned.includes(v)),head:['arc','visor','antenna'],base:['feet','wheels','hover'],hands:['round','clamp'],frame:['balanced','athletic','slender'],finish:['ceramic','titanium','satin'],personality:['calm','cheerful','focused'],interest:['space','nature','music'],style:['steps','visual','challenge'],module:['none',...SHOP.filter(v=>v.kind==='module'&&state.owned.includes(v.id)).map(v=>v.id)]};
@@ -72,7 +72,7 @@ export function updateProject(state,id,kind,data,name){
 }
 export function parseAcademy(input){
  const a=freshAcademy();if(!input||typeof input!=='object')return a;
- a.labs=parseLabProgress(input.labs);
+ a.labs=parseLabProgress(input.labs);a.capstone=parseCapstone(input.capstone);
  if(Number.isInteger(input.mission)&&input.mission>=0&&input.mission<MISSIONS.length)a.mission=input.mission;
  if(LEARNING_LANGUAGES.some(v=>v.id===input.learningLanguage))a.learningLanguage=input.learningLanguage;
  if(Number.isInteger(input.languageIndex)&&input.languageIndex>=0&&input.languageIndex<6)a.languageIndex=input.languageIndex;

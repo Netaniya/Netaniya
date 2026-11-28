@@ -911,3 +911,27 @@ export function runWorkflowGuide(kind,index){
  if(kind==='review'){const lab=createReviewLab(),failed=lab.tests(),blocked=!lab.review('approve','Example review');lab.edit(REVIEW_LESSONS[0].solution);const passed=lab.tests(),approved=lab.review('approve','Verified current revision'),merged=lab.merge();return {ok:true,failed,blocked,passed,approved,merged};}
  const lab=createAgentLab(),before=lab.snapshot(),goal=index===0?'audit':'finish',plan=JSON.stringify(agentPlan(goal,before)),preview=lab.preview(plan,goal),unchanged=JSON.stringify(before)===JSON.stringify(lab.snapshot()),applied=index===1&&lab.apply(plan,goal);return {ok:true,plan:JSON.parse(plan),preview,unchanged,applied,after:lab.snapshot()};
 }
+
+export function freshCapstone(){return {plan:'[]',query:'SELECT id FROM projects',source:'function progress(done,total) { return 0; }',html:'<main><h1>Project dashboard</h1></main>',css:'',passed:false};}
+export const CAPSTONE_FIELDS=Object.freeze({plan:1800,query:512,source:4000,html:4000,css:3000});
+export function gradeCapstone(d){
+ const checks=[],add=(id,passed)=>checks.push({id,passed:Boolean(passed)}),lab=createApiLab();let plan;
+ try{plan=typeof d.plan==='string'&&d.plan.length<=CAPSTONE_FIELDS.plan?JSON.parse(d.plan):null;}catch{plan=null;}
+ const valid=Array.isArray(plan)&&plan.length===3&&plan.every(v=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).every(k=>['method','path','body'].includes(k))&&['POST','PATCH'].includes(v.method)&&typeof v.path==='string'&&v.path.length<=64&&v.body&&typeof v.body==='object'&&!Array.isArray(v.body));
+ const results=valid?plan.map(v=>lab.request(v.method,v.path,JSON.stringify(v.body))):[];
+ const records=lab.snapshot(),added=records.filter(r=>r.id!==1);
+ add('capApi',valid&&results.map(r=>r.status).join(',')==='201,201,200'&&records.length===3&&added.some(r=>r.title==='Website'&&r.done===true)&&added.some(r=>r.title==='Music'&&r.done===false)&&records.some(r=>r.id===1&&r.title==='Sample project'&&!r.done));
+ const fixtures=[records,[],[{id:11,title:'A',done:true},{id:12,title:'B',done:true}],[{id:7,title:'C',done:false},{id:9,title:'D',done:true},{id:10,title:'E',done:true}]];
+ const queries=fixtures.map(rows=>queryProjects(d.query,rows));
+ add('capSql',queries.every((r,i)=>r.ok&&r.columns.length===1&&r.columns[0]==='count'&&r.rows.length===1&&r.rows[0][0]===fixtures[i].filter(x=>x.done).length));
+ const tests=[[[0,0],0],[[0,3],0],[[1,2],50],[[3,4],75],[[3,3],100],[[2,5],40]];
+ const code=tests.map(([args,expected])=>({args,expected,...runProgram(d.source,'progress',args)}));
+ add('capCode',code.every(r=>r.ok&&r.value===r.expected));
+ const page=compileWebLab(d.html,d.css);
+ add('capWeb',page.ok&&['main','h1','p','article'].every(tag=>page.nodes.some(n=>n.tag===tag))&&page.nodes.some(n=>n.tag==='article'&&n.classes.includes('card'))&&page.rules.some(r=>r.selector==='.card'&&r.declarations.some(v=>v.property==='padding')));
+ const count=queries[0].ok&&queries[0].columns[0]==='count'&&queries[0].rows.length===1?queries[0].rows[0][0]:null;
+ const integration=count===records.filter(x=>x.done).length?runProgram(d.source,'progress',[count,records.length]):{ok:false};
+ add('capIntegration',checks.slice(0,3).every(c=>c.passed)&&integration.ok&&Math.abs(integration.value-100*count/records.length)<1e-9);
+ return {checks,passed:checks.every(c=>c.passed),records,results,queries,code,integration,page};
+}
+export function parseCapstone(raw){const d=freshCapstone();if(raw&&typeof raw==='object'){for(const [k,max] of Object.entries(CAPSTONE_FIELDS))if(typeof raw[k]==='string'&&raw[k].length<=max)d[k]=raw[k];if(raw.passed===true)d.passed=gradeCapstone(d).passed;}return d;}

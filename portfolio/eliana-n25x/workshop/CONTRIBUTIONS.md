@@ -198,3 +198,6 @@ Assistant authored 18 distinct introductory examples with local execution/previe
 
 ### 28 November — workflow beginner guides
 Eight isolated, localized interactive workflow examples for HTTP, Git, pull requests and safe AI plan review. Real services are not affected; simulations are explicitly labeled. Independent project work and full CI remain pending.
+
+### 28 November — independent capstone
+Implemented a saved project dashboard exercise with learner-written JSON, SQL, JavaScript and HTML/CSS. Five checks include actual local data flow, varied fixtures and stale-status invalidation. Static preview is separate from data flow. No external service changes.
