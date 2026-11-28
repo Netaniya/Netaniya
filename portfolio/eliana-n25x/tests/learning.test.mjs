@@ -93,7 +93,7 @@ test('Grammar progression: both languages have 20 lessons across five ordered st
 test('All ten languages have their own grammar routes and original lesson IDs',()=>{for(const language of COURSE_LANGUAGES){const route=grammarRoute(language);assert.equal(route.length,['de','en'].includes(language)?20:6);assert.deepEqual([...new Set(route.map(v=>v.stage))],['de','en'].includes(language)?[1,2,3,4,5]:[1,2,3,4]);}assert.equal(new Set(GRAMMAR_LESSONS.map(v=>v.id)).size,88);});
 
 
-test('Rhythm grading: all eight patterns accept exact and bounded jitter, reject drift and invalid input',()=>{
+test('Rhythm grading: all twelve patterns accept exact and bounded jitter, reject drift and invalid input',()=>{
  for(const lesson of RHYTHM_LESSONS){
   const beat=60000/lesson.bpm,origin=2000,ideal=lesson.beats.map(b=>origin+b*beat);
   assert(gradeRhythm(lesson,ideal).passed,lesson.id);
@@ -184,7 +184,7 @@ test('Unified study dashboard: six independent progress measures, due reviews an
  const {LANGUAGE_ITEMS,grammarRoute,scheduleLanguage}=await import('../workshop/language-course.mjs');
  const {MISSIONS,SUBJECTS}=await import('../workshop/curriculum.mjs');
  const s=fresh(),l=s.learning.languages,day=20000;const zero=studySummary(s,day);
- assert.equal(zero.math.total,MATH_VARIANTS);assert.equal(zero.language.total,LANGUAGE_ITEMS.length*3);assert.equal(zero.grammar.total,grammarRoute(l.language).length);assert.equal(zero.dialogues.total,10);assert.equal(zero.programming.total,MISSIONS.length);assert.equal(zero.school.total,SUBJECTS.reduce((n,v)=>n+v.tasks.length,0));assert.equal(zero.music.total,52);assert.equal(zero.projects,0);
+ assert.equal(zero.math.total,MATH_VARIANTS);assert.equal(zero.language.total,LANGUAGE_ITEMS.length*3);assert.equal(zero.grammar.total,grammarRoute(l.language).length);assert.equal(zero.dialogues.total,10);assert.equal(zero.programming.total,MISSIONS.length);assert.equal(zero.school.total,SUBJECTS.reduce((n,v)=>n+v.tasks.length,0));assert.equal(zero.music.total,70);assert.equal(zero.projects,0);
  for(const key of ['math','language','grammar','dialogues','programming','school','music'])assert.equal(zero[key].done,0);
  s.learning.math.done[MATH_TOPICS[0].id]=[0,1];s.learning.math.mistakes=[MATH_TOPICS[0].id+':2'];
  const item=LANGUAGE_ITEMS[0];l.done[l.language+'/'+item.id]=15;l.done['de/'+item.id]=7;l.mode='read';scheduleLanguage(l,item,true,{day:day-1});l.review=[l.language+'|read|'+item.id,'de|read|'+item.id];l.grammar.passed[grammarRoute(l.language)[0].id]=true;l.grammar.passed[grammarRoute('de')[0].id]=true;l.dialogues.passed['en/greeting']=true;l.dialogues.passed['de/greeting']=true;l.dialogues.passed['de/shop']=true;
@@ -284,4 +284,12 @@ test('Guided grammar opens actual missed mode and covers all three assessments',
  assert.equal(nextGrammarActivity(p),null);assert.deepEqual(grammarCoverage(p),{basic:list.length,extended:list.length,written:list.length,total:list.length,extraTotal:list.length});
  const l=list[0];assert(recordGrammarCheckpoint(p,l,l.checkpoint.map(q=>q.options.find(v=>v!==q.answer))));assert.deepEqual(nextGrammarActivity(p),{id:l.id,mode:'checkpoint',review:true});assert.equal(grammarCoverage(p).basic,list.length-1);assert(recordGrammarCheckpoint(p,l,l.checkpoint.map(q=>q.answer)));assert.equal(nextGrammarActivity(p),null);}
  assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);
+});
+
+test('Music: all twelve major and natural minor pitch classes, playable keys and fraction labels',async()=>{
+ const {PIANO_LESSONS,RHYTHM_LESSONS,rhythmGapLabel,pianoPracticeStep,parsePiano,freshPiano}=await import('../workshop/piano-score.mjs');
+ const major=PIANO_LESSONS.filter(v=>v.id.endsWith('-major')),minor=PIANO_LESSONS.filter(v=>v.id.endsWith('-minor')&&!v.id.includes('harmonic'));
+ assert.equal(major.length,12);assert.equal(minor.length,12);assert.equal(new Set(major.map(v=>v.notes[0]%12)).size,12);assert.equal(new Set(minor.map(v=>v.notes[0]%12)).size,12);
+ const p=freshPiano();for(const [list,pattern] of [[major,[0,2,4,5,7,9,11,12]],[minor,[0,2,3,5,7,8,10,12]]])for(const l of list){assert.deepEqual(l.notes.slice(0,8).map(n=>n-l.notes[0]),pattern);assert.deepEqual(l.notes,l.notes.slice().reverse());assert(l.notes.every(n=>n>=(l.octave+1)*12&&n<(l.octave+3)*12));let i=0;for(const n of l.notes){const result=pianoPracticeStep(l,i,n);assert(result.correct);i=result.index;}assert.equal(i,l.notes.length);p.practice.passed[l.id]=true;}
+ assert.equal(PIANO_LESSONS.length,38);assert.equal(RHYTHM_LESSONS.length,12);assert.equal(rhythmGapLabel(2/3-1/3),'⅓');assert.equal(rhythmGapLabel(.75),'¾');assert.equal(rhythmGapLabel(1),'1');assert.deepEqual(parsePiano(p),p);
 });

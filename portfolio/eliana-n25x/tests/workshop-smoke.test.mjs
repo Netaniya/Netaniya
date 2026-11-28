@@ -41,7 +41,7 @@ test('Piano: note sequences, original MIDI/WAV, timing and saved progress',()=>{
   assert(!gradeRhythm(lesson,ideal.map((t,i)=>t+(i===ideal.length-1?250:0))).passed);
   assert.equal(gradeRhythm(lesson,ideal.slice(1)),null);assert.equal(gradeRhythm(lesson,ideal.map(()=>0)),null);assert.equal(gradeRhythm(lesson,ideal.map((t,i)=>i===1?NaN:t)),null);rhythmChecks+=6;profile.practice.rhythmPassed[lesson.id]=true;
  }
- assert.deepEqual(parsePiano(profile),profile);assert(PIANO_LESSONS.length>=24);assert(RHYTHM_LESSONS.length>=8);
+ assert.deepEqual(parsePiano(profile),profile);assert.equal(PIANO_LESSONS.length,38);assert.equal(RHYTHM_LESSONS.length,12);
  console.log(JSON.stringify({steps,exports,rhythmChecks}));
 });
 

@@ -183,3 +183,6 @@ Added 16 original meanings in all ten languages: appointment communication and h
 
 ### 28 November — guided three-mode grammar progression
 Assistant fixed recommendation routing so basic, extended and written mistakes reopen the corresponding assessment. Unattempted modes remain in the guided route after basic pass; separate currently error-free coverage is displayed. Historical passes remain intact. Browser tests exercise actual transitions.
+
+### 28 November — all major and natural minor tonalities
+Assistant added 14 scale sequences and four rhythmic patterns (sixteenths, triplets, dotted eighth/sixteenth, mixed gaps with rests). All existing lesson IDs preserved. Pitch and onset timing only; no assessment of fingering, dynamics, articulation or physical performance quality.
