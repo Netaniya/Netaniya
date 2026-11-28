@@ -117,3 +117,6 @@ Assistant implemented six Python exercises and a bounded numeric subset interpre
 
 ### 28 November — web development foundations
 Creator authorized continued development through remaining stages without per-module approval. Assistant added static HTML/CSS editor, six structural exercises and isolated preview. No external scripts or services, no publication change. Browser acceptance pending.
+
+### 28 November — actual full-stack foundations
+Assistant implemented a separate local Python HTTP / persistent SQLite application with HTML/CSS/JS, parameterized queries and local-only security controls, under the creator's authorization to continue remaining stages. No hosting, credentials, real user data, or billing. New integration CI pending.
