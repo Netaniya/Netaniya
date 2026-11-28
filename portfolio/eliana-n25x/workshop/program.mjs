@@ -188,3 +188,37 @@ export function createApiLab(){
  }
  return {request,snapshot,reset(){records=[{id:1,title:'Sample project',done:false}];next=2;}};
 }
+
+
+// Read-only SQL subset over a small relational table. No eval or network.
+export const SQL_SAMPLE=Object.freeze([
+ {id:1,title:'Robot',done:1},{id:2,title:'Music',done:0},{id:3,title:'Web',done:1},{id:4,title:'AI',done:0}
+].map(Object.freeze));
+export function queryProjects(sql,records=SQL_SAMPLE){
+ const invalid={ok:false,error:'unsupported'},fields=['id','title','done'];
+ if(typeof sql!=='string'||sql.length>512||!Array.isArray(records)||records.length>20)return invalid;
+ const m=/^\s*SELECT\s+(\*|COUNT\s*\(\s*\*\s*\)|(?:id|title|done)(?:\s*,\s*(?:id|title|done))*)\s+FROM\s+projects(?:\s+WHERE\s+(id|title|done)\s*(>=|<=|<>|!=|=|>|<)\s*('(?:[^']|'')*'|-?\d{1,9}))?(?:\s+ORDER\s+BY\s+(id|title|done)(?:\s+(ASC|DESC))?)?(?:\s+LIMIT\s+(\d{1,2}))?\s*;?\s*$/i.exec(sql);
+ if(!m)return invalid;
+ let [,selection,field,op,literal,order,direction,limit]=m;selection=selection.toLowerCase();field=field?.toLowerCase();order=order?.toLowerCase();
+ let rows=records.map(r=>({id:r.id,title:r.title,done:Number(r.done)}));
+ if(field){const quoted=literal.startsWith("'"),v=quoted?literal.slice(1,-1).replace(/''/g,"'"):Number(literal);if((field==='title')!==quoted||(field==='done'&&![0,1].includes(v)))return {ok:false,error:'type'};
+ rows=rows.filter(r=>{const a=r[field];switch(op){case '=':return a===v;case '!=':case '<>':return a!==v;case '>':return a>v;case '<':return a<v;case '>=':return a>=v;case '<=':return a<=v;}});}
+ const count=selection.startsWith('count');if(count&&order)return invalid;
+ const cols=count?['count']:selection==='*'?fields:selection.split(',').map(s=>s.trim());if(new Set(cols).size!==cols.length)return invalid;
+ if(order)rows.sort((a,b)=>(a[order]<b[order]?-1:a[order]>b[order]?1:0)*(direction?.toUpperCase()==='DESC'?-1:1));
+ let values=count?[[rows.length]]:rows.map(r=>cols.map(k=>r[k]));
+ if(limit!==undefined)values=values.slice(0,Number(limit));
+ return {ok:true,columns:cols,rows:values};
+}
+export const SQL_LESSONS=[
+ {title:['Alle Zeilen','All rows','Все строки','Усі рядки'],sql:'SELECT * FROM projects ORDER BY id'},
+ {title:['Spalten auswählen','Select columns','Выбор столбцов','Вибір стовпців'],sql:'SELECT title FROM projects ORDER BY id'},
+ {title:['Offene Projekte','Open projects','Незавершённые проекты','Незавершені проєкти'],sql:'SELECT title FROM projects WHERE done = 0 ORDER BY id'},
+ {title:['Absteigend sortieren','Descending order','Сортировка по убыванию','Сортування за спаданням'],sql:'SELECT id, title FROM projects ORDER BY id DESC'},
+ {title:['Anzahl abgeschlossener Projekte','Count completed projects','Количество завершённых проектов','Кількість завершених проєктів'],sql:'SELECT COUNT(*) FROM projects WHERE done = 1'},
+ {title:['Erste zwei Datensätze','First two records','Первые две записи','Перші два записи'],sql:'SELECT id, title FROM projects ORDER BY id LIMIT 2'}
+];
+export function gradeSQL(index,sql){
+ const expected=SQL_LESSONS[index];if(!expected)return {ok:false,error:'unsupported'};
+ const result=queryProjects(sql);return result.ok?{...result,passed:JSON.stringify(result)===JSON.stringify(queryProjects(expected.sql))}:result;
+}

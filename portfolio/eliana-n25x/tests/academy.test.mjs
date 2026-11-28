@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -205,4 +205,15 @@ test('REST lab supports CRUD, correct response codes, validated JSON and isolate
  assert.deepEqual(r('DELETE','/projects/2'),{status:204,body:null});assert.equal(r('GET','/projects/2').status,404);assert.equal(other.snapshot().length,1);
  for(let i=0;i<19;i++)assert.equal(r('POST','/projects','{"title":"x"}').status,201);assert.equal(r('POST','/projects','{"title":"x"}').status,409);
  lab.reset();assert.equal(lab.snapshot().length,1);assert.equal(r('POST','/projects','{"title":"Again"}').body.id,2);
+});
+
+test('SQL Lab: six checked queries, typed filters, ordering, counts, limits and REST integration',()=>{
+ for(const [i,l] of SQL_LESSONS.entries())assert(gradeSQL(i,l.sql).passed);
+ assert(!gradeSQL(2,'SELECT title FROM projects ORDER BY id').passed);
+ assert.deepEqual(queryProjects('select title from projects where done = 0 order by id').rows,[['Music'],['AI']]);
+ assert.deepEqual(queryProjects('SELECT COUNT(*) FROM projects WHERE done = 1').rows,[[2]]);
+ assert.deepEqual(queryProjects('SELECT id FROM projects WHERE id >= 2 ORDER BY id DESC LIMIT 2').rows,[[4],[3]]);
+ assert.deepEqual(queryProjects('SELECT COUNT(*) FROM projects LIMIT 0').rows,[]);
+ for(const q of ['DROP TABLE projects','SELECT * FROM projects; DELETE FROM projects','SELECT password FROM projects','SELECT id,id FROM projects','SELECT * FROM projects WHERE done = 2','SELECT * FROM projects WHERE id = \'1\'','SELECT * FROM projects WHERE title = 1','SELECT * FROM projects WHERE id=1 OR 1=1'])assert(!queryProjects(q).ok,q);
+ const api=createApiLab();api.request('POST','/projects','{"title":"From API","done":true}');assert.deepEqual(queryProjects('SELECT title FROM projects WHERE done = 1',api.snapshot()).rows,[['From API']]);assert.equal(SQL_SAMPLE.length,4);
 });
