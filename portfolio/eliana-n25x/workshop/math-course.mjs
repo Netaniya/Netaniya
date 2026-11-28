@@ -77,6 +77,30 @@ export function courseTask(topicID,index=0){
  return {id:'course-math:'+t.id+':'+index,topic:t.id,index,...task};
 }
 export function checkCourseAnswer(task,value){return matchesAnswer(String(value).replace(/^x\s*=\s*/i,''),task.answer);}
-export function freshMathCourse(){return {topic:'add',index:0,done:{},mistakes:[],attempts:0,correct:0,assessment:null};}
-export function parseMathCourse(raw){const c=freshMathCourse();if(!raw||typeof raw!=='object')return c;if(MATH_TOPICS.some(t=>t.id===raw.topic))c.topic=raw.topic;if(Number.isInteger(raw.index)&&raw.index>=0&&raw.index<256)c.index=raw.index;for(const t of MATH_TOPICS){const values=raw.done?.[t.id];if(Array.isArray(values))c.done[t.id]=[...new Set(values.filter(v=>Number.isInteger(v)&&v>=0&&v<256))];}if(Array.isArray(raw.mistakes))c.mistakes=raw.mistakes.filter(v=>typeof v==='string'&&/^[-a-z]+:\d+$/.test(v)&&MATH_TOPICS.some(t=>v.startsWith(t.id+':'))&&+v.split(':')[1]<256).slice(-200);const exam=raw.assessment;if(exam&&exam.topic===c.topic&&Array.isArray(exam.indices)&&exam.indices.length===10&&new Set(exam.indices).size===10&&exam.indices.every(i=>Number.isInteger(i)&&i>=0&&i<256)&&Array.isArray(exam.answers)&&exam.answers.length<=10&&exam.answers.every(v=>typeof v==='boolean'))c.assessment={topic:c.topic,indices:[...exam.indices],answers:[...exam.answers],answered:Boolean(exam.answered)&&exam.answers.length>0};for(const k of ['attempts','correct'])if(Number.isSafeInteger(raw[k])&&raw[k]>=0)c[k]=Math.min(raw[k],10000000);c.correct=Math.min(c.correct,c.attempts);if(c.assessment){const e=c.assessment;if(e.answers.length===10)e.answered=true;c.index=e.indices[Math.max(0,Math.min(9,e.answers.length-(e.answered?1:0)))];}return c;}
+export function freshMathCourse(){return {topic:'add',index:0,done:{},mistakes:[],attempts:0,correct:0,assessment:null,evidence:{}};}
+export function parseMathCourse(raw){const c=freshMathCourse();if(!raw||typeof raw!=='object')return c;if(MATH_TOPICS.some(t=>t.id===raw.topic))c.topic=raw.topic;if(Number.isInteger(raw.index)&&raw.index>=0&&raw.index<256)c.index=raw.index;for(const t of MATH_TOPICS){const values=raw.done?.[t.id];if(Array.isArray(values))c.done[t.id]=[...new Set(values.filter(v=>Number.isInteger(v)&&v>=0&&v<256))];}if(Array.isArray(raw.mistakes))c.mistakes=raw.mistakes.filter(v=>typeof v==='string'&&/^[-a-z]+:\d+$/.test(v)&&MATH_TOPICS.some(t=>v.startsWith(t.id+':'))&&+v.split(':')[1]<256).slice(-200);const exam=raw.assessment;if(exam&&exam.topic===c.topic&&Array.isArray(exam.indices)&&exam.indices.length===10&&new Set(exam.indices).size===10&&exam.indices.every(i=>Number.isInteger(i)&&i>=0&&i<256)&&Array.isArray(exam.answers)&&exam.answers.length<=10&&exam.answers.every(v=>typeof v==='boolean'))c.assessment={topic:c.topic,indices:[...exam.indices],answers:[...exam.answers],answered:Boolean(exam.answered)&&exam.answers.length>0};for(const t of MATH_TOPICS){const v=raw.evidence?.[t.id];if(v&&Number.isInteger(v.latest)&&v.latest>=0&&v.latest<=10&&Number.isInteger(v.best)&&v.best>=v.latest&&v.best<=10&&Number.isSafeInteger(v.rounds)&&v.rounds>=1&&v.rounds<=1000000&&Number.isInteger(v.seed)&&v.seed>=0&&v.seed<256)c.evidence[t.id]={latest:v.latest,best:v.best,rounds:v.rounds,seed:v.seed};}
+ if(c.assessment?.answers.length===10&&!c.evidence[c.topic])saveMathEvidence(c,c.assessment);
+ for(const k of ['attempts','correct'])if(Number.isSafeInteger(raw[k])&&raw[k]>=0)c[k]=Math.min(raw[k],10000000);c.correct=Math.min(c.correct,c.attempts);if(c.assessment){const e=c.assessment;if(e.answers.length===10)e.answered=true;c.index=e.indices[Math.max(0,Math.min(9,e.answers.length-(e.answered?1:0)))];}return c;}
 export function recordMath(course,task,correct){course.attempts++;const key=task.topic+':'+task.index;if(correct){course.correct++;const list=course.done[task.topic]??=[];if(!list.includes(task.index))list.push(task.index);course.mistakes=course.mistakes.filter(v=>v!==key);}else if(!course.mistakes.includes(key))course.mistakes.push(key);course.mistakes=course.mistakes.slice(-200);}
+
+ // Completed ten-question self-tests are retained per topic, not inferred from practice.
+ function saveMathEvidence(course,exam){
+ const score=exam.answers.filter(Boolean).length,previous=course.evidence[exam.topic];
+ course.evidence[exam.topic]={latest:score,best:Math.max(score,previous?.best??0),rounds:Math.min((previous?.rounds??0)+1,1000000),seed:exam.indices[0]};
+ }
+ export function recordMathAssessmentAnswer(course,correct){
+ const exam=course.assessment;
+ if(!exam||exam.answered||exam.answers.length>=10||typeof correct!=='boolean')return false;
+ exam.answers.push(correct);exam.answered=true;
+ if(exam.answers.length===10)saveMathEvidence(course,exam);
+ return true;
+ }
+ export function mathEvidence(course){
+ return MATH_TOPICS.map(t=>({id:t.id,grade:t.grade,title:t.title,result:course.evidence[t.id]??null}));
+ }
+ export function startMathAssessment(course,seed=course.index){
+ if(!Number.isInteger(seed)||seed<0||seed>=256||!MATH_TOPICS.some(t=>t.id===course.topic))return false;
+ course.index=seed;
+ course.assessment={topic:course.topic,indices:Array.from({length:10},(_,i)=>(seed+i*73)%256),answers:[],answered:false};
+ return true;
+ }

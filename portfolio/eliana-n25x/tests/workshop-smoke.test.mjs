@@ -67,3 +67,11 @@ test('Harmony: reference chord voicings, inversions, rejection and profile migra
 });
 
 test('All ten translation-source languages: distinct choices, persistence and collision safety',()=>{let choiceSets=0,pairs=0;for(const target of COURSE_LANGUAGES)for(const source of COURSE_LANGUAGES){const p=freshLanguageCourse();p.language=target;p.source=source;assert.equal(parseLanguageCourse(p).source,source);assert.equal(meaningSource(target,source,'de'),source===target?(target==='de'?'en':'de'):source);pairs++;}for(const source of COURSE_LANGUAGES)for(const item of LANGUAGE_ITEMS){const choices=meaningChoices(item,source);assert.equal(choices.length,3);assert.equal(new Set(choices.map(q=>q.text[source])).size,3);assert(choices.some(q=>q.id===item.id));choiceSets++;}console.log(JSON.stringify({pairs,choiceSets}));});
+
+test('Math evidence across every topic and ten-question retest seeds',async()=>{
+ const {MATH_TOPICS,freshMathCourse,parseMathCourse,startMathAssessment,recordMathAssessmentAnswer,mathEvidence}=await import('../workshop/math-course.mjs');
+ const p=freshMathCourse();let answers=0;
+ for(const t of MATH_TOPICS){p.topic=t.id;for(let seed=0;seed<256;seed++){assert(startMathAssessment(p,seed));const next=new Set(Array.from({length:10},(_,i)=>(seed+16+i*73)%256));assert.equal(new Set(p.assessment.indices).size,10);assert(p.assessment.indices.every(i=>!next.has(i)));}for(const [round,seed] of [0,16].entries()){assert(startMathAssessment(p,seed));for(let i=0;i<10;i++){assert(recordMathAssessmentAnswer(p,i<5+round*3));assert(!recordMathAssessmentAnswer(p,true));if(i<9)p.assessment.answered=false;answers++;}}
+ assert.deepEqual(p.evidence[t.id],{latest:8,best:8,rounds:2,seed:16});}
+ assert.equal(mathEvidence(p).filter(t=>t.result).length,MATH_TOPICS.length);assert.deepEqual(parseMathCourse(p).evidence,p.evidence);console.log(JSON.stringify({answers,topics:MATH_TOPICS.length}));
+});

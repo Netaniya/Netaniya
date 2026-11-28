@@ -150,3 +150,6 @@ Under the creator's direction to develop all ten language courses, the assistant
 
 ### 28 November — explainable personal study plan
 Creator requested progression toward a comprehensive learning platform. Assistant implemented a local, derived three-item recommendation panel: unfinished math self-test, mistakes or least-covered topic at selected difficulty; next guided language exercise with review priority; rotating unfinished supplementary courses. No inferred proficiency score, new profile field, points, remote AI, external data or publication change. Model and browser tests added; CI pending.
+
+### 28 November — persistent math self-test evidence
+Assistant implemented per-topic latest/best completed ten-question result and completed-round count, validated profile migration and retest recommendations at selected difficulty after unresolved mistakes are cleared. The creator directed ongoing education, development and testing. No formal proficiency assessment, points changes or release. Source and browser coverage added.

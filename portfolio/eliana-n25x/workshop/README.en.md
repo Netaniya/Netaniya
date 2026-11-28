@@ -71,3 +71,5 @@ AI Code Lab: 38 missions, nine stages, 194 test cases. Read-only diagnostics, pr
 Sentence classroom: all ten study languages can now serve as translation sources (90 distinct directed pairs), with automatic interface-language mode, safe same-language fallback and saved source selection. Four UI localizations remain unchanged; native-speaker review and CI pending.
 
 Personal study plan: up to three local recommendations based on saved progress, with unfinished math self-tests and mistakes prioritized, guided language review and rotating unfinished supplementary courses. Not a placement test or AI-generated assessment. All courses remain selectable; CI pending.
+
+Math self-test evidence: latest/best score and completed round count by topic, with validated profile migration. After unresolved mistakes are reviewed, a low latest score can prompt a new ten-question round at the chosen difficulty. Not a standardized proficiency diagnosis; CI pending.

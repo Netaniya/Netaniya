@@ -123,12 +123,14 @@ export function studyPlan(state,day=studyDay()){
  else if(m.mistakes.length){
   const [id,index]=m.mistakes[0].split(':');addMath('planMathReview',id,Number(index));
  }else{
+  const weak=MATH_TOPICS.filter(t=>t.grade===state.grade&&m.evidence[t.id]?.latest<8).sort((a,b)=>m.evidence[a.id].latest-m.evidence[b.id].latest)[0];
+  if(weak)addMath('planMathRetest',weak.id,(m.evidence[weak.id].seed+16)%256);
   // Balance exposure across the chosen difficulty's topics before repeating.
   const candidates=MATH_TOPICS.filter(t=>t.grade===state.grade&&
     (m.done[t.id]?.length||0)<VARIANTS_PER_TOPIC);
   candidates.sort((a,b)=>(m.done[a.id]?.length||0)-(m.done[b.id]?.length||0));
   const t=candidates[0];
-  if(t){const done=new Set(m.done[t.id]||[]);let index=0;while(done.has(index))index++;addMath('planMathNew',t.id,index);}
+  if(t&&!weak){const done=new Set(m.done[t.id]||[]);let index=0;while(done.has(index))index++;addMath('planMathNew',t.id,index);}
  }
  const next=nextLanguageExercise(l,day);
  if(next)items.push({kind:'language',reason:next.review?'planLanguageReview':'planLanguageNew',...next});

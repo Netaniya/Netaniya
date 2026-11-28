@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {parseHTML} from 'linkedom';
-import {MATH_TOPICS,MATH_VARIANTS,courseTask,checkCourseAnswer,freshMathCourse,parseMathCourse,recordMath} from '../workshop/math-course.mjs';
+import {MATH_TOPICS,MATH_VARIANTS,courseTask,checkCourseAnswer,freshMathCourse,parseMathCourse,recordMath,recordMathAssessmentAnswer,startMathAssessment,mathEvidence} from '../workshop/math-course.mjs';
 import {createMathClassroom} from '../workshop/math-classroom.mjs';
 import {fresh,parseProfile,reward} from '../workshop/model.mjs';
 import {translate} from '../workshop/i18n.mjs';
@@ -66,7 +66,7 @@ test('Mathematics classroom: real DOM forms reward once, review errors and compl
  try{const s=fresh();s.lang='ru';let controller,saves=0;const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const api={getState:()=>s,tr:(k,p)=>translate(s.lang,k,p),esc,save:()=>saves++,award:(id,n)=>reward(s,id,n),navigate:()=>{},toast:()=>{},audio:{cue(){}},render:()=>{document.getElementById('content').innerHTML=controller.render();}};controller=createMathClassroom(api);api.render();
  const answer=value=>{document.getElementById('course-answer').value=String(value);controller.submit({target:document.getElementById('course-answer-form'),preventDefault(){}});};
  answer(999);assert.equal(s.learning.math.mistakes.length,1);answer(4);assert.equal(s.points,85);answer(4);assert.equal(s.points,85);assert.equal(s.learning.math.mistakes.length,0);
- controller.click({dataset:{m:'assessment'}});for(let i=0;i<10;i++){answer(courseTask(s.learning.math.topic,s.learning.math.index).display);if(i<9)controller.click({dataset:{m:'next'}});}assert.equal(s.learning.math.assessment.answers.filter(Boolean).length,10);assert(document.getElementById('content').textContent.includes('10 / 10'));assert.equal(s.points,160);assert.equal(document.getElementById('course-answer-form'),null);assert.equal(reward(s,'course-assess:add',30),0);
+ controller.click({dataset:{m:'assessment'}});for(let i=0;i<10;i++){answer(courseTask(s.learning.math.topic,s.learning.math.index).display);if(i<9)controller.click({dataset:{m:'next'}});}assert.equal(s.learning.math.assessment.answers.filter(Boolean).length,10);assert.equal(s.learning.math.evidence.add.latest,10);assert.equal(s.learning.math.evidence.add.rounds,1);assert(document.getElementById('content').textContent.includes('10 / 10'));assert.equal(s.points,160);assert.equal(document.getElementById('course-answer-form'),null);assert.equal(reward(s,'course-assess:add',30),0);
  for(const lang of ['de','en','ru','uk']){s.lang=lang;api.render();assert(document.getElementById('content').textContent.includes(translate(lang,'mathCourse')));assert(!document.getElementById('content').textContent.includes('undefined'));}assert(saves>10);
  }finally{globalThis.document=previous;}
 });
@@ -218,4 +218,21 @@ test('Personal study plan balances selected difficulty, prioritizes reviews, rot
  for(const lesson of grammarRoute(l.language))l.grammar.passed[lesson.id]=true;assert.equal(studyPlan(s,day)[2].kind,'dialogues');
  const before=JSON.stringify(s);studyPlan(s,day);assert.equal(JSON.stringify(s),before);
  for(const lang of ['de','en','ru','uk'])for(const key of ['planTitle','planScope','planResume','planMathReview','planMathNew','planLanguageReview','planLanguageNew','planExtra','planDone'])assert.notEqual(translate(lang,key),key);
+});
+
+test('Math self-test evidence survives topic changes, supports retesting, and distinguishes incomplete rounds',async()=>{
+ const {studyPlan}=await import('../workshop/model.mjs');const s=fresh(),m=s.learning.math;
+ m.topic=MATH_TOPICS.find(t=>t.grade===s.grade).id;
+ assert.equal(mathEvidence(m).length,MATH_TOPICS.length);assert(mathEvidence(m).every(t=>t.result===null));
+ assert(startMathAssessment(m,31));const original=[...m.assessment.indices];
+ for(let i=0;i<10;i++){assert(recordMathAssessmentAnswer(m,i<6));assert(!recordMathAssessmentAnswer(m,true));if(i<9)m.assessment.answered=false;}
+ assert.deepEqual(m.evidence[m.topic],{latest:6,best:6,rounds:1,seed:31});
+ const plan=studyPlan(s,20000)[0];assert.equal(plan.reason,'planMathRetest');assert.equal(plan.index,47);assert(startMathAssessment(m,plan.index));assert(m.assessment.indices.every(i=>!original.includes(i)));
+ assert(recordMathAssessmentAnswer(m,true));assert.equal(m.evidence[m.topic].rounds,1);
+ assert.deepEqual(parseProfile(JSON.stringify(s)).learning.math.evidence,m.evidence);
+ m.assessment.answered=false;for(let i=1;i<10;i++){assert(recordMathAssessmentAnswer(m,true));if(i<9)m.assessment.answered=false;}
+ assert.deepEqual(m.evidence[m.topic],{latest:10,best:10,rounds:2,seed:47});
+ assert.notEqual(studyPlan(s,20000)[0].reason,'planMathRetest');
+ const legacy=JSON.parse(JSON.stringify(m));delete legacy.evidence;assert.equal(parseMathCourse(legacy).evidence[m.topic].latest,10);
+ const invalid={...m,assessment:null,evidence:{[m.topic]:{latest:11,best:11,rounds:1,seed:0},invalid:{latest:1,best:1,rounds:1,seed:0}}};assert.deepEqual(parseMathCourse(invalid).evidence,{});
 });

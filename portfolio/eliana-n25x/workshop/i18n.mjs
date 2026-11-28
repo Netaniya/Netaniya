@@ -469,3 +469,11 @@ for(const [key,values] of Object.entries({
  planExtra:['Wechselnde Ergänzung für heute: dieser Kurs hat noch offene Übungen.','Rotating suggestion for today: this course has unfinished exercises.','Дополнительное направление на сегодня: в курсе есть незавершённые упражнения.','Додатковий напрям на сьогодні: у курсі є незавершені вправи.'],
  planDone:['Keine offenen Vorschläge. Wähle einen Kurs zur freien Wiederholung.','No unfinished suggestions. Choose any course to practise again.','Нет незавершённых рекомендаций. Выбери любой курс для повторения.','Немає незавершених рекомендацій. Обери будь-який курс для повторення.']
 }))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);
+
+for(const [key,values] of Object.entries({
+ mathEvidenceTitle:['Ergebnisse je Thema','Self-test results by topic','Результаты самопроверок по темам','Результати самоперевірок за темами'],
+ mathEvidenceScope:['Nur abgeschlossene Selbsttests mit zehn Aufgaben. Keine Einstufung; Übungsantworten zählen hier nicht.','Completed ten-question self-tests only. Not a placement rating; practice answers do not count here.','Только завершённые самопроверки из десяти задач. Не оценка уровня знаний; тренировочные ответы здесь не учитываются.','Лише завершені самоперевірки з десяти завдань. Не оцінка рівня знань; тренувальні відповіді тут не враховуються.'],
+ mathEvidenceResult:['Zuletzt {n}/10 · Bestwert {best}/10 · Durchgänge {rounds}','Latest {n}/10 · Best {best}/10 · Rounds {rounds}','Последний результат {n}/10 · Лучший {best}/10 · Попыток {rounds}','Останній результат {n}/10 · Найкращий {best}/10 · Спроб {rounds}'],
+ mathEvidenceUntested:['Noch kein abgeschlossener Selbsttest.','No completed self-test yet.','Самопроверка ещё не завершена.','Самоперевірка ще не завершена.'],
+ planMathRetest:['Prüfe das Thema erneut mit anderen Aufgaben; zuletzt weniger als 8 von 10 richtig.','Retest this topic with different tasks; fewer than 8 of 10 correct last time.','Повтори самопроверку с другими задачами: прошлый результат ниже 8 из 10.','Повтори самоперевірку з іншими завданнями: минулий результат нижче 8 із 10.']
+}))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);

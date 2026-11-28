@@ -5,7 +5,7 @@ No unauthorized redistribution, commercial reuse or passing off of protected ori
 Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
 */
 import {createLanguageClassroom} from './language-classroom.mjs';
-import {MATH_TOPICS,MATH_VARIANTS} from './math-course.mjs';
+import {MATH_TOPICS,MATH_VARIANTS,startMathAssessment} from './math-course.mjs';
 import {LANGUAGE_ITEMS} from './language-course.mjs';
 import {MISSIONS} from './curriculum.mjs';
 import {createPiano} from './piano.mjs';
@@ -70,7 +70,7 @@ function followPlan(kind){
  const item=studyPlan(state).find(v=>v.kind===kind);if(!item)return;
  if(kind==='math'){
   const m=state.learning.math;
-  if(item.reason!=='planResume'){Object.assign(m,{topic:item.topic,index:item.index,assessment:null});save();}
+  if(item.reason!=='planResume'){Object.assign(m,{topic:item.topic,index:item.index,assessment:null});if(item.reason==='planMathRetest')startMathAssessment(m,item.index);save();}
   navigate('mathCourse');
  }else if(kind==='language'){
   Object.assign(state.learning.languages,{unit:item.unit,index:item.index,mode:item.mode});save();navigate('languageCourse');
