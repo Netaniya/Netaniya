@@ -1805,3 +1805,188 @@ EXTRA_MISSIONS.push(...[
     ]
   }
 ]);
+
+// AI evaluation fundamentals; numeric exercises, not a trained classifier.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "ai-classifier-threshold",
+    "title": [
+      "KI: Klassifikationsschwelle",
+      "AI: classification threshold",
+      "ИИ: порог классификации",
+      "ШІ: поріг класифікації"
+    ],
+    "task": [
+      "Ein Modell meldet einen Treffer bei score ≥ threshold, beide 0–100.",
+      "A model predicts positive when score ≥ threshold, both 0–100.",
+      "Модель выдаёт положительный класс при score ≥ threshold; оба 0–100.",
+      "Модель прогнозує позитивний клас за score ≥ threshold; обидва 0–100."
+    ],
+    "hint": [
+      "Der Schwellenwert selbst gehört zum positiven Bereich.",
+      "The threshold itself belongs to the positive range.",
+      "Сам порог входит в положительный диапазон.",
+      "Сам поріг належить до позитивного діапазону."
+    ],
+    "entry": "predictClass",
+    "source": "function predictClass(score,threshold) { return score>threshold; }",
+    "sample": [
+      50,
+      50
+    ],
+    "block": {
+      "from": "score>threshold",
+      "choices": [
+        "score>threshold",
+        "score>=threshold",
+        "score<threshold"
+      ]
+    },
+    "tests": [
+      [
+        [
+          50,
+          50
+        ],
+        true
+      ],
+      [
+        [
+          49,
+          50
+        ],
+        false
+      ],
+      [
+        [
+          51,
+          50
+        ],
+        true
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        true
+      ],
+      [
+        [
+          100,
+          100
+        ],
+        true
+      ],
+      [
+        [
+          0,
+          100
+        ],
+        false
+      ]
+    ],
+    "expectedPrediction": false,
+    "prediction": [
+      false,
+      true
+    ],
+    "why": [
+      "Der Schwellenwert selbst gehört zum positiven Bereich.",
+      "The threshold itself belongs to the positive range.",
+      "Сам порог входит в положительный диапазон.",
+      "Сам поріг належить до позитивного діапазону."
+    ]
+  },
+  {
+    "id": "ai-precision",
+    "title": [
+      "KI: Precision messen",
+      "AI: measure precision",
+      "ИИ: точность положительных прогнозов (Precision)",
+      "ШІ: точність позитивних прогнозів (Precision)"
+    ],
+    "task": [
+      "Berechne TP / (TP + FP); gib 0 zurück, wenn keine positiven Vorhersagen vorliegen (Konvention in dieser Aufgabe).",
+      "Compute TP / (TP + FP); return 0 if there are no positive predictions (convention for this task).",
+      "Вычисли TP / (TP + FP); если положительных прогнозов нет, верни 0 (условие этой задачи).",
+      "Обчисли TP / (TP + FP); якщо позитивних прогнозів немає, поверни 0 (умова цієї задачі)."
+    ],
+    "hint": [
+      "Der Nenner zählt alle positiv vorhergesagten Fälle.",
+      "The denominator counts all predicted positives.",
+      "В знаменателе — все положительные прогнозы.",
+      "У знаменнику — усі позитивні прогнози."
+    ],
+    "entry": "precision",
+    "source": "function precision(tp,fp) { if (tp+fp===0) { return 0; } return fp/(tp+fp); }",
+    "sample": [
+      3,
+      1
+    ],
+    "block": {
+      "from": "fp/(tp+fp)",
+      "choices": [
+        "fp/(tp+fp)",
+        "tp/(tp+fp)",
+        "(tp+fp)/tp"
+      ]
+    },
+    "tests": [
+      [
+        [
+          3,
+          1
+        ],
+        0.75
+      ],
+      [
+        [
+          1,
+          3
+        ],
+        0.25
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          2,
+          2
+        ],
+        0.5
+      ]
+    ],
+    "expectedPrediction": 0.25,
+    "prediction": [
+      0.25,
+      0.75,
+      1
+    ],
+    "why": [
+      "Der Nenner zählt alle positiv vorhergesagten Fälle.",
+      "The denominator counts all predicted positives.",
+      "В знаменателе — все положительные прогнозы.",
+      "У знаменнику — усі позитивні прогнози."
+    ]
+  }
+]);

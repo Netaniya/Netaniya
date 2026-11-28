@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -29,7 +29,7 @@ test('Academy interpreter: loops, recursion, excessive nesting and host access f
  assert.equal(runProgram('x'.repeat(4001),'x',[]).error,'size');assert(!validScoreProgram(SCORE_PROGRAM.replace('+ points','- points')));assert(validScoreProgram(SCORE_PROGRAM));
 });
 test('Academy missions: initial bugs fail and learner repairs pass every normal and zero/false test case',()=>{
- assert.equal(MISSIONS.length,36);
+ assert.equal(MISSIONS.length,38);
  for(const m of MISSIONS){assert(checkMission(m,m.source,runProgram).some(r=>!r.ok||r.value!==r.expected),m.id);const corrected=m.source.replace(m.block.from,m.block.choices[1]);assert(checkMission(m,corrected,runProgram).every(r=>r.ok&&r.value===r.expected),m.id);assert.equal(runProgram(m.source,m.entry,m.sample).value,m.expectedPrediction);}
 });
 test('Academy content: ten language tracks, sixty cards and all original subject explanations have four UI languages',()=>{
@@ -172,3 +172,15 @@ test('Guided subjects cover six disciplines, stable stages and 73 localized ques
 test('Piano learning: 24 original practice patterns, wrong note does not advance, exports and old profiles migrate',async()=>{const {PIANO_LESSONS,pianoPracticeStep,parsePiano,freshPiano,makeMidi,renderScoreWav}=await import('../workshop/piano-score.mjs');assert.equal(PIANO_LESSONS.length,24);assert.deepEqual([...new Set(PIANO_LESSONS.map(v=>v.stage))],[1,2,3,4,5,6]);assert.equal(new Set(PIANO_LESSONS.map(v=>v.id)).size,24);const p=freshPiano();for(const l of PIANO_LESSONS){let index=0;const first=(l.octave+1)*12;for(const midi of l.notes){assert(midi>=first&&midi<first+24);assert.equal(pianoPracticeStep(l,index,midi+1).index,index);const r=pianoPracticeStep(l,index,midi);assert(r.correct);index=r.index;assert.equal(r.complete,index===l.notes.length);}p.practice.passed[l.id]=true;const score={tempo:120,bars:4,tracks:[{name:'Exercise',instrument:'piano',notes:l.notes.map((midi,i)=>({midi,beat:i,duration:.5,velocity:.6}))}]};assert.equal(String.fromCharCode(...makeMidi(score).slice(0,4)),'MThd');const wav=renderScoreWav(score);assert.equal(String.fromCharCode(...new Uint8Array(wav,0,4)),'RIFF');assert(new Int16Array(wav,44).some(n=>n!==0));}assert.deepEqual(parsePiano(p),p);delete p.practice;assert.deepEqual(parsePiano(p).practice,{passed:{},rhythmPassed:{},earPassed:{},staffPassed:{},chordPassed:{},harmonyPassed:{}});});
 
 test('Rhythm: exact, jitter, drift, missing and invalid taps; persistence',async()=>{const {RHYTHM_LESSONS,gradeRhythm,parsePiano,freshPiano}=await import('../workshop/piano-score.mjs');const p=freshPiano();assert.equal(RHYTHM_LESSONS.length,8);for(const l of RHYTHM_LESSONS){const t=l.beats.map(v=>1000+v*60000/l.bpm);assert(gradeRhythm(l,t).passed);assert(gradeRhythm(l,t.map((v,i)=>v+(i%2?70:0))).passed);assert(!gradeRhythm(l,t.map((v,i)=>v+i*210)).passed);assert.equal(gradeRhythm(l,t.slice(1)),null);assert.equal(gradeRhythm(l,t.map(()=>0)),null);p.practice.rhythmPassed[l.id]=true;}assert.deepEqual(parsePiano(p),p);});
+
+test('AI Code Lab diagnoses every mission without modifying drafts; model is opt-in and advisory',async()=>{
+ for(const m of MISSIONS){const old=JSON.stringify(m),bad=reviewProgram(m,m.source),fixed=m.source.replace(m.block.from,m.block.choices[1]),good=reviewProgram(m,fixed);assert(bad.failed);assert.equal(good.passed,good.total);assert.equal(good.failed,null);assert.equal(JSON.stringify(m),old);}
+ const m=MISSIONS[0],prompt=codeReviewPrompt(m,m.source,'ru');assert(prompt.includes('Russian'));assert(prompt.includes(m.source));
+ let created=0,destroyed=0;
+ const mock={availability:async()=> 'available',create:async()=>{created++;return {prompt:async()=>'<b>untrusted advice</b>',destroy:()=>destroyed++};}};
+ assert.equal((await requestCodeMentor(mock,m,m.source,'ru')).status,'unavailable');assert.equal(created,0);
+ assert.equal((await requestCodeMentor({...mock,availability:async()=> 'downloadable'},m,m.source,'en')).status,'unavailable');assert.equal(created,0);
+ assert.deepEqual(await requestCodeMentor(mock,m,m.source,'en'),{status:'ok',text:'<b>untrusted advice</b>'});assert.equal(created,1);assert.equal(destroyed,1);
+ const cancel=new AbortController();cancel.abort();assert.equal((await requestCodeMentor(mock,m,m.source,'en',cancel.signal)).status,'cancelled');assert.equal(created,1);
+ assert.equal((await requestCodeMentor({...mock,create:async()=>{throw Error('offline');}},m,m.source,'en')).status,'error');
+});

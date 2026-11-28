@@ -96,3 +96,6 @@ Assistant added four debugging projects and an eighth programming stage under th
 
 ### 28 November — ELIANA identity
 Creator Natalie Ragulina (Netaniya) selected and approved the visual direction and robot name ELIANA. Assistant translated that reference into an initial procedural 3D implementation, retaining the original logo, saved profiles, articulation and four UI languages. Reference art is AI-generated and is not a finished 3D asset.
+
+### 28 November — AI coding education
+Creator requested special emphasis on programming and AI. Assistant implemented read-only interpreter diagnostics, prompt export, an opt-in ready-device model adapter and two AI evaluation missions. Real inference not claimed tested; no provider keys or payment added.

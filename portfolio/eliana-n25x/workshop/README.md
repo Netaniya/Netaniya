@@ -41,3 +41,5 @@ Mathematik: 52 Themen mit je 256 Varianten (13.312); Fachkurse: 73 Fragen in 29 
 Programmieren: 36 Missionen, acht Stufen, 182 Testfälle; vier fächerübergreifende Aufgaben. Begrenzter Lerninterpreter, keine vollständige JavaScript-Laufzeit. Browser-Abnahme offen.
 
 ELIANA: erste prozedurale 3D-Iteration mit Titanoptik, blauen Sensoren und Explosionsansicht. Logo und gespeicherte Profile bleiben erhalten; filmreife Modellierung und Browser-Abnahme stehen aus.
+
+AI Code Lab: 38 Missionen, neun Stufen, 194 Testfälle. Diagnose, Anfrageexport und optionale bereits verfügbare Browser-KI (EN/DE). Browser- und reale Modellprüfung offen.

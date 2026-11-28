@@ -65,6 +65,7 @@ async function practicalProjectsCheck(){
  await click('#navigation [data-do=learn]');await click('[data-do=programming]');
  for(let i=0;i<MISSIONS.length;i++){
   await page.locator('#mission-select').selectOption(String(i));const before=(await state()).points;
+  if(i===0){const original=(await state()).academy.drafts;await click('[data-a=ai-review]');assert(await page.locator('[data-ai-review]').isVisible());assert.equal((await state()).points,before);assert.deepEqual((await state()).academy.drafts,original);await click('[data-a=ai-generate]');await page.locator('[data-ai-response]').waitFor({state:'visible',timeout:15000});const saved=await state();assert.equal(saved.points,before);assert.deepEqual(saved.academy.drafts,original);await noOverflow();}
   await click('[data-a=tests]');assert.equal((await state()).points,before);assert(await page.locator('.test-case.fail').count());
   await click('[data-a=block][data-index="1"]');await click('[data-a=sample]');await click('[data-a=tests]');assert.equal((await state()).points,before+30);assert.equal(await page.locator('.test-case.fail').count(),0);await click('[data-a=tests]');assert.equal((await state()).points,before+30);await noOverflow();
  }

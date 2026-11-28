@@ -65,3 +65,5 @@ Mathematics/subject extension: 52 task families × 256 variants = 13,312 variant
 Programming now has 36 missions, eight stages and 182 test cases, including four cross-disciplinary projects. Restricted educational interpreter; not a complete JavaScript runtime. Latest CI pending.
 
 ELIANA visual direction: initial procedural silver-titanium humanoid with restrained blue optics and reversible exploded view. Original logo and existing saved profiles preserved. Film-quality reference art is not yet a rigged model; new CI pending. See DESIGN-ELIANA.md.
+
+AI Code Lab: 38 missions, nine stages, 194 test cases. Read-only diagnostics, prompt export, optional ready browser LanguageModel (EN/DE). Real-model and browser verification pending; see AI-CODE-LAB.md.

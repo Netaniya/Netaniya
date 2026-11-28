@@ -1,5 +1,5 @@
 import * as curriculum from './curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram} from './program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor} from './program.mjs';
 import {CREATION_TEMPLATES,WRITING_TEMPLATES,PALETTE,blankQuiz,validateCreation,parseCreation,serializeCreation,renderCreationHTML,projectTemplate,MAX_CREATION_BYTES} from './creations.mjs';
 import {addProject,updateProject,cleanName} from './model.mjs';
 const {MISSIONS,LEARNING_LANGUAGES,WORD_MEANINGS,SUBJECTS,MISSION_STAGES,local,wordChoices,checkMission}=curriculum;
@@ -12,11 +12,13 @@ export function createAcademy(api){
  let currentView='',lastLanguage=state().lang,testResults=null,sampleResult=null,prediction=null,help='',flipped=false,languageFeedback='',languageCorrect=false,lab=SUBJECTS[0].id,labIndex=0,labFeedback='',labCorrect=false,labExam=null,showPreview=false;
  const a=(action,label,cls='',attrs='')=>'<button type="button" data-a="'+action+'" class="'+cls+'" '+attrs+'>'+label+'</button>';
  const detailOpen={'program-predict':false,'quiz-scoring':false};
+ let aiReview=null,aiResponse=null,aiPending=null;const aiKey=()=>JSON.stringify([mission().id,source(),state().lang]);
+ function resetAI(){aiPending?.abort();aiPending=null;aiReview=null;aiResponse=null;}
  function rememberDetails(){for(const id of Object.keys(detailOpen)){const element=$(id);if(element)detailOpen[id]=element.hasAttribute('open');}}
  const back=(target,label)=>a('navigate','← '+esc(tr(label)),'back-link','data-target="'+target+'"');
  const mission=()=>MISSIONS[progress().mission];
  function source(){return progress().drafts[mission().id]?.source??mission().source;}
- function setSource(value){progress().drafts[mission().id]={source:value.slice(0,4000)};testResults=null;sampleResult=null;save();}
+ function setSource(value){resetAI();progress().drafts[mission().id]={source:value.slice(0,4000)};testResults=null;sampleResult=null;save();}
  const input=(id,label,value,max=240,attrs='')=>'<label for="'+id+'">'+esc(label)+'</label><input id="'+id+'" '+attrs+' maxlength="'+max+'" value="'+esc(value)+'">';
  const textarea=(id,label,value,max=4000,attrs='')=>'<label for="'+id+'">'+esc(label)+'</label><textarea id="'+id+'" maxlength="'+max+'" '+attrs+'>'+esc(value)+'</textarea>';
  const solved=id=>state().solved.includes(id);
@@ -32,7 +34,13 @@ export function createAcademy(api){
  }
  function programmingView(){
   const m=mission(),src=source(),done=MISSIONS.filter(v=>solved('program:'+v.id)).length,group=MISSION_STAGES.find(g=>progress().mission>=g.start&&progress().mission<g.end);
-  return back('learn','learn')+'<h2>'+esc(tr('programming'))+'</h2><p class="help">'+esc(tr('missionHelp'))+'</p><section class="panel"><h3>'+esc(l(group.title))+'</h3><progress max="'+MISSIONS.length+'" value="'+done+'" aria-label="'+esc(tr('progress'))+'"></progress><p>'+done+' / '+MISSIONS.length+'</p>'+a('mission-resume',esc(tr('guidedNext')),'secondary',done===MISSIONS.length?'disabled':'')+'</section><label for="mission-select">'+esc(tr('missionSelect'))+'</label><select id="mission-select">'+MISSION_STAGES.map(g=>'<optgroup label="'+esc(l(g.title))+'">'+MISSIONS.slice(g.start,g.end).map((m,j)=>{const i=g.start+j;return '<option value="'+i+'" '+(i===progress().mission?'selected':'')+'>'+(solved('program:'+m.id)?'✓ ':'')+(i+1)+'. '+esc(l(m.title))+'</option>';}).join('')+'</optgroup>').join('')+'</select><section class="panel"><div class="eyebrow">'+esc(l(m.title))+'</div><h3>'+esc(l(m.task))+'</h3><details id="program-predict" '+(detailOpen['program-predict']?'open':'')+'><summary>'+esc(tr('predict'))+'</summary><pre class="source-code">'+esc(m.source)+'\n\n'+esc(m.entry)+'('+esc(m.sample.join(', '))+')</pre><div class="choice-row">'+m.prediction.map((v,i)=>a('predict',esc(v),'choice','data-index="'+i+'"')).join('')+'</div><p class="feedback" role="status">'+(prediction===null?'':esc(tr(prediction?'predictionRight':'predictionWrong')))+'</p></details><label>'+esc(tr('blocks'))+'</label><div class="choice-row code-blocks">'+m.block.choices.map((v,i)=>a('block','<code>'+esc(v)+'</code>','choice','data-index="'+i+'" aria-pressed="'+src.includes(v)+'"')).join('')+'</div>'+textarea('program-source',tr('codeEditor'),src,4000,'spellcheck="false" autocapitalize="off" autocorrect="off" class="source-code"')+'<p class="help">'+esc(tr('codeScope'))+'</p><div class="buttons">'+a('sample',esc(tr('runSample')),'secondary')+a('tests',esc(tr('runTests')),'primary')+'</div>'+a('restore',esc(tr('restoreCode')),'back-link')+'</section>'+resultsView()+tutorView()+'<div class="buttons">'+a('next-mission',esc(tr(progress().mission===MISSIONS.length-1?'quiz':'nextMission')),'lime')+'</div><p class="help">'+esc(tr('draftSaved'))+'</p>';
+  return back('learn','learn')+'<h2>'+esc(tr('programming'))+'</h2><p class="help">'+esc(tr('missionHelp'))+'</p><section class="panel"><h3>'+esc(l(group.title))+'</h3><progress max="'+MISSIONS.length+'" value="'+done+'" aria-label="'+esc(tr('progress'))+'"></progress><p>'+done+' / '+MISSIONS.length+'</p>'+a('mission-resume',esc(tr('guidedNext')),'secondary',done===MISSIONS.length?'disabled':'')+'</section><label for="mission-select">'+esc(tr('missionSelect'))+'</label><select id="mission-select">'+MISSION_STAGES.map(g=>'<optgroup label="'+esc(l(g.title))+'">'+MISSIONS.slice(g.start,g.end).map((m,j)=>{const i=g.start+j;return '<option value="'+i+'" '+(i===progress().mission?'selected':'')+'>'+(solved('program:'+m.id)?'✓ ':'')+(i+1)+'. '+esc(l(m.title))+'</option>';}).join('')+'</optgroup>').join('')+'</select><section class="panel"><div class="eyebrow">'+esc(l(m.title))+'</div><h3>'+esc(l(m.task))+'</h3><details id="program-predict" '+(detailOpen['program-predict']?'open':'')+'><summary>'+esc(tr('predict'))+'</summary><pre class="source-code">'+esc(m.source)+'\n\n'+esc(m.entry)+'('+esc(m.sample.join(', '))+')</pre><div class="choice-row">'+m.prediction.map((v,i)=>a('predict',esc(v),'choice','data-index="'+i+'"')).join('')+'</div><p class="feedback" role="status">'+(prediction===null?'':esc(tr(prediction?'predictionRight':'predictionWrong')))+'</p></details><label>'+esc(tr('blocks'))+'</label><div class="choice-row code-blocks">'+m.block.choices.map((v,i)=>a('block','<code>'+esc(v)+'</code>','choice','data-index="'+i+'" aria-pressed="'+src.includes(v)+'"')).join('')+'</div>'+textarea('program-source',tr('codeEditor'),src,4000,'spellcheck="false" autocapitalize="off" autocorrect="off" class="source-code"')+'<p class="help">'+esc(tr('codeScope'))+'</p><div class="buttons">'+a('sample',esc(tr('runSample')),'secondary')+a('tests',esc(tr('runTests')),'primary')+'</div>'+a('restore',esc(tr('restoreCode')),'back-link')+'</section>'+resultsView()+tutorView()+aiView()+'<div class="buttons">'+a('next-mission',esc(tr(progress().mission===MISSIONS.length-1?'quiz':'nextMission')),'lime')+'</div><p class="help">'+esc(tr('draftSaved'))+'</p>';
+ }
+ function aiView(){
+  const key=aiKey(),report=aiReview?.key===key?aiReview.report:null,response=aiResponse?.key===key?aiResponse.result:null;
+  return '<section class="panel code-ai" id="code-ai"><h3>'+esc(tr('aiCodeLab'))+'</h3><p class="help">'+esc(tr('aiCodeScope'))+'</p><div class="buttons">'+a('ai-review',esc(tr('aiReview')),'secondary')+a('ai-prompt',esc(tr('aiExportPrompt')),'outline')+a(aiPending?'ai-cancel':'ai-generate',esc(tr(aiPending?'aiCancel':'aiGenerate')),'outline')+'</div><p class="help">'+esc(tr('aiModelScope'))+'</p>'+
+  (report?'<div data-ai-review role="status"><b>'+esc(tr('checkpointResult',{n:report.passed,total:report.total}))+'</b><p>'+esc(tr(report.failed?'aiFirstFailure':'aiAllPass'))+'</p>'+(report.failed?'<code>'+esc(mission().entry+'('+report.failed.args.join(', ')+')')+'</code><p>'+esc(tr('expected'))+': '+esc(report.failed.expected)+' · '+esc(tr('actual'))+': '+esc(report.failed.ok?report.failed.value:report.failed.error)+'</p>':'')+'</div>':'')+
+  (aiPending?'<p role="status">'+esc(tr('aiWorking'))+'</p>':'')+(response?'<div data-ai-response role="status"><b>'+esc(tr(response.status==='ok'?'aiGenerated':response.status==='unavailable'?'aiUnavailable':response.status==='cancelled'?'aiCancelled':'aiError'))+'</b>'+(response.text?'<p class="ai-response-text">'+esc(response.text)+'</p>':'')+'</div>':'')+'</section>';
  }
  function tutorView(){return '<section class="panel tutor"><h3>'+esc(tr('askRobot'))+'</h3><p class="help">'+esc(tr('localTutor'))+'</p><div class="example-chips">'+['whyWorks','helpNext','helpTest'].map((key,i)=>a('tutor',esc(tr(key)),'','data-index="'+i+'"')).join('')+'</div>'+(help?'<div class="tutor-message" role="status"><b>N25x</b><p>'+esc(help)+'</p></div>':'')+'</section>';}
  function languageView(){
@@ -66,7 +74,7 @@ export function createAcademy(api){
   return back('create','create')+'<h2>'+esc(tr(kind))+'</h2>'+input('creation-name',tr('projectName'),c.name,24)+(kind==='story'?['intro','choiceA','endingA','choiceB','endingB'].map(k=>textarea('creation-'+k,tr(k==='intro'?'introStory':k),c[k],k.startsWith('choice')?100:2400,'data-story="'+k+'"')).join(''):'<p class="help">'+esc(tr(hint))+'</p>'+textarea('creation-content',tr('contentText'),c.content,['badge','sticker'].includes(kind)?24:8000,'placeholder="'+esc(tr(hint))+'"')+'<label for="creation-color">'+esc(tr('accentColor'))+'</label><select id="creation-color">'+Object.keys(PALETTE).map(key=>'<option value="'+key+'" '+(c.color===key?'selected':'')+'>'+esc(tr(key))+'</option>').join('')+'</select>')+creationControls()+'<p class="help">'+esc(tr('draftSaved'))+'</p>'+previewFrame();
  }
  function exchangeView(){return back('create','create')+'<h2>'+esc(tr('exchange'))+'</h2><p class="help">'+esc(tr('exchangeHelp'))+'</p><div class="buttons">'+a('import-creation',esc(tr('importProject')),'primary')+a('navigate',esc(tr('collection')),'secondary','data-target="collection"')+'</div><section class="panel"><h3>'+esc(tr('quiz'))+'</h3>'+a('template',esc(tr('create')),'lime','data-template="quiz"')+'</section><p class="help">'+esc(tr('chatStatus'))+'</p>';}
- function render(view){rememberDetails();if(lastLanguage!==state().lang){lastLanguage=state().lang;help='';languageFeedback='';labFeedback='';}if(view!=='subjectLab')labExam=null;currentView=view;return ({programming:programmingView,languages:languageView,schoolLabs:labsView,subjectLab:labView,quiz:quizView,maker:makerView,exchange:exchangeView}[view])?.()||'';}
+ function render(view){rememberDetails();if(view!==currentView||lastLanguage!==state().lang)resetAI();if(lastLanguage!==state().lang){lastLanguage=state().lang;help='';languageFeedback='';labFeedback='';}if(view!=='subjectLab')labExam=null;currentView=view;return ({programming:programmingView,languages:languageView,schoolLabs:labsView,subjectLab:labView,quiz:quizView,maker:makerView,exchange:exchangeView}[view])?.()||'';}
  function mount(){if($('program-source'))$('program-source').value=source();if($('quiz-program'))$('quiz-program').value=ensureQuiz().program;const frame=$('creation-preview');if(frame){const p=currentProject();if(p&&validateCreation(p.kind,p.data))frame.srcdoc=renderCreationHTML(p,state().lang,copy());}}
  function refresh(){api.render();}
  function selectTemplate(template){
@@ -94,9 +102,18 @@ export function createAcademy(api){
   else if(action==='sample'){sampleResult=runProgram(source(),mission().entry,mission().sample);refresh();audio.cue(sampleResult.ok);}
   else if(action==='tests'){testResults=checkMission(mission(),source(),runProgram);const passed=testResults.every(r=>r.ok&&r.value===r.expected);if(passed)toast(complete('program:'+mission().id,30));else audio.cue(false);refresh();}
   else if(action==='restore'){setSource(mission().source);prediction=null;refresh();}
+  else if(action==='ai-review'){aiReview={key:aiKey(),report:reviewProgram(mission(),source())};refresh();}
+  else if(action==='ai-prompt'){download(new Blob([codeReviewPrompt(mission(),source(),state().lang)],{type:'text/plain;charset=utf-8'}),'N25x-code-review.txt');}
+  else if(action==='ai-cancel'){aiPending?.abort();aiPending=null;aiResponse={key:aiKey(),result:{status:'cancelled'}};refresh();}
+  else if(action==='ai-generate'){
+   if(aiPending)return true;
+   const key=aiKey(),controller=new AbortController();aiPending=controller;aiResponse=null;refresh();
+   const result=await requestCodeMentor(globalThis.LanguageModel,mission(),source(),state().lang,controller.signal);
+   if(aiPending===controller){aiPending=null;if(currentView==='programming'&&aiKey()===key){aiResponse={key,result};refresh();}}
+  }
   else if(action==='tutor'){help=+button.dataset.index===0?l(mission().why):+button.dataset.index===1?l(mission().hint):tr('testExplanation');refresh();}
-  else if(action==='mission-resume'){const next=MISSIONS.findIndex(v=>!solved('program:'+v.id));if(next>=0){progress().mission=next;save();testResults=null;sampleResult=null;prediction=null;help='';refresh();}}
-  else if(action==='next-mission'){if(progress().mission<MISSIONS.length-1){progress().mission++;save();testResults=null;sampleResult=null;prediction=null;help='';refresh();}else selectTemplate('quiz');}
+  else if(action==='mission-resume'){const next=MISSIONS.findIndex(v=>!solved('program:'+v.id));if(next>=0){resetAI();progress().mission=next;save();testResults=null;sampleResult=null;prediction=null;help='';refresh();}}
+  else if(action==='next-mission'){if(progress().mission<MISSIONS.length-1){resetAI();progress().mission++;save();testResults=null;sampleResult=null;prediction=null;help='';refresh();}else selectTemplate('quiz');}
   else if(action==='language-mode'){progress().languageMode=button.dataset.mode;languageFeedback='';languageCorrect=false;flipped=false;save();refresh();}
   else if(action==='flip-language'){flipped=!flipped;refresh();}
   else if(action==='next-language'){progress().languageIndex=(progress().languageIndex+1)%6;languageCorrect=false;languageFeedback='';flipped=false;save();refresh();}
@@ -123,7 +140,7 @@ export function createAcademy(api){
   return true;
  }
  function inputEvent(e){
-  if(e.id==='program-source'){setSource(e.value);$('content').querySelectorAll('[data-program-results]').forEach(el=>el.remove());return true;}
+  if(e.id==='program-source'){setSource(e.value);$('content').querySelectorAll('[data-program-results]').forEach(el=>el.remove());const ai=$('code-ai');if(ai)ai.outerHTML=aiView();return true;}
   if(e.id==='quiz-name'){ensureQuiz().name=e.value;changed();return true;}
   if(e.id==='quiz-program'){ensureQuiz().program=e.value;changed();return true;}
   if(e.dataset.q!==undefined&&e.tagName==='INPUT'){const q=ensureQuiz().questions[+e.dataset.q];if(q){if(e.dataset.field==='prompt')q.prompt=e.value;else q.options[+e.dataset.option]=e.value;changed();}return true;}
@@ -134,7 +151,7 @@ export function createAcademy(api){
  }
  async function changeEvent(e){
   if(e.id==='lab-stage'){const subject=SUBJECTS.find(s=>s.id===lab),g=subject.stages[+e.value];if(g){labExam=null;const next=subject.tasks.slice(g.start,g.end).findIndex((_,j)=>!solved('lab:'+lab+':'+(g.start+j)));labIndex=g.start+Math.max(0,next);labFeedback='';labCorrect=false;refresh();}return true;}
-  if(e.id==='mission-select'){progress().mission=+e.value;testResults=null;sampleResult=null;prediction=null;help='';save();refresh();return true;}
+  if(e.id==='mission-select'){resetAI();progress().mission=+e.value;testResults=null;sampleResult=null;prediction=null;help='';save();refresh();return true;}
   if(e.id==='learning-language'){progress().learningLanguage=e.value;progress().languageIndex=0;languageFeedback='';languageCorrect=false;flipped=false;save();refresh();return true;}
   if(e.dataset.correct!==undefined){ensureQuiz().questions[+e.dataset.q].answer=+e.value;changed();return true;}
   if(e.id==='creation-color'){progress().creator.color=e.value;changed();return true;}
