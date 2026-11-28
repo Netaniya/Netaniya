@@ -149,7 +149,14 @@ await page.locator('#ear-lesson').selectOption('ear-foundations');await click('[
 await click('[data-p=ear-play]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),3);
 await click('[data-p=ear-answer]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);assert(await page.locator('[data-p=ear-next]').isEnabled());
 await click('[data-p=ear-next]');assert.equal(await page.locator('[data-p=ear-answer]:enabled').count(),0);await click('[data-p=ear-exit]');assert.deepEqual((await state()).piano.score,originalPiano);
-check('Ear training gates answers behind Web Audio scheduling and preserves score; hearing accuracy not tested');}await page.locator('#piano-title').fill('My complete composition');await click('[data-p=record]');
+check('Ear training gates answers behind Web Audio scheduling and preserves score; hearing accuracy not tested');
+await page.locator('#staff-lesson').selectOption('staff-treble');await click('[data-p=staff-start]');assert(await page.locator('.staff-diagram').isVisible());
+await click('[data-piano-note="65"]');assert.equal(await page.locator('#staff-count').innerText(),'1 / 8');
+for(const midi of [64,67,71,74,77,69,72,65])await click('[data-piano-note="'+midi+'"]');
+assert(!(await state()).piano.practice.staffPassed['staff-treble']);assert(await page.locator('#staff-result').isVisible());
+await click('[data-p=staff-start]');for(const midi of [64,67,71,74,77,69,72,65])await click('[data-piano-note="'+midi+'"]');
+assert((await state()).piano.practice.staffPassed['staff-treble']);assert.deepEqual((await state()).piano.score,originalPiano);await click('[data-p=staff-exit]');
+check('Single-note treble staff reading checks actual piano key input, mistakes and saved completion');}await page.locator('#piano-title').fill('My complete composition');await click('[data-p=record]');
  if(scope==='touch'){
   await page.locator('#piano-keyboard').scrollIntoViewIfNeeded();const points=[];for(const [id,midi]of [[1,60],[2,64]]){const box=await page.locator('[data-piano-note="'+midi+'"]').boundingBox();assert(box);points.push({id,x:box.x+box.width/2,y:box.y+box.height-25});}
   const cdp=await context.newCDPSession(page);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:points});await page.waitForFunction(()=>document.querySelectorAll('.piano-key.pressed').length===2);await page.waitForTimeout(650);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await waitText('#qa','pianoHeld 0');await cdp.detach();

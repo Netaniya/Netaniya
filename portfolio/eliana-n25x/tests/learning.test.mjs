@@ -164,3 +164,16 @@ test('Ear training: all 13 intervals, varied roots, fair options, correct and in
  assert.equal(seen.size,13);assert.deepEqual(parsePiano(p),p);delete p.practice.earPassed;assert.deepEqual(parsePiano(p).practice.earPassed,{});p.practice.earPassed={unknown:true,'ear-foundations':'true'};assert.deepEqual(parsePiano(p).practice.earPassed,{});
  assert.equal(makeEarRound('unknown',0),null);assert.equal(makeEarRound(EAR_LESSONS[0].id,-1),null);
 });
+
+test('Staff notation: reference positions, enharmonic spelling, ledger lines, all notes within keyboard and migration',async()=>{
+ const {STAFF_LESSONS,staffNote,staffPracticeStep,parsePiano,freshPiano}=await import('../workshop/piano-score.mjs');
+ assert.deepEqual(staffNote('E4','treble'),{midi:64,step:0,accidental:'',ledger:[]});
+ assert.deepEqual(staffNote('C4','treble'),{midi:60,step:-2,accidental:'',ledger:[-2]});
+ assert.deepEqual(staffNote('A5','treble'),{midi:81,step:10,accidental:'',ledger:[10]});
+ assert.deepEqual(staffNote('G2','bass'),{midi:43,step:0,accidental:'',ledger:[]});
+ assert.deepEqual(staffNote('C4','bass'),{midi:60,step:10,accidental:'',ledger:[10]});
+ assert.equal(staffNote('C#5','treble').midi,staffNote('Db5','treble').midi);assert.notEqual(staffNote('C#5','treble').step,staffNote('Db5','treble').step);
+ assert.equal(staffNote('X4','treble'),null);assert.equal(staffNote('C4','unknown'),null);
+ const p=freshPiano();for(const lesson of STAFF_LESSONS){let i=0;for(const spelling of lesson.notes){const q=staffNote(spelling,lesson.clef);assert(q.midi>=(lesson.octave+1)*12&&q.midi<(lesson.octave+3)*12);assert.equal(staffPracticeStep(lesson,i,q.midi+1).index,i);const r=staffPracticeStep(lesson,i,q.midi);assert(r.correct);assert.equal(r.index,++i);assert.equal(r.complete,i===lesson.notes.length);}p.practice.staffPassed[lesson.id]=true;}
+ assert.deepEqual(parsePiano(p),p);delete p.practice.staffPassed;assert.deepEqual(parsePiano(p).practice.staffPassed,{});p.practice.staffPassed={unknown:true,'staff-treble':'true'};assert.deepEqual(parsePiano(p).practice.staffPassed,{});
+});

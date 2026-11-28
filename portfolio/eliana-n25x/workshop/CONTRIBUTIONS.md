@@ -69,3 +69,6 @@ Following the creator's instruction to continue the project, assistant selected 
 
 ### 28 November — interval ear training
 The creator requested continuing testing and development. Assistant implemented five interval-recognition stages, randomized ascending note pairs, four UI localizations, separate local progress and migration tests. This is AI-assisted technical and instructional work; no human listening test or browser acceptance is claimed.
+
+### 28 November — staff reading
+At the creator's request to continue, the assistant implemented five stages of single-note staff reading, 40 exercises, treble/bass clefs, ledger lines and accidentals. AI-assisted instructional and technical implementation; physical/browser review remains pending.

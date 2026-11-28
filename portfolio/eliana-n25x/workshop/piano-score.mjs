@@ -10,8 +10,8 @@ export function validateScore(raw){
  const events=tracks.flatMap(t=>t.notes.flatMap(n=>[{at:n.beat,delta:1},{at:n.beat+n.duration,delta:-1}])).sort((a,b)=>a.at-b.at||a.delta-b.delta);let voices=0;for(const event of events){voices+=event.delta;if(voices>32)return null;}
  return {tempo:raw.tempo,bars:raw.bars,tracks};
 }
-export function freshPiano(){return {score:freshScore(),name:'',track:0,octave:4,snap:.25,editingID:0,practice:{passed:{},rhythmPassed:{},earPassed:{}}};}
-export function parsePiano(raw){const p=freshPiano();if(!raw||typeof raw!=='object')return p;p.score=validateScore(raw.score)||freshScore();if(Number.isInteger(raw.track)&&raw.track>=0&&raw.track<p.score.tracks.length)p.track=raw.track;if(Number.isInteger(raw.octave)&&raw.octave>=0&&raw.octave<=7)p.octave=raw.octave;if([0,.25,.5,1].includes(raw.snap))p.snap=raw.snap;p.name=String(raw.name||'').replace(/[<>\x00-\x1f]/g,'').slice(0,24);if(Number.isSafeInteger(raw.editingID)&&raw.editingID>0)p.editingID=raw.editingID;for(const lesson of PIANO_LESSONS)if(raw.practice?.passed?.[lesson.id]===true)p.practice.passed[lesson.id]=true;for(const lesson of RHYTHM_LESSONS)if(raw.practice?.rhythmPassed?.[lesson.id]===true)p.practice.rhythmPassed[lesson.id]=true;for(const lesson of EAR_LESSONS)if(raw.practice?.earPassed?.[lesson.id]===true)p.practice.earPassed[lesson.id]=true;return p;}
+export function freshPiano(){return {score:freshScore(),name:'',track:0,octave:4,snap:.25,editingID:0,practice:{passed:{},rhythmPassed:{},earPassed:{},staffPassed:{}}};}
+export function parsePiano(raw){const p=freshPiano();if(!raw||typeof raw!=='object')return p;p.score=validateScore(raw.score)||freshScore();if(Number.isInteger(raw.track)&&raw.track>=0&&raw.track<p.score.tracks.length)p.track=raw.track;if(Number.isInteger(raw.octave)&&raw.octave>=0&&raw.octave<=7)p.octave=raw.octave;if([0,.25,.5,1].includes(raw.snap))p.snap=raw.snap;p.name=String(raw.name||'').replace(/[<>\x00-\x1f]/g,'').slice(0,24);if(Number.isSafeInteger(raw.editingID)&&raw.editingID>0)p.editingID=raw.editingID;for(const lesson of PIANO_LESSONS)if(raw.practice?.passed?.[lesson.id]===true)p.practice.passed[lesson.id]=true;for(const lesson of RHYTHM_LESSONS)if(raw.practice?.rhythmPassed?.[lesson.id]===true)p.practice.rhythmPassed[lesson.id]=true;for(const lesson of EAR_LESSONS)if(raw.practice?.earPassed?.[lesson.id]===true)p.practice.earPassed[lesson.id]=true;for(const lesson of STAFF_LESSONS)if(raw.practice?.staffPassed?.[lesson.id]===true)p.practice.staffPassed[lesson.id]=true;return p;}
 export function quantizeBeat(beat,snap){return snap?Math.round(beat/snap)*snap:Math.round(beat*10000)/10000;}
 export function makeMidi(score){
  const valid=validateScore(score);if(!valid)throw Error('invalid_score');
@@ -58,4 +58,22 @@ export function gradeEarRound(round,answers){
  if(!Array.isArray(round)||!round.length||!Array.isArray(answers)||round.length!==answers.length||round.some((q,i)=>!q||!Array.isArray(q.options)||!q.options.includes(q.interval)||!q.options.includes(answers[i])))return null;
  const correct=round.reduce((n,q,i)=>n+Number(q.interval===answers[i]),0);
  return {correct,total:round.length,passed:correct===round.length};
+}
+
+// Single-note staff reading. Spelling determines diatonic position; accidentals alter pitch only.
+export const STAFF_LESSONS=[{"id":"staff-treble","stage":1,"clef":"treble","octave":4,"title":{"de":"Violinschlüssel: Linien und Zwischenräume","en":"Treble clef: lines and spaces","ru":"Скрипичный ключ: линии и промежутки","uk":"Скрипковий ключ: лінії та проміжки"},"notes":["E4","G4","B4","D5","F5","A4","C5","F4"]},{"id":"staff-bass","stage":2,"clef":"bass","octave":2,"title":{"de":"Bassschlüssel: Linien und Zwischenräume","en":"Bass clef: lines and spaces","ru":"Басовый ключ: линии и промежутки","uk":"Басовий ключ: лінії та проміжки"},"notes":["G2","B2","D3","F3","A3","C3","E3","A2"]},{"id":"staff-treble-ledger","stage":3,"clef":"treble","octave":4,"title":{"de":"Violinschlüssel: Hilfslinien","en":"Treble clef: ledger lines","ru":"Скрипичный ключ: добавочные линии","uk":"Скрипковий ключ: додаткові лінії"},"notes":["C4","D4","G5","A5","B5","E4","F5","C5"]},{"id":"staff-bass-ledger","stage":4,"clef":"bass","octave":3,"title":{"de":"Bassschlüssel: obere Hilfslinien","en":"Bass clef: upper ledger lines","ru":"Басовый ключ: верхние добавочные линии","uk":"Басовий ключ: верхні додаткові лінії"},"notes":["C4","B3","A3","D4","E4","F3","G3","C3"]},{"id":"staff-accidentals","stage":5,"clef":"treble","octave":4,"title":{"de":"Kreuz und Be","en":"Sharps and flats","ru":"Диезы и бемоли","uk":"Дієзи та бемолі"},"notes":["F#4","Bb4","C#5","Eb5","G#4","Db5","Ab4","F#5"]}];
+export function staffNote(spelling,clef){
+ if(!['treble','bass'].includes(clef)||typeof spelling!=='string')return null;
+ const m=/^([A-G])([#b]?)([0-8])$/.exec(spelling);if(!m)return null;
+ const letters='CDEFGAB',i=letters.indexOf(m[1]),oct=Number(m[3]),acc=m[2],midi=(oct+1)*12+[0,2,4,5,7,9,11][i]+(acc==='#'?1:acc==='b'?-1:0);
+ if(midi<21||midi>108)return null;
+ const bottom=clef==='treble'?4*7+2:2*7+4,step=oct*7+i-bottom;
+ if(step< -8||step>16)return null;
+ const ledger=[];for(let j=-2;j>=step;j-=2)ledger.push(j);for(let j=10;j<=step;j+=2)ledger.push(j);
+ return {midi,step,accidental:acc,ledger};
+}
+export function staffPracticeStep(lesson,index,midi){
+ if(!lesson||!Number.isInteger(index)||index<0||index>=lesson.notes.length)return {index,correct:false,complete:false};
+ const q=staffNote(lesson.notes[index],lesson.clef),correct=Boolean(q&&q.midi===midi),next=index+Number(correct);
+ return {index:next,correct,complete:correct&&next===lesson.notes.length};
 }
