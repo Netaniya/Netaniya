@@ -293,3 +293,10 @@ test('Ten beginner guides execute three independent examples each and do not gra
  for(const g of curriculum.PROGRAM_GUIDES){assert.equal(g.explanation.length,4);assert.equal(g.examples.length,3);for(const e of g.examples){const r=runProgram(g.source,g.entry,e.args);assert(r.ok);assert.equal(r.value,e.expected);}}
  const h=academyDOM();try{for(const [i,stage] of curriculum.MISSION_STAGES.entries()){h.state.academy.mission=stage.start;h.render();const before=JSON.stringify(h.state);for(let j=0;j<3;j++){await h.click('[data-a=guide-run][data-index="'+j+'"]');assert(h.document.querySelector('[data-guide-result]').textContent.includes(String(curriculum.PROGRAM_GUIDES[i].examples[j].expected)));assert.equal(JSON.stringify(h.state),before);}}}finally{h.cleanup();}
 });
+
+test('Python, SQL and Web beginner guides run independently of learner drafts',async()=>{
+ const {LAB_GUIDES,runLabGuide}=await import('../workshop/program.mjs');
+ for(const kind of ['python','sql','web']){assert.equal(LAB_GUIDES[kind].length,6);for(const [i,g] of LAB_GUIDES[kind].entries()){assert.equal(g.explanation.length,4);const r=runLabGuide(kind,i);assert(r.ok);if(kind==='python')assert.equal(r.value,g.expected);if(kind==='sql'){assert.deepEqual(r.columns,g.columns);assert.deepEqual(r.rows,g.rows);}if(kind==='web'){assert.match(r.document,/Content-Security-Policy/);assert(!r.document.includes('<script'));}}}
+ assert(!runLabGuide('invalid',0).ok);assert(!runLabGuide('python',-1).ok);assert(!runLabGuide('__proto__',0).ok);
+ const h=academyDOM();try{for(const kind of ['python','sql','web']){const before=JSON.stringify(h.state);await h.click('[data-a=lab-guide-run][data-kind="'+kind+'"]');assert(h.document.querySelector('[data-lab-guide-result="'+kind+'"]'));assert.equal(JSON.stringify(h.state),before);}assert(h.document.querySelector('#web-guide-preview').getAttribute('sandbox')==='');}finally{h.cleanup();}
+});

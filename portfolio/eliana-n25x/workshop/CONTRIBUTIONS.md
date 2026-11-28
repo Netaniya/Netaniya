@@ -192,3 +192,6 @@ Added six localized bounded JavaScript mini-projects with original buggy drafts,
 
 ### 28 November — beginner-first programming route
 Creator explicitly required instruction from zero, not testing prior knowledge. Assistant added ten localized guided explanations and 30 independent executable examples with expected/actual output and traces, without granting mission points or changing drafts. Full novice usability validation and broader lab tutorials pending.
+
+### 28 November — beginner-first Python, SQL and Web labs
+Assistant authored 18 distinct introductory examples with local execution/preview and explanations in four interface languages. Independent of learner drafts and grading. Full novice usability validation remains outstanding.

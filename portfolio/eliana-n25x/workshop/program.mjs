@@ -492,3 +492,292 @@ export function createReviewLab(index=0){
  function merge(){if(merged||decision!=='approve'||!checked||checked.revision!==revision||checked.passed!==checked.total)return false;merged=true;return true;}
  return {snapshot,edit,tests,review,merge,reset};
 }
+
+// Independent worked examples; never award lesson completion.
+export const LAB_GUIDES={
+  "python": [
+    {
+      "source": "def triple(n):\n    return n * 3",
+      "entry": "triple",
+      "args": [
+        4
+      ],
+      "expected": 12,
+      "explanation": [
+        "def definiert eine Funktion; Einrückung markiert ihren Körper. return liefert das Ergebnis.",
+        "def defines a function; indentation marks its body. return produces the result.",
+        "def объявляет функцию; отступ выделяет её тело. return возвращает результат.",
+        "def оголошує функцію; відступ виділяє її тіло. return повертає результат."
+      ]
+    },
+    {
+      "source": "def sign(n):\n    if n < 0:\n        return -1\n    else:\n        return 1",
+      "entry": "sign",
+      "args": [
+        -7
+      ],
+      "expected": -1,
+      "explanation": [
+        "if prüft eine Bedingung; else läuft nur, wenn sie falsch ist.",
+        "if checks a condition; else runs only when it is false.",
+        "if проверяет условие; else выполняется, когда оно ложно.",
+        "if перевіряє умову; else виконується, коли вона хибна."
+      ]
+    },
+    {
+      "source": "def groups(n, size):\n    return n // size",
+      "entry": "groups",
+      "args": [
+        -8,
+        3
+      ],
+      "expected": -3,
+      "explanation": [
+        "// rundet den Quotienten nach unten, auch bei negativen Zahlen.",
+        "// rounds the quotient down, including negatives.",
+        "// округляет частное вниз, в том числе для отрицательных чисел.",
+        "// округлює частку вниз, зокрема для від’ємних чисел."
+      ]
+    },
+    {
+      "source": "def leftover(n, size):\n    return n % size",
+      "entry": "leftover",
+      "args": [
+        17,
+        5
+      ],
+      "expected": 2,
+      "explanation": [
+        "% liefert den Rest einer Division.",
+        "% gives the remainder of a division.",
+        "% возвращает остаток от деления.",
+        "% повертає остачу від ділення."
+      ]
+    },
+    {
+      "source": "def stars(n):\n    result = 0\n    for i in range(0, n):\n        result = result + 2\n    return result",
+      "entry": "stars",
+      "args": [
+        4
+      ],
+      "expected": 8,
+      "explanation": [
+        "range(0, n) enthält 0 bis n−1. Die Schleife läuft n-mal.",
+        "range(0, n) contains 0 through n−1. The loop runs n times.",
+        "range(0, n) содержит числа от 0 до n−1. Цикл выполняется n раз.",
+        "range(0, n) містить числа від 0 до n−1. Цикл виконується n разів."
+      ]
+    },
+    {
+      "source": "def ready(score):\n    return score >= 70",
+      "entry": "ready",
+      "args": [
+        70
+      ],
+      "expected": true,
+      "explanation": [
+        "Ein Vergleich liefert True oder False. >= schließt den Grenzwert ein.",
+        "A comparison produces True or False. >= includes the boundary.",
+        "Сравнение возвращает True или False. >= включает граничное значение.",
+        "Порівняння повертає True або False. >= включає граничне значення."
+      ]
+    }
+  ],
+  "sql": [
+    {
+      "source": "SELECT * FROM projects ORDER BY id LIMIT 1",
+      "columns": [
+        "id",
+        "title",
+        "done"
+      ],
+      "rows": [
+        [
+          1,
+          "Robot",
+          1
+        ]
+      ],
+      "explanation": [
+        "Eine Tabelle hat Zeilen und Spalten. SELECT * wählt alle Spalten; FROM nennt die Tabelle.",
+        "A table has rows and columns. SELECT * selects all columns; FROM names the table.",
+        "Таблица состоит из строк и столбцов. SELECT * выбирает все столбцы; FROM указывает таблицу.",
+        "Таблиця складається з рядків і стовпців. SELECT * вибирає всі стовпці; FROM указує таблицю."
+      ]
+    },
+    {
+      "source": "SELECT id, done FROM projects ORDER BY id",
+      "columns": [
+        "id",
+        "done"
+      ],
+      "rows": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "explanation": [
+        "Nach SELECT stehen die gewünschten Spalten, getrennt durch Kommas.",
+        "After SELECT, list the desired columns separated by commas.",
+        "После SELECT перечисли нужные столбцы через запятую.",
+        "Після SELECT переліч потрібні стовпці через кому."
+      ]
+    },
+    {
+      "source": "SELECT title FROM projects WHERE done = 1 ORDER BY id",
+      "columns": [
+        "title"
+      ],
+      "rows": [
+        [
+          "Robot"
+        ],
+        [
+          "Web"
+        ]
+      ],
+      "explanation": [
+        "WHERE filtert Zeilen. done = 1 bedeutet hier abgeschlossen.",
+        "WHERE filters rows. done = 1 means completed here.",
+        "WHERE отбирает строки. done = 1 здесь означает завершённый проект.",
+        "WHERE відбирає рядки. done = 1 тут означає завершений проєкт."
+      ]
+    },
+    {
+      "source": "SELECT title FROM projects ORDER BY title ASC",
+      "columns": [
+        "title"
+      ],
+      "rows": [
+        [
+          "AI"
+        ],
+        [
+          "Music"
+        ],
+        [
+          "Robot"
+        ],
+        [
+          "Web"
+        ]
+      ],
+      "explanation": [
+        "ORDER BY sortiert. ASC bedeutet aufsteigend, DESC absteigend.",
+        "ORDER BY sorts. ASC is ascending, DESC descending.",
+        "ORDER BY сортирует. ASC — по возрастанию, DESC — по убыванию.",
+        "ORDER BY сортує. ASC — за зростанням, DESC — за спаданням."
+      ]
+    },
+    {
+      "source": "SELECT COUNT(*) FROM projects",
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        [
+          4
+        ]
+      ],
+      "explanation": [
+        "COUNT(*) zählt Zeilen. Mit WHERE kann man vorher filtern.",
+        "COUNT(*) counts rows. WHERE can filter first.",
+        "COUNT(*) считает строки. WHERE позволяет предварительно отфильтровать их.",
+        "COUNT(*) рахує рядки. WHERE дозволяє спочатку відфільтрувати їх."
+      ]
+    },
+    {
+      "source": "SELECT title FROM projects ORDER BY id DESC LIMIT 1",
+      "columns": [
+        "title"
+      ],
+      "rows": [
+        [
+          "AI"
+        ]
+      ],
+      "explanation": [
+        "LIMIT begrenzt die Ausgabe. ORDER BY legt die Reihenfolge fest.",
+        "LIMIT caps output. ORDER BY determines the order.",
+        "LIMIT ограничивает выдачу. ORDER BY определяет порядок.",
+        "LIMIT обмежує результати. ORDER BY визначає порядок."
+      ]
+    }
+  ],
+  "web": [
+    {
+      "html": "<main><h1>My notebook</h1><p>First page.</p></main>",
+      "css": "",
+      "explanation": [
+        "HTML beschreibt Struktur. h1 ist eine Hauptüberschrift; p ein Absatz.",
+        "HTML describes structure. h1 is a main heading; p is a paragraph.",
+        "HTML описывает структуру. h1 — главный заголовок, p — абзац.",
+        "HTML описує структуру. h1 — головний заголовок, p — абзац."
+      ]
+    },
+    {
+      "html": "<h2>Typography</h2><p>Readable text</p>",
+      "css": "h2 { color: #2455a0; font-size: 24px; }",
+      "explanation": [
+        "CSS bestimmt das Aussehen. color setzt die Farbe, font-size die Schriftgröße.",
+        "CSS controls appearance. color sets colour, font-size sets text size.",
+        "CSS управляет внешним видом. color задаёт цвет, font-size — размер шрифта.",
+        "CSS керує виглядом. color задає колір, font-size — розмір шрифту."
+      ]
+    },
+    {
+      "html": "<article class=\"example\"><h2>Idea</h2><p>Learn by building.</p></article>",
+      "css": ".example { padding: 16px; background-color: #e8f1ff; border-radius: 8px; }",
+      "explanation": [
+        ".example wählt class=\"example\". padding ist der Innenabstand.",
+        ".example selects class=\"example\". padding is inner spacing.",
+        ".example выбирает class=\"example\". padding — внутренний отступ.",
+        ".example вибирає class=\"example\". padding — внутрішній відступ."
+      ]
+    },
+    {
+      "html": "<section class=\"tools\"><article>One</article><article>Two</article></section>",
+      "css": ".tools { display: flex; gap: 16px; }",
+      "explanation": [
+        "Flexbox ordnet direkte Kindelemente an. gap schafft Abstand.",
+        "Flexbox arranges direct children. gap adds spacing.",
+        "Flexbox размещает дочерние элементы. gap задаёт промежуток.",
+        "Flexbox розміщує дочірні елементи. gap задає проміжок."
+      ]
+    },
+    {
+      "html": "<section class=\"tiles\"><article>A</article><article>B</article><article>C</article><article>D</article></section>",
+      "css": ".tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }",
+      "explanation": [
+        "Grid teilt den Bereich in Zeilen und Spalten. repeat(2, 1fr) erstellt zwei gleich breite Spalten.",
+        "Grid divides a region into rows and columns. repeat(2, 1fr) creates two equal-width columns.",
+        "Grid делит область на строки и столбцы. repeat(2, 1fr) создаёт два одинаковых по ширине столбца.",
+        "Grid ділить область на рядки й стовпці. repeat(2, 1fr) створює два однакових за шириною стовпці."
+      ]
+    },
+    {
+      "html": "<header><h1>Workshop</h1></header><main><p>Today's plan</p><ul><li>Read</li><li>Build</li></ul></main><footer>End</footer>",
+      "css": "body { color: #25324a; }",
+      "explanation": [
+        "header, main und footer beschreiben die Seitenbereiche. ul und li bilden eine Liste.",
+        "header, main and footer describe page regions. ul and li form a list.",
+        "header, main и footer описывают области страницы. ul и li формируют список.",
+        "header, main і footer описують області сторінки. ul і li формують список."
+      ]
+    }
+  ]
+};
+export function runLabGuide(kind,index){const g=Object.hasOwn(LAB_GUIDES,kind)&&Number.isInteger(index)?LAB_GUIDES[kind][index]:null;if(!g)return {ok:false,error:'lesson'};if(kind==='python')return runPython(g.source,g.entry,g.args);if(kind==='sql')return queryProjects(g.source,SQL_SAMPLE);if(kind==='web')return compileWebLab(g.html,g.css);return {ok:false,error:'lesson'};}

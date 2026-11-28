@@ -100,3 +100,5 @@ Music candidate: 38 pitch sequences including all 12 major and 12 natural minor 
 Programming candidate: 48 restricted JavaScript missions including six applied logic exercises. Each has normal and boundary tests, editable code and local execution. These are function exercises rather than full production services.
 
 Beginner-first JavaScript: ten stage guides, 30 independently executable examples with output and traces, followed by prediction, repair/writing, tests and edge cases. Examples do not grant completion or edit drafts. This is an introductory restricted interpreter, not full JavaScript or a certified professional curriculum.
+
+Python, SQL and HTML/CSS beginner guides: six runnable examples per lab (18 total), fixed SQL sample data and sandboxed Web preview. They do not modify drafts or award points. Limited educational subsets.
