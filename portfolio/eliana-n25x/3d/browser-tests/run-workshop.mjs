@@ -113,6 +113,11 @@ async function standaloneAppCheck(){
 async function expandedLearningCheck(){
  await click('#navigation [data-do=learn]');assert.equal(await page.locator('#study-progress progress').count(),7);
  for(const action of ['study-math','study-language','study-grammar','study-dialogue','programming','study-subjects','study-music','study-create'])assert.equal(await page.locator('#study-progress [data-do="'+action+'"]').count(),1);
+ const beforePlan=await state();assert.equal(await page.locator('#study-plan button').count(),3);assert(await page.locator('#study-plan [data-do=plan-math]').isVisible());assert(await page.locator('#study-plan [data-do=plan-language]').isVisible());
+ await click('#study-plan [data-do=plan-math]');assert(await page.locator('#math-topic').isVisible());assert.equal((await state()).points,beforePlan.points);
+ await page.locator('#math-topic').selectOption(beforePlan.learning.math.topic);
+ await click('#navigation [data-do=learn]');await click('#study-plan [data-do=plan-language]');assert(await page.locator('#course-language').isVisible());assert.equal((await state()).points,beforePlan.points);
+ await click('#navigation [data-do=learn]');await noOverflow();check('Personal study plan opens recommended math and language practice without awarding points');
  await click('#study-progress [data-do=study-grammar]');assert(await page.locator('#grammar-lesson').isVisible());
  await click('#navigation [data-do=learn]');await click('#study-progress [data-do=study-dialogue]');assert(await page.locator('#dialogue-lesson').isVisible());
  await click('#navigation [data-do=learn]');await click('#study-progress [data-do=study-music]');assert(await page.locator('#harmony-course').isVisible());

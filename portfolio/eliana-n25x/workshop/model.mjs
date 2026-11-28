@@ -4,9 +4,9 @@ N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
 No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
 Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
 */
-import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,languageMistakes,dueLanguageReviews,DIALOGUE_LESSONS} from './language-course.mjs';
+import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,languageMistakes,dueLanguageReviews,nextLanguageExercise,studyDay,DIALOGUE_LESSONS} from './language-course.mjs';
 import {freshPiano,parsePiano,validateScore,PIANO_LESSONS,RHYTHM_LESSONS,EAR_LESSONS,STAFF_LESSONS,CHORD_LESSONS,HARMONY_LESSONS} from './piano-score.mjs';
-import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS} from './math-course.mjs';
+import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS,VARIANTS_PER_TOPIC} from './math-course.mjs';
 import {validateCreation,CREATION_TEMPLATES} from './creations.mjs';
 import {LEARNING_LANGUAGES,MISSIONS,SUBJECTS} from './curriculum.mjs';
 import {PYTHON_LESSONS,WEB_LESSONS,SQL_LESSONS,gradePython,gradeWebLab,gradeSQL} from './program.mjs';
@@ -111,4 +111,34 @@ export function studySummary(state,day){
   school:{done:schoolDone,total:SUBJECTS.reduce((n,s)=>n+s.tasks.length,0),subjects:SUBJECTS.length},
   music:{done:musicGroups.reduce((n,[lessons,passed])=>n+lessons.filter(v=>passed[v.id]===true).length,0),total:musicGroups.reduce((n,[lessons])=>n+lessons.length,0)},projects:state.projects.length
  };
+}
+
+// Local, explainable recommendations, not a placement test or proficiency score.
+// Never mutate state when producing the plan. Keep an active assessment intact.
+export function studyPlan(state,day=studyDay()){
+ const m=state.learning.math,l=state.learning.languages,summary=studySummary(state,day),items=[];
+ const topicById=id=>MATH_TOPICS.find(t=>t.id===id);
+ const addMath=(reason,topic,index)=>items.push({kind:'math',reason,topic,index});
+ if(m.assessment&&m.assessment.answers.length<10)addMath('planResume',m.topic,m.index);
+ else if(m.mistakes.length){
+  const [id,index]=m.mistakes[0].split(':');addMath('planMathReview',id,Number(index));
+ }else{
+  // Balance exposure across the chosen difficulty's topics before repeating.
+  const candidates=MATH_TOPICS.filter(t=>t.grade===state.grade&&
+    (m.done[t.id]?.length||0)<VARIANTS_PER_TOPIC);
+  candidates.sort((a,b)=>(m.done[a.id]?.length||0)-(m.done[b.id]?.length||0));
+  const t=candidates[0];
+  if(t){const done=new Set(m.done[t.id]||[]);let index=0;while(done.has(index))index++;addMath('planMathNew',t.id,index);}
+ }
+ const next=nextLanguageExercise(l,day);
+ if(next)items.push({kind:'language',reason:next.review?'planLanguageReview':'planLanguageNew',...next});
+ // Rotate supplementary courses by UTC day; skip completed courses and fill
+ // any vacant slots, never compare unlike exercise counts as ability scores.
+ const extras=['grammar','dialogues','programming','school','music'];
+ const shift=((day%extras.length)+extras.length)%extras.length;
+ for(let i=0;i<extras.length&&items.length<3;i++){
+  const kind=extras[(shift+i)%extras.length];
+  if(summary[kind].done<summary[kind].total)items.push({kind,reason:'planExtra'});
+ }
+ return items.map(v=>v.kind==='math'?{...v,title:topicById(v.topic).title}:v);
 }

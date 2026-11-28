@@ -12,7 +12,7 @@ import {createPiano} from './piano.mjs';
 import {createMathClassroom} from './math-classroom.mjs';
 import {createAcademy,ACADEMY_VIEWS,CREATIVE_ICONS} from './academy.mjs';
 import {projectTemplate} from './creations.mjs';
-import {SAVE_KEY,MAX_PROFILE_BYTES,LANGUAGES,COLORS,SHOP,ACTIONS,fresh,configure,reward,buy,addProject,updateProject,parseProfile,studySummary} from './model.mjs';
+import {SAVE_KEY,MAX_PROFILE_BYTES,LANGUAGES,COLORS,SHOP,ACTIONS,fresh,configure,reward,buy,addProject,updateProject,parseProfile,studySummary,studyPlan} from './model.mjs';
 import {translate} from './i18n.mjs';
 import {MATH,WORDS,solve,matchesAnswer,dailyTasks} from './math.mjs';
 import {createStage} from './robot.mjs';
@@ -60,7 +60,25 @@ function studyProgress(){
  const s=studySummary(state),card=(title,v,detail,action)=>'<section class="panel"><h3>'+esc(title)+'</h3><p class="help">'+esc(detail)+'</p><progress aria-label="'+esc(title)+'" max="'+v.total+'" value="'+v.done+'"></progress><p>'+v.done+' / '+v.total+'</p>'+btn(action,esc(tr('continue')),'secondary')+'</section>';
  return '<section id="study-progress" aria-label="'+esc(tr('studyProgress'))+'"><h3>'+esc(tr('studyProgress'))+'</h3><p class="help">'+esc(tr('studyProgressNote'))+'</p><div class="study-grid">'+card(tr('mathCourse'),s.math,tr('studyMathDetail',s.math),'study-math')+card(tr('languageCourse')+' · '+s.language.language.toUpperCase(),s.language,tr('studyLanguageDetail',s.language),'study-language')+card(tr('grammarCourse')+' · '+s.language.language.toUpperCase(),s.grammar,tr('studyGrammarDetail'),'study-grammar')+card(tr('dialogueCourse')+' · '+s.language.language.toUpperCase(),s.dialogues,tr('studyDialogueDetail'),'study-dialogue')+card(tr('programming'),s.programming,tr('studyProgramDetail'),'programming')+card(tr('guidedSubjects'),s.school,tr('studySchoolDetail',s.school),'study-subjects')+card(tr('piano'),s.music,tr('studyMusicDetail'),'study-music')+'</div><div class="practice-banner"><h3>'+esc(tr('create'))+'</h3><p class="help">'+esc(tr('studyProjectsDetail',{n:s.projects}))+'</p>'+btn('study-create',esc(tr('continue')),'primary')+'</div></section>';
 }
-function learnView(){const list=items=>'<div class="subject-list">'+items.map(v=>'<button data-do="subject" data-subject="'+v+'"><span class="symbol">'+symbols[v]+'</span><span><b>'+esc(tr(v==='languages'?'starterCards':v))+'</b><small>'+esc(tr(v==='mathCourse'?'mathCourseHelp':v==='languageCourse'?'languageCourseHelp':v==='english'?'wordHelp':'practice'))+'</small></span><span class="arrow">↗</span></button>').join('')+'</div>';return pageHead('learn','learnHelp')+studyProgress()+list(['mathCourse','languageCourse'])+'<details><summary>'+esc(tr('extraExercises'))+'</summary>'+list(['schoolLabs','coding','math','languages','english'])+'</details>';}
+const planTitles={math:'mathCourse',language:'languageCourse',grammar:'grammarCourse',dialogues:'dialogueCourse',programming:'programming',school:'guidedSubjects',music:'piano'};
+function planView(){
+ const plan=studyPlan(state);
+ return '<section id="study-plan" class="panel" aria-label="'+esc(tr('planTitle'))+'"><h3>'+esc(tr('planTitle'))+'</h3><p class="help">'+esc(tr('planScope'))+'</p>'+
+ (plan.length?'<div class="study-grid">'+plan.map(v=>'<section><h4>'+esc(tr(planTitles[v.kind])+(v.kind==='math'?' · '+v.title[state.lang]:['language','grammar','dialogues'].includes(v.kind)?' · '+state.learning.languages.language.toUpperCase():''))+'</h4><p class="help">'+esc(tr(v.reason))+'</p>'+btn('plan-'+v.kind,esc(tr('continue')),'secondary')+'</section>').join('')+'</div>':'<p>'+esc(tr('planDone'))+'</p>')+'</section>';
+}
+function followPlan(kind){
+ const item=studyPlan(state).find(v=>v.kind===kind);if(!item)return;
+ if(kind==='math'){
+  const m=state.learning.math;
+  if(item.reason!=='planResume'){Object.assign(m,{topic:item.topic,index:item.index,assessment:null});save();}
+  navigate('mathCourse');
+ }else if(kind==='language'){
+  Object.assign(state.learning.languages,{unit:item.unit,index:item.index,mode:item.mode});save();navigate('languageCourse');
+ }else if(kind==='grammar'||kind==='dialogues'){
+  navigate('languageCourse');languageClass.click({dataset:{l:kind==='grammar'?'grammar-open':'dialogue-open'}});
+ }else navigate({programming:'programming',school:'schoolLabs',music:'piano'}[kind]);
+}
+function learnView(){const list=items=>'<div class="subject-list">'+items.map(v=>'<button data-do="subject" data-subject="'+v+'"><span class="symbol">'+symbols[v]+'</span><span><b>'+esc(tr(v==='languages'?'starterCards':v))+'</b><small>'+esc(tr(v==='mathCourse'?'mathCourseHelp':v==='languageCourse'?'languageCourseHelp':v==='english'?'wordHelp':'practice'))+'</small></span><span class="arrow">↗</span></button>').join('')+'</div>';return pageHead('learn','learnHelp')+planView()+studyProgress()+list(['mathCourse','languageCourse'])+'<details><summary>'+esc(tr('extraExercises'))+'</summary>'+list(['schoolLabs','coding','math','languages','english'])+'</details>';}
 
 function gradeRow(){return '<div class="grade-row"><label for="grade">'+esc(tr('level'))+'</label><select id="grade">'+Array.from({length:11},(_,i)=>'<option '+(i+1===state.grade?'selected':'')+'>'+(i+1)+'</option>').join('')+'</select><p>'+esc(tr(MATH[state.grade-1].topic))+'</p></div>';}
 function mathView(){const task=tasks()[taskIndex];return back('learn','learn')+'<h2>'+esc(tr('math'))+'</h2>'+gradeRow()+'<div class="choice-row mode-row">'+btn('practice',esc(tr('practice')),dailyMode?'outline':'secondary','aria-pressed="'+!dailyMode+'"')+btn('daily',esc(tr('daily')),dailyMode?'secondary':'outline','aria-pressed="'+dailyMode+'"')+'</div><div class="panel"><div class="eyebrow">'+esc(tr(dailyMode?'daily':'practice'))+' / '+(taskIndex+1)+' · 3</div><p class="help">'+esc(tr(state.robot.style==='challenge'?'challengeHelp':state.robot.personality==='calm'?'explainCalm':state.robot.personality==='cheerful'?'explainCheerful':'explainFocused'))+'</p><div class="exercise" id="exercise">'+esc(task[0])+'</div><form id="answer-form" class="answer-row"><input id="answer" aria-label="'+esc(tr('answer'))+'" placeholder="'+esc(tr('answer'))+'" inputmode="decimal" autocomplete="off" maxlength="60"><button class="primary" id="check-answer" type="submit">'+esc(tr('check'))+'</button></form><div id="feedback" class="feedback '+feedbackKind+'" aria-live="polite">'+esc(feedback)+'</div><div id="hint" '+(state.robot.style==='visual'?'':'hidden')+' class="hint-box">'+esc(task[2])+'</div><div class="buttons">'+btn('hint',esc(tr('hint')),'outline')+btn('next-task',esc(tr('next')),'secondary')+'</div></div>'+btn('helper',esc(tr('helper'))+' ↗','outline')+'<p class="help">'+esc(tr('scope'))+'</p>';}
@@ -114,6 +132,7 @@ document.addEventListener('click',async event=>{const button=event.target.closes
  if(button.id==='explode-robot'){stage?.setExploded(!stage.exploded);$('explode-robot').textContent=tr(stage?.exploded?'robotAssembled':'robotExploded');$('explode-robot').setAttribute('aria-pressed',String(Boolean(stage?.exploded)));return;}
  if(button.id==='rotate-left'||button.id==='rotate-right'){stage?.rotate(button.id==='rotate-left'?-.5:.5);return;}
  if(['home','learn','create','parts','assemble','languageCourse','mathCourse','math','helper','english','coding','piano','melody','routine','collection',...ACADEMY_VIEWS].includes(action)){if(dialogKind)dialog('');navigate(action);}
+ else if(action?.startsWith('plan-')){followPlan(action.slice(5));}
  else if(action==='study-math'){navigate('mathCourse');}
  else if(action==='study-language'){navigate('languageCourse');}
  else if(action==='study-grammar'){navigate('languageCourse');languageClass.click({dataset:{l:'grammar-open'}});}

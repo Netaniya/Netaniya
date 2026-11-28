@@ -147,3 +147,6 @@ Creator requested continued development before repository visibility and hosting
 
 ### 28 November — multilingual translation sources
 Under the creator's direction to develop all ten language courses, the assistant expanded the sentence classroom's source-language choices from four to all ten studied languages, retaining the four interface localizations and prior profile compatibility. Added model/smoke and browser regression coverage; pending CI and independent linguistic review. No publication or visibility change.
+
+### 28 November — explainable personal study plan
+Creator requested progression toward a comprehensive learning platform. Assistant implemented a local, derived three-item recommendation panel: unfinished math self-test, mistakes or least-covered topic at selected difficulty; next guided language exercise with review priority; rotating unfinished supplementary courses. No inferred proficiency score, new profile field, points, remote AI, external data or publication change. Model and browser tests added; CI pending.

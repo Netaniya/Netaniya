@@ -202,3 +202,20 @@ test('Contextual dialogue practice covers every language and persists independen
 });
 
 test('Every supported source language survives profile roundtrip; target collision uses a different language',()=>{for(const target of COURSE_LANGUAGES)for(const source of ['auto',...COURSE_LANGUAGES]){const p=fresh();p.learning.languages.language=target;p.learning.languages.source=source;const restored=parseProfile(JSON.stringify(p)).learning.languages;assert.equal(restored.source,source);const actual=meaningSource(target,source,'ru');assert.equal(actual,source==='auto'?(target==='ru'?'de':'ru'):source===target?(target==='de'?'en':'de'):source);}assert.equal(parseLanguageCourse({source:'invalid'}).source,'auto');});
+
+test('Personal study plan balances selected difficulty, prioritizes reviews, rotates extras and never changes state',async()=>{
+ const {studyPlan}=await import('../workshop/model.mjs');
+ const s=fresh(),m=s.learning.math,l=s.learning.languages,day=20000;
+ for(let grade=1;grade<=11;grade++){
+  s.grade=grade;const before=JSON.stringify(s),p=studyPlan(s,day);
+  assert.equal(p.length,3);assert.equal(p[0].kind,'math');assert.equal(MATH_TOPICS.find(t=>t.id===p[0].topic).grade,grade);assert.equal(p[0].index,0);assert.equal(p[1].kind,'language');assert.equal(p[2].kind,'grammar');assert.equal(JSON.stringify(s),before);
+ }
+ s.grade=5;const first=studyPlan(s,day)[0];m.done[first.topic]=[0];assert.notEqual(studyPlan(s,day)[0].topic,first.topic);
+ m.mistakes=['add:7'];assert.deepEqual(studyPlan(s,day)[0],{kind:'math',reason:'planMathReview',topic:'add',index:7,title:MATH_TOPICS.find(t=>t.id==='add').title});
+ m.assessment={topic:m.topic,indices:Array.from({length:10},(_,i)=>i),answers:[false],answered:true};assert.equal(studyPlan(s,day)[0].reason,'planResume');
+ const item=LANGUAGE_ITEMS[0];l.review=['en|write|'+item.id];const lang=studyPlan(s,day)[1];assert.equal(lang.reason,'planLanguageReview');assert.equal(lang.mode,'write');
+ assert.deepEqual(Array.from({length:5},(_,i)=>studyPlan(s,day+i)[2].kind),['grammar','dialogues','programming','school','music']);
+ for(const lesson of grammarRoute(l.language))l.grammar.passed[lesson.id]=true;assert.equal(studyPlan(s,day)[2].kind,'dialogues');
+ const before=JSON.stringify(s);studyPlan(s,day);assert.equal(JSON.stringify(s),before);
+ for(const lang of ['de','en','ru','uk'])for(const key of ['planTitle','planScope','planResume','planMathReview','planMathNew','planLanguageReview','planLanguageNew','planExtra','planDone'])assert.notEqual(translate(lang,key),key);
+});

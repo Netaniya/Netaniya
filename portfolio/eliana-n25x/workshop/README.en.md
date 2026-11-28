@@ -69,3 +69,5 @@ ELIANA visual direction: initial procedural silver-titanium humanoid with restra
 AI Code Lab: 38 missions, nine stages, 194 test cases. Read-only diagnostics, prompt export, optional ready browser LanguageModel (EN/DE). Real-model and browser verification pending; see AI-CODE-LAB.md.
 
 Sentence classroom: all ten study languages can now serve as translation sources (90 distinct directed pairs), with automatic interface-language mode, safe same-language fallback and saved source selection. Four UI localizations remain unchanged; native-speaker review and CI pending.
+
+Personal study plan: up to three local recommendations based on saved progress, with unfinished math self-tests and mistakes prioritized, guided language review and rotating unfinished supplementary courses. Not a placement test or AI-generated assessment. All courses remain selectable; CI pending.
