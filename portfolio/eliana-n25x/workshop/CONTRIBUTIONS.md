@@ -195,3 +195,6 @@ Creator explicitly required instruction from zero, not testing prior knowledge. 
 
 ### 28 November — beginner-first Python, SQL and Web labs
 Assistant authored 18 distinct introductory examples with local execution/preview and explanations in four interface languages. Independent of learner drafts and grading. Full novice usability validation remains outstanding.
+
+### 28 November — workflow beginner guides
+Eight isolated, localized interactive workflow examples for HTTP, Git, pull requests and safe AI plan review. Real services are not affected; simulations are explicitly labeled. Independent project work and full CI remain pending.

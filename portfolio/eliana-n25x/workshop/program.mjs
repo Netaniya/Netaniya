@@ -781,3 +781,133 @@ export const LAB_GUIDES={
   ]
 };
 export function runLabGuide(kind,index){const g=Object.hasOwn(LAB_GUIDES,kind)&&Number.isInteger(index)?LAB_GUIDES[kind][index]:null;if(!g)return {ok:false,error:'lesson'};if(kind==='python')return runPython(g.source,g.entry,g.args);if(kind==='sql')return queryProjects(g.source,SQL_SAMPLE);if(kind==='web')return compileWebLab(g.html,g.css);return {ok:false,error:'lesson'};}
+
+export const WORKFLOW_GUIDES={
+  "api": [
+    {
+      "title": [
+        "Anfrage und Antwort",
+        "Request and response",
+        "Запрос и ответ",
+        "Запит і відповідь"
+      ],
+      "explanation": [
+        "GET liest Daten. Status 200 bedeutet Erfolg; 404 bedeutet, dass die Ressource fehlt.",
+        "GET reads data. Status 200 means success; 404 means the resource is missing.",
+        "GET читает данные. 200 означает успех, 404 — ресурс не найден.",
+        "GET читає дані. 200 означає успіх, 404 — ресурс не знайдено."
+      ]
+    },
+    {
+      "title": [
+        "CRUD",
+        "CRUD",
+        "CRUD — операции с данными",
+        "CRUD — операції з даними"
+      ],
+      "explanation": [
+        "POST erstellt, PATCH aktualisiert und DELETE entfernt einen Datensatz. JSON überträgt strukturierte Werte.",
+        "POST creates, PATCH updates, and DELETE removes a record. JSON transfers structured values.",
+        "POST создаёт запись, PATCH обновляет, DELETE удаляет. JSON передаёт структурированные значения.",
+        "POST створює запис, PATCH оновлює, DELETE видаляє. JSON передає структуровані значення."
+      ]
+    },
+    {
+      "title": [
+        "Fehler prüfen",
+        "Check errors",
+        "Проверка ошибок",
+        "Перевірка помилок"
+      ],
+      "explanation": [
+        "Ungültige Daten führen zu 400. Prüfe, dass ein abgelehnter Schreibvorgang nichts ändert.",
+        "Invalid data produces 400. Verify that a rejected write changes nothing.",
+        "Некорректные данные дают 400. Проверь, что отклонённая запись ничего не меняет.",
+        "Некоректні дані дають 400. Перевір, що відхилений запис нічого не змінює."
+      ]
+    }
+  ],
+  "git": [
+    {
+      "title": [
+        "Arbeitsdatei und Index",
+        "Working file and staging",
+        "Рабочий файл и индекс",
+        "Робочий файл та індекс"
+      ],
+      "explanation": [
+        "Eine Änderung ist noch kein Commit. git add übernimmt sie in den Index; git commit speichert einen Stand.",
+        "An edit is not a commit. git add stages it; git commit records a snapshot.",
+        "Изменение файла ещё не коммит. git add добавляет его в индекс, git commit сохраняет снимок.",
+        "Зміна файлу ще не коміт. git add додає її до індексу, git commit зберігає знімок."
+      ]
+    },
+    {
+      "title": [
+        "Branches",
+        "Branches",
+        "Ветки",
+        "Гілки"
+      ],
+      "explanation": [
+        "Ein Branch verweist auf einen Commit. Eine separate Feature-Branch schützt main vor unfertigen Änderungen.",
+        "A branch points to a commit. A separate feature branch keeps unfinished changes off main.",
+        "Ветка указывает на коммит. Отдельная feature-ветка позволяет не менять main незавершённым кодом.",
+        "Гілка вказує на коміт. Окрема feature-гілка дозволяє не змінювати main незавершеним кодом."
+      ]
+    }
+  ],
+  "review": [
+    {
+      "title": [
+        "Pull Request und CI",
+        "Pull request and CI",
+        "Pull request и CI",
+        "Pull request та CI"
+      ],
+      "explanation": [
+        "GitHub hostet Git-Repositories. Ein Pull Request schlägt Änderungen vor; CI führt automatisierte Tests aus. Ein Review ersetzt keine Tests.",
+        "GitHub hosts Git repositories. A pull request proposes changes; CI runs automated tests. Review does not replace tests.",
+        "GitHub размещает Git-репозитории. Pull request предлагает изменения, CI запускает автоматические тесты. Ревью не заменяет тестирование.",
+        "GitHub розміщує Git-репозиторії. Pull request пропонує зміни, CI запускає автоматичні тести. Рев’ю не замінює тестування."
+      ]
+    }
+  ],
+  "agent": [
+    {
+      "title": [
+        "Ziel und Plan",
+        "Goal and plan",
+        "Цель и план",
+        "Мета та план"
+      ],
+      "explanation": [
+        "Ein KI-Modell kann einen Plan vorschlagen, aber der Vorschlag ist kein Beweis seiner Richtigkeit. Prüfe Ziele und erlaubte Werkzeuge.",
+        "An AI model can suggest a plan, but that does not prove it correct. Check goals and permitted tools.",
+        "ИИ может предложить план, но это не доказывает его правильность. Проверь цель и разрешённые инструменты.",
+        "ШІ може запропонувати план, але це не доводить його правильність. Перевір мету й дозволені інструменти."
+      ]
+    },
+    {
+      "title": [
+        "Vorschau und Freigabe",
+        "Preview and approval",
+        "Предпросмотр и подтверждение",
+        "Попередній перегляд і підтвердження"
+      ],
+      "explanation": [
+        "Ein Dry Run simuliert Änderungen. Erst nach Prüfung und Freigabe werden sie angewendet. Geänderte Pläne müssen neu geprüft werden.",
+        "A dry run simulates changes. Apply them only after review and approval. Changed plans require a fresh check.",
+        "Пробный запуск моделирует изменения. Применяй их только после проверки и подтверждения. Изменённый план нужно проверить заново.",
+        "Пробний запуск моделює зміни. Застосовуй їх лише після перевірки й підтвердження. Змінений план потрібно перевірити знову."
+      ]
+    }
+  ]
+};
+export function runWorkflowGuide(kind,index){
+ if(!Object.hasOwn(WORKFLOW_GUIDES,kind)||!Number.isInteger(index)||!WORKFLOW_GUIDES[kind][index])return {ok:false,error:'lesson'};
+ if(kind==='api'){const lab=createApiLab(),before=lab.snapshot(),commands=index===0?[['GET','/projects'],['GET','/projects/999']]:index===1?[['POST','/projects','{"title":"Example"}'],['PATCH','/projects/2','{"done":true}'],['DELETE','/projects/2']]:[['POST','/projects','{"title":""}'],['GET','/projects']];const steps=commands.map(([method,path,body])=>({method,path,...lab.request(method,path,body)}));return {ok:true,before,steps,after:lab.snapshot()};}
+ if(kind==='git'){const lab=createGitLab(),steps=[],limit=index===0?3:GIT_LESSONS.length;for(let i=0;i<limit;i++){const command=GIT_LESSONS[i].command,result=lab.run(command,command==='edit'?lab.snapshot().working+'Example '+i+'\n':'');if(!result.ok)return result;steps.push({command,branch:lab.snapshot().branch,staged:lab.snapshot().stagedChange,unstaged:lab.snapshot().unstagedChange});}return {ok:true,steps,after:lab.snapshot()};}
+ if(kind==='review'){const lab=createReviewLab(),failed=lab.tests(),blocked=!lab.review('approve','Example review');lab.edit(REVIEW_LESSONS[0].solution);const passed=lab.tests(),approved=lab.review('approve','Verified current revision'),merged=lab.merge();return {ok:true,failed,blocked,passed,approved,merged};}
+ const lab=createAgentLab(),before=lab.snapshot(),goal=index===0?'audit':'finish',plan=JSON.stringify(agentPlan(goal,before)),preview=lab.preview(plan,goal),unchanged=JSON.stringify(before)===JSON.stringify(lab.snapshot()),applied=index===1&&lab.apply(plan,goal);return {ok:true,plan:JSON.parse(plan),preview,unchanged,applied,after:lab.snapshot()};
+}
