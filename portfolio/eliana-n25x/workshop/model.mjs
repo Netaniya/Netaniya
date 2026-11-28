@@ -4,7 +4,7 @@ N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
 No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
 Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
 */
-import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,languageMistakes,dueLanguageReviews} from './language-course.mjs';
+import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,languageMistakes,dueLanguageReviews,DIALOGUE_LESSONS} from './language-course.mjs';
 import {freshPiano,parsePiano,validateScore,PIANO_LESSONS,RHYTHM_LESSONS,EAR_LESSONS,STAFF_LESSONS,CHORD_LESSONS,HARMONY_LESSONS} from './piano-score.mjs';
 import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS} from './math-course.mjs';
 import {validateCreation,CREATION_TEMPLATES} from './creations.mjs';
@@ -105,6 +105,7 @@ export function studySummary(state,day){
  return {
   math:{done:mathDone,total:MATH_VARIANTS,topics:MATH_TOPICS.filter(t=>m.done[t.id]?.length).length,review:m.mistakes.length},
   language:{done:langDone,total:LANGUAGE_ITEMS.length*3,language:l.language,review:new Set([...languageMistakes(l),...dueLanguageReviews(l,day)]).size},
+  dialogues:{done:DIALOGUE_LESSONS.filter(v=>l.dialogues.passed[l.language+'/'+v.id]===true).length,total:DIALOGUE_LESSONS.length},
   grammar:{done:grammar.filter(v=>l.grammar.passed[v.id]===true).length,total:grammar.length},
   programming:{done:MISSIONS.filter(v=>solved.has('program:'+v.id)).length,total:MISSIONS.length},
   school:{done:schoolDone,total:SUBJECTS.reduce((n,s)=>n+s.tasks.length,0),subjects:SUBJECTS.length},

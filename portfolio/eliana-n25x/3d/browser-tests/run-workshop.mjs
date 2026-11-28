@@ -111,9 +111,10 @@ async function standaloneAppCheck(){
  check('downloaded full app starts from an actual local HTML file without network, renders the humanoid, changes language and completes programming practice',{bytes:bytes.length});
 }
 async function expandedLearningCheck(){
- await click('#navigation [data-do=learn]');assert.equal(await page.locator('#study-progress progress').count(),6);
- for(const action of ['study-math','study-language','study-grammar','programming','study-subjects','study-music','study-create'])assert.equal(await page.locator('#study-progress [data-do="'+action+'"]').count(),1);
+ await click('#navigation [data-do=learn]');assert.equal(await page.locator('#study-progress progress').count(),7);
+ for(const action of ['study-math','study-language','study-grammar','study-dialogue','programming','study-subjects','study-music','study-create'])assert.equal(await page.locator('#study-progress [data-do="'+action+'"]').count(),1);
  await click('#study-progress [data-do=study-grammar]');assert(await page.locator('#grammar-lesson').isVisible());
+ await click('#navigation [data-do=learn]');await click('#study-progress [data-do=study-dialogue]');assert(await page.locator('#dialogue-lesson').isVisible());
  await click('#navigation [data-do=learn]');await click('#study-progress [data-do=study-music]');assert(await page.locator('#harmony-course').isVisible());
  await click('#navigation [data-do=learn]');await click('#study-progress [data-do=study-create]');assert(await page.locator('[data-do=piano]').isVisible());
  await click('#navigation [data-do=learn]');await noOverflow();await click('[data-do=study-math]');
