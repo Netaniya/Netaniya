@@ -7227,3 +7227,767 @@ DIALOGUE_LESSONS.push(...[
     }
   }
 ]);
+
+// Independent extended checkpoints, original AI-assisted examples, pending native review.
+export const GRAMMAR_EXTENDED=Object.freeze({
+  "de-present": [
+    {
+      "sentence": "Ich ___ jeden Abend. (kochen)",
+      "answer": "koche",
+      "options": [
+        "koche",
+        "kochst",
+        "kochen"
+      ]
+    },
+    {
+      "sentence": "Die Kinder ___ im Garten. (spielen)",
+      "answer": "spielen",
+      "options": [
+        "spielen",
+        "spielt",
+        "spielst"
+      ]
+    },
+    {
+      "sentence": "Du ___ ein Bild. (malen)",
+      "answer": "malst",
+      "options": [
+        "malst",
+        "male",
+        "malen"
+      ]
+    },
+    {
+      "sentence": "Meine Schwester ___ in Berlin. (wohnen)",
+      "answer": "wohnt",
+      "options": [
+        "wohnt",
+        "wohnst",
+        "wohnen"
+      ]
+    }
+  ],
+  "de-sein": [
+    {
+      "sentence": "Wir ___ heute müde. (sein)",
+      "answer": "sind",
+      "options": [
+        "sind",
+        "seid",
+        "ist"
+      ]
+    },
+    {
+      "sentence": "Er ___ einen Hund. (haben)",
+      "answer": "hat",
+      "options": [
+        "hat",
+        "hast",
+        "habt"
+      ]
+    },
+    {
+      "sentence": "Du ___ sehr freundlich. (sein)",
+      "answer": "bist",
+      "options": [
+        "bist",
+        "bin",
+        "seid"
+      ]
+    },
+    {
+      "sentence": "Ich ___ morgen Zeit. (haben)",
+      "answer": "habe",
+      "options": [
+        "habe",
+        "hat",
+        "haben"
+      ]
+    }
+  ],
+  "en-be": [
+    {
+      "sentence": "My sister ___ a doctor.",
+      "answer": "is",
+      "options": [
+        "is",
+        "am",
+        "are"
+      ]
+    },
+    {
+      "sentence": "___ you hungry?",
+      "answer": "Are",
+      "options": [
+        "Are",
+        "Is",
+        "Am"
+      ]
+    },
+    {
+      "sentence": "I ___ not late.",
+      "answer": "am",
+      "options": [
+        "am",
+        "are",
+        "is"
+      ]
+    },
+    {
+      "sentence": "The windows ___ open.",
+      "answer": "are",
+      "options": [
+        "are",
+        "is",
+        "am"
+      ]
+    }
+  ],
+  "en-present": [
+    {
+      "sentence": "Maya ___ to work by bus. (go)",
+      "answer": "goes",
+      "options": [
+        "goes",
+        "go",
+        "going"
+      ]
+    },
+    {
+      "sentence": "They ___ breakfast at seven. (eat)",
+      "answer": "eat",
+      "options": [
+        "eat",
+        "eats",
+        "eating"
+      ]
+    },
+    {
+      "sentence": "Does your brother ___ French? (speak)",
+      "answer": "speak",
+      "options": [
+        "speak",
+        "speaks",
+        "speaking"
+      ]
+    },
+    {
+      "sentence": "She doesn't ___ on Sundays. (work)",
+      "answer": "work",
+      "options": [
+        "work",
+        "works",
+        "working"
+      ]
+    }
+  ],
+  "ka-copula": [
+    {
+      "sentence": "მე ექიმი ___.",
+      "answer": "ვარ",
+      "options": [
+        "ვარ",
+        "ხარ",
+        "ვართ"
+      ]
+    },
+    {
+      "sentence": "თქვენ მზად ___.",
+      "answer": "ხართ",
+      "options": [
+        "ხართ",
+        "ვართ",
+        "არიან"
+      ]
+    },
+    {
+      "sentence": "ის ექიმი ___.",
+      "answer": "არის",
+      "options": [
+        "არის",
+        "ვარ",
+        "ხარ"
+      ]
+    },
+    {
+      "sentence": "ჩვენ სახლში ___.",
+      "answer": "ვართ",
+      "options": [
+        "ვართ",
+        "ხართ",
+        "არის"
+      ]
+    }
+  ],
+  "ka-plural": [
+    {
+      "sentence": "კაცი → ___ (Plural)",
+      "answer": "კაცები",
+      "options": [
+        "კაცები",
+        "კაცი",
+        "კაცებს"
+      ]
+    },
+    {
+      "sentence": "კარი → ___ (Plural)",
+      "answer": "კარები",
+      "options": [
+        "კარები",
+        "კარი",
+        "კარებს"
+      ]
+    },
+    {
+      "sentence": "ქალი → ___ (Plural)",
+      "answer": "ქალები",
+      "options": [
+        "ქალები",
+        "ქალი",
+        "ქალებს"
+      ]
+    },
+    {
+      "sentence": "მაგიდა → ___ (Plural)",
+      "answer": "მაგიდები",
+      "options": [
+        "მაგიდები",
+        "მაგიდა",
+        "მაგიდებს"
+      ]
+    }
+  ],
+  "uk-gender": [
+    {
+      "sentence": "___ олівець (new)",
+      "answer": "новий",
+      "options": [
+        "новий",
+        "нова",
+        "нове"
+      ]
+    },
+    {
+      "sentence": "___ школа (new)",
+      "answer": "нова",
+      "options": [
+        "нова",
+        "нове",
+        "новий"
+      ]
+    },
+    {
+      "sentence": "___ місто (new)",
+      "answer": "нове",
+      "options": [
+        "нове",
+        "новий",
+        "нова"
+      ]
+    },
+    {
+      "sentence": "___ зошити (new)",
+      "answer": "нові",
+      "options": [
+        "нові",
+        "новий",
+        "нова"
+      ]
+    }
+  ],
+  "uk-vocative": [
+    {
+      "sentence": "___, допоможи мені! (сестра)",
+      "answer": "Сестро",
+      "options": [
+        "Сестро",
+        "Сестру",
+        "Сестри"
+      ]
+    },
+    {
+      "sentence": "___, привіт! (Іван)",
+      "answer": "Іване",
+      "options": [
+        "Іване",
+        "Івана",
+        "Іваном"
+      ]
+    },
+    {
+      "sentence": "___, добрий вечір! (Марія)",
+      "answer": "Маріє",
+      "options": [
+        "Маріє",
+        "Марію",
+        "Марії"
+      ]
+    },
+    {
+      "sentence": "___, заходь! (друг)",
+      "answer": "Друже",
+      "options": [
+        "Друже",
+        "Друга",
+        "Другом"
+      ]
+    }
+  ],
+  "ru-gender": [
+    {
+      "sentence": "___ карандаш (new)",
+      "answer": "новый",
+      "options": [
+        "новый",
+        "новая",
+        "новое"
+      ]
+    },
+    {
+      "sentence": "___ школа (new)",
+      "answer": "новая",
+      "options": [
+        "новая",
+        "новое",
+        "новый"
+      ]
+    },
+    {
+      "sentence": "___ письмо (new)",
+      "answer": "новое",
+      "options": [
+        "новое",
+        "новый",
+        "новая"
+      ]
+    },
+    {
+      "sentence": "___ книги (new)",
+      "answer": "новые",
+      "options": [
+        "новые",
+        "новое",
+        "новый"
+      ]
+    }
+  ],
+  "ru-prepositional": [
+    {
+      "sentence": "Мы читаем о ___. (музей)",
+      "answer": "музее",
+      "options": [
+        "музее",
+        "музей",
+        "музея"
+      ]
+    },
+    {
+      "sentence": "Она рассказывает о ___. (сестра)",
+      "answer": "сестре",
+      "options": [
+        "сестре",
+        "сестру",
+        "сестрой"
+      ]
+    },
+    {
+      "sentence": "Он думает об ___. (экзамен)",
+      "answer": "экзамене",
+      "options": [
+        "экзамене",
+        "экзамен",
+        "экзаменом"
+      ]
+    },
+    {
+      "sentence": "Я мечтаю о ___. (море)",
+      "answer": "море",
+      "options": [
+        "море",
+        "моря",
+        "морем"
+      ]
+    }
+  ],
+  "zh-wordorder": [
+    {
+      "sentence": "他们___电影。 (watch)",
+      "answer": "看",
+      "options": [
+        "看",
+        "电影",
+        "他们"
+      ]
+    },
+    {
+      "sentence": "我___汉语。 (speak)",
+      "answer": "说",
+      "options": [
+        "说",
+        "汉语",
+        "我"
+      ]
+    },
+    {
+      "sentence": "你___苹果。 (eat)",
+      "answer": "吃",
+      "options": [
+        "吃",
+        "苹果",
+        "你"
+      ]
+    },
+    {
+      "sentence": "她___咖啡。 (drink)",
+      "answer": "喝",
+      "options": [
+        "喝",
+        "咖啡",
+        "她"
+      ]
+    }
+  ],
+  "zh-ma": [
+    {
+      "sentence": "你是医生___？ (yes/no)",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "的",
+        "很"
+      ]
+    },
+    {
+      "sentence": "他们喜欢中国菜___？ (yes/no)",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "的",
+        "很"
+      ]
+    },
+    {
+      "sentence": "她有猫___？ (yes/no)",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "的",
+        "很"
+      ]
+    },
+    {
+      "sentence": "你会说汉语___？ (yes/no)",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "的",
+        "很"
+      ]
+    }
+  ],
+  "es-gender": [
+    {
+      "sentence": "___ coche (definite)",
+      "answer": "el",
+      "options": [
+        "el",
+        "la",
+        "los"
+      ]
+    },
+    {
+      "sentence": "___ ventana (definite)",
+      "answer": "la",
+      "options": [
+        "la",
+        "el",
+        "las"
+      ]
+    },
+    {
+      "sentence": "___ zapatos (definite)",
+      "answer": "los",
+      "options": [
+        "los",
+        "las",
+        "el"
+      ]
+    },
+    {
+      "sentence": "___ sillas (definite)",
+      "answer": "las",
+      "options": [
+        "las",
+        "los",
+        "la"
+      ]
+    }
+  ],
+  "es-present": [
+    {
+      "sentence": "Yo ___ en Madrid. (trabajar)",
+      "answer": "trabajo",
+      "options": [
+        "trabajo",
+        "trabajas",
+        "trabajan"
+      ]
+    },
+    {
+      "sentence": "Tú ___ en casa. (estudiar)",
+      "answer": "estudias",
+      "options": [
+        "estudias",
+        "estudio",
+        "estudian"
+      ]
+    },
+    {
+      "sentence": "Nosotras ___ música. (escuchar)",
+      "answer": "escuchamos",
+      "options": [
+        "escuchamos",
+        "escuchan",
+        "escucháis"
+      ]
+    },
+    {
+      "sentence": "Vosotros ___ mucho. (caminar)",
+      "answer": "camináis",
+      "options": [
+        "camináis",
+        "caminan",
+        "caminamos"
+      ]
+    }
+  ],
+  "fr-articles": [
+    {
+      "sentence": "___ jardin (definite)",
+      "answer": "le",
+      "options": [
+        "le",
+        "la",
+        "les"
+      ]
+    },
+    {
+      "sentence": "___ fenêtre (definite)",
+      "answer": "la",
+      "options": [
+        "la",
+        "le",
+        "les"
+      ]
+    },
+    {
+      "sentence": "___ hôtel (definite)",
+      "answer": "l’",
+      "options": [
+        "l’",
+        "le",
+        "la"
+      ]
+    },
+    {
+      "sentence": "___ chaises (definite)",
+      "answer": "les",
+      "options": [
+        "les",
+        "le",
+        "la"
+      ]
+    }
+  ],
+  "fr-present": [
+    {
+      "sentence": "Je ___ à Paris. (habiter)",
+      "answer": "habite",
+      "options": [
+        "habite",
+        "habites",
+        "habitons"
+      ]
+    },
+    {
+      "sentence": "Tu ___ la musique. (écouter)",
+      "answer": "écoutes",
+      "options": [
+        "écoutes",
+        "écoute",
+        "écoutez"
+      ]
+    },
+    {
+      "sentence": "Nous ___ le soir. (travailler)",
+      "answer": "travaillons",
+      "options": [
+        "travaillons",
+        "travaillez",
+        "travaillent"
+      ]
+    },
+    {
+      "sentence": "Ils ___ au parc. (jouer)",
+      "answer": "jouent",
+      "options": [
+        "jouent",
+        "jouons",
+        "jouez"
+      ]
+    }
+  ],
+  "it-articles": [
+    {
+      "sentence": "___ cane (definite)",
+      "answer": "il",
+      "options": [
+        "il",
+        "lo",
+        "la"
+      ]
+    },
+    {
+      "sentence": "___ zaino (definite)",
+      "answer": "lo",
+      "options": [
+        "lo",
+        "il",
+        "la"
+      ]
+    },
+    {
+      "sentence": "___ porta (definite)",
+      "answer": "la",
+      "options": [
+        "la",
+        "il",
+        "lo"
+      ]
+    },
+    {
+      "sentence": "___ orologio (definite)",
+      "answer": "l’",
+      "options": [
+        "l’",
+        "il",
+        "lo"
+      ]
+    }
+  ],
+  "it-present": [
+    {
+      "sentence": "Io ___ a Roma. (abitare)",
+      "answer": "abito",
+      "options": [
+        "abito",
+        "abiti",
+        "abitano"
+      ]
+    },
+    {
+      "sentence": "Tu ___ la musica. (ascoltare)",
+      "answer": "ascolti",
+      "options": [
+        "ascolti",
+        "ascolta",
+        "ascoltate"
+      ]
+    },
+    {
+      "sentence": "Noi ___ a scuola. (studiare)",
+      "answer": "studiamo",
+      "options": [
+        "studiamo",
+        "studiate",
+        "studiano"
+      ]
+    },
+    {
+      "sentence": "Loro ___ ogni giorno. (camminare)",
+      "answer": "camminano",
+      "options": [
+        "camminano",
+        "camminiamo",
+        "camminate"
+      ]
+    }
+  ],
+  "ja-copula": [
+    {
+      "sentence": "これは辞書___。 (polite statement)",
+      "answer": "です",
+      "options": [
+        "です",
+        "を",
+        "に"
+      ]
+    },
+    {
+      "sentence": "私は会社員___。 (polite statement)",
+      "answer": "です",
+      "options": [
+        "です",
+        "を",
+        "で"
+      ]
+    },
+    {
+      "sentence": "あそこは駅___。 (polite statement)",
+      "answer": "です",
+      "options": [
+        "です",
+        "に",
+        "を"
+      ]
+    },
+    {
+      "sentence": "今日は月曜日___。 (polite statement)",
+      "answer": "です",
+      "options": [
+        "です",
+        "で",
+        "を"
+      ]
+    }
+  ],
+  "ja-object": [
+    {
+      "sentence": "音楽___聞きます。",
+      "answer": "を",
+      "options": [
+        "を",
+        "に",
+        "で"
+      ]
+    },
+    {
+      "sentence": "映画___見ます。",
+      "answer": "を",
+      "options": [
+        "を",
+        "に",
+        "で"
+      ]
+    },
+    {
+      "sentence": "パン___食べます。",
+      "answer": "を",
+      "options": [
+        "を",
+        "に",
+        "で"
+      ]
+    },
+    {
+      "sentence": "写真___撮ります。",
+      "answer": "を",
+      "options": [
+        "を",
+        "に",
+        "で"
+      ]
+    }
+  ]
+});

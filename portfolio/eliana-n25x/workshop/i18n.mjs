@@ -484,3 +484,5 @@ for(const [key,values] of Object.entries({
  grammarEvidenceUntested:['Noch keine abgeschlossene Kontrolle.','No completed checkpoint recorded yet.','Завершённая самопроверка ещё не сохранена.','Завершену самоперевірку ще не збережено.'],
  planGrammarReview:['Wiederhole ein Grammatikthema mit Fehlern in der letzten Kontrolle.','Review a grammar topic with mistakes in its last checkpoint.','Повтори грамматическую тему с ошибками в последней самопроверке.','Повтори граматичну тему з помилками в останній самоперевірці.']
 }))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);
+
+for(const [lang,value] of Object.entries({de:'Erweiterter Selbsttest',en:'Extended checkpoint',ru:'Расширенная самопроверка',uk:'Розширена самоперевірка'}))TEXT[lang].grammarExtended=value;

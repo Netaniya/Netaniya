@@ -156,3 +156,6 @@ Assistant implemented per-topic latest/best completed ten-question result and co
 
 ### 28 November — grammar evidence and targeted review
 Assistant implemented per-lesson completed checkpoint scores, missed question indices, correction display and review priority across ten languages, retaining historical passed flags. The creator directed continued development and tests. Existing checkpoints are short and reused, not independent proficiency assessments. No publication or external data changes.
+
+### 28 November — extended grammar bank
+Under the creator's instruction to broaden assessments, the assistant authored 80 additional cloze questions across two existing topics in each of ten languages. Separate four-question checkpoint results preserve prior two-question scores. Structural validation only, native review pending; no change to publication.
