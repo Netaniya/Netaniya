@@ -186,3 +186,6 @@ Assistant fixed recommendation routing so basic, extended and written mistakes r
 
 ### 28 November — all major and natural minor tonalities
 Assistant added 14 scale sequences and four rhythmic patterns (sixteenths, triplets, dotted eighth/sixteenth, mixed gaps with rests). All existing lesson IDs preserved. Pitch and onset timing only; no assessment of fingering, dynamics, articulation or physical performance quality.
+
+### 28 November — applied logic projects and music regression
+Added six localized bounded JavaScript mini-projects with original buggy drafts, predictions, code repair and boundary cases. Corrected old music inventory assertions in academy tests. Role rule is a logic exercise, not production authorization.

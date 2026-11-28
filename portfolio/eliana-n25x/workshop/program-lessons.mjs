@@ -2425,3 +2425,627 @@ EXTRA_MISSIONS.push(...[
     ]
   }
 ]);
+
+// Applied software logic exercises with boundary cases.
+EXTRA_MISSIONS.push(...[
+  {
+    "id": "project-page-count",
+    "entry": "pageCount",
+    "title": [
+      "Seitenzahl",
+      "Pagination",
+      "Пагинация",
+      "Пагінація"
+    ],
+    "task": [
+      "Berechne Seiten für count Datensätze bei size pro Seite. count: 0–100, size: 1–20, ganze Zahlen. Eine Restseite zählt.",
+      "Return page count for count records, size per page. Integers: count 0–100, size 1–20. Include a partial page.",
+      "Вычисли число страниц для count записей по size на странице. Целые: count 0–100, size 1–20. Неполная страница учитывается.",
+      "Обчисли кількість сторінок для count записів по size на сторінці. Цілі: count 0–100, size 1–20. Неповна сторінка враховується."
+    ],
+    "hint": [
+      "Zähle jede Seite mit mindestens einem Datensatz.",
+      "Count every page with at least one record.",
+      "Считай каждую страницу хотя бы с одной записью.",
+      "Рахуй кожну сторінку хоча б з одним записом."
+    ],
+    "why": [
+      "Zähle jede Seite mit mindestens einem Datensatz.",
+      "Count every page with at least one record.",
+      "Считай каждую страницу хотя бы с одной записью.",
+      "Рахуй кожну сторінку хоча б з одним записом."
+    ],
+    "source": "function pageCount(count,size) { let pages=0; for (let i=0; i+size<=count; i=i+size) { pages=pages+1; } return pages; }",
+    "sample": [
+      11,
+      5
+    ],
+    "prediction": [
+      2,
+      3,
+      4
+    ],
+    "expectedPrediction": 2,
+    "block": {
+      "from": "i+size<=count",
+      "choices": [
+        "i+size<=count",
+        "i<count",
+        "i<=count"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          1,
+          5
+        ],
+        1
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        1
+      ],
+      [
+        [
+          6,
+          5
+        ],
+        2
+      ],
+      [
+        [
+          11,
+          5
+        ],
+        3
+      ],
+      [
+        [
+          100,
+          1
+        ],
+        100
+      ],
+      [
+        [
+          100,
+          20
+        ],
+        5
+      ]
+    ]
+  },
+  {
+    "id": "project-stock",
+    "entry": "remainingStock",
+    "title": [
+      "Lagerbestand",
+      "Remaining stock",
+      "Остаток на складе",
+      "Залишок на складі"
+    ],
+    "task": [
+      "Gib stock minus sold zurück, mindestens null. Beide Werte sind nichtnegative ganze Zahlen.",
+      "Return stock minus sold, but never below zero. Both inputs are nonnegative integers.",
+      "Верни stock минус sold, но не ниже нуля. Оба аргумента — неотрицательные целые.",
+      "Поверни stock мінус sold, але не нижче нуля. Обидва аргументи — невід’ємні цілі."
+    ],
+    "hint": [
+      "Prüfe, ob sold mindestens stock erreicht.",
+      "Check whether sold reaches or exceeds stock.",
+      "Проверь, достигло ли sold значения stock.",
+      "Перевір, чи досягло sold значення stock."
+    ],
+    "why": [
+      "Prüfe, ob sold mindestens stock erreicht.",
+      "Check whether sold reaches or exceeds stock.",
+      "Проверь, достигло ли sold значения stock.",
+      "Перевір, чи досягло sold значення stock."
+    ],
+    "source": "function remainingStock(stock,sold) { if (sold<stock) { return 0; } return stock-sold; }",
+    "sample": [
+      10,
+      3
+    ],
+    "prediction": [
+      0,
+      7,
+      8
+    ],
+    "expectedPrediction": 0,
+    "block": {
+      "from": "sold<stock",
+      "choices": [
+        "sold<stock",
+        "sold>=stock",
+        "sold===stock"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        5
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          6
+        ],
+        0
+      ],
+      [
+        [
+          10,
+          3
+        ],
+        7
+      ],
+      [
+        [
+          100,
+          1
+        ],
+        99
+      ]
+    ]
+  },
+  {
+    "id": "project-duration",
+    "entry": "minutesLeft",
+    "title": [
+      "Restzeit",
+      "Remaining time",
+      "Оставшееся время",
+      "Залишок часу"
+    ],
+    "task": [
+      "Berechne budget minus used, mindestens null. Beide Werte sind nichtnegative ganze Minuten.",
+      "Return budget minus used, at least zero. Both inputs are nonnegative whole minutes.",
+      "Вычисли budget минус used, не меньше нуля. Оба аргумента — неотрицательные целые минуты.",
+      "Обчисли budget мінус used, не менше нуля. Обидва аргументи — невід’ємні цілі хвилини."
+    ],
+    "hint": [
+      "Die Restzeit ist null, wenn das Budget aufgebraucht ist.",
+      "Remaining time is zero when the budget is exhausted.",
+      "Остаток равен нулю, если лимит исчерпан.",
+      "Залишок дорівнює нулю, якщо ліміт вичерпано."
+    ],
+    "why": [
+      "Die Restzeit ist null, wenn das Budget aufgebraucht ist.",
+      "Remaining time is zero when the budget is exhausted.",
+      "Остаток равен нулю, если лимит исчерпан.",
+      "Залишок дорівнює нулю, якщо ліміт вичерпано."
+    ],
+    "source": "function minutesLeft(budget,used) { if (used>=budget) { return 0; } return budget+used; }",
+    "sample": [
+      60,
+      45
+    ],
+    "prediction": [
+      105,
+      15,
+      106
+    ],
+    "expectedPrediction": 105,
+    "block": {
+      "from": "budget+used",
+      "choices": [
+        "budget+used",
+        "budget-used",
+        "used-budget"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        0
+      ],
+      [
+        [
+          60,
+          45
+        ],
+        15
+      ],
+      [
+        [
+          60,
+          60
+        ],
+        0
+      ],
+      [
+        [
+          60,
+          61
+        ],
+        0
+      ],
+      [
+        [
+          10,
+          0
+        ],
+        10
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        1
+      ]
+    ]
+  },
+  {
+    "id": "project-order-total",
+    "entry": "orderTotal",
+    "title": [
+      "Bestellsumme",
+      "Order total",
+      "Сумма заказа",
+      "Сума замовлення"
+    ],
+    "task": [
+      "Berechne quantity mal unit plus delivery in Cent. Nichtnegative ganze Eingaben. Bei quantity=0 ist die Summe null.",
+      "Compute quantity times unit plus delivery in cents. Nonnegative integer inputs. If quantity is zero, return zero.",
+      "Вычисли quantity × unit + delivery в центах. Неотрицательные целые аргументы. Если quantity=0, сумма нулевая.",
+      "Обчисли quantity × unit + delivery у центах. Невід’ємні цілі аргументи. Якщо quantity=0, сума нульова."
+    ],
+    "hint": [
+      "Addiere die Lieferung nur einmal.",
+      "Add delivery only once.",
+      "Прибавь доставку только один раз.",
+      "Додай доставку лише один раз."
+    ],
+    "why": [
+      "Addiere die Lieferung nur einmal.",
+      "Add delivery only once.",
+      "Прибавь доставку только один раз.",
+      "Додай доставку лише один раз."
+    ],
+    "source": "function orderTotal(quantity,unit,delivery) { if (quantity===0) { return 0; } return quantity*(unit+delivery); }",
+    "sample": [
+      3,
+      250,
+      100
+    ],
+    "prediction": [
+      1050,
+      850,
+      1051
+    ],
+    "expectedPrediction": 1050,
+    "block": {
+      "from": "quantity*(unit+delivery)",
+      "choices": [
+        "quantity*(unit+delivery)",
+        "quantity*unit+delivery",
+        "quantity*unit-delivery"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          250,
+          100
+        ],
+        0
+      ],
+      [
+        [
+          1,
+          250,
+          100
+        ],
+        350
+      ],
+      [
+        [
+          3,
+          250,
+          100
+        ],
+        850
+      ],
+      [
+        [
+          4,
+          0,
+          100
+        ],
+        100
+      ],
+      [
+        [
+          4,
+          250,
+          0
+        ],
+        1000
+      ],
+      [
+        [
+          2,
+          1,
+          1
+        ],
+        3
+      ],
+      [
+        [
+          10,
+          1000,
+          500
+        ],
+        10500
+      ]
+    ]
+  },
+  {
+    "id": "project-role-rule",
+    "entry": "editFlag",
+    "title": [
+      "Rollenregel",
+      "Role rule",
+      "Правило ролей",
+      "Правило ролей"
+    ],
+    "task": [
+      "Gib 1 zurück, wenn active wahr ist und owner oder editor wahr ist; sonst 0. Boolesche Eingaben. Nur lokale Logikübung.",
+      "Return 1 when active is true and owner or editor is true; otherwise 0. Boolean inputs. Local logic exercise only.",
+      "Верни 1, если active истинно и owner или editor истинно; иначе 0. Булевы аргументы. Только локальная логическая модель.",
+      "Поверни 1, якщо active істинне й owner або editor істинне; інакше 0. Булеві аргументи. Лише локальна логічна модель."
+    ],
+    "hint": [
+      "Inaktive Konten erhalten immer 0.",
+      "Inactive accounts always receive 0.",
+      "Неактивные учётные записи всегда получают 0.",
+      "Неактивні облікові записи завжди отримують 0."
+    ],
+    "why": [
+      "Inaktive Konten erhalten immer 0.",
+      "Inactive accounts always receive 0.",
+      "Неактивные учётные записи всегда получают 0.",
+      "Неактивні облікові записи завжди отримують 0."
+    ],
+    "source": "function editFlag(active,owner,editor) { if (active && owner || editor) { return 1; } return 0; }",
+    "sample": [
+      false,
+      false,
+      true
+    ],
+    "prediction": [
+      1,
+      0,
+      2
+    ],
+    "expectedPrediction": 1,
+    "block": {
+      "from": "active && owner || editor",
+      "choices": [
+        "active && owner || editor",
+        "active && (owner || editor)",
+        "active || owner || editor"
+      ]
+    },
+    "tests": [
+      [
+        [
+          false,
+          false,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          false,
+          false,
+          true
+        ],
+        0
+      ],
+      [
+        [
+          false,
+          true,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          false,
+          true,
+          true
+        ],
+        0
+      ],
+      [
+        [
+          true,
+          false,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          true,
+          false,
+          true
+        ],
+        1
+      ],
+      [
+        [
+          true,
+          true,
+          false
+        ],
+        1
+      ],
+      [
+        [
+          true,
+          true,
+          true
+        ],
+        1
+      ]
+    ]
+  },
+  {
+    "id": "project-retry-limit",
+    "entry": "retryFlag",
+    "title": [
+      "Wiederholungsgrenze",
+      "Retry limit",
+      "Лимит попыток",
+      "Ліміт спроб"
+    ],
+    "task": [
+      "Gib 1 zurück, wenn attempts kleiner als limit und success falsch ist, sonst 0. attempts und limit sind nichtnegative ganze Zahlen; success ist boolesch.",
+      "Return 1 if attempts is less than limit and success is false, otherwise 0. Nonnegative integers attempts and limit; boolean success.",
+      "Верни 1, если attempts меньше limit и success ложно, иначе 0. attempts и limit — неотрицательные целые; success — булево.",
+      "Поверни 1, якщо attempts менше limit і success хибне, інакше 0. attempts і limit — невід’ємні цілі; success — булеве."
+    ],
+    "hint": [
+      "Bei Erfolg oder am Limit keine Wiederholung.",
+      "No retry after success or at the limit.",
+      "Не повторяй после успеха или на границе лимита.",
+      "Не повторюй після успіху або на межі ліміту."
+    ],
+    "why": [
+      "Bei Erfolg oder am Limit keine Wiederholung.",
+      "No retry after success or at the limit.",
+      "Не повторяй после успеха или на границе лимита.",
+      "Не повторюй після успіху або на межі ліміту."
+    ],
+    "source": "function retryFlag(attempts,limit,success) { if (attempts<=limit && !success) { return 1; } return 0; }",
+    "sample": [
+      3,
+      3,
+      false
+    ],
+    "prediction": [
+      1,
+      0,
+      2
+    ],
+    "expectedPrediction": 1,
+    "block": {
+      "from": "attempts<=limit",
+      "choices": [
+        "attempts<=limit",
+        "attempts<limit",
+        "attempts>limit"
+      ]
+    },
+    "tests": [
+      [
+        [
+          0,
+          0,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          1,
+          false
+        ],
+        1
+      ],
+      [
+        [
+          2,
+          3,
+          false
+        ],
+        1
+      ],
+      [
+        [
+          3,
+          3,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          4,
+          3,
+          false
+        ],
+        0
+      ],
+      [
+        [
+          0,
+          3,
+          true
+        ],
+        0
+      ],
+      [
+        [
+          2,
+          3,
+          true
+        ],
+        0
+      ]
+    ]
+  }
+]);

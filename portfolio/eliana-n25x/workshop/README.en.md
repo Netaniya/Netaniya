@@ -96,3 +96,5 @@ Cloud review server: `node portfolio/eliana-n25x/workshop/build.mjs` followed by
 Language candidate: 18 units, 168 shared meanings, 1,680 translated texts and 5,040 core exercise forms. New units cover appointments and housing/services; no medical or legal advice. Native review pending.
 
 Music candidate: 38 pitch sequences including all 12 major and 12 natural minor pitch classes, 12 rhythm patterns, 70 stages across six practical groups. Fractional onset gaps are shown legibly; no fingering or physical performance evaluation.
+
+Programming candidate: 48 restricted JavaScript missions including six applied logic exercises. Each has normal and boundary tests, editable code and local execution. These are function exercises rather than full production services.
