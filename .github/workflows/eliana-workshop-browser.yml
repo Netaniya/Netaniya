@@ -76,6 +76,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: cd portfolio/eliana-n25x/fullstack-lab && python3 -m unittest -v test_server.py
+      - name: Verify independent SQLite dashboard reference
+        run: cd portfolio/eliana-n25x/fullstack-lab && python3 check_dashboard.py
 
   git-local:
     name: Git lab · real local repository

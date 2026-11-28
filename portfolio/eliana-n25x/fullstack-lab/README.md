@@ -16,3 +16,6 @@ Open http://127.0.0.1:8765/ on the same computer. Create a fictional project, ma
 The student can inspect actual SQL schema and parameterized CRUD statements in server.py, and actual fetch calls in app.js. The offline REST and SQL lessons remain separate and continue working without a server.
 
 Browser acceptance now includes actual client POST/PATCH/DELETE, safe text rendering, aggregates, persistence across server restart, HTTP response display and viewport checks using Playwright desktop and touch contexts. See `../3d/browser-tests/run-fullstack.mjs`; results pending for this revision.
+
+## Independent SQLite dashboard exercise
+Read [the Russian course](DASHBOARD-COURSE.ru.md), implement `learner_dashboard.py`, and run `python3 check_dashboard.py --learner`. The default `python3 check_dashboard.py` verifies the separate reference solution. The starter is intentionally unfinished. This exercise uses real SQLite with isolated synthetic fixtures, not the public cloud or the browser simulator. Compare it with Store in the reference HTTP server after completing the data-layer task.

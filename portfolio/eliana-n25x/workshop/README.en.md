@@ -102,3 +102,5 @@ Programming candidate: 48 restricted JavaScript missions including six applied l
 Beginner-first JavaScript: ten stage guides, 30 independently executable examples with output and traces, followed by prediction, repair/writing, tests and edge cases. Examples do not grant completion or edit drafts. This is an introductory restricted interpreter, not full JavaScript or a certified professional curriculum.
 
 Python, SQL and HTML/CSS beginner guides: six runnable examples per lab (18 total), fixed SQL sample data and sandboxed Web preview. They do not modify drafts or award points. Limited educational subsets.
+
+Independent real SQLite practice is available in ../fullstack-lab: learner_dashboard.py, separate dashboard_reference.py, check_dashboard.py and DASHBOARD-COURSE.ru.md. Run the tests locally with --learner; the CI validates only the reference. The browser capstone is separate.

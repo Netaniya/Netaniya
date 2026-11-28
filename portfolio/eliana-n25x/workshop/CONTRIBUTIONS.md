@@ -204,3 +204,6 @@ Implemented a saved project dashboard exercise with learner-written JSON, SQL, J
 
 ### 28 November — dynamic capstone data binding
 Connected verified local API/SQL/JavaScript output to a learner-authored safe HTML/CSS preview using text-only placeholders. Added three independently recalculated scenarios, escaped output, state preservation and regression tests. Old drafts retained; older static passes require new verification.
+
+### 28 November — independent local SQLite dashboard
+Assistant created a deliberately incomplete learner module, a separate reference, real SQLite tests and a Russian course with a new CI verification step. The creator required teaching from zero and self-checking. The learner module is not automatically run in cloud services.
