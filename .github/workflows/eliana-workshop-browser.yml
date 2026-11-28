@@ -42,6 +42,22 @@ jobs:
       - run: node portfolio/eliana-n25x/workshop/build.mjs
       - name: Verify all workshop modules, math, audio and offline cache
         run: node --test portfolio/eliana-n25x/tests/workshop.test.mjs portfolio/eliana-n25x/tests/academy.test.mjs portfolio/eliana-n25x/tests/learning.test.mjs
+      - name: Package owner review candidate (not a site deployment)
+        if: matrix.scope == 'desktop'
+        run: |
+          mkdir -p preview
+          cp portfolio/eliana-n25x/workshop/dist/download/N25x-Studio.html preview/
+          cp portfolio/eliana-n25x/workshop/dist/build-info.json preview/
+          printf '%s\n' "${GITHUB_SHA}" > preview/BUILD-COMMIT.txt
+          (cd preview && sha256sum N25x-Studio.html > SHA256SUMS.txt)
+      - name: Upload offline review candidate
+        if: matrix.scope == 'desktop'
+        uses: actions/upload-artifact@v4
+        with:
+          name: n25x-offline-review-candidate
+          path: preview/
+          if-no-files-found: error
+          retention-days: 14
       - name: Exercise rendered studio through real input
         run: node portfolio/eliana-n25x/3d/browser-tests/run-workshop.mjs
       - name: Exercise actual full-stack client against local Python and SQLite

@@ -165,3 +165,6 @@ Assistant added 128 original questions to 32 remaining topics of Georgian, Ukrai
 
 ### 28 November — full extended grammar coverage
 Assistant added 144 original questions for the remaining 36 German and English topics, completing the creator-directed extension to all 88 existing grammar topics. Existing basic and extended question indices are unchanged. Structural checks and source validation do not replace independent linguistic review.
+
+### 28 November — review candidate and listening controls
+At the creator's request, the assistant added a non-deploying CI artifact containing the standalone review candidate, build metadata and hash, and normal/slow local-device listening. The creator confirmed that repository privacy is to change only after completion, retaining an employer-facing demo; the current public repository and deployment remain unchanged. Browser-distributed frontend code remains inspectable. Real voice quality and physical device tests are not yet verified.

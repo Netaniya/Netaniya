@@ -486,3 +486,5 @@ for(const [key,values] of Object.entries({
 }))['de','en','ru','uk'].forEach((lang,i)=>TEXT[lang][key]=values[i]);
 
 for(const [lang,value] of Object.entries({de:'Erweiterter Selbsttest',en:'Extended checkpoint',ru:'Расширенная самопроверка',uk:'Розширена самоперевірка'}))TEXT[lang].grammarExtended=value;
+
+for(const [lang,value] of Object.entries({de:'Langsam anhören',en:'Listen slowly',ru:'Прослушать медленно',uk:'Прослухати повільно'}))TEXT[lang].listenSlow=value;

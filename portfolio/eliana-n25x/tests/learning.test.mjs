@@ -257,3 +257,12 @@ test('Extended grammar checkpoints: independent results, correction priority and
  assert(recordExtendedGrammar(p,l.id,qs.map(q=>q.options.find(v=>v!==q.answer))));assert(grammarReviewLessons(p).some(v=>v.id===l.id));assert(!p.grammar.passed[l.id]);assert(!p.grammar.evidence[l.id]);assert(recordExtendedGrammar(p,l.id,qs.map(q=>q.answer)));assert(!grammarReviewLessons(p).some(v=>v.id===l.id));assert.equal(p.grammar.extended[l.id].best,4);}}
  assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);assert.deepEqual(parseLanguageCourse({grammar:{passed:{'en-be':true}}}).grammar.extended,{});
 });
+
+test('Listening: normal and slow playback choose only a matching local voice, respect mute and retain profile',()=>{
+ const prevSynth=globalThis.speechSynthesis,prevUtterance=globalThis.SpeechSynthesisUtterance;const calls=[],s=fresh(),p=s.learning.languages;p.mode='listen';p.language='en';s.sound=true;
+ const local={lang:'en-US',localService:true},remote={lang:'en-GB',localService:false},other={lang:'de-DE',localService:true};let voices=[remote,other,local];
+ try{globalThis.speechSynthesis={getVoices:()=>voices,cancel(){},speak:u=>calls.push(u),addEventListener(){}};globalThis.SpeechSynthesisUtterance=class{constructor(text){this.text=text;}};
+ const controller=createLanguageClassroom({getState:()=>s,tr:(k,v)=>translate(s.lang,k,v),esc:String,save(){},award(){},navigate(){},toast(){},render(){}});
+ const before=JSON.stringify(p);assert(controller.render().includes('data-l="speak-slow"'));controller.click({dataset:{l:'speak'}});controller.click({dataset:{l:'speak-slow'}});assert.deepEqual(calls.map(v=>v.rate),[1,.65]);assert(calls.every(v=>v.voice===local&&v.lang===local.lang&&v.text===LANGUAGE_UNITS[0].items[0].text.en));s.sound=false;controller.click({dataset:{l:'speak-slow'}});assert.equal(calls.length,2);s.sound=true;voices=[remote,other];controller.click({dataset:{l:'speak'}});assert.equal(calls.length,2);assert.equal(JSON.stringify(p),before);
+ }finally{if(prevSynth===undefined)delete globalThis.speechSynthesis;else globalThis.speechSynthesis=prevSynth;if(prevUtterance===undefined)delete globalThis.SpeechSynthesisUtterance;else globalThis.SpeechSynthesisUtterance=prevUtterance;}
+});

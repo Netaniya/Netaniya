@@ -81,3 +81,5 @@ Extended grammar checkpoints: 80 additional authored questions in 20 existing to
 Extended checkpoint coverage now spans 52/88 topics: all six topics of eight languages plus two each in German and English. 128 additional prompts bring the total grammar exercise count to 560. Remaining: 36 German/English topics. Native review pending.
 
 All 88 existing grammar topics now include four independent extended checkpoint prompts, in addition to two practice and two basic checkpoint prompts (704 total questions). The final 144 prompts cover 36 German/English topics; independent linguistic review and CI pending.
+
+Owner review: CI desktop job packages `n25x-offline-review-candidate` after module tests, before browser tests. Download the ZIP from the Actions run, extract and open `N25x-Studio.html`; commit and SHA-256 metadata included. This is a candidate, not a public site deployment. Retention 14 days. Repository privacy change is deferred until completion with a separate employer-facing deployment; client-side source remains inspectable. Listening adds normal/slow local voices, no speech recognition or pronunciation scoring.
