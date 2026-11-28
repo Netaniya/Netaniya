@@ -162,3 +162,6 @@ Under the creator's instruction to broaden assessments, the assistant authored 8
 
 ### 28 November — extended assessments for eight complete grammar routes
 Assistant added 128 original questions to 32 remaining topics of Georgian, Ukrainian, Russian, Chinese, Spanish, French, Italian and Japanese, under the creator's direction. All six topics of each of these routes now have four additional questions. Existing IDs and previous results are unchanged. Native-language review pending.
+
+### 28 November — full extended grammar coverage
+Assistant added 144 original questions for the remaining 36 German and English topics, completing the creator-directed extension to all 88 existing grammar topics. Existing basic and extended question indices are unchanged. Structural checks and source validation do not replace independent linguistic review.

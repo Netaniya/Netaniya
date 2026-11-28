@@ -9205,5 +9205,1373 @@ export const GRAMMAR_EXTENDED=Object.freeze({
         "作る"
       ]
     }
+  ],
+  "de-articles": [
+    {
+      "sentence": "___ Schlüssel liegt hier.",
+      "answer": "Der",
+      "options": [
+        "Der",
+        "Die",
+        "Das"
+      ]
+    },
+    {
+      "sentence": "___ Uhr ist kaputt.",
+      "answer": "Die",
+      "options": [
+        "Die",
+        "Der",
+        "Das"
+      ]
+    },
+    {
+      "sentence": "___ Fahrrad ist blau.",
+      "answer": "Das",
+      "options": [
+        "Das",
+        "Der",
+        "Die"
+      ]
+    },
+    {
+      "sentence": "___ Schuhe sind nass.",
+      "answer": "Die",
+      "options": [
+        "Die",
+        "Der",
+        "Das"
+      ]
+    }
+  ],
+  "de-accusative": [
+    {
+      "sentence": "Ich brauche ___ Stift. (der)",
+      "answer": "den",
+      "options": [
+        "den",
+        "der",
+        "dem"
+      ]
+    },
+    {
+      "sentence": "Sie hat ___ Bruder. (ein)",
+      "answer": "einen",
+      "options": [
+        "einen",
+        "ein",
+        "einem"
+      ]
+    },
+    {
+      "sentence": "Wir kaufen ___ Brot. (das)",
+      "answer": "das",
+      "options": [
+        "das",
+        "dem",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Er sucht ___ Brille. (die)",
+      "answer": "die",
+      "options": [
+        "die",
+        "der",
+        "den"
+      ]
+    }
+  ],
+  "de-dative": [
+    {
+      "sentence": "Wir fahren mit ___ Zug. (der)",
+      "answer": "dem",
+      "options": [
+        "dem",
+        "den",
+        "der"
+      ]
+    },
+    {
+      "sentence": "Ich rede mit ___ Nachbarin. (die)",
+      "answer": "der",
+      "options": [
+        "der",
+        "die",
+        "dem"
+      ]
+    },
+    {
+      "sentence": "Er schreibt mit ___ Handy. (das)",
+      "answer": "dem",
+      "options": [
+        "dem",
+        "das",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Sie spielt mit ___ Kindern. (Plural)",
+      "answer": "den",
+      "options": [
+        "den",
+        "die",
+        "dem"
+      ]
+    }
+  ],
+  "de-modal": [
+    {
+      "sentence": "Er kann gut ___. (tanzen)",
+      "answer": "tanzen",
+      "options": [
+        "tanzen",
+        "tanzt",
+        "zu tanzen"
+      ]
+    },
+    {
+      "sentence": "Ihr müsst jetzt ___. (gehen)",
+      "answer": "gehen",
+      "options": [
+        "gehen",
+        "geht",
+        "zu gehen"
+      ]
+    },
+    {
+      "sentence": "Ich will morgen ___. (reisen)",
+      "answer": "reisen",
+      "options": [
+        "reisen",
+        "reise",
+        "zu reisen"
+      ]
+    },
+    {
+      "sentence": "Wir ___ heute arbeiten. (müssen)",
+      "answer": "müssen",
+      "options": [
+        "müssen",
+        "muss",
+        "müsst"
+      ]
+    }
+  ],
+  "de-perfect": [
+    {
+      "sentence": "Du ___ gestern gekocht.",
+      "answer": "hast",
+      "options": [
+        "hast",
+        "bist",
+        "hat"
+      ]
+    },
+    {
+      "sentence": "Wir ___ nach Berlin gefahren. (reisen)",
+      "answer": "sind",
+      "options": [
+        "sind",
+        "haben",
+        "seid"
+      ]
+    },
+    {
+      "sentence": "Ich ___ einen Brief geschrieben.",
+      "answer": "habe",
+      "options": [
+        "habe",
+        "bin",
+        "hat"
+      ]
+    },
+    {
+      "sentence": "Ihr ___ spät gekommen.",
+      "answer": "seid",
+      "options": [
+        "seid",
+        "habt",
+        "sind"
+      ]
+    }
+  ],
+  "de-weil": [
+    {
+      "sentence": "Ich trinke Wasser, weil ich Durst ___.",
+      "answer": "habe",
+      "options": [
+        "habe",
+        "haben",
+        "habe ich"
+      ]
+    },
+    {
+      "sentence": "Wir gehen früher, weil wir den Zug ___.",
+      "answer": "erreichen wollen",
+      "options": [
+        "erreichen wollen",
+        "wollen erreichen",
+        "wollen wir erreichen"
+      ]
+    },
+    {
+      "sentence": "Er bleibt zu Hause, weil er krank ___.",
+      "answer": "ist",
+      "options": [
+        "ist",
+        "sind",
+        "ist er"
+      ]
+    },
+    {
+      "sentence": "Sie öffnet das Fenster, weil es warm ___.",
+      "answer": "ist",
+      "options": [
+        "ist",
+        "sein",
+        "ist es"
+      ]
+    }
+  ],
+  "de-pronouns": [
+    {
+      "sentence": "Der Schlüssel ist weg. ___ ist weg.",
+      "answer": "Er",
+      "options": [
+        "Er",
+        "Sie",
+        "Es"
+      ]
+    },
+    {
+      "sentence": "Die Uhr ist teuer. ___ ist teuer.",
+      "answer": "Sie",
+      "options": [
+        "Sie",
+        "Er",
+        "Es"
+      ]
+    },
+    {
+      "sentence": "Das Glas ist leer. ___ ist leer.",
+      "answer": "Es",
+      "options": [
+        "Es",
+        "Sie",
+        "Er"
+      ]
+    },
+    {
+      "sentence": "Die Blumen blühen. ___ blühen.",
+      "answer": "Sie",
+      "options": [
+        "Sie",
+        "Er",
+        "Es"
+      ]
+    }
+  ],
+  "de-negation": [
+    {
+      "sentence": "Ich habe ___ Geld.",
+      "answer": "kein",
+      "options": [
+        "kein",
+        "keine",
+        "nicht"
+      ]
+    },
+    {
+      "sentence": "Die Suppe ist ___ kalt.",
+      "answer": "nicht",
+      "options": [
+        "nicht",
+        "kein",
+        "keine"
+      ]
+    },
+    {
+      "sentence": "Er hat ___ Schwester.",
+      "answer": "keine",
+      "options": [
+        "keine",
+        "kein",
+        "nicht"
+      ]
+    },
+    {
+      "sentence": "Das Zimmer ist ___ groß.",
+      "answer": "nicht",
+      "options": [
+        "nicht",
+        "kein",
+        "keine"
+      ]
+    }
+  ],
+  "de-v2": [
+    {
+      "sentence": "Nach dem Essen ___ spazieren. (wir / gehen)",
+      "answer": "gehen wir",
+      "options": [
+        "gehen wir",
+        "wir gehen",
+        "geht wir"
+      ]
+    },
+    {
+      "sentence": "Heute ___ länger. (ich / schlafen)",
+      "answer": "schlafe ich",
+      "options": [
+        "schlafe ich",
+        "ich schlafe",
+        "schlafen ich"
+      ]
+    },
+    {
+      "sentence": "Am Montag ___ Deutsch. (sie, Singular / lernen)",
+      "answer": "lernt sie",
+      "options": [
+        "lernt sie",
+        "sie lernt",
+        "lernen sie"
+      ]
+    },
+    {
+      "sentence": "Dort ___ meine Eltern. (wohnen)",
+      "answer": "wohnen meine Eltern",
+      "options": [
+        "wohnen meine Eltern",
+        "meine Eltern wohnen",
+        "wohnt meine Eltern"
+      ]
+    }
+  ],
+  "de-separable": [
+    {
+      "sentence": "Er ___ die Tür ___. (zumachen)",
+      "answer": "macht ... zu",
+      "options": [
+        "macht ... zu",
+        "zumacht ... zu",
+        "macht ... auf"
+      ]
+    },
+    {
+      "sentence": "Ihr ___ um sechs Uhr ___. (aufstehen)",
+      "answer": "steht ... auf",
+      "options": [
+        "steht ... auf",
+        "aufsteht ... auf",
+        "stehen ... auf"
+      ]
+    },
+    {
+      "sentence": "Wir ___ morgen ___. (mitkommen)",
+      "answer": "kommen ... mit",
+      "options": [
+        "kommen ... mit",
+        "mitkommen ... mit",
+        "kommt ... mit"
+      ]
+    },
+    {
+      "sentence": "Du ___ den Fernseher ___. (einschalten)",
+      "answer": "schaltest ... ein",
+      "options": [
+        "schaltest ... ein",
+        "einschaltest ... ein",
+        "schaltest ... aus"
+      ]
+    }
+  ],
+  "de-possessive": [
+    {
+      "sentence": "Sie hat einen Sohn. Das ist ___ Sohn.",
+      "answer": "ihr",
+      "options": [
+        "ihr",
+        "ihre",
+        "ihren"
+      ]
+    },
+    {
+      "sentence": "Ihr habt ein Haus. Das ist ___ Haus.",
+      "answer": "euer",
+      "options": [
+        "euer",
+        "eure",
+        "euren"
+      ]
+    },
+    {
+      "sentence": "Ich habe zwei Katzen. Das sind ___ Katzen.",
+      "answer": "meine",
+      "options": [
+        "meine",
+        "mein",
+        "meinen"
+      ]
+    },
+    {
+      "sentence": "Du hast einen Ball. Das ist ___ Ball.",
+      "answer": "dein",
+      "options": [
+        "dein",
+        "deine",
+        "deinen"
+      ]
+    }
+  ],
+  "de-two-way": [
+    {
+      "sentence": "Die Schuhe stehen unter ___ Bett. (das)",
+      "answer": "dem",
+      "options": [
+        "dem",
+        "das",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Ich stelle die Schuhe unter ___ Bett. (das, Ziel)",
+      "answer": "das",
+      "options": [
+        "das",
+        "dem",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Wir sitzen in ___ Küche. (die)",
+      "answer": "der",
+      "options": [
+        "der",
+        "die",
+        "dem"
+      ]
+    },
+    {
+      "sentence": "Wir gehen in ___ Küche. (die, Ziel)",
+      "answer": "die",
+      "options": [
+        "die",
+        "der",
+        "dem"
+      ]
+    }
+  ],
+  "de-prateritum": [
+    {
+      "sentence": "Ich ___ gestern krank. (sein)",
+      "answer": "war",
+      "options": [
+        "war",
+        "warst",
+        "waren"
+      ]
+    },
+    {
+      "sentence": "Du ___ viel Arbeit. (haben)",
+      "answer": "hattest",
+      "options": [
+        "hattest",
+        "hatte",
+        "hatten"
+      ]
+    },
+    {
+      "sentence": "Die Kinder ___ zu Hause. (sein)",
+      "answer": "waren",
+      "options": [
+        "waren",
+        "war",
+        "wart"
+      ]
+    },
+    {
+      "sentence": "Sie (Singular) ___ Hunger. (haben)",
+      "answer": "hatte",
+      "options": [
+        "hatte",
+        "hattest",
+        "hatten"
+      ]
+    }
+  ],
+  "de-relative": [
+    {
+      "sentence": "Der Hund, ___ laut bellt, gehört mir.",
+      "answer": "der",
+      "options": [
+        "der",
+        "den",
+        "dem"
+      ]
+    },
+    {
+      "sentence": "Das ist der Nachbar, ___ ich helfe.",
+      "answer": "dem",
+      "options": [
+        "dem",
+        "der",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Die Tasche, ___ ich trage, ist rot.",
+      "answer": "die",
+      "options": [
+        "die",
+        "der",
+        "den"
+      ]
+    },
+    {
+      "sentence": "Das Kind, ___ dort spielt, ist mein Sohn.",
+      "answer": "das",
+      "options": [
+        "das",
+        "dem",
+        "den"
+      ]
+    }
+  ],
+  "de-adjective": [
+    {
+      "sentence": "Das ___ Haus ist groß. (weiß)",
+      "answer": "weiße",
+      "options": [
+        "weiße",
+        "weißen",
+        "weißer"
+      ]
+    },
+    {
+      "sentence": "Wir besuchen den ___ Park. (schön)",
+      "answer": "schönen",
+      "options": [
+        "schönen",
+        "schöne",
+        "schönes"
+      ]
+    },
+    {
+      "sentence": "Ich helfe der ___ Frau. (alt)",
+      "answer": "alten",
+      "options": [
+        "alten",
+        "alte",
+        "altes"
+      ]
+    },
+    {
+      "sentence": "Der ___ Mantel ist warm. (dick)",
+      "answer": "dicke",
+      "options": [
+        "dicke",
+        "dicken",
+        "dickes"
+      ]
+    }
+  ],
+  "de-passive": [
+    {
+      "sentence": "Das Essen ___ gerade gekocht. (Präsens)",
+      "answer": "wird",
+      "options": [
+        "wird",
+        "werden",
+        "wurde"
+      ]
+    },
+    {
+      "sentence": "Die Straße ___ gestern gesperrt. (Präteritum)",
+      "answer": "wurde",
+      "options": [
+        "wurde",
+        "wurden",
+        "wird"
+      ]
+    },
+    {
+      "sentence": "Die Bücher werden ___. (verkaufen)",
+      "answer": "verkauft",
+      "options": [
+        "verkauft",
+        "verkaufen",
+        "verkaufte"
+      ]
+    },
+    {
+      "sentence": "Die Pakete ___ gestern verschickt. (Präteritum)",
+      "answer": "wurden",
+      "options": [
+        "wurden",
+        "wurde",
+        "werden"
+      ]
+    }
+  ],
+  "de-konjunktiv2": [
+    {
+      "sentence": "Wenn ich Urlaub ___, würde ich ans Meer fahren. (haben)",
+      "answer": "hätte",
+      "options": [
+        "hätte",
+        "habe",
+        "hatte"
+      ]
+    },
+    {
+      "sentence": "Wenn du hier ___, könnten wir reden. (sein)",
+      "answer": "wärst",
+      "options": [
+        "wärst",
+        "bist",
+        "warst"
+      ]
+    },
+    {
+      "sentence": "Sie ___ dir helfen, wenn sie Zeit hätte. (können)",
+      "answer": "könnte",
+      "options": [
+        "könnte",
+        "kann",
+        "konnte"
+      ]
+    },
+    {
+      "sentence": "Wenn ihr wolltet, ___ ihr länger bleiben. (würde)",
+      "answer": "würdet",
+      "options": [
+        "würdet",
+        "werdet",
+        "würden"
+      ]
+    }
+  ],
+  "de-indirect": [
+    {
+      "sentence": "Er behauptet, er ___ gesund. (sein, Konjunktiv I)",
+      "answer": "sei",
+      "options": [
+        "sei",
+        "ist",
+        "war"
+      ]
+    },
+    {
+      "sentence": "Sie erklärt, sie ___ ein Auto. (haben, Konjunktiv I)",
+      "answer": "habe",
+      "options": [
+        "habe",
+        "hat",
+        "hatte"
+      ]
+    },
+    {
+      "sentence": "Er sagt, er ___ in Köln. (wohnen, Konjunktiv I)",
+      "answer": "wohne",
+      "options": [
+        "wohne",
+        "wohnt",
+        "wohnte"
+      ]
+    },
+    {
+      "sentence": "Sie berichtet, sie ___ morgen. (reisen, Konjunktiv I)",
+      "answer": "reise",
+      "options": [
+        "reise",
+        "reist",
+        "reiste"
+      ]
+    }
+  ],
+  "en-progressive": [
+    {
+      "sentence": "Look! The dog ___ in the garden. (run)",
+      "answer": "is running",
+      "options": [
+        "is running",
+        "are running",
+        "runs"
+      ]
+    },
+    {
+      "sentence": "We ___ lunch right now. (have)",
+      "answer": "are having",
+      "options": [
+        "are having",
+        "is having",
+        "have"
+      ]
+    },
+    {
+      "sentence": "I ___ a letter at the moment. (write)",
+      "answer": "am writing",
+      "options": [
+        "am writing",
+        "is writing",
+        "write"
+      ]
+    },
+    {
+      "sentence": "They are ___ for the bus now. (wait)",
+      "answer": "waiting",
+      "options": [
+        "waiting",
+        "wait",
+        "waits"
+      ]
+    }
+  ],
+  "en-past": [
+    {
+      "sentence": "Yesterday she ___ a letter. (write)",
+      "answer": "wrote",
+      "options": [
+        "wrote",
+        "write",
+        "writes"
+      ]
+    },
+    {
+      "sentence": "Last week I ___ my aunt. (visit)",
+      "answer": "visited",
+      "options": [
+        "visited",
+        "visit",
+        "visits"
+      ]
+    },
+    {
+      "sentence": "Did he ___ the door? (open)",
+      "answer": "open",
+      "options": [
+        "open",
+        "opened",
+        "opens"
+      ]
+    },
+    {
+      "sentence": "They didn't ___ breakfast. (eat)",
+      "answer": "eat",
+      "options": [
+        "eat",
+        "ate",
+        "eats"
+      ]
+    }
+  ],
+  "en-comparative": [
+    {
+      "sentence": "A train is ___ than a bicycle. (fast)",
+      "answer": "faster",
+      "options": [
+        "faster",
+        "fastest",
+        "more fast"
+      ]
+    },
+    {
+      "sentence": "This bag is ___ than that bag. (expensive)",
+      "answer": "more expensive",
+      "options": [
+        "more expensive",
+        "most expensive",
+        "expensiver"
+      ]
+    },
+    {
+      "sentence": "His score is ___ than mine. (bad)",
+      "answer": "worse",
+      "options": [
+        "worse",
+        "worst",
+        "badder"
+      ]
+    },
+    {
+      "sentence": "The blue box is ___ than the red one. (heavy)",
+      "answer": "heavier",
+      "options": [
+        "heavier",
+        "heaviest",
+        "more heavier"
+      ]
+    }
+  ],
+  "en-perfect": [
+    {
+      "sentence": "I have never ___ sushi. (eat)",
+      "answer": "eaten",
+      "options": [
+        "eaten",
+        "ate",
+        "eating"
+      ]
+    },
+    {
+      "sentence": "They ___ already arrived.",
+      "answer": "have",
+      "options": [
+        "have",
+        "has",
+        "are"
+      ]
+    },
+    {
+      "sentence": "She has just ___ the door. (close)",
+      "answer": "closed",
+      "options": [
+        "closed",
+        "close",
+        "closing"
+      ]
+    },
+    {
+      "sentence": "We have ___ this film before. (see)",
+      "answer": "seen",
+      "options": [
+        "seen",
+        "saw",
+        "seeing"
+      ]
+    }
+  ],
+  "en-conditional": [
+    {
+      "sentence": "If he ___ the train, he will call us. (miss)",
+      "answer": "misses",
+      "options": [
+        "misses",
+        "will miss",
+        "missing"
+      ]
+    },
+    {
+      "sentence": "If you help me, we will ___ earlier. (finish)",
+      "answer": "finish",
+      "options": [
+        "finish",
+        "finished",
+        "finishing"
+      ]
+    },
+    {
+      "sentence": "If the weather ___ good, we will go outside. (be)",
+      "answer": "is",
+      "options": [
+        "is",
+        "will be",
+        "being"
+      ]
+    },
+    {
+      "sentence": "If she studies, she will ___ the test. (pass)",
+      "answer": "pass",
+      "options": [
+        "pass",
+        "passed",
+        "passes"
+      ]
+    }
+  ],
+  "en-passive": [
+    {
+      "sentence": "The cake was ___ this morning. (make)",
+      "answer": "made",
+      "options": [
+        "made",
+        "make",
+        "making"
+      ]
+    },
+    {
+      "sentence": "The rooms ___ cleaned every morning. (present)",
+      "answer": "are",
+      "options": [
+        "are",
+        "is",
+        "were"
+      ]
+    },
+    {
+      "sentence": "The letter was ___ yesterday. (send)",
+      "answer": "sent",
+      "options": [
+        "sent",
+        "send",
+        "sending"
+      ]
+    },
+    {
+      "sentence": "The trees ___ planted last year. (past)",
+      "answer": "were",
+      "options": [
+        "were",
+        "was",
+        "are"
+      ]
+    }
+  ],
+  "en-articles": [
+    {
+      "sentence": "She needs ___ umbrella. (any one)",
+      "answer": "an",
+      "options": [
+        "an",
+        "a",
+        "some"
+      ]
+    },
+    {
+      "sentence": "He bought ___ bicycle. (a nonspecific one)",
+      "answer": "a",
+      "options": [
+        "a",
+        "an",
+        "some"
+      ]
+    },
+    {
+      "sentence": "I saw ___ elephant. (a nonspecific one)",
+      "answer": "an",
+      "options": [
+        "an",
+        "a",
+        "some"
+      ]
+    },
+    {
+      "sentence": "She wears ___ uniform. (a nonspecific one)",
+      "answer": "a",
+      "options": [
+        "a",
+        "an",
+        "some"
+      ]
+    }
+  ],
+  "en-pronouns": [
+    {
+      "sentence": "The teacher sees me and Tom. She sees ___.",
+      "answer": "us",
+      "options": [
+        "us",
+        "we",
+        "our"
+      ]
+    },
+    {
+      "sentence": "I like this book. I like ___.",
+      "answer": "it",
+      "options": [
+        "it",
+        "its",
+        "they"
+      ]
+    },
+    {
+      "sentence": "He called my parents. He called ___.",
+      "answer": "them",
+      "options": [
+        "them",
+        "they",
+        "their"
+      ]
+    },
+    {
+      "sentence": "Anna spoke to Peter. Anna spoke to ___.",
+      "answer": "him",
+      "options": [
+        "him",
+        "he",
+        "his"
+      ]
+    }
+  ],
+  "en-there": [
+    {
+      "sentence": "There ___ two dogs outside.",
+      "answer": "are",
+      "options": [
+        "are",
+        "is",
+        "am"
+      ]
+    },
+    {
+      "sentence": "There ___ a pencil on the desk.",
+      "answer": "is",
+      "options": [
+        "is",
+        "are",
+        "am"
+      ]
+    },
+    {
+      "sentence": "___ there a bank near here?",
+      "answer": "Is",
+      "options": [
+        "Is",
+        "Are",
+        "Am"
+      ]
+    },
+    {
+      "sentence": "___ there any apples left?",
+      "answer": "Are",
+      "options": [
+        "Are",
+        "Is",
+        "Am"
+      ]
+    }
+  ],
+  "en-quantifiers": [
+    {
+      "sentence": "How ___ milk do we need?",
+      "answer": "much",
+      "options": [
+        "much",
+        "many",
+        "a lot"
+      ]
+    },
+    {
+      "sentence": "How ___ windows are open?",
+      "answer": "many",
+      "options": [
+        "many",
+        "much",
+        "a lot"
+      ]
+    },
+    {
+      "sentence": "How ___ money did you spend?",
+      "answer": "much",
+      "options": [
+        "much",
+        "many",
+        "a lot"
+      ]
+    },
+    {
+      "sentence": "How ___ books did she buy?",
+      "answer": "many",
+      "options": [
+        "many",
+        "much",
+        "a lot"
+      ]
+    }
+  ],
+  "en-future": [
+    {
+      "sentence": "I will ___ the bags for you. (carry)",
+      "answer": "carry",
+      "options": [
+        "carry",
+        "carries",
+        "to carry"
+      ]
+    },
+    {
+      "sentence": "They will ___ tomorrow. (leave)",
+      "answer": "leave",
+      "options": [
+        "leave",
+        "leaves",
+        "left"
+      ]
+    },
+    {
+      "sentence": "Will she ___ with us? (come)",
+      "answer": "come",
+      "options": [
+        "come",
+        "comes",
+        "to come"
+      ]
+    },
+    {
+      "sentence": "He won't ___ the answer. (forget)",
+      "answer": "forget",
+      "options": [
+        "forget",
+        "forgets",
+        "forgetting"
+      ]
+    }
+  ],
+  "en-modal": [
+    {
+      "sentence": "She can ___ the piano. (play)",
+      "answer": "play",
+      "options": [
+        "play",
+        "plays",
+        "to play"
+      ]
+    },
+    {
+      "sentence": "We must ___ quiet. (be)",
+      "answer": "be",
+      "options": [
+        "be",
+        "are",
+        "to be"
+      ]
+    },
+    {
+      "sentence": "You should ___ a doctor. (see)",
+      "answer": "see",
+      "options": [
+        "see",
+        "sees",
+        "seeing"
+      ]
+    },
+    {
+      "sentence": "Can he ___ French? (speak)",
+      "answer": "speak",
+      "options": [
+        "speak",
+        "speaks",
+        "to speak"
+      ]
+    }
+  ],
+  "en-past-cont": [
+    {
+      "sentence": "At noon yesterday she ___ lunch. (cook)",
+      "answer": "was cooking",
+      "options": [
+        "was cooking",
+        "were cooking",
+        "was cook"
+      ]
+    },
+    {
+      "sentence": "They ___ when the lights went out. (read)",
+      "answer": "were reading",
+      "options": [
+        "were reading",
+        "was reading",
+        "were read"
+      ]
+    },
+    {
+      "sentence": "I was ___ when the bell rang. (sleep)",
+      "answer": "sleeping",
+      "options": [
+        "sleeping",
+        "slept",
+        "sleep"
+      ]
+    },
+    {
+      "sentence": "We ___ at nine last night. (study)",
+      "answer": "were studying",
+      "options": [
+        "were studying",
+        "was studying",
+        "were study"
+      ]
+    }
+  ],
+  "en-relative": [
+    {
+      "sentence": "My uncle, ___ lives in Rome, is visiting.",
+      "answer": "who",
+      "options": [
+        "who",
+        "which",
+        "what"
+      ]
+    },
+    {
+      "sentence": "The car, ___ is blue, belongs to her.",
+      "answer": "which",
+      "options": [
+        "which",
+        "who",
+        "what"
+      ]
+    },
+    {
+      "sentence": "Maria, ___ teaches English, is my friend.",
+      "answer": "who",
+      "options": [
+        "who",
+        "which",
+        "what"
+      ]
+    },
+    {
+      "sentence": "This computer, ___ has a new screen, works well.",
+      "answer": "which",
+      "options": [
+        "which",
+        "who",
+        "what"
+      ]
+    }
+  ],
+  "en-past-perfect": [
+    {
+      "sentence": "By the time we arrived, he had already ___. (eat)",
+      "answer": "eaten",
+      "options": [
+        "eaten",
+        "ate",
+        "eating"
+      ]
+    },
+    {
+      "sentence": "She had ___ her bag before leaving. (pack)",
+      "answer": "packed",
+      "options": [
+        "packed",
+        "pack",
+        "packing"
+      ]
+    },
+    {
+      "sentence": "They had ___ the letter before the meeting. (read)",
+      "answer": "read",
+      "options": [
+        "read",
+        "reads",
+        "reading"
+      ]
+    },
+    {
+      "sentence": "I had ___ my keys before the trip. (find)",
+      "answer": "found",
+      "options": [
+        "found",
+        "find",
+        "finding"
+      ]
+    }
+  ],
+  "en-second-conditional": [
+    {
+      "sentence": "If I ___ taller, I would play basketball. (be)",
+      "answer": "were",
+      "options": [
+        "were",
+        "am",
+        "will be"
+      ]
+    },
+    {
+      "sentence": "If he had a car, he would ___ to work. (drive)",
+      "answer": "drive",
+      "options": [
+        "drive",
+        "drove",
+        "driving"
+      ]
+    },
+    {
+      "sentence": "If they ___ more time, they would visit us. (have)",
+      "answer": "had",
+      "options": [
+        "had",
+        "have",
+        "will have"
+      ]
+    },
+    {
+      "sentence": "If she knew the answer, she ___ tell you.",
+      "answer": "would",
+      "options": [
+        "would",
+        "will",
+        "has"
+      ]
+    }
+  ],
+  "en-third-conditional": [
+    {
+      "sentence": "If I had ___ the bus, I would have arrived earlier. (catch)",
+      "answer": "caught",
+      "options": [
+        "caught",
+        "catch",
+        "catching"
+      ]
+    },
+    {
+      "sentence": "If you had asked, I would have ___. (help)",
+      "answer": "helped",
+      "options": [
+        "helped",
+        "help",
+        "helping"
+      ]
+    },
+    {
+      "sentence": "If she had ___ the alarm, she would have woken up. (hear)",
+      "answer": "heard",
+      "options": [
+        "heard",
+        "hear",
+        "hearing"
+      ]
+    },
+    {
+      "sentence": "If we had known, we ___ have stayed home.",
+      "answer": "would",
+      "options": [
+        "would",
+        "will",
+        "had"
+      ]
+    }
+  ],
+  "en-inversion": [
+    {
+      "sentence": "Never ___ so much rain. (we / have / seen)",
+      "answer": "have we seen",
+      "options": [
+        "have we seen",
+        "we have seen",
+        "we seen have"
+      ]
+    },
+    {
+      "sentence": "Rarely ___ so early. (he / does / arrive)",
+      "answer": "does he arrive",
+      "options": [
+        "does he arrive",
+        "he does arrive",
+        "he arrive does"
+      ]
+    },
+    {
+      "sentence": "Seldom ___ such a chance. (they / do / get)",
+      "answer": "do they get",
+      "options": [
+        "do they get",
+        "they do get",
+        "they get do"
+      ]
+    },
+    {
+      "sentence": "Never before ___ this city. (she / had / visited)",
+      "answer": "had she visited",
+      "options": [
+        "had she visited",
+        "she had visited",
+        "she visited had"
+      ]
+    }
   ]
 });

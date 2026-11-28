@@ -252,8 +252,8 @@ test('Grammar review recommendations remain independent per language, even after
 
 test('Extended grammar checkpoints: independent results, correction priority and old profile compatibility',async()=>{
  const {GRAMMAR_EXTENDED,extendedGrammarQuestions,recordExtendedGrammar,grammarReviewLessons}=await import('../workshop/language-course.mjs');const s=fresh(),p=s.learning.languages;
- assert.equal(Object.keys(GRAMMAR_EXTENDED).length,52);
- for(const lang of COURSE_LANGUAGES){p.language=lang;const lessons=grammarRoute(lang).filter(l=>extendedGrammarQuestions(l.id).length);assert.equal(lessons.length,['de','en'].includes(lang)?2:6);for(const l of lessons){const qs=extendedGrammarQuestions(l.id);assert.equal(qs.length,4);assert.equal(new Set([...l.practice,...l.checkpoint,...qs].map(q=>q.sentence)).size,8);
+ assert.equal(Object.keys(GRAMMAR_EXTENDED).length,88);
+ for(const lang of COURSE_LANGUAGES){p.language=lang;const lessons=grammarRoute(lang).filter(l=>extendedGrammarQuestions(l.id).length);assert.equal(lessons.length,grammarRoute(lang).length);for(const l of lessons){const qs=extendedGrammarQuestions(l.id);assert.equal(qs.length,4);assert.equal(new Set([...l.practice,...l.checkpoint,...qs].map(q=>q.sentence)).size,8);
  assert(recordExtendedGrammar(p,l.id,qs.map(q=>q.options.find(v=>v!==q.answer))));assert(grammarReviewLessons(p).some(v=>v.id===l.id));assert(!p.grammar.passed[l.id]);assert(!p.grammar.evidence[l.id]);assert(recordExtendedGrammar(p,l.id,qs.map(q=>q.answer)));assert(!grammarReviewLessons(p).some(v=>v.id===l.id));assert.equal(p.grammar.extended[l.id].best,4);}}
  assert.deepEqual(parseProfile(JSON.stringify(s)).learning.languages.grammar,p.grammar);assert.deepEqual(parseLanguageCourse({grammar:{passed:{'en-be':true}}}).grammar.extended,{});
 });

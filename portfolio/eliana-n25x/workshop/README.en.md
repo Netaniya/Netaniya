@@ -79,3 +79,5 @@ Grammar evidence: latest/best completed checkpoint, missed question indices, cor
 Extended grammar checkpoints: 80 additional authored questions in 20 existing topics across ten languages (432 total grammar exercises). Separate results and review priority preserve previous basic checkpoints. The remaining 68 topics retain their original checkpoints; native review and CI pending.
 
 Extended checkpoint coverage now spans 52/88 topics: all six topics of eight languages plus two each in German and English. 128 additional prompts bring the total grammar exercise count to 560. Remaining: 36 German/English topics. Native review pending.
+
+All 88 existing grammar topics now include four independent extended checkpoint prompts, in addition to two practice and two basic checkpoint prompts (704 total questions). The final 144 prompts cover 36 German/English topics; independent linguistic review and CI pending.
