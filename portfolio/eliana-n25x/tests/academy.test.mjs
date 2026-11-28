@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -216,4 +216,14 @@ test('SQL Lab: six checked queries, typed filters, ordering, counts, limits and 
  assert.deepEqual(queryProjects('SELECT COUNT(*) FROM projects LIMIT 0').rows,[]);
  for(const q of ['DROP TABLE projects','SELECT * FROM projects; DELETE FROM projects','SELECT password FROM projects','SELECT id,id FROM projects','SELECT * FROM projects WHERE done = 2','SELECT * FROM projects WHERE id = \'1\'','SELECT * FROM projects WHERE title = 1','SELECT * FROM projects WHERE id=1 OR 1=1'])assert(!queryProjects(q).ok,q);
  const api=createApiLab();api.request('POST','/projects','{"title":"From API","done":true}');assert.deepEqual(queryProjects('SELECT title FROM projects WHERE done = 1',api.snapshot()).rows,[['From API']]);assert.equal(SQL_SAMPLE.length,4);
+});
+test('Python Studio: all six solutions pass and broken drafts fail; strict bounded subset',()=>{
+ for(const [i,m] of PYTHON_LESSONS.entries()){assert(gradePython(i,m.source).some(r=>!r.passed));assert(gradePython(i,m.solution).every(r=>r.passed));}
+ const r=(body,args=[])=>runPython('def f('+ (args.length?'x':'') +'):\n'+body,'f',args);
+ assert.equal(r('    return -7 // 3').value,-3);assert.equal(r('    return -7 % 3').value,2);
+ assert.equal(r('    return 7 % -3').value,-2);assert.equal(r('    return not 1 == 2').value,true);
+ assert.equal(r('    return False and 1 / 0').value,false);assert.equal(r('    return True + 2').value,3);
+ assert.equal(r('    s = 0\n    for i in range(5, 0, -2):\n        s = s + i\n    return s').value,9);
+ assert.equal(r('    for i in range(100000):\n        x = i\n    return 1').error,'budget');
+ for(const b of ['    import os','    return __import__(1)','    return x.constructor','    return 1 < 2 < 3','  return 1','    return 1 / 0','    return 1; return 2','    for i in range(0, 4, 0):\n        x = i\n    return 0'])assert(!r(b).ok,b);
 });

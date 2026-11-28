@@ -222,3 +222,76 @@ export function gradeSQL(index,sql){
  const expected=SQL_LESSONS[index];if(!expected)return {ok:false,error:'unsupported'};
  const result=queryProjects(sql);return result.ok?{...result,passed:JSON.stringify(result)===JSON.stringify(queryProjects(expected.sql))}:result;
 }
+
+
+// A small numeric Python subset with its own parser and bounded execution.
+// No imports, strings, attributes, host calls, eval or arbitrary Python runtime.
+export function runPython(source,entry,args){
+ const fail=code=>{throw Error(code)},name=/^[A-Za-z_][A-Za-z_0-9]*$/,reserved=new Set(['def','if','else','return','for','in','range','True','False','and','or','not','import','from','while','class','lambda','None','pass','break','continue','global','nonlocal','try','except','raise','assert','yield','with','as','del','is','elif','async','await','finally']);
+ const validName=v=>name.test(v||'')&&!reserved.has(v);
+ const primitive=v=>{if(typeof v==='boolean'||typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<=1e9)return v;fail('value');};
+ try{
+  if(typeof source!=='string'||source.length>4000||!Array.isArray(args)||args.length>8)fail('size');
+  const lines=source.replace(/\r\n/g,'\n').split('\n').map(s=>s.split('#')[0].trimEnd()).filter(s=>s.trim());
+  if(lines.length>100||lines.some(s=>/\t/.test(s)))fail('syntax');
+  const header=/^def ([A-Za-z_]\w*)\(([^()]*)\):$/.exec(lines[0]||'');if(!header||header[1]!==entry||!validName(entry))fail('syntax');
+  const params=header[2].trim()?header[2].split(',').map(x=>x.trim()):[];if(params.length!==args.length||params.some(v=>!validName(v))||new Set(params).size!==params.length)fail('name');
+  let index=1,budget=3000;const trace=[];const tick=()=>{if(--budget<0)fail('budget');};
+  function expr(text){
+   const tokens=[];const re=/\s+|\d+(?:\.\d+)?|[A-Za-z_]\w*|\/\/|==|!=|<=|>=|[()+*/%<>-]/y;let pos=0,i=0,depth=0;
+   while(pos<text.length){re.lastIndex=pos;const m=re.exec(text);if(!m)fail('syntax');pos=re.lastIndex;if(!/^\s/.test(m[0]))tokens.push(m[0]);if(tokens.length>200)fail('size');}
+   const prec={or:1,and:2,'==':4,'!=':4,'<':4,'>':4,'<=':4,'>=':4,'+':5,'-':5,'*':6,'/':6,'//':6,'%':6};
+   function read(min=0){
+    if(++depth>40)fail('depth');let t=tokens[i++],n;
+    if(t==='not'||t==='-'||t==='+')n={op:t,unary:read(t==='not'?3:7)};
+    else if(t==='('){n=read();if(tokens[i++]!==')')fail('syntax');}
+    else if(t==='True'||t==='False')n={value:t==='True'};
+    else if(/^\d/.test(t||'')){if(/^0\d/.test(t)&&!t.includes('.'))fail('syntax');n={value:primitive(Number(t))};}
+    else if(validName(t))n={name:t};else fail('syntax');
+    let comparison=false;
+    while(prec[tokens[i]]>=min){const op=tokens[i++],p=prec[op];if(p===4){if(comparison)fail('syntax');comparison=true;}n={op,left:n,right:read(p+1)};}
+    depth--;return n;
+   }
+   const node=read();if(i!==tokens.length)fail('syntax');return node;
+  }
+  function block(indent,depth=0){
+   if(depth>12)fail('depth');const body=[];
+   while(index<lines.length){const raw=lines[index],spaces=raw.match(/^ */)[0].length;if(spaces<indent)break;if(spaces!==indent)fail('syntax');
+    const s=raw.trim();index++;let m;
+    if((m=/^return (.+)$/.exec(s)))body.push({kind:'return',value:expr(m[1])});
+    else if((m=/^if (.+):$/.exec(s))){const yes=block(indent+4,depth+1);let no=[];if(lines[index]===' '.repeat(indent)+'else:'){index++;no=block(indent+4,depth+1);}body.push({kind:'if',condition:expr(m[1]),yes,no});}
+    else if((m=/^for ([A-Za-z_]\w*) in range\(([^()]*)\):$/.exec(s))){if(!validName(m[1]))fail('syntax');const parts=m[2].split(',');if(parts.length<1||parts.length>3)fail('syntax');body.push({kind:'for',name:m[1],range:parts.map(expr),body:block(indent+4,depth+1)});}
+    else if((m=/^([A-Za-z_]\w*)\s*=\s*(.+)$/.exec(s))){if(!validName(m[1]))fail('syntax');body.push({kind:'assign',name:m[1],value:expr(m[2])});}
+    else fail('syntax');
+   }
+   if(!body.length)fail('syntax');return body;
+  }
+  const body=block(4);if(index!==lines.length)fail('syntax');const env=new Map(params.map((p,i)=>[p,primitive(args[i])]));
+  function evaluate(n){tick();if(Object.hasOwn(n,'value'))return n.value;if(n.name){if(!env.has(n.name))fail('name');return env.get(n.name);}
+   if(n.unary){const a=evaluate(n.unary);return primitive(n.op==='not'?!a:n.op==='-'?-a:+a);}
+   const a=evaluate(n.left);if(n.op==='and'&&!a||n.op==='or'&&a)return a;
+   const b=evaluate(n.right),x=Number(a),y=Number(b);let v;
+   switch(n.op){case 'and':case 'or':v=b;break;case '+':v=x+y;break;case '-':v=x-y;break;case '*':v=x*y;break;case '/':case '//':case '%':if(y===0)fail('value');v=n.op==='/'?x/y:n.op==='//'?Math.floor(x/y):x-Math.floor(x/y)*y;break;case '==':v=x===y;break;case '!=':v=x!==y;break;case '<':v=x<y;break;case '>':v=x>y;break;case '<=':v=x<=y;break;case '>=':v=x>=y;break;default:fail('syntax');}return primitive(v);
+  }
+  const assign=(n,v)=>{env.set(n,primitive(v));if(trace.length<24)trace.push({name:n,value:v});};
+  function execute(statements){for(const s of statements){tick();
+   if(s.kind==='return')return {value:evaluate(s.value)};
+   if(s.kind==='assign')assign(s.name,evaluate(s.value));
+   if(s.kind==='if'){const r=execute(evaluate(s.condition)?s.yes:s.no);if(r)return r;}
+   if(s.kind==='for'){const v=s.range.map(evaluate);if(v.some(x=>!Number.isInteger(x)))fail('value');const start=v.length===1?0:v[0],end=v.length===1?v[0]:v[1],step=v.length===3?v[2]:1;if(!step)fail('value');for(let i=start;step>0?i<end:i>end;i+=step){tick();assign(s.name,i);const r=execute(s.body);if(r)return r;}}
+  }}
+  const result=execute(body);if(!result)fail('return');return {ok:true,value:primitive(result.value),trace,steps:3000-budget};
+ }catch(e){return {ok:false,error:['syntax','size','depth','budget','value','name','return'].includes(e.message)?e.message:'syntax',trace:[]};}
+}
+export const PYTHON_LESSONS=[
+ {id:'py-add',title:['Addition','Addition','Сложение','Додавання'],task:['Gib a + b zurück.','Return a + b.','Верни a + b.','Поверни a + b.'],entry:'add',source:'def add(a, b):\n    return a - b',solution:'def add(a, b):\n    return a + b',tests:[[[2,3],5],[[0,0],0],[[-4,3],-1],[[100,2],102]]},
+ {id:'py-absolute',title:['Betrag','Absolute value','Модуль числа','Модуль числа'],task:['Gib den Betrag von x zurück.','Return the absolute value of x.','Верни абсолютное значение x.','Поверни абсолютне значення x.'],entry:'absolute',source:'def absolute(x):\n    if x < 0:\n        return x\n    else:\n        return x',solution:'def absolute(x):\n    if x < 0:\n        return -x\n    else:\n        return x',tests:[[[-5],5],[[5],5],[[0],0],[[-2.5],2.5]]},
+ {id:'py-floor',title:['Ganzzahldivision','Floor division','Деление с округлением вниз','Ділення з округленням вниз'],task:['Gib a // b zurück, b ist ungleich 0.','Return a // b, with nonzero b.','Верни a // b, b не равен нулю.','Поверни a // b, b не дорівнює нулю.'],entry:'floor_div',source:'def floor_div(a, b):\n    return a / b',solution:'def floor_div(a, b):\n    return a // b',tests:[[[7,3],2],[[-7,3],-3],[[7,-3],-3],[[-7,-3],2],[[0,3],0]]},
+ {id:'py-mod',title:['Modulo','Modulo','Остаток по правилам Python','Остача за правилами Python'],task:['Gib den Python-Rest a % b zurück, b ist ungleich 0.','Return the Python remainder a % b, with nonzero b.','Верни остаток a % b по правилам Python, b не равен нулю.','Поверни остачу a % b за правилами Python, b не дорівнює нулю.'],entry:'remainder',source:'def remainder(a, b):\n    return a // b',solution:'def remainder(a, b):\n    return a % b',tests:[[[7,3],1],[[-7,3],2],[[7,-3],-2],[[-7,-3],-1],[[0,3],0]]},
+ {id:'py-range',title:['Schleife und Summe','Loop and sum','Цикл и сумма','Цикл і сума'],task:['Summiere alle ganzen Zahlen von 1 bis n, n ≥ 0.','Sum integers from 1 through n, n ≥ 0.','Найди сумму целых чисел от 1 до n, n ≥ 0.','Знайди суму цілих чисел від 1 до n, n ≥ 0.'],entry:'total',source:'def total(n):\n    result = 0\n    for i in range(1, n):\n        result = result + i\n    return result',solution:'def total(n):\n    result = 0\n    for i in range(1, n + 1):\n        result = result + i\n    return result',tests:[[[0],0],[[1],1],[[5],15],[[10],55],[[30],465]]},
+ {id:'py-threshold',title:['KI-Schwelle','AI threshold','Порог классификации ИИ','Поріг класифікації ШІ'],task:['Gib True zurück, wenn score ≥ threshold.','Return True when score ≥ threshold.','Верни True, если score ≥ threshold.','Поверни True, якщо score ≥ threshold.'],entry:'predict',source:'def predict(score, threshold):\n    return score > threshold',solution:'def predict(score, threshold):\n    return score >= threshold',tests:[[[50,50],true],[[51,50],true],[[49,50],false],[[0,0],true],[[100,100],true]]}
+];
+export function gradePython(index,source){
+ const m=PYTHON_LESSONS[index];if(!m)return [];
+ return m.tests.map(([args,expected])=>{const r=runPython(source,m.entry,args);return {args,expected,...r,passed:r.ok&&r.value===expected};});
+}
