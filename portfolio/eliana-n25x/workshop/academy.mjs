@@ -5,7 +5,7 @@ No unauthorized redistribution, commercial reuse or passing off of protected ori
 Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
 */
 import * as curriculum from './curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,PYTHON_LESSONS,gradePython} from './program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,PYTHON_LESSONS,gradePython,WEB_LESSONS,gradeWebLab} from './program.mjs';
 import {CREATION_TEMPLATES,WRITING_TEMPLATES,PALETTE,blankQuiz,validateCreation,parseCreation,serializeCreation,renderCreationHTML,projectTemplate,MAX_CREATION_BYTES} from './creations.mjs';
 import {addProject,updateProject,cleanName} from './model.mjs';
 const {MISSIONS,LEARNING_LANGUAGES,WORD_MEANINGS,SUBJECTS,MISSION_STAGES,local,wordChoices,checkMission}=curriculum;
@@ -17,7 +17,8 @@ export function createAcademy(api){
  const state=()=>api.getState(),progress=()=>state().academy,l=values=>local(values,state().lang);
  let currentView='',lastLanguage=state().lang,testResults=null,sampleResult=null,prediction=null,help='',flipped=false,languageFeedback='',languageCorrect=false,lab=SUBJECTS[0].id,labIndex=0,labFeedback='',labCorrect=false,labExam=null,showPreview=false;
  const a=(action,label,cls='',attrs='')=>'<button type="button" data-a="'+action+'" class="'+cls+'" '+attrs+'>'+label+'</button>';
- const detailOpen={'program-predict':false,'quiz-scoring':false,'api-lab':false,'sql-lab':false,'python-lab':false};
+ const detailOpen={'program-predict':false,'quiz-scoring':false,'api-lab':false,'sql-lab':false,'python-lab':false,'web-lab':false};
+ let webLesson=0,webDrafts={},webResult=null;
  let pyLesson=0,pyDrafts={},pyResult=null;
  let sqlText='SELECT * FROM projects ORDER BY id',sqlResult=null,sqlLesson=0,sqlMode='sample';
  const apiLab=createApiLab();let apiMethod='GET',apiPath='/projects',apiBody='{ "title": "My project" }',apiResult=null;
@@ -43,7 +44,11 @@ export function createAcademy(api){
  }
  function programmingView(){
   const m=mission(),src=source(),done=MISSIONS.filter(v=>solved('program:'+v.id)).length,group=MISSION_STAGES.find(g=>progress().mission>=g.start&&progress().mission<g.end);
-  return back('learn','learn')+'<h2>'+esc(tr('programming'))+'</h2><p class="help">'+esc(tr('missionHelp'))+'</p><section class="panel"><h3>'+esc(l(group.title))+'</h3><progress max="'+MISSIONS.length+'" value="'+done+'" aria-label="'+esc(tr('progress'))+'"></progress><p>'+done+' / '+MISSIONS.length+'</p>'+a('mission-resume',esc(tr('guidedNext')),'secondary',done===MISSIONS.length?'disabled':'')+'</section><label for="mission-select">'+esc(tr('missionSelect'))+'</label><select id="mission-select">'+MISSION_STAGES.map(g=>'<optgroup label="'+esc(l(g.title))+'">'+MISSIONS.slice(g.start,g.end).map((m,j)=>{const i=g.start+j;return '<option value="'+i+'" '+(i===progress().mission?'selected':'')+'>'+(solved('program:'+m.id)?'✓ ':'')+(i+1)+'. '+esc(l(m.title))+'</option>';}).join('')+'</optgroup>').join('')+'</select><section class="panel"><div class="eyebrow">'+esc(l(m.title))+'</div><h3>'+esc(l(m.task))+'</h3><details id="program-predict" '+(detailOpen['program-predict']?'open':'')+'><summary>'+esc(tr('predict'))+'</summary><pre class="source-code">'+esc(m.source)+'\n\n'+esc(m.entry)+'('+esc(m.sample.join(', '))+')</pre><div class="choice-row">'+m.prediction.map((v,i)=>a('predict',esc(v),'choice','data-index="'+i+'"')).join('')+'</div><p class="feedback" role="status">'+(prediction===null?'':esc(tr(prediction?'predictionRight':'predictionWrong')))+'</p></details><label>'+esc(tr('blocks'))+'</label><div class="choice-row code-blocks">'+m.block.choices.map((v,i)=>a('block','<code>'+esc(v)+'</code>','choice','data-index="'+i+'" aria-pressed="'+src.includes(v)+'"')).join('')+'</div>'+textarea('program-source',tr('codeEditor'),src,4000,'spellcheck="false" autocapitalize="off" autocorrect="off" class="source-code"')+'<p class="help">'+esc(tr('codeScope'))+'</p><div class="buttons">'+a('sample',esc(tr('runSample')),'secondary')+a('tests',esc(tr('runTests')),'primary')+'</div>'+a('restore',esc(tr('restoreCode')),'back-link')+'</section>'+resultsView()+tutorView()+aiView()+apiLabView()+sqlLabView()+pythonLabView()+'<div class="buttons">'+a('next-mission',esc(tr(progress().mission===MISSIONS.length-1?'quiz':'nextMission')),'lime')+'</div><p class="help">'+esc(tr('draftSaved'))+'</p>';
+  return back('learn','learn')+'<h2>'+esc(tr('programming'))+'</h2><p class="help">'+esc(tr('missionHelp'))+'</p><section class="panel"><h3>'+esc(l(group.title))+'</h3><progress max="'+MISSIONS.length+'" value="'+done+'" aria-label="'+esc(tr('progress'))+'"></progress><p>'+done+' / '+MISSIONS.length+'</p>'+a('mission-resume',esc(tr('guidedNext')),'secondary',done===MISSIONS.length?'disabled':'')+'</section><label for="mission-select">'+esc(tr('missionSelect'))+'</label><select id="mission-select">'+MISSION_STAGES.map(g=>'<optgroup label="'+esc(l(g.title))+'">'+MISSIONS.slice(g.start,g.end).map((m,j)=>{const i=g.start+j;return '<option value="'+i+'" '+(i===progress().mission?'selected':'')+'>'+(solved('program:'+m.id)?'✓ ':'')+(i+1)+'. '+esc(l(m.title))+'</option>';}).join('')+'</optgroup>').join('')+'</select><section class="panel"><div class="eyebrow">'+esc(l(m.title))+'</div><h3>'+esc(l(m.task))+'</h3><details id="program-predict" '+(detailOpen['program-predict']?'open':'')+'><summary>'+esc(tr('predict'))+'</summary><pre class="source-code">'+esc(m.source)+'\n\n'+esc(m.entry)+'('+esc(m.sample.join(', '))+')</pre><div class="choice-row">'+m.prediction.map((v,i)=>a('predict',esc(v),'choice','data-index="'+i+'"')).join('')+'</div><p class="feedback" role="status">'+(prediction===null?'':esc(tr(prediction?'predictionRight':'predictionWrong')))+'</p></details><label>'+esc(tr('blocks'))+'</label><div class="choice-row code-blocks">'+m.block.choices.map((v,i)=>a('block','<code>'+esc(v)+'</code>','choice','data-index="'+i+'" aria-pressed="'+src.includes(v)+'"')).join('')+'</div>'+textarea('program-source',tr('codeEditor'),src,4000,'spellcheck="false" autocapitalize="off" autocorrect="off" class="source-code"')+'<p class="help">'+esc(tr('codeScope'))+'</p><div class="buttons">'+a('sample',esc(tr('runSample')),'secondary')+a('tests',esc(tr('runTests')),'primary')+'</div>'+a('restore',esc(tr('restoreCode')),'back-link')+'</section>'+resultsView()+tutorView()+aiView()+apiLabView()+sqlLabView()+pythonLabView()+webLabView()+'<div class="buttons">'+a('next-mission',esc(tr(progress().mission===MISSIONS.length-1?'quiz':'nextMission')),'lime')+'</div><p class="help">'+esc(tr('draftSaved'))+'</p>';
+ }
+ function webLabView(){
+  const m=WEB_LESSONS[webLesson],d=webDrafts[webLesson]??{html:m.html,css:m.css};
+  return '<details class="panel api-lab" id="web-lab" '+(detailOpen['web-lab']?'open':'')+'><summary>'+esc(tr('webLabTitle'))+'</summary><p class="help">'+esc(tr('webLabScope'))+'</p><label for="web-lesson">'+esc(tr('missionSelect'))+'</label><select id="web-lesson">'+WEB_LESSONS.map((v,i)=>'<option value="'+i+'" '+(i===webLesson?'selected':'')+'>'+esc(l(v.title))+'</option>').join('')+'</select><h4>'+esc(l(m.task))+'</h4>'+textarea('web-html','HTML',d.html,4000,'spellcheck="false" autocapitalize="off" class="source-code"')+textarea('web-css','CSS',d.css,3000,'spellcheck="false" autocapitalize="off" class="source-code"')+'<div class="buttons">'+a('web-run',esc(tr('webLabRun')),'primary')+a('web-solution',esc(tr('pyExample')),'secondary')+a('web-reset',esc(tr('restoreCode')),'outline')+'</div>'+(webResult?'<div data-web-result role="status"><h4>'+esc(tr(!webResult.ok?'webLabInvalid':webResult.passed?'customPass':'customFail'))+'</h4>'+(webResult.ok?'<iframe id="web-preview" sandbox="" referrerpolicy="no-referrer" title="'+esc(tr('preview'))+'"></iframe>':'')+'</div>':'')+'</details>';
  }
  function pythonLabView(){
   const m=PYTHON_LESSONS[pyLesson],src=pyDrafts[m.id]??m.source;
@@ -97,7 +102,7 @@ export function createAcademy(api){
  }
  function exchangeView(){return back('create','create')+'<h2>'+esc(tr('exchange'))+'</h2><p class="help">'+esc(tr('exchangeHelp'))+'</p><div class="buttons">'+a('import-creation',esc(tr('importProject')),'primary')+a('navigate',esc(tr('collection')),'secondary','data-target="collection"')+'</div><section class="panel"><h3>'+esc(tr('quiz'))+'</h3>'+a('template',esc(tr('create')),'lime','data-template="quiz"')+'</section><p class="help">'+esc(tr('chatStatus'))+'</p>';}
  function render(view){rememberDetails();if(view!==currentView||lastLanguage!==state().lang)resetAI();if(lastLanguage!==state().lang){lastLanguage=state().lang;help='';languageFeedback='';labFeedback='';}if(view!=='subjectLab')labExam=null;currentView=view;return ({programming:programmingView,languages:languageView,schoolLabs:labsView,subjectLab:labView,quiz:quizView,maker:makerView,exchange:exchangeView}[view])?.()||'';}
- function mount(){if($('program-source'))$('program-source').value=source();if($('quiz-program'))$('quiz-program').value=ensureQuiz().program;const frame=$('creation-preview');if(frame){const p=currentProject();if(p&&validateCreation(p.kind,p.data))frame.srcdoc=renderCreationHTML(p,state().lang,copy());}}
+ function mount(){const web=$('web-preview');if(web&&webResult?.ok)web.srcdoc=webResult.document;if($('program-source'))$('program-source').value=source();if($('quiz-program'))$('quiz-program').value=ensureQuiz().program;const frame=$('creation-preview');if(frame){const p=currentProject();if(p&&validateCreation(p.kind,p.data))frame.srcdoc=renderCreationHTML(p,state().lang,copy());}}
  function refresh(){api.render();}
  function selectTemplate(template){
   if(!CREATION_TEMPLATES.includes(template))return;
@@ -124,6 +129,8 @@ export function createAcademy(api){
   else if(action==='sample'){sampleResult=runProgram(source(),mission().entry,mission().sample);refresh();audio.cue(sampleResult.ok);}
   else if(action==='tests'){testResults=checkMission(mission(),source(),runProgram);const passed=testResults.every(r=>r.ok&&r.value===r.expected);if(passed)toast(complete('program:'+mission().id,30));else audio.cue(false);refresh();}
   else if(action==='restore'){setSource(mission().source);prediction=null;refresh();}
+  else if(action==='web-run'){webDrafts[webLesson]={html:$('web-html').value,css:$('web-css').value};const d=webDrafts[webLesson];webResult=gradeWebLab(webLesson,d.html,d.css);refresh();}
+  else if(action==='web-solution'||action==='web-reset'){const m=WEB_LESSONS[webLesson];webDrafts[webLesson]=action==='web-solution'?{html:m.solutionHTML,css:m.solutionCSS}:{html:m.html,css:m.css};webResult=null;refresh();}
   else if(action==='py-run'){const m=PYTHON_LESSONS[pyLesson];pyDrafts[m.id]=$('py-source').value;pyResult=gradePython(pyLesson,pyDrafts[m.id]);refresh();}
   else if(action==='py-solution'||action==='py-reset'){const m=PYTHON_LESSONS[pyLesson];pyDrafts[m.id]=action==='py-solution'?m.solution:m.source;pyResult=null;refresh();}
   else if(action==='sql-run'){sqlText=$('sql-query').value;sqlResult=sqlMode==='sample'?gradeSQL(sqlLesson,sqlText):queryProjects(sqlText,apiLab.snapshot());refresh();}
@@ -169,6 +176,7 @@ export function createAcademy(api){
   return true;
  }
  function inputEvent(e){
+  if(e.id==='web-html'||e.id==='web-css'){webDrafts[webLesson]={html:$('web-html').value,css:$('web-css').value};webResult=null;$('web-lab')?.querySelector('[data-web-result]')?.remove();return true;}
   if(e.id==='py-source'){pyDrafts[PYTHON_LESSONS[pyLesson].id]=e.value;pyResult=null;$('python-lab')?.querySelector('[data-py-result]')?.remove();return true;}
   if(e.id==='sql-query'){sqlText=e.value;sqlResult=null;$('sql-lab')?.querySelector('[data-sql-result]')?.remove();return true;}
   if(e.id==='api-path'||e.id==='api-body'){if(e.id==='api-path')apiPath=e.value;else apiBody=e.value;apiResult=null;$('api-lab')?.querySelector('[data-api-result]')?.remove();return true;}
@@ -183,6 +191,7 @@ export function createAcademy(api){
   return false;
  }
  async function changeEvent(e){
+  if(e.id==='web-lesson'){webLesson=Math.max(0,Math.min(WEB_LESSONS.length-1,Number(e.value)||0));webResult=null;refresh();return true;}
   if(e.id==='py-lesson'){pyLesson=Math.max(0,Math.min(PYTHON_LESSONS.length-1,Number(e.value)||0));pyResult=null;refresh();return true;}
   if(e.id==='sql-mode'||e.id==='sql-lesson'){if(e.id==='sql-mode')sqlMode=e.value==='api'?'api':'sample';else sqlLesson=Math.max(0,Math.min(SQL_LESSONS.length-1,Number(e.value)||0));sqlResult=null;refresh();return true;}
   if(e.id==='api-method'){apiMethod=e.value;apiResult=null;$('api-lab')?.querySelector('[data-api-result]')?.remove();return true;}

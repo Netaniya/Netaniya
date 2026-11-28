@@ -15,3 +15,5 @@ Creator direction: Natalie Ragulina (Netaniya), 28 November 2026. Learners under
 28 November: SQL Lab — six result-checked exercises and read-only querying of the REST sandbox records, SELECT/WHERE/ORDER BY/LIMIT/COUNT(*) on a single table. Custom limited interpreter, no actual database engine or network. 439 direct comparisons passed. Browser verification pending.
 
 28 November: Python Studio includes six numeric lessons and a dedicated bounded parser/interpreter, four-space indentation, one function, if/else, assignment, return, range loops, floor division and modulo, numbers and booleans. No imports, packages, file/network access, full CPython semantics or durable drafts. 28 lesson tests and 6764 independent numeric comparisons passed. Browser acceptance pending. Prior SQL/REST/custom test CI all passed.
+
+28 November: Web Studio adds six HTML/CSS exercises, structural rule checks and actual sandboxed static HTML preview. Strict reconstructed subset, CSP, no scripts, URLs, links, event attributes, forms or network. No full HTML/CSS coverage or persistent drafts. 126 direct checks passed; Chromium acceptance pending.

@@ -295,3 +295,54 @@ export function gradePython(index,source){
  const m=PYTHON_LESSONS[index];if(!m)return [];
  return m.tests.map(([args,expected])=>{const r=runPython(source,m.entry,args);return {args,expected,...r,passed:r.ok&&r.value===expected};});
 }
+
+
+// Static web lab: reconstruct a deliberately limited, safe HTML/CSS subset.
+// No URLs, links, event handlers, scripts, forms, external resources or raw markup injection.
+const webEscape=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const WEB_TAGS=new Set(['main','section','article','header','footer','div','h1','h2','h3','p','ul','ol','li','strong','em','span','br','hr']);
+const WEB_VOID=new Set(['br','hr']);
+const WEB_PROPERTIES=new Set(['color','background-color','font-size','font-weight','text-align','padding','margin','border','border-radius','display','gap','grid-template-columns','max-width','width','line-height','align-items','justify-content','flex-direction','flex-wrap']);
+export function compileWebLab(html,css){
+ const bad=error=>({ok:false,error});
+ if(typeof html!=='string'||typeof css!=='string'||html.length>4000||css.length>3000)return bad('size');
+ const stack=[],nodes=[],rules=[],out=[];let p=0;
+ while(p<html.length){
+  if(html[p]!=='<'){const next=html.indexOf('<',p),end=next<0?html.length:next;const value=html.slice(p,end);out.push(webEscape(value));p=end;continue;}
+  const token=/^<(\/?)([a-z][a-z0-9]*)([^<>]*)>/i.exec(html.slice(p));if(!token)return bad('html');
+  const closing=!!token[1],tag=token[2].toLowerCase(),attr=token[3];p+=token[0].length;
+  if(!WEB_TAGS.has(tag))return bad('html');
+  if(closing){if(attr.trim()||stack.pop()!==tag)return bad('html');out.push('</'+tag+'>');continue;}
+  const match=/^\s*(?:class\s*=\s*"([a-zA-Z0-9_-]+(?: +[a-zA-Z0-9_-]+)*)"\s*)?$/.exec(attr);if(!match)return bad('html');
+  const classes=match[1]?.split(/ +/)||[];nodes.push({tag,classes});if(nodes.length>100)return bad('size');
+  out.push('<'+tag+(classes.length?' class="'+classes.join(' ')+'"':'')+'>');if(!WEB_VOID.has(tag)){stack.push(tag);if(stack.length>16)return bad('size');}
+ }
+ if(stack.length||!nodes.length)return bad('html');
+ let rest=css.trim();
+ while(rest){
+  const m=/^([a-zA-Z][a-zA-Z0-9-]*|\.[a-zA-Z_][a-zA-Z0-9_-]*)\s*\{([^{}]*)\}\s*/.exec(rest);if(!m)return bad('css');
+  const selector=m[1].startsWith('.')?m[1]:m[1].toLowerCase();if(!selector.startsWith('.')&&!WEB_TAGS.has(selector)&&selector!=='body')return bad('css');
+  const declarations=[];for(const raw of m[2].split(';')){
+   if(!raw.trim())continue;const d=/^\s*([a-z-]+)\s*:\s*([#a-zA-Z0-9 .,%()/-]+?)\s*$/.exec(raw);if(!d||!WEB_PROPERTIES.has(d[1]))return bad('css');
+   const v=d[2].trim();if(v.length>80||/url|expression|var|attr|image|import/i.test(v)||/[()]/.test(v)&&!/^repeat\([1-4],\s*1fr\)$/.test(v))return bad('css');
+   declarations.push({property:d[1],value:v});if(declarations.length>20)return bad('size');
+  }if(!declarations.length)return bad('css');rules.push({selector,declarations});if(rules.length>25)return bad('size');rest=rest.slice(m[0].length);
+ }
+ const cleanCss=rules.map(r=>r.selector+'{'+r.declarations.map(d=>d.property+':'+d.value).join(';')+'}').join('\n');
+ const document='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; base-uri \'none\'; form-action \'none\'"><title>N25X Web Lab</title><style>body{font-family:system-ui,sans-serif;margin:16px;overflow-wrap:anywhere}*{box-sizing:border-box}'+cleanCss+'</style></head><body>'+out.join('')+'</body></html>';
+ return {ok:true,document,nodes,rules};
+}
+export const WEB_LESSONS=[
+ {title:['HTML-Struktur','HTML structure','Структура HTML','Структура HTML'],task:['Ergänze eine h1-Überschrift und einen Absatz p.','Add an h1 heading and a p paragraph.','Добавь заголовок h1 и абзац p.','Додай заголовок h1 та абзац p.'],html:'<main><h2>My project</h2></main>',css:'',solutionHTML:'<main><h1>My project</h1><p>Welcome to my website.</p></main>',solutionCSS:'',tags:['h1','p'],styles:[]},
+ {title:['Farbe und Typografie','Color and typography','Цвет и типографика','Колір і типографіка'],task:['Setze color und font-size für h1.','Set color and font-size for h1.','Задай color и font-size для h1.','Задай color і font-size для h1.'],html:'<h1>ELIANA</h1><p>My first design</p>',css:'h1 { color: #2455a0; }',solutionHTML:'<h1>ELIANA</h1><p>My first design</p>',solutionCSS:'h1 { color: #2455a0; font-size: 28px; }',tags:['h1'],styles:[['h1','color'],['h1','font-size']]},
+ {title:['Karten und Klassen','Cards and classes','Карточки и классы','Картки та класи'],task:['Verwende .card mit padding, background-color und border-radius.','Use .card with padding, background-color and border-radius.','Используй .card с padding, background-color и border-radius.','Використай .card із padding, background-color та border-radius.'],html:'<article class="card"><h2>Project</h2><p>Build something useful.</p></article>',css:'.card { padding: 12px; }',solutionHTML:'<article class="card"><h2>Project</h2><p>Build something useful.</p></article>',solutionCSS:'.card { padding: 12px; background-color: #e8f1ff; border-radius: 10px; }',tags:['article'],classes:['card'],styles:[['.card','padding'],['.card','background-color'],['.card','border-radius']]},
+ {title:['Flexbox-Layout','Flexbox layout','Макет Flexbox','Макет Flexbox'],task:['Erstelle .row mit display: flex und gap.','Create .row with display: flex and gap.','Создай .row с display: flex и gap.','Створи .row із display: flex та gap.'],html:'<section class="row"><article>Code</article><article>Music</article></section>',css:'.row { gap: 12px; }',solutionHTML:'<section class="row"><article>Code</article><article>Music</article></section>',solutionCSS:'.row { display: flex; gap: 12px; }',tags:['section','article'],classes:['row'],styles:[['.row','display','flex'],['.row','gap']]},
+ {title:['Grid-Layout','Grid layout','Макет Grid','Макет Grid'],task:['Erstelle .grid mit display: grid, zwei Spalten und gap.','Create .grid with display: grid, two columns and gap.','Создай .grid с display: grid, двумя колонками и gap.','Створи .grid із display: grid, двома колонками та gap.'],html:'<section class="grid"><article>AI</article><article>Web</article><article>SQL</article><article>Python</article></section>',css:'.grid { display: grid; gap: 10px; }',solutionHTML:'<section class="grid"><article>AI</article><article>Web</article><article>SQL</article><article>Python</article></section>',solutionCSS:'.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }',tags:['section','article'],classes:['grid'],styles:[['.grid','display','grid'],['.grid','grid-template-columns','repeat(2,1fr)'],['.grid','gap']]},
+ {title:['Semantische Seite','Semantic page','Семантическая страница','Семантична сторінка'],task:['Verwende header, main, h1, p, ul, li und footer.','Use header, main, h1, p, ul, li and footer.','Используй header, main, h1, p, ul, li и footer.','Використай header, main, h1, p, ul, li та footer.'],html:'<header><h1>Portfolio</h1></header><main><p>My work</p></main>',css:'body { color: #202b38; }',solutionHTML:'<header><h1>Portfolio</h1></header><main><p>My work</p><ul><li>Programming</li><li>Design</li></ul></main><footer>My portfolio</footer>',solutionCSS:'body { color: #202b38; }',tags:['header','main','h1','p','ul','li','footer'],styles:[]}
+];
+export function gradeWebLab(index,html,css){
+ const r=compileWebLab(html,css),m=WEB_LESSONS[index];if(!r.ok||!m)return r.ok?{ok:false,error:'lesson'}:r;
+ const tags=m.tags.every(t=>r.nodes.some(n=>n.tag===t)),classes=(m.classes||[]).every(v=>r.nodes.some(n=>n.classes.includes(v)));
+ const styles=m.styles.every(([selector,property,value])=>r.rules.some(rule=>rule.selector===selector&&rule.declarations.some(d=>d.property===property&&(value===undefined||d.value.replace(/\s/g,'')===value))));
+ return {...r,passed:tags&&classes&&styles};
+}

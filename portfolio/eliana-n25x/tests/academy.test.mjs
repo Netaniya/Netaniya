@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 import {parseHTML} from 'linkedom';
 import {fresh,reward,addProject,updateProject,parseProfile,parseAcademy,SAVE_KEY} from '../workshop/model.mjs';
 import * as curriculum from '../workshop/curriculum.mjs';
-import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython} from '../workshop/program.mjs';
+import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor,customProgramTest,createApiLab,SQL_SAMPLE,SQL_LESSONS,queryProjects,gradeSQL,runPython,PYTHON_LESSONS,gradePython,WEB_LESSONS,compileWebLab,gradeWebLab} from '../workshop/program.mjs';
 import {CREATION_TEMPLATES,validateCreation,blankQuiz,parseCreation,serializeCreation,renderCreationHTML,projectPlayer} from '../workshop/creations.mjs';
 import {createAcademy} from '../workshop/academy.mjs';
 import {TEXT,translate} from '../workshop/i18n.mjs';
@@ -226,4 +226,11 @@ test('Python Studio: all six solutions pass and broken drafts fail; strict bound
  assert.equal(r('    s = 0\n    for i in range(5, 0, -2):\n        s = s + i\n    return s').value,9);
  assert.equal(r('    for i in range(100000):\n        x = i\n    return 1').error,'budget');
  for(const b of ['    import os','    return __import__(1)','    return x.constructor','    return 1 < 2 < 3','  return 1','    return 1 / 0','    return 1; return 2','    for i in range(0, 4, 0):\n        x = i\n    return 0'])assert(!r(b).ok,b);
+});
+
+test('Web Studio checks six exercises and reconstructs safe static previews',()=>{
+ for(const [i,m] of WEB_LESSONS.entries()){assert(!gradeWebLab(i,m.html,m.css).passed);const r=gradeWebLab(i,m.solutionHTML,m.solutionCSS);assert(r.ok&&r.passed);assert(r.document.includes('Content-Security-Policy'));}
+ for(const html of ['<script>alert(1)</script>','<img src="https://example.com">','<p onclick="x()">X</p>','<iframe></iframe>','<a href="https://example.com">X</a>','<meta http-equiv="refresh">','<div><p></div>','<svg></svg>','<p style="color:red">X</p>'])assert(!compileWebLab(html,'').ok,html);
+ for(const css of ['@import "https://example.com";','p { background-color: url(https://example.com); }','p { color: red; } </style>','p { position: fixed; }','p { color: var(--x); }'])assert(!compileWebLab('<p>Hi</p>',css).ok,css);
+ assert(compileWebLab('<p>5 & 7</p>','p { color: #2455a0; }').document.includes('5 &amp; 7'));
 });

@@ -114,3 +114,6 @@ Assistant implemented a limited read-only SQL interpreter and six exercises, wit
 
 ### 28 November — Python foundations
 Assistant implemented six Python exercises and a bounded numeric subset interpreter under the creator's continuing professional education direction. No host Python runtime, imports, network, or package execution. Prior SQL/REST revision passed all CI jobs; this revision pending browser acceptance.
+
+### 28 November — web development foundations
+Creator authorized continued development through remaining stages without per-module approval. Assistant added static HTML/CSS editor, six structural exercises and isolated preview. No external scripts or services, no publication change. Browser acceptance pending.
