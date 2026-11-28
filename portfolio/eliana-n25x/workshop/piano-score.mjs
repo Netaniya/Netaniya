@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 // Original bounded composition format. MIDI follows Standard MIDI File format 1.
 export const MAX_SCORE_NOTES=2048,INSTRUMENTS=['piano','bass','bell'];
 export const midiFrequency=midi=>440*2**((midi-69)/12);

@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 import * as curriculum from './curriculum.mjs';
 import {runProgram,SCORE_PROGRAM,validScoreProgram,reviewProgram,codeReviewPrompt,requestCodeMentor} from './program.mjs';
 import {CREATION_TEMPLATES,WRITING_TEMPLATES,PALETTE,blankQuiz,validateCreation,parseCreation,serializeCreation,renderCreationHTML,projectTemplate,MAX_CREATION_BYTES} from './creations.mjs';

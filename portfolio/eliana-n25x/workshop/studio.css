@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 @font-face{font-family:Manrope;src:url('./assets/Manrope.ttf') format('truetype');font-weight:200 800;font-display:swap}
 
 :root{font-family:Manrope,system-ui,sans-serif;font-synthesis:none;color-scheme:dark;color:#f2f7ff;background:#090e18;--ink:#f2f7ff;--muted:#becde0;--teal:#4ce7ff;--line:#395471;--paper:#142338;--lime:#b0f46c;--purple:#c199ff;--shadow:0 14px 45px #00000025}

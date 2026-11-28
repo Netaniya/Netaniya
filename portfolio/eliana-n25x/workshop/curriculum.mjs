@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 import {EXTRA_MISSIONS} from './program-lessons.mjs';
 export const UI_LANGUAGES = ['de','en','ru','uk'];
 export const local = (values,lang) => values[UI_LANGUAGES.indexOf(lang) < 0 ? 0 : UI_LANGUAGES.indexOf(lang)];

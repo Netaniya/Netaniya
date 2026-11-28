@@ -1,3 +1,9 @@
+/*!
+N25X / ELIANA — PROPRIETARY PROJECT MATERIALS
+© 2026 Natalie Ragulina (Netaniya). All rights reserved.
+No unauthorized redistribution, commercial reuse or passing off of protected original materials, except as permitted by applicable law, GitHub terms or separate licenses.
+Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. Third-party licenses remain in effect.
+*/
 import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,languageMistakes,dueLanguageReviews} from './language-course.mjs';
 import {freshPiano,parsePiano,validateScore,PIANO_LESSONS,RHYTHM_LESSONS,EAR_LESSONS,STAFF_LESSONS,CHORD_LESSONS,HARMONY_LESSONS} from './piano-score.mjs';
 import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS} from './math-course.mjs';
