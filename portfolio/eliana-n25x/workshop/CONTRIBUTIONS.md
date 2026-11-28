@@ -99,3 +99,6 @@ Creator Natalie Ragulina (Netaniya) selected and approved the visual direction a
 
 ### 28 November — AI coding education
 Creator requested special emphasis on programming and AI. Assistant implemented read-only interpreter diagnostics, prompt export, an opt-in ready-device model adapter and two AI evaluation missions. Real inference not claimed tested; no provider keys or payment added.
+
+### 28 November — intellectual property notice
+Creator requested explicit reserved-rights markings and protection. Assistant added core source and packaged notices, metadata and tests, documented privacy limits. No blanket copyright claim over AI-only or third-party material, no visibility or publication change. Corrected the JSON prompt test to compare decoded source.

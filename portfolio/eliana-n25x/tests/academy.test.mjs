@@ -175,7 +175,7 @@ test('Rhythm: exact, jitter, drift, missing and invalid taps; persistence',async
 
 test('AI Code Lab diagnoses every mission without modifying drafts; model is opt-in and advisory',async()=>{
  for(const m of MISSIONS){const old=JSON.stringify(m),bad=reviewProgram(m,m.source),fixed=m.source.replace(m.block.from,m.block.choices[1]),good=reviewProgram(m,fixed);assert(bad.failed);assert.equal(good.passed,good.total);assert.equal(good.failed,null);assert.equal(JSON.stringify(m),old);}
- const m=MISSIONS[0],prompt=codeReviewPrompt(m,m.source,'ru');assert(prompt.includes('Russian'));assert(prompt.includes(m.source));
+ const m=MISSIONS[0],prompt=codeReviewPrompt(m,m.source,'ru');assert(prompt.includes('Russian'));assert.equal(JSON.parse(prompt.slice(prompt.indexOf('\n')+1)).source,m.source);
  let created=0,destroyed=0;
  const mock={availability:async()=> 'available',create:async()=>{created++;return {prompt:async()=>'<b>untrusted advice</b>',destroy:()=>destroyed++};}};
  assert.equal((await requestCodeMentor(mock,m,m.source,'ru')).status,'unavailable');assert.equal(created,0);
