@@ -93,3 +93,6 @@ Under the creator's direction to advance all modules, assistant added four origi
 
 ### 28 November — cross-disciplinary programming
 Assistant added four debugging projects and an eighth programming stage under the creator's direction to advance the complete platform. Existing 32 missions and indices preserved. Limited educational interpreter, not unrestricted JavaScript execution. Browser acceptance of the new revision pending.
+
+### 28 November — ELIANA identity
+Creator Natalie Ragulina (Netaniya) selected and approved the visual direction and robot name ELIANA. Assistant translated that reference into an initial procedural 3D implementation, retaining the original logo, saved profiles, articulation and four UI languages. Reference art is AI-generated and is not a finished 3D asset.

@@ -13,9 +13,9 @@ export const SHOP=[
  {id:'projector',kind:'module',cost:100},{id:'speaker',kind:'module',cost:110},{id:'orbit',kind:'module',cost:130}
 ];
 export const ACTIONS=['wave','turn','step','glow','nod','rest'];
-export function cleanName(value){return String(value??'').normalize('NFC').replace(/[<>\x00-\x1f]/g,'').trim().slice(0,24)||'Nova';}
+export function cleanName(value){return String(value??'').normalize('NFC').replace(/[<>\x00-\x1f]/g,'').trim().slice(0,24)||'Eliana';}
 export function freshAcademy(){return {mission:0,drafts:{},learningLanguage:'en',languageIndex:0,languageMode:'cards',quiz:null,creator:null,creators:{}};}
-export function fresh(){return {schema:SAVE_KEY,lang:'de',started:false,robot:{name:'Nova',color:'pearl',head:'arc',base:'feet',hands:'round',frame:'balanced',finish:'ceramic',personality:'calm',interest:'space',style:'steps',module:'none'},grade:5,points:80,owned:['pearl','ocean'],earned:{},solved:[],projects:[],academy:freshAcademy(),learning:{math:freshMathCourse(),languages:freshLanguageCourse()},piano:freshPiano(),sound:true,volume:.35,visits:0};}
+export function fresh(){return {schema:SAVE_KEY,lang:'de',started:false,robot:{name:'Eliana',color:'pearl',head:'arc',base:'feet',hands:'round',frame:'balanced',finish:'titanium',personality:'calm',interest:'space',style:'steps',module:'none'},grade:5,points:80,owned:['pearl','ocean'],earned:{},solved:[],projects:[],academy:freshAcademy(),learning:{math:freshMathCourse(),languages:freshLanguageCourse()},piano:freshPiano(),sound:true,volume:.35,visits:0};}
 export function configure(state,key,value){
  const choices={color:Object.keys(COLORS).filter(v=>state.owned.includes(v)),head:['arc','visor','antenna'],base:['feet','wheels','hover'],hands:['round','clamp'],frame:['balanced','athletic','slender'],finish:['ceramic','titanium','satin'],personality:['calm','cheerful','focused'],interest:['space','nature','music'],style:['steps','visual','challenge'],module:['none',...SHOP.filter(v=>v.kind==='module'&&state.owned.includes(v.id)).map(v=>v.id)]};
  if(key==='name')state.robot.name=cleanName(value);else if(choices[key]?.includes(value))state.robot[key]=value;else return false;return true;
@@ -57,7 +57,7 @@ export function parseAcademy(input){
 }
 export function parseProfile(raw){
  try{if(typeof raw!=='string'||raw.length>MAX_PROFILE_BYTES)return null;const p=JSON.parse(raw);if(p.schema!==SAVE_KEY||!LANGUAGES.includes(p.lang)||!p.robot||!Array.isArray(p.owned)||!Array.isArray(p.projects)||!Array.isArray(p.solved)||typeof p.earned!=='object'||!p.earned)return null;
- const s=fresh();s.started=Boolean(p.started);s.lang=p.lang;s.grade=Number.isInteger(p.grade)&&p.grade>=1&&p.grade<=11?p.grade:5;
+ const s=fresh();s.robot.finish='ceramic';s.started=Boolean(p.started);s.lang=p.lang;s.grade=Number.isInteger(p.grade)&&p.grade>=1&&p.grade<=11?p.grade:5;
  s.owned=[...new Set(['pearl','ocean',...p.owned.filter(v=>SHOP.some(i=>i.id===v))])];for(const [key,value]of Object.entries(p.robot))configure(s,key,value);
  if(!Number.isSafeInteger(p.points)||p.points<0||p.points>1000000000)return null;s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,100000));s.solved=p.solved.filter(v=>typeof v==='string'&&v.length<100).slice(0,100000);
  s.projects=[];for(const item of p.projects.slice(0,24).reverse()){if(!item||!item.data)continue;const result=addProject(s,item.kind,item.data,item.name);if(result)result.project.id=Number.isSafeInteger(item.id)&&item.id>0?item.id:result.project.id;}

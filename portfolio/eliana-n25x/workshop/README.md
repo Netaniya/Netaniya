@@ -39,3 +39,5 @@ Einheitliche Lernübersicht: sechs getrennte Fortschrittsanzeigen für Mathemati
 Mathematik: 52 Themen mit je 256 Varianten (13.312); Fachkurse: 73 Fragen in 29 Stufen. Bestehende Aufgabenkennungen bleiben stabil. Browser-Abnahme dieser Erweiterung offen.
 
 Programmieren: 36 Missionen, acht Stufen, 182 Testfälle; vier fächerübergreifende Aufgaben. Begrenzter Lerninterpreter, keine vollständige JavaScript-Laufzeit. Browser-Abnahme offen.
+
+ELIANA: erste prozedurale 3D-Iteration mit Titanoptik, blauen Sensoren und Explosionsansicht. Logo und gespeicherte Profile bleiben erhalten; filmreife Modellierung und Browser-Abnahme stehen aus.

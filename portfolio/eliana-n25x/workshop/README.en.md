@@ -63,3 +63,5 @@ Unified study dashboard: six separate counters (mathematics, active-language ski
 Mathematics/subject extension: 52 task families × 256 variants = 13,312 variants; 73 localized questions across 29 stages in six subjects. Existing task IDs remain stable. Earlier revision dd965e9 passed desktop, touch and source checks; this candidate awaits CI.
 
 Programming now has 36 missions, eight stages and 182 test cases, including four cross-disciplinary projects. Restricted educational interpreter; not a complete JavaScript runtime. Latest CI pending.
+
+ELIANA visual direction: initial procedural silver-titanium humanoid with restrained blue optics and reversible exploded view. Original logo and existing saved profiles preserved. Film-quality reference art is not yet a rigged model; new CI pending. See DESIGN-ELIANA.md.

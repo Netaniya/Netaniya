@@ -385,3 +385,13 @@ h2,h3,.robot-caption h1{overflow-wrap:anywhere}
 .practice-notes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.practice-note{padding:7px 9px;border:1px solid #54718a;border-radius:8px;overflow-wrap:anywhere}.practice-note.current{outline:2px solid #f5c882;font-weight:700}.practice-note.done{background:#244e48;color:#d6fff3}#piano-practice progress{width:100%}#piano-practice .buttons button{min-height:44px}
 
 .staff-diagram{display:block;width:100%;max-width:420px;height:auto;margin:12px auto;background:#f5f2e9;color:#142637;border-radius:12px}.staff-clef{font:72px 'Noto Music','Bravura','Segoe UI Symbol','Apple Symbols',serif;fill:currentColor}.staff-diagram text{fill:currentColor}#staff-progress{width:100%}#staff-course .buttons button{min-height:44px}
+
+/* Eliana visual direction: restrained graphite, cool silver, clear blue; no decorative neon clutter. */
+.stage-frame{border-radius:18px;background:radial-gradient(ellipse at 48% 58%,#24384b 0%,#121d2a 48%,#090e18 85%);border:1px solid #334454}
+.stage-frame .orbit{display:none}
+.stage-tools{display:flex;justify-content:center;padding:6px 0}
+.stage-tools button{min-height:44px;max-width:100%;padding:8px 14px;background:#192b3e;border:1px solid #42617f;color:#e8f1fc;border-radius:10px}
+.stage-tools button[aria-pressed=true]{background:#234b72;border-color:#65aaff}
+body:not([data-view=home]):not([data-view=assemble]) .stage-tools{display:none}
+@media(min-width:701px){body[data-view=home] .stage-frame,body[data-view=assemble] .stage-frame{height:clamp(360px,48vh,500px)}}
+@media(max-width:700px){body[data-view=home] .stage-frame{height:clamp(285px,42vh,350px)}body[data-view=assemble] .stage-frame{height:290px}}

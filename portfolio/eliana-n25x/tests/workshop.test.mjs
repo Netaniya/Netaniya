@@ -55,7 +55,7 @@ test('Studio: humanoid has human proportions, five fingers per hand and real art
  assert.equal(a.legs.length,2);assert.equal(a.knees.length,2);assert.equal(a.elbows.length,2);assert.equal(a.fingers.length,10);assert.equal(a.fingers.filter(f=>f.thumb).length,2);assert(a.fingers.every(f=>f.joints.length===3));
  const shell=a.body.children.find(o=>o.isMesh&&o.material.isMeshPhysicalMaterial),p=shell.geometry.attributes.position,n=shell.geometry.attributes.normal;let positive=0,total=0;
  for(let i=0;i<p.count;i++){if(Math.hypot(p.getX(i),p.getZ(i))>.035){total++;if(p.getX(i)*n.getX(i)+p.getZ(i)*n.getZ(i)>0)positive++;}}assert(positive/total>.96,'shell normals face outwards');
- a.update(.2,1,'wave',.3);assert(a.arms[1].rotation.z>1.5);assert(a.elbows[1].rotation.z>.7);assert(a.head.getObjectByName('dark-faceplate'));a.dispose();
+ a.update(.2,1,'wave',.3);assert(a.arms[1].rotation.z>1.5);assert(a.elbows[1].rotation.z>.7);assert(a.head.getObjectByName('dark-faceplate'));assert(a.head.getObjectByName('eliana-metal-mask'));assert(a.head.getObjectByName('eliana-optic:1'));const parts=[a.head,...a.arms,...a.wrists,...a.legs],origins=parts.map(v=>v.position.clone());a.setExploded(1);assert.equal(a.separation,1);assert(parts.every((v,i)=>v.position.distanceTo(origins[i])>.05));a.setExploded(0);assert(parts.every((v,i)=>v.position.distanceTo(origins[i])<1e-10));a.dispose();
 });
 test('Studio: every mobility and body/finish option preserves a complete humanoid, and IK keeps stepping soles above the platform',()=>{
  let narrow,wide,ceramic,titanium,satin;
@@ -105,3 +105,5 @@ test('Studio: private portable review embeds its complete module graph, assets, 
   const app=Buffer.from(map.imports['studio/app.mjs'].split(',')[1],'base64').toString();assert(app.includes("if(PORTABLE)offlineStatus('offlinePortable')"));assert(app.includes('const asset=name=>'));assert(app.includes("PORTABLE?'':btn('install'"));
  }finally{await fs.rm(tmp,{recursive:true,force:true});}
 });
+
+test('Eliana defaults preserve legacy explicit robot settings',()=>{const s=fresh();assert.equal(s.robot.name,'Eliana');assert.equal(s.robot.finish,'titanium');s.robot.name='Nova';s.robot.finish='ceramic';assert.deepEqual(parseProfile(JSON.stringify(s)),s);});

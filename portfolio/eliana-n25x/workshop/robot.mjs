@@ -16,13 +16,13 @@ function shellGeometry(profile,segments=32,rings=28){
  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(positions,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();return g;
 }
 export function createRobot(config){
- const root=new T.Group();root.name='N25x-personal-humanoid';
+ const root=new T.Group();root.name='N25x-ELIANA-humanoid';
  const frame=config.frame||'balanced',finish=config.finish||'ceramic',width=frame==='athletic'?1.13:frame==='slender'?.90:1;
  const tint=new T.Color(COLORS[config.color]||COLORS.pearl);
  const shell=new T.MeshPhysicalMaterial({color:tint,metalness:finish==='titanium'?.88:finish==='satin'?.48:.22,roughness:finish==='satin'?.47:finish==='titanium'?.25:.27,clearcoat:finish==='ceramic'?.9:.45,clearcoatRoughness:.18});
  const alloy=new T.MeshStandardMaterial({color:0x96a9ba,metalness:.92,roughness:.27}),dark=new T.MeshStandardMaterial({color:0x090e17,metalness:.62,roughness:.32});
  const glass=new T.MeshPhysicalMaterial({color:0x03070e,metalness:.36,roughness:.13,clearcoat:1,clearcoatRoughness:.09});
- const accentColor=new T.Color(config.interest==='nature'?0x8ce8c5:config.interest==='music'?0xb6a0f5:0x81deef),accent=new T.MeshBasicMaterial({color:accentColor,toneMapped:false});
+ const accentColor=new T.Color(config.interest==='nature'?0x79cbb7:config.interest==='music'?0x9a9fe8:0x4a9fff),accent=new T.MeshBasicMaterial({color:accentColor,toneMapped:false});
  const sphere=new T.SphereGeometry(1,24,16),cylinder=new T.CylinderGeometry(1,1,1,24);
  const box=(p,w,h,d,m,x=0,y=0,z=0,r=.02)=>mesh(p,rounded(w,h,d,r),m,x,y,z);
  const ellipsoid=(p,rx,ry,rz,m,x=0,y=0,z=0)=>{const o=mesh(p,sphere,m,x,y,z);o.scale.set(rx,ry,rz);return o;};
@@ -47,9 +47,20 @@ export function createRobot(config){
  const head=group(body,'head',0,.625,.002);
  shellPart(head,[[-.125,0,0],[-.112,.040,.041],[-.071,.073,.067],[.015,.085,.074],[.082,.071,.063],[.119,.032,.037],[.126,0,0]],glass);
  const face=ellipsoid(head,config.head==='visor'?.079:.071,.102,.029,glass,0,-.001,.059);face.name='dark-faceplate';
+ // Eliana: smooth machined silver mask, separate optical sensors and a recessed jaw seam.
+ // The visor and antenna options retain their own visible geometry.
+ if(config.head==='arc'){
+  const mask=shellPart(head,[[-.102,0,0],[-.086,.035,.024],[-.043,.056,.031],[.022,.066,.033],[.076,.055,.023],[.098,.025,.011],[.103,0,0]],shell,0,0,.064);mask.name='eliana-metal-mask';
+  for(const side of [-1,1]){
+   const socket=ellipsoid(head,.025,.012,.010,dark,side*.030,.026,.092);socket.rotation.z=side*-.10;
+   const iris=ellipsoid(head,.008,.007,.005,accent,side*.030,.026,.101);iris.name='eliana-optic:'+side;
+  }
+  line(head,[[-.024,-.055,.089],[0,-.059,.096],[.024,-.055,.089]],.0015,dark);
+ }
  for(const side of [-1,1]){
   const temple=cyl(head,.026,.008,alloy,side*.077,.005,-.012);temple.rotation.z=Math.PI/2;
   const inset=cyl(head,.018,.009,dark,side*.082,.005,-.012);inset.rotation.z=Math.PI/2;
+  if(config.head==='arc'){const rim=ring(head,.020,.0018,accent,side*.087,.005,-.012);rim.rotation.y=Math.PI/2;}
  }
  if(config.head==='visor')line(head,[[-.063,.045,.076],[-.03,.052,.086],[.03,.052,.086],[.063,.045,.076]],.0016,accent);
  else if(config.head==='antenna'){
@@ -57,7 +68,7 @@ export function createRobot(config){
   line(head,[[-.038,-.08,.076],[0,-.091,.080],[.038,-.08,.076]],.0014,accent);
  }else{
   for(const side of [-1,1])line(head,[[side*.034,.103,.054],[side*.060,.074,.070],[side*.066,.013,.082],[side*.044,-.077,.074]],.0015,alloy);
-  box(head,.025,.0025,.003,accent,0,.045,.088,.001);
+  box(head,.020,.0025,.003,accent,0,.078,.091,.001);
  }
  const arms=[],elbows=[],wrists=[],fingers=[];
  function hand(parent,side){
@@ -119,6 +130,10 @@ export function createRobot(config){
   const holo=mesh(root,new T.IcosahedronGeometry(.055,0),new T.MeshBasicMaterial({color:0x93e6f4,wireframe:true,transparent:true,opacity:.72}),.31,1.59,.10);ring(root,.077,.0016,accent,.31,1.51,.10).rotation.x=Math.PI/2;module.userData.holo=holo;
  }
  if(config.module==='orbit'){const orbit=ring(root,.38,.002,accent,0,1.19,0);orbit.rotation.x=1.1;orbit.rotation.z=.25;module.userData.orbit=orbit;}
+ // Separate existing articulated modules in their own parent coordinates; exact restoration at zero.
+ const separations=[[head,0,.24,0],[hips,0,-.075,0],...arms.map((v,i)=>[v,(i?1:-1)*.26,.04,0]),...wrists.map((v,i)=>[v,(i?1:-1)*.10,-.10,.015]),...legs.map((v,i)=>[v,(i?1:-1)*.16,-.16,0])].map(([node,x,y,z])=>({node,origin:node.position.clone(),delta:new T.Vector3(x,y,z)}));
+ let separation=0;
+ function setExploded(value){separation=T.MathUtils.clamp(Number.isFinite(value)?value:0,0,1);for(const {node,origin,delta} of separations)node.position.copy(origin).addScaledVector(delta,separation);}
  let phase=0;const baseY=config.base==='hover'?.055:0;
  root.position.y=baseY;
  function update(dt,time,action='idle',amount=0){
@@ -135,21 +150,21 @@ export function createRobot(config){
   if(module.userData.holo)module.userData.holo.rotation.y=time*.65;if(module.userData.orbit)module.userData.orbit.rotation.z=.25+time*.12;
  }
  update(0,0);
- return {root,body,head,arms,elbows,wrists,legs,knees,ankles,fingers,footMeshes,anatomy:{frame,finish,height:1.79,humanoid:true},get phase(){return phase;},update,dispose(){const gs=new Set([sphere,cylinder]),ms=new Set([shell,alloy,dark,glass,accent]);root.traverse(o=>{if(o.geometry)gs.add(o.geometry);if(o.material)ms.add(o.material);});gs.forEach(g=>g.dispose());ms.forEach(m=>m.dispose());}};
+ return {root,body,head,arms,elbows,wrists,legs,knees,ankles,fingers,footMeshes,anatomy:{frame,finish,height:1.79,humanoid:true},get phase(){return phase;},get separation(){return separation;},setExploded,update,dispose(){const gs=new Set([sphere,cylinder]),ms=new Set([shell,alloy,dark,glass,accent]);root.traverse(o=>{if(o.geometry)gs.add(o.geometry);if(o.material)ms.add(o.material);});gs.forEach(g=>g.dispose());ms.forEach(m=>m.dispose());}};
 }
 export function createStage(canvas,onError=()=>{}){
  let renderer;try{renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});}catch{onError();return null;}
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;renderer.shadowMap.enabled=innerWidth>700;renderer.shadowMap.type=T.PCFSoftShadowMap;
- const scene=new T.Scene(),camera=new T.PerspectiveCamera(32,1,.1,40);let yaw=.28;const target=new T.Vector3(0,1.02,0);
- scene.add(new T.HemisphereLight(0x9cb9dc,0x080d17,.9));const key=new T.DirectionalLight(0xfff5e9,3.6);key.position.set(-3,5,5);key.castShadow=true;key.shadow.mapSize.setScalar(1024);key.shadow.camera.left=-3;key.shadow.camera.right=3;key.shadow.camera.top=4;key.shadow.camera.bottom=-2;key.shadow.normalBias=.03;scene.add(key);const rim=new T.DirectionalLight(0x8de4ff,3.0);rim.position.set(3,2,-3);scene.add(rim);const fill=new T.DirectionalLight(0xacc8ed,1.8);fill.position.set(3,2,4);scene.add(fill);
+ const scene=new T.Scene(),camera=new T.PerspectiveCamera(32,1,.1,40);let yaw=.28,exploded=false,spread=0;const target=new T.Vector3(0,1.02,0);
+ scene.add(new T.HemisphereLight(0x9cb9dc,0x080d17,.9));const key=new T.DirectionalLight(0xfff5e9,3.6);key.position.set(-3,5,5);key.castShadow=true;key.shadow.mapSize.setScalar(1024);key.shadow.camera.left=-3;key.shadow.camera.right=3;key.shadow.camera.top=4;key.shadow.camera.bottom=-2;key.shadow.normalBias=.03;scene.add(key);const rim=new T.DirectionalLight(0x91b8ff,2.5);rim.position.set(3,2,-3);scene.add(rim);const fill=new T.DirectionalLight(0xacc8ed,1.8);fill.position.set(3,2,4);scene.add(fill);
  const faces=[];for(let i=0;i<6;i++){const c=document.createElement('canvas');c.width=c.height=128;const ctx=c.getContext('2d'),g=ctx.createLinearGradient(0,0,128,128);g.addColorStop(0,i===2?'#b7c9dd':'#26374c');g.addColorStop(.42,'#64778c');g.addColorStop(.50,'#1d2b40');g.addColorStop(1,'#060a12');ctx.fillStyle=g;ctx.fillRect(0,0,128,128);ctx.fillStyle='#ffffff';ctx.fillRect(12,0,14,110);ctx.fillRect(80,12,6,85);faces.push(c);}const cube=new T.CubeTexture(faces);cube.colorSpace=T.SRGBColorSpace;cube.needsUpdate=true;const pmrem=new T.PMREMGenerator(renderer),env=pmrem.fromCubemap(cube);scene.environment=env.texture;cube.dispose();pmrem.dispose();
  const platform=mesh(scene,new T.CylinderGeometry(.59,.61,.08,64),new T.MeshPhysicalMaterial({color:0x162434,metalness:.7,roughness:.29,clearcoat:.6}),0,.04,0);platform.receiveShadow=true;
- const ring=mesh(scene,new T.TorusGeometry(.581,.0025,8,64),new T.MeshBasicMaterial({color:0x55d3e1}),0,.083,0);ring.rotation.x=Math.PI/2;
+ const ring=mesh(scene,new T.TorusGeometry(.581,.0025,8,64),new T.MeshBasicMaterial({color:0x4a9fff}),0,.083,0);ring.rotation.x=Math.PI/2;
  const shadowCanvas=document.createElement('canvas');shadowCanvas.width=shadowCanvas.height=64;const sc=shadowCanvas.getContext('2d'),grad=sc.createRadialGradient(32,32,1,32,32,32);grad.addColorStop(0,'#000a');grad.addColorStop(1,'#0000');sc.fillStyle=grad;sc.fillRect(0,0,64,64);const shadowTex=new T.CanvasTexture(shadowCanvas);const sh=mesh(scene,new T.PlaneGeometry(.93,.78),new T.MeshBasicMaterial({map:shadowTex,transparent:true,depthWrite:false}),0,.084,.015);sh.rotation.x=-Math.PI/2;
  let actor,time=0,last=0,queue=[],elapsed=0,finish=null,stopped=false;const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  function resize(){const rect=canvas.parentElement.getBoundingClientRect();renderer.setSize(Math.max(1,rect.width),Math.max(1,rect.height),false);camera.aspect=rect.width/Math.max(1,rect.height);camera.updateProjectionMatrix();renderer.render(scene,camera);}
  const observer=new ResizeObserver(resize);observer.observe(canvas.parentElement);resize();
- function render(t){if(stopped)return;const dt=last?Math.min((t-last)/1000,.1):0;last=t;if(!document.hidden){time+=dt;elapsed+=dt;if(queue.length&&elapsed>=1.05){elapsed=0;queue.shift();if(!queue.length){finish?.();finish=null;}}actor?.update(reduced&&!queue.length?0:dt,reduced&&!queue.length?0:time,queue[0]||'idle',elapsed/1.05);camera.position.set(Math.sin(yaw)*3.85,1.33,Math.cos(yaw)*3.85);camera.lookAt(target);renderer.render(scene,camera);}requestAnimationFrame(render);}
+ function render(t){if(stopped)return;const dt=last?Math.min((t-last)/1000,.1):0;last=t;if(!document.hidden){time+=dt;elapsed+=dt;if(queue.length&&elapsed>=1.05){elapsed=0;queue.shift();if(!queue.length){finish?.();finish=null;}}const goal=exploded?1:0;spread=reduced?goal:Math.abs(goal-spread)<.005?goal:spread+(goal-spread)*Math.min(1,dt*7);actor?.setExploded(spread);actor?.update(exploded?0:reduced&&!queue.length?0:dt,exploded?0:reduced&&!queue.length?0:time,exploded?'idle':queue[0]||'idle',elapsed/1.05);const distance=Math.max(3.85+spread*.70,(1.70+spread*.75)/Math.max(.25,camera.aspect));camera.position.set(Math.sin(yaw)*distance,1.33,Math.cos(yaw)*distance);camera.lookAt(target);renderer.render(scene,camera);}requestAnimationFrame(render);}
  requestAnimationFrame(render);
- return {get actor(){return actor;},get active(){return queue.length>0;},configure(config){if(actor){scene.remove(actor.root);actor.dispose();}actor=createRobot(config);scene.add(actor.root);},rotate(value){yaw+=value;},play(actions,done){queue=[...actions];elapsed=0;finish=done;},stop(){queue=[];finish=null;elapsed=0;},png(){renderer.render(scene,camera);return canvas.toDataURL('image/png');},dispose(){stopped=true;observer.disconnect();actor?.dispose();env.dispose();shadowTex.dispose();renderer.dispose();}};
+ return {get actor(){return actor;},get active(){return queue.length>0;},configure(config){if(actor){scene.remove(actor.root);actor.dispose();}actor=createRobot(config);actor.setExploded(spread);scene.add(actor.root);},get exploded(){return exploded;},setExploded(value){exploded=Boolean(value);queue=[];finish=null;elapsed=0;},rotate(value){yaw+=value;},play(actions,done){if(exploded){exploded=false;spread=0;actor?.setExploded(0);}queue=[...actions];elapsed=0;finish=done;},stop(){queue=[];finish=null;elapsed=0;},png(){renderer.render(scene,camera);return canvas.toDataURL('image/png');},dispose(){stopped=true;observer.disconnect();actor?.dispose();env.dispose();shadowTex.dispose();renderer.dispose();}};
 }

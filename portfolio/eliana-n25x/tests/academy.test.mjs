@@ -50,7 +50,7 @@ test('Academy project files contain only editable work, reject malformed imports
  const s=fresh(),p=quiz(),result=addProject(s,p.kind,p.data,p.name);assert(result);assert.equal(result.bonus,30);
  const points=s.points,edited=structuredClone(p.data);edited.questions[0].prompt='What is 3 + 1?';assert.equal(updateProject(s,result.project.id,'quiz',edited,'Edited').bonus,0);assert.equal(s.points,points);assert.equal(s.projects.length,1);
  const raw=serializeCreation(result.project),parsed=parseCreation(raw);assert(parsed);assert(!raw.includes('earned'));assert(!raw.includes('robot'));assert(!raw.includes('owned'));assert.equal(parsed.data.questions[0].prompt,'What is 3 + 1?');
- const other=fresh();assert(addProject(other,parsed.kind,parsed.data,parsed.name));assert.equal(other.robot.name,'Nova');
+ const other=fresh();assert(addProject(other,parsed.kind,parsed.data,parsed.name));assert.equal(other.robot.name,'Eliana');
  for(const bad of ['{}','{',JSON.stringify({...parsed,schema:'wrong'}),JSON.stringify({schema:'eliana-n25x.project.v1',...parsed,data:{...parsed.data,program:'function mark() { return window; }'}})])assert.equal(parseCreation(bad),null);
  assert.equal(validateCreation('quiz',{...p.data,questions:[{prompt:'Question',options:['same','same','different'],answer:0}]}),null);
  assert.deepEqual(parseProfile(JSON.stringify(s)),s);
@@ -150,7 +150,7 @@ test('Academy application wiring: actual app navigation, inputs, rewards and lan
  try{
   for(const [k,value]of Object.entries(overrides))Object.defineProperty(globalThis,k,{value,writable:true,configurable:true});
   console.error=(...args)=>errors.push(args.join(' '));await import('../workshop/dist/app.mjs?automated-dom-fallback=1');console.error=consoleError;
-  assert.equal(document.body.dataset.ready,'fallback');assert.equal(document.querySelector('#content h2').textContent,TEXT.de.robotGreeting.replace('{name}','Nova'));assert(errors.every(v=>v.includes('WebGLRenderer')),'only expected canvas-unavailable errors');
+  assert.equal(document.body.dataset.ready,'fallback');assert.equal(document.querySelector('#content h2').textContent,TEXT.de.robotGreeting.replace('{name}','Eliana'));assert(errors.every(v=>v.includes('WebGLRenderer')),'only expected canvas-unavailable errors');
   const click=async selector=>{const button=document.querySelector(selector);assert(button,selector);button.click();await new Promise(resolve=>setImmediate(resolve));};
   await click('#navigation [data-do=learn]');await click('[data-do=programming]');assert.equal(document.body.dataset.view,'programming');await click('[data-a=block][data-index="1"]');await click('[data-a=tests]');assert.equal(JSON.parse(storage.get(SAVE_KEY)).points,110);
   await click('#navigation [data-do=create]');await click('[data-a=template][data-template=quiz]');assert(document.querySelector('#quiz-question-0'));await click('[data-a=save-creation]');assert.equal(JSON.parse(storage.get(SAVE_KEY)).projects.length,1);

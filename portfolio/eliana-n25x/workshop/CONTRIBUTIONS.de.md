@@ -18,3 +18,5 @@ Die musikalische Erweiterung enthält acht Rhythmusübungen mit zeitlicher Auswe
 28.11.2026: Die Schöpferin beauftragte die Fortsetzung des bestehenden Projekts. Der Assistent ergänzte mit KI-Unterstützung weitere Klavierübungen und zwei Sprachthemen (berufliche Kommunikation sowie Argumente und Belege) in allen zehn Sprachen, erweiterte Tests und dokumentierte die Ergebnisse. Die Themenauswahl und Umsetzung sind technische bzw. redaktionelle Beiträge des Assistenten; keine erfundene persönliche Programmierarbeit. Browser-Abnahme und fachliche Sprachprüfung stehen aus.
 
 28.11.2026: Die Schöpferin autorisierte die Wiederherstellung der GitHub-Tests. Der Assistent ergänzte acht Grammatikthemen und 32 Aufgaben mit KI-Unterstützung; unabhängige Sprachprüfung offen.
+
+28.11.2026: Die Schöpferin wählte den Namen ELIANA und bestätigte die metallische, zurückhaltende visuelle Gestaltung. Der Assistent implementierte eine erste prozedurale 3D-Iteration mit Explosionsansicht. Das ursprüngliche Logo und vorhandene Profile bleiben erhalten.
