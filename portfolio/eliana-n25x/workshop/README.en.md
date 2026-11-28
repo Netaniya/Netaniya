@@ -57,3 +57,5 @@ Chord candidate: four root-position chord recognition stages, nine qualities, 27
 Practical harmony candidate: six guided stages and 24 chord-construction tasks including inversions and ii7–V7–Imaj7. Exact MIDI pitch-set checking, sequential keyboard selection and independent progress. No voice-leading or simultaneous performance assessment. Browser acceptance pending.
 
 Current grammar candidate: 88 topics / 352 questions, 20 each in German and English, six in each of the other eight languages. Native-speaker review and this commit's CI pending. Workflow #18 applies to the earlier commit `30e8f57`.
+
+Unified study dashboard: six separate counters (mathematics, active-language skills, active-language grammar, programming, school subjects, music practice stages) plus saved creative projects. Counts do not award points. Review-branch CI uses the open PR trigger and manual dispatch instead of duplicate push and PR triggers.

@@ -177,3 +177,19 @@ test('Staff notation: reference positions, enharmonic spelling, ledger lines, al
  const p=freshPiano();for(const lesson of STAFF_LESSONS){let i=0;for(const spelling of lesson.notes){const q=staffNote(spelling,lesson.clef);assert(q.midi>=(lesson.octave+1)*12&&q.midi<(lesson.octave+3)*12);assert.equal(staffPracticeStep(lesson,i,q.midi+1).index,i);const r=staffPracticeStep(lesson,i,q.midi);assert(r.correct);assert.equal(r.index,++i);assert.equal(r.complete,i===lesson.notes.length);}p.practice.staffPassed[lesson.id]=true;}
  assert.deepEqual(parsePiano(p),p);delete p.practice.staffPassed;assert.deepEqual(parsePiano(p).practice.staffPassed,{});p.practice.staffPassed={unknown:true,'staff-treble':'true'};assert.deepEqual(parsePiano(p).practice.staffPassed,{});
 });
+
+test('Unified study dashboard: six independent progress measures, due reviews and non-mutating counts',async()=>{
+ const {fresh,studySummary,parseProfile}=await import('../workshop/model.mjs');
+ const {MATH_TOPICS,MATH_VARIANTS}=await import('../workshop/math-course.mjs');
+ const {LANGUAGE_ITEMS,grammarRoute,scheduleLanguage}=await import('../workshop/language-course.mjs');
+ const {MISSIONS,SUBJECTS}=await import('../workshop/curriculum.mjs');
+ const s=fresh(),l=s.learning.languages,day=20000;const zero=studySummary(s,day);
+ assert.equal(zero.math.total,MATH_VARIANTS);assert.equal(zero.language.total,LANGUAGE_ITEMS.length*3);assert.equal(zero.grammar.total,grammarRoute(l.language).length);assert.equal(zero.programming.total,MISSIONS.length);assert.equal(zero.school.total,SUBJECTS.reduce((n,v)=>n+v.tasks.length,0));assert.equal(zero.music.total,52);assert.equal(zero.projects,0);
+ for(const key of ['math','language','grammar','programming','school','music'])assert.equal(zero[key].done,0);
+ s.learning.math.done[MATH_TOPICS[0].id]=[0,1];s.learning.math.mistakes=[MATH_TOPICS[0].id+':2'];
+ const item=LANGUAGE_ITEMS[0];l.done[l.language+'/'+item.id]=15;l.done['de/'+item.id]=7;l.mode='read';scheduleLanguage(l,item,true,{day:day-1});l.review=[l.language+'|read|'+item.id,'de|read|'+item.id];l.grammar.passed[grammarRoute(l.language)[0].id]=true;l.grammar.passed[grammarRoute('de')[0].id]=true;
+ s.solved=['program:'+MISSIONS[0].id,'lab:'+SUBJECTS[0].id+':0','lab:'+SUBJECTS[0].id+':0'];s.piano.practice.harmonyPassed['harmony-c']=true;
+ const before=JSON.stringify(s),v=studySummary(s,day);assert.equal(JSON.stringify(s),before);
+ assert.equal(v.math.done,2);assert.equal(v.math.review,1);assert.equal(v.language.done,3);assert.equal(v.language.review,1);assert.equal(v.grammar.done,1);assert.equal(v.programming.done,1);assert.equal(v.school.done,1);assert.equal(v.music.done,1);
+ assert.deepEqual(studySummary(parseProfile(JSON.stringify(s)),day),v);
+});

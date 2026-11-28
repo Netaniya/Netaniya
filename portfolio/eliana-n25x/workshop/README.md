@@ -33,3 +33,5 @@ Akkorderkennung: vier Stufen, neun Akkordtypen in Grundstellung, 27 Fragen je Du
 Praktische Harmonielehre: sechs Stufen, 24 Aufgaben zum Akkordaufbau und zu Umkehrungen; Auswahl einzelner Tasten, Prüfung der exakten Tonhöhen und separate Fortschritte. Keine Stimmführungsbewertung; Browser-Abnahme offen.
 
 Grammatik: 88 Themen, 352 Aufgaben, je 20 Themen in Deutsch und Englisch, je sechs in den übrigen acht Sprachen. Sprachprüfung und CI dieser Erweiterung stehen aus.
+
+Einheitliche Lernübersicht: sechs getrennte Fortschrittsanzeigen für Mathematik, Sprachübungen, Grammatik, Programmierung, Fachkurse und Musik sowie gespeicherte kreative Projekte. Keine Änderung von Profilen oder Punkten. Der aktive Pull Request vermeidet doppelte CI-Läufe.

@@ -1,8 +1,8 @@
-import {freshLanguageCourse,parseLanguageCourse} from './language-course.mjs';
-import {freshPiano,parsePiano,validateScore} from './piano-score.mjs';
-import {freshMathCourse,parseMathCourse} from './math-course.mjs';
+import {freshLanguageCourse,parseLanguageCourse,LANGUAGE_ITEMS,grammarRoute,languageMistakes,dueLanguageReviews} from './language-course.mjs';
+import {freshPiano,parsePiano,validateScore,PIANO_LESSONS,RHYTHM_LESSONS,EAR_LESSONS,STAFF_LESSONS,CHORD_LESSONS,HARMONY_LESSONS} from './piano-score.mjs';
+import {freshMathCourse,parseMathCourse,MATH_TOPICS,MATH_VARIANTS} from './math-course.mjs';
 import {validateCreation,CREATION_TEMPLATES} from './creations.mjs';
-import {LEARNING_LANGUAGES,MISSIONS} from './curriculum.mjs';
+import {LEARNING_LANGUAGES,MISSIONS,SUBJECTS} from './curriculum.mjs';
 export const MAX_PROFILE_BYTES=8*1024*1024;
 export const SAVE_KEY='eliana-n25x.workshop.v1';
 export const LANGUAGES=['de','en','ru','uk'];
@@ -64,4 +64,21 @@ export function parseProfile(raw){
  s.points=p.points;s.earned=Object.fromEntries(Object.entries(p.earned).filter(([k,v])=>k.length<=100&&Number.isSafeInteger(v)&&v>0&&v<=100).slice(0,100000));
  s.academy=parseAcademy(p.academy);s.learning.math=parseMathCourse(p.learning?.math);s.learning.languages=parseLanguageCourse(p.learning?.languages);s.piano=parsePiano(p.piano);s.sound=p.sound!==false;s.volume=Math.max(0,Math.min(1,Number.isFinite(p.volume)?p.volume:.35));s.visits=Math.max(0,Math.min(100000,Number(p.visits)||0));return s;
  }catch{return null;}
+}
+
+// Derived dashboard counts only; never changes profile or points.
+export function studySummary(state,day){
+ const m=state.learning.math,l=state.learning.languages,solved=new Set(state.solved),grammar=grammarRoute(l.language),practice=state.piano.practice;
+ const mathDone=MATH_TOPICS.reduce((n,t)=>n+(m.done[t.id]?.length||0),0);
+ const langDone=LANGUAGE_ITEMS.reduce((n,i)=>{const v=l.done[l.language+'/'+i.id]||0;return n+Number(Boolean(v&1))+Number(Boolean(v&2))+Number(Boolean(v&4));},0);
+ const schoolDone=SUBJECTS.reduce((n,s)=>n+s.tasks.reduce((a,_,i)=>a+Number(solved.has('lab:'+s.id+':'+i)),0),0);
+ const musicGroups=[[PIANO_LESSONS,practice.passed],[RHYTHM_LESSONS,practice.rhythmPassed],[EAR_LESSONS,practice.earPassed],[STAFF_LESSONS,practice.staffPassed],[CHORD_LESSONS,practice.chordPassed],[HARMONY_LESSONS,practice.harmonyPassed]];
+ return {
+  math:{done:mathDone,total:MATH_VARIANTS,topics:MATH_TOPICS.filter(t=>m.done[t.id]?.length).length,review:m.mistakes.length},
+  language:{done:langDone,total:LANGUAGE_ITEMS.length*3,language:l.language,review:new Set([...languageMistakes(l),...dueLanguageReviews(l,day)]).size},
+  grammar:{done:grammar.filter(v=>l.grammar.passed[v.id]===true).length,total:grammar.length},
+  programming:{done:MISSIONS.filter(v=>solved.has('program:'+v.id)).length,total:MISSIONS.length},
+  school:{done:schoolDone,total:SUBJECTS.reduce((n,s)=>n+s.tasks.length,0),subjects:SUBJECTS.length},
+  music:{done:musicGroups.reduce((n,[lessons,passed])=>n+lessons.filter(v=>passed[v.id]===true).length,0),total:musicGroups.reduce((n,[lessons])=>n+lessons.length,0)},projects:state.projects.length
+ };
 }

@@ -84,3 +84,6 @@ Owner authorized restoration of GitHub Actions. Assistant enabled a selective of
 
 ### 28 November — first live browser regression
 CI run #18 passed the documented touch scenarios before a strict locator failure in the standalone check. Assistant narrowed the locator to the study-progress card, preserving both legitimate controls and asserting the destination heading. Final rerun and publication remain pending.
+
+### 28 November — cross-module integration and CI efficiency
+At the creator's request to optimize the entire product, assistant implemented six independent progress indicators and creative-project access, removed redundant controls, and selected PR-triggered verification for the active review branch to prevent duplicate push/PR runs. Publication unchanged.
