@@ -193,3 +193,10 @@ test('Unified study dashboard: six independent progress measures, due reviews an
  assert.equal(v.math.done,2);assert.equal(v.math.review,1);assert.equal(v.language.done,3);assert.equal(v.language.review,1);assert.equal(v.grammar.done,1);assert.equal(v.programming.done,1);assert.equal(v.school.done,1);assert.equal(v.music.done,1);
  assert.deepEqual(studySummary(parseProfile(JSON.stringify(s)),day),v);
 });
+
+test('Contextual dialogue practice covers every language and persists independent completion',async()=>{
+ const {DIALOGUE_LESSONS,COURSE_LANGUAGES,dialogueOptions,gradeDialogue,freshLanguageCourse,parseLanguageCourse}=await import('../workshop/language-course.mjs');
+ const p=freshLanguageCourse();assert.equal(DIALOGUE_LESSONS.length,6);
+ for(const lang of COURSE_LANGUAGES)for(const m of DIALOGUE_LESSONS){const t=m.turns[lang],opts=dialogueOptions(m,lang);assert(t.prompt.trim());assert.equal(new Set(opts).size,3);assert.equal(opts.filter(v=>gradeDialogue(m,lang,v)).length,1);assert(gradeDialogue(m,lang,t.answer));p.dialogues.passed[lang+'/'+m.id]=true;}
+ assert.deepEqual(parseLanguageCourse(p),p);p.dialogues.passed['xx/greeting']=true;assert(!parseLanguageCourse(p).dialogues.passed['xx/greeting']);delete p.dialogues;assert.deepEqual(parseLanguageCourse(p).dialogues,{passed:{}});
+});

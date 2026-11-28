@@ -6209,3 +6209,613 @@ GRAMMAR_LESSONS.push(...[
     ]
   }
 ]);
+
+// AI-assisted contextual response practice, native-speaker review pending.
+export const DIALOGUE_LESSONS=[
+  {
+    "id": "greeting",
+    "title": {
+      "de": "Begrüßung",
+      "en": "Greeting",
+      "ru": "Приветствие",
+      "uk": "Привітання"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Guten Morgen! Wie geht es dir?",
+        "answer": "Danke, gut. Und dir?",
+        "options": [
+          "Danke, gut. Und dir?",
+          "Das kostet fünf Euro.",
+          "Gehen Sie geradeaus."
+        ]
+      },
+      "en": {
+        "prompt": "Good morning! How are you?",
+        "answer": "I'm fine, thanks. And you?",
+        "options": [
+          "I'm fine, thanks. And you?",
+          "It's five euros.",
+          "Go straight ahead."
+        ]
+      },
+      "ka": {
+        "prompt": "დილა მშვიდობისა! როგორ ხარ?",
+        "answer": "კარგად, მადლობა. შენ?",
+        "options": [
+          "კარგად, მადლობა. შენ?",
+          "ხუთი ევრო ღირს.",
+          "პირდაპირ წადით."
+        ]
+      },
+      "uk": {
+        "prompt": "Доброго ранку! Як справи?",
+        "answer": "Добре, дякую. А в тебе?",
+        "options": [
+          "Добре, дякую. А в тебе?",
+          "П’ять євро.",
+          "Ідіть прямо."
+        ]
+      },
+      "ru": {
+        "prompt": "Доброе утро! Как дела?",
+        "answer": "Хорошо, спасибо. А у тебя?",
+        "options": [
+          "Хорошо, спасибо. А у тебя?",
+          "Пять евро.",
+          "Идите прямо."
+        ]
+      },
+      "zh": {
+        "prompt": "早上好！你好吗？",
+        "answer": "我很好，谢谢。你呢？",
+        "options": [
+          "我很好，谢谢。你呢？",
+          "五欧元。",
+          "请一直往前走。"
+        ]
+      },
+      "es": {
+        "prompt": "¡Buenos días! ¿Cómo estás?",
+        "answer": "Bien, gracias. ¿Y tú?",
+        "options": [
+          "Bien, gracias. ¿Y tú?",
+          "Cuesta cinco euros.",
+          "Siga recto."
+        ]
+      },
+      "fr": {
+        "prompt": "Bonjour ! Comment vas-tu ?",
+        "answer": "Bien, merci. Et toi ?",
+        "options": [
+          "Bien, merci. Et toi ?",
+          "Ça coûte cinq euros.",
+          "Allez tout droit."
+        ]
+      },
+      "it": {
+        "prompt": "Buongiorno! Come stai?",
+        "answer": "Bene, grazie. E tu?",
+        "options": [
+          "Bene, grazie. E tu?",
+          "Costa cinque euro.",
+          "Vada sempre dritto."
+        ]
+      },
+      "ja": {
+        "prompt": "おはようございます。お元気ですか。",
+        "answer": "元気です。ありがとうございます。",
+        "options": [
+          "元気です。ありがとうございます。",
+          "5ユーロです。",
+          "まっすぐ行ってください。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "shop",
+    "title": {
+      "de": "Im Geschäft",
+      "en": "In a shop",
+      "ru": "В магазине",
+      "uk": "У магазині"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Was kostet das?",
+        "answer": "Das kostet fünf Euro.",
+        "options": [
+          "Das kostet fünf Euro.",
+          "Gehen Sie geradeaus.",
+          "Ein Glas Wasser, bitte."
+        ]
+      },
+      "en": {
+        "prompt": "How much is this?",
+        "answer": "It's five euros.",
+        "options": [
+          "It's five euros.",
+          "Go straight ahead.",
+          "A glass of water, please."
+        ]
+      },
+      "ka": {
+        "prompt": "რა ღირს ეს?",
+        "answer": "ხუთი ევრო ღირს.",
+        "options": [
+          "ხუთი ევრო ღირს.",
+          "პირდაპირ წადით.",
+          "ერთი ჭიქა წყალი, თუ შეიძლება."
+        ]
+      },
+      "uk": {
+        "prompt": "Скільки це коштує?",
+        "answer": "П’ять євро.",
+        "options": [
+          "П’ять євро.",
+          "Ідіть прямо.",
+          "Склянку води, будь ласка."
+        ]
+      },
+      "ru": {
+        "prompt": "Сколько это стоит?",
+        "answer": "Пять евро.",
+        "options": [
+          "Пять евро.",
+          "Идите прямо.",
+          "Стакан воды, пожалуйста."
+        ]
+      },
+      "zh": {
+        "prompt": "这个多少钱？",
+        "answer": "五欧元。",
+        "options": [
+          "五欧元。",
+          "请一直往前走。",
+          "请给我一杯水。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Cuánto cuesta esto?",
+        "answer": "Cuesta cinco euros.",
+        "options": [
+          "Cuesta cinco euros.",
+          "Siga recto.",
+          "Un vaso de agua, por favor."
+        ]
+      },
+      "fr": {
+        "prompt": "Combien ça coûte ?",
+        "answer": "Ça coûte cinq euros.",
+        "options": [
+          "Ça coûte cinq euros.",
+          "Allez tout droit.",
+          "Un verre d'eau, s'il vous plaît."
+        ]
+      },
+      "it": {
+        "prompt": "Quanto costa questo?",
+        "answer": "Costa cinque euro.",
+        "options": [
+          "Costa cinque euro.",
+          "Vada sempre dritto.",
+          "Un bicchiere d'acqua, per favore."
+        ]
+      },
+      "ja": {
+        "prompt": "これはいくらですか。",
+        "answer": "5ユーロです。",
+        "options": [
+          "5ユーロです。",
+          "まっすぐ行ってください。",
+          "お水を一杯お願いします。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "directions",
+    "title": {
+      "de": "Nach dem Weg fragen",
+      "en": "Asking directions",
+      "ru": "Как пройти",
+      "uk": "Як пройти"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Wo ist der Bahnhof?",
+        "answer": "Gehen Sie geradeaus.",
+        "options": [
+          "Gehen Sie geradeaus.",
+          "Das kostet fünf Euro.",
+          "Ein Glas Wasser, bitte."
+        ]
+      },
+      "en": {
+        "prompt": "Where is the station?",
+        "answer": "Go straight ahead.",
+        "options": [
+          "Go straight ahead.",
+          "It's five euros.",
+          "A glass of water, please."
+        ]
+      },
+      "ka": {
+        "prompt": "სად არის სადგური?",
+        "answer": "პირდაპირ წადით.",
+        "options": [
+          "პირდაპირ წადით.",
+          "ხუთი ევრო ღირს.",
+          "ერთი ჭიქა წყალი, თუ შეიძლება."
+        ]
+      },
+      "uk": {
+        "prompt": "Де вокзал?",
+        "answer": "Ідіть прямо.",
+        "options": [
+          "Ідіть прямо.",
+          "П’ять євро.",
+          "Склянку води, будь ласка."
+        ]
+      },
+      "ru": {
+        "prompt": "Где вокзал?",
+        "answer": "Идите прямо.",
+        "options": [
+          "Идите прямо.",
+          "Пять евро.",
+          "Стакан воды, пожалуйста."
+        ]
+      },
+      "zh": {
+        "prompt": "车站在哪里？",
+        "answer": "请一直往前走。",
+        "options": [
+          "请一直往前走。",
+          "五欧元。",
+          "请给我一杯水。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Dónde está la estación?",
+        "answer": "Siga recto.",
+        "options": [
+          "Siga recto.",
+          "Cuesta cinco euros.",
+          "Un vaso de agua, por favor."
+        ]
+      },
+      "fr": {
+        "prompt": "Où est la gare ?",
+        "answer": "Allez tout droit.",
+        "options": [
+          "Allez tout droit.",
+          "Ça coûte cinq euros.",
+          "Un verre d'eau, s'il vous plaît."
+        ]
+      },
+      "it": {
+        "prompt": "Dov'è la stazione?",
+        "answer": "Vada sempre dritto.",
+        "options": [
+          "Vada sempre dritto.",
+          "Costa cinque euro.",
+          "Un bicchiere d'acqua, per favore."
+        ]
+      },
+      "ja": {
+        "prompt": "駅はどこですか。",
+        "answer": "まっすぐ行ってください。",
+        "options": [
+          "まっすぐ行ってください。",
+          "5ユーロです。",
+          "お水を一杯お願いします。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "cafe",
+    "title": {
+      "de": "Im Café",
+      "en": "At a café",
+      "ru": "В кафе",
+      "uk": "У кафе"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Was möchten Sie trinken?",
+        "answer": "Ein Glas Wasser, bitte.",
+        "options": [
+          "Ein Glas Wasser, bitte.",
+          "Das kostet fünf Euro.",
+          "Gehen Sie geradeaus."
+        ]
+      },
+      "en": {
+        "prompt": "What would you like to drink?",
+        "answer": "A glass of water, please.",
+        "options": [
+          "A glass of water, please.",
+          "It's five euros.",
+          "Go straight ahead."
+        ]
+      },
+      "ka": {
+        "prompt": "რას დალევთ?",
+        "answer": "ერთი ჭიქა წყალი, თუ შეიძლება.",
+        "options": [
+          "ერთი ჭიქა წყალი, თუ შეიძლება.",
+          "ხუთი ევრო ღირს.",
+          "პირდაპირ წადით."
+        ]
+      },
+      "uk": {
+        "prompt": "Що бажаєте випити?",
+        "answer": "Склянку води, будь ласка.",
+        "options": [
+          "Склянку води, будь ласка.",
+          "П’ять євро.",
+          "Ідіть прямо."
+        ]
+      },
+      "ru": {
+        "prompt": "Что будете пить?",
+        "answer": "Стакан воды, пожалуйста.",
+        "options": [
+          "Стакан воды, пожалуйста.",
+          "Пять евро.",
+          "Идите прямо."
+        ]
+      },
+      "zh": {
+        "prompt": "您想喝什么？",
+        "answer": "请给我一杯水。",
+        "options": [
+          "请给我一杯水。",
+          "五欧元。",
+          "请一直往前走。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Qué desea beber?",
+        "answer": "Un vaso de agua, por favor.",
+        "options": [
+          "Un vaso de agua, por favor.",
+          "Cuesta cinco euros.",
+          "Siga recto."
+        ]
+      },
+      "fr": {
+        "prompt": "Qu'est-ce que vous voulez boire ?",
+        "answer": "Un verre d'eau, s'il vous plaît.",
+        "options": [
+          "Un verre d'eau, s'il vous plaît.",
+          "Ça coûte cinq euros.",
+          "Allez tout droit."
+        ]
+      },
+      "it": {
+        "prompt": "Che cosa desidera bere?",
+        "answer": "Un bicchiere d'acqua, per favore.",
+        "options": [
+          "Un bicchiere d'acqua, per favore.",
+          "Costa cinque euro.",
+          "Vada sempre dritto."
+        ]
+      },
+      "ja": {
+        "prompt": "お飲み物は何にしますか。",
+        "answer": "お水を一杯お願いします。",
+        "options": [
+          "お水を一杯お願いします。",
+          "5ユーロです。",
+          "まっすぐ行ってください。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "help",
+    "title": {
+      "de": "Um Hilfe bitten",
+      "en": "Asking for help",
+      "ru": "Просьба о помощи",
+      "uk": "Прохання про допомогу"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Können Sie mir helfen?",
+        "answer": "Ja, natürlich. Was brauchen Sie?",
+        "options": [
+          "Ja, natürlich. Was brauchen Sie?",
+          "Das kostet fünf Euro.",
+          "Ein Glas Wasser, bitte."
+        ]
+      },
+      "en": {
+        "prompt": "Can you help me?",
+        "answer": "Of course. What do you need?",
+        "options": [
+          "Of course. What do you need?",
+          "It's five euros.",
+          "A glass of water, please."
+        ]
+      },
+      "ka": {
+        "prompt": "შეგიძლიათ დამეხმაროთ?",
+        "answer": "რა თქმა უნდა. რა გჭირდებათ?",
+        "options": [
+          "რა თქმა უნდა. რა გჭირდებათ?",
+          "ხუთი ევრო ღირს.",
+          "ერთი ჭიქა წყალი, თუ შეიძლება."
+        ]
+      },
+      "uk": {
+        "prompt": "Можете мені допомогти?",
+        "answer": "Звісно. Що вам потрібно?",
+        "options": [
+          "Звісно. Що вам потрібно?",
+          "П’ять євро.",
+          "Склянку води, будь ласка."
+        ]
+      },
+      "ru": {
+        "prompt": "Можете мне помочь?",
+        "answer": "Конечно. Что вам нужно?",
+        "options": [
+          "Конечно. Что вам нужно?",
+          "Пять евро.",
+          "Стакан воды, пожалуйста."
+        ]
+      },
+      "zh": {
+        "prompt": "您能帮我吗？",
+        "answer": "当然。您需要什么？",
+        "options": [
+          "当然。您需要什么？",
+          "五欧元。",
+          "请给我一杯水。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Puede ayudarme?",
+        "answer": "Claro. ¿Qué necesita?",
+        "options": [
+          "Claro. ¿Qué necesita?",
+          "Cuesta cinco euros.",
+          "Un vaso de agua, por favor."
+        ]
+      },
+      "fr": {
+        "prompt": "Pouvez-vous m'aider ?",
+        "answer": "Bien sûr. De quoi avez-vous besoin ?",
+        "options": [
+          "Bien sûr. De quoi avez-vous besoin ?",
+          "Ça coûte cinq euros.",
+          "Un verre d'eau, s'il vous plaît."
+        ]
+      },
+      "it": {
+        "prompt": "Può aiutarmi?",
+        "answer": "Certo. Di cosa ha bisogno?",
+        "options": [
+          "Certo. Di cosa ha bisogno?",
+          "Costa cinque euro.",
+          "Un bicchiere d'acqua, per favore."
+        ]
+      },
+      "ja": {
+        "prompt": "手伝っていただけますか。",
+        "answer": "もちろんです。何が必要ですか。",
+        "options": [
+          "もちろんです。何が必要ですか。",
+          "5ユーロです。",
+          "お水を一杯お願いします。"
+        ]
+      }
+    }
+  },
+  {
+    "id": "meeting",
+    "title": {
+      "de": "Einen Termin vereinbaren",
+      "en": "Arranging a meeting",
+      "ru": "Договориться о встрече",
+      "uk": "Домовитися про зустріч"
+    },
+    "turns": {
+      "de": {
+        "prompt": "Hast du morgen um zehn Zeit?",
+        "answer": "Ja, das passt mir.",
+        "options": [
+          "Ja, das passt mir.",
+          "Das kostet fünf Euro.",
+          "Gehen Sie geradeaus."
+        ]
+      },
+      "en": {
+        "prompt": "Are you free tomorrow at ten?",
+        "answer": "Yes, that works for me.",
+        "options": [
+          "Yes, that works for me.",
+          "It's five euros.",
+          "Go straight ahead."
+        ]
+      },
+      "ka": {
+        "prompt": "ხვალ ათ საათზე გცალია?",
+        "answer": "კი, მაწყობს.",
+        "options": [
+          "კი, მაწყობს.",
+          "ხუთი ევრო ღირს.",
+          "პირდაპირ წადით."
+        ]
+      },
+      "uk": {
+        "prompt": "Ти маєш час завтра о десятій?",
+        "answer": "Так, мені підходить.",
+        "options": [
+          "Так, мені підходить.",
+          "П’ять євро.",
+          "Ідіть прямо."
+        ]
+      },
+      "ru": {
+        "prompt": "У тебя есть время завтра в десять?",
+        "answer": "Да, мне подходит.",
+        "options": [
+          "Да, мне подходит.",
+          "Пять евро.",
+          "Идите прямо."
+        ]
+      },
+      "zh": {
+        "prompt": "你明天十点有空吗？",
+        "answer": "有空，这个时间可以。",
+        "options": [
+          "有空，这个时间可以。",
+          "五欧元。",
+          "请一直往前走。"
+        ]
+      },
+      "es": {
+        "prompt": "¿Tienes tiempo mañana a las diez?",
+        "answer": "Sí, me viene bien.",
+        "options": [
+          "Sí, me viene bien.",
+          "Cuesta cinco euros.",
+          "Siga recto."
+        ]
+      },
+      "fr": {
+        "prompt": "Tu es libre demain à dix heures ?",
+        "answer": "Oui, ça me convient.",
+        "options": [
+          "Oui, ça me convient.",
+          "Ça coûte cinq euros.",
+          "Allez tout droit."
+        ]
+      },
+      "it": {
+        "prompt": "Hai tempo domani alle dieci?",
+        "answer": "Sì, mi va bene.",
+        "options": [
+          "Sì, mi va bene.",
+          "Costa cinque euro.",
+          "Vada sempre dritto."
+        ]
+      },
+      "ja": {
+        "prompt": "明日の10時は空いていますか。",
+        "answer": "はい、その時間で大丈夫です。",
+        "options": [
+          "はい、その時間で大丈夫です。",
+          "5ユーロです。",
+          "まっすぐ行ってください。"
+        ]
+      }
+    }
+  }
+];

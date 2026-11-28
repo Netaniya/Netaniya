@@ -11,7 +11,7 @@ import {MATH,dailyTasks} from '../../workshop/math.mjs';
 import {SAVE_KEY} from '../../workshop/model.mjs';
 import {MISSIONS,LEARNING_LANGUAGES,SUBJECTS} from '../../workshop/curriculum.mjs';
 import {courseTask} from '../../workshop/math-course.mjs';
-import {LANGUAGE_UNITS,phraseTokens,GRAMMAR_LESSONS} from '../../workshop/language-course.mjs';
+import {LANGUAGE_UNITS,phraseTokens,GRAMMAR_LESSONS,DIALOGUE_LESSONS} from '../../workshop/language-course.mjs';
 const root=path.resolve(fileURLToPath(new URL('../../workshop/dist/',import.meta.url))),results=fileURLToPath(new URL('./workshop-results/',import.meta.url));
 await fs.mkdir(results,{recursive:true});
 const base='/Netaniya/eliana-n25x/workshop/';
@@ -149,6 +149,8 @@ async function expandedLearningCheck(){
  }
  check('Professional communication and evidence topics work across all ten languages through real inputs');
  for(const language of LEARNING_LANGUAGES.map(v=>v.id)){await page.locator('#course-language').selectOption(language);await click('[data-l=grammar-open]');const lesson=GRAMMAR_LESSONS.find(v=>v.language===language);await page.locator('#grammar-lesson').selectOption(lesson.id);for(const q of lesson.practice){await page.locator('#content').getByRole('button',{name:q.answer,exact:true}).click();await click('[data-l=grammar-next]');}await click('[data-l=grammar-test]');assert(!(await page.locator('#content').innerText()).includes(lesson.example));for(const q of lesson.checkpoint)await page.locator('#content').getByRole('button',{name:q.answer,exact:true}).click();assert((await state()).learning.languages.grammar.passed[lesson.id]);await noOverflow();await click('[data-l=grammar-close]');}
+ for(const {id:language} of LEARNING_LANGUAGES){await page.locator('#course-language').selectOption(language);await click('[data-l=dialogue-open]');for(const [i,m] of DIALOGUE_LESSONS.entries()){await page.locator('#dialogue-lesson').selectOption(String(i));const t=m.turns[language];if(i===0){await page.locator('#content').getByRole('button',{name:t.options[1],exact:true}).click();assert(await page.locator('[data-l=dialogue-next]').isDisabled());}await page.locator('#content').getByRole('button',{name:t.answer,exact:true}).click();assert((await state()).learning.languages.dialogues.passed[language+'/'+m.id]);}assert.equal(await page.locator('[data-dialogue-progress]').innerText(),'6 / 6');await noOverflow();await click('[data-l=dialogue-close]');}
+ check('60 contextual replies across ten languages; wrong answer cannot advance; saved completion');
  check('All ten languages: grammar exercises and separate checkpoints save progress through actual inputs');
  await screenshot(scope+'-language-course');check('Whole sentences in all ten languages are read and written; English, Georgian, Chinese and Japanese word-order tasks complete through native script',{topics:LANGUAGE_UNITS.length,sourceSentencesPerLanguage:LANGUAGE_UNITS.reduce((n,u)=>n+u.items.length,0)});
  await click('#navigation [data-do=learn]');await click('[data-do=study-subjects]');
