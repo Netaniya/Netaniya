@@ -239,3 +239,6 @@ CI 46134543255: 73 модульных теста, все браузерные с
 
 
 28.11.2026: Render preview service created on the creator-confirmed My Workspace, free plan, Frankfurt, manual deploys from `codex/n25x-learning-review`. URL: https://n25x-learning-preview.onrender.com . Initial deployed candidate requested at `fc08a0289d88212b3dd465d57f6c2e35464c1b13`; build status pending at documentation time. The public preview is not access-controlled. Main and repository visibility unchanged. Other Render services untouched.
+
+## 28.11.2026 — практические языковые темы
+Добавлены 2 темы (запись на приём и жильё/услуги), 16 новых смысловых реплик, 160 переводов. Всего 18 тем, 168 реплик на язык, 1680 текстов, 5040 основных форм упражнений. Грамматика 704 исходных вопроса отдельно. Переводы требуют независимой проверки.

@@ -177,3 +177,6 @@ Assistant implemented a no-choice typed recall mode using the 352 existing exten
 
 ### 28 November — cloud review preparation
 At the creator's request for direct mobile review without ZIP extraction, assistant implemented an allowlisted, hash-verified static preview HTTP server and integration tests. Planned separate free Frankfurt cloud service; workspace selection requires explicit confirmation. No live deployment, repository visibility change or main merge yet.
+
+### 28 November — practical language units
+Added 16 original meanings in all ten languages: appointment communication and housing/services. These are fictional practice sentences, not medical or tenancy advice. Existing IDs unchanged. Native review pending.

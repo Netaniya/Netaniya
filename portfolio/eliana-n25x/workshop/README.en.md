@@ -92,3 +92,5 @@ Cloud review server: `node portfolio/eliana-n25x/workshop/build.mjs` followed by
 
 
 28.11.2026: Render preview service created on the creator-confirmed My Workspace, free plan, Frankfurt, manual deploys from `codex/n25x-learning-review`. URL: https://n25x-learning-preview.onrender.com . Initial deployed candidate requested at `fc08a0289d88212b3dd465d57f6c2e35464c1b13`; build status pending at documentation time. The public preview is not access-controlled. Main and repository visibility unchanged. Other Render services untouched.
+
+Language candidate: 18 units, 168 shared meanings, 1,680 translated texts and 5,040 core exercise forms. New units cover appointments and housing/services; no medical or legal advice. Native review pending.

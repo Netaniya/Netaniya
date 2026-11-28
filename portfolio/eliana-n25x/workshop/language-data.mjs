@@ -19,7 +19,7 @@ Human creative direction and AI-assisted implementation: see CONTRIBUTIONS.md. T
 export const LANGUAGE_CONTENT_INFO = Object.freeze({
   author: 'Natalie Ragulina',
   copyright: '© 2026 Natalie Ragulina. All rights reserved.',
-  contentVersion: 4,
+  contentVersion: 5,
   scope: 'introductory-and-connected-sentence-practice',
   aiAssisted: true,
   nativeSpeakerReviewed: false,
@@ -10575,3 +10575,281 @@ export const GRAMMAR_EXTENDED=Object.freeze({
     }
   ]
 });
+
+// Additional original practical-language units; AI-assisted, independent review pending.
+LANGUAGE_UNITS.push(...[
+  {
+    "id": "health-appointments",
+    "title": {
+      "de": "17 · Gesundheit und Termine",
+      "en": "17 · Health and appointments",
+      "ru": "17 · Здоровье и запись на приём",
+      "uk": "17 · Здоров’я та запис на прийом"
+    },
+    "note": {
+      "de": "Übe Terminvereinbarungen und einfache Beschreibungen von Beschwerden. Das sind Sprachübungen, keine medizinischen Empfehlungen.",
+      "en": "Practise arranging appointments and describing simple symptoms. These are language exercises, not medical recommendations.",
+      "ru": "Тренируй запись на приём и простое описание самочувствия. Это языковые упражнения, не медицинские рекомендации.",
+      "uk": "Тренуй запис на прийом і простий опис самопочуття. Це мовні вправи, а не медичні рекомендації."
+    },
+    "items": [
+      {
+        "id": "health-appointments.appointment",
+        "text": {
+          "de": "Ich möchte einen Termin vereinbaren.",
+          "en": "I would like to make an appointment.",
+          "ka": "მსურს ვიზიტზე ჩაწერა.",
+          "uk": "Я хотів би записатися на прийом.",
+          "ru": "Я хочу записаться на приём.",
+          "zh": "我想预约。",
+          "es": "Quisiera pedir una cita.",
+          "fr": "Je voudrais prendre rendez-vous.",
+          "it": "Vorrei fissare un appuntamento.",
+          "ja": "予約を取りたいです。"
+        }
+      },
+      {
+        "id": "health-appointments.morning",
+        "text": {
+          "de": "Ist am Montagvormittag ein Termin frei?",
+          "en": "Is there an appointment available on Monday morning?",
+          "ka": "ორშაბათს დილით თავისუფალი დრო გაქვთ?",
+          "uk": "Чи є вільний час для прийому в понеділок уранці?",
+          "ru": "Есть ли свободное время для приёма в понедельник утром?",
+          "zh": "星期一上午有空的预约时段吗？",
+          "es": "¿Hay una cita disponible el lunes por la mañana?",
+          "fr": "Y a-t-il un créneau disponible lundi matin ?",
+          "it": "C’è un appuntamento disponibile lunedì mattina?",
+          "ja": "月曜日の午前中に予約の空きはありますか。"
+        }
+      },
+      {
+        "id": "health-appointments.headache",
+        "text": {
+          "de": "Seit gestern habe ich Kopfschmerzen.",
+          "en": "I have had a headache since yesterday.",
+          "ka": "გუშინდლიდან თავი მტკივა.",
+          "uk": "З учора в мене болить голова.",
+          "ru": "У меня со вчерашнего дня болит голова.",
+          "zh": "我从昨天开始就头疼。",
+          "es": "Me duele la cabeza desde ayer.",
+          "fr": "J’ai mal à la tête depuis hier.",
+          "it": "Ho mal di testa da ieri.",
+          "ja": "昨日から頭が痛いです。"
+        }
+      },
+      {
+        "id": "health-appointments.documents",
+        "text": {
+          "de": "Welche Unterlagen soll ich mitbringen?",
+          "en": "What documents should I bring?",
+          "ka": "რომელი დოკუმენტები უნდა მოვიტანო?",
+          "uk": "Які документи мені потрібно принести?",
+          "ru": "Какие документы мне нужно принести?",
+          "zh": "我需要带哪些材料？",
+          "es": "¿Qué documentos debo llevar?",
+          "fr": "Quels documents dois-je apporter ?",
+          "it": "Quali documenti devo portare?",
+          "ja": "どの書類を持っていけばいいですか。"
+        }
+      },
+      {
+        "id": "health-appointments.explain",
+        "text": {
+          "de": "Könnten Sie mir das bitte einfacher erklären?",
+          "en": "Could you please explain that in simpler terms?",
+          "ka": "შეგიძლიათ ეს უფრო მარტივად ამიხსნათ?",
+          "uk": "Чи могли б ви пояснити це простіше?",
+          "ru": "Не могли бы вы объяснить это проще?",
+          "zh": "您能解释得简单一点吗？",
+          "es": "¿Podría explicármelo de forma más sencilla?",
+          "fr": "Pourriez-vous me l’expliquer plus simplement ?",
+          "it": "Potrebbe spiegarmelo in modo più semplice?",
+          "ja": "もう少し分かりやすく説明していただけますか。"
+        }
+      },
+      {
+        "id": "health-appointments.reschedule",
+        "text": {
+          "de": "Ich muss meinen Termin verschieben.",
+          "en": "I need to reschedule my appointment.",
+          "ka": "ვიზიტის გადატანა მჭირდება.",
+          "uk": "Мені потрібно перенести свій прийом.",
+          "ru": "Мне нужно перенести свой приём.",
+          "zh": "我需要改约。",
+          "es": "Necesito cambiar mi cita.",
+          "fr": "Je dois déplacer mon rendez-vous.",
+          "it": "Devo spostare il mio appuntamento.",
+          "ja": "予約の日時を変更する必要があります。"
+        }
+      },
+      {
+        "id": "health-appointments.insurance",
+        "text": {
+          "de": "Hier ist meine Versicherungskarte.",
+          "en": "Here is my health insurance card.",
+          "ka": "აი, ჩემი ჯანმრთელობის დაზღვევის ბარათი.",
+          "uk": "Ось моя картка медичного страхування.",
+          "ru": "Вот моя карточка медицинского страхования.",
+          "zh": "这是我的医保卡。",
+          "es": "Aquí está mi tarjeta sanitaria.",
+          "fr": "Voici ma carte d’assurance maladie.",
+          "it": "Ecco la mia tessera sanitaria.",
+          "ja": "こちらが私の健康保険証です。"
+        }
+      },
+      {
+        "id": "health-appointments.written",
+        "text": {
+          "de": "Könnten Sie mir das bitte aufschreiben?",
+          "en": "Could you please write that down for me?",
+          "ka": "შეგიძლიათ ეს დამიწეროთ?",
+          "uk": "Чи могли б ви записати це для мене?",
+          "ru": "Не могли бы вы записать это для меня?",
+          "zh": "您能帮我把这个写下来吗？",
+          "es": "¿Podría anotármelo, por favor?",
+          "fr": "Pourriez-vous me l’écrire, s’il vous plaît ?",
+          "it": "Potrebbe scrivermelo, per favore?",
+          "ja": "それを書いていただけますか。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "housing-services",
+    "title": {
+      "de": "18 · Wohnen und Dienstleistungen",
+      "en": "18 · Housing and services",
+      "ru": "18 · Жильё и бытовые услуги",
+      "uk": "18 · Житло та побутові послуги"
+    },
+    "note": {
+      "de": "Übe sachliche Nachrichten über Wohnung, Reparaturen und Absprachen. Beschreibe das Problem und frage nach dem nächsten Schritt.",
+      "en": "Practise clear messages about housing, repairs and arrangements. Describe the problem and ask about the next step.",
+      "ru": "Тренируй ясные сообщения о жилье, ремонте и договорённостях. Опиши проблему и уточни следующий шаг.",
+      "uk": "Тренуй чіткі повідомлення про житло, ремонт і домовленості. Опиши проблему та уточни наступний крок."
+    },
+    "items": [
+      {
+        "id": "housing-services.heating",
+        "text": {
+          "de": "Die Heizung funktioniert seit gestern nicht.",
+          "en": "The heating has not worked since yesterday.",
+          "ka": "გუშინდლიდან გათბობა არ მუშაობს.",
+          "uk": "Опалення не працює з учора.",
+          "ru": "Отопление не работает со вчерашнего дня.",
+          "zh": "暖气从昨天起就不工作了。",
+          "es": "La calefacción no funciona desde ayer.",
+          "fr": "Le chauffage ne fonctionne plus depuis hier.",
+          "it": "Il riscaldamento non funziona da ieri.",
+          "ja": "昨日から暖房が動きません。"
+        }
+      },
+      {
+        "id": "housing-services.repair",
+        "text": {
+          "de": "Wann kann jemand die Waschmaschine reparieren?",
+          "en": "When can someone repair the washing machine?",
+          "ka": "როდის შეუძლია ვინმეს სარეცხი მანქანის შეკეთება?",
+          "uk": "Коли хтось зможе полагодити пральну машину?",
+          "ru": "Когда кто-нибудь сможет починить стиральную машину?",
+          "zh": "什么时候有人能来修洗衣机？",
+          "es": "¿Cuándo puede venir alguien a reparar la lavadora?",
+          "fr": "Quand quelqu’un pourra-t-il réparer le lave-linge ?",
+          "it": "Quando può venire qualcuno a riparare la lavatrice?",
+          "ja": "いつ洗濯機を修理してもらえますか。"
+        }
+      },
+      {
+        "id": "housing-services.rent",
+        "text": {
+          "de": "Sind die Nebenkosten in der Miete enthalten?",
+          "en": "Are the additional charges included in the rent?",
+          "ka": "დამატებითი ხარჯები ქირაში შედის?",
+          "uk": "Чи включені додаткові витрати в орендну плату?",
+          "ru": "Включены ли дополнительные расходы в арендную плату?",
+          "zh": "附加费用包含在房租里吗？",
+          "es": "¿Están incluidos los gastos adicionales en el alquiler?",
+          "fr": "Les charges sont-elles comprises dans le loyer ?",
+          "it": "Le spese accessorie sono incluse nell’affitto?",
+          "ja": "共益費などの追加費用は家賃に含まれていますか。"
+        }
+      },
+      {
+        "id": "housing-services.keys",
+        "text": {
+          "de": "Ich habe meinen Schlüssel verloren.",
+          "en": "I have lost my key.",
+          "ka": "გასაღები დავკარგე.",
+          "uk": "Я загубив свій ключ.",
+          "ru": "Я потерял ключ.",
+          "zh": "我把钥匙弄丢了。",
+          "es": "He perdido mi llave.",
+          "fr": "J’ai perdu ma clé.",
+          "it": "Ho perso la mia chiave.",
+          "ja": "鍵をなくしました。"
+        }
+      },
+      {
+        "id": "housing-services.availability",
+        "text": {
+          "de": "Ich bin morgen nach fünf Uhr zu Hause.",
+          "en": "I will be home tomorrow after five o’clock.",
+          "ka": "ხვალ ხუთი საათის შემდეგ სახლში ვიქნები.",
+          "uk": "Завтра після п’ятої я буду вдома.",
+          "ru": "Завтра после пяти я буду дома.",
+          "zh": "我明天五点以后在家。",
+          "es": "Mañana estaré en casa después de las cinco.",
+          "fr": "Demain, je serai chez moi après cinq heures.",
+          "it": "Domani sarò a casa dopo le cinque.",
+          "ja": "明日は5時以降、家にいます。"
+        }
+      },
+      {
+        "id": "housing-services.cost",
+        "text": {
+          "de": "Wie viel kostet die Reparatur insgesamt?",
+          "en": "How much will the repair cost in total?",
+          "ka": "სულ რამდენი დაჯდება შეკეთება?",
+          "uk": "Скільки загалом коштуватиме ремонт?",
+          "ru": "Сколько всего будет стоить ремонт?",
+          "zh": "维修总共要花多少钱？",
+          "es": "¿Cuánto costará la reparación en total?",
+          "fr": "Combien coûtera la réparation au total ?",
+          "it": "Quanto costerà in totale la riparazione?",
+          "ja": "修理には全部でいくらかかりますか。"
+        }
+      },
+      {
+        "id": "housing-services.confirmation",
+        "text": {
+          "de": "Bitte bestätigen Sie den vereinbarten Termin.",
+          "en": "Please confirm the agreed appointment.",
+          "ka": "გთხოვთ, დაადასტუროთ შეთანხმებული დრო.",
+          "uk": "Будь ласка, підтвердьте узгоджений час.",
+          "ru": "Пожалуйста, подтвердите согласованное время.",
+          "zh": "请确认约定的时间。",
+          "es": "Por favor, confirme la cita acordada.",
+          "fr": "Veuillez confirmer le rendez-vous convenu.",
+          "it": "La prego di confermare l’appuntamento concordato.",
+          "ja": "約束した日時をご確認ください。"
+        }
+      },
+      {
+        "id": "housing-services.thanks",
+        "text": {
+          "de": "Vielen Dank für Ihre schnelle Hilfe.",
+          "en": "Thank you very much for your prompt help.",
+          "ka": "დიდი მადლობა სწრაფი დახმარებისთვის.",
+          "uk": "Щиро дякую за швидку допомогу.",
+          "ru": "Большое спасибо за быструю помощь.",
+          "zh": "非常感谢您的及时帮助。",
+          "es": "Muchas gracias por su rápida ayuda.",
+          "fr": "Merci beaucoup pour votre aide rapide.",
+          "it": "Grazie mille per il Suo rapido aiuto.",
+          "ja": "迅速にご対応いただき、ありがとうございます。"
+        }
+      }
+    ]
+  }
+]);
